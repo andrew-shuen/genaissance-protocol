@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pre-test counselling guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#00857a;
+    --teal-ink:#063b37;
+    --teal-wash:#e8f2f0;
+    --paper:#ffffff;
+    --bg:#f4f7f6;
+    --ink:#16302c;
+    --muted:#5d716c;
+    --line:#dde7e4;
+    --cancer:#b5462f;
+    --connective:#1f9e8f;
+    --adult:#9a6a3c;
+    --prenatal:#7a5ca8;
+    --pediatric:#c47a3d;
+    --flag:#b5462f;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px 80px}
+
+  header{
+    background:var(--teal-ink);
+    color:#eaf3f0;
+    padding:30px 0 70px;
+    position:relative;
+    overflow:hidden;
+  }
+  .head-inner{max-width:960px;margin:0 auto;padding:0 20px;position:relative;z-index:2}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:#7fc4b8;margin:0 0 8px;
+  }
+  header h1{
+    font-family:'Fraunces',Georgia,serif;font-weight:500;
+    font-size:2rem;line-height:1.15;margin:0;letter-spacing:-.01em;
+  }
+  header p{max-width:62ch;margin:14px 0 0;color:#cfe3de;font-size:.96rem}
+  .lang{position:absolute;top:0;right:20px;display:flex;gap:0;z-index:3;
+    background:rgba(255,255,255,.12);border-radius:8px;padding:3px}
+  .lang button{
+    font-family:'IBM Plex Mono',monospace;font-size:.74rem;font-weight:600;
+    border:0;background:transparent;color:#cfe3de;padding:5px 11px;border-radius:6px;cursor:pointer;
+  }
+  .lang button.active{background:#fff;color:var(--teal-ink)}
+
+  main{margin-top:-44px;position:relative;z-index:5}
+
+  .panel{
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;margin:0 0 20px;
+    box-shadow:0 4px 18px rgba(6,59,55,.06);
+  }
+
+  .step-label{
+    font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--teal);margin:0 0 12px;font-weight:600;
+  }
+
+  .types{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:12px}
+  .type-btn{
+    text-align:left;cursor:pointer;background:var(--paper);
+    border:1px solid var(--line);border-left:4px solid var(--accent,var(--teal));
+    border-radius:10px;padding:14px 16px;font-family:inherit;color:var(--ink);
+    transition:border-color .15s,box-shadow .15s,transform .05s;
+  }
+  .type-btn:hover{box-shadow:0 3px 12px rgba(6,59,55,.10);border-color:var(--line)}
+  .type-btn:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+  .type-btn.active{box-shadow:0 0 0 2px var(--accent,var(--teal)) inset}
+  .type-btn h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.08rem;margin:0 0 3px;color:var(--teal-ink)}
+  .type-btn p{margin:0;font-size:.82rem;color:var(--muted);line-height:1.4}
+
+  .guide-head{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:6px}
+  .guide-head h2{font-family:'Fraunces',serif;font-weight:500;font-size:1.5rem;margin:0;color:var(--teal-ink)}
+  .guide-head .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:#fff;
+    background:var(--accent,var(--teal));padding:3px 9px;border-radius:6px;margin-left:auto;
+  }
+
+  .block{margin:20px 0}
+  .block h4{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--teal);margin:0 0 10px;display:flex;align-items:center;gap:8px;
+  }
+  .block-p{margin:0;font-size:.96rem;line-height:1.6;color:var(--ink)}
+  .do-block h4{color:var(--teal-ink)}
+
+  .primers{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .primer-chip{
+    display:inline-flex;align-items:center;gap:6px;text-decoration:none;
+    border:1px solid var(--line);border-radius:8px;padding:7px 12px;font-size:.86rem;
+    color:var(--teal-ink);font-weight:500;background:var(--teal-wash);transition:border-color .12s;
+  }
+  .primer-chip:hover{border-color:var(--teal)}
+
+  .cta{
+    margin-top:10px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;
+    background:var(--teal-wash);border:1px solid #cbe3dd;border-radius:12px;padding:16px 18px;
+  }
+  .cta .cta-text{flex:1;min-width:240px}
+  .cta .cta-text strong{display:block;font-size:.98rem;color:var(--teal-ink);margin-bottom:2px}
+  .cta .cta-text span{display:block;font-size:.86rem;color:var(--muted);line-height:1.45}
+  .cta .cta-text .form-lang{font-size:.78rem;margin-top:5px;color:var(--teal)}
+  .cta .cta-text .form-lang.ext{color:var(--adult)}
+  .cta.consent-cta{background:#fbf4e9;border-color:#e6d3b3}
+  .cta.consent-cta .open-form{background:var(--adult)}
+  .cta.consent-cta .open-form:hover{background:#7e552e}
+  .cta.ext-cta{background:#f4eef6;border-color:#dcc9e4}
+  .cta.ext-cta .open-form{background:var(--prenatal)}
+  .cta.ext-cta .open-form:hover{background:#5f4488}
+  .open-form{
+    text-decoration:none;background:var(--teal);color:#fff;font-weight:600;font-size:.92rem;
+    padding:11px 20px;border-radius:9px;white-space:nowrap;transition:background .12s;
+  }
+  .open-form:hover{background:#0a6f64}
+
+  .hint{font-size:.84rem;color:var(--muted);margin:10px 0 0}
+  .backlink{display:inline-block;margin:14px 0 0;font-size:.86rem;color:var(--teal);text-decoration:none}
+  .backlink:hover{text-decoration:underline}
+  .footnote{margin-top:26px;font-size:.82rem;color:var(--muted);max-width:70ch}
+  .hidden{display:none}
+  #load-error{display:none;max-width:60ch;margin:24px auto;padding:18px 22px;border:1px solid var(--line);border-left:4px solid var(--cancer);border-radius:10px;background:#fff;color:var(--ink)}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-inner">
+    <div class="lang" role="group" aria-label="Language">
+      <button id="lang-en" class="active" aria-pressed="true">EN</button>
+      <button id="lang-fr" aria-pressed="false">FR</button>
+    </div>
+    <p class="eyebrow" data-en="Medical Genetics · Before your appointment" data-fr="Génétique médicale · Avant votre rendez-vous">Medical Genetics · Before your appointment</p>
+    <h1 data-en="Getting ready for your genetics appointment" data-fr="Préparer votre rendez-vous en génétique">Getting ready for your genetics appointment</h1>
+    <p id="intro"></p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section class="panel">
+      <p class="step-label" data-en="Step 1 · Why were you referred?" data-fr="Étape 1 · Pourquoi avez-vous été référé?">Step 1 · Why were you referred?</p>
+      <div class="types" id="types"></div>
+    </section>
+
+    <section class="panel hidden" id="guide-panel"></section>
+
+    <div id="load-error">
+      <strong data-en="Content could not load." data-fr="Le contenu n'a pas pu se charger.">Content could not load.</strong><br>
+      <span data-en="This page reads from counselling.json. View it through the published web address rather than opening the file directly." data-fr="Cette page lit counselling.json. Consultez-la via l'adresse web publiée plutôt qu'en ouvrant le fichier directement.">This page reads from counselling.json. View it through the published web address rather than opening the file directly.</span>
+    </div>
+
+    <a class="backlink" href="index.html" data-en="← Genetics information library" data-fr="← Bibliothèque d'information en génétique">← Genetics information library</a>
+
+    <p class="footnote" data-en="This page helps you prepare for your visit. The questionnaires open in JotForm, where your answers are kept securely. If you have trouble with a questionnaire or have questions before your appointment, please contact the clinic." data-fr="Cette page vous aide à préparer votre visite. Les questionnaires s'ouvrent dans JotForm, où vos réponses sont conservées de façon sécurisée. Si vous éprouvez des difficultés avec un questionnaire ou avez des questions avant votre rendez-vous, veuillez communiquer avec la clinique.">This page helps you prepare for your visit. The questionnaires open in JotForm, where your answers are kept securely. If you have trouble with a questionnaire or have questions before your appointment, please contact the clinic.</p>
+  </div>
+</main>
+
+<script>
+  var DATA = null;
+  var lang = 'en';
+  var selectedType = null;
+
+  var HUB = 'index.html';
+
+  var UI = {
+    openForm: { en: 'Open questionnaire', fr: 'Ouvrir le questionnaire' },
+    openConsent: { en: 'Open consent form', fr: 'Ouvrir le formulaire de consentement' },
+    formLangEn:{ en: 'Opens the English form in a new tab.', fr: 'Ouvre le formulaire anglais dans un nouvel onglet.' },
+    formLangFr:{ en: 'Opens the French form in a new tab.', fr: 'Ouvre le formulaire français dans un nouvel onglet.' },
+    opensExternal:{ en: 'Opens on the Invitae website in a new tab.', fr: 'S\u2019ouvre sur le site web d\u2019Invitae dans un nouvel onglet.' }
+  };
+
+  function t(val){
+    if(val == null) return '';
+    if(typeof val === 'string') return val;
+    return val[lang] != null ? val[lang] : (val.en || '');
+  }
+
+  function applyStaticLang(){
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      var v = el.getAttribute('data-' + lang);
+      if(v !== null) el.textContent = v;
+    });
+    document.documentElement.lang = lang;
+  }
+
+  function makeTypeButtons(){
+    var host = document.getElementById('types');
+    host.innerHTML = '';
+    DATA.types.forEach(function(tp){
+      var b = document.createElement('button');
+      b.className = 'type-btn' + (selectedType === tp.key ? ' active' : '');
+      b.style.setProperty('--accent', 'var(--' + (tp.accent || 'teal') + ')');
+      b.setAttribute('aria-pressed', selectedType === tp.key ? 'true' : 'false');
+      b.innerHTML = '<h3></h3><p></p>';
+      b.querySelector('h3').textContent = t(tp.label);
+      b.querySelector('p').textContent = t(tp.summary);
+      b.addEventListener('click', function(){ chooseType(tp.key); });
+      host.appendChild(b);
+    });
+  }
+
+  function chooseType(key){
+    selectedType = key;
+    makeTypeButtons();
+    renderGuide();
+    document.getElementById('guide-panel').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  function currentType(){
+    return DATA.types.filter(function(x){ return x.key === selectedType; })[0];
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function uiLabel(key){
+    return (DATA.uiLabels && DATA.uiLabels[key]) ? t(DATA.uiLabels[key]) : '';
+  }
+
+  function proseBlock(title, body){
+    return '<div class="block"><h4>' + escapeHtml(title) + '</h4><p class="block-p">' + escapeHtml(body) + '</p></div>';
+  }
+
+  function renderGuide(){
+    var tp = currentType();
+    if(!tp){ return; }
+    var p = document.getElementById('guide-panel');
+    p.classList.remove('hidden');
+    p.style.setProperty('--accent', 'var(--' + (tp.accent || 'teal') + ')');
+
+    var html =
+      '<div class="guide-head"><h2>' + escapeHtml(t(tp.label)) + '</h2>' +
+        '<span class="tag">' + escapeHtml(t(tp.summary)) + '</span></div>';
+
+    if(tp.about){  html += proseBlock(uiLabel('about'),  t(tp.about)); }
+    if(tp.expect){ html += proseBlock(uiLabel('expect'), t(tp.expect)); }
+
+    if(tp.primers && tp.primers.length){
+      var primersHtml = '';
+      tp.primers.forEach(function(pr){
+        var href;
+        if(pr.file){
+          href = pr.file;                       /* a card page in the same folder */
+        } else if(pr.section){
+          href = HUB + '#open-' + pr.section;    /* jump to hub and open a section */
+        } else {
+          href = HUB + '#' + pr.anchor;          /* an in-page primer overlay */
+        }
+        primersHtml += '<a class="primer-chip" href="' + href + '">' + escapeHtml(t(pr.label)) + ' &#8599;</a>';
+      });
+      html += '<div class="block"><h4>' + escapeHtml(uiLabel('learn')) + '</h4><div class="primers">' + primersHtml + '</div></div>';
+    }
+
+    var qs = (tp.questionnaires || []).slice();
+
+    /* a consent form defined once at the top level shows in every section */
+    if(DATA.consent && DATA.consent.urls){
+      qs.push({
+        who: DATA.consent.who,
+        note: DATA.consent.note,
+        consentUrls: DATA.consent.urls,
+        kind: 'consent'
+      });
+    }
+
+    if(qs.length){
+      html += '<div class="block do-block"><h4>' + escapeHtml(uiLabel('doNow')) + '</h4>';
+      qs.forEach(function(q){
+        var href, sub, btnLabel, extraClass = '';
+        if(q.consentUrls){
+          href = q.consentUrls[lang] || q.consentUrls.en;
+          var cMsg = (lang === 'fr') ? t(UI.formLangFr) : t(UI.formLangEn);
+          sub = '<span class="form-lang">' + escapeHtml(cMsg) + '</span>';
+          btnLabel = t(UI.openConsent);
+          extraClass = ' consent-cta';
+        } else if(q.external){
+          href = q.external;
+          sub = '<span class="form-lang ext">' + escapeHtml(t(UI.opensExternal)) + '</span>';
+          btnLabel = t(UI.openForm);
+          extraClass = ' ext-cta';
+        } else {
+          var formId = (q.forms && (q.forms[lang] || q.forms.en)) || '';
+          href = 'https://form.jotform.com/' + formId;
+          var langMsg = (lang === 'fr') ? t(UI.formLangFr) : t(UI.formLangEn);
+          sub = '<span class="form-lang">' + escapeHtml(langMsg) + '</span>';
+          btnLabel = t(UI.openForm);
+        }
+        html +=
+          '<div class="cta' + extraClass + '">' +
+            '<div class="cta-text"><strong>' + escapeHtml(t(q.who)) + '</strong>' +
+            '<span>' + escapeHtml(t(q.note)) + '</span>' +
+            sub + '</div>' +
+            '<a class="open-form" target="_blank" rel="noopener" href="' + href + '">' + escapeHtml(btnLabel) + ' &#8599;</a>' +
+          '</div>';
+      });
+      html += '</div>';
+    }
+
+    p.innerHTML = html;
+  }
+
+  function setLang(l){
+    lang = l;
+    document.getElementById('lang-en').classList.toggle('active', l === 'en');
+    document.getElementById('lang-en').setAttribute('aria-pressed', l === 'en');
+    document.getElementById('lang-fr').classList.toggle('active', l === 'fr');
+    document.getElementById('lang-fr').setAttribute('aria-pressed', l === 'fr');
+    applyStaticLang();
+    if(DATA){
+      document.getElementById('intro').textContent = t(DATA.intro);
+      makeTypeButtons();
+      if(selectedType){ renderGuide(); }
+    }
+  }
+
+  document.getElementById('lang-en').addEventListener('click', function(){ setLang('en'); });
+  document.getElementById('lang-fr').addEventListener('click', function(){ setLang('fr'); });
+
+  fetch('counselling.json', { cache: 'no-cache' })
+    .then(function(r){ if(!r.ok){ throw new Error('HTTP ' + r.status); } return r.json(); })
+    .then(function(d){
+      DATA = d;
+      document.getElementById('intro').textContent = t(DATA.intro);
+      makeTypeButtons();
+    })
+    .catch(function(err){
+      console.error('Could not load counselling.json:', err);
+      document.getElementById('load-error').style.display = 'block';
+    });
+
+  applyStaticLang();
+</script>
+</body>
+</html>

@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP53 / Li-Fraumeni Syndrome — Cancer Prevention and Surveillance Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:18px; line-height:1.62;
+}
+.wrap{max-width:880px; margin:0 auto; padding:0 22px 70px;}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* ---- language toggle ---- */
+.langbar{
+  position:sticky; top:0; z-index:50; background:rgba(244,249,252,.94);
+  backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+  display:flex; gap:8px; justify-content:center; padding:10px 0; margin-bottom:8px;
+}
+.langbar button{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; font-weight:600;
+  letter-spacing:.02em; cursor:pointer; border:1px solid var(--brand-line);
+  background:var(--paper); color:var(--brand-dark); padding:7px 18px; border-radius:999px;
+  transition:all .15s;
+}
+.langbar button.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+
+/* ---- masthead ---- */
+.masthead{padding:30px 0 8px;}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; text-transform:uppercase;
+  letter-spacing:.16em; font-size:12px; font-weight:700; color:var(--brand-dark);
+}
+h1{font-size:34px; line-height:1.18; margin:.32em 0 .18em; font-weight:600; letter-spacing:-.01em;}
+.standfirst{font-size:20px; color:var(--ink-soft); margin:.2em 0 1.1em; line-height:1.5;}
+.authors{
+  background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:14px 18px; margin:14px 0;
+}
+.authors .role{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.12em; color:var(--ink-faint); margin-bottom:6px;
+}
+.authors p{margin:4px 0; font-size:16px;}
+.authors .name{font-weight:600; color:var(--ink);}
+.meta{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 6px;}
+.chip{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; font-weight:600;
+  background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);
+  padding:4px 11px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;
+}
+.legend{
+  display:flex; flex-wrap:wrap; gap:16px; margin:18px 0 6px; padding:13px 16px;
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-sm);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px;
+}
+.legend span{display:inline-flex; align-items:center; gap:7px; color:var(--ink-soft);}
+.swatch{width:13px; height:13px; border-radius:4px; display:inline-block; border:1px solid rgba(0,0,0,.12);}
+.sw-patient{background:var(--brand-bg); border-color:var(--brand-line);}
+.sw-clin{background:var(--paper); border-color:var(--line);}
+.sw-high{background:var(--red-bg); border-color:var(--red-line);}
+.sw-mod{background:var(--amber-bg); border-color:var(--amber-line);}
+
+/* ---- table of contents ---- */
+.toc{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:20px 24px; margin:24px 0 8px;
+}
+.toc h2{font-size:13px; text-transform:uppercase; letter-spacing:.13em; color:var(--brand-dark);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; margin:0 0 12px;}
+.toc ol{margin:0; padding:0; list-style:none; columns:2; column-gap:34px;}
+.toc li{margin:0 0 9px; font-size:15.5px; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none; display:flex; gap:9px; align-items:baseline;}
+.toc a:hover{color:var(--brand-dark);}
+.toc .n{color:var(--brand); font-weight:700; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; min-width:18px;}
+
+/* ---- sections ---- */
+section{margin:40px 0 0; scroll-margin-top:64px;}
+.shead{display:flex; align-items:flex-start; gap:14px; margin:0 0 14px; padding-bottom:10px; border-bottom:2px solid var(--line);}
+.snum{
+  flex:0 0 auto; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+  font-size:15px; background:var(--brand); color:#fff; width:32px; height:32px; border-radius:8px;
+  display:flex; align-items:center; justify-content:center; margin-top:3px;
+}
+.shead h2{font-size:25px; margin:0; font-weight:600; line-height:1.22; letter-spacing:-.01em;}
+h3{font-size:19px; font-weight:600; margin:24px 0 8px; color:var(--ink);}
+h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.06em; color:var(--brand-dark); margin:18px 0 8px;}
+p{margin:10px 0;}
+
+/* ---- patient panel ---- */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius);
+  padding:16px 20px 16px 18px; margin:14px 0 18px; position:relative;
+}
+.patient::before{
+  content:"\ea76"; font-family:"tabler-icons"; position:absolute; top:15px; left:18px;
+  color:var(--brand-dark); font-size:18px;
+}
+.patient .plabel{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.1em; color:var(--brand-dark); margin:0 0 6px 28px;
+}
+.patient p{margin:7px 0; color:#123; padding-left:28px; font-size:16.5px;}
+.patient ul{margin:7px 0; padding-left:46px; color:#123; font-size:16.5px;}
+
+/* ---- gene/subtype header pill ---- */
+.genehdr{
+  display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:22px 0 6px;
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-sm);
+  padding:11px 16px;
+}
+.genehdr .gname{font-size:18px; font-weight:600; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.riskbadge{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.04em; padding:3px 11px; border-radius:999px;
+}
+.rb-high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.rb-mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.rb-low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* ---- checklist ---- */
+.checklist{list-style:none; margin:12px 0; padding:0;}
+.checklist li{
+  display:flex; gap:11px; align-items:flex-start; padding:9px 0; border-bottom:1px solid var(--line-soft);
+  font-size:16.5px;
+}
+.checklist li:last-child{border-bottom:none;}
+.checklist .ico{flex:0 0 auto; font-size:19px; margin-top:2px;}
+.ico-yes{color:var(--brand);}
+.ico-opt{color:var(--amber);}
+.ico-no{color:var(--ink-faint);}
+.checklist .tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.05em; padding:2px 8px; border-radius:999px; margin-left:8px;
+  white-space:nowrap; vertical-align:middle;
+}
+.tag-routine{background:var(--brand-bg); color:var(--brand-dark);}
+.tag-opt{background:var(--amber-bg); color:var(--amber);}
+.tag-no{background:var(--line-soft); color:var(--ink-faint);}
+
+/* ---- tables ---- */
+.tablewrap{overflow-x:auto; margin:16px 0;}
+table{border-collapse:collapse; width:100%; font-size:15.5px; background:var(--paper);
+  border:1px solid var(--line); border-radius:var(--radius-sm); overflow:hidden;}
+th,td{text-align:left; padding:10px 13px; border-bottom:1px solid var(--line); vertical-align:top;}
+th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; text-transform:uppercase;
+  letter-spacing:.05em; color:var(--brand-dark); background:var(--cream); font-weight:700;}
+tr:last-child td{border-bottom:none;}
+.pill{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:700;
+  padding:2px 10px; border-radius:999px; white-space:nowrap;}
+.pill-high{background:var(--red-bg); color:var(--red);}
+.pill-mod{background:var(--amber-bg); color:var(--amber);}
+.pill-low{background:var(--brand-bg); color:var(--brand-dark);}
+
+/* ---- callouts ---- */
+.callout{border:1px solid var(--line); border-left:4px solid var(--brand); background:var(--paper);
+  border-radius:var(--radius-sm); padding:13px 17px; margin:16px 0;}
+.callout .ctitle{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:14px;
+  color:var(--brand-dark); margin:0 0 5px; display:flex; align-items:center; gap:8px;}
+.callout p{margin:6px 0; font-size:16px;}
+.info{border-left-color:var(--brand); background:var(--brand-bg);}
+.info .ctitle{color:var(--brand-dark);}
+.emerging{border-left-color:var(--purple); background:var(--purple-bg);}
+.emerging .ctitle{color:var(--purple);}
+.warn{border-left-color:var(--amber); background:var(--amber-bg);}
+.warn .ctitle{color:var(--amber);}
+
+/* ---- evidence flag ---- */
+.evflag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.04em; padding:2px 9px; border-radius:5px; display:inline-block;}
+.ev-strong{background:var(--brand-bg); color:var(--brand-dark);}
+.ev-consensus{background:var(--amber-bg); color:var(--amber);}
+.ev-invest{background:var(--purple-bg); color:var(--purple);}
+
+/* ---- summary cards ---- */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:14px; margin:18px 0;}
+.card{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand);
+  border-radius:var(--radius-sm); padding:14px 16px;}
+.card h4{margin:0 0 8px; color:var(--brand-dark);}
+.card ul{margin:0; padding-left:18px; font-size:15px;}
+.card li{margin:5px 0;}
+
+/* ---- references ---- */
+.refs{counter-reset:ref; list-style:none; padding:0; margin:14px 0; font-size:15px; color:var(--ink-soft);}
+.refs li{counter-increment:ref; position:relative; padding:8px 0 8px 34px; border-bottom:1px solid var(--line-soft); line-height:1.5;}
+.refs li::before{content:counter(ref); position:absolute; left:0; top:8px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight:700; font-size:13px; color:var(--brand); background:var(--brand-bg); width:24px; height:24px;
+  border-radius:6px; display:flex; align-items:center; justify-content:center;}
+.refs li:last-child{border-bottom:none;}
+
+/* ---- footer ---- */
+.footnote{margin:42px 0 0; padding:20px 0 0; border-top:3px double var(--line); color:var(--ink-faint);
+  font-size:14px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; line-height:1.55;}
+
+.lang-fr{display:none;}
+
+@media (max-width:680px){
+  body{font-size:17px;}
+  h1{font-size:28px;}
+  .toc ol{columns:1;}
+  .shead h2{font-size:21px;}
+}
+@media print{
+  body{background:#fff; font-size:11.5pt;}
+  .langbar{display:none;}
+  .wrap{max-width:100%; padding:0;}
+  section{page-break-inside:auto;}
+  .shead,.genehdr,.patient,.callout,.card,table{page-break-inside:avoid;}
+  .toc{page-break-after:always;}
+  a{color:var(--ink); text-decoration:none;}
+  .lang-fr{display:none !important;}
+}
+</style>
+</head>
+<body>
+
+<div class="langbar ui">
+  <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+  <button id="btn-fr" onclick="setLang('fr')">Français</button>
+</div>
+
+<div class="wrap">
+
+<!-- ============================== ENGLISH ============================== -->
+<div class="lang-en" id="content-en">
+
+  <header class="masthead">
+    <div class="eyebrow ui">GENGIQC · Cancer Genetics Prevention Protocol</div>
+    <h1>TP53 and Li-Fraumeni Syndrome: Cancer Prevention and Surveillance Protocol</h1>
+    <p class="standfirst">A practical, evidence-calibrated guide to lifelong cancer surveillance for people who carry a germline pathogenic <em>TP53</em> variant. Written for both patients and clinicians.</p>
+
+    <div class="authors">
+      <div class="role ui">Author</div>
+      <p><span class="name">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</span> — Cancer Genetics, Cancer Prevention Centre, Jewish General Hospital (JGH), Montreal</p>
+    </div>
+
+    <div class="meta ui">
+      <span class="chip"><i class="ti ti-dna-2"></i> Gene: TP53</span>
+      <span class="chip"><i class="ti ti-clipboard-heart"></i> Li-Fraumeni syndrome (LFS)</span>
+      <span class="chip"><i class="ti ti-refresh"></i> Reviewed 2025 guidelines</span>
+      <span class="chip"><i class="ti ti-map-pin"></i> Canadian dosing context</span>
+    </div>
+
+    <div class="legend ui">
+      <span><i class="swatch sw-patient"></i> Patient summary</span>
+      <span><i class="swatch sw-clin"></i> Clinical detail</span>
+      <span><i class="swatch sw-high"></i> High risk</span>
+      <span><i class="swatch sw-mod"></i> Moderate risk</span>
+    </div>
+  </header>
+
+  <nav class="toc ui">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#en-1"><span class="n">1</span> Understanding TP53 and LFS</a></li>
+      <li><a href="#en-2"><span class="n">2</span> Lifetime cancer risks</a></li>
+      <li><a href="#en-3"><span class="n">3</span> Core surveillance protocol</a></li>
+      <li><a href="#en-4"><span class="n">4</span> Breast cancer (organ-specific)</a></li>
+      <li><a href="#en-5"><span class="n">5</span> Risk-reducing surgery and hormones</a></li>
+      <li><a href="#en-6"><span class="n">6</span> Treatment safety (radiation/chemo)</a></li>
+      <li><a href="#en-7"><span class="n">7</span> Chemoprevention</a></li>
+      <li><a href="#en-8"><span class="n">8</span> Genetic counselling</a></li>
+      <li><a href="#en-9"><span class="n">9</span> Lifestyle and nutrition</a></li>
+      <li><a href="#en-10"><span class="n">10</span> Emerging and investigational</a></li>
+      <li><a href="#en-11"><span class="n">11</span> Summary of recommendations</a></li>
+      <li><a href="#en-12"><span class="n">12</span> References</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="en-1">
+    <div class="shead"><div class="snum ui">1</div><h2>Understanding TP53 and Li-Fraumeni syndrome</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">In plain language</div>
+      <p>The <em>TP53</em> gene makes a protein called p53. People often call p53 the "guardian of the genome." It watches over cells. When a cell is damaged, p53 tells it to repair itself or to stop dividing.</p>
+      <p>If you inherited one altered copy of <em>TP53</em>, this guardian works less well. Over a lifetime, your cells are more likely to turn into cancer. This condition is called Li-Fraumeni syndrome.</p>
+      <p>The important points: the risk is real and lifelong, it can start in childhood, and it covers many cancer types rather than one. The good news is that careful, regular check-ups can find cancers early, when they are most treatable. This protocol explains that schedule.</p>
+    </div>
+
+    <p>Li-Fraumeni syndrome (LFS) is an autosomal dominant cancer predisposition syndrome caused by germline pathogenic or likely pathogenic (P/LP) variants in <em>TP53</em> (chromosome 17p13.1). p53 coordinates the DNA-damage response, cell-cycle arrest, senescence, and apoptosis. Loss of one functional allele, with somatic second hits, drives a broad early-onset tumour spectrum.</p>
+
+    <p>The core LFS tumours are <strong>soft-tissue sarcomas, osteosarcoma, premenopausal breast cancer, central nervous system (CNS) tumours, and adrenocortical carcinoma (ACC)</strong>. These five account for the majority of malignancies, but the spectrum extends to leukaemia, colorectal and gastric cancer, lung cancer, and melanoma. Roughly half of carriers develop more than one primary cancer over their lifetime.</p>
+
+    <h3>Genotype and phenotype: why "one plan fits all" is not quite right</h3>
+    <p>LFS is not uniform. The terminology has shifted toward <em>heritable TP53-related cancer (hTP53rc) syndrome</em> to capture this breadth. Variant type and family history modify both age of onset and tumour pattern:</p>
+    <ul>
+      <li><strong>Dominant-negative missense variants</strong> (e.g. many DNA-binding-domain hotspots) are associated with the earliest onset. In the Bougeard cohort, mean age at first cancer was about 21 years for dominant-negative missense variants, 28 years for loss-of-function variants, and 36 years for genomic rearrangements.</li>
+      <li><strong>Loss-of-function (null) variants</strong> tend toward somewhat later onset.</li>
+      <li><strong>Lower-penetrance / attenuated variants</strong> exist. The Brazilian founder variant <em>TP53</em> p.R337H (c.1010G&gt;A) is the best-characterised example. It carries a significant lifetime risk of multiple cancers and recapitulates many but not all features of classic LFS, with marked sex differences. It is strongly linked to childhood ACC and to later-onset breast cancer, while some classic LFS tumours are less prominent.</li>
+    </ul>
+    <p>This protocol gives a single intensive core schedule (the modified Toronto protocol) that applies to most classic P/LP carriers, then flags where genotype, sex, and family history should prompt individualised adjustment. <span class="evflag ev-consensus">Expert consensus</span> Genotype-tailored de-escalation is an area of active study and should not yet replace the core protocol outside a research setting.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="en-2">
+    <div class="shead"><div class="snum ui">2</div><h2>Lifetime cancer risks</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">In plain language</div>
+      <p>The lifetime risk of developing some cancer is very high in LFS, and higher in women than men, mainly because of breast cancer. Risk begins in childhood and rises with age. These are population averages. Your own family history and the specific variant you carry can shift them up or down. Use the numbers to understand why surveillance matters, not as a prediction of your personal future.</p>
+    </div>
+
+    <p>Cumulative cancer risk in classic P/LP <em>TP53</em> carriers is among the highest of any inherited syndrome. In the NCI cohort, cumulative cancer incidence reached 50% by age 31 in females and 46 in males, approaching nearly 100% by age 70 in both sexes. Female penetrance approaches 100% versus roughly 73% in males, driven largely by breast cancer; almost 90% of affected females develop breast cancer by age 60, most before 45.</p>
+
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Cancer type</th><th>Approx. lifetime risk</th><th>Level</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Any cancer — female</td><td>~90–100%</td><td><span class="pill pill-high">High</span></td><td>Breast cancer is the main driver</td></tr>
+        <tr><td>Any cancer — male</td><td>~70–75%</td><td><span class="pill pill-high">High</span></td><td>Lower, as no breast-cancer contribution</td></tr>
+        <tr><td>Breast (female, premenopausal)</td><td>~80–90%</td><td><span class="pill pill-high">High</span></td><td>Often before age 45; frequently HER2-positive</td></tr>
+        <tr><td>Soft-tissue sarcoma</td><td>Markedly elevated</td><td><span class="pill pill-high">High</span></td><td>Core tumour; all ages</td></tr>
+        <tr><td>Osteosarcoma</td><td>Markedly elevated</td><td><span class="pill pill-high">High</span></td><td>Peaks in adolescence / young adults</td></tr>
+        <tr><td>CNS tumours</td><td>Elevated</td><td><span class="pill pill-high">High</span></td><td>Gliomas, choroid plexus carcinoma</td></tr>
+        <tr><td>Adrenocortical carcinoma</td><td>Elevated (esp. childhood)</td><td><span class="pill pill-high">High</span></td><td>Strong in young children; hallmark of R337H</td></tr>
+        <tr><td>Leukaemia / lymphoma</td><td>Elevated</td><td><span class="pill pill-mod">Moderate</span></td><td>Including therapy-related</td></tr>
+        <tr><td>GI (colorectal, gastric)</td><td>Elevated, often early-onset</td><td><span class="pill pill-mod">Moderate</span></td><td>Endoscopic surveillance from age 25</td></tr>
+        <tr><td>Lung, melanoma, others</td><td>Modestly elevated</td><td><span class="pill pill-mod">Moderate</span></td><td>Risk-factor dependent</td></tr>
+        <tr><td>Second primary after first cancer</td><td>~Up to ~50% within 10 yrs</td><td><span class="pill pill-high">High</span></td><td>Higher if first cancer in childhood</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><span class="evflag ev-strong">Established</span> Aggregate penetrance estimates are robust. <span class="evflag ev-consensus">Expert consensus</span> Organ-specific lifetime percentages beyond breast are less precise and vary by cohort and variant.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="en-3">
+    <div class="shead"><div class="snum ui">3</div><h2>Core surveillance protocol (modified Toronto protocol)</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">In plain language</div>
+      <p>Because LFS can cause many different cancers, surveillance uses several tools together. The centre of the plan is a yearly whole-body MRI and a yearly brain MRI. MRI uses magnets, not radiation, which matters a lot here. Children also have regular physical exams and abdominal ultrasounds. Adults add breast imaging for women and endoscopy for the gut.</p>
+      <p>This schedule is demanding. It is normal to feel anxious around scan time. Our team can connect you with counselling support. The goal is early detection, which saves lives in this condition.</p>
+    </div>
+
+    <div class="genehdr">
+      <span class="gname">Germline TP53 P/LP carrier — classic protocol</span>
+      <span class="riskbadge rb-high ui">High risk</span>
+    </div>
+
+    <p>The protocol below follows the Toronto protocol as updated in GeneReviews (2025) and the 2025 AACR perspective. The Toronto Protocol remains the current standard for lifelong surveillance, with modifications now considered for specific components. A key principle: it is critical to perform TP53 testing before initiating cancer treatment so that, where possible, radiotherapy and genotoxic chemotherapy can be avoided in carriers.</p>
+
+    <div class="callout warn">
+      <p class="ctitle ui"><i class="ti ti-alert-triangle"></i> Start-age rule</p>
+      <p>For individuals with a family history of LFS, begin surveillance at the ages below <strong>or 5–10 years before the earliest cancer onset in the family, whichever comes first.</strong></p>
+    </div>
+
+    <h4 class="ui">Children (birth to 18 years)</h4>
+    <ul class="checklist">
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Comprehensive physical exam (incl. blood pressure, full neuro exam, growth, signs of virilization/Cushingoid features) — <strong>every 3–4 months</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Abdominal and pelvic ultrasound — <strong>every 3–4 months</strong> (for ACC; not on the same visit as whole-body MRI) <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Whole-body MRI — <strong>annually</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Brain MRI — <strong>annually</strong> (first scan with contrast; subsequent without if prior normal) <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-dashed ico ico-opt"></i><span>Serum testosterone, DHEA-S, androstenedione — only if ultrasound is unsatisfactory <span class="tag tag-opt ui">Conditional</span></span></li>
+      <li><i class="ti ti-circle-minus ico ico-no"></i><span>Routine interim blood counts / inflammatory markers — <strong>not recommended</strong> (no independent detection benefit) <span class="tag tag-no ui">Not advised</span></span></li>
+    </ul>
+
+    <h4 class="ui">Adults (18 years and older)</h4>
+    <ul class="checklist">
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Comprehensive physical exam — <strong>every 6 months</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Whole-body MRI — <strong>annually</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Brain MRI — <strong>annually</strong> (subsequent scans without contrast if prior normal) <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Abdominal/pelvic ultrasound — <strong>annually</strong> (sarcoma/abdominal surveillance) <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Breast surveillance (females) — see Section 4 <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Upper endoscopy + colonoscopy — <strong>every 2–5 years from age 25</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Dermatologic exam — <strong>annually from age 18</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-dashed ico ico-opt"></i><span>PSA — consider annually from age 40 (males) <span class="tag tag-opt ui">Optional</span></span></li>
+      <li><i class="ti ti-circle-dashed ico ico-opt"></i><span>Low-dose chest CT — consider in adults with a family/smoking history of lung cancer <span class="tag tag-opt ui">Optional</span></span></li>
+      <li><i class="ti ti-circle-dashed ico ico-opt"></i><span>Thyroid ultrasound — consider, depending on family history/risk factors <span class="tag tag-opt ui">Optional</span></span></li>
+      <li><i class="ti ti-circle-dashed ico ico-opt"></i><span>Pancreatic MRI/MRCP ± EUS — consider annually from age 50, ideally in a research setting; NCCN limits this to those with a first-/second-degree relative with exocrine pancreatic cancer <span class="tag tag-opt ui">Optional / research</span></span></li>
+    </ul>
+
+    <div class="callout info">
+      <p class="ctitle ui"><i class="ti ti-device-imac"></i> Why whole-body MRI is central</p>
+      <p>WB-MRI gives head-to-thigh imaging in one sitting with no ionising radiation, which is essential in a radiation-sensitive population. As a stand-alone tool, single-centre adult data showed specificity around 95% and high negative predictive value, but moderate sensitivity, which is why it is combined with brain MRI, clinical exam, and organ-specific tests. Baseline scans carry a higher false-positive rate, so the first round needs careful interpretation.</p>
+    </div>
+    <p><span class="evflag ev-strong">Established</span> Annual WB-MRI and brain MRI; physical exam and ultrasound in children. <span class="evflag ev-consensus">Expert consensus</span> Exact endoscopy intervals, PSA, thyroid, and lung components.</p>
+  </section>
+
+  <!-- 4 -->
+  <section id="en-4">
+    <div class="shead"><div class="snum ui">4</div><h2>Breast cancer surveillance (females)</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">In plain language</div>
+      <p>Breast cancer is the most common cancer in women with LFS and often appears young. We screen with breast MRI because it does not use radiation and is very sensitive. Mammograms add radiation, so in LFS we delay and limit them, leaning on MRI instead. Many women also consider preventive surgery, which is discussed in the next section.</p>
+    </div>
+
+    <div class="genehdr">
+      <span class="gname">Female breast surveillance</span>
+      <span class="riskbadge rb-high ui">High risk</span>
+    </div>
+
+    <ul class="checklist">
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Clinical breast exam — <strong>every 6–12 months from age 20–25</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Breast MRI with and without contrast — <strong>annually, starting age 20–30</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Age 30–75: annual breast MRI, with mammography added and alternated at 6-month intervals — individualise, minimise radiation exposure <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-dashed ico ico-opt"></i><span>Mammography under age 30 — generally avoided owing to radiosensitivity; MRI preferred <span class="tag tag-opt ui">Limit</span></span></li>
+      <li><i class="ti ti-circle-dashed ico ico-opt"></i><span>Age over 75: individualise <span class="tag tag-opt ui">Individualise</span></span></li>
+    </ul>
+    <p>NCCN advises annual breast MRI (preferred) from age 20–29, then annual mammogram plus breast MRI from age 30–75, with individualised management above 75. Because of <em>TP53</em>-related radiosensitivity, MRI is favoured and mammographic exposure is minimised, especially when young.</p>
+  </section>
+
+  <!-- 5 -->
+  <section id="en-5">
+    <div class="shead"><div class="snum ui">5</div><h2>Risk-reducing surgery and hormonal considerations</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">In plain language</div>
+      <p>Some women with LFS choose to remove healthy breast tissue (preventive mastectomy) to lower their breast-cancer risk and to reduce the need for lifelong imaging. This is a personal decision. There is no single right answer. We talk it through with you, including timing, reconstruction, and how it changes your screening.</p>
+    </div>
+
+    <h3>Risk-reducing mastectomy</h3>
+    <p>Risk-reducing mastectomy is offered to women with LFS as an option, given the very high breast-cancer risk. It substantially reduces breast-cancer incidence and can remove the need for ongoing breast MRI. The decision balances age, family history, personal preference, and the burden of surveillance. <span class="evflag ev-consensus">Expert consensus</span></p>
+
+    <h3>Other risk-reducing surgery</h3>
+    <p>Unlike BRCA-related syndromes, LFS does not carry a defined indication for risk-reducing salpingo-oophorectomy; ovarian cancer is not a core LFS tumour. Prophylactic surgery for other organs is not routinely indicated and should be driven by individual findings rather than genotype alone.</p>
+
+    <h3>Hormonal considerations</h3>
+    <p>Evidence on exogenous hormones (contraception, menopausal hormone therapy) in <em>TP53</em> carriers is limited. Given the oestrogen-responsiveness of many LFS breast cancers, hormone decisions should be individualised and discussed alongside breast surveillance and surgical options. <span class="evflag ev-consensus">Expert consensus</span></p>
+  </section>
+
+  <!-- 6 -->
+  <section id="en-6">
+    <div class="shead"><div class="snum ui">6</div><h2>Treatment safety: radiation and chemotherapy</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">In plain language</div>
+      <p>This part matters even if you are healthy now. If you ever need cancer treatment, your care team must know you carry a <em>TP53</em> variant before treatment starts. Radiation and certain chemotherapies can themselves trigger new cancers in people with LFS. Where there is a safe alternative, doctors will try to use it. Carry this information with you and share it with any new oncologist.</p>
+    </div>
+
+    <p>Therapy-related second malignancies are a defining concern in LFS. TP53 testing before treatment initiation lets the team avoid, where possible, radiotherapy and genotoxic chemotherapy in carriers. The 2025 AACR update adds explicit guidance on modifying radiation and chemotherapy to reduce secondary-cancer risk.</p>
+    <ul>
+      <li>Avoid radiotherapy where an equally effective non-radiation option exists; when radiation is unavoidable, minimise field and dose.</li>
+      <li>Favour breast-conserving alternatives that avoid radiation, or mastectomy over lumpectomy-plus-radiation, for LFS-associated breast cancer.</li>
+      <li>Limit cumulative diagnostic ionising radiation (prefer MRI/ultrasound over CT where feasible).</li>
+    </ul>
+    <p><span class="evflag ev-strong">Established principle</span> Pre-treatment testing and radiation avoidance. <span class="evflag ev-consensus">Expert consensus</span> Specific regimen modifications.</p>
+  </section>
+
+  <!-- 7 -->
+  <section id="en-7">
+    <div class="shead"><div class="snum ui">7</div><h2>Chemoprevention and medical prevention</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">In plain language</div>
+      <p>There is no approved pill that prevents cancer in LFS today. One medicine, metformin (used for diabetes), is being studied to see whether it can lower risk. It is not standard care yet. If you are interested, ask about clinical trials.</p>
+    </div>
+
+    <p>No pharmacologic chemoprevention is established for LFS. The most advanced candidate is <strong>metformin</strong>, studied on the rationale of mitochondrial and metabolic modulation in <em>TP53</em>-deficient cells.</p>
+    <div class="callout emerging">
+      <p class="ctitle ui"><i class="ti ti-flask"></i> MILI trial</p>
+      <p>The MILI study (Metformin in adults with Li-Fraumeni syndrome) is a randomised controlled trial of metformin in adult carriers undergoing yearly MRI surveillance. Until results are available, metformin is not recommended for cancer prevention outside a trial. <span class="evflag ev-invest">Investigational</span></p>
+    </div>
+    <p>Aspirin chemoprevention, which has a role in some GI predisposition syndromes, does not have an LFS-specific evidence base and is not part of standard LFS management.</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="en-8">
+    <div class="shead"><div class="snum ui">8</div><h2>Genetic counselling</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">In plain language</div>
+      <p>Each first-degree relative (parent, sibling, child) of a carrier has a 1-in-2 chance of carrying the same variant. Testing relatives, called cascade testing, lets people who carry it start surveillance and lets those who do not avoid it. We can also discuss options for having children, including testing during pregnancy or testing embryos through IVF. These are personal choices, and we support whichever path fits your family.</p>
+    </div>
+
+    <h3>Cascade testing</h3>
+    <p>LFS is autosomal dominant: first-degree relatives have a 50% prior probability of carrying the familial variant. Offer predictive testing to at-risk adults and, importantly, to children, because surveillance begins at birth and early-childhood tumours (ACC, choroid plexus carcinoma) are part of the spectrum. Pre- and post-test counselling should address the psychological burden of a high-penetrance result.</p>
+
+    <h3>Testing indications and pitfalls</h3>
+    <p>Germline TP53 testing is indicated for classic LFS or Chompret criteria, a family history of a P/LP TP53 variant, pediatric hypodiploid ALL, and certain early-onset or tumour-genomic findings. Two interpretive cautions: clonal haematopoiesis can mimic a germline result (confirm in a non-blood tissue such as cultured fibroblasts when in doubt), and somatic mosaicism requires tailored counselling.</p>
+
+    <h3>Reproductive options</h3>
+    <p>Discuss prenatal diagnosis and preimplantation genetic testing (PGT-M) with IVF for carriers who wish to avoid transmission. Present these neutrally as available options.</p>
+
+    <h3>Variants of uncertain significance</h3>
+    <p>A <em>TP53</em> VUS is not a basis for the full LFS protocol. Manage on personal and family history, use ClinGen TP53 expert-panel and ACMG specifications for interpretation, and re-evaluate as classification evolves.</p>
+  </section>
+
+  <!-- 9 -->
+  <section id="en-9">
+    <div class="shead"><div class="snum ui">9</div><h2>Lifestyle and nutrition</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">In plain language</div>
+      <p>No diet or supplement prevents LFS cancers. Still, healthy habits help: do not smoke, limit alcohol, stay active, keep a healthy weight, and protect your skin from the sun. One specific point matters in LFS: limit unnecessary medical radiation, such as routine CT scans, and remind new doctors that you prefer MRI or ultrasound when there is a choice.</p>
+    </div>
+
+    <p>There is no LFS-specific diet. General evidence-based cancer-risk reduction applies: tobacco cessation, alcohol moderation, physical activity, weight management, and sun protection (melanoma is part of the spectrum). The condition-specific lifestyle point is <strong>minimising avoidable ionising radiation</strong> given <em>TP53</em>-related radiosensitivity. Favour non-ionising imaging (MRI, ultrasound) and question the necessity of routine CT. <span class="evflag ev-consensus">Expert consensus</span></p>
+  </section>
+
+  <!-- 10 -->
+  <section id="en-10">
+    <div class="shead"><div class="snum ui">10</div><h2>Emerging and investigational prevention</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">In plain language</div>
+      <p>Research is active. Scientists are testing whether metformin lowers risk, refining MRI so it finds real cancers and fewer false alarms, and studying blood tests that look for cancer DNA. These are promising but not yet proven. Joining a study, if one is available, can be a good option. Ask us.</p>
+    </div>
+
+    <div class="callout emerging">
+      <p class="ctitle ui"><i class="ti ti-microscope"></i> Active research directions</p>
+      <p><strong>Metformin chemoprevention</strong> (MILI RCT). <strong>Multi-cancer early detection (MCED) blood tests</strong> combined with WB-MRI, under feasibility study in high-risk cohorts. <strong>Genotype-stratified de-escalation</strong>, including tailored screening for lower-penetrance variants such as R337H. <strong>Optimisation of WB-MRI protocols</strong> to reduce false positives and overdiagnosis. All <span class="evflag ev-invest">Investigational</span> — trial settings only.</p>
+    </div>
+    <p>Pancreatic surveillance in LFS remains investigational, best done within a structured research protocol to characterise yield and harms.</p>
+  </section>
+
+  <!-- 11 -->
+  <section id="en-11">
+    <div class="shead"><div class="snum ui">11</div><h2>Summary of recommendations</h2></div>
+
+    <h4 class="ui">Surveillance — children (0–18)</h4>
+    <div class="cardgrid">
+      <div class="card"><h4>Clinical</h4><ul><li>Physical exam every 3–4 months</li><li>Abdominal/pelvic US every 3–4 months</li></ul></div>
+      <div class="card"><h4>Imaging</h4><ul><li>Whole-body MRI annually</li><li>Brain MRI annually</li></ul></div>
+      <div class="card"><h4>Conditional</h4><ul><li>Adrenal biochemistry only if US inadequate</li><li>No routine blood-count screening</li></ul></div>
+    </div>
+
+    <h4 class="ui">Surveillance — adults (18+)</h4>
+    <div class="cardgrid">
+      <div class="card"><h4>Core imaging</h4><ul><li>WB-MRI annually</li><li>Brain MRI annually</li><li>Abdominal/pelvic US annually</li></ul></div>
+      <div class="card"><h4>Breast (female)</h4><ul><li>Clinical exam 6–12 monthly from 20–25</li><li>Breast MRI annually from 20–30</li><li>Add/alternate mammography 30–75</li></ul></div>
+      <div class="card"><h4>GI and other</h4><ul><li>Endoscopy + colonoscopy every 2–5 yrs from 25</li><li>Dermatology annually from 18</li><li>PSA (consider) from 40</li></ul></div>
+    </div>
+
+    <h4 class="ui">Cross-cutting recommendations</h4>
+    <div class="cardgrid">
+      <div class="card"><h4>Treatment safety</h4><ul><li>Confirm TP53 status before any cancer treatment</li><li>Avoid radiotherapy where alternatives exist</li><li>Minimise diagnostic ionising radiation</li></ul></div>
+      <div class="card"><h4>Surgery</h4><ul><li>Discuss risk-reducing mastectomy</li><li>No routine RRSO indication</li></ul></div>
+      <div class="card"><h4>Genetics</h4><ul><li>Cascade testing incl. children</li><li>Offer PGT-M / prenatal options</li><li>Do not apply full protocol for a VUS</li></ul></div>
+      <div class="card"><h4>Prevention</h4><ul><li>No established chemoprevention</li><li>Metformin trial-only</li><li>Lifestyle risk reduction; psychological support</li></ul></div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section id="en-12">
+    <div class="shead"><div class="snum ui">12</div><h2>References</h2></div>
+    <ol class="refs">
+      <li>Schneider K, Zelley K, Nichols KE, et al. Li-Fraumeni Syndrome. GeneReviews® [Internet]. Seattle: University of Washington; 1999 Jan 19 [updated 2025 May 1].</li>
+      <li>Frebourg T, Bajalica Lagercrantz S, Oliveira C, et al; European Reference Network GENTURIS. Guidelines for the Li-Fraumeni and heritable TP53-related cancer syndromes. Eur J Hum Genet. 2020;28(10):1379–1386.</li>
+      <li>Kratz CP, Achatz MI, Brugières L, et al. Cancer screening recommendations for individuals with Li-Fraumeni syndrome. Clin Cancer Res. 2017;23(11):e38–e45.</li>
+      <li>Kratz CP, Wasserman E, Woodward ER, Garber JE, Malkin D. Update on Cancer Screening Recommendations for Individuals with Li-Fraumeni Syndrome. Clin Cancer Res. 2025;31(10):1831–1840.</li>
+      <li>Daly MB, Pal T, AlHilli Z, et al. NCCN Clinical Practice Guidelines in Oncology: Genetic/Familial High-Risk Assessment: Breast, Ovarian, and Pancreatic. Version 3.2025.</li>
+      <li>Villani A, Shore A, Wasserman JD, et al. Biochemical and imaging surveillance in germline TP53 mutation carriers with Li-Fraumeni syndrome: 11 year follow-up of a prospective observational study. Lancet Oncol. 2016;17(9):1295–1305.</li>
+      <li>Bougeard G, Renaux-Petel M, Flaman JM, et al. Revisiting Li-Fraumeni Syndrome From TP53 Mutation Carriers. J Clin Oncol. 2015;33(21):2345–2352.</li>
+      <li>Mai PL, Best AF, Peters JA, et al. Risks of first and subsequent cancers among TP53 mutation carriers in the National Cancer Institute Li-Fraumeni syndrome cohort. Cancer. 2016;122(23):3673–3681.</li>
+      <li>Hanson H, Brady AF, Crawford G, et al; UK Cancer Genetics Group. UKCGG Consensus Group guidelines for the management of patients with constitutional TP53 pathogenic variants. J Med Genet. 2021;58(2):135–139.</li>
+      <li>Ballinger ML, Best A, Mai PL, et al. Baseline surveillance in Li-Fraumeni syndrome using whole-body magnetic resonance imaging. JAMA Oncol. 2017;3(12):1634–1639.</li>
+      <li>Fortuno C, et al. (BLiSS cohort). Tumor spectrum and temporal cancer trends in adult carriers of Li-Fraumeni syndrome: implications for personalized screening in TP53 R337H carriers. medRxiv / subsequent publication, 2024.</li>
+      <li>Dixon-Zegeye M, Shaw R, Collins L, et al. Cancer Precision-Prevention trial of Metformin in adults with Li-Fraumeni syndrome (MILI): a randomised controlled trial protocol. Trials. 2024;25:111.</li>
+      <li>Ahlawat S, Fayad LM, Khan MS, et al. Whole-body MRI in cancer predisposition syndromes (review informing surveillance utility). 2023.</li>
+    </ol>
+  </section>
+
+  <div class="footnote ui">
+    This protocol is intended to support, not replace, clinical judgement. Guidelines evolve and individual circumstances differ. All start ages, intervals, and recommendations should be verified against the current versions of NCCN, GeneReviews, and relevant specialty-society guidance before clinical use. Reference citations are provided in their original language.<br><br>
+    © GENGIQC · gengiqc.ca · Prepared by Dr. Andrew Shuen, Cancer Prevention Centre, Jewish General Hospital, Montreal.
+  </div>
+
+</div>
+
+<!-- ============================== FRANÇAIS ============================== -->
+<div class="lang-fr" id="content-fr">
+
+  <header class="masthead">
+    <div class="eyebrow ui">GENGIQC · Protocole de prévention en génétique du cancer</div>
+    <h1>TP53 et syndrome de Li-Fraumeni : protocole de prévention et de surveillance du cancer</h1>
+    <p class="standfirst">Un guide pratique et calibré sur les données probantes pour la surveillance du cancer tout au long de la vie chez les personnes porteuses d'un variant pathogène germinal de <em>TP53</em>. Rédigé pour les patients et les cliniciens.</p>
+
+    <div class="authors">
+      <div class="role ui">Auteur</div>
+      <p><span class="name">Dr Andrew Shuen, MD PhD FRCPC DABMGG</span> — Génétique du cancer, Centre de prévention du cancer, Hôpital général juif (HGJ), Montréal</p>
+    </div>
+
+    <div class="meta ui">
+      <span class="chip"><i class="ti ti-dna-2"></i> Gène : TP53</span>
+      <span class="chip"><i class="ti ti-clipboard-heart"></i> Syndrome de Li-Fraumeni (SLF)</span>
+      <span class="chip"><i class="ti ti-refresh"></i> Lignes directrices 2025</span>
+      <span class="chip"><i class="ti ti-map-pin"></i> Posologie canadienne</span>
+    </div>
+
+    <div class="legend ui">
+      <span><i class="swatch sw-patient"></i> Résumé pour le patient</span>
+      <span><i class="swatch sw-clin"></i> Détail clinique</span>
+      <span><i class="swatch sw-high"></i> Risque élevé</span>
+      <span><i class="swatch sw-mod"></i> Risque modéré</span>
+    </div>
+  </header>
+
+  <nav class="toc ui">
+    <h2>Sommaire</h2>
+    <ol>
+      <li><a href="#fr-1"><span class="n">1</span> Comprendre TP53 et le SLF</a></li>
+      <li><a href="#fr-2"><span class="n">2</span> Risques de cancer à vie</a></li>
+      <li><a href="#fr-3"><span class="n">3</span> Protocole de surveillance de base</a></li>
+      <li><a href="#fr-4"><span class="n">4</span> Cancer du sein (par organe)</a></li>
+      <li><a href="#fr-5"><span class="n">5</span> Chirurgie de réduction du risque et hormones</a></li>
+      <li><a href="#fr-6"><span class="n">6</span> Sécurité des traitements (radio/chimio)</a></li>
+      <li><a href="#fr-7"><span class="n">7</span> Chimioprévention</a></li>
+      <li><a href="#fr-8"><span class="n">8</span> Conseil génétique</a></li>
+      <li><a href="#fr-9"><span class="n">9</span> Mode de vie et nutrition</a></li>
+      <li><a href="#fr-10"><span class="n">10</span> Pistes émergentes et expérimentales</a></li>
+      <li><a href="#fr-11"><span class="n">11</span> Résumé des recommandations</a></li>
+      <li><a href="#fr-12"><span class="n">12</span> Références</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="fr-1">
+    <div class="shead"><div class="snum ui">1</div><h2>Comprendre TP53 et le syndrome de Li-Fraumeni</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">En langage clair</div>
+      <p>Le gène <em>TP53</em> fabrique une protéine appelée p53. On surnomme souvent p53 le « gardien du génome ». Elle veille sur les cellules. Quand une cellule est endommagée, p53 lui ordonne de se réparer ou d'arrêter de se diviser.</p>
+      <p>Si vous avez hérité d'une copie modifiée de <em>TP53</em>, ce gardien fonctionne moins bien. Au fil de la vie, vos cellules risquent davantage de devenir cancéreuses. Cette condition s'appelle le syndrome de Li-Fraumeni.</p>
+      <p>Les points importants : le risque est réel et présent toute la vie, il peut commencer dans l'enfance, et il touche plusieurs types de cancer plutôt qu'un seul. La bonne nouvelle est que des examens réguliers et soignés peuvent détecter les cancers tôt, au moment où ils se traitent le mieux. Ce protocole explique ce calendrier.</p>
+    </div>
+
+    <p>Le syndrome de Li-Fraumeni (SLF) est un syndrome de prédisposition au cancer à transmission autosomique dominante, causé par des variants germinaux pathogènes ou probablement pathogènes (P/PP) de <em>TP53</em> (chromosome 17p13.1). La protéine p53 coordonne la réponse aux dommages de l'ADN, l'arrêt du cycle cellulaire, la sénescence et l'apoptose. La perte d'un allèle fonctionnel, suivie d'altérations somatiques, entraîne un large spectre tumoral à début précoce.</p>
+
+    <p>Les tumeurs centrales du SLF sont les <strong>sarcomes des tissus mous, l'ostéosarcome, le cancer du sein préménopausique, les tumeurs du système nerveux central (SNC) et le corticosurrénalome (CCS)</strong>. Ces cinq types représentent la majorité des cancers, mais le spectre s'étend à la leucémie, aux cancers colorectaux et gastriques, au cancer du poumon et au mélanome. Environ la moitié des porteurs développent plus d'un cancer primaire au cours de leur vie.</p>
+
+    <h3>Génotype et phénotype : pourquoi un plan unique ne suffit pas</h3>
+    <p>Le SLF n'est pas uniforme. La terminologie évolue vers celle de <em>syndrome héréditaire de cancers liés à TP53 (hTP53rc)</em> pour refléter cette diversité. Le type de variant et les antécédents familiaux modulent l'âge de début et le profil tumoral :</p>
+    <ul>
+      <li><strong>Variants faux-sens à effet dominant-négatif</strong> : associés au début le plus précoce. Dans la cohorte de Bougeard, l'âge moyen au premier cancer était d'environ 21 ans pour les variants faux-sens dominants-négatifs, 28 ans pour les variants avec perte de fonction et 36 ans pour les réarrangements génomiques.</li>
+      <li><strong>Variants avec perte de fonction (nuls)</strong> : tendance à un début un peu plus tardif.</li>
+      <li><strong>Variants à pénétrance plus faible / atténués</strong> : le variant fondateur brésilien <em>TP53</em> p.R337H (c.1010G&gt;A) en est l'exemple le mieux caractérisé. Il comporte un risque significatif de cancers multiples et reproduit plusieurs traits du SLF classique, avec des différences marquées entre les sexes. Il est fortement lié au CCS de l'enfance et au cancer du sein à début plus tardif.</li>
+    </ul>
+    <p>Ce protocole propose un calendrier de base intensif unique (protocole de Toronto modifié) applicable à la plupart des porteurs P/PP classiques, puis signale où le génotype, le sexe et les antécédents familiaux justifient un ajustement individualisé. <span class="evflag ev-consensus">Consensus d'experts</span> La désescalade selon le génotype reste à l'étude et ne doit pas remplacer le protocole de base hors d'un cadre de recherche.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="fr-2">
+    <div class="shead"><div class="snum ui">2</div><h2>Risques de cancer à vie</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">En langage clair</div>
+      <p>Le risque de développer un cancer au cours de la vie est très élevé dans le SLF, et plus élevé chez les femmes que chez les hommes, surtout à cause du cancer du sein. Le risque commence dès l'enfance et augmente avec l'âge. Ce sont des moyennes de population. Vos antécédents familiaux et le variant précis que vous portez peuvent les modifier. Utilisez ces chiffres pour comprendre l'importance de la surveillance, pas comme une prédiction de votre avenir personnel.</p>
+    </div>
+
+    <p>Le risque cumulatif de cancer chez les porteurs classiques P/PP de <em>TP53</em> figure parmi les plus élevés de tous les syndromes héréditaires. Dans la cohorte du NCI, l'incidence cumulative atteignait 50 % à 31 ans chez les femmes et à 46 ans chez les hommes, et près de 100 % à 70 ans pour les deux sexes. La pénétrance féminine approche 100 % contre environ 73 % chez les hommes, en grande partie à cause du cancer du sein ; près de 90 % des femmes atteintes développent un cancer du sein avant 60 ans, la plupart avant 45 ans.</p>
+
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Type de cancer</th><th>Risque à vie approx.</th><th>Niveau</th><th>Remarques</th></tr></thead>
+      <tbody>
+        <tr><td>Tout cancer — femme</td><td>~90–100 %</td><td><span class="pill pill-high">Élevé</span></td><td>Le cancer du sein domine</td></tr>
+        <tr><td>Tout cancer — homme</td><td>~70–75 %</td><td><span class="pill pill-high">Élevé</span></td><td>Plus faible, sans contribution mammaire</td></tr>
+        <tr><td>Sein (femme, préménopause)</td><td>~80–90 %</td><td><span class="pill pill-high">Élevé</span></td><td>Souvent avant 45 ans; souvent HER2-positif</td></tr>
+        <tr><td>Sarcome des tissus mous</td><td>Très augmenté</td><td><span class="pill pill-high">Élevé</span></td><td>Tumeur centrale; tout âge</td></tr>
+        <tr><td>Ostéosarcome</td><td>Très augmenté</td><td><span class="pill pill-high">Élevé</span></td><td>Pic à l'adolescence / jeune adulte</td></tr>
+        <tr><td>Tumeurs du SNC</td><td>Augmenté</td><td><span class="pill pill-high">Élevé</span></td><td>Gliomes, carcinome des plexus choroïdes</td></tr>
+        <tr><td>Corticosurrénalome</td><td>Augmenté (surtout enfance)</td><td><span class="pill pill-high">Élevé</span></td><td>Fort chez le jeune enfant; marqueur du R337H</td></tr>
+        <tr><td>Leucémie / lymphome</td><td>Augmenté</td><td><span class="pill pill-mod">Modéré</span></td><td>Y compris liés au traitement</td></tr>
+        <tr><td>GI (colorectal, gastrique)</td><td>Augmenté, souvent précoce</td><td><span class="pill pill-mod">Modéré</span></td><td>Surveillance endoscopique dès 25 ans</td></tr>
+        <tr><td>Poumon, mélanome, autres</td><td>Modérément augmenté</td><td><span class="pill pill-mod">Modéré</span></td><td>Selon les facteurs de risque</td></tr>
+        <tr><td>Deuxième cancer primaire après un premier</td><td>~Jusqu'à ~50 % en 10 ans</td><td><span class="pill pill-high">Élevé</span></td><td>Plus élevé si premier cancer dans l'enfance</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><span class="evflag ev-strong">Établi</span> Les estimations globales de pénétrance sont solides. <span class="evflag ev-consensus">Consensus d'experts</span> Les pourcentages par organe au-delà du sein sont moins précis et varient selon la cohorte et le variant.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="fr-3">
+    <div class="shead"><div class="snum ui">3</div><h2>Protocole de surveillance de base (protocole de Toronto modifié)</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">En langage clair</div>
+      <p>Comme le SLF peut causer plusieurs cancers différents, la surveillance combine plusieurs outils. Au cœur du plan : une IRM du corps entier chaque année et une IRM du cerveau chaque année. L'IRM utilise des aimants, pas de radiation, ce qui compte beaucoup ici. Les enfants ont aussi des examens physiques réguliers et des échographies de l'abdomen. Les adultes ajoutent l'imagerie du sein pour les femmes et l'endoscopie pour le tube digestif.</p>
+      <p>Ce calendrier est exigeant. Il est normal de ressentir de l'anxiété au moment des examens. Notre équipe peut vous offrir un soutien psychologique. Le but est la détection précoce, qui sauve des vies dans cette condition.</p>
+    </div>
+
+    <div class="genehdr">
+      <span class="gname">Porteur germinal P/PP de TP53 — protocole classique</span>
+      <span class="riskbadge rb-high ui">Risque élevé</span>
+    </div>
+
+    <p>Le protocole ci-dessous suit le protocole de Toronto mis à jour dans GeneReviews (2025) et la perspective AACR de 2025. Le protocole de Toronto demeure la norme actuelle pour la surveillance à vie, avec des modifications désormais envisagées pour certaines composantes. Principe clé : il est essentiel de réaliser le test TP53 avant d'amorcer un traitement du cancer, afin d'éviter autant que possible la radiothérapie et la chimiothérapie génotoxique chez les porteurs.</p>
+
+    <div class="callout warn">
+      <p class="ctitle ui"><i class="ti ti-alert-triangle"></i> Règle de l'âge de début</p>
+      <p>Pour les personnes ayant des antécédents familiaux de SLF, commencer la surveillance aux âges ci-dessous <strong>ou 5 à 10 ans avant le cancer le plus précoce dans la famille, selon la première éventualité.</strong></p>
+    </div>
+
+    <h4 class="ui">Enfants (de la naissance à 18 ans)</h4>
+    <ul class="checklist">
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Examen physique complet (incl. tension artérielle, examen neurologique complet, croissance, signes de virilisation/aspect cushingoïde) — <strong>tous les 3–4 mois</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Échographie abdominale et pelvienne — <strong>tous les 3–4 mois</strong> (pour le CCS; pas le même jour que l'IRM corps entier) <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>IRM du corps entier — <strong>annuelle</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>IRM cérébrale — <strong>annuelle</strong> (premier examen avec contraste; ensuite sans si le précédent était normal) <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-dashed ico ico-opt"></i><span>Testostérone, SDHEA, androstènedione sériques — seulement si l'échographie est insatisfaisante <span class="tag tag-opt ui">Conditionnel</span></span></li>
+      <li><i class="ti ti-circle-minus ico ico-no"></i><span>Hémogrammes / marqueurs inflammatoires de routine — <strong>non recommandés</strong> (aucun bénéfice de détection indépendant) <span class="tag tag-no ui">Non conseillé</span></span></li>
+    </ul>
+
+    <h4 class="ui">Adultes (18 ans et plus)</h4>
+    <ul class="checklist">
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Examen physique complet — <strong>tous les 6 mois</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>IRM du corps entier — <strong>annuelle</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>IRM cérébrale — <strong>annuelle</strong> (sans contraste si le précédent était normal) <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Échographie abdominale/pelvienne — <strong>annuelle</strong> (surveillance sarcome/abdomen) <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Surveillance mammaire (femmes) — voir la section 4 <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Endoscopie haute + coloscopie — <strong>tous les 2–5 ans dès 25 ans</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Examen dermatologique — <strong>annuel dès 18 ans</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-dashed ico ico-opt"></i><span>APS — envisager annuellement dès 40 ans (hommes) <span class="tag tag-opt ui">Optionnel</span></span></li>
+      <li><i class="ti ti-circle-dashed ico ico-opt"></i><span>TDM thoracique à faible dose — envisager chez l'adulte ayant des antécédents familiaux/tabagiques de cancer du poumon <span class="tag tag-opt ui">Optionnel</span></span></li>
+      <li><i class="ti ti-circle-dashed ico ico-opt"></i><span>Échographie thyroïdienne — envisager selon les antécédents/facteurs de risque <span class="tag tag-opt ui">Optionnel</span></span></li>
+      <li><i class="ti ti-circle-dashed ico ico-opt"></i><span>IRM/CPRM pancréatique ± écho-endoscopie — envisager annuellement dès 50 ans, idéalement en recherche; le NCCN la limite aux personnes ayant un apparenté au 1er/2e degré atteint d'un cancer pancréatique exocrine <span class="tag tag-opt ui">Optionnel / recherche</span></span></li>
+    </ul>
+
+    <div class="callout info">
+      <p class="ctitle ui"><i class="ti ti-device-imac"></i> Pourquoi l'IRM du corps entier est centrale</p>
+      <p>L'IRM corps entier offre une imagerie de la tête aux cuisses en une seule séance, sans rayonnement ionisant, ce qui est essentiel dans une population radiosensible. Comme outil isolé, les données adultes d'un centre montraient une spécificité d'environ 95 % et une valeur prédictive négative élevée, mais une sensibilité modérée; c'est pourquoi on la combine à l'IRM cérébrale, à l'examen clinique et aux tests par organe. Les examens de référence ont un taux de faux positifs plus élevé : la première série exige une interprétation prudente.</p>
+    </div>
+    <p><span class="evflag ev-strong">Établi</span> IRM corps entier et cérébrale annuelles; examen physique et échographie chez l'enfant. <span class="evflag ev-consensus">Consensus d'experts</span> Intervalles d'endoscopie, APS, thyroïde et poumon.</p>
+  </section>
+
+  <!-- 4 -->
+  <section id="fr-4">
+    <div class="shead"><div class="snum ui">4</div><h2>Surveillance du cancer du sein (femmes)</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">En langage clair</div>
+      <p>Le cancer du sein est le cancer le plus fréquent chez les femmes atteintes du SLF et apparaît souvent jeune. On dépiste par IRM mammaire, car elle n'utilise pas de radiation et est très sensible. La mammographie ajoute de la radiation; dans le SLF, on la retarde et on la limite, en s'appuyant surtout sur l'IRM. Beaucoup de femmes envisagent aussi une chirurgie préventive, abordée à la section suivante.</p>
+    </div>
+
+    <div class="genehdr">
+      <span class="gname">Surveillance mammaire féminine</span>
+      <span class="riskbadge rb-high ui">Risque élevé</span>
+    </div>
+
+    <ul class="checklist">
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>Examen clinique des seins — <strong>tous les 6–12 mois dès 20–25 ans</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>IRM mammaire avec et sans contraste — <strong>annuelle, dès 20–30 ans</strong> <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-check ico ico-yes"></i><span>De 30 à 75 ans : IRM mammaire annuelle, avec mammographie ajoutée et alternée tous les 6 mois — individualiser, minimiser l'exposition au rayonnement <span class="tag tag-routine ui">Routine</span></span></li>
+      <li><i class="ti ti-circle-dashed ico ico-opt"></i><span>Mammographie avant 30 ans — généralement évitée en raison de la radiosensibilité; IRM privilégiée <span class="tag tag-opt ui">Limiter</span></span></li>
+      <li><i class="ti ti-circle-dashed ico ico-opt"></i><span>Après 75 ans : individualiser <span class="tag tag-opt ui">Individualiser</span></span></li>
+    </ul>
+    <p>Le NCCN recommande l'IRM mammaire annuelle (privilégiée) de 20 à 29 ans, puis la mammographie annuelle plus l'IRM mammaire de 30 à 75 ans, avec une prise en charge individualisée au-delà de 75 ans. En raison de la radiosensibilité liée à <em>TP53</em>, l'IRM est privilégiée et l'exposition mammographique est minimisée, surtout chez les jeunes.</p>
+  </section>
+
+  <!-- 5 -->
+  <section id="fr-5">
+    <div class="shead"><div class="snum ui">5</div><h2>Chirurgie de réduction du risque et considérations hormonales</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">En langage clair</div>
+      <p>Certaines femmes atteintes du SLF choisissent de retirer le tissu mammaire sain (mastectomie préventive) pour réduire leur risque de cancer du sein et la nécessité d'une imagerie à vie. C'est une décision personnelle. Il n'y a pas de réponse unique. Nous en discutons avec vous, y compris le moment, la reconstruction et l'effet sur votre dépistage.</p>
+    </div>
+
+    <h3>Mastectomie de réduction du risque</h3>
+    <p>La mastectomie de réduction du risque est offerte aux femmes atteintes du SLF, étant donné le risque mammaire très élevé. Elle réduit substantiellement l'incidence du cancer du sein et peut éliminer le besoin d'IRM mammaire continue. La décision tient compte de l'âge, des antécédents familiaux, des préférences et du fardeau de la surveillance. <span class="evflag ev-consensus">Consensus d'experts</span></p>
+
+    <h3>Autres chirurgies de réduction du risque</h3>
+    <p>Contrairement aux syndromes liés à BRCA, le SLF ne comporte pas d'indication définie de salpingo-ovariectomie de réduction du risque; le cancer de l'ovaire n'est pas une tumeur centrale du SLF. La chirurgie prophylactique d'autres organes n'est pas indiquée de routine et doit reposer sur des constats individuels plutôt que sur le seul génotype.</p>
+
+    <h3>Considérations hormonales</h3>
+    <p>Les données sur les hormones exogènes (contraception, hormonothérapie de la ménopause) chez les porteurs de <em>TP53</em> sont limitées. Étant donné la sensibilité aux œstrogènes de nombreux cancers du sein du SLF, les décisions hormonales doivent être individualisées et discutées avec les options de surveillance et de chirurgie mammaire. <span class="evflag ev-consensus">Consensus d'experts</span></p>
+  </section>
+
+  <!-- 6 -->
+  <section id="fr-6">
+    <div class="shead"><div class="snum ui">6</div><h2>Sécurité des traitements : radiothérapie et chimiothérapie</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">En langage clair</div>
+      <p>Cette partie compte même si vous êtes en bonne santé aujourd'hui. Si vous avez un jour besoin d'un traitement contre le cancer, votre équipe doit savoir que vous portez un variant de <em>TP53</em> avant le début du traitement. La radiothérapie et certaines chimiothérapies peuvent elles-mêmes déclencher de nouveaux cancers chez les personnes atteintes du SLF. Lorsqu'une option sûre existe, les médecins essaieront de l'utiliser. Gardez cette information sur vous et partagez-la avec tout nouvel oncologue.</p>
+    </div>
+
+    <p>Les cancers secondaires liés au traitement sont une préoccupation déterminante dans le SLF. Le test TP53 avant le début du traitement permet à l'équipe d'éviter, autant que possible, la radiothérapie et la chimiothérapie génotoxique chez les porteurs. La mise à jour AACR 2025 ajoute des recommandations explicites sur la modification de la radiothérapie et de la chimiothérapie pour réduire le risque de cancer secondaire.</p>
+    <ul>
+      <li>Éviter la radiothérapie lorsqu'une option sans rayonnement aussi efficace existe; lorsqu'elle est inévitable, minimiser le champ et la dose.</li>
+      <li>Privilégier les options évitant la radiation, ou la mastectomie plutôt que la tumorectomie suivie de radiothérapie, pour le cancer du sein lié au SLF.</li>
+      <li>Limiter le rayonnement ionisant diagnostique cumulatif (privilégier l'IRM/échographie à la TDM lorsque possible).</li>
+    </ul>
+    <p><span class="evflag ev-strong">Principe établi</span> Test pré-traitement et évitement de la radiation. <span class="evflag ev-consensus">Consensus d'experts</span> Modifications précises des protocoles.</p>
+  </section>
+
+  <!-- 7 -->
+  <section id="fr-7">
+    <div class="shead"><div class="snum ui">7</div><h2>Chimioprévention et prévention médicale</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">En langage clair</div>
+      <p>Il n'existe aujourd'hui aucun médicament approuvé qui prévient le cancer dans le SLF. Un médicament, la metformine (utilisée pour le diabète), est à l'étude pour voir s'il peut réduire le risque. Ce n'est pas encore un soin standard. Si cela vous intéresse, renseignez-vous sur les essais cliniques.</p>
+    </div>
+
+    <p>Aucune chimioprévention pharmacologique n'est établie pour le SLF. Le candidat le plus avancé est la <strong>metformine</strong>, étudiée sur la base d'une modulation mitochondriale et métabolique des cellules déficientes en <em>TP53</em>.</p>
+    <div class="callout emerging">
+      <p class="ctitle ui"><i class="ti ti-flask"></i> Essai MILI</p>
+      <p>L'étude MILI (metformine chez les adultes atteints du syndrome de Li-Fraumeni) est un essai contrôlé randomisé de la metformine chez des porteurs adultes sous surveillance IRM annuelle. En attendant les résultats, la metformine n'est pas recommandée pour la prévention du cancer hors essai. <span class="evflag ev-invest">Expérimental</span></p>
+    </div>
+    <p>La chimioprévention par l'aspirine, qui a un rôle dans certains syndromes de prédisposition GI, ne dispose pas de données propres au SLF et ne fait pas partie de la prise en charge standard.</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="fr-8">
+    <div class="shead"><div class="snum ui">8</div><h2>Conseil génétique</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">En langage clair</div>
+      <p>Chaque apparenté au premier degré (parent, frère/sœur, enfant) d'un porteur a une chance sur deux de porter le même variant. Tester les proches, ce qu'on appelle le test en cascade, permet à ceux qui le portent de commencer la surveillance et à ceux qui ne le portent pas de l'éviter. Nous pouvons aussi discuter des options pour avoir des enfants, dont le test durant la grossesse ou le test des embryons par FIV. Ce sont des choix personnels, et nous soutenons la voie qui convient à votre famille.</p>
+    </div>
+
+    <h3>Test en cascade</h3>
+    <p>Le SLF est autosomique dominant : les apparentés au premier degré ont une probabilité a priori de 50 % de porter le variant familial. Offrir le test prédictif aux adultes à risque et, surtout, aux enfants, car la surveillance débute à la naissance et certaines tumeurs de la petite enfance (CCS, carcinome des plexus choroïdes) font partie du spectre. Le conseil pré- et post-test doit aborder le fardeau psychologique d'un résultat à forte pénétrance.</p>
+
+    <h3>Indications de test et pièges</h3>
+    <p>Le test germinal de TP53 est indiqué pour le SLF classique ou les critères de Chompret, des antécédents familiaux d'un variant P/PP de TP53, une LAL hypodiploïde pédiatrique et certains résultats à début précoce ou de génomique tumorale. Deux mises en garde : l'hématopoïèse clonale peut imiter un résultat germinal (confirmer dans un tissu non sanguin, comme des fibroblastes cultivés, en cas de doute), et le mosaïcisme somatique nécessite un conseil adapté.</p>
+
+    <h3>Options reproductives</h3>
+    <p>Discuter du diagnostic prénatal et du test génétique préimplantatoire (DPI-M) avec FIV pour les porteurs qui souhaitent éviter la transmission. Présenter ces options de façon neutre.</p>
+
+    <h3>Variants de signification incertaine</h3>
+    <p>Un VSI de <em>TP53</em> ne justifie pas le protocole complet du SLF. Prendre en charge selon les antécédents personnels et familiaux, utiliser les spécifications du panel d'experts ClinGen TP53 et de l'ACMG, et réévaluer à mesure que la classification évolue.</p>
+  </section>
+
+  <!-- 9 -->
+  <section id="fr-9">
+    <div class="shead"><div class="snum ui">9</div><h2>Mode de vie et nutrition</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">En langage clair</div>
+      <p>Aucun régime ni supplément ne prévient les cancers du SLF. Les bonnes habitudes aident tout de même : ne pas fumer, limiter l'alcool, rester actif, garder un poids santé et protéger sa peau du soleil. Un point précis compte dans le SLF : limiter la radiation médicale inutile, comme les TDM de routine, et rappeler aux nouveaux médecins que vous préférez l'IRM ou l'échographie quand il y a un choix.</p>
+    </div>
+
+    <p>Il n'existe pas de régime propre au SLF. Les mesures générales de réduction du risque s'appliquent : arrêt du tabac, modération de l'alcool, activité physique, gestion du poids et protection solaire (le mélanome fait partie du spectre). Le point propre à la condition est de <strong>minimiser le rayonnement ionisant évitable</strong> compte tenu de la radiosensibilité liée à <em>TP53</em>. Privilégier l'imagerie non ionisante (IRM, échographie) et questionner la nécessité d'une TDM de routine. <span class="evflag ev-consensus">Consensus d'experts</span></p>
+  </section>
+
+  <!-- 10 -->
+  <section id="fr-10">
+    <div class="shead"><div class="snum ui">10</div><h2>Pistes émergentes et expérimentales</h2></div>
+
+    <div class="patient">
+      <div class="plabel ui">En langage clair</div>
+      <p>La recherche est active. Des scientifiques testent si la metformine réduit le risque, affinent l'IRM pour qu'elle trouve les vrais cancers avec moins de fausses alertes, et étudient des tests sanguins qui cherchent l'ADN du cancer. Ces approches sont prometteuses mais pas encore prouvées. Participer à une étude, s'il y en a une, peut être une bonne option. Parlez-nous-en.</p>
+    </div>
+
+    <div class="callout emerging">
+      <p class="ctitle ui"><i class="ti ti-microscope"></i> Axes de recherche actifs</p>
+      <p><strong>Chimioprévention par metformine</strong> (essai MILI). <strong>Tests sanguins de détection multicancer (MCED)</strong> combinés à l'IRM corps entier, à l'étude de faisabilité dans des cohortes à haut risque. <strong>Désescalade selon le génotype</strong>, dont un dépistage adapté pour les variants à plus faible pénétrance comme le R337H. <strong>Optimisation des protocoles d'IRM corps entier</strong> pour réduire les faux positifs et le surdiagnostic. Tout est <span class="evflag ev-invest">Expérimental</span> — uniquement en cadre d'essai.</p>
+    </div>
+    <p>La surveillance pancréatique dans le SLF demeure expérimentale, à réaliser de préférence dans un protocole de recherche structuré afin d'en caractériser le rendement et les inconvénients.</p>
+  </section>
+
+  <!-- 11 -->
+  <section id="fr-11">
+    <div class="shead"><div class="snum ui">11</div><h2>Résumé des recommandations</h2></div>
+
+    <h4 class="ui">Surveillance — enfants (0–18)</h4>
+    <div class="cardgrid">
+      <div class="card"><h4>Clinique</h4><ul><li>Examen physique tous les 3–4 mois</li><li>Échographie abdo/pelvienne tous les 3–4 mois</li></ul></div>
+      <div class="card"><h4>Imagerie</h4><ul><li>IRM corps entier annuelle</li><li>IRM cérébrale annuelle</li></ul></div>
+      <div class="card"><h4>Conditionnel</h4><ul><li>Bilan surrénalien seulement si écho insuffisante</li><li>Pas d'hémogramme de routine</li></ul></div>
+    </div>
+
+    <h4 class="ui">Surveillance — adultes (18+)</h4>
+    <div class="cardgrid">
+      <div class="card"><h4>Imagerie de base</h4><ul><li>IRM corps entier annuelle</li><li>IRM cérébrale annuelle</li><li>Échographie abdo/pelvienne annuelle</li></ul></div>
+      <div class="card"><h4>Sein (femme)</h4><ul><li>Examen clinique 6–12 mois dès 20–25</li><li>IRM mammaire annuelle dès 20–30</li><li>Ajouter/alterner mammographie 30–75</li></ul></div>
+      <div class="card"><h4>GI et autres</h4><ul><li>Endoscopie + coloscopie aux 2–5 ans dès 25</li><li>Dermatologie annuelle dès 18</li><li>APS (envisager) dès 40</li></ul></div>
+    </div>
+
+    <h4 class="ui">Recommandations transversales</h4>
+    <div class="cardgrid">
+      <div class="card"><h4>Sécurité des traitements</h4><ul><li>Confirmer le statut TP53 avant tout traitement</li><li>Éviter la radiothérapie si options existent</li><li>Minimiser le rayonnement diagnostique</li></ul></div>
+      <div class="card"><h4>Chirurgie</h4><ul><li>Discuter la mastectomie de réduction du risque</li><li>Pas d'indication de routine de SOR</li></ul></div>
+      <div class="card"><h4>Génétique</h4><ul><li>Test en cascade, enfants inclus</li><li>Offrir DPI-M / options prénatales</li><li>Pas de protocole complet pour un VSI</li></ul></div>
+      <div class="card"><h4>Prévention</h4><ul><li>Aucune chimioprévention établie</li><li>Metformine uniquement en essai</li><li>Réduction du risque par le mode de vie; soutien psychologique</li></ul></div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section id="fr-12">
+    <div class="shead"><div class="snum ui">12</div><h2>Références</h2></div>
+    <ol class="refs">
+      <li>Schneider K, Zelley K, Nichols KE, et al. Li-Fraumeni Syndrome. GeneReviews® [Internet]. Seattle: University of Washington; 1999 Jan 19 [updated 2025 May 1].</li>
+      <li>Frebourg T, Bajalica Lagercrantz S, Oliveira C, et al; European Reference Network GENTURIS. Guidelines for the Li-Fraumeni and heritable TP53-related cancer syndromes. Eur J Hum Genet. 2020;28(10):1379–1386.</li>
+      <li>Kratz CP, Achatz MI, Brugières L, et al. Cancer screening recommendations for individuals with Li-Fraumeni syndrome. Clin Cancer Res. 2017;23(11):e38–e45.</li>
+      <li>Kratz CP, Wasserman E, Woodward ER, Garber JE, Malkin D. Update on Cancer Screening Recommendations for Individuals with Li-Fraumeni Syndrome. Clin Cancer Res. 2025;31(10):1831–1840.</li>
+      <li>Daly MB, Pal T, AlHilli Z, et al. NCCN Clinical Practice Guidelines in Oncology: Genetic/Familial High-Risk Assessment: Breast, Ovarian, and Pancreatic. Version 3.2025.</li>
+      <li>Villani A, Shore A, Wasserman JD, et al. Biochemical and imaging surveillance in germline TP53 mutation carriers with Li-Fraumeni syndrome: 11 year follow-up of a prospective observational study. Lancet Oncol. 2016;17(9):1295–1305.</li>
+      <li>Bougeard G, Renaux-Petel M, Flaman JM, et al. Revisiting Li-Fraumeni Syndrome From TP53 Mutation Carriers. J Clin Oncol. 2015;33(21):2345–2352.</li>
+      <li>Mai PL, Best AF, Peters JA, et al. Risks of first and subsequent cancers among TP53 mutation carriers in the National Cancer Institute Li-Fraumeni syndrome cohort. Cancer. 2016;122(23):3673–3681.</li>
+      <li>Hanson H, Brady AF, Crawford G, et al; UK Cancer Genetics Group. UKCGG Consensus Group guidelines for the management of patients with constitutional TP53 pathogenic variants. J Med Genet. 2021;58(2):135–139.</li>
+      <li>Ballinger ML, Best A, Mai PL, et al. Baseline surveillance in Li-Fraumeni syndrome using whole-body magnetic resonance imaging. JAMA Oncol. 2017;3(12):1634–1639.</li>
+      <li>Fortuno C, et al. (BLiSS cohort). Tumor spectrum and temporal cancer trends in adult carriers of Li-Fraumeni syndrome: implications for personalized screening in TP53 R337H carriers. medRxiv / subsequent publication, 2024.</li>
+      <li>Dixon-Zegeye M, Shaw R, Collins L, et al. Cancer Precision-Prevention trial of Metformin in adults with Li-Fraumeni syndrome (MILI): a randomised controlled trial protocol. Trials. 2024;25:111.</li>
+      <li>Ahlawat S, Fayad LM, Khan MS, et al. Whole-body MRI in cancer predisposition syndromes (review informing surveillance utility). 2023.</li>
+    </ol>
+  </section>
+
+  <div class="footnote ui">
+    Ce protocole vise à soutenir, et non à remplacer, le jugement clinique. Les lignes directrices évoluent et les situations individuelles diffèrent. Tous les âges de début, intervalles et recommandations doivent être vérifiés par rapport aux versions actuelles du NCCN, de GeneReviews et des recommandations des sociétés savantes pertinentes avant tout usage clinique. Les citations de références sont fournies dans leur langue d'origine.<br><br>
+    © GENGIQC · gengiqc.ca · Préparé par le Dr Andrew Shuen, Centre de prévention du cancer, Hôpital général juif, Montréal.
+  </div>
+
+</div>
+
+</div>
+
+<script>
+function setLang(lang){
+  document.getElementById('content-en').style.display = (lang==='en')?'block':'none';
+  document.getElementById('content-fr').style.display = (lang==='fr')?'block':'none';
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+  document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
+  document.documentElement.lang = lang;
+  window.scrollTo(0,0);
+}
+setLang('en');
+</script>
+
+</body>
+</html>

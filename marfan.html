@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marfan Syndrome — Surveillance & Prevention Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px; line-height:1.62;
+}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:9px 18px;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .util{display:flex; gap:8px; align-items:center;}
+.topbar .tabs{display:flex; gap:4px;}
+.btn{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13.5px; font-weight:600; cursor:pointer;
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft);
+  padding:7px 13px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;
+  transition:.15s;
+}
+.btn:hover{border-color:var(--brand-line); color:var(--brand-dark); background:var(--brand-bg);}
+.btn.active{background:var(--brand); border-color:var(--brand); color:#fff;}
+.btn i{font-size:16px;}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:860px; margin:0 auto; padding:0 22px 80px;}
+
+/* ---------- Masthead ---------- */
+.masthead{padding:38px 0 26px; border-bottom:2px solid var(--ink);}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:12.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--brand-dark);
+}
+h1.title{font-size:40px; line-height:1.1; margin:.28em 0 .12em; letter-spacing:-.01em;}
+.standfirst{font-size:19px; color:var(--ink-soft); margin:0 0 22px; max-width:62ch;}
+.authorpanel{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:15px 18px; display:flex; gap:14px; align-items:flex-start;
+}
+.authorpanel .who{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.authorpanel .name{font-weight:700; font-size:15px; color:var(--ink);}
+.authorpanel .role{font-size:13.5px; color:var(--ink-faint); line-height:1.5;}
+.authorpanel i{color:var(--brand); font-size:26px; margin-top:2px;}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:16px;}
+.chip{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:600;
+  background:var(--cream); border:1px solid var(--line); border-radius:999px;
+  padding:4px 11px; color:var(--ink-soft); display:inline-flex; gap:5px; align-items:center;
+}
+.chip i{font-size:14px; color:var(--brand);}
+.legend{
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; padding-top:15px;
+  border-top:1px solid var(--line-soft);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint);
+}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+.legend i{font-size:15px;}
+.i-routine{color:#1f7a34;} .i-optional{color:var(--amber);} .i-no{color:var(--red);}
+
+/* ---------- TOC ---------- */
+.toc{
+  margin:26px 0 8px; padding:18px 20px; background:var(--paper);
+  border:1px solid var(--line); border-radius:var(--radius);
+}
+.toc h2{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+  margin:0 0 12px;
+}
+.toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:14.5px;}
+.toc li{margin-bottom:6px; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none;}
+.toc a:hover{color:var(--brand-dark);}
+
+/* ---------- Sections ---------- */
+section{padding-top:34px;}
+.sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.sec-num{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+  font-size:15px; color:#fff; background:var(--brand);
+  min-width:30px; height:30px; border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+}
+h2.sec{font-size:25px; margin:0; letter-spacing:-.01em; line-height:1.2;}
+h3{font-size:18px; margin:24px 0 8px; color:var(--ink);}
+p{margin:0 0 14px;}
+
+/* ---------- Patient card ---------- */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line);
+  border-left:4px solid var(--brand); border-radius:var(--radius-sm);
+  padding:14px 17px; margin:14px 0 18px;
+}
+.patient .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--brand-dark);
+  display:flex; align-items:center; gap:6px; margin-bottom:6px;
+}
+.patient p{margin:0 0 8px;} .patient p:last-child{margin:0;}
+
+/* ---------- Subtype pill header ---------- */
+.subhead{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  margin:22px 0 6px; padding-bottom:8px; border-bottom:1px solid var(--line-soft);
+}
+.subhead h3{margin:0;}
+.pill{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  border-radius:999px; padding:3px 11px; letter-spacing:.02em;
+}
+.pill-red{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.pill-amber{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.pill-blue{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* ---------- Checklist ---------- */
+ul.check{list-style:none; padding:0; margin:12px 0 16px;}
+ul.check li{
+  display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+  align-items:flex-start;
+}
+ul.check li:last-child{border-bottom:none;}
+ul.check i{font-size:19px; flex:none; margin-top:1px;}
+.tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; border-radius:5px; padding:2px 7px;
+  margin-left:8px; white-space:nowrap; vertical-align:middle;
+}
+.tag-routine{background:#e6f4ea; color:#1f7a34;}
+.tag-optional{background:var(--amber-bg); color:var(--amber);}
+.tag-no{background:var(--red-bg); color:var(--red);}
+.ck-txt{flex:1;}
+.ck-txt .sub{display:block; font-size:14px; color:var(--ink-faint); margin-top:2px;}
+
+/* ---------- Callout ---------- */
+.callout{
+  border-left:4px solid var(--brand); background:var(--paper);
+  border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:13px 16px; margin:16px 0;
+}
+.callout.amber{border-left-color:var(--amber); background:var(--amber-bg); border-color:var(--amber-line);}
+.callout.red{border-left-color:var(--red); background:var(--red-bg); border-color:var(--red-line);}
+.callout .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:5px; display:flex; gap:6px; align-items:center;
+}
+.callout.amber .lbl{color:var(--amber);} .callout.red .lbl{color:var(--red);} .callout .lbl{color:var(--brand-dark);}
+.callout p:last-child{margin:0;}
+
+/* ---------- Info / emerging boxes ---------- */
+.infobox{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging .lbl,.infobox .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:6px; display:flex; gap:6px; align-items:center;
+}
+.emerging .lbl{color:var(--purple);} .infobox .lbl{color:var(--brand-dark);}
+.emerging p:last-child,.infobox p:last-child{margin:0;}
+
+/* ---------- Risk table ---------- */
+.tablewrap{overflow-x:auto; margin:16px 0;}
+table.risk{width:100%; border-collapse:collapse; font-size:15px; background:var(--paper); border-radius:var(--radius-sm); overflow:hidden;}
+table.risk th,table.risk td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--line);}
+table.risk th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); background:var(--cream);}
+table.risk tr:last-child td{border-bottom:none;}
+.dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:7px; vertical-align:middle;}
+.dot-red{background:var(--red);} .dot-amber{background:var(--amber-line);} .dot-blue{background:var(--brand);}
+
+/* ---------- Figures ---------- */
+figure.fig{margin:18px 0 20px; padding:0; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+figure.fig .svgwrap{padding:18px 16px 4px; background:linear-gradient(180deg,#fbfdff,#f4f9fc);}
+figure.fig svg{width:100%; height:auto; display:block;}
+figure.fig figcaption{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); padding:11px 16px 13px; border-top:1px solid var(--line-soft); line-height:1.5;}
+figure.fig img.photo{width:100%; height:auto; display:block; border-radius:0;}
+figure.fig .credit{font-size:11.5px; color:var(--ink-faint); margin-top:6px;}
+figure.fig .credit a{color:var(--brand-dark); text-decoration:none;}
+figure.fig figcaption b{color:var(--ink-soft); font-weight:700;}
+.svg-ink{fill:var(--ink);} .svg-soft{fill:var(--ink-soft);} .svg-faint{fill:var(--ink-faint);}
+.svg-lbl{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.svg-term{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;}
+
+/* ---------- Summary cards ---------- */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:16px 0;}
+.scard{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand); border-radius:var(--radius-sm); padding:14px 16px;}
+.scard h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; margin:0 0 8px; color:var(--brand-dark); display:flex; gap:7px; align-items:center;}
+.scard ul{margin:0; padding-left:18px; font-size:14.5px; color:var(--ink-soft);}
+.scard li{margin-bottom:5px;}
+
+/* ---------- References ---------- */
+ol.refs{font-size:14px; color:var(--ink-soft); padding-left:22px; line-height:1.55;}
+ol.refs li{margin-bottom:9px;}
+
+/* ---------- Footer ---------- */
+.footer{margin-top:46px; padding-top:18px; border-top:2px solid var(--ink); position:relative;}
+.footer:before{content:""; position:absolute; top:4px; left:0; right:0; height:1px; background:var(--ink);}
+.footer p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); margin:0 0 8px;}
+
+/* ---------- Language toggle ---------- */
+[data-lang]{display:none;}
+body.lang-en [data-lang="en"]{display:revert;}
+body.lang-fr [data-lang="fr"]{display:revert;}
+ul.check li[data-lang],table.risk tr[data-lang]{display:none;}
+body.lang-en ul.check li[data-lang="en"]{display:flex;}
+body.lang-fr ul.check li[data-lang="fr"]{display:flex;}
+body.lang-en table.risk tr[data-lang="en"]{display:table-row;}
+body.lang-fr table.risk tr[data-lang="fr"]{display:table-row;}
+
+/* ---------- PDF preview on screen ---------- */
+body.pdf-preview{background:#6a7681;}
+body.pdf-preview .topbar{position:static;}
+body.pdf-preview .toc{display:none;}
+body.pdf-preview .wrap{
+  background:#fff; max-width:8.5in; margin:24px auto; padding:0.7in 0.85in;
+  box-shadow:0 4px 24px rgba(0,0,0,.3); font-size:11.5pt; line-height:1.4;
+}
+body.pdf-preview h1.title{font-size:26pt;}
+body.pdf-preview h2.sec{font-size:16pt;}
+body.pdf-preview .standfirst{font-size:13pt;}
+body.pdf-preview section{page-break-inside:auto;}
+body.pdf-preview #sec-summary,body.pdf-preview #sec-refs{
+  border-top:2px dashed var(--brand); margin-top:30px; padding-top:24px; position:relative;
+}
+body.pdf-preview #sec-summary:before,body.pdf-preview #sec-refs:before{
+  content:"— — — page break — — —"; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+  background:#fff; padding:0 12px; font-family:"Helvetica Neue",sans-serif; font-size:9pt; color:var(--brand); letter-spacing:.08em;
+}
+
+/* ---------- Print ---------- */
+@media print{
+  .topbar,.toc{display:none;}
+  body{background:#fff; font-size:10.5pt;}
+  .wrap{max-width:100%; padding:0;}
+  #sec-summary,#sec-refs{page-break-before:always;}
+  .patient,.callout,.infobox,.emerging,.scard,table.risk{break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+@media(max-width:600px){
+  .toc ol{columns:1;} h1.title{font-size:31px;} .cardgrid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body class="lang-en">
+
+<!-- ======================= TOP BAR ======================= -->
+<div class="topbar ui">
+  <div class="util">
+    <button class="btn" id="pdfBtn" onclick="togglePdf()"><i class="ti ti-eye"></i><span data-lang="en">PDF view</span><span data-lang="fr">Aperçu PDF</span></button>
+    <button class="btn" onclick="window.print()"><i class="ti ti-printer"></i><span data-lang="en">Print / Save PDF</span><span data-lang="fr">Imprimer / PDF</span></button>
+  </div>
+  <div class="tabs">
+    <button class="btn active" id="enTab" onclick="setLang('en')">English</button>
+    <button class="btn" id="frTab" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ======================= MASTHEAD ======================= -->
+<header class="masthead">
+  <div class="eyebrow" data-lang="en">Hereditary Connective Tissue Disease · Surveillance Protocol</div>
+  <div class="eyebrow" data-lang="fr">Maladie héréditaire du tissu conjonctif · Protocole de surveillance</div>
+  <h1 class="title" data-lang="en">Marfan Syndrome</h1>
+  <h1 class="title" data-lang="fr">Syndrome de Marfan</h1>
+  <p class="standfirst" data-lang="en">A prevention and surveillance protocol for <em>FBN1</em>-related Marfan syndrome, covering aortic monitoring, medical therapy, surgical thresholds, eye and skeletal care, pregnancy, and family testing.</p>
+  <p class="standfirst" data-lang="fr">Protocole de prévention et de surveillance pour le syndrome de Marfan lié à <em>FBN1</em>, couvrant la surveillance aortique, le traitement médical, les seuils chirurgicaux, les soins oculaires et squelettiques, la grossesse et le dépistage familial.</p>
+
+  <div class="authorpanel">
+    <i class="ti ti-stethoscope"></i>
+    <div class="who">
+      <div class="name">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</div>
+      <div class="role" data-lang="en">Cancer Genetics &amp; Medical Genetics · Cancer Prevention Centre, Jewish General Hospital (JGH), Montreal</div>
+      <div class="role" data-lang="fr">Génétique du cancer et génétique médicale · Centre de prévention du cancer, Hôpital général juif (HGJ), Montréal</div>
+    </div>
+  </div>
+
+  <div class="chips ui">
+    <span class="chip"><i class="ti ti-dna"></i> <em>FBN1</em></span>
+    <span class="chip"><i class="ti ti-clipboard-text"></i> <span data-lang="en">Revised Ghent (2010)</span><span data-lang="fr">Ghent révisé (2010)</span></span>
+    <span class="chip"><i class="ti ti-heartbeat"></i> 2022 ACC/AHA</span>
+    <span class="chip"><i class="ti ti-calendar"></i> <span data-lang="en">Updated 2026-06</span><span data-lang="fr">Mis à jour 2026-06</span></span>
+  </div>
+
+  <div class="legend ui">
+    <span data-lang="en"><i class="ti ti-circle-check i-routine"></i> Routine</span>
+    <span data-lang="fr"><i class="ti ti-circle-check i-routine"></i> De routine</span>
+    <span data-lang="en"><i class="ti ti-minus i-optional"></i> Optional / selective</span>
+    <span data-lang="fr"><i class="ti ti-minus i-optional"></i> Optionnel / sélectif</span>
+    <span data-lang="en"><i class="ti ti-x i-no"></i> Not recommended</span>
+    <span data-lang="fr"><i class="ti ti-x i-no"></i> Non recommandé</span>
+  </div>
+</header>
+
+<!-- ======================= TOC ======================= -->
+<nav class="toc ui">
+  <h2 data-lang="en">Contents</h2>
+  <h2 data-lang="fr">Sommaire</h2>
+  <ol>
+    <li><a href="#sec1" data-lang="en">Understanding Marfan syndrome</a><a href="#sec1" data-lang="fr">Comprendre le syndrome de Marfan</a></li>
+    <li><a href="#sec2" data-lang="en">Risks by system</a><a href="#sec2" data-lang="fr">Risques par système</a></li>
+    <li><a href="#sec3" data-lang="en">Aortic surveillance</a><a href="#sec3" data-lang="fr">Surveillance aortique</a></li>
+    <li><a href="#sec4" data-lang="en">Medical therapy</a><a href="#sec4" data-lang="fr">Traitement médical</a></li>
+    <li><a href="#sec5" data-lang="en">Surgery &amp; thresholds</a><a href="#sec5" data-lang="fr">Chirurgie et seuils</a></li>
+    <li><a href="#sec6" data-lang="en">Eye surveillance</a><a href="#sec6" data-lang="fr">Surveillance oculaire</a></li>
+    <li><a href="#sec7" data-lang="en">Skeletal &amp; dural</a><a href="#sec7" data-lang="fr">Squelette et dure-mère</a></li>
+    <li><a href="#sec8" data-lang="en">Lungs &amp; other systems</a><a href="#sec8" data-lang="fr">Poumons et autres systèmes</a></li>
+    <li><a href="#sec9" data-lang="en">Activity &amp; lifestyle</a><a href="#sec9" data-lang="fr">Activité et mode de vie</a></li>
+    <li><a href="#sec10" data-lang="en">Pregnancy</a><a href="#sec10" data-lang="fr">Grossesse</a></li>
+    <li><a href="#sec11" data-lang="en">Genetic counselling</a><a href="#sec11" data-lang="fr">Conseil génétique</a></li>
+    <li><a href="#sec12" data-lang="en">Emerging therapies</a><a href="#sec12" data-lang="fr">Thérapies émergentes</a></li>
+    <li><a href="#sec-summary" data-lang="en">Summary of recommendations</a><a href="#sec-summary" data-lang="fr">Résumé des recommandations</a></li>
+    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+  </ol>
+</nav>
+
+<!-- ======================= SECTION 1 ======================= -->
+<section id="sec1">
+  <div class="sec-head"><span class="sec-num">1</span><h2 class="sec" data-lang="en">Understanding Marfan syndrome</h2><h2 class="sec" data-lang="fr">Comprendre le syndrome de Marfan</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For patients</span><span data-lang="fr">Pour les patients</span></div>
+    <p data-lang="en">Marfan syndrome affects the body's connective tissue, the material that holds organs and structures in place and gives them strength. It is caused by a change in a single gene called <em>FBN1</em>. Because connective tissue is everywhere, Marfan can affect the heart and main blood vessel (the aorta), the eyes, and the bones and joints. The most important health concern is the aorta, which can stretch and weaken over time. The good news: with regular check-ups, medication, and well-timed surgery when needed, most people with Marfan syndrome live long, full lives.</p>
+  </div>
+
+  <p data-lang="en">Marfan syndrome (MFS) is an autosomal dominant connective tissue disorder caused by pathogenic variants in <em>FBN1</em>, encoding fibrillin-1, an extracellular matrix glycoprotein. Loss of normal fibrillin-1 microfibrils dysregulates TGF-β signalling and weakens the aortic media. Estimated prevalence is roughly 1 in 5,000. About 75% of cases are inherited from an affected parent; approximately 25% arise from a de novo variant. An <em>FBN1</em> pathogenic variant is identified in roughly 82–83% of individuals meeting clinical criteria.</p>
+
+  <p data-lang="en">Diagnosis follows the 2010 revised Ghent nosology, which gives the greatest weight to two cardinal features: aortic root dilatation (Z-score ≥2.0) and ectopia lentis. In the absence of family history, the combination of these two cardinal features is diagnostic. When only one cardinal feature is present, diagnosis requires either a confirmed <em>FBN1</em> variant or a systemic score ≥7 points. Differential diagnoses that must be excluded include Loeys-Dietz syndrome (<em>TGFBR1/2</em>, <em>SMAD3</em>, <em>TGFB2/3</em>), vascular Ehlers-Danlos syndrome (<em>COL3A1</em>), and Shprintzen-Goldberg syndrome; these alter both prognosis and surgical thresholds, so a multigene aortopathy panel is preferred when the diagnosis is not already molecularly confirmed.</p>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="fr">Pour les patients</span></div>
+    <p data-lang="fr">Le syndrome de Marfan touche le tissu conjonctif du corps, soit la matière qui maintient les organes et les structures en place et qui leur donne leur solidité. Il est causé par une modification dans un seul gène appelé <em>FBN1</em>. Comme le tissu conjonctif est présent partout, le syndrome de Marfan peut toucher le cœur et le principal vaisseau sanguin (l'aorte), les yeux, ainsi que les os et les articulations. La préoccupation la plus importante concerne l'aorte, qui peut s'étirer et s'affaiblir avec le temps. La bonne nouvelle : avec des suivis réguliers, des médicaments et une chirurgie effectuée au bon moment lorsque nécessaire, la plupart des personnes atteintes vivent longtemps et pleinement.</p>
+  </div>
+
+  <p data-lang="fr">Le syndrome de Marfan (SM) est une maladie du tissu conjonctif à transmission autosomique dominante, causée par des variants pathogènes du gène <em>FBN1</em>, qui code la fibrilline-1, une glycoprotéine de la matrice extracellulaire. La perte des microfibrilles normales de fibrilline-1 dérègle la signalisation du TGF-β et fragilise la média aortique. La prévalence estimée est d'environ 1 sur 5 000. Environ 75 % des cas sont hérités d'un parent atteint; environ 25 % résultent d'un variant de novo. Un variant pathogène de <em>FBN1</em> est identifié chez environ 82 à 83 % des personnes répondant aux critères cliniques.</p>
+
+  <p data-lang="fr">Le diagnostic repose sur la nosologie de Ghent révisée en 2010, qui accorde le plus grand poids à deux caractéristiques cardinales : la dilatation de la racine aortique (score Z ≥ 2,0) et l'ectopie du cristallin. En l'absence d'antécédents familiaux, la présence simultanée de ces deux caractéristiques cardinales établit le diagnostic. Lorsqu'une seule caractéristique cardinale est présente, le diagnostic exige soit un variant <em>FBN1</em> confirmé, soit un score systémique ≥ 7 points. Les diagnostics différentiels à exclure comprennent le syndrome de Loeys-Dietz (<em>TGFBR1/2</em>, <em>SMAD3</em>, <em>TGFB2/3</em>), le syndrome d'Ehlers-Danlos vasculaire (<em>COL3A1</em>) et le syndrome de Shprintzen-Goldberg; ces affections modifient à la fois le pronostic et les seuils chirurgicaux, d'où la préférence pour un panel multigénique d'aortopathie lorsque le diagnostic n'est pas déjà confirmé au plan moléculaire.</p>
+
+  <figure class="fig">
+    <div class="svgwrap">
+      <svg viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FBN1 to TGF-beta pathway">
+        <defs>
+          <marker id="arr" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#0083d0"/></marker>
+        </defs>
+        <!-- step boxes -->
+        <g class="svg-lbl" font-size="12.5">
+          <!-- 1 -->
+          <rect x="10" y="70" width="120" height="86" rx="10" fill="#e3f2fb" stroke="#9cd0ef"/>
+          <text x="70" y="96" text-anchor="middle" font-weight="700" fill="#005f9e">FBN1</text>
+          <text x="70" y="116" text-anchor="middle" fill="#3c4a55">variant</text>
+          <text x="70" y="134" text-anchor="middle" fill="#3c4a55">in fibrillin-1</text>
+          <!-- 2 -->
+          <rect x="160" y="70" width="120" height="86" rx="10" fill="#ffffff" stroke="#dde6ec"/>
+          <text x="220" y="100" text-anchor="middle" fill="#3c4a55">Weaker</text>
+          <text x="220" y="118" text-anchor="middle" fill="#3c4a55">microfibrils in</text>
+          <text x="220" y="136" text-anchor="middle" fill="#3c4a55">matrix</text>
+          <!-- 3 -->
+          <rect x="310" y="70" width="120" height="86" rx="10" fill="#ffffff" stroke="#dde6ec"/>
+          <text x="370" y="100" text-anchor="middle" fill="#3c4a55">Excess</text>
+          <text x="370" y="118" text-anchor="middle" font-weight="700" fill="#005f9e">TGF-β</text>
+          <text x="370" y="136" text-anchor="middle" fill="#3c4a55">signalling</text>
+          <!-- 4 -->
+          <rect x="460" y="70" width="120" height="86" rx="10" fill="#ffffff" stroke="#dde6ec"/>
+          <text x="520" y="100" text-anchor="middle" fill="#3c4a55">Aortic wall</text>
+          <text x="520" y="118" text-anchor="middle" fill="#3c4a55">(media)</text>
+          <text x="520" y="136" text-anchor="middle" fill="#3c4a55">weakens</text>
+          <!-- 5 -->
+          <rect x="610" y="70" width="100" height="86" rx="10" fill="#fcebe9" stroke="#f0a097"/>
+          <text x="660" y="100" text-anchor="middle" fill="#b3271e">Root</text>
+          <text x="660" y="118" text-anchor="middle" font-weight="700" fill="#b3271e">dilatation</text>
+          <text x="660" y="136" text-anchor="middle" fill="#b3271e">→ dissection</text>
+          <!-- arrows -->
+          <line x1="132" y1="113" x2="156" y2="113" stroke="#0083d0" stroke-width="2" marker-end="url(#arr)"/>
+          <line x1="282" y1="113" x2="306" y2="113" stroke="#0083d0" stroke-width="2" marker-end="url(#arr)"/>
+          <line x1="432" y1="113" x2="456" y2="113" stroke="#0083d0" stroke-width="2" marker-end="url(#arr)"/>
+          <line x1="582" y1="113" x2="606" y2="113" stroke="#0083d0" stroke-width="2" marker-end="url(#arr)"/>
+        </g>
+        <!-- therapy hook -->
+        <g class="svg-lbl" font-size="11.5">
+          <rect x="310" y="186" width="120" height="46" rx="9" fill="#eeedfe" stroke="#b3aef0"/>
+          <text x="370" y="206" text-anchor="middle" font-weight="700" fill="#3c3489">ARB / losartan</text>
+          <text x="370" y="223" text-anchor="middle" fill="#3c3489">dampens TGF-β</text>
+          <line x1="370" y1="186" x2="370" y2="160" stroke="#3c3489" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+        </g>
+        <text x="10" y="34" class="svg-term" font-size="13" fill="#15212b" data-lang="en">How a gene change leads to aortic risk</text>
+        <text x="10" y="34" class="svg-term" font-size="13" fill="#15212b" data-lang="fr">Du variant génétique au risque aortique</text>
+      </svg>
+    </div>
+    <figcaption>
+      <span data-lang="en"><b>Figure 1. Pathophysiology.</b> A pathogenic <em>FBN1</em> variant produces abnormal fibrillin-1, weakening the connective-tissue scaffold and releasing excess TGF-β. Over-active TGF-β signalling degrades the aortic wall, driving root dilatation and the risk of dissection. Angiotensin receptor blockers (e.g. losartan) act partly by dampening TGF-β, the rationale for their use alongside beta-blockers.</span>
+      <span data-lang="fr"><b>Figure 1. Physiopathologie.</b> Un variant pathogène de <em>FBN1</em> produit une fibrilline-1 anormale, fragilisant la trame du tissu conjonctif et libérant un excès de TGF-β. Une signalisation TGF-β excessive dégrade la paroi aortique, entraînant la dilatation de la racine et le risque de dissection. Les antagonistes des récepteurs de l'angiotensine (p. ex. losartan) agissent en partie en atténuant le TGF-β, ce qui justifie leur emploi aux côtés des bêta-bloquants.</span>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ======================= SECTION 2 — RISK TABLE ======================= -->
+<section id="sec2">
+  <div class="sec-head"><span class="sec-num">2</span><h2 class="sec" data-lang="en">Manifestations and risks by organ system</h2><h2 class="sec" data-lang="fr">Manifestations et risques par système</h2></div>
+
+  <p data-lang="en">Severity varies widely between individuals, even within the same family. The figures below describe typical frequencies and are not a prediction for any one person.</p>
+  <p data-lang="fr">La sévérité varie considérablement d'une personne à l'autre, même au sein d'une même famille. Les chiffres ci-dessous décrivent des fréquences typiques et ne constituent pas une prédiction pour une personne donnée.</p>
+
+  <div class="tablewrap">
+    <table class="risk">
+      <thead>
+        <tr data-lang="en"><th>System</th><th>Key manifestation</th><th>Approx. frequency / risk</th></tr>
+        <tr data-lang="fr"><th>Système</th><th>Manifestation clé</th><th>Fréquence / risque approx.</th></tr>
+      </thead>
+      <tbody>
+        <tr data-lang="en"><td>Aorta</td><td>Aortic root dilatation; dissection / rupture</td><td><span class="dot dot-red"></span>Dilatation in &gt;80% over life; dissection is the leading cause of mortality</td></tr>
+        <tr data-lang="fr"><td>Aorte</td><td>Dilatation de la racine aortique; dissection / rupture</td><td><span class="dot dot-red"></span>Dilatation &gt; 80 % au cours de la vie; la dissection est la principale cause de mortalité</td></tr>
+
+        <tr data-lang="en"><td>Heart valves</td><td>Mitral valve prolapse; mitral / aortic regurgitation</td><td><span class="dot dot-amber"></span>Moderate — MVP in ~40–50%</td></tr>
+        <tr data-lang="fr"><td>Valves cardiaques</td><td>Prolapsus de la valve mitrale; insuffisance mitrale / aortique</td><td><span class="dot dot-amber"></span>Modéré — PVM chez ~40–50 %</td></tr>
+
+        <tr data-lang="en"><td>Eyes</td><td>Ectopia lentis (lens dislocation); high myopia; retinal detachment</td><td><span class="dot dot-amber"></span>Ectopia lentis in ~60%; early cataract / glaucoma risk</td></tr>
+        <tr data-lang="fr"><td>Yeux</td><td>Ectopie du cristallin (luxation); myopie forte; décollement de rétine</td><td><span class="dot dot-amber"></span>Ectopie chez ~60 %; risque précoce de cataracte / glaucome</td></tr>
+
+        <tr data-lang="en"><td>Skeleton</td><td>Tall stature, long limbs, scoliosis, pectus, joint laxity, pes planus</td><td><span class="dot dot-amber"></span>Common; scoliosis in ~60%</td></tr>
+        <tr data-lang="fr"><td>Squelette</td><td>Grande taille, membres longs, scoliose, pectus, laxité, pieds plats</td><td><span class="dot dot-amber"></span>Fréquent; scoliose chez ~60 %</td></tr>
+
+        <tr data-lang="en"><td>Dura</td><td>Lumbosacral dural ectasia</td><td><span class="dot dot-amber"></span>~60–65%; often asymptomatic</td></tr>
+        <tr data-lang="fr"><td>Dure-mère</td><td>Ectasie durale lombosacrée</td><td><span class="dot dot-amber"></span>~60–65 %; souvent asymptomatique</td></tr>
+
+        <tr data-lang="en"><td>Lungs</td><td>Spontaneous pneumothorax; apical blebs</td><td><span class="dot dot-blue"></span>Lower — pneumothorax in ~5–10%</td></tr>
+        <tr data-lang="fr"><td>Poumons</td><td>Pneumothorax spontané; bulles apicales</td><td><span class="dot dot-blue"></span>Plus faible — pneumothorax ~5–10 %</td></tr>
+
+        <tr data-lang="en"><td>Skin</td><td>Striae atrophicae; recurrent / incisional hernia</td><td><span class="dot dot-blue"></span>Common but low-morbidity</td></tr>
+        <tr data-lang="fr"><td>Peau</td><td>Vergetures atrophiques; hernies récidivantes</td><td><span class="dot dot-blue"></span>Fréquent mais peu morbide</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <div class="lbl"><i class="ti ti-info-circle"></i> <span data-lang="en">Key point</span><span data-lang="fr">Point clé</span></div>
+    <p data-lang="en">The aorta drives prognosis. Nearly all surveillance and treatment effort is directed at detecting aortic growth early and intervening before dissection. Every other manifestation is managed to preserve quality of life, but the aorta is the priority.</p>
+    <p data-lang="fr">L'aorte détermine le pronostic. Presque tous les efforts de surveillance et de traitement visent à détecter tôt la croissance aortique et à intervenir avant la dissection. Toutes les autres manifestations sont prises en charge pour préserver la qualité de vie, mais l'aorte demeure la priorité.</p>
+  </div>
+
+  <figure class="fig">
+    <div class="svgwrap">
+      <svg viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Clinical features of Marfan syndrome with definitions">
+        <text x="14" y="26" class="svg-term" font-size="14" fill="#15212b" data-lang="en">Common clinical features and what the terms mean</text>
+        <text x="14" y="26" class="svg-term" font-size="14" fill="#15212b" data-lang="fr">Caractéristiques cliniques fréquentes et signification des termes</text>
+
+        <!-- Marfan-habitus body: tall, elongated limbs, with feature cues -->
+        <g transform="translate(318,50) scale(0.8)">
+          <defs>
+            <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#eaf5fd"/>
+              <stop offset="1" stop-color="#d4ebfa"/>
+            </linearGradient>
+          </defs>
+          <!-- head -->
+          <ellipse cx="60" cy="26" rx="17" ry="20" fill="url(#bodyGrad)" stroke="#0083d0" stroke-width="1.6"/>
+          <!-- neck -->
+          <path d="M52,44 L52,56 L68,56 L68,44" fill="url(#bodyGrad)" stroke="#0083d0" stroke-width="1.6"/>
+          <!-- torso: long, narrow trunk tapering to waist (tall habitus) -->
+          <path d="M44,58
+                   C36,60 30,64 28,72
+                   L34,150
+                   C35,166 40,180 44,196
+                   L52,196
+                   C50,180 49,166 49,150
+                   L49,120
+                   L71,120
+                   L71,150
+                   C71,166 70,180 68,196
+                   L76,196
+                   C80,180 85,166 86,150
+                   L92,72
+                   C90,64 84,60 76,58
+                   Z" fill="url(#bodyGrad)" stroke="#0083d0" stroke-width="1.6" stroke-linejoin="round"/>
+          <!-- arms: long, angled slightly outward, to elongated hands -->
+          <path d="M30,70 C18,96 12,128 8,160 C6,176 3,192 2,206
+                   L9,207 C12,192 15,176 18,160 C23,128 30,100 38,78 Z"
+                fill="url(#bodyGrad)" stroke="#0083d0" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M90,70 C102,96 108,128 112,160 C114,176 117,192 118,206
+                   L111,207 C108,192 105,176 102,160 C97,128 90,100 82,78 Z"
+                fill="url(#bodyGrad)" stroke="#0083d0" stroke-width="1.6" stroke-linejoin="round"/>
+          <!-- elongated hands (arachnodactyly cue): long fingers -->
+          <g stroke="#0083d0" stroke-width="1.4" stroke-linecap="round" fill="none">
+            <path d="M5,208 L2,232 M9,208 L8,236 M13,207 L15,234 M16,205 L21,229"/>
+            <path d="M115,208 L118,232 M111,208 L112,236 M107,207 L105,234 M104,205 L99,229"/>
+          </g>
+          <!-- legs: long and lean -->
+          <path d="M44,196 L40,300 C39,312 35,326 33,338 L41,338 C44,326 47,312 49,300 L58,210 Z"
+                fill="url(#bodyGrad)" stroke="#0083d0" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M76,196 L80,300 C81,312 85,326 87,338 L79,338 C76,326 73,312 71,300 L62,210 Z"
+                fill="url(#bodyGrad)" stroke="#0083d0" stroke-width="1.6" stroke-linejoin="round"/>
+          <!-- feet -->
+          <path d="M33,338 L26,344 L42,344 L41,338 Z" fill="url(#bodyGrad)" stroke="#0083d0" stroke-width="1.4"/>
+          <path d="M87,338 L94,344 L78,344 L79,338 Z" fill="url(#bodyGrad)" stroke="#0083d0" stroke-width="1.4"/>
+          <!-- scoliotic spine curve (S-shape) -->
+          <path d="M60,60 C66,90 54,118 60,146 C64,168 58,184 60,194"
+                fill="none" stroke="#005f9e" stroke-width="1.3" opacity="0.7" stroke-dasharray="1 0"/>
+          <!-- pectus indentation cue at sternum -->
+          <path d="M54,80 Q60,88 66,80" fill="none" stroke="#005f9e" stroke-width="1.1" opacity="0.6"/>
+          <!-- heart / aorta cue -->
+          <circle cx="52" cy="104" r="6" fill="#fcebe9" stroke="#b3271e" stroke-width="1.2"/>
+          <path d="M52,101 q2.6,-2.6 4.4,0.8 q-0.9,3.4 -4.4,4.4 q-3.5,-1 -4.4,-4.4 q1.8,-3.4 4.4,-0.8Z" fill="#b3271e" opacity="0.85"/>
+          <!-- eye cue -->
+          <circle cx="53" cy="24" r="3.2" fill="#ffffff" stroke="#005f9e" stroke-width="1"/>
+          <circle cx="53" cy="24" r="1.2" fill="#005f9e"/>
+        </g>
+
+        <!-- term cards -->
+        <g class="svg-lbl" font-size="12">
+          <!-- Arachnodactyly -->
+          <rect x="14" y="58" width="250" height="60" rx="9" fill="#ffffff" stroke="#dde6ec"/>
+          <text x="26" y="80" class="svg-term" fill="#005f9e">Arachnodactyly</text>
+          <text x="26" y="98" fill="#3c4a55" data-lang="en">Long, slender "spider" fingers and</text>
+          <text x="26" y="112" fill="#3c4a55" data-lang="en">toes; tested with thumb &amp; wrist signs.</text>
+          <text x="26" y="98" fill="#3c4a55" data-lang="fr">Doigts et orteils longs et fins « en</text>
+          <text x="26" y="112" fill="#3c4a55" data-lang="fr">araignée »; signes du pouce/poignet.</text>
+
+          <!-- Ectopia lentis -->
+          <rect x="14" y="128" width="250" height="60" rx="9" fill="#ffffff" stroke="#dde6ec"/>
+          <text x="26" y="150" class="svg-term" fill="#005f9e">Ectopia lentis</text>
+          <text x="26" y="168" fill="#3c4a55" data-lang="en">Dislocation of the eye's lens, usually</text>
+          <text x="26" y="182" fill="#3c4a55" data-lang="en">upward. A cardinal diagnostic feature.</text>
+          <text x="26" y="168" fill="#3c4a55" data-lang="fr">Luxation du cristallin, souvent vers le</text>
+          <text x="26" y="182" fill="#3c4a55" data-lang="fr">haut. Caractéristique cardinale.</text>
+
+          <!-- Pectus -->
+          <rect x="14" y="198" width="250" height="60" rx="9" fill="#ffffff" stroke="#dde6ec"/>
+          <text x="26" y="220" class="svg-term" fill="#005f9e">Pectus deformity</text>
+          <text x="26" y="238" fill="#3c4a55" data-lang="en">Sunken (excavatum) or protruding</text>
+          <text x="26" y="252" fill="#3c4a55" data-lang="en">(carinatum) breastbone.</text>
+          <text x="26" y="238" fill="#3c4a55" data-lang="fr">Sternum creusé (excavatum) ou</text>
+          <text x="26" y="252" fill="#3c4a55" data-lang="fr">saillant (carinatum).</text>
+
+          <!-- Dural ectasia -->
+          <rect x="14" y="268" width="250" height="60" rx="9" fill="#ffffff" stroke="#dde6ec"/>
+          <text x="26" y="290" class="svg-term" fill="#005f9e">Dural ectasia</text>
+          <text x="26" y="308" fill="#3c4a55" data-lang="en">Stretching of the membrane around the</text>
+          <text x="26" y="322" fill="#3c4a55" data-lang="en">lower spinal cord; may cause back pain.</text>
+          <text x="26" y="308" fill="#3c4a55" data-lang="fr">Étirement de la membrane autour de la</text>
+          <text x="26" y="322" fill="#3c4a55" data-lang="fr">moelle basse; peut causer une lombalgie.</text>
+
+          <!-- Right column -->
+          <!-- Scoliosis -->
+          <rect x="456" y="58" width="250" height="60" rx="9" fill="#ffffff" stroke="#dde6ec"/>
+          <text x="468" y="80" class="svg-term" fill="#005f9e">Scoliosis</text>
+          <text x="468" y="98" fill="#3c4a55" data-lang="en">Sideways curvature of the spine,</text>
+          <text x="468" y="112" fill="#3c4a55" data-lang="en">often appearing during growth spurts.</text>
+          <text x="468" y="98" fill="#3c4a55" data-lang="fr">Courbure latérale de la colonne,</text>
+          <text x="468" y="112" fill="#3c4a55" data-lang="fr">souvent lors des poussées de croissance.</text>
+
+          <!-- Aortic root dilatation -->
+          <rect x="456" y="128" width="250" height="60" rx="9" fill="#fcebe9" stroke="#f0a097"/>
+          <text x="468" y="150" class="svg-term" fill="#b3271e">Aortic root dilatation</text>
+          <text x="468" y="168" fill="#3c4a55" data-lang="en">Widening of the aorta where it leaves</text>
+          <text x="468" y="182" fill="#3c4a55" data-lang="en">the heart. The key risk; see Figure 3.</text>
+          <text x="468" y="168" fill="#3c4a55" data-lang="fr">Élargissement de l'aorte à sa sortie du</text>
+          <text x="468" y="182" fill="#3c4a55" data-lang="fr">cœur. Risque clé; voir Figure 3.</text>
+
+          <!-- Tall stature -->
+          <rect x="456" y="198" width="250" height="60" rx="9" fill="#ffffff" stroke="#dde6ec"/>
+          <text x="468" y="220" class="svg-term" fill="#005f9e">Dolichostenomelia</text>
+          <text x="468" y="238" fill="#3c4a55" data-lang="en">Tall stature with disproportionately</text>
+          <text x="468" y="252" fill="#3c4a55" data-lang="en">long limbs and arm span &gt; height.</text>
+          <text x="468" y="238" fill="#3c4a55" data-lang="fr">Grande taille, membres anormalement</text>
+          <text x="468" y="252" fill="#3c4a55" data-lang="fr">longs, envergure &gt; taille.</text>
+
+          <!-- Joint laxity -->
+          <rect x="456" y="268" width="250" height="60" rx="9" fill="#ffffff" stroke="#dde6ec"/>
+          <text x="468" y="290" class="svg-term" fill="#005f9e">Joint hypermobility</text>
+          <text x="468" y="308" fill="#3c4a55" data-lang="en">Unusually flexible joints; flat feet</text>
+          <text x="468" y="322" fill="#3c4a55" data-lang="en">(pes planus) is also common.</text>
+          <text x="468" y="308" fill="#3c4a55" data-lang="fr">Articulations très souples; pieds plats</text>
+          <text x="468" y="322" fill="#3c4a55" data-lang="fr">(pes planus) fréquents aussi.</text>
+
+          <!-- connector lines to silhouette (absolute coords; figure at translate 318,50 scale 0.8) -->
+          <g stroke="#9cd0ef" stroke-width="1.5" stroke-dasharray="3 3">
+            <line x1="264" y1="158" x2="358" y2="70"/>   <!-- ectopia lentis -> eye -->
+            <line x1="264" y1="88"  x2="402" y2="220"/>  <!-- arachnodactyly -> hand -->
+            <line x1="264" y1="228" x2="356" y2="118"/>  <!-- pectus -> chest -->
+            <line x1="456" y1="158" x2="362" y2="133"/>  <!-- aortic root -> heart -->
+            <line x1="456" y1="298" x2="408" y2="222"/>  <!-- joints -> hand/limb -->
+          </g>
+        </g>
+
+        <!-- footnote band -->
+        <rect x="14" y="346" width="692" height="108" rx="9" fill="#e3f2fb" stroke="#9cd0ef"/>
+        <text x="28" y="372" class="svg-term" font-size="12" fill="#005f9e" data-lang="en">Two cardinal features carry the most diagnostic weight (revised Ghent, 2010):</text>
+        <text x="28" y="372" class="svg-term" font-size="12" fill="#005f9e" data-lang="fr">Deux caractéristiques cardinales pèsent le plus (Ghent révisé, 2010) :</text>
+        <g class="svg-lbl" font-size="12" fill="#3c4a55">
+          <text x="28" y="396" data-lang="en">• Aortic root dilatation (Z-score ≥ 2.0)   • Ectopia lentis</text>
+          <text x="28" y="396" data-lang="fr">• Dilatation de la racine aortique (score Z ≥ 2,0)   • Ectopie du cristallin</text>
+          <text x="28" y="418" data-lang="en">Other features above contribute to a "systemic score"; a total ≥ 7 points supports the</text>
+          <text x="28" y="418" data-lang="fr">Les autres caractéristiques alimentent un « score systémique »; un total ≥ 7 points appuie le</text>
+          <text x="28" y="436" data-lang="en">diagnosis when only one cardinal feature (or an FBN1 variant) is present.</text>
+          <text x="28" y="436" data-lang="fr">diagnostic quand une seule caractéristique cardinale (ou un variant FBN1) est présente.</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>
+      <span data-lang="en"><b>Figure 2. Clinical features and terminology.</b> The findings most often seen in Marfan syndrome, with plain-language definitions. Severity varies widely between individuals, even within one family; no single feature is required for the diagnosis, which is made using the revised Ghent criteria.</span>
+      <span data-lang="fr"><b>Figure 2. Caractéristiques cliniques et terminologie.</b> Les manifestations les plus souvent observées dans le syndrome de Marfan, avec des définitions en langage clair. La sévérité varie beaucoup d'une personne à l'autre, même au sein d'une même famille; aucune caractéristique n'est obligatoire pour le diagnostic, posé selon les critères de Ghent révisés.</span>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ======================= SECTION 3 — AORTIC SURVEILLANCE ======================= -->
+<section id="sec3">
+  <div class="sec-head"><span class="sec-num">3</span><h2 class="sec" data-lang="en">Aortic surveillance</h2><h2 class="sec" data-lang="fr">Surveillance aortique</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For patients</span><span data-lang="fr">Pour les patients</span></div>
+    <p data-lang="en">The aorta is checked regularly with an ultrasound of the heart (echocardiogram), which is painless and uses no radiation. At first you may have two scans in the first year so your team can see how fast, if at all, the aorta is changing. After that, most people are checked once a year. If the aorta grows or reaches a certain size, scans are done more often and your team will talk with you about timing of surgery. MRI or CT scans are sometimes added to see parts of the aorta the heart ultrasound cannot reach.</p>
+  </div>
+
+  <figure class="fig">
+    <div class="svgwrap">
+      <svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Normal versus dilated aortic root anatomy">
+        <defs>
+          <marker id="arr2" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#0083d0"/></marker>
+        </defs>
+        <text x="14" y="24" class="svg-term" font-size="14" fill="#15212b" data-lang="en">The aortic root: where the aorta is measured</text>
+        <text x="14" y="24" class="svg-term" font-size="14" fill="#15212b" data-lang="fr">La racine aortique : où l'on mesure l'aorte</text>
+
+        <!-- ================= NORMAL ROOT (anatomical cutaway) ================= -->
+        <g transform="translate(70,40)">
+          <text x="95" y="8" text-anchor="middle" class="svg-term" font-size="12.5" fill="#1f7a34" data-lang="en">Normal</text>
+          <text x="95" y="8" text-anchor="middle" class="svg-term" font-size="12.5" fill="#1f7a34" data-lang="fr">Normal</text>
+
+          <!-- tubular ascending aorta -->
+          <path d="M70,250 L70,150 L120,150 L120,250 Z" fill="#eaf5fd" stroke="#0083d0" stroke-width="1.6"/>
+          <!-- sinotubular junction (waist) markers -->
+          <line x1="62" y1="150" x2="70" y2="150" stroke="#005f9e" stroke-width="1"/>
+          <line x1="120" y1="150" x2="128" y2="150" stroke="#005f9e" stroke-width="1"/>
+          <!-- three sinuses of Valsalva: two visible bulges flanking + scalloped base -->
+          <path d="M70,150
+                   C58,138 56,118 66,104
+                   C74,116 86,120 95,120
+                   C104,120 116,116 124,104
+                   C134,118 132,138 120,150
+                   Z" fill="#d4ebfa" stroke="#0083d0" stroke-width="1.6"/>
+          <!-- annulus (base of root) -->
+          <line x1="72" y1="150" x2="118" y2="150" stroke="#0083d0" stroke-width="1.2"/>
+          <!-- trileaflet aortic valve (closed, 3 cusps meeting centrally) -->
+          <path d="M72,150 Q84,136 95,150 Q106,136 118,150" fill="none" stroke="#005f9e" stroke-width="1.3"/>
+          <line x1="95" y1="150" x2="95" y2="143" stroke="#005f9e" stroke-width="1.1"/>
+          <!-- left coronary ostium -->
+          <circle cx="62" cy="120" r="3" fill="#ffffff" stroke="#005f9e" stroke-width="1.2"/>
+          <path d="M59,120 Q50,122 46,130" fill="none" stroke="#005f9e" stroke-width="1.3"/>
+          <!-- right coronary ostium -->
+          <circle cx="128" cy="120" r="3" fill="#ffffff" stroke="#005f9e" stroke-width="1.2"/>
+          <path d="M131,120 Q140,122 144,130" fill="none" stroke="#005f9e" stroke-width="1.3"/>
+
+          <!-- measurement caliper at sinuses (widest point) -->
+          <line x1="44" y1="112" x2="146" y2="112" stroke="#15212b" stroke-width="1.2" stroke-dasharray="3 2"/>
+          <line x1="44" y1="108" x2="44" y2="116" stroke="#15212b" stroke-width="1.2"/>
+          <line x1="146" y1="108" x2="146" y2="116" stroke="#15212b" stroke-width="1.2"/>
+          <rect x="68" y="96" width="54" height="15" rx="3" fill="#ffffff" opacity="0.85"/>
+          <text x="95" y="107" text-anchor="middle" class="svg-lbl" font-size="11" fill="#15212b">~3.4 cm</text>
+
+          <text x="95" y="280" text-anchor="middle" class="svg-lbl" font-size="11" fill="#6a7681" data-lang="en">sinuses of Valsalva</text>
+          <text x="95" y="280" text-anchor="middle" class="svg-lbl" font-size="11" fill="#6a7681" data-lang="fr">sinus de Valsalva</text>
+        </g>
+
+        <!-- ================= arrow ================= -->
+        <g transform="translate(312,150)">
+          <line x1="0" y1="0" x2="64" y2="0" stroke="#0083d0" stroke-width="2.5" marker-end="url(#arr2)"/>
+          <text x="32" y="-10" text-anchor="middle" class="svg-lbl" font-size="11" fill="#6a7681" data-lang="en">dilates</text>
+          <text x="32" y="-10" text-anchor="middle" class="svg-lbl" font-size="11" fill="#6a7681" data-lang="fr">se dilate</text>
+        </g>
+
+        <!-- ================= DILATED ROOT ================= -->
+        <g transform="translate(430,40)">
+          <text x="110" y="8" text-anchor="middle" class="svg-term" font-size="12.5" fill="#b3271e" data-lang="en">Dilated root</text>
+          <text x="110" y="8" text-anchor="middle" class="svg-term" font-size="12.5" fill="#b3271e" data-lang="fr">Racine dilatée</text>
+
+          <!-- ascending aorta (normal calibre above the junction) -->
+          <path d="M84,250 L84,150 L134,150 L134,250 Z" fill="#fcebe9" stroke="#b3271e" stroke-width="1.6"/>
+          <line x1="76" y1="150" x2="84" y2="150" stroke="#a32d2d" stroke-width="1"/>
+          <line x1="134" y1="150" x2="142" y2="150" stroke="#a32d2d" stroke-width="1"/>
+          <!-- ballooned sinuses (effaced, bulging outward) -->
+          <path d="M84,150
+                   C50,138 44,104 62,82
+                   C74,100 96,106 109,106
+                   C122,106 144,100 156,82
+                   C174,104 168,138 134,150
+                   Z" fill="#f8d6d1" stroke="#b3271e" stroke-width="1.6"/>
+          <line x1="86" y1="150" x2="132" y2="150" stroke="#b3271e" stroke-width="1.2"/>
+          <!-- valve leaflets stretched, central gap (regurgitation) -->
+          <path d="M86,150 Q98,134 109,149 Q120,134 132,150" fill="none" stroke="#a32d2d" stroke-width="1.3"/>
+          <!-- coronary ostia displaced -->
+          <circle cx="76" cy="106" r="3" fill="#ffffff" stroke="#a32d2d" stroke-width="1.2"/>
+          <circle cx="142" cy="106" r="3" fill="#ffffff" stroke="#a32d2d" stroke-width="1.2"/>
+
+          <!-- caliper -->
+          <line x1="44" y1="96" x2="174" y2="96" stroke="#b3271e" stroke-width="1.2" stroke-dasharray="3 2"/>
+          <line x1="44" y1="92" x2="44" y2="100" stroke="#b3271e" stroke-width="1.2"/>
+          <line x1="174" y1="92" x2="174" y2="100" stroke="#b3271e" stroke-width="1.2"/>
+          <rect x="84" y="80" width="50" height="15" rx="3" fill="#ffffff" opacity="0.85"/>
+          <text x="109" y="91" text-anchor="middle" class="svg-term" font-size="11" fill="#b3271e">≥ 5.0 cm</text>
+
+          <text x="109" y="280" text-anchor="middle" class="svg-lbl" font-size="11" fill="#6a7681" data-lang="en">sinuses balloon; valve may leak</text>
+          <text x="109" y="280" text-anchor="middle" class="svg-lbl" font-size="11" fill="#6a7681" data-lang="fr">les sinus gonflent; fuite valvulaire possible</text>
+        </g>
+
+        <!-- ================= threshold callout ================= -->
+        <rect x="14" y="312" width="692" height="38" rx="9" fill="#fcebe9" stroke="#f0a097"/>
+        <text x="28" y="330" class="svg-term" font-size="11.5" fill="#b3271e" data-lang="en">Surgery is recommended once the root reaches ≥ 5.0 cm (or ≥ 4.5 cm with high-risk features such as family</text>
+        <text x="28" y="330" class="svg-term" font-size="11.5" fill="#b3271e" data-lang="fr">La chirurgie est recommandée lorsque la racine atteint ≥ 5,0 cm (ou ≥ 4,5 cm avec facteurs à haut risque tels</text>
+        <text x="28" y="345" class="svg-lbl" font-size="11.5" fill="#b3271e" data-lang="en">history of dissection or rapid growth). Diameters shown are illustrative.</text>
+        <text x="28" y="345" class="svg-lbl" font-size="11.5" fill="#b3271e" data-lang="fr">qu'antécédents de dissection ou croissance rapide). Les diamètres illustrés sont indicatifs.</text>
+      </svg>
+    </div>
+    <figcaption>
+      <span data-lang="en"><b>Figure 3. Aortic root: normal vs dilated.</b> The aortic root (sinuses of Valsalva), where the aorta leaves the heart, is the segment most affected in Marfan syndrome and the main thing tracked on each echocardiogram. Diameters shown are illustrative; thresholds follow the 2022 ACC/AHA guideline and are individualized by body size, growth rate, and family history.</span>
+      <span data-lang="fr"><b>Figure 3. Racine aortique : normale vs dilatée.</b> La racine aortique (sinus de Valsalva), à la sortie de l'aorte du cœur, est le segment le plus touché dans le syndrome de Marfan et l'élément principal suivi à chaque échocardiographie. Les diamètres illustrés sont indicatifs; les seuils suivent la ligne directrice 2022 ACC/AHA et sont individualisés selon la taille corporelle, le taux de croissance et les antécédents familiaux.</span>
+    </figcaption>
+  </figure>
+
+  <div class="subhead"><h3 data-lang="en">Imaging schedule</h3><h3 data-lang="fr">Calendrier d'imagerie</h3><span class="pill pill-red" data-lang="en">Highest priority</span><span class="pill pill-red" data-lang="fr">Priorité maximale</span></div>
+
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">TTE (transthoracic echocardiogram) at diagnosis, then repeat at 6 months to establish growth rate <span class="tag tag-routine">Routine</span><span class="sub">Measure aortic root (sinuses of Valsalva) and ascending aorta; report Z-score and absolute diameter using leading-edge-to-leading-edge per 2022 ACC/AHA.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Annual TTE once the aorta is stable and well below threshold <span class="tag tag-routine">Routine</span><span class="sub">More frequent (e.g. every 6 months) if diameter ≥4.5 cm, rapid growth, or approaching surgical threshold.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Baseline MRA or CTA of the entire aorta (gated) at or near diagnosis <span class="tag tag-optional">Selective</span><span class="sub">Visualises segments beyond the root/ascending aorta not seen on TTE; MRI preferred to avoid radiation in a population needing lifelong imaging.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Periodic cross-sectional imaging (MRA preferred) for surveillance of the distal aorta <span class="tag tag-optional">Selective</span><span class="sub">Interval individualised; more relevant after root surgery or when distal disease is present.</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Routine high-frequency gated CT for stable patients <span class="tag tag-no">Avoid</span><span class="sub">Cumulative radiation; reserve CT for acute presentations or when MRI is unavailable or non-diagnostic.</span></span></li>
+
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">ETT (échocardiographie transthoracique) au diagnostic, puis répétée à 6 mois pour établir le taux de croissance <span class="tag tag-routine">De routine</span><span class="sub">Mesurer la racine aortique (sinus de Valsalva) et l'aorte ascendante; rapporter le score Z et le diamètre absolu selon la méthode bord d'attaque à bord d'attaque (2022 ACC/AHA).</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">ETT annuelle une fois l'aorte stable et bien sous le seuil <span class="tag tag-routine">De routine</span><span class="sub">Plus fréquente (p. ex. aux 6 mois) si diamètre ≥ 4,5 cm, croissance rapide ou approche du seuil chirurgical.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Imagerie de référence par ARM ou angio-TDM de toute l'aorte (synchronisée) au diagnostic ou peu après <span class="tag tag-optional">Sélectif</span><span class="sub">Visualise les segments au-delà de la racine et de l'aorte ascendante non vus à l'ETT; l'IRM est préférée pour éviter l'irradiation dans une population nécessitant une imagerie à vie.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Imagerie en coupe périodique (ARM préférée) pour surveiller l'aorte distale <span class="tag tag-optional">Sélectif</span><span class="sub">Intervalle individualisé; plus pertinent après chirurgie de la racine ou en présence d'atteinte distale.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">TDM synchronisée à haute fréquence de routine chez les patients stables <span class="tag tag-no">À éviter</span><span class="sub">Irradiation cumulative; réserver la TDM aux présentations aiguës ou lorsque l'IRM n'est pas disponible ou non diagnostique.</span></span></li>
+  </ul>
+
+  <div class="callout amber">
+    <div class="lbl"><i class="ti ti-ruler-measure"></i> <span data-lang="en">Measurement accuracy matters</span><span data-lang="fr">La précision des mesures compte</span></div>
+    <p data-lang="en">Because a growth rate of ≥3 mm/year can trigger surgery, measurement error must stay under ±2 mm. Use a consistent modality and measurement convention between studies, and compare like with like (the 2022 ACC/AHA conventions differ from 2010). Where a value crosses a threshold, confirm with a second modality before acting.</p>
+    <p data-lang="fr">Comme un taux de croissance ≥ 3 mm/an peut déclencher la chirurgie, l'erreur de mesure doit rester sous ±2 mm. Utiliser une modalité et une convention de mesure constantes d'un examen à l'autre, et comparer des éléments comparables (les conventions 2022 ACC/AHA diffèrent de celles de 2010). Lorsqu'une valeur franchit un seuil, confirmer par une seconde modalité avant d'agir.</p>
+  </div>
+</section>
+
+<!-- ======================= SECTION 4 — MEDICAL THERAPY ======================= -->
+<section id="sec4">
+  <div class="sec-head"><span class="sec-num">4</span><h2 class="sec" data-lang="en">Medical therapy</h2><h2 class="sec" data-lang="fr">Traitement médical</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-pill"></i> <span data-lang="en">For patients</span><span data-lang="fr">Pour les patients</span></div>
+    <p data-lang="en">Daily medication helps slow the stretching of the aorta by lowering the stress on its wall. The two main options are a beta-blocker or a medication called an ARB (such as losartan). Some people take both. These do not cure Marfan, but they buy time and may delay surgery. Take them every day as prescribed, even when you feel completely well.</p>
+  </div>
+
+  <p data-lang="en">Pharmacologic therapy aims to reduce aortic wall stress and slow root dilatation. The 2022 ACC/AHA guideline recommends treatment with a maximally tolerated beta-blocker <em>or</em> an angiotensin receptor blocker (ARB). ARBs (e.g. losartan) additionally target dysregulated TGF-β signalling; the COMPARE trial and other RCTs support ARBs as a reasonable alternative with comparable effects on root growth. Combination therapy with both a beta-blocker and an ARB is reasonable and is increasingly favoured when dilatation progresses despite monotherapy.</p>
+
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Beta-blocker or ARB at maximally tolerated dose for essentially all patients <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Combination beta-blocker + ARB when growth continues on monotherapy <span class="tag tag-optional">Reasonable</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">ACE inhibitor or calcium-channel blocker if both first-line classes are not tolerated <span class="tag tag-optional">Selective</span><span class="sub">Weaker evidence; non-dihydropyridine CCBs are sometimes avoided in aortopathy — individualise.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Bêta-bloquant ou ARA à la dose maximale tolérée pour pratiquement tous les patients <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Association bêta-bloquant + ARA si la croissance persiste en monothérapie <span class="tag tag-optional">Raisonnable</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">IECA ou bloqueur calcique si les deux classes de première intention ne sont pas tolérées <span class="tag tag-optional">Sélectif</span><span class="sub">Données plus faibles; les bloqueurs calciques non dihydropyridiniques sont parfois évités dans l'aortopathie — individualiser.</span></span></li>
+  </ul>
+</section>
+
+<!-- ======================= SECTION 5 — SURGERY ======================= -->
+<section id="sec5">
+  <div class="sec-head"><span class="sec-num">5</span><h2 class="sec" data-lang="en">Prophylactic aortic surgery and thresholds</h2><h2 class="sec" data-lang="fr">Chirurgie aortique prophylactique et seuils</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For patients</span><span data-lang="fr">Pour les patients</span></div>
+    <p data-lang="en">Surgery to replace the widened part of the aorta is planned <em>before</em> an emergency happens. Done ahead of time by an experienced surgeon, this operation is much safer than emergency surgery for a tear. Your team watches the size, growth rate, and your family history to choose the right moment. Often the aortic valve can be kept (valve-sparing surgery).</p>
+  </div>
+
+  <p data-lang="en">Prophylactic root and ascending aortic replacement is the central life-saving intervention. Thresholds below follow the 2022 ACC/AHA guideline and assume an experienced aortic surgeon.</p>
+
+  <div class="subhead"><h3 data-lang="en">When to operate (Marfan-specific)</h3><h3 data-lang="fr">Quand opérer (spécifique au Marfan)</h3></div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Aortic root diameter ≥5.0 cm — surgery recommended <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Root ≥4.5 cm <em>plus</em> high-risk features — surgery reasonable <span class="tag tag-optional">Reasonable</span><span class="sub">High-risk features: family history of dissection, rapid growth (≥3 mm/yr), diffuse root + ascending dilatation, marked arterial tortuosity.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Cross-sectional aortic root area-to-height ratio ≥10 cm²/m — surgery reasonable <span class="tag tag-optional">Reasonable</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Open surgical repair preferred over TEVAR for eligible thoracic aortic disease <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Diamètre de la racine aortique ≥ 5,0 cm — chirurgie recommandée <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Racine ≥ 4,5 cm <em>plus</em> caractéristiques à haut risque — chirurgie raisonnable <span class="tag tag-optional">Raisonnable</span><span class="sub">Caractéristiques à haut risque : antécédents familiaux de dissection, croissance rapide (≥ 3 mm/an), dilatation diffuse racine + aorte ascendante, tortuosité artérielle marquée.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Rapport surface de la racine aortique / taille ≥ 10 cm²/m — chirurgie raisonnable <span class="tag tag-optional">Raisonnable</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Réparation chirurgicale ouverte préférée à la TEVAR pour la maladie aortique thoracique admissible <span class="tag tag-routine">Recommandé</span></span></li>
+  </ul>
+
+  <div class="callout">
+    <div class="lbl"><i class="ti ti-heart"></i> <span data-lang="en">Valve-sparing root replacement</span><span data-lang="fr">Remplacement de la racine avec préservation valvulaire</span></div>
+    <p data-lang="en">When the aortic valve leaflets are healthy, valve-sparing root replacement (e.g. David procedure) avoids lifelong anticoagulation and is often preferred in younger Marfan patients. Choice of technique should be individualised with the surgical team.</p>
+    <p data-lang="fr">Lorsque les feuillets valvulaires sont sains, le remplacement de la racine avec préservation valvulaire (p. ex. intervention de David) évite l'anticoagulation à vie et est souvent préféré chez les patients Marfan plus jeunes. Le choix de la technique doit être individualisé avec l'équipe chirurgicale.</p>
+  </div>
+</section>
+
+<!-- ======================= SECTION 6 — EYES ======================= -->
+<section id="sec6">
+  <div class="sec-head"><span class="sec-num">6</span><h2 class="sec" data-lang="en">Eye surveillance</h2><h2 class="sec" data-lang="fr">Surveillance oculaire</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-eye"></i> <span data-lang="en">For patients</span><span data-lang="fr">Pour les patients</span></div>
+    <p data-lang="en">Marfan can dislocate the lens inside the eye and cause strong near-sightedness, so regular eye exams are important — especially in childhood, when treating vision problems early protects long-term sight. Tell your eye doctor you have Marfan syndrome. Seek care urgently for sudden flashes, floaters, or a curtain over your vision, which can signal a retinal detachment.</p>
+  </div>
+
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Baseline dilated ophthalmologic exam at diagnosis, including slit-lamp for ectopia lentis <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Regular ophthalmology follow-up; at least annually in childhood for refractive correction and amblyopia prevention <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Monitoring for early cataract, glaucoma, and retinal detachment risk into adulthood <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Examen ophtalmologique de référence avec dilatation au diagnostic, incluant lampe à fente pour l'ectopie du cristallin <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Suivi ophtalmologique régulier; au moins annuel durant l'enfance pour la correction réfractive et la prévention de l'amblyopie <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Surveillance du risque de cataracte précoce, de glaucome et de décollement de rétine à l'âge adulte <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<!-- ======================= SECTION 7 — SKELETAL & DURAL ======================= -->
+<section id="sec7">
+  <div class="sec-head"><span class="sec-num">7</span><h2 class="sec" data-lang="en">Skeletal and dural care</h2><h2 class="sec" data-lang="fr">Soins squelettiques et duraux</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-bone"></i> <span data-lang="en">For patients</span><span data-lang="fr">Pour les patients</span></div>
+    <p data-lang="en">Marfan can cause curvature of the spine (scoliosis), a sunken or protruding chest, flat feet, and loose joints. These are watched and treated to keep you comfortable and mobile. A specific finding called dural ectasia (a stretching of the lining around the spinal cord) can cause back or leg pain or headaches and is one of the features used to help confirm the diagnosis.</p>
+  </div>
+
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Monitor for scoliosis and chest-wall deformity, especially during growth spurts <span class="tag tag-routine">Routine</span><span class="sub">Refer to orthopaedics / spine for progressive scoliosis or symptomatic pectus.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Lumbosacral MRI for dural ectasia when diagnostically useful or symptomatic <span class="tag tag-optional">Selective</span><span class="sub">A minor Ghent criterion; not needed routinely once diagnosis is established.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Manage joint laxity, pes planus, and chronic pain with physiotherapy and supportive care <span class="tag tag-optional">Supportive</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Surveiller la scoliose et la déformation de la paroi thoracique, surtout pendant les poussées de croissance <span class="tag tag-routine">De routine</span><span class="sub">Orienter en orthopédie / colonne pour scoliose progressive ou pectus symptomatique.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">IRM lombosacrée pour l'ectasie durale lorsqu'utile au diagnostic ou symptomatique <span class="tag tag-optional">Sélectif</span><span class="sub">Critère mineur de Ghent; non requise de routine une fois le diagnostic établi.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Prise en charge de la laxité articulaire, des pieds plats et de la douleur chronique par physiothérapie et soins de soutien <span class="tag tag-optional">De soutien</span></span></li>
+  </ul>
+</section>
+
+<!-- ======================= SECTION 8 — LUNGS & OTHER ======================= -->
+<section id="sec8">
+  <div class="sec-head"><span class="sec-num">8</span><h2 class="sec" data-lang="en">Lungs, dental, and other systems</h2><h2 class="sec" data-lang="fr">Poumons, soins dentaires et autres systèmes</h2></div>
+
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Counsel on pneumothorax: sudden chest pain or breathlessness needs urgent assessment <span class="tag tag-optional">Counsel</span><span class="sub">Apical blebs predispose to spontaneous pneumothorax.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Screen for and treat obstructive sleep apnea where suspected <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Routine dental care; orthodontic assessment for high-arched palate / crowding <span class="tag tag-optional">Supportive</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Routine endocarditis prophylaxis solely for Marfan syndrome <span class="tag tag-no">Not indicated</span><span class="sub">Follow standard indications (e.g. prosthetic valve, prior endocarditis), not the Marfan diagnosis itself.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Informer sur le pneumothorax : douleur thoracique soudaine ou essoufflement nécessite une évaluation urgente <span class="tag tag-optional">Information</span><span class="sub">Les bulles apicales prédisposent au pneumothorax spontané.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Dépister et traiter l'apnée obstructive du sommeil au besoin <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Soins dentaires de routine; évaluation orthodontique pour palais ogival / encombrement <span class="tag tag-optional">De soutien</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">Prophylaxie de l'endocardite de routine uniquement en raison du Marfan <span class="tag tag-no">Non indiqué</span><span class="sub">Suivre les indications standards (p. ex. valve prothétique, endocardite antérieure), et non le diagnostic de Marfan en soi.</span></span></li>
+  </ul>
+</section>
+
+<!-- ======================= SECTION 9 — ACTIVITY ======================= -->
+<section id="sec9">
+  <div class="sec-head"><span class="sec-num">9</span><h2 class="sec" data-lang="en">Physical activity and lifestyle</h2><h2 class="sec" data-lang="fr">Activité physique et mode de vie</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-run"></i> <span data-lang="en">For patients</span><span data-lang="fr">Pour les patients</span></div>
+    <p data-lang="en">Staying active is good for you, but certain activities raise the pressure on the aorta. The general advice is to enjoy moderate, steady exercise (like brisk walking, easy cycling, or swimming for fitness) and to avoid intense competitive sports, heavy weightlifting and straining, and contact or collision sports. Your cardiologist will tailor this to your own aorta. Avoid smoking, which harms blood vessels and the lungs.</p>
+  </div>
+
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Encourage low-to-moderate aerobic activity tailored to the individual <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Avoid intense isometric / heavy resistance exertion, maximal straining (Valsalva), and contact/collision sports <span class="tag tag-no">Avoid</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Aggressive blood-pressure control; smoking cessation <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Encourager une activité aérobique faible à modérée adaptée à la personne <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">Éviter l'effort isométrique intense / résistance lourde, les efforts maximaux (Valsalva) et les sports de contact/collision <span class="tag tag-no">À éviter</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Contrôle tensionnel rigoureux; arrêt du tabac <span class="tag tag-routine">Recommandé</span></span></li>
+  </ul>
+</section>
+
+<!-- ======================= SECTION 10 — PREGNANCY ======================= -->
+<section id="sec10">
+  <div class="sec-head"><span class="sec-num">10</span><h2 class="sec" data-lang="en">Pregnancy</h2><h2 class="sec" data-lang="fr">Grossesse</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-mood-heart"></i> <span data-lang="en">For patients</span><span data-lang="fr">Pour les patients</span></div>
+    <p data-lang="en">Pregnancy puts extra strain on the aorta, so it should be planned with your cardiology and high-risk obstetrics teams. If the aorta is already enlarged, your team may recommend surgery before pregnancy. During pregnancy you will have heart-safe medication and regular aorta scans, and a delivery plan made just for you. Each child of a parent with Marfan has a 50% chance of inheriting it, which your genetics team can discuss.</p>
+  </div>
+
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Pre-pregnancy counselling and aortic assessment <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Surgery before pregnancy recommended if aortic root &gt;4.5 cm <span class="tag tag-routine">Recommended</span><span class="sub">Surgery may be considered at 4.0–4.5 cm, especially with additional dissection risk factors.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Beta-blocker therapy during pregnancy and post-partum <span class="tag tag-routine">Recommended</span><span class="sub">ARBs/ACE inhibitors are contraindicated in pregnancy.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Surveillance TTE each trimester and several weeks post-partum <span class="tag tag-routine">Routine</span><span class="sub">Use MRI without gadolinium over CT if imaging beyond the root is needed.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Conseil préconception et évaluation aortique <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Chirurgie avant la grossesse recommandée si racine aortique &gt; 4,5 cm <span class="tag tag-routine">Recommandé</span><span class="sub">La chirurgie peut être envisagée à 4,0–4,5 cm, surtout en présence de facteurs de risque additionnels de dissection.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Traitement bêta-bloquant pendant la grossesse et le post-partum <span class="tag tag-routine">Recommandé</span><span class="sub">Les ARA/IECA sont contre-indiqués pendant la grossesse.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">ETT de surveillance à chaque trimestre et plusieurs semaines post-partum <span class="tag tag-routine">De routine</span><span class="sub">Privilégier l'IRM sans gadolinium plutôt que la TDM si une imagerie au-delà de la racine est requise.</span></span></li>
+  </ul>
+</section>
+
+<!-- ======================= SECTION 11 — COUNSELLING ======================= -->
+<section id="sec11">
+  <div class="sec-head"><span class="sec-num">11</span><h2 class="sec" data-lang="en">Genetic counselling and family testing</h2><h2 class="sec" data-lang="fr">Conseil génétique et dépistage familial</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-users"></i> <span data-lang="en">For patients</span><span data-lang="fr">Pour les patients</span></div>
+    <p data-lang="en">Marfan is passed down in an autosomal dominant pattern: each child of an affected parent has a 50% chance of inheriting the gene change. Once the family's <em>FBN1</em> variant is known, relatives can have a simple, accurate blood test to learn whether they carry it. Relatives who carry it begin aorta monitoring; those who do not can usually be reassured. Family planning options, including testing during pregnancy or before pregnancy (preimplantation genetic testing), can be discussed with the genetics team.</p>
+  </div>
+
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Confirm the familial <em>FBN1</em> variant in the proband, then offer cascade testing to first-degree relatives <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Aortic imaging for at-risk first-degree relatives when the variant is unknown or testing is declined <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Discuss reproductive options: prenatal diagnosis and preimplantation genetic testing (PGT-M) <span class="tag tag-optional">On request</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Multigene aortopathy panel when phenotype overlaps LDS/vEDS or <em>FBN1</em> is negative <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Confirmer le variant familial <em>FBN1</em> chez le cas index, puis offrir le dépistage en cascade aux apparentés au premier degré <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Imagerie aortique des apparentés au premier degré à risque lorsque le variant est inconnu ou le test refusé <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Discuter des options reproductives : diagnostic prénatal et test génétique préimplantatoire (DPI-M) <span class="tag tag-optional">Sur demande</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Panel multigénique d'aortopathie si le phénotype chevauche LDS/SED-v ou si <em>FBN1</em> est négatif <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+
+  <div class="infobox">
+    <div class="lbl"><i class="ti ti-dna-2"></i> <span data-lang="en">Inheritance</span><span data-lang="fr">Transmission</span></div>
+    <p data-lang="en">Autosomal dominant, 50% transmission risk per pregnancy. Roughly 25% of cases are de novo, so an unaffected family history does not exclude Marfan in a newly diagnosed individual. Variable expressivity means severity cannot be predicted from genotype alone.</p>
+    <p data-lang="fr">Autosomique dominant, risque de transmission de 50 % par grossesse. Environ 25 % des cas sont de novo; des antécédents familiaux négatifs n'excluent donc pas le Marfan chez une personne nouvellement diagnostiquée. L'expressivité variable fait que la sévérité ne peut être prédite à partir du seul génotype.</p>
+  </div>
+</section>
+
+<!-- ======================= SECTION 12 — EMERGING ======================= -->
+<section id="sec12">
+  <div class="sec-head"><span class="sec-num">12</span><h2 class="sec" data-lang="en">Emerging and investigational directions</h2><h2 class="sec" data-lang="fr">Pistes émergentes et expérimentales</h2></div>
+
+  <div class="emerging">
+    <div class="lbl"><i class="ti ti-flask"></i> <span data-lang="en">Investigational — not standard care</span><span data-lang="fr">Expérimental — hors soins standards</span></div>
+    <p data-lang="en">Research continues into agents targeting the TGF-β pathway and combined renin-angiotensin blockade to further slow aortic growth, refined imaging biomarkers (aortic stiffness, growth-rate modelling) for earlier risk stratification, and height/BSA-normalised thresholds to better time surgery in shorter or taller patients. These approaches are evolving; manage patients according to current guidelines and consider referral to specialised aortopathy programs or trials where appropriate.</p>
+    <p data-lang="fr">La recherche se poursuit sur les agents ciblant la voie du TGF-β et le double blocage du système rénine-angiotensine pour ralentir davantage la croissance aortique, sur des biomarqueurs d'imagerie raffinés (rigidité aortique, modélisation du taux de croissance) pour une stratification plus précoce du risque, et sur des seuils normalisés selon la taille/SC pour mieux planifier la chirurgie chez les patients plus petits ou plus grands. Ces approches évoluent; prendre en charge les patients selon les lignes directrices actuelles et envisager une orientation vers des programmes spécialisés d'aortopathie ou des essais le cas échéant.</p>
+  </div>
+</section>
+
+<!-- ======================= SUMMARY ======================= -->
+<section id="sec-summary">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-list-check"></i></span><h2 class="sec" data-lang="en">Summary of recommendations</h2><h2 class="sec" data-lang="fr">Résumé des recommandations</h2></div>
+
+  <h3 data-lang="en">By system</h3><h3 data-lang="fr">Par système</h3>
+  <div class="cardgrid">
+    <div class="scard">
+      <h4><i class="ti ti-heartbeat"></i> <span data-lang="en">Aorta</span><span data-lang="fr">Aorte</span></h4>
+      <ul>
+        <li data-lang="en">TTE at diagnosis + 6 months, then annually</li>
+        <li data-lang="en">Baseline whole-aorta MRA; MRI &gt; CT for follow-up</li>
+        <li data-lang="en">Surgery at root ≥5.0 cm (≥4.5 cm with high-risk features)</li>
+        <li data-lang="fr">ETT au diagnostic + 6 mois, puis annuelle</li>
+        <li data-lang="fr">ARM de référence de toute l'aorte; IRM &gt; TDM en suivi</li>
+        <li data-lang="fr">Chirurgie si racine ≥ 5,0 cm (≥ 4,5 cm avec facteurs à haut risque)</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-eye"></i> <span data-lang="en">Eyes</span><span data-lang="fr">Yeux</span></h4>
+      <ul>
+        <li data-lang="en">Dilated exam at diagnosis</li>
+        <li data-lang="en">Annual ophthalmology in childhood</li>
+        <li data-lang="en">Watch for retinal detachment</li>
+        <li data-lang="fr">Examen avec dilatation au diagnostic</li>
+        <li data-lang="fr">Ophtalmologie annuelle dans l'enfance</li>
+        <li data-lang="fr">Surveiller le décollement de rétine</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-bone"></i> <span data-lang="en">Skeleton / dura</span><span data-lang="fr">Squelette / dure-mère</span></h4>
+      <ul>
+        <li data-lang="en">Scoliosis &amp; pectus monitoring in growth</li>
+        <li data-lang="en">Lumbosacral MRI for dural ectasia if useful</li>
+        <li data-lang="fr">Surveillance scoliose et pectus en croissance</li>
+        <li data-lang="fr">IRM lombosacrée pour ectasie durale si utile</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-lungs"></i> <span data-lang="en">Lungs / other</span><span data-lang="fr">Poumons / autres</span></h4>
+      <ul>
+        <li data-lang="en">Pneumothorax counselling</li>
+        <li data-lang="en">No Marfan-specific endocarditis prophylaxis</li>
+        <li data-lang="fr">Information sur le pneumothorax</li>
+        <li data-lang="fr">Pas de prophylaxie d'endocardite spécifique au Marfan</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 data-lang="en">Cross-cutting</h3><h3 data-lang="fr">Transversal</h3>
+  <div class="cardgrid">
+    <div class="scard">
+      <h4><i class="ti ti-pill"></i> <span data-lang="en">Medical therapy</span><span data-lang="fr">Traitement médical</span></h4>
+      <ul>
+        <li data-lang="en">Beta-blocker or ARB, max tolerated</li>
+        <li data-lang="en">Combination if growth continues</li>
+        <li data-lang="fr">Bêta-bloquant ou ARA, dose max tolérée</li>
+        <li data-lang="fr">Association si la croissance persiste</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-run"></i> <span data-lang="en">Lifestyle</span><span data-lang="fr">Mode de vie</span></h4>
+      <ul>
+        <li data-lang="en">Moderate aerobic activity</li>
+        <li data-lang="en">Avoid heavy lifting, straining, contact sport</li>
+        <li data-lang="en">BP control; no smoking</li>
+        <li data-lang="fr">Activité aérobique modérée</li>
+        <li data-lang="fr">Éviter charges lourdes, efforts, sports de contact</li>
+        <li data-lang="fr">Contrôle TA; sans tabac</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-mood-heart"></i> <span data-lang="en">Pregnancy</span><span data-lang="fr">Grossesse</span></h4>
+      <ul>
+        <li data-lang="en">Plan ahead; surgery if root &gt;4.5 cm</li>
+        <li data-lang="en">Beta-blocker; TTE each trimester</li>
+        <li data-lang="fr">Planifier; chirurgie si racine &gt; 4,5 cm</li>
+        <li data-lang="fr">Bêta-bloquant; ETT chaque trimestre</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-users"></i> <span data-lang="en">Family</span><span data-lang="fr">Famille</span></h4>
+      <ul>
+        <li data-lang="en">Cascade <em>FBN1</em> testing, 50% risk</li>
+        <li data-lang="en">Image at-risk relatives if variant unknown</li>
+        <li data-lang="fr">Dépistage <em>FBN1</em> en cascade, risque 50 %</li>
+        <li data-lang="fr">Imager les apparentés à risque si variant inconnu</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= REFERENCES ======================= -->
+<section id="sec-refs">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-book"></i></span><h2 class="sec" data-lang="en">References</h2><h2 class="sec" data-lang="fr">Références</h2></div>
+  <ol class="refs">
+    <li>Isselbacher EM, Preventza O, Hamilton Black J, et al. 2022 ACC/AHA Guideline for the Diagnosis and Management of Aortic Disease: A Report of the American Heart Association/American College of Cardiology Joint Committee on Clinical Practice Guidelines. <em>Circulation</em>. 2022;146(24):e334–e482.</li>
+    <li>Loeys BL, Dietz HC, Braverman AC, et al. The revised Ghent nosology for the Marfan syndrome. <em>J Med Genet</em>. 2010;47(7):476–485.</li>
+    <li>Milewicz DM, Braverman AC, De Backer J, et al. Marfan syndrome. <em>Nat Rev Dis Primers</em>. 2021;7(1):64.</li>
+    <li>Brooke BS, Habashi JP, Judge DP, et al. Angiotensin II blockade and aortic-root dilation in Marfan's syndrome. <em>N Engl J Med</em>. 2008;358(26):2787–2795.</li>
+    <li>Groenink M, den Hartog AW, Franken R, et al. Losartan reduces aortic dilatation rate in adults with Marfan syndrome: a randomized controlled trial (COMPARE). <em>Eur Heart J</em>. 2013;34(45):3491–3500.</li>
+    <li>Lacro RV, Dietz HC, Sleeper LA, et al. Atenolol versus losartan in children and young adults with Marfan's syndrome. <em>N Engl J Med</em>. 2014;371(22):2061–2071.</li>
+    <li>Ramirez F, Dietz HC. Marfan syndrome: from molecular pathogenesis to clinical treatment. <em>Curr Opin Genet Dev</em>. 2007;17(3):252–258.</li>
+    <li>Bhandari R, et al. ACC/AHA Guidelines for Aortic Disease. <em>StatPearls</em>. Treasure Island (FL): StatPearls Publishing; 2024.</li>
+    <li>The Marfan Foundation. Diagnostic criteria and management guidance. marfan.org. Accessed June 2026.</li>
+    <li>European Reference Network on Rare Multisystemic Vascular Diseases (VASCERN) — Heritable Thoracic Aortic Disease management recommendations.</li>
+  </ol>
+
+  <h3 data-lang="en" style="margin-top:26px;">Image credits</h3>
+  <h3 data-lang="fr" style="margin-top:26px;">Crédits des images</h3>
+  <p data-lang="en" style="font-size:13px; color:var(--ink-faint); margin-bottom:8px;">Original diagrams (Figures 1–3) are the work of the author. Any clinical photographs added to this document are reused under their stated licences, with attribution below. Confirm each licence on its source page before publication.</p>
+  <p data-lang="fr" style="font-size:13px; color:var(--ink-faint); margin-bottom:8px;">Les schémas originaux (Figures 1 à 3) sont l'œuvre de l'auteur. Toute photographie clinique ajoutée à ce document est réutilisée selon la licence indiquée, avec l'attribution ci-dessous. Confirmer chaque licence sur sa page source avant publication.</p>
+  <ol class="refs">
+    <li>
+      <span data-lang="en">Figures 1–3 (pathophysiology cascade, clinical-features overview, aortic root anatomy): original illustrations © 2026 Dr. Andrew Shuen.</span>
+      <span data-lang="fr">Figures 1 à 3 (cascade physiopathologique, aperçu des caractéristiques cliniques, anatomie de la racine aortique) : illustrations originales © 2026 Dr Andrew Shuen.</span>
+    </li>
+    <li>
+      <span data-lang="en">Hand signs (arachnodactyly, thumb and wrist signs): Pollock et al., <i>Curr Rheumatol Rep</i> 2021, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8626407/">PMC8626407</a>, CC BY 4.0.</span>
+      <span data-lang="fr">Signes de la main (arachnodactylie, signes du pouce et du poignet) : Pollock et coll., <i>Curr Rheumatol Rep</i> 2021, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8626407/">PMC8626407</a>, CC BY 4.0.</span>
+    </li>
+    <li>
+      <span data-lang="en">Ectopia lentis: [author], via Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/File:Ectopia_Lentis_in_Marfan_syndrome.jpg">file page</a>, [licence — confirm on page].</span>
+      <span data-lang="fr">Ectopie du cristallin : [auteur], via Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/File:Ectopia_Lentis_in_Marfan_syndrome.jpg">page du fichier</a>, [licence — à confirmer sur la page].</span>
+    </li>
+    <li>
+      <span data-lang="en">Dilated aortic root (echocardiography): Thomas et al., <i>Proc (Bayl Univ Med Cent)</i> 2019, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6793975/">PMC6793975</a> (confirm licence before use).</span>
+      <span data-lang="fr">Racine aortique dilatée (échocardiographie) : Thomas et coll., <i>Proc (Bayl Univ Med Cent)</i> 2019, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6793975/">PMC6793975</a> (confirmer la licence avant usage).</span>
+    </li>
+    <li>
+      <span data-lang="en">Aortic aneurysm (CT angiography): [authors], <i>Cureus</i> 2024, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11693403/">PMC11693403</a>, CC BY 4.0.</span>
+      <span data-lang="fr">Anévrisme aortique (angio-TDM) : [auteurs], <i>Cureus</i> 2024, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11693403/">PMC11693403</a>, CC BY 4.0.</span>
+    </li>
+  </ol>
+
+  <div class="footer">
+    <p data-lang="en"><strong>Disclaimer.</strong> This protocol supports but does not replace clinical judgment and individualized care. Guidelines evolve; verify all intervals, thresholds, doses, and recommendations against current society guidelines (ACC/AHA, ACMG, relevant specialty societies) before clinical use. Reference citations were drawn from current literature and should be confirmed against the primary sources.</p>
+    <p data-lang="fr"><strong>Avis.</strong> Ce protocole soutient mais ne remplace pas le jugement clinique et les soins individualisés. Les lignes directrices évoluent; vérifier tous les intervalles, seuils, doses et recommandations par rapport aux lignes directrices actuelles des sociétés savantes (ACC/AHA, ACMG, sociétés spécialisées pertinentes) avant tout usage clinique. Les références proviennent de la littérature actuelle et doivent être confirmées auprès des sources primaires.</p>
+    <p>© 2026 Dr. Andrew Shuen · Cancer Prevention Centre, Jewish General Hospital, Montreal · <span data-lang="en">For educational use.</span><span data-lang="fr">À usage éducatif.</span></p>
+  </div>
+</section>
+
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-en','lang-fr');
+  document.body.classList.add('lang-'+l);
+  document.getElementById('enTab').classList.toggle('active', l==='en');
+  document.getElementById('frTab').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+}
+function togglePdf(){
+  document.body.classList.toggle('pdf-preview');
+  document.getElementById('pdfBtn').classList.toggle('active');
+}
+</script>
+</body>
+</html>

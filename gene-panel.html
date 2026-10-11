@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gene panel testing — Patient guide</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+  :root{
+    --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+    --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+    --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+    --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+    --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+    --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+    --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+    --radius:14px; --radius-sm:9px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:18px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 22px 80px;}
+  .ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; line-height:1.2;}
+  a{color:var(--brand); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  /* Language toggle */
+  .langbar{
+    position:sticky; top:0; z-index:50; background:var(--paper);
+    border-bottom:1px solid var(--line); padding:10px 22px;
+    display:flex; gap:8px; justify-content:space-between; align-items:center;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .langbar-left{display:flex; gap:8px; align-items:center;}
+  .langbar-right{display:flex; gap:8px; align-items:center;}
+  .langbar button{
+    border:1px solid var(--brand-line); background:var(--paper); color:var(--brand-dark);
+    padding:7px 18px; border-radius:999px; cursor:pointer; font-size:14px; font-weight:600;
+    letter-spacing:.02em;
+  }
+  .langbar-right button.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+  .langbar .util-btn{border-color:var(--line); color:var(--ink-soft); padding:7px 14px;
+    display:inline-flex; align-items:center; gap:6px;}
+  .langbar .util-btn:hover{background:var(--cream); color:var(--brand-dark); border-color:var(--brand-line);}
+  .langbar .util-btn.active{background:var(--brand-bg); color:var(--brand-dark); border-color:var(--brand-line);}
+  @media(max-width:560px){
+    .langbar{flex-wrap:wrap; gap:8px;}
+    .langbar .util-btn{padding:7px 11px; font-size:13px;}
+  }
+
+  /* Masthead */
+  .masthead{padding:46px 0 26px; border-bottom:3px double var(--line);}
+  .eyebrow{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; text-transform:uppercase;
+    letter-spacing:.16em; font-size:12px; color:var(--brand-dark); font-weight:700;}
+  .masthead h1{font-size:38px; margin:12px 0 8px;}
+  .standfirst{font-size:20px; color:var(--ink-soft); margin:0 0 22px;}
+  .authpanel{
+    background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:16px 18px; font-size:15.5px; color:var(--ink-soft);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .authpanel strong{color:var(--ink);}
+  .meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .chip{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+    background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);
+    padding:5px 11px; border-radius:999px; font-weight:600;}
+  .legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:18px; font-size:13.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--ink-soft);}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .swatch{width:14px; height:14px; border-radius:4px; display:inline-block;}
+
+  /* TOC */
+  .toc{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 24px; margin:30px 0; }
+  .toc h2{font-size:15px; text-transform:uppercase; letter-spacing:.12em; margin:0 0 14px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--brand-dark);}
+  .toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:15.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .toc li{margin-bottom:8px; break-inside:avoid;}
+  @media(max-width:640px){.toc ol{columns:1;}}
+
+  /* Sections */
+  section{padding:30px 0; border-top:1px solid var(--line-soft);}
+  .secnum{display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px;
+    background:var(--brand); color:#fff; border-radius:9px; font-weight:700; font-size:17px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; margin-right:12px; vertical-align:middle;}
+  h2.sec{font-size:27px; margin:0 0 16px; display:flex; align-items:center;}
+  h3{font-size:20px; color:var(--brand-dark); margin:26px 0 8px;}
+
+  /* Patient panel */
+  .patient{background:var(--brand-bg); border:1px solid var(--brand-line);
+    border-radius:var(--radius); padding:18px 20px; margin:14px 0 20px;}
+  .patient .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px;
+    text-transform:uppercase; letter-spacing:.13em; color:var(--brand-dark); font-weight:700;
+    display:flex; align-items:center; gap:7px; margin-bottom:8px;}
+  .patient p{margin:8px 0; color:#1f3a4d;}
+
+  /* Gene/subtype pill header */
+  .genehead{display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin:24px 0 6px;}
+  .genepill{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+    background:var(--ink); color:#fff; padding:6px 14px; border-radius:8px; font-size:15px;}
+  .badge{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; font-weight:700;
+    padding:4px 11px; border-radius:999px;}
+  .badge.high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+  .badge.mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+  .badge.low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+  /* Checklist */
+  .check{list-style:none; padding:0; margin:14px 0;}
+  .check li{display:flex; gap:11px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+    align-items:flex-start;}
+  .check li i{font-size:20px; flex-shrink:0; margin-top:1px;}
+  .ti-check{color:var(--brand);} .ti-minus{color:var(--ink-faint);} .ti-x{color:var(--red);}
+  .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.06em; padding:2px 8px; border-radius:5px; margin-left:6px;
+    white-space:nowrap;}
+  .tag.routine{background:var(--brand-bg); color:var(--brand-dark);}
+  .tag.optional{background:var(--amber-bg); color:var(--amber);}
+  .tag.notrec{background:var(--line-soft); color:var(--ink-faint);}
+
+  /* Tables */
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:15.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  th,td{text-align:left; padding:11px 13px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{background:var(--cream); color:var(--brand-dark); font-size:13px; text-transform:uppercase;
+    letter-spacing:.05em;}
+  .pill{display:inline-block; padding:3px 10px; border-radius:999px; font-size:12.5px; font-weight:700;}
+  .pill.high{background:var(--red-bg); color:var(--red);}
+  .pill.mod{background:var(--amber-bg); color:var(--amber);}
+  .pill.low{background:var(--brand-bg); color:var(--brand-dark);}
+
+  /* Callouts */
+  .rec{background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:14px 18px; margin:16px 0;}
+  .info{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm);
+    padding:14px 18px; margin:16px 0;}
+  .info .ptag, .emerging .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px;
+    text-transform:uppercase; letter-spacing:.13em; font-weight:700; display:flex; align-items:center;
+    gap:7px; margin-bottom:6px;}
+  .info .ptag{color:var(--brand-dark);}
+  .emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm);
+    padding:14px 18px; margin:16px 0;}
+  .emerging .ptag{color:var(--purple);}
+
+  /* Summary cards */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin:18px 0;}
+  .card{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand);
+    border-radius:var(--radius-sm); padding:15px 17px; font-size:15px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .card h4{margin:0 0 7px; font-size:15px; color:var(--brand-dark);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .card.amber{border-top-color:var(--amber-line);}
+  .card.amber h4{color:var(--amber);}
+
+  /* References */
+  ol.refs{font-size:14.5px; color:var(--ink-soft); line-height:1.5;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; padding-left:22px;}
+  ol.refs li{margin-bottom:10px;}
+
+  .footer{margin-top:40px; padding-top:18px; border-top:3px double var(--line);
+    font-size:13.5px; color:var(--ink-faint); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+  .lang-fr{display:none;}
+
+  /* ============== ON-SCREEN PDF PREVIEW (mirrors print layout) ============== */
+  body.pdf-preview{background:#5b6b78;}
+  body.pdf-preview .wrap{
+    max-width:816px;            /* 8.5in at 96dpi */
+    background:#fff; margin:24px auto 60px;
+    padding:54px 57px;          /* ~ Letter margins */
+    box-shadow:0 6px 28px rgba(0,0,0,.28); border-radius:2px;
+  }
+  body.pdf-preview{font-size:14px; line-height:1.45;}
+  body.pdf-preview .toc{display:none;}
+  body.pdf-preview .masthead{padding:0 0 16px; margin-bottom:6px;}
+  body.pdf-preview .masthead h1{font-size:30px; margin:8px 0 6px;}
+  body.pdf-preview .standfirst{font-size:16px; margin-bottom:16px;}
+  body.pdf-preview section{padding:14px 0;}
+  body.pdf-preview h2.sec{font-size:20px; margin:0 0 9px;}
+  body.pdf-preview .secnum{width:28px; height:28px; font-size:15px; margin-right:10px;}
+  body.pdf-preview h3{font-size:15.5px; margin:14px 0 5px;}
+  body.pdf-preview .patient{margin:9px 0 13px; padding:12px 15px;}
+  body.pdf-preview .patient p{margin:6px 0;}
+  body.pdf-preview .check li{padding:7px 0;}
+  body.pdf-preview table{font-size:12.5px;}
+  body.pdf-preview .rec,
+  body.pdf-preview .info,
+  body.pdf-preview .emerging{font-size:13px; padding:11px 14px;}
+  body.pdf-preview .cards{grid-template-columns:1fr 1fr; gap:11px;}
+  body.pdf-preview .card{font-size:13px;}
+  body.pdf-preview ol.refs{font-size:12.5px;}
+  /* visual page-break guides matching the forced print breaks */
+  body.pdf-preview #en7,
+  body.pdf-preview #fr7{
+    border-top:2px dashed var(--brand-line); margin-top:14px; padding-top:20px;
+    position:relative;
+  }
+  body.pdf-preview #en7::before,
+  body.pdf-preview #fr7::before{
+    content:"\2702  new page in PDF"; position:absolute; top:-9px; right:0;
+    background:#fff; padding:0 8px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:10px; color:var(--brand-dark); letter-spacing:.04em;
+  }
+
+  /* ===================== PRINT / PDF ===================== */
+  @page{
+    size:Letter;
+    margin:16mm 15mm 15mm;
+  }
+  @media print{
+    :root{ --cream:#fff; }
+    html,body{background:#fff !important;}
+    body{
+      font-size:10.5pt; line-height:1.4; color:#15212b;
+      -webkit-print-color-adjust:exact; print-color-adjust:exact;
+    }
+    .wrap{max-width:100%; padding:0;}
+
+    /* Hide on-screen UI; print only the active language */
+    .langbar{display:none !important;}
+    .toc{display:none !important;}                 /* TOC not useful in a flat PDF */
+    .lang-fr[style*="block"]{}                      /* respect JS-set display */
+
+    a{color:#15212b !important; text-decoration:none;}
+
+    /* Masthead tightened, centred feel, no oversize gaps */
+    .masthead{padding:0 0 14px; margin-bottom:6px;}
+    .masthead h1{font-size:23pt; margin:8px 0 6px;}
+    .standfirst{font-size:12pt; margin-bottom:14px;}
+    .eyebrow{font-size:8.5pt;}
+    .authpanel{font-size:10pt; padding:10px 12px;}
+    .meta{margin-top:10px;}
+    .chip{font-size:8.5pt; padding:3px 8px;}
+    .legend{font-size:9pt; margin-top:12px; gap:12px;}
+
+    /* Section flow: avoid orphaned headers, keep blocks intact */
+    section{
+      padding:12px 0; border-top:1px solid var(--line-soft);
+      break-inside:auto;
+    }
+    h2.sec{
+      font-size:15pt; margin:0 0 8px;
+      break-after:avoid; page-break-after:avoid;
+    }
+    h3{
+      font-size:11.5pt; margin:12px 0 4px;
+      break-after:avoid; page-break-after:avoid;
+    }
+    .secnum{width:26px; height:26px; font-size:12pt; margin-right:9px;}
+
+    /* Keep cohesive units together */
+    .patient,.rec,.info,.emerging,.card,
+    .genehead,.check li,tr,thead,
+    .cards .card{
+      break-inside:avoid; page-break-inside:avoid;
+    }
+    .genehead{break-after:avoid; page-break-after:avoid;}
+    .patient{margin:8px 0 12px; padding:11px 14px;}
+    .patient p{margin:5px 0;}
+
+    /* Checklists tighter */
+    .check li{padding:6px 0;}
+    .check li i{font-size:13pt;}
+    .tag{font-size:7.5pt; padding:1px 6px;}
+
+    /* Tables print cleanly, headers repeat across page breaks */
+    table{font-size:9pt; margin:10px 0; break-inside:auto;}
+    thead{display:table-header-group;}
+    th,td{padding:6px 8px;}
+    .pill{font-size:8pt; padding:2px 7px;}
+
+    /* Callouts */
+    .rec,.info,.emerging{padding:9px 12px; margin:10px 0; font-size:9.5pt;}
+    .info .ptag,.emerging .ptag,.patient .ptag{font-size:8.5pt; margin-bottom:4px;}
+
+    /* Summary cards: 2-up grid that fits the page width */
+    .cards{
+      grid-template-columns:1fr 1fr; gap:9px; margin:10px 0;
+      break-inside:auto;
+    }
+    .card{padding:10px 12px; font-size:9.5pt;}
+    .card h4{font-size:10pt; margin-bottom:5px;}
+
+    /* References: avoid splitting a single citation across pages */
+    ol.refs{font-size:9pt;}
+    ol.refs li{margin-bottom:6px; break-inside:avoid; page-break-inside:avoid;}
+
+    /* Each major section can start fresh if it would otherwise be cramped;
+       use sparingly: force a fresh page before the summary and references */
+    #en7, #fr7{ break-before:page; page-break-before:always; }
+
+    .footer{
+      margin-top:18px; padding-top:12px; font-size:8.5pt;
+      break-inside:avoid;
+    }
+
+    /* Repeating running footer with page numbers */
+    @page{
+      @bottom-center{
+        content:"Gene panel testing";
+        font-family:Helvetica,Arial,sans-serif; font-size:7.5pt; color:#6a7681;
+      }
+      @bottom-right{
+        content:"Page " counter(page) " of " counter(pages);
+        font-family:Helvetica,Arial,sans-serif; font-size:7.5pt; color:#6a7681;
+      }
+    }
+  }
+
+  /* ---- figures (ported from primer, ATM palette) ---- */
+  .fig{margin:18px 0 6px; border:1px solid var(--line); border-radius:var(--radius);
+    background:#fbfdfe; padding:18px 16px 12px;}
+  .fig svg{width:100%; height:auto; display:block;}
+  .fig figcaption{margin-top:10px; font-size:13px; color:var(--ink-faint); line-height:1.45;
+    text-align:center; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .fig-key{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--brand-dark); font-weight:700;}
+  .fig text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  @media print{
+    .fig{break-inside:avoid; page-break-inside:avoid; padding:10px 12px; margin:10px 0 4px;}
+    .fig figcaption{font-size:8.5pt;}
+  }
+</style>
+</head>
+<body>
+<div class="langbar ui">
+  <div class="langbar-left">
+    <button id="btn-pdf" class="util-btn" onclick="togglePdfView()" title="Preview the print/PDF layout on screen"><i class="ti ti-file-type-pdf"></i> PDF view</button>
+    <button id="btn-print" class="util-btn" onclick="window.print()" title="Print or save as PDF"><i class="ti ti-printer"></i> Print / Save PDF</button>
+    <a class="util-btn" href="index.html" title="Back to all protocols" style="text-decoration:none"><i class="ti ti-arrow-left"></i> All protocols</a>
+  </div>
+  <div class="langbar-right">
+    <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+    <button id="btn-fr" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+<div class="wrap">
+<div class="lang-en" id="lang-en"><header class="masthead"><div class="eyebrow">Patient Education · Genetic Testing</div><h1>Gene panel testing</h1><p class="standfirst">A test that reads a defined set of genes at the same time, chosen because they are all linked to the same kind of health concern. It is the workhorse of hereditary testing — broad enough to catch several possibilities, focused enough to keep the answer clear.</p><div class="authpanel"><strong>Dr. Andrew Shuen, MD PhD FRCPC DABMGG</strong><br>Medical Genetics, Jewish General Hospital (JGH), Montreal</div><div class="meta"><span class="chip">Molecular test</span><span class="chip">Reads many genes at once</span><span class="chip">Letter-by-letter (sequencing)</span><span class="chip">Often the first molecular test</span></div></header><nav class="toc ui"><h2>Contents</h2><ol><li><a href="#en1">What it is</a></li><li><a href="#en2">What it looks at</a></li><li><a href="#en3">How it works</a></li><li><a href="#en4">What it finds</a></li><li><a href="#en5">What it can miss</a></li><li><a href="#en6">Good to know</a></li><li><a href="#en7">Sorting out the words</a></li><li><a href="#en8">Remember</a></li></ol></nav><section id="en1"><h2 class="sec"><span class="secnum">1</span> What it is</h2><div class="patient"><div class="ptag"><i class="ti ti-user-heart"></i> For patients</div><p>A gene panel reads a set of genes in one test — anywhere from a handful to a few hundred. The genes are grouped together because they are all connected to the same kind of question, such as hereditary breast and ovarian cancer, the Lynch-related cancers, or inherited heart conditions. Rather than guess at a single gene, the panel checks the whole relevant group at once.</p><p>This is usually the first molecular test offered when your personal or family history points to an area of risk but not to one specific gene. It gives the lab the best chance of finding an explanation in a single run, and it is efficient — one sample, one test, one report.</p></div><figure class="fig"><svg viewBox="0 0 700 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A scale of DNA from a single letter, to one gene, to a chromosome, to the whole genome. A gene panel reads a chosen cluster of genes.">
+  <!-- title -->
+  <text x="20" y="26" font-size="13.5" font-weight="700" fill="var(--brand-dark)">How much DNA is read — smallest to largest</text>
+
+  <!-- baseline -->
+  <line x1="24" y1="118" x2="676" y2="118" stroke="var(--line)" stroke-width="1.5"/>
+
+  <!-- tier 1: one letter -->
+  <g>
+    <rect x="40" y="86" width="26" height="26" rx="4" fill="#fff" stroke="var(--line)" stroke-width="1.4"/>
+    <text x="53" y="104" text-anchor="middle" font-size="12" fill="var(--ink-faint)" font-weight="700">A</text>
+    <text x="53" y="138" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">one letter</text>
+  </g>
+
+  <!-- tier 2: one gene -->
+  <g>
+    <rect x="150" y="80" width="70" height="38" rx="5" fill="#fff" stroke="var(--line)" stroke-width="1.4"/>
+    <!-- little gene ticks -->
+    <line x1="160" y1="99" x2="210" y2="99" stroke="var(--ink-faint)" stroke-width="2"/>
+    <text x="185" y="138" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">one gene</text>
+  </g>
+
+  <!-- tier 3: panel = cluster of genes (highlighted) -->
+  <g>
+    <rect x="285" y="64" width="150" height="54" rx="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/>
+    <!-- multiple gene bars inside -->
+    <line x1="298" y1="80" x2="338" y2="80" stroke="var(--brand-dark)" stroke-width="2.4"/>
+    <line x1="298" y1="92" x2="360" y2="92" stroke="var(--brand-dark)" stroke-width="2.4"/>
+    <line x1="298" y1="104" x2="330" y2="104" stroke="var(--brand-dark)" stroke-width="2.4"/>
+    <line x1="370" y1="80" x2="420" y2="80" stroke="var(--brand-dark)" stroke-width="2.4"/>
+    <line x1="370" y1="92" x2="408" y2="92" stroke="var(--brand-dark)" stroke-width="2.4"/>
+    <line x1="370" y1="104" x2="422" y2="104" stroke="var(--brand-dark)" stroke-width="2.4"/>
+    <text x="360" y="138" text-anchor="middle" font-size="12" fill="var(--brand-dark)" font-weight="700">a panel: many chosen genes</text>
+  </g>
+
+  <!-- tier 4: whole genome -->
+  <g>
+    <rect x="500" y="74" width="160" height="44" rx="6" fill="#fff" stroke="var(--line)" stroke-width="1.4"/>
+    <!-- dense lines suggesting all genes -->
+    <line x1="510" y1="84" x2="650" y2="84" stroke="#c7d6dc" stroke-width="2"/>
+    <line x1="510" y1="92" x2="650" y2="92" stroke="#c7d6dc" stroke-width="2"/>
+    <line x1="510" y1="100" x2="650" y2="100" stroke="#c7d6dc" stroke-width="2"/>
+    <line x1="510" y1="108" x2="650" y2="108" stroke="#c7d6dc" stroke-width="2"/>
+    <text x="580" y="138" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">whole genome</text>
+  </g>
+
+  <!-- bracket under panel -->
+  <path d="M285 150 q0 6 6 6 l69 0 m0 0 l69 0 q6 0 6 -6" fill="none" stroke="var(--brand)" stroke-width="1.4"/>
+  <text x="360" y="166" text-anchor="middle" font-size="11" fill="var(--brand)" font-style="italic">this test</text>
+</svg><figcaption>A <span class="fig-key">panel</span> reads a chosen cluster of genes at once — more than a single-gene test, far less than the whole genome.</figcaption></figure><div class="analogy"><i class="ti ti-book"></i> Picture your genes as recipes in a very long cookbook. A single-gene test reads one recipe; a panel reads every recipe in one chapter — say, all the desserts — because that is where the answer is most likely to be.</div></section><section id="en2"><h2 class="sec"><span class="secnum">2</span> What it looks at</h2><p>The lab reads each gene on the list letter by letter, looking for changes in the spelling — what geneticists call variants. The exact genes on a panel are chosen by experts to match a clinical question, and panels are updated over time as knowledge grows, so a panel ordered today may include genes that were not on it a few years ago.</p><p>What a panel deliberately does <em>not</em> do is read genes outside its list. That focus is a feature, not a gap: a smaller, well-chosen panel tends to give a cleaner answer with fewer uncertain findings than reading everything. Your team picks the panel whose gene list best fits your history.</p><figure class="fig"><svg viewBox="0 0 700 232" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A grid representing all of a person's genes. Only the genes on the panel's list are read, shown lit; the rest are greyed out and not read.">
+  <text x="20" y="24" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Your ~20,000 genes — a panel reads only its chosen list</text>
+  <!-- 12 x 6 dot grid; a contiguous-ish subset lit -->
+  <g>
+    <!-- generated below via pattern: we draw 72 dots -->
+    <!-- row spacing 26, col spacing 54, start x40 y56 -->
+    <!-- LIT set indices -->
+    <!-- We'll mark a cluster lit: cols 3-6 of rows 1-3 area -->
+  </g>
+  <!-- legend -->
+  <rect x="360" y="206" width="13" height="13" rx="3" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.6"/>
+  <text x="380" y="217" font-size="11.5" fill="var(--brand-dark)" font-weight="700">on the panel — read</text>
+  <rect x="540" y="206" width="13" height="13" rx="3" fill="#f1f4f6" stroke="var(--line)"/>
+  <text x="560" y="217" font-size="11.5" fill="var(--ink-faint)">not read</text>
+  <!-- DOTS -->
+  <circle cx="40" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="93" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="146" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="199" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="252" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="305" cy="50" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="358" cy="50" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="411" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="464" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="517" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="570" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="623" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="40" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="93" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="146" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="199" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="252" cy="76" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="305" cy="76" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="358" cy="76" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="411" cy="76" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="464" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="517" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="570" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="623" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="40" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="93" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="146" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="199" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="252" cy="102" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="305" cy="102" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="358" cy="102" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="411" cy="102" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="464" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="517" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="570" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="623" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="40" cy="128" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="93" cy="128" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="146" cy="128" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="199" cy="128" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="252" cy="128" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="305" cy="128" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="358" cy="128" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="411" cy="128" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="464" cy="128" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="517" cy="128" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="570" cy="128" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="623" cy="128" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="40" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="93" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="146" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="199" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="252" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="305" cy="154" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="358" cy="154" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="411" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="464" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="517" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="570" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="623" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="40" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="93" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="146" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="199" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="252" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="305" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="358" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="411" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="464" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="517" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="570" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="623" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+</svg><figcaption>A panel looks closely at a defined set of genes linked to one concern. <span class="fig-key">Any gene not on the list</span> is not examined — a cause elsewhere would be missed.</figcaption></figure></section><section id="en3"><h2 class="sec"><span class="secnum">3</span> How it works</h2><p>The test starts with a small sample of blood or, sometimes, saliva. In the lab, the DNA is separated out from your cells and the genes on the panel are read letter by letter. Each gene is then compared against a reference — a standard, correctly spelled version of that gene agreed upon by scientists. Wherever your spelling differs from the reference, that difference is flagged.</p><p>A flagged change is not automatically a problem. Each one is weighed against large databases and the medical literature and sorted on a five-step scale from benign to pathogenic. Only changes judged pathogenic or likely pathogenic are used to guide your care; the rest are either harmless or, occasionally, uncertain. Because the panel is a fixed list, exactly the same genes are read for everyone who has that panel, which makes results consistent and comparable.</p><p>Where it helps, we often test the parents alongside the patient at the same time — this is called trio testing. Seeing whether a change was inherited from a parent or appeared new in the child makes a flagged variant much easier to interpret, and it can turn an uncertain result into a clear one. Your team will let you know if trio testing would be useful in your case.</p><figure class="fig"><svg viewBox="0 0 700 132" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four steps: a blood or saliva sample is taken, DNA is separated out, the listed genes are read and compared to a reference, and differences are flagged for review.">
+  <text x="20" y="24" font-size="13.5" font-weight="700" fill="var(--brand-dark)">From sample to result</text>
+  <rect x="14" y="40" width="153" height="78" rx="11" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/>
+  <circle cx="32" cy="58" r="12" fill="var(--brand)"/>
+  <text x="32" y="62" text-anchor="middle" font-size="12.5" fill="#fff" font-weight="700">1</text>
+  <text x="90" y="84" text-anchor="middle" font-size="12" fill="var(--ink)">Blood or saliva sample</text>
+  <path d="M171 79 l11 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="187" y="40" width="153" height="78" rx="11" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/>
+  <circle cx="205" cy="58" r="12" fill="var(--brand)"/>
+  <text x="205" y="62" text-anchor="middle" font-size="12.5" fill="#fff" font-weight="700">2</text>
+  <text x="264" y="84" text-anchor="middle" font-size="12" fill="var(--ink)">DNA separated from</text>
+  <text x="264" y="99" text-anchor="middle" font-size="12" fill="var(--ink)">cells</text>
+  <path d="M344 79 l11 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="360" y="40" width="153" height="78" rx="11" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/>
+  <circle cx="378" cy="58" r="12" fill="var(--brand)"/>
+  <text x="378" y="62" text-anchor="middle" font-size="12.5" fill="#fff" font-weight="700">3</text>
+  <text x="436" y="84" text-anchor="middle" font-size="12" fill="var(--ink)">Listed genes read &amp;</text>
+  <text x="436" y="99" text-anchor="middle" font-size="12" fill="var(--ink)">compared to a reference</text>
+  <path d="M517 79 l11 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="533" y="40" width="153" height="78" rx="11" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/>
+  <circle cx="551" cy="58" r="12" fill="var(--brand)"/>
+  <text x="551" y="62" text-anchor="middle" font-size="12.5" fill="#fff" font-weight="700">4</text>
+  <text x="610" y="84" text-anchor="middle" font-size="12" fill="var(--ink)">Differences flagged</text>
+  <text x="610" y="99" text-anchor="middle" font-size="12" fill="var(--ink)">&amp; reviewed</text>
+</svg><figcaption>From the sample you give to the result your team reviews, the panel runs as one combined test.</figcaption></figure><figure class="fig"><svg viewBox="0 0 700 184" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The lab compares your gene's letters to a reference sequence; a single differing letter is flagged as a variant.">
+  <text x="20" y="24" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Reading the gene, letter by letter, against a reference</text>
+  <text x="58" y="82" text-anchor="end" font-size="12" fill="var(--ink-faint)">reference</text>
+  <text x="58" y="134" text-anchor="end" font-size="12" fill="var(--ink-faint)">your gene</text>
+  <rect x="70" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="95.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">G</text>
+  <rect x="70" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="95.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">G</text>
+  <rect x="126" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="151.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">A</text>
+  <rect x="126" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="151.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">A</text>
+  <rect x="182" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="207.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">T</text>
+  <rect x="182" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="207.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">T</text>
+  <rect x="238" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="263.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">C</text>
+  <rect x="238" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="263.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">C</text>
+  <rect x="294" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="319.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">A</text>
+  <rect x="294" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="319.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">A</text>
+  <rect x="350" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="375.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">G</text>
+  <rect x="350" y="112" width="50" height="34" rx="5" fill="var(--red-bg)" stroke="var(--red)" stroke-width="2.2"/>
+  <text x="375.0" y="135" text-anchor="middle" font-size="16" fill="var(--red)" font-weight="700" font-family="monospace">T</text>
+  <path d="M375.0 150 l0 14" stroke="var(--red)" stroke-width="1.6"/>
+  <text x="375.0" y="178" text-anchor="middle" font-size="11.5" fill="var(--red)" font-weight="700">a variant</text>
+  <rect x="406" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="431.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">G</text>
+  <rect x="406" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="431.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">G</text>
+  <rect x="462" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="487.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">T</text>
+  <rect x="462" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="487.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">T</text>
+  <rect x="518" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="543.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">C</text>
+  <rect x="518" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="543.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">C</text>
+  <rect x="574" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="599.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">A</text>
+  <rect x="574" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="599.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">A</text>
+</svg><figcaption>The lab lines up your gene against a reference and flags where the spelling differs. One changed letter here is a <span class="fig-key">variant</span> — which may or may not matter.</figcaption></figure></section><section id="en4"><h2 class="sec"><span class="secnum">4</span> What it finds</h2><ul class="check"><li><i class="ti ti-check"></i> <div>Pathogenic changes in any gene on the panel — the kind of result that can guide screening, prevention, or treatment.<span class="tag finds">Finds</span></div></li><li><i class="ti ti-check"></i> <div>An explanation when several different genes could each account for the same personal or family history.<span class="tag finds">Finds</span></div></li><li><i class="ti ti-check"></i> <div>A result that lets relatives be tested for the same specific change, often by a quicker, cheaper single-gene test.<span class="tag finds">Finds</span></div></li></ul></section><section id="en5"><h2 class="sec"><span class="secnum">5</span> What it can miss</h2><ul class="check"><li><i class="ti ti-x"></i> <div>Any gene that is not on the list — if the cause lies in a gene the panel does not include, it will not be seen.<span class="tag misses">To know</span></div></li><li><i class="ti ti-x"></i> <div>Some whole-gene deletions or duplications, and changes in the DNA between genes, unless the panel is specifically designed to detect them.<span class="tag misses">To know</span></div></li><li><i class="ti ti-x"></i> <div>Repeat-expansions and on/off (methylation) changes, which need their own dedicated tests rather than ordinary sequencing.<span class="tag misses">To know</span></div></li></ul></section><section id="en6"><h2 class="sec"><span class="secnum">6</span> Good to know</h2><p>Looking at more genes raises the chance of an uncertain result — a variant of uncertain significance, or VUS — a change whose effect is not yet known. This becomes common once a panel passes roughly 100 genes: the larger the panel, the more likely it is to turn up at least one VUS. A VUS is not used to guide your care and is not used to test relatives; it is watched over time, and most are eventually reclassified, usually toward harmless, as labs gather more data. Your genetics team keeps track of any VUS and will let you know if its classification changes.</p><p>This is one reason a panel is sized to the question rather than made as large as possible: a focused panel finds what matters with fewer loose ends to follow up.</p></section><section id="en7"><h2 class="sec"><span class="secnum">7</span> Sorting out the words</h2><h3>A few terms you may see</h3><table><thead><tr><th>Term</th><th>In plain language</th></tr></thead><tbody><tr><td><strong>Gene</strong></td><td>One “recipe” in your DNA — the instructions for one job.</td></tr><tr><td><strong>Variant</strong></td><td>A change in the spelling of a gene; a “typo.” May or may not matter.</td></tr><tr><td><strong>Sequencing</strong></td><td>Reading DNA letter by letter.</td></tr><tr><td><strong>Reference</strong></td><td>A standard, correctly spelled version of a gene that yours is compared against.</td></tr><tr><td><strong>VUS</strong></td><td>A variant of uncertain significance: an effect not yet known. Not used to guide care.</td></tr><tr><td><strong>Cascade testing</strong></td><td>Testing relatives for a specific change already found in the family.</td></tr><tr><td><strong>Trio testing</strong></td><td>Testing the patient together with both parents, to help interpret a variant.</td></tr></tbody></table><div class="rec"><i class="ti ti-message-circle"></i> If a word on your report is not here, ask your genetics team. There are no bad questions, and lab wording is often more technical than it needs to be.</div></section><section id="en8"><h2 class="sec"><span class="secnum">8</span> Remember</h2><div class="info"><div class="ptag"><i class="ti ti-user-heart"></i> Remember</div><p style="margin:6px 0 0">This is general education and does not replace a consultation. Whether a panel is right for you, which genes it should include, and what your result means are decided together with your genetics team.</p></div></section><div class="footer"><p>This page is patient-education material intended to support, not replace, individual genetic counselling. It explains a category of genetic test in general terms; the exact genes on a panel and the interpretation of any result depend on your situation and the laboratory used. Prepared for Medical Genetics, Jewish General Hospital, Montreal.</p></div></div>
+<div class="lang-fr" id="lang-fr"><header class="masthead"><div class="eyebrow">Information aux patients · Tests génétiques</div><h1>Test par panel de gènes</h1><p class="standfirst">Un test qui lit en même temps un ensemble défini de gènes, choisis parce qu’ils sont tous liés au même type de préoccupation de santé. C’est l’outil de base du test héréditaire — assez large pour saisir plusieurs possibilités, assez ciblé pour garder une réponse claire.</p><div class="authpanel"><strong>D<sup>r</sup> Andrew Shuen, MD PhD FRCPC DABMGG</strong><br>Génétique médicale, Hôpital général juif (HGJ), Montréal</div><div class="meta"><span class="chip">Test moléculaire</span><span class="chip">Lit plusieurs gènes à la fois</span><span class="chip">Lettre par lettre (séquençage)</span><span class="chip">Souvent le premier test moléculaire</span></div></header><nav class="toc ui"><h2>Sommaire</h2><ol><li><a href="#fr1">Ce que c’est</a></li><li><a href="#fr2">Ce qu’il examine</a></li><li><a href="#fr3">Comment ça fonctionne</a></li><li><a href="#fr4">Ce qu’il trouve</a></li><li><a href="#fr5">Ce qu’il peut manquer</a></li><li><a href="#fr6">À savoir</a></li><li><a href="#fr7">Le sens des mots</a></li><li><a href="#fr8">À retenir</a></li></ol></nav><section id="fr1"><h2 class="sec"><span class="secnum">1</span> Ce que c’est</h2><div class="patient"><div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div><p>Un panel de gènes lit un ensemble de gènes en un seul test — de quelques-uns à quelques centaines. Les gènes sont regroupés parce qu’ils sont tous liés au même type de question, comme le cancer du sein et de l’ovaire héréditaire, les cancers liés au syndrome de Lynch, ou les maladies cardiaques héréditaires. Plutôt que de deviner un seul gène, le panel vérifie d’un coup tout le groupe pertinent.</p><p>C’est habituellement le premier test moléculaire proposé lorsque vos antécédents personnels ou familiaux pointent vers un domaine de risque, mais non vers un gène précis. Il donne au laboratoire les meilleures chances de trouver une explication en une seule analyse, et il est efficace — un échantillon, un test, un rapport.</p></div><figure class="fig"><svg viewBox="0 0 700 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A scale of DNA from a single letter, to un gène, to a chromosome, to the génome entier. A gene panel reads a chosen cluster of genes.">
+  <!-- title -->
+  <text x="20" y="26" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Quantité d’ADN lue — du plus petit au plus grand</text>
+
+  <!-- baseline -->
+  <line x1="24" y1="118" x2="676" y2="118" stroke="var(--line)" stroke-width="1.5"/>
+
+  <!-- tier 1: une lettre -->
+  <g>
+    <rect x="40" y="86" width="26" height="26" rx="4" fill="#fff" stroke="var(--line)" stroke-width="1.4"/>
+    <text x="53" y="104" text-anchor="middle" font-size="12" fill="var(--ink-faint)" font-weight="700">A</text>
+    <text x="53" y="138" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">une lettre</text>
+  </g>
+
+  <!-- tier 2: un gène -->
+  <g>
+    <rect x="150" y="80" width="70" height="38" rx="5" fill="#fff" stroke="var(--line)" stroke-width="1.4"/>
+    <!-- little gene ticks -->
+    <line x1="160" y1="99" x2="210" y2="99" stroke="var(--ink-faint)" stroke-width="2"/>
+    <text x="185" y="138" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">un gène</text>
+  </g>
+
+  <!-- tier 3: panel = cluster of genes (highlighted) -->
+  <g>
+    <rect x="285" y="64" width="150" height="54" rx="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/>
+    <!-- multiple gene bars inside -->
+    <line x1="298" y1="80" x2="338" y2="80" stroke="var(--brand-dark)" stroke-width="2.4"/>
+    <line x1="298" y1="92" x2="360" y2="92" stroke="var(--brand-dark)" stroke-width="2.4"/>
+    <line x1="298" y1="104" x2="330" y2="104" stroke="var(--brand-dark)" stroke-width="2.4"/>
+    <line x1="370" y1="80" x2="420" y2="80" stroke="var(--brand-dark)" stroke-width="2.4"/>
+    <line x1="370" y1="92" x2="408" y2="92" stroke="var(--brand-dark)" stroke-width="2.4"/>
+    <line x1="370" y1="104" x2="422" y2="104" stroke="var(--brand-dark)" stroke-width="2.4"/>
+    <text x="360" y="138" text-anchor="middle" font-size="12" fill="var(--brand-dark)" font-weight="700">un panel : plusieurs gènes choisis</text>
+  </g>
+
+  <!-- tier 4: génome entier -->
+  <g>
+    <rect x="500" y="74" width="160" height="44" rx="6" fill="#fff" stroke="var(--line)" stroke-width="1.4"/>
+    <!-- dense lines suggesting all genes -->
+    <line x1="510" y1="84" x2="650" y2="84" stroke="#c7d6dc" stroke-width="2"/>
+    <line x1="510" y1="92" x2="650" y2="92" stroke="#c7d6dc" stroke-width="2"/>
+    <line x1="510" y1="100" x2="650" y2="100" stroke="#c7d6dc" stroke-width="2"/>
+    <line x1="510" y1="108" x2="650" y2="108" stroke="#c7d6dc" stroke-width="2"/>
+    <text x="580" y="138" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">génome entier</text>
+  </g>
+
+  <!-- bracket under panel -->
+  <path d="M285 150 q0 6 6 6 l69 0 m0 0 l69 0 q6 0 6 -6" fill="none" stroke="var(--brand)" stroke-width="1.4"/>
+  <text x="360" y="166" text-anchor="middle" font-size="11" fill="var(--brand)" font-style="italic">ce test</text>
+</svg><figcaption>Un <span class="fig-key">panel</span> lit d’un coup un groupe choisi de gènes — plus qu’un test d’un seul gène, bien moins que le génome entier.</figcaption></figure><div class="analogy"><i class="ti ti-book"></i> Imaginez vos gènes comme des recettes dans un très long livre de cuisine. Un test d’un seul gène lit une recette; un panel lit toutes les recettes d’un chapitre — disons tous les desserts — parce que c’est là que la réponse se trouve le plus probablement.</div></section><section id="fr2"><h2 class="sec"><span class="secnum">2</span> Ce qu’il examine</h2><p>Le laboratoire lit chaque gène de la liste lettre par lettre, à la recherche de changements dans l’orthographe — ce que les généticiens appellent des variants. Les gènes exacts d’un panel sont choisis par des experts pour correspondre à une question clinique, et les panels sont mis à jour avec le temps à mesure que les connaissances progressent; un panel demandé aujourd’hui peut donc inclure des gènes qui n’y figuraient pas il y a quelques années.</p><p>Ce qu’un panel ne fait délibérément <em>pas</em>, c’est lire des gènes hors de sa liste. Cette concentration est un avantage, non une lacune : un panel plus petit et bien choisi tend à donner une réponse plus nette, avec moins de résultats incertains, que la lecture de tout. Votre équipe choisit le panel dont la liste de gènes correspond le mieux à vos antécédents.</p><figure class="fig"><svg viewBox="0 0 700 232" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A grid representing all of a person's genes. Only the genes on the panel's list are read, shown lit; the rest are greyed out and non lu.">
+  <text x="20" y="24" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Vos ~20 000 gènes — le panel ne lit que sa liste choisie</text>
+  <!-- 12 x 6 dot grid; a contiguous-ish subset lit -->
+  <g>
+    <!-- generated below via pattern: we draw 72 dots -->
+    <!-- row spacing 26, col spacing 54, start x40 y56 -->
+    <!-- LIT set indices -->
+    <!-- We'll mark a cluster lit: cols 3-6 of rows 1-3 area -->
+  </g>
+  <!-- legend -->
+  <rect x="360" y="206" width="13" height="13" rx="3" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.6"/>
+  <text x="380" y="217" font-size="11.5" fill="var(--brand-dark)" font-weight="700">sur le panel — lu</text>
+  <rect x="540" y="206" width="13" height="13" rx="3" fill="#f1f4f6" stroke="var(--line)"/>
+  <text x="560" y="217" font-size="11.5" fill="var(--ink-faint)">non lu</text>
+  <!-- DOTS -->
+  <circle cx="40" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="93" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="146" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="199" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="252" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="305" cy="50" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="358" cy="50" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="411" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="464" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="517" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="570" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="623" cy="50" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="40" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="93" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="146" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="199" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="252" cy="76" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="305" cy="76" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="358" cy="76" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="411" cy="76" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="464" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="517" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="570" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="623" cy="76" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="40" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="93" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="146" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="199" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="252" cy="102" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="305" cy="102" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="358" cy="102" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="411" cy="102" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="464" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="517" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="570" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="623" cy="102" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="40" cy="128" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="93" cy="128" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="146" cy="128" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="199" cy="128" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="252" cy="128" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="305" cy="128" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="358" cy="128" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="411" cy="128" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="464" cy="128" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="517" cy="128" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="570" cy="128" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="623" cy="128" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="40" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="93" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="146" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="199" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="252" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="305" cy="154" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="358" cy="154" r="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <circle cx="411" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="464" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="517" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="570" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="623" cy="154" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="40" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="93" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="146" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="199" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="252" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="305" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="358" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="411" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="464" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="517" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="570" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+  <circle cx="623" cy="180" r="6" fill="#f1f4f6" stroke="var(--line)" stroke-width="1"/>
+</svg><figcaption>Un panel examine de près un ensemble défini de gènes liés à une même préoccupation. <span class="fig-key">Tout gène absent de la liste</span> n’est pas examiné — une cause ailleurs serait manquée.</figcaption></figure></section><section id="fr3"><h2 class="sec"><span class="secnum">3</span> Comment ça fonctionne</h2><p>Le test commence par un petit échantillon de sang ou, parfois, de salive. Au laboratoire, l’ADN est séparé de vos cellules et les gènes du panel sont lus lettre par lettre. Chaque gène est ensuite comparé à une référence — une version standard et correctement orthographiée de ce gène, convenue par les scientifiques. Partout où votre orthographe diffère de la référence, cette différence est signalée.</p><p>Un changement signalé n’est pas automatiquement un problème. Chacun est évalué à l’aide de grandes bases de données et de la littérature médicale, puis classé sur une échelle à cinq niveaux, de bénin à pathogène. Seuls les changements jugés pathogènes ou probablement pathogènes servent à orienter vos soins; les autres sont soit inoffensifs, soit, parfois, incertains. Comme le panel est une liste fixe, exactement les mêmes gènes sont lus pour toute personne ayant ce panel, ce qui rend les résultats cohérents et comparables.</p><p>Lorsque cela aide, nous testons souvent les parents en même temps que le patient — c’est ce qu’on appelle le test en trio. Voir si un changement a été hérité d’un parent ou est apparu de novo chez l’enfant rend un variant signalé beaucoup plus facile à interpréter, et peut transformer un résultat incertain en résultat clair. Votre équipe vous dira si le test en trio serait utile dans votre cas.</p><figure class="fig"><svg viewBox="0 0 700 132" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four steps: a blood or saliva sample is taken, DNA is separated out, the listed genes are read and comparés à une référence, and differences are flagged for review.">
+  <text x="20" y="24" font-size="13.5" font-weight="700" fill="var(--brand-dark)">De l’échantillon au résultat</text>
+  <rect x="14" y="40" width="153" height="78" rx="11" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/>
+  <circle cx="32" cy="58" r="12" fill="var(--brand)"/>
+  <text x="32" y="62" text-anchor="middle" font-size="12.5" fill="#fff" font-weight="700">1</text>
+  <text x="90" y="84" text-anchor="middle" font-size="12" fill="var(--ink)">Sang ou salive</text>
+  <path d="M171 79 l11 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="187" y="40" width="153" height="78" rx="11" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/>
+  <circle cx="205" cy="58" r="12" fill="var(--brand)"/>
+  <text x="205" y="62" text-anchor="middle" font-size="12.5" fill="#fff" font-weight="700">2</text>
+  <text x="264" y="84" text-anchor="middle" font-size="12" fill="var(--ink)">ADN séparé des</text>
+  <text x="264" y="99" text-anchor="middle" font-size="12" fill="var(--ink)">cellules</text>
+  <path d="M344 79 l11 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="360" y="40" width="153" height="78" rx="11" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/>
+  <circle cx="378" cy="58" r="12" fill="var(--brand)"/>
+  <text x="378" y="62" text-anchor="middle" font-size="12.5" fill="#fff" font-weight="700">3</text>
+  <text x="436" y="84" text-anchor="middle" font-size="12" fill="var(--ink)">Gènes de la liste lus et</text>
+  <text x="436" y="99" text-anchor="middle" font-size="12" fill="var(--ink)">comparés à une référence</text>
+  <path d="M517 79 l11 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="533" y="40" width="153" height="78" rx="11" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/>
+  <circle cx="551" cy="58" r="12" fill="var(--brand)"/>
+  <text x="551" y="62" text-anchor="middle" font-size="12.5" fill="#fff" font-weight="700">4</text>
+  <text x="610" y="84" text-anchor="middle" font-size="12" fill="var(--ink)">Différences signalées</text>
+  <text x="610" y="99" text-anchor="middle" font-size="12" fill="var(--ink)">et examinées</text>
+</svg><figcaption>De l’échantillon que vous donnez au résultat que votre équipe examine, le panel se déroule comme un seul test combiné.</figcaption></figure><figure class="fig"><svg viewBox="0 0 700 184" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The lab compares votre gène's letters to a reference sequence; a single differing letter is flagged as un variant.">
+  <text x="20" y="24" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Lecture du gène, lettre par lettre, face à une référence</text>
+  <text x="58" y="82" text-anchor="end" font-size="12" fill="var(--ink-faint)">référence</text>
+  <text x="58" y="134" text-anchor="end" font-size="12" fill="var(--ink-faint)">votre gène</text>
+  <rect x="70" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="95.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">G</text>
+  <rect x="70" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="95.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">G</text>
+  <rect x="126" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="151.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">A</text>
+  <rect x="126" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="151.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">A</text>
+  <rect x="182" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="207.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">T</text>
+  <rect x="182" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="207.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">T</text>
+  <rect x="238" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="263.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">C</text>
+  <rect x="238" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="263.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">C</text>
+  <rect x="294" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="319.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">A</text>
+  <rect x="294" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="319.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">A</text>
+  <rect x="350" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="375.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">G</text>
+  <rect x="350" y="112" width="50" height="34" rx="5" fill="var(--red-bg)" stroke="var(--red)" stroke-width="2.2"/>
+  <text x="375.0" y="135" text-anchor="middle" font-size="16" fill="var(--red)" font-weight="700" font-family="monospace">T</text>
+  <path d="M375.0 150 l0 14" stroke="var(--red)" stroke-width="1.6"/>
+  <text x="375.0" y="178" text-anchor="middle" font-size="11.5" fill="var(--red)" font-weight="700">un variant</text>
+  <rect x="406" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="431.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">G</text>
+  <rect x="406" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="431.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">G</text>
+  <rect x="462" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="487.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">T</text>
+  <rect x="462" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="487.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">T</text>
+  <rect x="518" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="543.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">C</text>
+  <rect x="518" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="543.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">C</text>
+  <rect x="574" y="60" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)"/>
+  <text x="599.0" y="83" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">A</text>
+  <rect x="574" y="112" width="50" height="34" rx="5" fill="#f6f8f9" stroke="var(--line)" stroke-width="1"/>
+  <text x="599.0" y="135" text-anchor="middle" font-size="16" fill="var(--ink-soft)" font-weight="700" font-family="monospace">A</text>
+</svg><figcaption>Le laboratoire aligne votre gène sur une référence et signale où l’orthographe diffère. Une lettre changée ici est un <span class="fig-key">variant</span> — qui peut compter ou non.</figcaption></figure></section><section id="fr4"><h2 class="sec"><span class="secnum">4</span> Ce qu’il trouve</h2><ul class="check"><li><i class="ti ti-check"></i> <div>Des changements pathogènes dans tout gène du panel — le type de résultat qui peut orienter le dépistage, la prévention ou le traitement.<span class="tag finds">Trouve</span></div></li><li><i class="ti ti-check"></i> <div>Une explication lorsque plusieurs gènes différents pourraient chacun rendre compte des mêmes antécédents personnels ou familiaux.<span class="tag finds">Trouve</span></div></li><li><i class="ti ti-check"></i> <div>Un résultat qui permet de tester les proches pour le même changement précis, souvent par un test d’un seul gène plus rapide et moins coûteux.<span class="tag finds">Trouve</span></div></li></ul></section><section id="fr5"><h2 class="sec"><span class="secnum">5</span> Ce qu’il peut manquer</h2><ul class="check"><li><i class="ti ti-x"></i> <div>Tout gène qui n’est pas sur la liste — si la cause se trouve dans un gène que le panel n’inclut pas, elle ne sera pas vue.<span class="tag misses">À savoir</span></div></li><li><i class="ti ti-x"></i> <div>Certaines délétions ou duplications de gènes entiers, et les changements dans l’ADN entre les gènes, sauf si le panel est spécifiquement conçu pour les détecter.<span class="tag misses">À savoir</span></div></li><li><i class="ti ti-x"></i> <div>Les expansions de répétitions et les changements d’activation (méthylation), qui nécessitent leurs propres tests dédiés plutôt qu’un séquençage ordinaire.<span class="tag misses">À savoir</span></div></li></ul></section><section id="fr6"><h2 class="sec"><span class="secnum">6</span> À savoir</h2><p>Examiner plus de gènes augmente la probabilité d’un résultat incertain — un variant de signification incertaine, ou VSI — un changement dont l’effet n’est pas encore connu. Cela devient fréquent dès qu’un panel dépasse environ 100 gènes : plus le panel est grand, plus il est probable qu’il révèle au moins un VSI. Un VSI ne sert pas à orienter vos soins ni à tester les proches; il est surveillé dans le temps, et la plupart sont éventuellement reclassés, généralement comme inoffensifs, à mesure que les laboratoires accumulent des données. Votre équipe de génétique suit tout VSI et vous informera si sa classification change.</p><p>C’est une des raisons pour lesquelles un panel est dimensionné selon la question plutôt que rendu aussi grand que possible : un panel ciblé trouve ce qui compte avec moins de fils à suivre.</p></section><section id="fr7"><h2 class="sec"><span class="secnum">7</span> Le sens des mots</h2><h3>Quelques termes que vous pourriez voir</h3><table><thead><tr><th>Terme</th><th>En langage simple</th></tr></thead><tbody><tr><td><strong>Gène</strong></td><td>Une « recette » dans votre ADN — les instructions pour une tâche.</td></tr><tr><td><strong>Variant</strong></td><td>Un changement dans l’orthographe d’un gène; une « faute de frappe ». Peut compter ou non.</td></tr><tr><td><strong>Séquençage</strong></td><td>Lire l’ADN lettre par lettre.</td></tr><tr><td><strong>Référence</strong></td><td>Une version standard et correctement orthographiée d’un gène à laquelle le vôtre est comparé.</td></tr><tr><td><strong>VSI</strong></td><td>Un variant de signification incertaine : un effet pas encore connu. Non utilisé pour guider les soins.</td></tr><tr><td><strong>Test en cascade</strong></td><td>Tester les proches pour un changement précis déjà trouvé dans la famille.</td></tr><tr><td><strong>Test en trio</strong></td><td>Tester le patient avec ses deux parents, pour aider à interpréter un variant.</td></tr></tbody></table><div class="rec"><i class="ti ti-message-circle"></i> Si un mot de votre rapport ne figure pas ici, demandez à votre équipe de génétique. Il n’y a pas de mauvaises questions, et le vocabulaire des laboratoires est souvent plus technique qu’il n’a besoin de l’être.</div></section><section id="fr8"><h2 class="sec"><span class="secnum">8</span> À retenir</h2><div class="info"><div class="ptag"><i class="ti ti-user-heart"></i> À retenir</div><p style="margin:6px 0 0">Ceci est de l’information générale et ne remplace pas une consultation. Le choix d’un panel, les gènes qu’il devrait inclure et la signification de votre résultat se décident avec votre équipe de génétique.</p></div></section><div class="footer"><p>Cette page est un document d’information destiné aux patients, visant à soutenir, et non à remplacer, le conseil génétique individuel. Elle explique en termes généraux une catégorie de test génétique; les gènes exacts d’un panel et l’interprétation de tout résultat dépendent de votre situation et du laboratoire utilisé. Préparé pour la Génétique médicale, Hôpital général juif, Montréal.</p></div></div>
+</div>
+<script>
+function setLang(l){document.getElementById('lang-en').style.display=(l==='en')?'block':'none';document.getElementById('lang-fr').style.display=(l==='fr')?'block':'none';document.getElementById('btn-en').classList.toggle('active',l==='en');document.getElementById('btn-fr').classList.toggle('active',l==='fr');document.documentElement.lang=l;window.scrollTo(0,0);}
+function togglePdfView(){var on=document.body.classList.toggle('pdf-preview');document.getElementById('btn-pdf').classList.toggle('active',on);window.scrollTo(0,0);}
+setLang('en');
+</script>
+</body>
+</html>

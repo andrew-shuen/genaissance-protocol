@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevated Lipoprotein(a) — Prevention and Surveillance Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:18px; line-height:1.62; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:880px; margin:0 auto; padding:0 22px 80px;}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* Language toggle */
+.langbar{
+  position:sticky; top:0; z-index:50; background:rgba(244,249,252,.94);
+  backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+  display:flex; justify-content:center; gap:8px; padding:10px;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.langbar button{
+  border:1px solid var(--brand-line); background:var(--paper); color:var(--brand-dark);
+  padding:7px 20px; border-radius:999px; font-size:14px; font-weight:600; cursor:pointer;
+  letter-spacing:.02em; transition:all .15s;
+}
+.langbar button.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+.langbar button:hover:not(.active){background:var(--brand-bg);}
+
+/* Masthead */
+.masthead{padding:42px 0 26px; border-bottom:3px double var(--line);}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; text-transform:uppercase;
+  letter-spacing:.16em; font-size:12.5px; font-weight:700; color:var(--brand-dark);
+}
+h1{font-size:2.35rem; line-height:1.14; margin:.32em 0 .28em; letter-spacing:-.01em;}
+.standfirst{font-size:1.18rem; color:var(--ink-soft); margin:0 0 22px; max-width:62ch;}
+.authors{
+  background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:15px 18px; margin:0 0 18px;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14.5px; line-height:1.5;
+}
+.authors .who{font-weight:700; color:var(--ink);}
+.authors .aff{color:var(--ink-faint);}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 16px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.chip{
+  font-size:12.5px; font-weight:600; padding:5px 12px; border-radius:999px;
+  background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);
+  display:inline-flex; align-items:center; gap:6px;
+}
+.legend{
+  display:flex; flex-wrap:wrap; gap:16px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13px; color:var(--ink-soft); padding-top:6px;
+}
+.legend span{display:inline-flex; align-items:center; gap:7px;}
+.dot{width:13px; height:13px; border-radius:4px; display:inline-block;}
+.dot.green{background:var(--brand-bg); border:1.5px solid var(--brand);}
+.dot.text{background:var(--paper); border:1.5px solid var(--ink-faint);}
+
+/* TOC */
+.toc{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:20px 24px; margin:28px 0; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.toc h2{font-size:13px; text-transform:uppercase; letter-spacing:.14em; color:var(--brand-dark); margin:0 0 12px;}
+.toc ol{columns:2; column-gap:34px; margin:0; padding:0 0 0 0; list-style:none; counter-reset:toc;}
+.toc li{counter-increment:toc; margin:0 0 8px; font-size:14.5px; break-inside:avoid;}
+.toc li a{color:var(--ink-soft); text-decoration:none; display:flex; gap:9px; align-items:baseline;}
+.toc li a::before{content:counter(toc); color:var(--brand); font-weight:700; min-width:18px;}
+.toc li a:hover{color:var(--brand-dark);}
+@media(max-width:640px){.toc ol{columns:1;}}
+
+/* Sections */
+section{margin:40px 0; scroll-margin-top:64px;}
+.sechead{display:flex; align-items:center; gap:14px; margin:0 0 16px;}
+.secnum{
+  flex:none; width:38px; height:38px; border-radius:10px; background:var(--brand);
+  color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:18px;
+}
+.sechead h2{font-size:1.55rem; margin:0; line-height:1.2;}
+h3{font-size:1.2rem; margin:1.5em 0 .5em; color:var(--ink);}
+h4{font-size:1.02rem; margin:1.2em 0 .4em; color:var(--brand-dark); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+p{margin:0 0 1em;}
+
+/* Patient panel */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius);
+  padding:18px 22px; margin:0 0 20px;
+}
+.patient .tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.12em; color:var(--brand-dark);
+  display:inline-flex; align-items:center; gap:7px; margin-bottom:8px;
+}
+.patient p{color:var(--brand-dark); margin-bottom:.6em;}
+.patient p:last-child{margin-bottom:0;}
+
+/* Gene/subtype header pill */
+.genehdr{
+  display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-sm);
+  padding:11px 16px; margin:18px 0 12px;
+}
+.genehdr .gname{font-weight:700; font-size:1.08rem; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.riskpill{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:700;
+  padding:4px 12px; border-radius:999px; text-transform:uppercase; letter-spacing:.05em;
+}
+.riskpill.high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.riskpill.mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.riskpill.low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* Checklists */
+.checklist{list-style:none; margin:12px 0; padding:0;}
+.checklist li{
+  display:flex; gap:12px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+  align-items:flex-start;
+}
+.checklist li:last-child{border-bottom:none;}
+.checklist .ic{flex:none; margin-top:3px; font-size:19px;}
+.checklist .routine .ic, .ic.routine{color:var(--brand);}
+.checklist .opt .ic, .ic.opt{color:var(--amber);}
+.checklist .no .ic, .ic.no{color:var(--ink-faint);}
+.checklist .label{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; padding:1px 8px; border-radius:5px; margin-left:6px; white-space:nowrap;}
+.label.routine{background:var(--brand-bg); color:var(--brand-dark);}
+.label.opt{background:var(--amber-bg); color:var(--amber);}
+.label.no{background:var(--line-soft); color:var(--ink-faint);}
+
+/* Callout / recommendation */
+.callout{
+  background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:15px 19px; margin:18px 0;
+}
+.callout.amber{border-left-color:var(--amber); background:var(--amber-bg);}
+.callout.red{border-left-color:var(--red); background:var(--red-bg);}
+.callout .h{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:14.5px; margin-bottom:6px; display:flex; align-items:center; gap:8px;}
+
+/* Info / calculator box */
+.infobox{
+  background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm);
+  padding:15px 19px; margin:18px 0;
+}
+.infobox .h{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; color:var(--brand-dark); font-size:14.5px; margin-bottom:6px; display:flex; align-items:center; gap:8px;}
+
+/* Emerging box */
+.emerging{
+  background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm);
+  padding:15px 19px; margin:18px 0;
+}
+.emerging .h{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; color:var(--purple); font-size:14.5px; margin-bottom:6px; display:flex; align-items:center; gap:8px;}
+.emerging p{color:#2f2a6e;}
+
+/* Tables */
+.tablewrap{overflow-x:auto; margin:18px 0;}
+table{border-collapse:collapse; width:100%; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14.5px;}
+th,td{text-align:left; padding:11px 13px; border-bottom:1px solid var(--line); vertical-align:top;}
+thead th{background:var(--brand-dark); color:#fff; font-size:12.5px; text-transform:uppercase; letter-spacing:.05em; border-bottom:none;}
+thead th:first-child{border-radius:8px 0 0 0;}
+thead th:last-child{border-radius:0 8px 0 0;}
+tbody tr:nth-child(even){background:var(--cream);}
+td .rp{font-weight:700;}
+td .rp.high{color:var(--red);} td .rp.mod{color:var(--amber);} td .rp.low{color:var(--brand-dark);}
+
+/* Summary cards */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:18px 0;}
+.card{
+  background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand);
+  border-radius:var(--radius-sm); padding:15px 17px;
+}
+.card .ct{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:14.5px; color:var(--brand-dark); margin-bottom:7px;}
+.card p{font-size:14.5px; margin:0; color:var(--ink-soft); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* References */
+.refs{counter-reset:ref; list-style:none; padding:0; margin:14px 0; font-size:14.5px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.refs li{counter-increment:ref; position:relative; padding:0 0 11px 34px; color:var(--ink-soft); line-height:1.5;}
+.refs li::before{content:counter(ref); position:absolute; left:0; top:0; background:var(--brand-bg); color:var(--brand-dark); font-weight:700; width:24px; height:24px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:12.5px;}
+
+/* Footer */
+.footer{
+  margin-top:48px; padding-top:20px; border-top:3px double var(--line);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; color:var(--ink-faint); line-height:1.55;
+}
+
+.booking{display:inline-flex; align-items:center; gap:8px; background:var(--brand); color:#fff; text-decoration:none; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:600; font-size:14.5px; padding:10px 20px; border-radius:999px; margin:6px 0;}
+.booking:hover{background:var(--brand-dark);}
+
+a{color:var(--brand-dark);}
+
+.lang-fr{display:none;}
+
+@media print{
+  body{background:#fff; font-size:11.5pt;}
+  .langbar{display:none;}
+  .wrap{max-width:100%;}
+  section{page-break-inside:avoid;}
+  .patient,.callout,.infobox,.emerging,.card{break-inside:avoid;}
+  .booking{display:none;}
+  a{color:var(--ink);}
+}
+@media(max-width:560px){
+  h1{font-size:1.85rem;} body{font-size:16.5px;}
+  .toc ol{columns:1;}
+}
+</style>
+</head>
+<body>
+
+<div class="langbar ui">
+  <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+  <button id="btn-fr" onclick="setLang('fr')">Français</button>
+</div>
+
+<div class="wrap">
+
+<!-- ============ ENGLISH ============ -->
+<div class="lang-en">
+
+  <header class="masthead">
+    <div class="eyebrow">Cardiovascular Prevention Protocol · Genaissance / GENGIQC</div>
+    <h1>Elevated Lipoprotein(a): Prevention and Surveillance</h1>
+    <p class="standfirst">A practical protocol for identifying, risk-stratifying, and managing adults with elevated lipoprotein(a) [Lp(a)], a common, inherited, and independent cause of cardiovascular disease and aortic valve stenosis.</p>
+    <div class="authors">
+      <div><span class="who">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</span> <span class="aff">— Medical Genetics and Longevity Medicine · Cancer Prevention Centre, Jewish General Hospital (JGH), Montreal · Genaissance Precision Medicine, Toronto</span></div>
+    </div>
+    <div class="chips ui">
+      <span class="chip"><i class="ti ti-heartbeat"></i> ASCVD &amp; aortic stenosis</span>
+      <span class="chip"><i class="ti ti-dna"></i> Genetically determined</span>
+      <span class="chip"><i class="ti ti-calendar-check"></i> One-time measurement</span>
+      <span class="chip"><i class="ti ti-users"></i> Cascade screening</span>
+    </div>
+    <div class="legend">
+      <span><span class="dot green"></span> Plain-language patient summary</span>
+      <span><span class="dot text"></span> Clinical detail for providers</span>
+    </div>
+  </header>
+
+  <nav class="toc ui">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#en1">Understanding Lp(a)</a></li>
+      <li><a href="#en2">Risk by Lp(a) level</a></li>
+      <li><a href="#en3">Who to test and how</a></li>
+      <li><a href="#en4">Risk assessment &amp; reclassification</a></li>
+      <li><a href="#en5">Lipid-lowering &amp; medical management</a></li>
+      <li><a href="#en6">Aortic valve surveillance</a></li>
+      <li><a href="#en7">Genetic counselling &amp; cascade screening</a></li>
+      <li><a href="#en8">Lifestyle and nutrition</a></li>
+      <li><a href="#en9">Emerging Lp(a)-lowering therapies</a></li>
+      <li><a href="#en10">Summary of recommendations</a></li>
+      <li><a href="#en11">References</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="en1">
+    <div class="sechead"><div class="secnum">1</div><h2>Understanding Lp(a)</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Lipoprotein(a), said as "L-P-little-a," is a particle in your blood that is similar to LDL, the "bad" cholesterol. A high level raises your chance of heart attack, stroke, and a narrowing of the heart's aortic valve.</p>
+      <p>Your Lp(a) level is set mostly by the genes you inherit. It stays fairly steady through life and is not driven by diet or exercise. About one in five people have a high level. Knowing your number once is useful because it tells us how aggressively to protect your heart in other ways.</p>
+      <p>A high Lp(a) is common and is not a reason to panic. We cannot yet lower Lp(a) itself with approved drugs, but we can lower your overall risk a great deal by managing the other factors we can change.</p>
+    </div>
+    <p>Lipoprotein(a) is an LDL-like particle in which apolipoprotein B-100 is covalently bound to apolipoprotein(a), a plasminogen-homologous glycoprotein. It promotes atherosclerosis through LDL-like cholesterol delivery, carriage of pro-inflammatory oxidized phospholipids, and potential antifibrinolytic effects. It is causally associated with atherosclerotic cardiovascular disease (ASCVD) and with calcific aortic valve stenosis through Mendelian randomization and large epidemiological cohorts.</p>
+    <p>Plasma concentration is approximately 70 to 90 percent genetically determined, governed largely by the <em>LPA</em> gene, in particular the kringle IV type 2 (KIV-2) copy-number repeat and several single-nucleotide variants. Levels are largely established by early adulthood, are stable across the lifespan, and are minimally responsive to lifestyle. Lp(a) is inherited in a codominant (effectively autosomal dominant) pattern, which is why an elevated level should prompt screening of first-degree relatives.</p>
+    <div class="callout">
+      <div class="h ui"><i class="ti ti-flask"></i> A note on units and assays</div>
+      <p>Lp(a) is reported in nmol/L (particle concentration, preferred) or mg/dL (mass). The two are not interchangeable by a fixed factor because apo(a) isoform size varies between people. Where possible, use an isoform-insensitive assay reporting nmol/L. Approximate conversions used in guidelines treat ~50 mg/dL as roughly 100 to 125 nmol/L, but this is an approximation only.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="en2">
+    <div class="sechead"><div class="secnum">2</div><h2>Risk by Lp(a) level</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>The higher your Lp(a), the higher your risk. Risk rises gradually rather than switching on at a single point. Two thresholds are commonly used as guides: a level around 50 mg/dL (about 125 nmol/L) marks meaningful added risk, and a level around 100 mg/dL (about 250 nmol/L) marks substantially higher risk.</p>
+    </div>
+    <p>Risk is continuous and graded. The 2026 ACC/AHA Dyslipidemia Guideline describes a level around 125 nmol/L (≈50 mg/dL) as indicating meaningful risk and around 250 nmol/L (≈100 mg/dL) as identifying a substantially higher-risk phenotype, with risk at very high concentrations (300 to 400 nmol/L) approaching that conferred by heterozygous familial hypercholesterolemia. Ancestry affects population distributions; thresholds should be applied with that caveat and assay differences in mind.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Lp(a) level</th><th>Risk category</th><th>Interpretation</th></tr></thead>
+        <tbody>
+          <tr><td>&lt; 30 mg/dL (&lt; ~75 nmol/L)</td><td><span class="rp low">Low</span></td><td>No added Lp(a)-attributable risk; manage on standard global risk.</td></tr>
+          <tr><td>30–50 mg/dL (~75–125 nmol/L)</td><td><span class="rp mod">Intermediate / grey zone</span></td><td>Modest risk enhancement; use to tip borderline treatment decisions.</td></tr>
+          <tr><td>≥ 50 mg/dL (≥ ~125 nmol/L)</td><td><span class="rp high">High</span></td><td>Recognized risk-enhancing threshold; intensify global risk-factor control.</td></tr>
+          <tr><td>≥ 100 mg/dL (≥ ~250 nmol/L)</td><td><span class="rp high">Very high</span></td><td>Substantially higher-risk phenotype; consider CAC/imaging and trial referral.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>These bands synthesize the 2024 NLA focused update, the 2021/2026 Canadian frameworks, and the 2026 ACC/AHA guideline. Cut-points differ slightly between societies and assays, so treat them as guidance rather than hard switches.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="en3">
+    <div class="sechead"><div class="secnum">3</div><h2>Who to test and how</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Most guidelines now recommend checking Lp(a) once in adult life. It is a simple blood test and usually does not need fasting. Because your level is mostly genetic and stable, a single normal result rarely needs repeating.</p>
+    </div>
+    <p>Guidelines have converged toward broad, one-time measurement in adulthood. The 2021 Canadian Cardiovascular Society guideline recommends a one-time lifetime Lp(a) measurement as part of initial lipid screening, and the 2026 Canadian practical framework endorses universal one-time testing in adults. The 2026 ACC/AHA Dyslipidemia Guideline, for the first time in a US guideline, gives a Class I recommendation to measure Lp(a) at least once in all adults, with special considerations for children.</p>
+    <h4 class="ui">Testing checklist</h4>
+    <ul class="checklist">
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>One-time measurement in adulthood</strong> for all adults as part of cardiovascular risk assessment. <span class="label routine">Routine</span></div></li>
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Prioritize</strong> those with personal or family history of premature ASCVD, familial hypercholesterolemia, calcific aortic stenosis, or recurrent/refractory events. <span class="label routine">Routine</span></div></li>
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>First-degree relatives</strong> of a person with elevated Lp(a) (cascade testing). <span class="label routine">Routine</span></div></li>
+      <li class="opt"><i class="ti ti-circle-dashed ic"></i><div><strong>Selected children</strong> with a strong family history of premature ASCVD or known parental elevation, per the 2026 guideline. <span class="label opt">Optional / selective</span></div></li>
+      <li class="opt"><i class="ti ti-circle-dashed ic"></i><div><strong>Repeat testing</strong> is generally not required, since lifestyle and most drugs do not change Lp(a). Re-check only if the first sample was unreliable or a new Lp(a)-lowering therapy is started. <span class="label opt">Optional</span></div></li>
+      <li class="no"><i class="ti ti-circle-minus ic"></i><div><strong>Serial monitoring</strong> to track lifestyle response is not recommended. <span class="label no">Not recommended</span></div></li>
+    </ul>
+    <div class="infobox">
+      <div class="h ui"><i class="ti ti-info-circle"></i> Practical note</div>
+      <p>Statins can modestly raise measured Lp(a) and should not be stopped on that basis. Acute illness and pregnancy can transiently alter levels, so avoid measuring during acute inflammatory states where possible.</p>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="en4">
+    <div class="sechead"><div class="secnum">4</div><h2>Risk assessment and reclassification</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>A high Lp(a) does not act alone. We combine it with your blood pressure, cholesterol, blood sugar, family history, and smoking status to estimate your total risk. Where that estimate sits near a decision point, a high Lp(a) can move us toward starting or intensifying prevention.</p>
+    </div>
+    <p>Elevated Lp(a) functions as a risk-enhancing factor layered onto a validated global risk estimate. In the Canadian setting, estimate baseline risk with a population-validated calculator such as the Framingham Risk Score; the 2026 ACC/AHA guideline favours the PREVENT equations for 10- and 30-year risk. An elevated Lp(a) supports reclassifying borderline or intermediate-risk patients upward and lowering the threshold to initiate or intensify therapy.</p>
+    <div class="callout">
+      <div class="h ui"><i class="ti ti-calculator"></i> Reclassification in practice</div>
+      <p>Under the 2021 CCS framework, an individual with a Framingham Risk Score of 5 to 9 percent and LDL-C ≥ 3.5 mmol/L (or apoB ≥ 1.05 g/L, or non-HDL-C ≥ 4.2 mmol/L) warrants treatment consideration, and risk modifiers such as Lp(a) ≥ 50 mg/dL (≥ ~100 nmol/L), a family history of premature CAD, or coronary artery calcium &gt; 0 strengthen that case.</p>
+    </div>
+    <p>Coronary artery calcium (CAC) scoring and hs-CRP can be used selectively to refine risk when the global estimate is uncertain, as endorsed in the 2026 guideline. A CAC score of zero does not negate elevated-Lp(a) risk but can help with shared decision-making about statin intensity.</p>
+  </section>
+
+  <!-- 5 -->
+  <section id="en5">
+    <div class="sechead"><div class="secnum">5</div><h2>Lipid-lowering and medical management</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>We do not yet have an approved medicine that targets Lp(a) directly. Instead, we lower your overall risk by getting your LDL cholesterol as low as appropriate, controlling blood pressure and blood sugar, and stopping smoking. Statins are the foundation. Some people need additional cholesterol medicines.</p>
+    </div>
+    <p>No currently approved therapy is indicated specifically to lower Lp(a) for cardiovascular benefit. Management centres on aggressive control of all modifiable ASCVD risk, since the absolute benefit of LDL-C lowering is amplified in the higher-risk patient that elevated Lp(a) identifies.</p>
+    <h4 class="ui">Medical management checklist</h4>
+    <ul class="checklist">
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>High-intensity statin</strong> as the cornerstone, titrated to a risk-based LDL-C goal. Statins raise Lp(a) modestly but reduce events and remain first-line. <span class="label routine">Routine</span></div></li>
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Add ezetimibe</strong> and, where LDL-C goals are unmet or risk is high, a <strong>PCSK9 inhibitor</strong>. PCSK9 inhibitors also lower Lp(a) by roughly 20 to 30 percent. <span class="label routine">Routine where indicated</span></div></li>
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Optimize blood pressure, glycemia, and weight</strong>; counsel complete tobacco cessation. <span class="label routine">Routine</span></div></li>
+      <li class="opt"><i class="ti ti-circle-dashed ic"></i><div><strong>Antiplatelet therapy</strong> (e.g., low-dose aspirin) in selected higher-risk primary-prevention patients after individualized bleeding-risk assessment; evidence specific to Lp(a) is observational. <span class="label opt">Optional / individualized</span></div></li>
+      <li class="opt"><i class="ti ti-circle-dashed ic"></i><div><strong>Lipoprotein apheresis</strong> for rare, very-high-risk patients with progressive disease despite maximal therapy (limited availability in Canada). <span class="label opt">Optional / specialist</span></div></li>
+      <li class="no"><i class="ti ti-circle-minus ic"></i><div><strong>Niacin</strong> is not recommended; it lowers Lp(a) modestly but has not improved outcomes and carries harms. <span class="label no">Not recommended</span></div></li>
+    </ul>
+    <div class="callout amber">
+      <div class="h ui"><i class="ti ti-alert-triangle"></i> Aspirin: assess bleeding risk first</div>
+      <p>Any decision to add aspirin in primary prevention must weigh the individual's bleeding risk (prior GI bleeding, anticoagulant use, age, uncontrolled hypertension) against expected benefit. This is an individualized, shared decision and is not a blanket recommendation for everyone with elevated Lp(a).</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="en6">
+    <div class="sechead"><div class="secnum">6</div><h2>Aortic valve surveillance</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>High Lp(a) also raises the chance of the heart's aortic valve becoming stiff and narrowed over time. Tell your clinician about new shortness of breath, chest tightness, or fainting. If a heart murmur is heard, an ultrasound of the heart (echocardiogram) can check the valve.</p>
+    </div>
+    <p>Elevated Lp(a) is causally associated with calcific aortic valve disease and faster progression of aortic stenosis. There is currently no guideline-mandated imaging surveillance schedule driven by Lp(a) alone; surveillance follows standard valve-disease practice.</p>
+    <h4 class="ui">Surveillance checklist</h4>
+    <ul class="checklist">
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Cardiac auscultation</strong> at periodic health visits; investigate a new systolic murmur with echocardiography. <span class="label routine">Routine</span></div></li>
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Echocardiographic follow-up</strong> of known aortic stenosis at intervals set by severity, per valvular heart disease guidelines. <span class="label routine">Routine if AS present</span></div></li>
+      <li class="opt"><i class="ti ti-circle-dashed ic"></i><div><strong>Baseline echocardiogram</strong> in very-high-Lp(a) patients with a murmur or symptoms; routine screening echo solely for elevated Lp(a) is not established. <span class="label opt">Optional / expert consensus</span></div></li>
+      <li class="no"><i class="ti ti-circle-minus ic"></i><div><strong>Scheduled serial echo in asymptomatic patients</strong> driven only by Lp(a) level is not recommended. <span class="label no">Not recommended</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 7 -->
+  <section id="en7">
+    <div class="sechead"><div class="secnum">7</div><h2>Genetic counselling and cascade screening</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Because Lp(a) is inherited, your level has meaning for your family. If your level is high, your parents, brothers, sisters, and children each have roughly a one-in-two chance of also being high. Sharing your result so first-degree relatives can have a simple blood test is one of the most useful things you can do.</p>
+    </div>
+    <p>Lp(a) is inherited in a codominant fashion, so first-degree relatives of an affected individual have approximately a 50 percent chance of also having elevated levels. An elevated index result should trigger cascade measurement of first-degree relatives, who can then be risk-stratified and managed accordingly.</p>
+    <ul class="checklist">
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Cascade Lp(a) testing</strong> of parents, siblings, and adult children after an elevated index result. <span class="label routine">Routine</span></div></li>
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Three-generation pedigree</strong> with attention to premature ASCVD, sudden cardiac death, and aortic stenosis. <span class="label routine">Routine</span></div></li>
+      <li class="opt"><i class="ti ti-circle-dashed ic"></i><div><strong>Consider concurrent familial hypercholesterolemia evaluation</strong>, since elevated Lp(a) is common in phenotypic FH and can inflate calculated LDL-C. <span class="label opt">Optional</span></div></li>
+    </ul>
+    <p>Direct <em>LPA</em> genotyping is not used for routine clinical management; the phenotypic plasma level is the actionable measure. Reproductive counselling is generally not indicated, as elevated Lp(a) is a common, modifiable-risk-context trait rather than a single-gene disease requiring prenatal decision-making.</p>
+    <a class="booking" href="https://genaissance.ca" target="_blank" rel="noopener"><i class="ti ti-calendar-plus"></i> Book a Genaissance consultation</a>
+  </section>
+
+  <!-- 8 -->
+  <section id="en8">
+    <div class="sechead"><div class="secnum">8</div><h2>Lifestyle and nutrition</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Lifestyle changes do not lower Lp(a) itself by much. But they powerfully lower your overall heart risk, which is the goal. A heart-healthy diet, regular activity, good sleep, not smoking, and healthy blood pressure and blood sugar all add up.</p>
+    </div>
+    <p>Lifestyle has minimal direct effect on Lp(a) concentration, and patients should be counselled honestly on this point to avoid the misconception that diet will normalize their level. The value of lifestyle here is in reducing total ASCVD risk, which is where the absolute benefit accrues in this higher-risk group.</p>
+    <ul class="checklist">
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Heart-healthy dietary pattern</strong> (Mediterranean-style; emphasis on vegetables, legumes, whole grains, fish, nuts, olive oil), aligned with Life's Essential 8. <span class="label routine">Routine</span></div></li>
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Regular physical activity</strong>, adequate sleep, weight and waist management, and complete tobacco/nicotine cessation. <span class="label routine">Routine</span></div></li>
+      <li class="no"><i class="ti ti-circle-minus ic"></i><div><strong>Supplements or diets marketed to "lower Lp(a)"</strong> lack outcome evidence and are not recommended. <span class="label no">Not recommended</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 9 -->
+  <section id="en9">
+    <div class="sechead"><div class="secnum">9</div><h2>Emerging and investigational therapies</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>This is a fast-moving area. Several new injectable medicines can lower Lp(a) by 70 to 90 percent or more in studies. We are now waiting for large trials to confirm that lowering Lp(a) actually prevents heart attacks and strokes. None is approved for this purpose yet. If you have very high Lp(a), you may be eligible for a clinical trial.</p>
+    </div>
+    <div class="emerging">
+      <div class="h ui"><i class="ti ti-flask-2"></i> Investigational — trial-only at time of writing</div>
+      <p>Several RNA-targeted agents achieve large, sustained Lp(a) reductions but do not yet have cardiovascular outcome data, and none is approved for routine use. Approval will depend on demonstrating reduced cardiovascular events.</p>
+      <p><strong>Pelacarsen</strong> (antisense oligonucleotide, monthly injection): the phase 3 Lp(a)HORIZON outcomes trial (≈8,300 patients with established CVD and elevated Lp(a)) is the first cardiovascular outcomes trial in this class, with results anticipated in the first half of 2026.</p>
+      <p><strong>Olpasiran</strong> (siRNA, dosed roughly every 12 weeks): phase 2 reductions near 95 to 100 percent; phase 3 OCEAN(a)-Outcomes is ongoing.</p>
+      <p><strong>Lepodisiran</strong> (long-acting siRNA): a single dose reduced Lp(a) by more than 90 percent for up to a year in phase 2 (ALPACA); phase 3 ACCLAIM-Lp(a) is enrolling.</p>
+      <p><strong>Zerlasiran</strong> (siRNA) and <strong>muvalaplin</strong> (oral small molecule) are at earlier stages.</p>
+    </div>
+    <p>Until outcomes data are available, the role of these agents is investigational. Patients with very high Lp(a) and high cardiovascular risk may be appropriate for referral to enrolling trials.</p>
+  </section>
+
+  <!-- 10 -->
+  <section id="en10">
+    <div class="sechead"><div class="secnum">10</div><h2>Summary of recommendations</h2></div>
+    <h4 class="ui">By risk level</h4>
+    <div class="cardgrid">
+      <div class="card"><div class="ct">Low (&lt; 30 mg/dL)</div><p>No Lp(a)-attributable risk. Manage on standard global cardiovascular risk. No repeat testing.</p></div>
+      <div class="card"><div class="ct">Intermediate (30–50 mg/dL)</div><p>Use as a tie-breaker to intensify prevention when global risk is borderline. Optimize all modifiable risk factors.</p></div>
+      <div class="card"><div class="ct">High (≥ 50 mg/dL)</div><p>Recognized risk-enhancing threshold. Intensify LDL-C lowering and global risk control; cascade-test relatives.</p></div>
+      <div class="card"><div class="ct">Very high (≥ 100 mg/dL)</div><p>Substantially higher-risk phenotype. Consider CAC/imaging, valve attention, and clinical-trial referral.</p></div>
+    </div>
+    <h4 class="ui">Cross-cutting recommendations</h4>
+    <div class="cardgrid">
+      <div class="card"><div class="ct">Measure once</div><p>One-time Lp(a) in adulthood for all adults; repeat only in specific circumstances.</p></div>
+      <div class="card"><div class="ct">Treat the whole risk</div><p>High-intensity statin first; add ezetimibe and PCSK9 inhibitor as needed; control BP, glucose, weight; stop smoking.</p></div>
+      <div class="card"><div class="ct">Screen the family</div><p>Cascade-test first-degree relatives after an elevated result; build a three-generation pedigree.</p></div>
+      <div class="card"><div class="ct">Watch the valve</div><p>Auscultate; investigate murmurs or symptoms with echocardiography per valve-disease guidelines.</p></div>
+      <div class="card"><div class="ct">Be honest about lifestyle</div><p>Lifestyle barely changes Lp(a) but strongly lowers total risk; avoid unproven "Lp(a)-lowering" products.</p></div>
+      <div class="card"><div class="ct">Know the horizon</div><p>RNA-targeted therapies are promising but investigational; consider trial referral for very high Lp(a).</p></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section id="en11">
+    <div class="sechead"><div class="secnum">11</div><h2>References</h2></div>
+    <ol class="refs">
+      <li>Blumenthal RS, Morris PB, Gaudino M, et al. 2026 ACC/AHA/AACVPR/ABC/ACPM/ADA/AGS/APhA/ASPC/NLA/PCNA Guideline on the Management of Dyslipidemia. <em>J Am Coll Cardiol</em>. 2026. doi:10.1016/j.jacc.2025.11.016.</li>
+      <li>Pearson GJ, Thanassoulis G, Anderson TJ, et al. 2021 Canadian Cardiovascular Society Guidelines for the Management of Dyslipidemia for the Prevention of Cardiovascular Disease in Adults. <em>Can J Cardiol</em>. 2021;37(8):1129–1150.</li>
+      <li>Clinical Care for Patients With Elevated Lipoprotein(a) Level in Canada: A Practical Framework for Screening, Risk Assessment, and Management. <em>Can J Cardiol</em>. 2026. doi:10.1016/j.cjca.2025.12.060.</li>
+      <li>Koschinsky ML, Bajaj A, Boffa MB, et al. A focused update to the 2019 NLA scientific statement on use of lipoprotein(a) in clinical practice. <em>J Clin Lipidol</em>. 2024;18(6):e308–e319.</li>
+      <li>Kronenberg F, Mora S, Stroes ESG, et al. Lipoprotein(a) in atherosclerotic cardiovascular disease and aortic stenosis: a European Atherosclerosis Society consensus statement. <em>Eur Heart J</em>. 2022;43(39):3925–3946.</li>
+      <li>2025 ESC/EAS Focused Update on lipoprotein(a) in cardiovascular risk assessment. <em>Eur Heart J</em>. 2025.</li>
+      <li>Wilson DP, Jacobson TA, Jones PH, et al. Use of lipoprotein(a) in clinical practice: a biomarker whose time has come. A scientific statement from the National Lipid Association. <em>J Clin Lipidol</em>. 2019;13:374–392.</li>
+      <li>Marcovina SM, Shapiro MD. Ancestry, lipoprotein(a), and cardiovascular risk thresholds: JACC review topic of the week. <em>J Am Coll Cardiol</em>. 2022;80(9):934–946.</li>
+      <li>Bhatia HS, Wandel S, Willeit P, et al. Independence of lipoprotein(a) and LDL-C–mediated cardiovascular risk: a participant-level meta-analysis. <em>Circulation</em>. 2025;151(4):312–321.</li>
+      <li>Tsimikas S, Gordts P, Nora C, et al. Statin therapy increases lipoprotein(a) levels. <em>Eur Heart J</em>. 2020;41:2275–2284.</li>
+      <li>Nissen SE, et al. Lepodisiran — a long-duration small interfering RNA targeting lipoprotein(a) (ALPACA). <em>N Engl J Med</em>. 2025;392(17):1673–1683.</li>
+      <li>Cho L, Nicholls SJ, Nordestgaard BG, et al. Design and rationale of the Lp(a)HORIZON trial (pelacarsen). <em>Am Heart J</em>. 2025. doi:10.1016/j.ahj.2025.03.019.</li>
+      <li>Nicholls SJ, et al. Oral muvalaplin for lowering of lipoprotein(a): a randomized clinical trial. <em>JAMA</em>. 2025;333(3):222–231.</li>
+    </ol>
+  </section>
+
+  <div class="footer ui">
+    <p>This protocol is intended to support, not replace, clinical judgment and an individualized assessment of each patient. Guidelines and evidence evolve, and several recommendations here reflect expert consensus rather than high-certainty trial data. Lp(a) thresholds and unit conversions are assay-dependent and approximate. Verify all thresholds, targets, and management against the current versions of the cited guidelines before applying them in practice.</p>
+    <p>© Genaissance Precision Medicine · GENGIQC. Dr. Andrew Shuen, MD PhD FRCPC DABMGG.</p>
+  </div>
+
+</div>
+
+<!-- ============ FRANÇAIS ============ -->
+<div class="lang-fr">
+
+  <header class="masthead">
+    <div class="eyebrow">Protocole de prévention cardiovasculaire · Genaissance / GENGIQC</div>
+    <h1>Lipoprotéine(a) élevée : prévention et surveillance</h1>
+    <p class="standfirst">Un protocole pratique pour repérer, stratifier le risque et prendre en charge les adultes ayant une lipoprotéine(a) [Lp(a)] élevée, une cause fréquente, héréditaire et indépendante de maladie cardiovasculaire et de sténose de la valve aortique.</p>
+    <div class="authors">
+      <div><span class="who">D<sup>r</sup> Andrew Shuen, MD PhD FRCPC DABMGG</span> <span class="aff">— Génétique médicale et médecine de la longévité · Centre de prévention du cancer, Hôpital général juif (HGJ), Montréal · Genaissance Precision Medicine, Toronto</span></div>
+    </div>
+    <div class="chips ui">
+      <span class="chip"><i class="ti ti-heartbeat"></i> Athérosclérose et sténose aortique</span>
+      <span class="chip"><i class="ti ti-dna"></i> Déterminée génétiquement</span>
+      <span class="chip"><i class="ti ti-calendar-check"></i> Mesure unique</span>
+      <span class="chip"><i class="ti ti-users"></i> Dépistage en cascade</span>
+    </div>
+    <div class="legend">
+      <span><span class="dot green"></span> Résumé pour les patients en langage simple</span>
+      <span><span class="dot text"></span> Détail clinique pour les cliniciens</span>
+    </div>
+  </header>
+
+  <nav class="toc ui">
+    <h2>Sommaire</h2>
+    <ol>
+      <li><a href="#fr1">Comprendre la Lp(a)</a></li>
+      <li><a href="#fr2">Risque selon le taux de Lp(a)</a></li>
+      <li><a href="#fr3">Qui tester et comment</a></li>
+      <li><a href="#fr4">Évaluation et reclassement du risque</a></li>
+      <li><a href="#fr5">Traitement hypolipémiant et médical</a></li>
+      <li><a href="#fr6">Surveillance de la valve aortique</a></li>
+      <li><a href="#fr7">Conseil génétique et dépistage en cascade</a></li>
+      <li><a href="#fr8">Mode de vie et nutrition</a></li>
+      <li><a href="#fr9">Traitements émergents abaissant la Lp(a)</a></li>
+      <li><a href="#fr10">Résumé des recommandations</a></li>
+      <li><a href="#fr11">Références</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="fr1">
+    <div class="sechead"><div class="secnum">1</div><h2>Comprendre la Lp(a)</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>La lipoprotéine(a), qu'on prononce « L-P-petit-a », est une particule du sang semblable au LDL, le « mauvais » cholestérol. Un taux élevé augmente le risque de crise cardiaque, d'AVC et de rétrécissement de la valve aortique du cœur.</p>
+      <p>Votre taux de Lp(a) est surtout déterminé par les gènes dont vous héritez. Il reste assez stable toute la vie et n'est pas modifié par l'alimentation ou l'exercice. Environ une personne sur cinq a un taux élevé. Connaître votre chiffre une fois est utile, car il nous indique avec quelle vigueur protéger votre cœur par d'autres moyens.</p>
+      <p>Une Lp(a) élevée est fréquente et n'est pas une raison de paniquer. Nous ne pouvons pas encore abaisser la Lp(a) elle-même avec des médicaments approuvés, mais nous pouvons beaucoup réduire votre risque global en agissant sur les autres facteurs modifiables.</p>
+    </div>
+    <p>La lipoprotéine(a) est une particule de type LDL dans laquelle l'apolipoprotéine B-100 est liée de façon covalente à l'apolipoprotéine(a), une glycoprotéine homologue du plasminogène. Elle favorise l'athérosclérose par l'apport de cholestérol de type LDL, le transport de phospholipides oxydés pro-inflammatoires et de possibles effets antifibrinolytiques. Son lien de causalité avec la maladie cardiovasculaire athéroscléreuse (MCVAS) et la sténose aortique calcifiée est établi par randomisation mendélienne et par de grandes cohortes épidémiologiques.</p>
+    <p>La concentration plasmatique est déterminée génétiquement à environ 70 à 90 pour cent, surtout par le gène <em>LPA</em>, en particulier le polymorphisme du nombre de copies du domaine kringle IV de type 2 (KIV-2) et plusieurs variants ponctuels. Les taux sont largement fixés au début de l'âge adulte, stables au cours de la vie et peu sensibles au mode de vie. La Lp(a) se transmet de façon codominante (essentiellement autosomique dominante), ce qui justifie le dépistage des apparentés au premier degré lorsqu'un taux est élevé.</p>
+    <div class="callout">
+      <div class="h ui"><i class="ti ti-flask"></i> Une note sur les unités et les dosages</div>
+      <p>La Lp(a) se rapporte en nmol/L (concentration en particules, à privilégier) ou en mg/dL (masse). Les deux ne sont pas interchangeables par un facteur fixe, car la taille de l'isoforme apo(a) varie d'une personne à l'autre. Quand c'est possible, utilisez un dosage insensible à l'isoforme exprimé en nmol/L. Les conversions approximatives des guides considèrent ~50 mg/dL comme environ 100 à 125 nmol/L, mais il s'agit d'une approximation seulement.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="fr2">
+    <div class="sechead"><div class="secnum">2</div><h2>Risque selon le taux de Lp(a)</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Plus votre Lp(a) est élevée, plus le risque est grand. Le risque augmente progressivement plutôt que de s'activer à un seuil précis. Deux seuils servent souvent de repères : un taux autour de 50 mg/dL (environ 125 nmol/L) marque un risque ajouté notable, et un taux autour de 100 mg/dL (environ 250 nmol/L) marque un risque nettement plus élevé.</p>
+    </div>
+    <p>Le risque est continu et gradué. Le guide ACC/AHA 2026 sur les dyslipidémies décrit un taux autour de 125 nmol/L (≈50 mg/dL) comme indiquant un risque notable, et autour de 250 nmol/L (≈100 mg/dL) comme identifiant un phénotype à risque nettement plus élevé, le risque aux concentrations très élevées (300 à 400 nmol/L) s'approchant de celui conféré par l'hypercholestérolémie familiale hétérozygote. L'ascendance influence la distribution dans la population; les seuils doivent être appliqués avec cette réserve et les différences de dosage à l'esprit.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Taux de Lp(a)</th><th>Catégorie de risque</th><th>Interprétation</th></tr></thead>
+        <tbody>
+          <tr><td>&lt; 30 mg/dL (&lt; ~75 nmol/L)</td><td><span class="rp low">Faible</span></td><td>Aucun risque ajouté attribuable à la Lp(a); prise en charge selon le risque global standard.</td></tr>
+          <tr><td>30–50 mg/dL (~75–125 nmol/L)</td><td><span class="rp mod">Intermédiaire / zone grise</span></td><td>Majoration modeste du risque; sert à orienter les décisions limites.</td></tr>
+          <tr><td>≥ 50 mg/dL (≥ ~125 nmol/L)</td><td><span class="rp high">Élevé</span></td><td>Seuil reconnu de majoration du risque; intensifier le contrôle global des facteurs de risque.</td></tr>
+          <tr><td>≥ 100 mg/dL (≥ ~250 nmol/L)</td><td><span class="rp high">Très élevé</span></td><td>Phénotype à risque nettement plus élevé; envisager imagerie (score calcique) et orientation vers un essai.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Ces tranches synthétisent la mise à jour ciblée NLA 2024, les cadres canadiens 2021/2026 et le guide ACC/AHA 2026. Les seuils diffèrent légèrement selon les sociétés et les dosages; traitez-les comme des repères et non comme des bascules absolues.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="fr3">
+    <div class="sechead"><div class="secnum">3</div><h2>Qui tester et comment</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>La plupart des guides recommandent maintenant de vérifier la Lp(a) une fois à l'âge adulte. C'est une simple prise de sang qui ne nécessite habituellement pas d'être à jeun. Comme votre taux est surtout génétique et stable, un résultat normal n'a que rarement besoin d'être répété.</p>
+    </div>
+    <p>Les guides convergent vers une mesure unique et large à l'âge adulte. Le guide 2021 de la Société canadienne de cardiologie recommande une mesure unique de la Lp(a) au cours de la vie dans le bilan lipidique initial, et le cadre pratique canadien 2026 préconise un dépistage universel unique chez l'adulte. Le guide ACC/AHA 2026 sur les dyslipidémies, pour la première fois dans un guide américain, accorde une recommandation de classe I à la mesure de la Lp(a) au moins une fois chez tous les adultes, avec des considérations particulières pour les enfants.</p>
+    <h4 class="ui">Liste de vérification du dépistage</h4>
+    <ul class="checklist">
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Mesure unique à l'âge adulte</strong> pour tous les adultes dans le cadre de l'évaluation du risque cardiovasculaire. <span class="label routine">Systématique</span></div></li>
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Prioriser</strong> les personnes ayant des antécédents personnels ou familiaux de MCVAS précoce, d'hypercholestérolémie familiale, de sténose aortique calcifiée ou d'événements récurrents/réfractaires. <span class="label routine">Systématique</span></div></li>
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Apparentés au premier degré</strong> d'une personne ayant une Lp(a) élevée (dépistage en cascade). <span class="label routine">Systématique</span></div></li>
+      <li class="opt"><i class="ti ti-circle-dashed ic"></i><div><strong>Enfants sélectionnés</strong> ayant de forts antécédents familiaux de MCVAS précoce ou une élévation parentale connue, selon le guide 2026. <span class="label opt">Optionnel / sélectif</span></div></li>
+      <li class="opt"><i class="ti ti-circle-dashed ic"></i><div><strong>Une nouvelle mesure</strong> n'est généralement pas nécessaire, car le mode de vie et la plupart des médicaments ne modifient pas la Lp(a). Recontrôler seulement si le premier échantillon était peu fiable ou si un nouveau traitement abaissant la Lp(a) est instauré. <span class="label opt">Optionnel</span></div></li>
+      <li class="no"><i class="ti ti-circle-minus ic"></i><div><strong>La surveillance répétée</strong> pour suivre la réponse au mode de vie n'est pas recommandée. <span class="label no">Non recommandé</span></div></li>
+    </ul>
+    <div class="infobox">
+      <div class="h ui"><i class="ti ti-info-circle"></i> Note pratique</div>
+      <p>Les statines peuvent légèrement augmenter la Lp(a) mesurée et ne doivent pas être arrêtées pour cette raison. Une maladie aiguë et la grossesse peuvent modifier transitoirement les taux; éviter de mesurer pendant un état inflammatoire aigu quand c'est possible.</p>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="fr4">
+    <div class="sechead"><div class="secnum">4</div><h2>Évaluation et reclassement du risque</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Une Lp(a) élevée n'agit pas seule. Nous la combinons à votre tension artérielle, votre cholestérol, votre glycémie, vos antécédents familiaux et votre statut tabagique pour estimer votre risque total. Lorsque cette estimation se trouve près d'un point de décision, une Lp(a) élevée peut nous amener à débuter ou à intensifier la prévention.</p>
+    </div>
+    <p>La Lp(a) élevée agit comme facteur de majoration du risque ajouté à une estimation globale validée. Au Canada, estimez le risque de base avec un calculateur validé dans la population, comme le score de risque de Framingham; le guide ACC/AHA 2026 privilégie les équations PREVENT pour le risque à 10 et 30 ans. Une Lp(a) élevée appuie le reclassement à la hausse des patients à risque limite ou intermédiaire et l'abaissement du seuil d'instauration ou d'intensification du traitement.</p>
+    <div class="callout">
+      <div class="h ui"><i class="ti ti-calculator"></i> Le reclassement en pratique</div>
+      <p>Selon le cadre SCC 2021, une personne ayant un score de Framingham de 5 à 9 pour cent et un LDL-C ≥ 3,5 mmol/L (ou apoB ≥ 1,05 g/L, ou cholestérol non-HDL ≥ 4,2 mmol/L) justifie d'envisager un traitement, et des modificateurs comme une Lp(a) ≥ 50 mg/dL (≥ ~100 nmol/L), des antécédents familiaux de coronaropathie précoce ou un score calcique coronarien &gt; 0 renforcent cette décision.</p>
+    </div>
+    <p>Le score calcique coronarien et la CRP ultrasensible peuvent servir de façon sélective à affiner le risque lorsque l'estimation globale est incertaine, comme le soutient le guide 2026. Un score calcique de zéro n'annule pas le risque lié à une Lp(a) élevée, mais peut aider à la décision partagée sur l'intensité des statines.</p>
+  </section>
+
+  <!-- 5 -->
+  <section id="fr5">
+    <div class="sechead"><div class="secnum">5</div><h2>Traitement hypolipémiant et médical</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Nous n'avons pas encore de médicament approuvé qui cible directement la Lp(a). Nous réduisons plutôt votre risque global en abaissant votre cholestérol LDL autant qu'il convient, en maîtrisant la tension et la glycémie, et en cessant de fumer. Les statines sont la base. Certaines personnes ont besoin de médicaments supplémentaires.</p>
+    </div>
+    <p>Aucun traitement actuellement approuvé n'est indiqué spécifiquement pour abaisser la Lp(a) en vue d'un bénéfice cardiovasculaire. La prise en charge repose sur un contrôle énergique de tous les facteurs de risque modifiables, car le bénéfice absolu de l'abaissement du LDL-C est amplifié chez le patient à risque plus élevé que la Lp(a) élevée permet d'identifier.</p>
+    <h4 class="ui">Liste de vérification de la prise en charge médicale</h4>
+    <ul class="checklist">
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Statine à haute intensité</strong> comme pierre angulaire, titrée vers une cible de LDL-C selon le risque. Les statines augmentent modestement la Lp(a) mais réduisent les événements et demeurent de première intention. <span class="label routine">Systématique</span></div></li>
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Ajouter l'ézétimibe</strong> et, si les cibles de LDL-C ne sont pas atteintes ou si le risque est élevé, un <strong>inhibiteur de PCSK9</strong>. Les inhibiteurs de PCSK9 abaissent aussi la Lp(a) d'environ 20 à 30 pour cent. <span class="label routine">Systématique si indiqué</span></div></li>
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Optimiser tension, glycémie et poids</strong>; conseiller l'arrêt complet du tabac. <span class="label routine">Systématique</span></div></li>
+      <li class="opt"><i class="ti ti-circle-dashed ic"></i><div><strong>Antiplaquettaire</strong> (p. ex. aspirine à faible dose) chez certains patients en prévention primaire à risque plus élevé, après évaluation individualisée du risque hémorragique; les données propres à la Lp(a) sont observationnelles. <span class="label opt">Optionnel / individualisé</span></div></li>
+      <li class="opt"><i class="ti ti-circle-dashed ic"></i><div><strong>Aphérèse des lipoprotéines</strong> pour de rares patients à très haut risque avec maladie évolutive malgré un traitement maximal (disponibilité limitée au Canada). <span class="label opt">Optionnel / spécialisé</span></div></li>
+      <li class="no"><i class="ti ti-circle-minus ic"></i><div><strong>La niacine</strong> n'est pas recommandée; elle abaisse modestement la Lp(a) mais n'améliore pas les résultats et comporte des risques. <span class="label no">Non recommandé</span></div></li>
+    </ul>
+    <div class="callout amber">
+      <div class="h ui"><i class="ti ti-alert-triangle"></i> Aspirine : évaluer d'abord le risque hémorragique</div>
+      <p>Toute décision d'ajouter l'aspirine en prévention primaire doit mettre en balance le risque hémorragique individuel (saignement digestif antérieur, anticoagulants, âge, hypertension non maîtrisée) et le bénéfice attendu. Il s'agit d'une décision partagée et individualisée, et non d'une recommandation générale pour toute personne ayant une Lp(a) élevée.</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="fr6">
+    <div class="sechead"><div class="secnum">6</div><h2>Surveillance de la valve aortique</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Une Lp(a) élevée augmente aussi le risque que la valve aortique du cœur devienne rigide et rétrécie avec le temps. Signalez à votre clinicien tout nouvel essoufflement, serrement à la poitrine ou évanouissement. Si un souffle au cœur est entendu, une échographie du cœur (échocardiogramme) peut vérifier la valve.</p>
+    </div>
+    <p>La Lp(a) élevée est liée de façon causale à la maladie valvulaire aortique calcifiée et à une progression plus rapide de la sténose aortique. Il n'existe actuellement aucun calendrier d'imagerie de surveillance imposé par les guides selon la seule Lp(a); la surveillance suit la pratique standard des valvulopathies.</p>
+    <h4 class="ui">Liste de vérification de la surveillance</h4>
+    <ul class="checklist">
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Auscultation cardiaque</strong> aux visites périodiques; investiguer tout nouveau souffle systolique par échocardiographie. <span class="label routine">Systématique</span></div></li>
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Suivi échocardiographique</strong> d'une sténose aortique connue à des intervalles fixés selon la sévérité, conformément aux guides sur les valvulopathies. <span class="label routine">Systématique si SA présente</span></div></li>
+      <li class="opt"><i class="ti ti-circle-dashed ic"></i><div><strong>Échocardiogramme de référence</strong> chez les patients à Lp(a) très élevée avec souffle ou symptômes; le dépistage échographique systématique pour la seule Lp(a) élevée n'est pas établi. <span class="label opt">Optionnel / consensus d'experts</span></div></li>
+      <li class="no"><i class="ti ti-circle-minus ic"></i><div><strong>Une échographie sérielle programmée chez les patients asymptomatiques</strong> fondée uniquement sur le taux de Lp(a) n'est pas recommandée. <span class="label no">Non recommandé</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 7 -->
+  <section id="fr7">
+    <div class="sechead"><div class="secnum">7</div><h2>Conseil génétique et dépistage en cascade</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Comme la Lp(a) est héréditaire, votre taux a une signification pour votre famille. Si votre taux est élevé, vos parents, frères, sœurs et enfants ont chacun environ une chance sur deux d'être aussi élevés. Partager votre résultat pour que vos apparentés au premier degré puissent passer une simple prise de sang est l'une des choses les plus utiles à faire.</p>
+    </div>
+    <p>La Lp(a) se transmet de façon codominante; les apparentés au premier degré d'une personne atteinte ont donc environ 50 pour cent de probabilité d'avoir aussi des taux élevés. Un résultat index élevé doit déclencher la mesure en cascade chez les apparentés au premier degré, qui peuvent ensuite être stratifiés et pris en charge en conséquence.</p>
+    <ul class="checklist">
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Dépistage en cascade de la Lp(a)</strong> chez les parents, la fratrie et les enfants adultes après un résultat index élevé. <span class="label routine">Systématique</span></div></li>
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Arbre généalogique sur trois générations</strong> en portant attention à la MCVAS précoce, à la mort subite cardiaque et à la sténose aortique. <span class="label routine">Systématique</span></div></li>
+      <li class="opt"><i class="ti ti-circle-dashed ic"></i><div><strong>Envisager une évaluation concomitante de l'hypercholestérolémie familiale</strong>, car la Lp(a) élevée est fréquente dans l'HF phénotypique et peut gonfler le LDL-C calculé. <span class="label opt">Optionnel</span></div></li>
+    </ul>
+    <p>Le génotypage direct de <em>LPA</em> n'est pas utilisé pour la prise en charge clinique courante; le taux plasmatique phénotypique est la mesure actionnable. Le conseil reproductif n'est généralement pas indiqué, car la Lp(a) élevée est un trait fréquent dans un contexte de risque modifiable plutôt qu'une maladie monogénique exigeant une décision prénatale.</p>
+    <a class="booking" href="https://genaissance.ca" target="_blank" rel="noopener"><i class="ti ti-calendar-plus"></i> Prendre rendez-vous à Genaissance</a>
+  </section>
+
+  <!-- 8 -->
+  <section id="fr8">
+    <div class="sechead"><div class="secnum">8</div><h2>Mode de vie et nutrition</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Les changements de mode de vie n'abaissent pas beaucoup la Lp(a) elle-même. Mais ils réduisent fortement votre risque cardiaque global, ce qui est l'objectif. Une alimentation bonne pour le cœur, une activité régulière, un bon sommeil, l'absence de tabac et une tension et une glycémie saines s'additionnent.</p>
+    </div>
+    <p>Le mode de vie a un effet direct minime sur la concentration de Lp(a), et les patients doivent en être informés honnêtement pour éviter l'idée fausse que l'alimentation normalisera leur taux. La valeur du mode de vie ici réside dans la réduction du risque total de MCVAS, là où s'accumule le bénéfice absolu dans ce groupe à risque plus élevé.</p>
+    <ul class="checklist">
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Régime alimentaire bon pour le cœur</strong> (de type méditerranéen; accent sur légumes, légumineuses, grains entiers, poisson, noix, huile d'olive), aligné sur Life's Essential 8. <span class="label routine">Systématique</span></div></li>
+      <li class="routine"><i class="ti ti-circle-check ic"></i><div><strong>Activité physique régulière</strong>, sommeil suffisant, gestion du poids et du tour de taille, et arrêt complet du tabac et de la nicotine. <span class="label routine">Systématique</span></div></li>
+      <li class="no"><i class="ti ti-circle-minus ic"></i><div><strong>Les suppléments ou régimes vantés pour « abaisser la Lp(a) »</strong> manquent de données sur les résultats et ne sont pas recommandés. <span class="label no">Non recommandé</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 9 -->
+  <section id="fr9">
+    <div class="sechead"><div class="secnum">9</div><h2>Traitements émergents et expérimentaux</h2></div>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>C'est un domaine qui évolue vite. Plusieurs nouveaux médicaments injectables peuvent abaisser la Lp(a) de 70 à 90 pour cent ou plus dans les études. Nous attendons maintenant de grands essais pour confirmer qu'abaisser la Lp(a) prévient réellement les crises cardiaques et les AVC. Aucun n'est encore approuvé à cette fin. Si votre Lp(a) est très élevée, vous pourriez être admissible à un essai clinique.</p>
+    </div>
+    <div class="emerging">
+      <div class="h ui"><i class="ti ti-flask-2"></i> Expérimental — uniquement en essai au moment de la rédaction</div>
+      <p>Plusieurs agents ciblant l'ARN obtiennent des baisses importantes et durables de la Lp(a), mais sans données de résultats cardiovasculaires à ce jour, et aucun n'est approuvé pour un usage courant. L'approbation dépendra de la démonstration d'une réduction des événements cardiovasculaires.</p>
+      <p><strong>Pélacarsen</strong> (oligonucléotide antisens, injection mensuelle) : l'essai de phase 3 Lp(a)HORIZON (≈8 300 patients avec MCV établie et Lp(a) élevée) est le premier essai de résultats cardiovasculaires de cette classe, avec des résultats attendus au premier semestre 2026.</p>
+      <p><strong>Olpasiran</strong> (ARNsi, environ toutes les 12 semaines) : baisses de phase 2 proches de 95 à 100 pour cent; l'essai de phase 3 OCEAN(a)-Outcomes est en cours.</p>
+      <p><strong>Lépodisiran</strong> (ARNsi à action prolongée) : une dose unique a réduit la Lp(a) de plus de 90 pour cent pendant jusqu'à un an en phase 2 (ALPACA); l'essai de phase 3 ACCLAIM-Lp(a) recrute.</p>
+      <p><strong>Zerlasiran</strong> (ARNsi) et <strong>muvalapline</strong> (petite molécule orale) sont à des stades plus précoces.</p>
+    </div>
+    <p>Tant que les données de résultats ne sont pas disponibles, le rôle de ces agents demeure expérimental. Les patients à Lp(a) très élevée et à risque cardiovasculaire élevé peuvent être candidats à une orientation vers les essais en cours de recrutement.</p>
+  </section>
+
+  <!-- 10 -->
+  <section id="fr10">
+    <div class="sechead"><div class="secnum">10</div><h2>Résumé des recommandations</h2></div>
+    <h4 class="ui">Selon le niveau de risque</h4>
+    <div class="cardgrid">
+      <div class="card"><div class="ct">Faible (&lt; 30 mg/dL)</div><p>Aucun risque attribuable à la Lp(a). Prise en charge selon le risque cardiovasculaire global standard. Pas de nouvelle mesure.</p></div>
+      <div class="card"><div class="ct">Intermédiaire (30–50 mg/dL)</div><p>Sert d'élément décisif pour intensifier la prévention quand le risque global est limite. Optimiser tous les facteurs modifiables.</p></div>
+      <div class="card"><div class="ct">Élevé (≥ 50 mg/dL)</div><p>Seuil reconnu de majoration du risque. Intensifier l'abaissement du LDL-C et le contrôle global; dépister les apparentés en cascade.</p></div>
+      <div class="card"><div class="ct">Très élevé (≥ 100 mg/dL)</div><p>Phénotype à risque nettement plus élevé. Envisager imagerie (score calcique), attention valvulaire et orientation vers un essai.</p></div>
+    </div>
+    <h4 class="ui">Recommandations transversales</h4>
+    <div class="cardgrid">
+      <div class="card"><div class="ct">Mesurer une fois</div><p>Une mesure unique de la Lp(a) à l'âge adulte pour tous; ne répéter que dans des circonstances précises.</p></div>
+      <div class="card"><div class="ct">Traiter le risque entier</div><p>Statine à haute intensité d'abord; ajouter ézétimibe et inhibiteur de PCSK9 au besoin; maîtriser tension, glycémie, poids; cesser de fumer.</p></div>
+      <div class="card"><div class="ct">Dépister la famille</div><p>Dépistage en cascade des apparentés au premier degré après un résultat élevé; arbre généalogique sur trois générations.</p></div>
+      <div class="card"><div class="ct">Surveiller la valve</div><p>Ausculter; investiguer souffles ou symptômes par échocardiographie selon les guides sur les valvulopathies.</p></div>
+      <div class="card"><div class="ct">Être honnête sur le mode de vie</div><p>Le mode de vie modifie à peine la Lp(a) mais réduit fortement le risque total; éviter les produits non prouvés « abaissant la Lp(a) ».</p></div>
+      <div class="card"><div class="ct">Connaître l'horizon</div><p>Les thérapies ciblant l'ARN sont prometteuses mais expérimentales; envisager l'orientation vers un essai pour une Lp(a) très élevée.</p></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section id="fr11">
+    <div class="sechead"><div class="secnum">11</div><h2>Références</h2></div>
+    <ol class="refs">
+      <li>Blumenthal RS, Morris PB, Gaudino M, et al. 2026 ACC/AHA/AACVPR/ABC/ACPM/ADA/AGS/APhA/ASPC/NLA/PCNA Guideline on the Management of Dyslipidemia. <em>J Am Coll Cardiol</em>. 2026. doi:10.1016/j.jacc.2025.11.016.</li>
+      <li>Pearson GJ, Thanassoulis G, Anderson TJ, et al. 2021 Canadian Cardiovascular Society Guidelines for the Management of Dyslipidemia for the Prevention of Cardiovascular Disease in Adults. <em>Can J Cardiol</em>. 2021;37(8):1129–1150.</li>
+      <li>Clinical Care for Patients With Elevated Lipoprotein(a) Level in Canada: A Practical Framework for Screening, Risk Assessment, and Management. <em>Can J Cardiol</em>. 2026. doi:10.1016/j.cjca.2025.12.060.</li>
+      <li>Koschinsky ML, Bajaj A, Boffa MB, et al. A focused update to the 2019 NLA scientific statement on use of lipoprotein(a) in clinical practice. <em>J Clin Lipidol</em>. 2024;18(6):e308–e319.</li>
+      <li>Kronenberg F, Mora S, Stroes ESG, et al. Lipoprotein(a) in atherosclerotic cardiovascular disease and aortic stenosis: a European Atherosclerosis Society consensus statement. <em>Eur Heart J</em>. 2022;43(39):3925–3946.</li>
+      <li>2025 ESC/EAS Focused Update on lipoprotein(a) in cardiovascular risk assessment. <em>Eur Heart J</em>. 2025.</li>
+      <li>Wilson DP, Jacobson TA, Jones PH, et al. Use of lipoprotein(a) in clinical practice: a biomarker whose time has come. A scientific statement from the National Lipid Association. <em>J Clin Lipidol</em>. 2019;13:374–392.</li>
+      <li>Marcovina SM, Shapiro MD. Ancestry, lipoprotein(a), and cardiovascular risk thresholds: JACC review topic of the week. <em>J Am Coll Cardiol</em>. 2022;80(9):934–946.</li>
+      <li>Bhatia HS, Wandel S, Willeit P, et al. Independence of lipoprotein(a) and LDL-C–mediated cardiovascular risk: a participant-level meta-analysis. <em>Circulation</em>. 2025;151(4):312–321.</li>
+      <li>Tsimikas S, Gordts P, Nora C, et al. Statin therapy increases lipoprotein(a) levels. <em>Eur Heart J</em>. 2020;41:2275–2284.</li>
+      <li>Nissen SE, et al. Lepodisiran — a long-duration small interfering RNA targeting lipoprotein(a) (ALPACA). <em>N Engl J Med</em>. 2025;392(17):1673–1683.</li>
+      <li>Cho L, Nicholls SJ, Nordestgaard BG, et al. Design and rationale of the Lp(a)HORIZON trial (pelacarsen). <em>Am Heart J</em>. 2025. doi:10.1016/j.ahj.2025.03.019.</li>
+      <li>Nicholls SJ, et al. Oral muvalaplin for lowering of lipoprotein(a): a randomized clinical trial. <em>JAMA</em>. 2025;333(3):222–231.</li>
+    </ol>
+  </section>
+
+  <div class="footer ui">
+    <p>Ce protocole vise à appuyer, et non à remplacer, le jugement clinique et une évaluation individualisée de chaque patient. Les guides et les données évoluent, et plusieurs recommandations ici reflètent un consensus d'experts plutôt que des données d'essais de haute certitude. Les seuils de Lp(a) et les conversions d'unités dépendent du dosage et sont approximatifs. Vérifiez tous les seuils, cibles et modalités de prise en charge par rapport aux versions actuelles des guides cités avant de les appliquer en pratique.</p>
+    <p>© Genaissance Precision Medicine · GENGIQC. D<sup>r</sup> Andrew Shuen, MD PhD FRCPC DABMGG.</p>
+  </div>
+
+</div>
+
+</div>
+
+<script>
+function setLang(l){
+  document.querySelector('.lang-en').style.display = (l==='en')?'block':'none';
+  document.querySelector('.lang-fr').style.display = (l==='fr')?'block':'none';
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  document.getElementById('btn-fr').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+  window.scrollTo(0,0);
+}
+setLang('en');
+</script>
+
+</body>
+</html>

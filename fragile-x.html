@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fragile X testing — Patient guide</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+  :root{
+    --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+    --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+    --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+    --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+    --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+    --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+    --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+    --radius:14px; --radius-sm:9px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:18px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 22px 80px;}
+  .ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; line-height:1.2;}
+  a{color:var(--brand); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  /* Language toggle */
+  .langbar{
+    position:sticky; top:0; z-index:50; background:var(--paper);
+    border-bottom:1px solid var(--line); padding:10px 22px;
+    display:flex; gap:8px; justify-content:space-between; align-items:center;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .langbar-left{display:flex; gap:8px; align-items:center;}
+  .langbar-right{display:flex; gap:8px; align-items:center;}
+  .langbar button{
+    border:1px solid var(--brand-line); background:var(--paper); color:var(--brand-dark);
+    padding:7px 18px; border-radius:999px; cursor:pointer; font-size:14px; font-weight:600;
+    letter-spacing:.02em;
+  }
+  .langbar-right button.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+  .langbar .util-btn{border-color:var(--line); color:var(--ink-soft); padding:7px 14px;
+    display:inline-flex; align-items:center; gap:6px;}
+  .langbar .util-btn:hover{background:var(--cream); color:var(--brand-dark); border-color:var(--brand-line);}
+  .langbar .util-btn.active{background:var(--brand-bg); color:var(--brand-dark); border-color:var(--brand-line);}
+  @media(max-width:560px){
+    .langbar{flex-wrap:wrap; gap:8px;}
+    .langbar .util-btn{padding:7px 11px; font-size:13px;}
+  }
+
+  /* Masthead */
+  .masthead{padding:46px 0 26px; border-bottom:3px double var(--line);}
+  .eyebrow{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; text-transform:uppercase;
+    letter-spacing:.16em; font-size:12px; color:var(--brand-dark); font-weight:700;}
+  .masthead h1{font-size:38px; margin:12px 0 8px;}
+  .standfirst{font-size:20px; color:var(--ink-soft); margin:0 0 22px;}
+  .authpanel{
+    background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:16px 18px; font-size:15.5px; color:var(--ink-soft);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .authpanel strong{color:var(--ink);}
+  .meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .chip{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+    background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);
+    padding:5px 11px; border-radius:999px; font-weight:600;}
+  .legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:18px; font-size:13.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--ink-soft);}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .swatch{width:14px; height:14px; border-radius:4px; display:inline-block;}
+
+  /* TOC */
+  .toc{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 24px; margin:30px 0; }
+  .toc h2{font-size:15px; text-transform:uppercase; letter-spacing:.12em; margin:0 0 14px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--brand-dark);}
+  .toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:15.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .toc li{margin-bottom:8px; break-inside:avoid;}
+  @media(max-width:640px){.toc ol{columns:1;}}
+
+  /* Sections */
+  section{padding:30px 0; border-top:1px solid var(--line-soft);}
+  .secnum{display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px;
+    background:var(--brand); color:#fff; border-radius:9px; font-weight:700; font-size:17px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; margin-right:12px; vertical-align:middle;}
+  h2.sec{font-size:27px; margin:0 0 16px; display:flex; align-items:center;}
+  h3{font-size:20px; color:var(--brand-dark); margin:26px 0 8px;}
+
+  /* Patient panel */
+  .patient{background:var(--brand-bg); border:1px solid var(--brand-line);
+    border-radius:var(--radius); padding:18px 20px; margin:14px 0 20px;}
+  .patient .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px;
+    text-transform:uppercase; letter-spacing:.13em; color:var(--brand-dark); font-weight:700;
+    display:flex; align-items:center; gap:7px; margin-bottom:8px;}
+  .patient p{margin:8px 0; color:#1f3a4d;}
+
+  /* Gene/subtype pill header */
+  .genehead{display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin:24px 0 6px;}
+  .genepill{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+    background:var(--ink); color:#fff; padding:6px 14px; border-radius:8px; font-size:15px;}
+  .badge{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; font-weight:700;
+    padding:4px 11px; border-radius:999px;}
+  .badge.high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+  .badge.mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+  .badge.low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+  /* Checklist */
+  .check{list-style:none; padding:0; margin:14px 0;}
+  .check li{display:flex; gap:11px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+    align-items:flex-start;}
+  .check li i{font-size:20px; flex-shrink:0; margin-top:1px;}
+  .ti-check{color:var(--brand);} .ti-minus{color:var(--ink-faint);} .ti-x{color:var(--red);}
+  .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.06em; padding:2px 8px; border-radius:5px; margin-left:6px;
+    white-space:nowrap;}
+  .tag.routine{background:var(--brand-bg); color:var(--brand-dark);}
+  .tag.optional{background:var(--amber-bg); color:var(--amber);}
+  .tag.notrec{background:var(--line-soft); color:var(--ink-faint);}
+
+  /* Tables */
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:15.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  th,td{text-align:left; padding:11px 13px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{background:var(--cream); color:var(--brand-dark); font-size:13px; text-transform:uppercase;
+    letter-spacing:.05em;}
+  .pill{display:inline-block; padding:3px 10px; border-radius:999px; font-size:12.5px; font-weight:700;}
+  .pill.high{background:var(--red-bg); color:var(--red);}
+  .pill.mod{background:var(--amber-bg); color:var(--amber);}
+  .pill.low{background:var(--brand-bg); color:var(--brand-dark);}
+
+  /* Callouts */
+  .rec{background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:14px 18px; margin:16px 0;}
+  .info{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm);
+    padding:14px 18px; margin:16px 0;}
+  .info .ptag, .emerging .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px;
+    text-transform:uppercase; letter-spacing:.13em; font-weight:700; display:flex; align-items:center;
+    gap:7px; margin-bottom:6px;}
+  .info .ptag{color:var(--brand-dark);}
+  .emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm);
+    padding:14px 18px; margin:16px 0;}
+  .emerging .ptag{color:var(--purple);}
+
+  /* Summary cards */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin:18px 0;}
+  .card{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand);
+    border-radius:var(--radius-sm); padding:15px 17px; font-size:15px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .card h4{margin:0 0 7px; font-size:15px; color:var(--brand-dark);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .card.amber{border-top-color:var(--amber-line);}
+  .card.amber h4{color:var(--amber);}
+
+  /* References */
+  ol.refs{font-size:14.5px; color:var(--ink-soft); line-height:1.5;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; padding-left:22px;}
+  ol.refs li{margin-bottom:10px;}
+
+  .footer{margin-top:40px; padding-top:18px; border-top:3px double var(--line);
+    font-size:13.5px; color:var(--ink-faint); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+  .lang-fr{display:none;}
+
+  /* ============== ON-SCREEN PDF PREVIEW (mirrors print layout) ============== */
+  body.pdf-preview{background:#5b6b78;}
+  body.pdf-preview .wrap{
+    max-width:816px;            /* 8.5in at 96dpi */
+    background:#fff; margin:24px auto 60px;
+    padding:54px 57px;          /* ~ Letter margins */
+    box-shadow:0 6px 28px rgba(0,0,0,.28); border-radius:2px;
+  }
+  body.pdf-preview{font-size:14px; line-height:1.45;}
+  body.pdf-preview .toc{display:none;}
+  body.pdf-preview .masthead{padding:0 0 16px; margin-bottom:6px;}
+  body.pdf-preview .masthead h1{font-size:30px; margin:8px 0 6px;}
+  body.pdf-preview .standfirst{font-size:16px; margin-bottom:16px;}
+  body.pdf-preview section{padding:14px 0;}
+  body.pdf-preview h2.sec{font-size:20px; margin:0 0 9px;}
+  body.pdf-preview .secnum{width:28px; height:28px; font-size:15px; margin-right:10px;}
+  body.pdf-preview h3{font-size:15.5px; margin:14px 0 5px;}
+  body.pdf-preview .patient{margin:9px 0 13px; padding:12px 15px;}
+  body.pdf-preview .patient p{margin:6px 0;}
+  body.pdf-preview .check li{padding:7px 0;}
+  body.pdf-preview table{font-size:12.5px;}
+  body.pdf-preview .rec,
+  body.pdf-preview .info,
+  body.pdf-preview .emerging{font-size:13px; padding:11px 14px;}
+  body.pdf-preview .cards{grid-template-columns:1fr 1fr; gap:11px;}
+  body.pdf-preview .card{font-size:13px;}
+  body.pdf-preview ol.refs{font-size:12.5px;}
+  /* visual page-break guides matching the forced print breaks */
+  body.pdf-preview #en6,
+  body.pdf-preview #fr6{
+    border-top:2px dashed var(--brand-line); margin-top:14px; padding-top:20px;
+    position:relative;
+  }
+  body.pdf-preview #en6::before,
+  body.pdf-preview #fr6::before{
+    content:"\2702  new page in PDF"; position:absolute; top:-9px; right:0;
+    background:#fff; padding:0 8px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:10px; color:var(--brand-dark); letter-spacing:.04em;
+  }
+
+  /* ===================== PRINT / PDF ===================== */
+  @page{
+    size:Letter;
+    margin:16mm 15mm 15mm;
+  }
+  @media print{
+    :root{ --cream:#fff; }
+    html,body{background:#fff !important;}
+    body{
+      font-size:10.5pt; line-height:1.4; color:#15212b;
+      -webkit-print-color-adjust:exact; print-color-adjust:exact;
+    }
+    .wrap{max-width:100%; padding:0;}
+
+    /* Hide on-screen UI; print only the active language */
+    .langbar{display:none !important;}
+    .toc{display:none !important;}                 /* TOC not useful in a flat PDF */
+    .lang-fr[style*="block"]{}                      /* respect JS-set display */
+
+    a{color:#15212b !important; text-decoration:none;}
+
+    /* Masthead tightened, centred feel, no oversize gaps */
+    .masthead{padding:0 0 14px; margin-bottom:6px;}
+    .masthead h1{font-size:23pt; margin:8px 0 6px;}
+    .standfirst{font-size:12pt; margin-bottom:14px;}
+    .eyebrow{font-size:8.5pt;}
+    .authpanel{font-size:10pt; padding:10px 12px;}
+    .meta{margin-top:10px;}
+    .chip{font-size:8.5pt; padding:3px 8px;}
+    .legend{font-size:9pt; margin-top:12px; gap:12px;}
+
+    /* Section flow: avoid orphaned headers, keep blocks intact */
+    section{
+      padding:12px 0; border-top:1px solid var(--line-soft);
+      break-inside:auto;
+    }
+    h2.sec{
+      font-size:15pt; margin:0 0 8px;
+      break-after:avoid; page-break-after:avoid;
+    }
+    h3{
+      font-size:11.5pt; margin:12px 0 4px;
+      break-after:avoid; page-break-after:avoid;
+    }
+    .secnum{width:26px; height:26px; font-size:12pt; margin-right:9px;}
+
+    /* Keep cohesive units together */
+    .patient,.rec,.info,.emerging,.card,
+    .genehead,.check li,tr,thead,
+    .cards .card{
+      break-inside:avoid; page-break-inside:avoid;
+    }
+    .genehead{break-after:avoid; page-break-after:avoid;}
+    .patient{margin:8px 0 12px; padding:11px 14px;}
+    .patient p{margin:5px 0;}
+
+    /* Checklists tighter */
+    .check li{padding:6px 0;}
+    .check li i{font-size:13pt;}
+    .tag{font-size:7.5pt; padding:1px 6px;}
+
+    /* Tables print cleanly, headers repeat across page breaks */
+    table{font-size:9pt; margin:10px 0; break-inside:auto;}
+    thead{display:table-header-group;}
+    th,td{padding:6px 8px;}
+    .pill{font-size:8pt; padding:2px 7px;}
+
+    /* Callouts */
+    .rec,.info,.emerging{padding:9px 12px; margin:10px 0; font-size:9.5pt;}
+    .info .ptag,.emerging .ptag,.patient .ptag{font-size:8.5pt; margin-bottom:4px;}
+
+    /* Summary cards: 2-up grid that fits the page width */
+    .cards{
+      grid-template-columns:1fr 1fr; gap:9px; margin:10px 0;
+      break-inside:auto;
+    }
+    .card{padding:10px 12px; font-size:9.5pt;}
+    .card h4{font-size:10pt; margin-bottom:5px;}
+
+    /* References: avoid splitting a single citation across pages */
+    ol.refs{font-size:9pt;}
+    ol.refs li{margin-bottom:6px; break-inside:avoid; page-break-inside:avoid;}
+
+    /* Each major section can start fresh if it would otherwise be cramped;
+       use sparingly: force a fresh page before the summary and references */
+    #en6, #fr6{ break-before:page; page-break-before:always; }
+
+    .footer{
+      margin-top:18px; padding-top:12px; font-size:8.5pt;
+      break-inside:avoid;
+    }
+
+    /* Repeating running footer with page numbers */
+    @page{
+      @bottom-center{
+        content:"Fragile X testing";
+        font-family:Helvetica,Arial,sans-serif; font-size:7.5pt; color:#6a7681;
+      }
+      @bottom-right{
+        content:"Page " counter(page) " of " counter(pages);
+        font-family:Helvetica,Arial,sans-serif; font-size:7.5pt; color:#6a7681;
+      }
+    }
+  }
+</style>
+</head>
+<body>
+<div class="langbar ui">
+  <div class="langbar-left">
+    <button id="btn-pdf" class="util-btn" onclick="togglePdfView()" title="Preview the print/PDF layout on screen"><i class="ti ti-file-type-pdf"></i> PDF view</button>
+    <button id="btn-print" class="util-btn" onclick="window.print()" title="Print or save as PDF"><i class="ti ti-printer"></i> Print / Save PDF</button>
+    <a class="util-btn" href="index.html" title="Back to all protocols" style="text-decoration:none"><i class="ti ti-arrow-left"></i> All protocols</a>
+  </div>
+  <div class="langbar-right">
+    <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+    <button id="btn-fr" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+<div class="wrap">
+<div class="lang-en" id="lang-en"><header class="masthead"><div class="eyebrow">Patient Education · Genetic Testing</div><h1>Fragile X testing</h1><p class="standfirst">A specialised test that counts a short, repeated stretch of DNA in the FMR1 gene, which ordinary sequencing cannot measure reliably.</p><div class="authpanel"><strong>Dr. Andrew Shuen, MD PhD FRCPC DABMGG</strong><br>Medical Genetics, Jewish General Hospital (JGH), Montreal</div><div class="meta"><span class="chip">Molecular test</span><span class="chip">Counts DNA repeats</span><span class="chip">Looks at one gene (FMR1)</span><span class="chip">A dedicated method</span></div></header><nav class="toc ui"><h2>Contents</h2><ol><li><a href="#en1">What it is</a></li><li><a href="#en2">What it looks at</a></li><li><a href="#en3">What it finds</a></li><li><a href="#en4">What it can miss</a></li><li><a href="#en5">Good to know</a></li><li><a href="#en6">Sorting out the words</a></li><li><a href="#en7">Remember</a></li></ol></nav><section id="en1"><h2 class="sec"><span class="secnum">1</span> What it is</h2><div class="patient"><div class="ptag"><i class="ti ti-user-heart"></i> For patients</div><p>Fragile X is caused not by a spelling change but by a short stretch of DNA letters in the FMR1 gene that is repeated too many times. Everyone has these repeats; the question is how many. Fragile X testing counts them. Ordinary sequencing is not reliable for this, so a dedicated test is used instead.</p></div><div class="analogy"><i class="ti ti-book"></i> Counting how many times one short line is repeated in a single recipe, rather than reading the words of the recipe.</div></section><section id="en2"><h2 class="sec"><span class="secnum">2</span> What it looks at</h2><p>The test measures the number of repeats and places it into a range: normal, an intermediate range, a premutation, or a full expansion. The ranges matter because a premutation can grow longer when passed to a child, and carries its own health considerations for some adults. The result is specific to FMR1 and says nothing about other genes.</p></section><section id="en3"><h2 class="sec"><span class="secnum">3</span> What it finds</h2><ul class="check"><li><i class="ti ti-check"></i> <div>The number of FMR1 repeats, and which range it falls into.<span class="tag finds">Finds</span></div></li><li><i class="ti ti-check"></i> <div>A premutation that could expand in the next generation.<span class="tag finds">Finds</span></div></li><li><i class="ti ti-check"></i> <div>Information relevant to family planning and to some adult health concerns.<span class="tag finds">Finds</span></div></li></ul></section><section id="en4"><h2 class="sec"><span class="secnum">4</span> What it can miss</h2><ul class="check"><li><i class="ti ti-x"></i> <div>Anything outside FMR1 — it looks only at this one repeat.<span class="tag misses">To know</span></div></li><li><i class="ti ti-x"></i> <div>Other causes of developmental differences, which need different tests.<span class="tag misses">To know</span></div></li><li><i class="ti ti-x"></i> <div>Ordinary spelling changes, which this method is not designed to read.<span class="tag misses">To know</span></div></li></ul></section><section id="en5"><h2 class="sec"><span class="secnum">5</span> Good to know</h2><p>Because the repeat can change in size between generations, the result has implications for relatives. Your genetics team can explain the specific ranges, what your number means, and who in the family might benefit from testing.</p></section><section id="en6"><h2 class="sec"><span class="secnum">6</span> Sorting out the words</h2><h3>A few terms you may see</h3><table><thead><tr><th>Term</th><th>In plain language</th></tr></thead><tbody><tr><td><strong>Gene</strong></td><td>One “recipe” in your DNA — the instructions for one job.</td></tr><tr><td><strong>Variant</strong></td><td>A change in the spelling of a gene; a “typo.” May or may not matter.</td></tr><tr><td><strong>Chromosome</strong></td><td>A package your DNA is organised into. You have 46.</td></tr><tr><td><strong>Sequencing</strong></td><td>Reading DNA letter by letter.</td></tr><tr><td><strong>Screen vs. diagnosis</strong></td><td>A screen gives a chance; a diagnostic test gives a clearer yes-or-no.</td></tr><tr><td><strong>VUS</strong></td><td>A variant of uncertain significance: an effect not yet known. Not used to guide care.</td></tr></tbody></table><div class="rec"><i class="ti ti-message-circle"></i> If a word on your report is not here, ask your genetics team. There are no bad questions, and lab wording is often more technical than it needs to be.</div></section><section id="en7"><div class="info"><div class="ptag"><i class="ti ti-user-heart"></i> Remember</div><p style="margin:6px 0 0">This is general education and does not replace a consultation. Which test is right for you, and what your result means, is decided together with your genetics team.</p></div></section><div class="footer"><p>This page is patient-education material intended to support, not replace, individual genetic counselling. It explains a category of genetic test in general terms; the exact tests available and their interpretation depend on your situation and the laboratory used. Prepared for Medical Genetics, Jewish General Hospital, Montreal.</p></div></div>
+<div class="lang-fr" id="lang-fr"><header class="masthead"><div class="eyebrow">Information aux patients · Tests génétiques</div><h1>Test du X fragile</h1><p class="standfirst">Un test spécialisé qui compte une courte séquence d'ADN répétée dans le gène FMR1, que le séquençage ordinaire ne peut mesurer de façon fiable.</p><div class="authpanel"><strong>D<sup>r</sup> Andrew Shuen, MD PhD FRCPC DABMGG</strong><br>Génétique médicale, Hôpital général juif (HGJ), Montréal</div><div class="meta"><span class="chip">Test moléculaire</span><span class="chip">Compte des répétitions d'ADN</span><span class="chip">Examine un gène (FMR1)</span><span class="chip">Une méthode dédiée</span></div></header><nav class="toc ui"><h2>Sommaire</h2><ol><li><a href="#fr1">Ce que c'est</a></li><li><a href="#fr2">Ce qu'il examine</a></li><li><a href="#fr3">Ce qu'il trouve</a></li><li><a href="#fr4">Ce qu'il peut manquer</a></li><li><a href="#fr5">À savoir</a></li><li><a href="#fr6">Le sens des mots</a></li><li><a href="#fr7">À retenir</a></li></ol></nav><section id="fr1"><h2 class="sec"><span class="secnum">1</span> Ce que c'est</h2><div class="patient"><div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div><p>Le X fragile n'est pas causé par un changement d'orthographe, mais par une courte séquence de lettres d'ADN dans le gène FMR1 répétée trop de fois. Tout le monde a ces répétitions; la question est de savoir combien. Le test du X fragile les compte. Le séquençage ordinaire n'est pas fiable pour cela, alors on utilise un test dédié.</p></div><div class="analogy"><i class="ti ti-book"></i> Compter combien de fois une courte ligne est répétée dans une seule recette, plutôt que de lire les mots de la recette.</div></section><section id="fr2"><h2 class="sec"><span class="secnum">2</span> Ce qu'il examine</h2><p>Le test mesure le nombre de répétitions et le situe dans une plage : normale, intermédiaire, prémutation ou expansion complète. Les plages comptent, car une prémutation peut s'allonger lorsqu'elle est transmise à un enfant, et comporte ses propres considérations de santé pour certains adultes. Le résultat est propre à FMR1 et ne dit rien des autres gènes.</p></section><section id="fr3"><h2 class="sec"><span class="secnum">3</span> Ce qu'il trouve</h2><ul class="check"><li><i class="ti ti-check"></i> <div>Le nombre de répétitions FMR1, et la plage où il se situe.<span class="tag finds">Trouve</span></div></li><li><i class="ti ti-check"></i> <div>Une prémutation qui pourrait s'étendre à la génération suivante.<span class="tag finds">Trouve</span></div></li><li><i class="ti ti-check"></i> <div>De l'information utile à la planification familiale et à certaines préoccupations de santé chez l'adulte.<span class="tag finds">Trouve</span></div></li></ul></section><section id="fr4"><h2 class="sec"><span class="secnum">4</span> Ce qu'il peut manquer</h2><ul class="check"><li><i class="ti ti-x"></i> <div>Tout ce qui est en dehors de FMR1 — il n'examine que cette répétition.<span class="tag misses">À savoir</span></div></li><li><i class="ti ti-x"></i> <div>D'autres causes de différences de développement, qui exigent d'autres tests.<span class="tag misses">À savoir</span></div></li><li><i class="ti ti-x"></i> <div>Les changements d'orthographe ordinaires, que cette méthode n'est pas conçue pour lire.<span class="tag misses">À savoir</span></div></li></ul></section><section id="fr5"><h2 class="sec"><span class="secnum">5</span> À savoir</h2><p>Comme la répétition peut changer de taille d'une génération à l'autre, le résultat a des implications pour les proches. Votre équipe de génétique peut expliquer les plages précises, ce que votre nombre signifie, et qui dans la famille pourrait bénéficier d'un test.</p></section><section id="fr6"><h2 class="sec"><span class="secnum">6</span> Le sens des mots</h2><h3>Quelques termes que vous pourriez voir</h3><table><thead><tr><th>Terme</th><th>En langage simple</th></tr></thead><tbody><tr><td><strong>Gène</strong></td><td>Une « recette » dans votre ADN — les instructions pour une tâche.</td></tr><tr><td><strong>Variant</strong></td><td>Un changement dans l'orthographe d'un gène; une « faute de frappe ». Peut compter ou non.</td></tr><tr><td><strong>Chromosome</strong></td><td>Un paquet dans lequel votre ADN est organisé. Vous en avez 46.</td></tr><tr><td><strong>Séquençage</strong></td><td>Lire l'ADN lettre par lettre.</td></tr><tr><td><strong>Dépistage vs diagnostic</strong></td><td>Un dépistage donne une probabilité; un test diagnostique donne un oui-ou-non plus clair.</td></tr><tr><td><strong>VSI</strong></td><td>Un variant de signification incertaine : un effet pas encore connu. Non utilisé pour guider les soins.</td></tr></tbody></table><div class="rec"><i class="ti ti-message-circle"></i> Si un mot de votre rapport ne figure pas ici, demandez à votre équipe de génétique. Il n'y a pas de mauvaises questions, et le vocabulaire des laboratoires est souvent plus technique qu'il n'a besoin de l'être.</div></section><section id="fr7"><div class="info"><div class="ptag"><i class="ti ti-user-heart"></i> À retenir</div><p style="margin:6px 0 0">Ceci est de l'information générale et ne remplace pas une consultation. Le test qui vous convient, et ce que votre résultat signifie, se décident avec votre équipe de génétique.</p></div></section><div class="footer"><p>Cette page est un document d'information destiné aux patients, visant à soutenir, et non à remplacer, le conseil génétique individuel. Elle explique en termes généraux une catégorie de test génétique; les tests exacts offerts et leur interprétation dépendent de votre situation et du laboratoire utilisé. Préparé pour la Génétique médicale, Hôpital général juif, Montréal.</p></div></div>
+</div>
+<script>
+function setLang(l){
+  document.getElementById('lang-en').style.display = (l==='en')?'block':'none';
+  document.getElementById('lang-fr').style.display = (l==='fr')?'block':'none';
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  document.getElementById('btn-fr').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+  window.scrollTo(0,0);
+}
+function togglePdfView(){
+  var on = document.body.classList.toggle('pdf-preview');
+  document.getElementById('btn-pdf').classList.toggle('active', on);
+  window.scrollTo(0,0);
+}
+setLang('en');
+</script>
+</body>
+</html>

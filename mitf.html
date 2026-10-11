@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MITF E318K — Cancer Prevention and Surveillance Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+  :root{
+    --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+    --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+    --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+    --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+    --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+    --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+    --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+    --radius:14px; --radius-sm:9px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:18px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; margin:0 auto; padding:0 22px 80px;}
+  .ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+  /* Language toggle */
+  .langbar{
+    position:sticky; top:0; z-index:50; background:rgba(244,249,252,.94);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+    display:flex; gap:8px; justify-content:center; padding:10px 0; margin-bottom:0;
+  }
+  .langbar button{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px;
+    font-weight:600; letter-spacing:.02em; cursor:pointer; border:1px solid var(--brand-line);
+    background:var(--paper); color:var(--brand-dark); padding:7px 18px; border-radius:999px;
+    transition:.15s;
+  }
+  .langbar button.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+
+  /* Masthead */
+  .masthead{padding:46px 0 8px; border-bottom:2px solid var(--ink); margin-bottom:6px;}
+  .eyebrow{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; text-transform:uppercase;
+    letter-spacing:.16em; font-size:12.5px; font-weight:700; color:var(--brand-dark);
+  }
+  h1.title{font-size:38px; line-height:1.12; margin:.28em 0 .18em; letter-spacing:-.01em;}
+  .standfirst{font-size:20px; color:var(--ink-soft); margin:0 0 22px; font-style:italic;}
+  .authors{
+    background:var(--cream); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:14px 18px; margin:18px 0 14px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14.5px; line-height:1.5;
+  }
+  .authors b{color:var(--brand-dark);}
+  .authors .aff{color:var(--ink-faint); font-size:13.5px;}
+  .meta-chips{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 6px;}
+  .chip{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; font-weight:600;
+    background:var(--paper); border:1px solid var(--line); border-radius:999px;
+    padding:5px 13px; color:var(--ink-soft); display:inline-flex; align-items:center; gap:6px;
+  }
+  .chip i{color:var(--brand);}
+  .legend{
+    display:flex; flex-wrap:wrap; gap:16px; margin:18px 0 4px; padding:13px 16px;
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-sm);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px;
+  }
+  .legend span{display:inline-flex; align-items:center; gap:7px;}
+  .dot{width:13px; height:13px; border-radius:50%; display:inline-block;}
+  .dot.patient{background:var(--brand-bg); border:2px solid var(--brand);}
+  .dot.clin{background:var(--paper); border:2px solid var(--ink-faint);}
+
+  /* TOC */
+  .toc{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 24px; margin:26px 0;
+  }
+  .toc h2{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; text-transform:uppercase;
+    letter-spacing:.12em; color:var(--ink-faint); margin:0 0 12px;
+  }
+  .toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:15.5px;}
+  .toc li{margin-bottom:7px;}
+  .toc a{color:var(--brand-dark); text-decoration:none;}
+  .toc a:hover{text-decoration:underline;}
+
+  /* Sections */
+  section{margin:40px 0 0; scroll-margin-top:70px;}
+  .sec-head{display:flex; align-items:baseline; gap:14px; border-bottom:1px solid var(--line);
+    padding-bottom:8px; margin-bottom:18px;}
+  .num{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:15px;
+    background:var(--brand); color:#fff; width:30px; height:30px; border-radius:8px;
+    display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto;
+  }
+  h2.sec-title{font-size:25px; margin:0; letter-spacing:-.01em;}
+  h3{font-size:20px; color:var(--brand-dark); margin:26px 0 8px;}
+  h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:15px; text-transform:uppercase;
+    letter-spacing:.06em; color:var(--ink-faint); margin:20px 0 6px;}
+  p{margin:0 0 14px;}
+
+  /* Patient panel */
+  .patient{
+    background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius);
+    padding:16px 20px 6px; margin:16px 0 22px;
+  }
+  .patient .tag{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.1em; color:var(--brand-dark);
+    display:inline-flex; align-items:center; gap:6px; margin-bottom:6px;
+  }
+  .patient p{color:#103040;}
+
+  /* Gene/subtype header pill */
+  .genehead{
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    background:var(--cream); border:1px solid var(--line); border-radius:var(--radius-sm);
+    padding:11px 16px; margin:22px 0 10px;
+  }
+  .genehead .gname{font-weight:700; font-size:18px; color:var(--ink);}
+  .riskbadge{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.04em; padding:4px 11px; border-radius:999px;
+  }
+  .risk-high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+  .risk-mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+  .risk-low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+  /* Checklist */
+  ul.check{list-style:none; padding:0; margin:12px 0 18px;}
+  ul.check li{display:flex; gap:11px; align-items:flex-start; padding:9px 0; border-bottom:1px solid var(--line-soft);}
+  ul.check li i{font-size:20px; flex:0 0 auto; margin-top:2px;}
+  ul.check li i.yes{color:var(--brand);}
+  ul.check li i.opt{color:var(--amber);}
+  ul.check li i.no{color:var(--ink-faint);}
+  .tag-inline{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.04em; padding:2px 8px; border-radius:5px; margin-left:8px; white-space:nowrap;}
+  .t-routine{background:var(--brand-bg); color:var(--brand-dark);}
+  .t-opt{background:var(--amber-bg); color:var(--amber);}
+  .t-no{background:var(--line-soft); color:var(--ink-faint);}
+
+  /* Callout */
+  .callout{border-left:4px solid var(--brand); background:var(--paper); border:1px solid var(--line);
+    border-left-width:4px; border-radius:var(--radius-sm); padding:14px 18px; margin:18px 0;}
+  .callout.rec{border-left-color:var(--brand);}
+  .callout .ct{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:13px;
+    text-transform:uppercase; letter-spacing:.07em; color:var(--brand-dark); margin-bottom:5px;}
+  .info{border-left-color:var(--brand); background:var(--brand-bg); border-color:var(--brand-line);}
+  .emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-left:4px solid var(--purple);
+    border-radius:var(--radius-sm); padding:14px 18px; margin:18px 0;}
+  .emerging .ct{color:var(--purple);}
+  .evflag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:700;
+    display:inline-flex; align-items:center; gap:6px; padding:3px 10px; border-radius:6px; margin:0 0 4px;}
+  .ev-consensus{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+  .ev-insufficient{background:var(--line-soft); color:var(--ink-soft); border:1px solid var(--line);}
+
+  /* Tables */
+  table{width:100%; border-collapse:collapse; margin:16px 0 22px; font-size:15.5px;}
+  th,td{text-align:left; padding:10px 13px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; text-transform:uppercase;
+    letter-spacing:.05em; color:var(--ink-faint); background:var(--cream);}
+  .risk-pill{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:700;
+    padding:3px 10px; border-radius:999px; white-space:nowrap;}
+  .p-high{background:var(--red-bg); color:var(--red);}
+  .p-mod{background:var(--amber-bg); color:var(--amber);}
+  .p-low{background:var(--brand-bg); color:var(--brand-dark);}
+
+  /* Summary cards */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin:18px 0;}
+  .card{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand);
+    border-radius:var(--radius-sm); padding:15px 17px;}
+  .card h4{margin-top:0; color:var(--brand-dark);}
+  .card p{font-size:14.5px; margin-bottom:0;}
+
+  /* References */
+  ol.refs{font-size:14px; line-height:1.5; color:var(--ink-soft); padding-left:22px;}
+  ol.refs li{margin-bottom:10px;}
+
+  /* Footer */
+  .footer-note{margin-top:50px; padding-top:18px; border-top:3px double var(--ink);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; color:var(--ink-faint); line-height:1.55;}
+
+  .lang-fr{display:none;}
+
+  @media (max-width:640px){
+    body{font-size:16.5px;} h1.title{font-size:29px;} .toc ol{columns:1;}
+    .standfirst{font-size:17px;}
+  }
+  @media print{
+    body{background:#fff; font-size:11pt;}
+    .langbar{display:none;} .wrap{max-width:100%;}
+    section{page-break-inside:avoid;} .patient,.callout,.emerging,.genehead{page-break-inside:avoid;}
+    a{color:var(--ink); text-decoration:none;}
+    .toc{page-break-after:always;}
+  }
+</style>
+</head>
+<body>
+
+<div class="langbar ui">
+  <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+  <button id="btn-fr" onclick="setLang('fr')">Français</button>
+</div>
+
+<div class="wrap">
+
+<!-- ============== ENGLISH ============== -->
+<div class="lang-en" id="en">
+
+  <header class="masthead">
+    <div class="eyebrow">Hereditary Cancer Surveillance Protocol</div>
+    <h1 class="title">MITF E318K Variant: Melanoma and Cancer Surveillance</h1>
+    <p class="standfirst">A practical prevention and surveillance plan for carriers of the moderate-risk MITF p.E318K germline variant, written for both patients and clinicians.</p>
+
+    <div class="authors ui">
+      <b>Dr. Andrew Shuen, MD PhD FRCPC DABMGG</b> — Cancer Genetics, Cancer Prevention Centre, Jewish General Hospital (JGH), Montreal<br>
+      <span class="aff">Genaissance Precision Medicine Clinic, Toronto</span>
+    </div>
+
+    <div class="meta-chips ui">
+      <span class="chip"><i class="ti ti-dna-2"></i> Gene: MITF (p.E318K)</span>
+      <span class="chip"><i class="ti ti-shield-half"></i> Risk level: Moderate</span>
+      <span class="chip"><i class="ti ti-calendar"></i> Reviewed: June 2026</span>
+      <span class="chip"><i class="ti ti-versions"></i> Version 1.0</span>
+    </div>
+
+    <div class="legend ui">
+      <span><span class="dot patient"></span> Blue panel = plain-language patient summary</span>
+      <span><span class="dot clin"></span> Standard text = clinical detail for providers</span>
+    </div>
+  </header>
+
+  <nav class="toc ui">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#en-1">Understanding the MITF E318K variant</a></li>
+      <li><a href="#en-2">Cancer risks at a glance</a></li>
+      <li><a href="#en-3">Skin and melanoma surveillance</a></li>
+      <li><a href="#en-4">Kidney (renal) surveillance</a></li>
+      <li><a href="#en-5">Pancreatic cancer: who to consider</a></li>
+      <li><a href="#en-6">Sun protection and lifestyle</a></li>
+      <li><a href="#en-7">Genetic counselling and family testing</a></li>
+      <li><a href="#en-8">Treatment notes for affected patients</a></li>
+      <li><a href="#en-9">Emerging and investigational areas</a></li>
+      <li><a href="#en-10">Summary of recommendations</a></li>
+      <li><a href="#en-11">References</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="en-1">
+    <div class="sec-head"><span class="num">1</span><h2 class="sec-title">Understanding the MITF E318K variant</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>MITF is a gene that helps control pigment-making cells in the skin. A specific change in this gene, called E318K, modestly raises the chance of developing melanoma, the most serious type of skin cancer. It has also been linked, less certainly, to kidney cancer. Carrying this variant does not mean you will get cancer. It means your background risk is higher than average, so regular skin checks and sensible sun protection matter more for you.</p>
+      <p>Many carriers also have a higher number of moles, including unusual (atypical) moles. This is part of the same biology and is a reason to have a skin specialist who knows your baseline.</p>
+    </div>
+
+    <p>MITF (microphthalmia-associated transcription factor) is a master regulator of melanocyte development, survival, and pigment production. The recurrent germline missense variant p.E318K (c.952G&gt;A) disrupts a conserved SUMOylation consensus site, producing a gain-of-function effect that enhances transcription of MITF target genes and promotes clonogenicity and invasion in melanoma and renal cell lines.</p>
+
+    <p>The variant behaves as a moderate-penetrance, autosomal dominant susceptibility allele. Meta-analysis across pooled hereditary and sporadic cohorts gives an odds ratio for cutaneous melanoma of roughly 2.4 (95% CI 1.9 to 3.0), with individual study estimates between about 2.2 and 4.8 depending on ascertainment. The variant is associated with high nevus count, atypical (dysplastic) nevi, and possibly faster-growing or nodular melanomas. Penetrance is incomplete and strongly modified by phenotype (skin type, nevus count), UV exposure, and co-inherited risk alleles such as MC1R red-hair-colour variants.</p>
+
+    <div class="callout info">
+      <div class="ct">Key framing point</div>
+      <p>E318K is not equivalent to a high-penetrance gene such as CDKN2A. Surveillance here is calibrated to moderate risk and rests substantially on expert consensus rather than dedicated outcome trials. The associations with kidney and pancreatic cancer are real in some cohorts but inconsistent across studies, and at least one ancestry-matched whole-exome analysis found minimal independent non-melanoma risk. Communicate this uncertainty honestly.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="en-2">
+    <div class="sec-head"><span class="num">2</span><h2 class="sec-title">Cancer risks at a glance</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>The table below shows which cancers are linked to this variant and how strong the evidence is. Melanoma is the main and best-established risk. The others are less certain and are managed mostly based on your personal and family history.</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Cancer</th><th>Risk level</th><th>Strength of evidence</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Cutaneous melanoma</b></td>
+          <td><span class="risk-pill p-mod">Moderate</span></td>
+          <td>Established (meta-analysis)</td>
+          <td>OR ~2.4 overall; higher with multiple primaries, high nevus count, or co-inherited MC1R variants.</td>
+        </tr>
+        <tr>
+          <td><b>Renal cell carcinoma</b></td>
+          <td><span class="risk-pill p-mod">Possible / modest</span></td>
+          <td>Inconsistent</td>
+          <td>OR ~4.5 in some enriched cohorts; not confirmed in ancestry-matched exome analyses. Personal and family history guide screening.</td>
+        </tr>
+        <tr>
+          <td><b>Pancreatic cancer</b></td>
+          <td><span class="risk-pill p-low">Uncertain</span></td>
+          <td>Weak / anecdotal</td>
+          <td>Reported in some families; no consistent population signal. No routine screening on the basis of E318K alone.</td>
+        </tr>
+        <tr>
+          <td>Other (breast, GI, others)</td>
+          <td><span class="risk-pill p-low">Not established</span></td>
+          <td>Insufficient</td>
+          <td>Scattered case-series reports; likely reflect shared polygenic or environmental risk. Manage by family history, not the variant.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="ui" style="font-size:13.5px; color:var(--ink-faint);">Lifetime risk figures specific to E318K carriers are not reliably quantified. Odds ratios are presented because absolute lifetime risk estimates from cohort data are not robust for this variant.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="en-3">
+    <div class="sec-head"><span class="num">3</span><h2 class="sec-title">Skin and melanoma surveillance</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>This is the most important part of your plan. The goal is to find any melanoma early, when it is highly curable. You will have regular full-skin exams by a dermatologist, check your own skin monthly, and protect your skin from the sun. If you have many moles, your dermatologist may take baseline photographs so changes are easier to spot over time.</p>
+    </div>
+
+    <div class="genehead">
+      <span class="gname">Dermatologic surveillance</span>
+      <span class="riskbadge risk-mod">Moderate risk</span>
+    </div>
+
+    <ul class="check">
+      <li><i class="ti ti-circle-check yes"></i><div><b>Full-skin examination by a dermatologist</b>, every 6 to 12 months, starting at diagnosis or around age 25 to 30. Include scalp, oral mucosa, genitals, and nails. <span class="tag-inline t-routine">Routine</span></div></li>
+      <li><i class="ti ti-circle-check yes"></i><div><b>Monthly skin self-examination</b> using the ABCDE rule (Asymmetry, Border, Colour, Diameter &gt;6 mm, Evolution). <span class="tag-inline t-routine">Routine</span></div></li>
+      <li><i class="ti ti-circle-check yes"></i><div><b>Baseline total-body photography and dermoscopy</b> for carriers with numerous or atypical nevi, to track change. <span class="tag-inline t-routine">Routine where available</span></div></li>
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Sequential digital dermoscopy / mole-mapping</b> at follow-up intervals for high-nevus-count carriers. <span class="tag-inline t-opt">Optional</span></div></li>
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Earlier or more frequent exams</b> (e.g. every 6 months from a younger age) if there is a strong family history of melanoma, multiple primaries, or co-inherited high-risk alleles. <span class="tag-inline t-opt">Individualize</span></div></li>
+      <li><i class="ti ti-minus no"></i><div><b>Routine whole-body imaging for occult melanoma</b> is not recommended in asymptomatic carriers. <span class="tag-inline t-no">Not recommended</span></div></li>
+    </ul>
+
+    <div class="evflag ev-consensus"><i class="ti ti-alert-triangle"></i> Expert consensus</div>
+    <p>Dedicated surveillance recommendations for MITF E318K do not exist in the way they do for high-penetrance genes. The intervals above are adapted from familial-melanoma and CDKN2A frameworks, scaled to the variant's moderate penetrance. Recent genome-first data show melanoma incidence in E318K carriers rising through the thirties, which supports initiating surveillance around age 30, or earlier if phenotype or family history warrants. Any suspicious or changing lesion should be biopsied promptly; carrier melanomas may diverge from typical dermoscopic patterns.</p>
+
+    <div class="callout rec">
+      <div class="ct">Recommendation</div>
+      <p>Establish care with a dermatologist who maintains a baseline record (photography where available). Treat the patient's own monthly self-exam as a core part of surveillance, not an optional extra. The combination of an informed patient and a consistent dermatology baseline catches most early melanomas.</p>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="en-4">
+    <div class="sec-head"><span class="num">4</span><h2 class="sec-title">Kidney (renal) surveillance</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Some studies have linked this variant to kidney cancer, but the evidence is mixed. There is no firm rule that every carrier needs kidney scans. Whether to screen depends on your family history and your own risk factors. If you and your care team decide to screen, it is usually a periodic ultrasound or MRI of the kidneys. We will discuss the pros and cons with you.</p>
+    </div>
+
+    <div class="genehead">
+      <span class="gname">Renal cell carcinoma</span>
+      <span class="riskbadge risk-low">Optional, history-driven</span>
+    </div>
+
+    <ul class="check">
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Periodic renal imaging (ultrasound or MRI)</b>, for carriers with a personal or family history of RCC, or a melanoma-plus-RCC family pattern. A typical approach is renal ultrasound or non-contrast MRI every 1 to 2 years. <span class="tag-inline t-opt">Optional, individualized</span></div></li>
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Shared-decision discussion of imaging</b> for carriers without RCC family history, weighing low absolute yield against incidental findings. <span class="tag-inline t-opt">Optional</span></div></li>
+      <li><i class="ti ti-minus no"></i><div><b>Universal mandatory renal screening</b> for all carriers regardless of history. <span class="tag-inline t-no">Not established</span></div></li>
+    </ul>
+
+    <div class="evflag ev-insufficient"><i class="ti ti-info-circle"></i> Evidence insufficient for a uniform rule</div>
+    <p>The RCC association rests on enriched case-control cohorts (OR around 4.5 in some) and was not reproduced in ancestry-matched whole-exome analysis, where non-melanoma risk was minimal. There is no guideline-mandated renal surveillance protocol for E318K. MRI is preferred over CT when imaging is pursued, to avoid cumulative radiation in a lifelong-surveillance population. Decisions should be individualized and documented as shared decision-making.</p>
+  </section>
+
+  <!-- 5 -->
+  <section id="en-5">
+    <div class="sec-head"><span class="num">5</span><h2 class="sec-title">Pancreatic cancer: who to consider</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>A small number of families with this variant have had pancreatic cancer, but the link is not well proven. We do not screen everyone with the variant. If pancreatic cancer runs in your family, that family history, rather than the variant alone, may justify a discussion about pancreatic screening at a specialized centre.</p>
+    </div>
+
+    <ul class="check">
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Referral to a high-risk pancreatic surveillance program</b> only if independent family-history criteria are met (for example, qualifying affected relatives), assessed at an experienced centre. <span class="tag-inline t-opt">History-driven</span></div></li>
+      <li><i class="ti ti-minus no"></i><div><b>Pancreatic screening on the basis of E318K alone.</b> <span class="tag-inline t-no">Not recommended</span></div></li>
+    </ul>
+
+    <div class="evflag ev-insufficient"><i class="ti ti-info-circle"></i> Evidence insufficient</div>
+    <p>Unlike CDKN2A, where pancreatic risk is established and CAPS/NCCN-aligned surveillance (EUS and/or MRI/MRCP from age 40, or 10 years before the earliest family diagnosis) is recommended, E318K carries no established pancreatic surveillance indication. Apply standard familial-pancreatic-cancer criteria independently of the variant.</p>
+  </section>
+
+  <!-- 6 -->
+  <section id="en-6">
+    <div class="sec-head"><span class="num">6</span><h2 class="sec-title">Sun protection and lifestyle</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Your genes set part of your risk, but sun exposure is the part you can control. Reducing UV damage is one of the most effective things you can do. Avoid sunburns, avoid tanning beds entirely, use broad-spectrum sunscreen, wear protective clothing and a hat, and seek shade during peak hours. These habits matter more for you than for the average person.</p>
+    </div>
+
+    <ul class="check">
+      <li><i class="ti ti-circle-check yes"></i><div>Daily broad-spectrum SPF 30 or higher on exposed skin; reapply during prolonged exposure.</div></li>
+      <li><i class="ti ti-circle-check yes"></i><div>No indoor tanning. Tanning beds are a clear, avoidable melanoma risk.</div></li>
+      <li><i class="ti ti-circle-check yes"></i><div>Protective clothing, wide-brimmed hat, UV-blocking sunglasses; shade during peak UV hours.</div></li>
+      <li><i class="ti ti-circle-check yes"></i><div>Avoid sunburns, especially blistering burns, across the lifespan.</div></li>
+      <li><i class="ti ti-circle-check yes"></i><div>Maintain adequate vitamin D through diet or supplementation rather than sun exposure.</div></li>
+    </ul>
+
+    <p>UV reduction has the strongest modifiable effect on melanoma risk and is the highest-yield intervention available to carriers. Genetic knowledge can itself improve adherence to sun-protective behaviour, which is part of the rationale for testing and counselling.</p>
+  </section>
+
+  <!-- 7 -->
+  <section id="en-7">
+    <div class="sec-head"><span class="num">7</span><h2 class="sec-title">Genetic counselling and family testing</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>This variant can be passed to children, with a 1 in 2 chance for each child. Close relatives (parents, siblings, children) may also carry it. Genetic counselling helps your family decide who to test and what it means. Testing is usually offered to adult relatives, since melanoma surveillance starts in adulthood.</p>
+    </div>
+
+    <ul class="check">
+      <li><i class="ti ti-circle-check yes"></i><div><b>Cascade testing</b> offered to first-degree relatives, then outward as carriers are identified.</div></li>
+      <li><i class="ti ti-circle-check yes"></i><div><b>Pedigree review</b> focused on melanoma, renal, and pancreatic cancers, and on co-segregating high-risk features that might prompt broader panel testing.</div></li>
+      <li><i class="ti ti-circle-check yes"></i><div><b>Consider a multi-gene melanoma panel</b> in strong-family-history cases; E318K does not exclude a second pathogenic variant (for example in CDKN2A), and surveillance would intensify if one is found.</div></li>
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Reproductive counselling</b> on request; given moderate, incomplete penetrance and effective surveillance, this is informational rather than a typical indication for prenatal or pre-implantation testing.</div></li>
+    </ul>
+
+    <p>Testing of minors is generally deferred, since interventions (surveillance, sun protection education) begin in adolescence to adulthood and do not require a genetic result in childhood. Counsel that E318K is moderate-risk and that a negative cascade result returns a relative to population-level skin-cancer advice, not zero risk.</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="en-8">
+    <div class="sec-head"><span class="num">8</span><h2 class="sec-title">Treatment notes for affected patients</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>If you have already had melanoma, your treatment follows the same effective, modern pathways as for anyone with melanoma. Carrying this variant does not, by itself, change which treatments work for you. It does mean lifelong skin surveillance, because carriers can develop more than one melanoma over time.</p>
+    </div>
+
+    <p>Management of an established melanoma in an E318K carrier follows standard stage-based oncology, including surgery, sentinel node assessment where indicated, and immunotherapy or targeted therapy for advanced disease. There is no validated germline-directed alteration of systemic therapy on the basis of E318K. The practical implications of carrier status are a higher rate of multiple primary melanomas, reinforcing lifelong dermatologic surveillance, and consideration of cascade testing for relatives.</p>
+  </section>
+
+  <!-- 9 -->
+  <section id="en-9">
+    <div class="sec-head"><span class="num">9</span><h2 class="sec-title">Emerging and investigational areas</h2></div>
+
+    <div class="emerging">
+      <div class="ct ui"><i class="ti ti-flask"></i> Investigational — not routine care</div>
+      <p>The items below are areas of active study. They are not validated for clinical surveillance decisions and should be framed as trial-only or research-context.</p>
+    </div>
+
+    <ul class="check">
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Genome-first risk stratification.</b> Population biobank data (e.g. MyCode, UK Biobank) are refining absolute melanoma risk and onset age for E318K, which may eventually yield variant-specific surveillance start ages.</div></li>
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>AI-assisted total-body imaging and dermoscopy</b> for change detection in high-nevus-count carriers; promising but not yet standard.</div></li>
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Polygenic risk score integration</b> with E318K and MC1R status to personalize intervals; investigational.</div></li>
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Expanded phenotype spectra</b> (for example cervical or nasal-cavity signals in recent genome-first analyses) require independent confirmation before they change management.</div></li>
+    </ul>
+  </section>
+
+  <!-- 10 -->
+  <section id="en-10">
+    <div class="sec-head"><span class="num">10</span><h2 class="sec-title">Summary of recommendations</h2></div>
+
+    <h4>Core surveillance (all carriers)</h4>
+    <div class="cards">
+      <div class="card"><h4>Skin exam</h4><p>Dermatologist full-skin exam every 6 to 12 months from diagnosis or age 25 to 30. Include scalp, mucosa, genitals, nails.</p></div>
+      <div class="card"><h4>Self-exam</h4><p>Monthly ABCDE self-examination. Report any new or changing lesion promptly.</p></div>
+      <div class="card"><h4>Baseline imaging</h4><p>Total-body photography and dermoscopy for atypical or numerous nevi.</p></div>
+      <div class="card"><h4>Sun protection</h4><p>SPF 30+, no tanning beds, protective clothing, avoid sunburns. Highest-yield modifiable step.</p></div>
+    </div>
+
+    <h4>History-driven (selected carriers)</h4>
+    <div class="cards">
+      <div class="card" style="border-top-color:var(--amber);"><h4>Renal imaging</h4><p>Ultrasound or MRI every 1 to 2 years only with personal or family RCC history; shared decision otherwise.</p></div>
+      <div class="card" style="border-top-color:var(--amber);"><h4>Pancreatic referral</h4><p>Only if independent familial-pancreatic-cancer criteria are met. Not on E318K alone.</p></div>
+      <div class="card" style="border-top-color:var(--amber);"><h4>Broader panel</h4><p>Consider multi-gene melanoma panel in strong family history; E318K does not exclude a second variant.</p></div>
+    </div>
+
+    <h4>Cross-cutting</h4>
+    <div class="cards">
+      <div class="card"><h4>Cascade testing</h4><p>Offer to first-degree relatives; defer testing of minors.</p></div>
+      <div class="card"><h4>Honest framing</h4><p>Moderate, incomplete penetrance. Surveillance is largely consensus-based, not trial-proven.</p></div>
+      <div class="card"><h4>Treatment</h4><p>Established melanoma managed by standard stage-based oncology; no germline-directed change.</p></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section id="en-11">
+    <div class="sec-head"><span class="num">11</span><h2 class="sec-title">References</h2></div>
+    <ol class="refs">
+      <li>Yokoyama S, Woods SL, Boyle GM, et al. A novel recurrent mutation in MITF predisposes to familial and sporadic melanoma. <i>Nature.</i> 2011;480:99-103.</li>
+      <li>Bertolotto C, Lesueur F, Giuliano S, et al. A SUMOylation-defective MITF germline mutation predisposes to melanoma and renal carcinoma. <i>Nature.</i> 2011;480:94-98.</li>
+      <li>Potrony M, Puig-Butille JA, Ribera-Sola M, et al. Prevalence of MITF p.E318K in patients with melanoma independent of the presence of CDKN2A causative mutations. <i>JAMA Dermatol.</i> 2016;152:405-412.</li>
+      <li>Ghiorzo P, Pastorino L, Queirolo P, et al. Prevalence of the E318K MITF germline mutation in Italian melanoma patients: associations with histological subtypes and family cancer history. <i>Pigment Cell Melanoma Res.</i> 2013;26:259-262.</li>
+      <li>Berwick M, MacArthur J, Orlow I, et al. MITF E318K's effect on melanoma risk independent of, but modified by, other risk factors. <i>Pigment Cell Melanoma Res.</i> 2014;27:485-488.</li>
+      <li>Guhan SM, Boland GM, Tanabe KK, et al. Cancer risks associated with the germline MITF(E318K) variant. <i>Sci Rep.</i> 2020;10:17051.</li>
+      <li>Sturm RA, Fox C, McClenahan P, et al. Phenotypic characterization of MITF E318K carriers and clinical/dermoscopic features of carrier cutaneous melanoma. <i>(carrier dermoscopy series; see PMC7017513).</i> 2020.</li>
+      <li>Castro-Pérez E, et al. Expanding the phenotype of E318K (c.952G&gt;A) MITF germline mutation carriers: case series and review. <i>Hered Cancer Clin Pract.</i> 2021;19:31.</li>
+      <li>Swetter SM, Thompson JA, Albertini MR, et al. NCCN Clinical Practice Guidelines in Oncology: Melanoma: Cutaneous. Version 2.2025.</li>
+      <li>Garbe C, Amaral T, Peris K, et al. European consensus-based interdisciplinary guideline for melanoma. Part 1: Diagnostics, update 2024. <i>Eur J Cancer.</i> 2024.</li>
+      <li>Goggins M, Overbeek KA, Brand R, et al. Management of patients with increased risk for familial pancreatic cancer: updated CAPS Consortium recommendations. <i>Gut.</i> 2020;69:7-17.</li>
+      <li>Soura E, Eliades PJ, Shannon K, et al. Hereditary melanoma: update on syndromes and management. <i>J Am Acad Dermatol.</i> 2016;74:395-407.</li>
+    </ol>
+  </section>
+
+  <div class="footer-note ui">
+    This protocol is intended to support, not replace, clinical judgement and individualized patient care. The MITF E318K variant is a moderate-penetrance allele, and many recommendations here reflect expert consensus extrapolated from familial-melanoma frameworks rather than variant-specific outcome trials. Guidelines evolve. Verify all start ages, intervals, and screening modalities against current NCCN, specialty-society, and CAPS versions before clinical use. Prepared by Dr. Andrew Shuen, Cancer Prevention Centre, Jewish General Hospital, Montreal, and Genaissance Precision Medicine Clinic, Toronto. Version 1.0, June 2026.
+  </div>
+</div>
+
+<!-- ============== FRANÇAIS ============== -->
+<div class="lang-fr" id="fr">
+
+  <header class="masthead">
+    <div class="eyebrow">Protocole de surveillance du cancer héréditaire</div>
+    <h1 class="title">Variant MITF E318K : surveillance du mélanome et du cancer</h1>
+    <p class="standfirst">Un plan pratique de prévention et de surveillance pour les porteurs du variant germinal MITF p.E318K à risque modéré, rédigé à l'intention des patients et des cliniciens.</p>
+
+    <div class="authors ui">
+      <b>Dr Andrew Shuen, MD PhD FRCPC DABMGG</b> — Génétique du cancer, Centre de prévention du cancer, Hôpital général juif (HGJ), Montréal<br>
+      <span class="aff">Clinique de médecine de précision Genaissance, Toronto</span>
+    </div>
+
+    <div class="meta-chips ui">
+      <span class="chip"><i class="ti ti-dna-2"></i> Gène : MITF (p.E318K)</span>
+      <span class="chip"><i class="ti ti-shield-half"></i> Niveau de risque : modéré</span>
+      <span class="chip"><i class="ti ti-calendar"></i> Révisé : juin 2026</span>
+      <span class="chip"><i class="ti ti-versions"></i> Version 1.0</span>
+    </div>
+
+    <div class="legend ui">
+      <span><span class="dot patient"></span> Panneau bleu = résumé pour les patients en langage simple</span>
+      <span><span class="dot clin"></span> Texte standard = détails cliniques pour les professionnels</span>
+    </div>
+  </header>
+
+  <nav class="toc ui">
+    <h2>Table des matières</h2>
+    <ol>
+      <li><a href="#fr-1">Comprendre le variant MITF E318K</a></li>
+      <li><a href="#fr-2">Risques de cancer en bref</a></li>
+      <li><a href="#fr-3">Surveillance de la peau et du mélanome</a></li>
+      <li><a href="#fr-4">Surveillance rénale</a></li>
+      <li><a href="#fr-5">Cancer du pancréas : qui considérer</a></li>
+      <li><a href="#fr-6">Protection solaire et mode de vie</a></li>
+      <li><a href="#fr-7">Conseil génétique et dépistage familial</a></li>
+      <li><a href="#fr-8">Notes de traitement pour les patients atteints</a></li>
+      <li><a href="#fr-9">Domaines émergents et expérimentaux</a></li>
+      <li><a href="#fr-10">Résumé des recommandations</a></li>
+      <li><a href="#fr-11">Références</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="fr-1">
+    <div class="sec-head"><span class="num">1</span><h2 class="sec-title">Comprendre le variant MITF E318K</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>MITF est un gène qui aide à contrôler les cellules productrices de pigment dans la peau. Un changement précis de ce gène, appelé E318K, augmente modérément la probabilité de développer un mélanome, le type de cancer de la peau le plus grave. Il a aussi été associé, de façon moins certaine, au cancer du rein. Être porteur de ce variant ne signifie pas que vous aurez un cancer. Cela signifie que votre risque de base est plus élevé que la moyenne, donc les examens réguliers de la peau et une protection solaire raisonnable comptent davantage pour vous.</p>
+      <p>Beaucoup de porteurs ont aussi un plus grand nombre de grains de beauté, dont certains atypiques. Cela fait partie de la même biologie et justifie d'avoir un dermatologue qui connaît votre état de référence.</p>
+    </div>
+
+    <p>MITF (facteur de transcription associé à la microphtalmie) est un régulateur maître du développement, de la survie et de la production de pigment des mélanocytes. Le variant germinal faux-sens récurrent p.E318K (c.952G&gt;A) perturbe un site consensus de SUMOylation conservé, produisant un effet de gain de fonction qui accroît la transcription des gènes cibles de MITF et favorise la clonogénicité et l'invasion dans les lignées de mélanome et de carcinome rénal.</p>
+
+    <p>Le variant se comporte comme un allèle de susceptibilité autosomique dominant à pénétrance modérée. Les méta-analyses regroupant des cohortes héréditaires et sporadiques donnent un rapport de cotes pour le mélanome cutané d'environ 2,4 (IC 95 % 1,9 à 3,0), les estimations individuelles allant d'environ 2,2 à 4,8 selon le recrutement. Le variant est associé à un nombre élevé de naevus, à des naevus atypiques (dysplasiques) et possiblement à des mélanomes à croissance plus rapide ou nodulaires. La pénétrance est incomplète et fortement modulée par le phénotype (type de peau, nombre de naevus), l'exposition aux UV et les allèles de risque co-hérités tels que les variants MC1R des cheveux roux.</p>
+
+    <div class="callout info">
+      <div class="ct">Point de cadrage clé</div>
+      <p>E318K n'est pas équivalent à un gène à forte pénétrance comme CDKN2A. La surveillance ici est calibrée à un risque modéré et repose largement sur un consensus d'experts plutôt que sur des essais cliniques dédiés. Les associations avec le cancer du rein et du pancréas sont réelles dans certaines cohortes mais incohérentes entre les études, et au moins une analyse d'exome appariée selon l'ascendance n'a trouvé qu'un risque non mélanique indépendant minime. Il faut communiquer cette incertitude honnêtement.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="fr-2">
+    <div class="sec-head"><span class="num">2</span><h2 class="sec-title">Risques de cancer en bref</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Le tableau ci-dessous montre quels cancers sont liés à ce variant et la solidité des preuves. Le mélanome est le risque principal et le mieux établi. Les autres sont moins certains et se gèrent surtout selon vos antécédents personnels et familiaux.</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Cancer</th><th>Niveau de risque</th><th>Solidité des preuves</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Mélanome cutané</b></td>
+          <td><span class="risk-pill p-mod">Modéré</span></td>
+          <td>Établi (méta-analyse)</td>
+          <td>RC ~2,4 globalement; plus élevé avec mélanomes multiples, nombre élevé de naevus ou variants MC1R co-hérités.</td>
+        </tr>
+        <tr>
+          <td><b>Carcinome rénal</b></td>
+          <td><span class="risk-pill p-mod">Possible / modeste</span></td>
+          <td>Incohérent</td>
+          <td>RC ~4,5 dans certaines cohortes enrichies; non confirmé dans les analyses d'exome appariées. Les antécédents guident le dépistage.</td>
+        </tr>
+        <tr>
+          <td><b>Cancer du pancréas</b></td>
+          <td><span class="risk-pill p-low">Incertain</span></td>
+          <td>Faible / anecdotique</td>
+          <td>Rapporté dans certaines familles; aucun signal populationnel cohérent. Pas de dépistage de routine sur la seule base d'E318K.</td>
+        </tr>
+        <tr>
+          <td>Autres (sein, GI, autres)</td>
+          <td><span class="risk-pill p-low">Non établi</span></td>
+          <td>Insuffisant</td>
+          <td>Rapports épars de séries de cas; reflètent probablement un risque polygénique ou environnemental partagé. À gérer selon les antécédents familiaux, pas le variant.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="ui" style="font-size:13.5px; color:var(--ink-faint);">Les chiffres de risque à vie propres aux porteurs d'E318K ne sont pas quantifiés de façon fiable. Les rapports de cotes sont présentés parce que les estimations de risque absolu à vie issues des cohortes ne sont pas robustes pour ce variant.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="fr-3">
+    <div class="sec-head"><span class="num">3</span><h2 class="sec-title">Surveillance de la peau et du mélanome</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>C'est la partie la plus importante de votre plan. L'objectif est de détecter tout mélanome tôt, quand il est très facilement guérissable. Vous aurez des examens complets de la peau par un dermatologue, vous examinerez vous-même votre peau chaque mois et vous protégerez votre peau du soleil. Si vous avez beaucoup de grains de beauté, votre dermatologue pourra prendre des photos de référence afin de repérer plus facilement les changements au fil du temps.</p>
+    </div>
+
+    <div class="genehead">
+      <span class="gname">Surveillance dermatologique</span>
+      <span class="riskbadge risk-mod">Risque modéré</span>
+    </div>
+
+    <ul class="check">
+      <li><i class="ti ti-circle-check yes"></i><div><b>Examen complet de la peau par un dermatologue</b>, tous les 6 à 12 mois, à partir du diagnostic ou vers 25 à 30 ans. Inclure le cuir chevelu, la muqueuse buccale, les organes génitaux et les ongles. <span class="tag-inline t-routine">De routine</span></div></li>
+      <li><i class="ti ti-circle-check yes"></i><div><b>Auto-examen mensuel de la peau</b> selon la règle ABCDE (Asymétrie, Bordure, Couleur, Diamètre &gt;6 mm, Évolution). <span class="tag-inline t-routine">De routine</span></div></li>
+      <li><i class="ti ti-circle-check yes"></i><div><b>Photographie corporelle de référence et dermoscopie</b> pour les porteurs ayant des naevus nombreux ou atypiques, afin de suivre les changements. <span class="tag-inline t-routine">De routine si disponible</span></div></li>
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Dermoscopie numérique séquentielle / cartographie des naevus</b> aux intervalles de suivi pour les porteurs à nombre élevé de naevus. <span class="tag-inline t-opt">Optionnel</span></div></li>
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Examens plus précoces ou plus fréquents</b> (p. ex. tous les 6 mois dès un âge plus jeune) en cas d'antécédents familiaux marqués de mélanome, de mélanomes multiples ou d'allèles à haut risque co-hérités. <span class="tag-inline t-opt">À individualiser</span></div></li>
+      <li><i class="ti ti-minus no"></i><div><b>L'imagerie corporelle de routine pour un mélanome occulte</b> n'est pas recommandée chez les porteurs asymptomatiques. <span class="tag-inline t-no">Non recommandé</span></div></li>
+    </ul>
+
+    <div class="evflag ev-consensus"><i class="ti ti-alert-triangle"></i> Consensus d'experts</div>
+    <p>Il n'existe pas de recommandations de surveillance dédiées pour MITF E318K comme il en existe pour les gènes à forte pénétrance. Les intervalles ci-dessus sont adaptés des cadres du mélanome familial et de CDKN2A, ajustés à la pénétrance modérée du variant. Des données récentes « génome d'abord » montrent que l'incidence du mélanome chez les porteurs d'E318K augmente durant la trentaine, ce qui appuie le début de la surveillance vers 30 ans, ou plus tôt si le phénotype ou les antécédents familiaux le justifient. Toute lésion suspecte ou changeante doit être biopsiée rapidement; les mélanomes des porteurs peuvent diverger des profils dermoscopiques typiques.</p>
+
+    <div class="callout rec">
+      <div class="ct">Recommandation</div>
+      <p>Établir un suivi avec un dermatologue qui tient un dossier de référence (photographie si possible). Considérer l'auto-examen mensuel du patient comme un élément central de la surveillance, et non comme un extra optionnel. La combinaison d'un patient informé et d'un état de référence dermatologique constant détecte la plupart des mélanomes précoces.</p>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="fr-4">
+    <div class="sec-head"><span class="num">4</span><h2 class="sec-title">Surveillance rénale</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Certaines études ont lié ce variant au cancer du rein, mais les preuves sont mitigées. Il n'existe pas de règle ferme voulant que chaque porteur ait besoin d'examens rénaux. La décision de dépister dépend de vos antécédents familiaux et de vos propres facteurs de risque. Si vous et votre équipe décidez de dépister, il s'agit habituellement d'une échographie ou d'une IRM périodique des reins. Nous discuterons des avantages et des inconvénients avec vous.</p>
+    </div>
+
+    <div class="genehead">
+      <span class="gname">Carcinome rénal</span>
+      <span class="riskbadge risk-low">Optionnel, selon antécédents</span>
+    </div>
+
+    <ul class="check">
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Imagerie rénale périodique (échographie ou IRM)</b>, pour les porteurs ayant des antécédents personnels ou familiaux de carcinome rénal, ou un profil familial mélanome-plus-rein. Une approche typique est une échographie rénale ou une IRM sans contraste tous les 1 à 2 ans. <span class="tag-inline t-opt">Optionnel, individualisé</span></div></li>
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Discussion de décision partagée sur l'imagerie</b> pour les porteurs sans antécédents familiaux de carcinome rénal, en pesant le faible rendement absolu contre les découvertes fortuites. <span class="tag-inline t-opt">Optionnel</span></div></li>
+      <li><i class="ti ti-minus no"></i><div><b>Dépistage rénal obligatoire universel</b> pour tous les porteurs sans égard aux antécédents. <span class="tag-inline t-no">Non établi</span></div></li>
+    </ul>
+
+    <div class="evflag ev-insufficient"><i class="ti ti-info-circle"></i> Preuves insuffisantes pour une règle uniforme</div>
+    <p>L'association avec le carcinome rénal repose sur des cohortes cas-témoins enrichies (RC autour de 4,5 dans certaines) et n'a pas été reproduite dans l'analyse d'exome appariée selon l'ascendance, où le risque non mélanique était minime. Il n'existe pas de protocole de surveillance rénale mandaté par les lignes directrices pour E318K. L'IRM est préférée à la TDM lorsqu'une imagerie est entreprise, afin d'éviter une dose cumulative de rayonnement dans une population en surveillance à vie. Les décisions doivent être individualisées et documentées comme une décision partagée.</p>
+  </section>
+
+  <!-- 5 -->
+  <section id="fr-5">
+    <div class="sec-head"><span class="num">5</span><h2 class="sec-title">Cancer du pancréas : qui considérer</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Un petit nombre de familles porteuses de ce variant ont eu un cancer du pancréas, mais le lien n'est pas bien prouvé. Nous ne dépistons pas tout le monde porteur du variant. Si le cancer du pancréas est présent dans votre famille, ce sont ces antécédents familiaux, plutôt que le variant seul, qui peuvent justifier une discussion sur le dépistage pancréatique dans un centre spécialisé.</p>
+    </div>
+
+    <ul class="check">
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Orientation vers un programme de surveillance pancréatique à haut risque</b> seulement si des critères d'antécédents familiaux indépendants sont remplis (par exemple, des proches atteints admissibles), évalués dans un centre expérimenté. <span class="tag-inline t-opt">Selon antécédents</span></div></li>
+      <li><i class="ti ti-minus no"></i><div><b>Dépistage pancréatique sur la seule base d'E318K.</b> <span class="tag-inline t-no">Non recommandé</span></div></li>
+    </ul>
+
+    <div class="evflag ev-insufficient"><i class="ti ti-info-circle"></i> Preuves insuffisantes</div>
+    <p>Contrairement à CDKN2A, où le risque pancréatique est établi et où une surveillance alignée sur CAPS/NCCN (échoendoscopie et/ou IRM/CPRM dès 40 ans, ou 10 ans avant le diagnostic familial le plus précoce) est recommandée, E318K ne comporte aucune indication établie de surveillance pancréatique. Appliquer les critères standards du cancer du pancréas familial indépendamment du variant.</p>
+  </section>
+
+  <!-- 6 -->
+  <section id="fr-6">
+    <div class="sec-head"><span class="num">6</span><h2 class="sec-title">Protection solaire et mode de vie</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Vos gènes déterminent une partie de votre risque, mais l'exposition au soleil est la partie que vous pouvez contrôler. Réduire les dommages causés par les UV est l'une des choses les plus efficaces que vous puissiez faire. Évitez les coups de soleil, évitez complètement les lits de bronzage, utilisez un écran solaire à large spectre, portez des vêtements protecteurs et un chapeau, et cherchez l'ombre aux heures de pointe. Ces habitudes comptent davantage pour vous que pour la personne moyenne.</p>
+    </div>
+
+    <ul class="check">
+      <li><i class="ti ti-circle-check yes"></i><div>Écran solaire quotidien à large spectre FPS 30 ou plus sur la peau exposée; réappliquer lors d'une exposition prolongée.</div></li>
+      <li><i class="ti ti-circle-check yes"></i><div>Aucun bronzage en cabine. Les lits de bronzage sont un risque de mélanome clair et évitable.</div></li>
+      <li><i class="ti ti-circle-check yes"></i><div>Vêtements protecteurs, chapeau à large bord, lunettes anti-UV; ombre aux heures de fort rayonnement.</div></li>
+      <li><i class="ti ti-circle-check yes"></i><div>Éviter les coups de soleil, surtout avec cloques, tout au long de la vie.</div></li>
+      <li><i class="ti ti-circle-check yes"></i><div>Maintenir un apport adéquat en vitamine D par l'alimentation ou la supplémentation plutôt que par l'exposition au soleil.</div></li>
+    </ul>
+
+    <p>La réduction des UV a le plus fort effet modifiable sur le risque de mélanome et constitue l'intervention au meilleur rendement offerte aux porteurs. La connaissance génétique peut elle-même améliorer l'adhésion aux comportements de protection solaire, ce qui fait partie de la justification du test et du conseil.</p>
+  </section>
+
+  <!-- 7 -->
+  <section id="fr-7">
+    <div class="sec-head"><span class="num">7</span><h2 class="sec-title">Conseil génétique et dépistage familial</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Ce variant peut être transmis aux enfants, avec une probabilité de 1 sur 2 pour chaque enfant. Les proches (parents, frères et sœurs, enfants) peuvent aussi en être porteurs. Le conseil génétique aide votre famille à décider qui tester et ce que cela signifie. Le test est habituellement offert aux proches adultes, puisque la surveillance du mélanome débute à l'âge adulte.</p>
+    </div>
+
+    <ul class="check">
+      <li><i class="ti ti-circle-check yes"></i><div><b>Dépistage en cascade</b> offert aux proches du premier degré, puis élargi à mesure que des porteurs sont identifiés.</div></li>
+      <li><i class="ti ti-circle-check yes"></i><div><b>Revue du pedigree</b> axée sur les cancers du mélanome, du rein et du pancréas, et sur les caractéristiques à haut risque co-ségrégantes pouvant justifier un panel élargi.</div></li>
+      <li><i class="ti ti-circle-check yes"></i><div><b>Envisager un panel multigénique de mélanome</b> dans les cas d'antécédents familiaux marqués; E318K n'exclut pas un second variant pathogène (par exemple dans CDKN2A), et la surveillance serait intensifiée si l'on en trouve un.</div></li>
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Conseil reproductif</b> sur demande; vu la pénétrance modérée et incomplète et l'efficacité de la surveillance, il est informatif plutôt qu'une indication typique de test prénatal ou préimplantatoire.</div></li>
+    </ul>
+
+    <p>Le test des mineurs est généralement reporté, puisque les interventions (surveillance, éducation à la protection solaire) débutent de l'adolescence à l'âge adulte et ne nécessitent pas de résultat génétique dans l'enfance. Préciser qu'E318K est à risque modéré et qu'un résultat de cascade négatif ramène un proche aux conseils de cancer de la peau de niveau populationnel, et non à un risque nul.</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="fr-8">
+    <div class="sec-head"><span class="num">8</span><h2 class="sec-title">Notes de traitement pour les patients atteints</h2></div>
+
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Si vous avez déjà eu un mélanome, votre traitement suit les mêmes parcours modernes et efficaces que pour toute personne atteinte de mélanome. Être porteur de ce variant ne change pas, en soi, les traitements qui fonctionnent pour vous. Cela signifie toutefois une surveillance cutanée à vie, car les porteurs peuvent développer plus d'un mélanome au fil du temps.</p>
+    </div>
+
+    <p>La prise en charge d'un mélanome établi chez un porteur d'E318K suit l'oncologie standard fondée sur le stade, incluant la chirurgie, l'évaluation du ganglion sentinelle lorsque indiquée, et l'immunothérapie ou la thérapie ciblée pour la maladie avancée. Il n'existe aucune modification validée de la thérapie systémique dirigée par la lignée germinale sur la base d'E318K. Les implications pratiques du statut de porteur sont un taux plus élevé de mélanomes primaires multiples, ce qui renforce la surveillance dermatologique à vie, et la considération du dépistage en cascade pour les proches.</p>
+  </section>
+
+  <!-- 9 -->
+  <section id="fr-9">
+    <div class="sec-head"><span class="num">9</span><h2 class="sec-title">Domaines émergents et expérimentaux</h2></div>
+
+    <div class="emerging">
+      <div class="ct ui"><i class="ti ti-flask"></i> Expérimental — pas un soin de routine</div>
+      <p>Les éléments ci-dessous sont des domaines d'étude active. Ils ne sont pas validés pour les décisions de surveillance clinique et doivent être présentés comme réservés aux essais ou au contexte de recherche.</p>
+    </div>
+
+    <ul class="check">
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Stratification du risque « génome d'abord ».</b> Les données de biobanques populationnelles (p. ex. MyCode, UK Biobank) affinent le risque absolu de mélanome et l'âge d'apparition pour E318K, ce qui pourrait éventuellement produire des âges de début de surveillance propres au variant.</div></li>
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Imagerie corporelle et dermoscopie assistées par IA</b> pour la détection des changements chez les porteurs à nombre élevé de naevus; prometteur mais non encore standard.</div></li>
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Intégration d'un score de risque polygénique</b> avec le statut E318K et MC1R pour personnaliser les intervalles; expérimental.</div></li>
+      <li><i class="ti ti-circle-dashed opt"></i><div><b>Spectres phénotypiques élargis</b> (par exemple signaux du col utérin ou de la cavité nasale dans des analyses récentes « génome d'abord ») nécessitant une confirmation indépendante avant de modifier la prise en charge.</div></li>
+    </ul>
+  </section>
+
+  <!-- 10 -->
+  <section id="fr-10">
+    <div class="sec-head"><span class="num">10</span><h2 class="sec-title">Résumé des recommandations</h2></div>
+
+    <h4>Surveillance de base (tous les porteurs)</h4>
+    <div class="cards">
+      <div class="card"><h4>Examen de la peau</h4><p>Examen complet de la peau par un dermatologue tous les 6 à 12 mois dès le diagnostic ou 25 à 30 ans. Inclure cuir chevelu, muqueuses, organes génitaux, ongles.</p></div>
+      <div class="card"><h4>Auto-examen</h4><p>Auto-examen ABCDE mensuel. Signaler rapidement toute lésion nouvelle ou changeante.</p></div>
+      <div class="card"><h4>Imagerie de référence</h4><p>Photographie corporelle et dermoscopie pour naevus atypiques ou nombreux.</p></div>
+      <div class="card"><h4>Protection solaire</h4><p>FPS 30+, aucun lit de bronzage, vêtements protecteurs, éviter les coups de soleil. Étape modifiable au meilleur rendement.</p></div>
+    </div>
+
+    <h4>Selon les antécédents (porteurs sélectionnés)</h4>
+    <div class="cards">
+      <div class="card" style="border-top-color:var(--amber);"><h4>Imagerie rénale</h4><p>Échographie ou IRM tous les 1 à 2 ans seulement avec antécédents personnels ou familiaux de carcinome rénal; décision partagée sinon.</p></div>
+      <div class="card" style="border-top-color:var(--amber);"><h4>Orientation pancréatique</h4><p>Seulement si des critères indépendants de cancer du pancréas familial sont remplis. Pas sur E318K seul.</p></div>
+      <div class="card" style="border-top-color:var(--amber);"><h4>Panel élargi</h4><p>Envisager un panel multigénique de mélanome en cas d'antécédents familiaux marqués; E318K n'exclut pas un second variant.</p></div>
+    </div>
+
+    <h4>Transversal</h4>
+    <div class="cards">
+      <div class="card"><h4>Dépistage en cascade</h4><p>Offrir aux proches du premier degré; reporter le test des mineurs.</p></div>
+      <div class="card"><h4>Cadrage honnête</h4><p>Pénétrance modérée et incomplète. La surveillance est largement fondée sur le consensus, non prouvée par essais.</p></div>
+      <div class="card"><h4>Traitement</h4><p>Mélanome établi pris en charge par l'oncologie standard selon le stade; aucun changement dirigé par la lignée germinale.</p></div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section id="fr-11">
+    <div class="sec-head"><span class="num">11</span><h2 class="sec-title">Références</h2></div>
+    <ol class="refs">
+      <li>Yokoyama S, Woods SL, Boyle GM, et al. A novel recurrent mutation in MITF predisposes to familial and sporadic melanoma. <i>Nature.</i> 2011;480:99-103.</li>
+      <li>Bertolotto C, Lesueur F, Giuliano S, et al. A SUMOylation-defective MITF germline mutation predisposes to melanoma and renal carcinoma. <i>Nature.</i> 2011;480:94-98.</li>
+      <li>Potrony M, Puig-Butille JA, Ribera-Sola M, et al. Prevalence of MITF p.E318K in patients with melanoma independent of the presence of CDKN2A causative mutations. <i>JAMA Dermatol.</i> 2016;152:405-412.</li>
+      <li>Ghiorzo P, Pastorino L, Queirolo P, et al. Prevalence of the E318K MITF germline mutation in Italian melanoma patients: associations with histological subtypes and family cancer history. <i>Pigment Cell Melanoma Res.</i> 2013;26:259-262.</li>
+      <li>Berwick M, MacArthur J, Orlow I, et al. MITF E318K's effect on melanoma risk independent of, but modified by, other risk factors. <i>Pigment Cell Melanoma Res.</i> 2014;27:485-488.</li>
+      <li>Guhan SM, Boland GM, Tanabe KK, et al. Cancer risks associated with the germline MITF(E318K) variant. <i>Sci Rep.</i> 2020;10:17051.</li>
+      <li>Série de dermoscopie chez les porteurs : phénotype clinique, pathologique et dermoscopique du mélanome cutané des porteurs MITF p.E318K. <i>(voir PMC7017513).</i> 2020.</li>
+      <li>Castro-Pérez E, et al. Expanding the phenotype of E318K (c.952G&gt;A) MITF germline mutation carriers: case series and review. <i>Hered Cancer Clin Pract.</i> 2021;19:31.</li>
+      <li>Swetter SM, Thompson JA, Albertini MR, et al. NCCN Clinical Practice Guidelines in Oncology: Melanoma: Cutaneous. Version 2.2025.</li>
+      <li>Garbe C, Amaral T, Peris K, et al. European consensus-based interdisciplinary guideline for melanoma. Part 1: Diagnostics, update 2024. <i>Eur J Cancer.</i> 2024.</li>
+      <li>Goggins M, Overbeek KA, Brand R, et al. Management of patients with increased risk for familial pancreatic cancer: updated CAPS Consortium recommendations. <i>Gut.</i> 2020;69:7-17.</li>
+      <li>Soura E, Eliades PJ, Shannon K, et al. Hereditary melanoma: update on syndromes and management. <i>J Am Acad Dermatol.</i> 2016;74:395-407.</li>
+    </ol>
+  </section>
+
+  <div class="footer-note ui">
+    Ce protocole vise à soutenir, et non à remplacer, le jugement clinique et les soins individualisés. Le variant MITF E318K est un allèle à pénétrance modérée, et plusieurs recommandations ici reflètent un consensus d'experts extrapolé des cadres du mélanome familial plutôt que des essais d'issues propres au variant. Les lignes directrices évoluent. Vérifier tous les âges de début, intervalles et modalités de dépistage par rapport aux versions actuelles de NCCN, des sociétés savantes et de CAPS avant usage clinique. Préparé par le Dr Andrew Shuen, Centre de prévention du cancer, Hôpital général juif, Montréal, et Clinique de médecine de précision Genaissance, Toronto. Version 1.0, juin 2026.
+  </div>
+</div>
+
+</div>
+
+<script>
+  function setLang(l){
+    document.getElementById('en').style.display = (l==='en')?'block':'none';
+    document.getElementById('fr').style.display = (l==='fr')?'block':'none';
+    document.getElementById('btn-en').classList.toggle('active', l==='en');
+    document.getElementById('btn-fr').classList.toggle('active', l==='fr');
+    window.scrollTo(0,0);
+  }
+  setLang('en');
+</script>
+</body>
+</html>

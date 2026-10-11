@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hypermobile EDS — Prevention &amp; Surveillance Protocol | JGH Medical Genetics</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+  :root{
+    --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+    --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+    --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+    --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+    --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+    --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+    --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+    --radius:14px; --radius-sm:9px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:18px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; margin:0 auto; padding:0 22px 80px;}
+  .ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; line-height:1.2;}
+
+  /* language toggle */
+  .langbar{
+    position:sticky; top:0; z-index:40; background:rgba(244,249,252,.92);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+    display:flex; gap:8px; justify-content:flex-end; align-items:center;
+    padding:10px 22px; max-width:880px; margin:0 auto;
+  }
+  .langbar .lab{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); margin-right:auto;}
+  .langbtn{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; font-weight:600;
+    border:1px solid var(--brand-line); background:var(--paper); color:var(--brand-dark);
+    padding:7px 16px; border-radius:999px; cursor:pointer; transition:all .15s;
+  }
+  .langbtn:hover{background:var(--brand-bg);}
+  .langbtn.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+
+  /* masthead */
+  .masthead{padding:42px 0 26px; border-bottom:2px solid var(--ink);}
+  .brand-logo{display:block; height:42px; width:auto; margin:0 0 22px;}
+  @media print{.brand-logo{height:34px;}}
+  .eyebrow{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--brand-dark);}
+  .masthead h1{font-size:38px; margin:.32em 0 .26em; letter-spacing:-.012em;}
+  .standfirst{font-size:20px; color:var(--ink-soft); margin:0 0 22px; max-width:62ch;}
+  .author-panel{
+    background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:16px 18px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; line-height:1.5;
+  }
+  .author-panel .who{font-weight:700; color:var(--ink); font-size:15px;}
+  .author-panel .role{color:var(--ink-soft);}
+  .author-panel a{color:var(--brand-dark); text-decoration:none;}
+  .author-panel a:hover{text-decoration:underline;}
+  .author-contact{margin-top:10px; padding-top:10px; border-top:1px solid var(--line-soft); display:flex; flex-wrap:wrap; gap:6px 18px; color:var(--ink-soft);}
+  .author-contact span{display:inline-flex; align-items:center; gap:6px;}
+  .author-contact i{color:var(--brand);}
+  .meta-chips{display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 0;}
+  .chip{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:600; background:var(--paper); border:1px solid var(--line); border-radius:999px; padding:6px 12px; color:var(--ink-soft); display:inline-flex; align-items:center; gap:6px;}
+  .chip i{color:var(--brand);}
+
+  /* audience legend */
+  .legend{display:flex; flex-wrap:wrap; gap:14px; margin:22px 0 0; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px;}
+  .legend .item{display:inline-flex; align-items:center; gap:8px; color:var(--ink-soft);}
+  .swatch{width:26px; height:16px; border-radius:5px; border:1px solid;}
+  .swatch.patient{background:var(--brand-bg); border-color:var(--brand-line);}
+  .swatch.clinical{background:var(--paper); border-color:var(--line);}
+
+  /* TOC */
+  .toc{margin:34px 0; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:22px 24px;}
+  .toc h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--brand-dark); margin:0 0 14px;}
+  .toc ol{margin:0; padding:0; list-style:none; columns:2; column-gap:34px;}
+  .toc li{break-inside:avoid; margin-bottom:9px; font-size:15px; display:flex; gap:10px; align-items:baseline;}
+  .toc .n{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:700; color:var(--brand); min-width:20px;}
+  .toc a{color:var(--ink); text-decoration:none;}
+  .toc a:hover{color:var(--brand-dark); text-decoration:underline;}
+
+  /* sections */
+  section{margin:46px 0; scroll-margin-top:70px;}
+  .sec-head{display:flex; gap:14px; align-items:flex-start; margin:0 0 18px; padding-bottom:14px; border-bottom:1px solid var(--line);}
+  .sec-num{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:15px; color:#fff; background:var(--brand); min-width:34px; height:34px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:3px;}
+  .sec-head h2{font-size:27px; margin:0; letter-spacing:-.01em;}
+
+  p{margin:0 0 16px;}
+  .clinical-note{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); margin:22px 0 8px; display:flex; align-items:center; gap:7px;}
+  .clinical-note::before{content:""; width:18px; height:1px; background:var(--ink-faint);}
+
+  /* patient card */
+  .patient{
+    background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius);
+    padding:18px 20px; margin:0 0 22px;
+  }
+  .patient .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--brand-dark); display:flex; align-items:center; gap:7px; margin-bottom:9px;}
+  .patient p{margin:0 0 10px; color:#143b54;}
+  .patient p:last-child{margin-bottom:0;}
+
+  /* gene/subtype header pills */
+  .subhead{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:26px 0 12px;}
+  .subhead h3{font-size:20px; margin:0;}
+  .riskpill{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:4px 11px; border-radius:999px; border:1px solid;}
+  .riskpill.high{background:var(--red-bg); color:var(--red); border-color:var(--red-line);}
+  .riskpill.mod{background:var(--amber-bg); color:var(--amber); border-color:var(--amber-line);}
+  .riskpill.low{background:var(--brand-bg); color:var(--brand-dark); border-color:var(--brand-line);}
+
+  /* checklist */
+  .checklist{list-style:none; margin:14px 0 18px; padding:0;}
+  .checklist li{display:flex; gap:11px; align-items:flex-start; padding:9px 0; border-bottom:1px solid var(--line-soft);}
+  .checklist li:last-child{border-bottom:none;}
+  .checklist i{flex-shrink:0; margin-top:3px; font-size:18px;}
+  .checklist .ti-circle-check{color:var(--brand);}
+  .checklist .ti-circle-dashed{color:var(--amber);}
+  .checklist .ti-circle-x{color:var(--ink-faint);}
+  .checklist .ck-label{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:2px 8px; border-radius:6px; margin-right:7px; white-space:nowrap;}
+  .ck-label.routine{background:var(--brand-bg); color:var(--brand-dark);}
+  .ck-label.optional{background:var(--amber-bg); color:var(--amber);}
+  .ck-label.notrec{background:var(--line-soft); color:var(--ink-faint);}
+
+  /* recommendation callout */
+  .callout{background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand); border-radius:var(--radius-sm); padding:15px 18px; margin:18px 0; font-size:16.5px;}
+  .callout .ctag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--brand-dark); margin-bottom:6px; display:flex; align-items:center; gap:6px;}
+
+  /* tables */
+  .tbl-wrap{overflow-x:auto; margin:18px 0;}
+  table{border-collapse:collapse; width:100%; font-size:15px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  thead th{background:var(--brand-dark); color:#fff; text-align:left; padding:11px 13px; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; font-weight:700;}
+  tbody td{padding:11px 13px; border-bottom:1px solid var(--line); vertical-align:top;}
+  tbody tr:nth-child(even){background:var(--cream);}
+  .lvl{font-weight:700; font-size:11px; letter-spacing:.04em; text-transform:uppercase; padding:3px 9px; border-radius:999px; display:inline-block; border:1px solid;}
+  .lvl.high{background:var(--red-bg); color:var(--red); border-color:var(--red-line);}
+  .lvl.mod{background:var(--amber-bg); color:var(--amber); border-color:var(--amber-line);}
+  .lvl.low{background:var(--brand-bg); color:var(--brand-dark); border-color:var(--brand-line);}
+
+  /* info / calculator box */
+  .infobox{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius); padding:16px 19px; margin:18px 0;}
+  .infobox .itag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--brand-dark); margin-bottom:8px; display:flex; align-items:center; gap:7px;}
+  .infobox p{color:#143b54; margin:0 0 8px;} .infobox p:last-child{margin:0;}
+
+  /* emerging / purple */
+  .emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius); padding:16px 19px; margin:18px 0;}
+  .emerging .etag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--purple); margin-bottom:8px; display:flex; align-items:center; gap:7px;}
+  .emerging p{color:#2e2769; margin:0 0 10px;} .emerging p:last-child{margin:0;}
+
+  /* summary cards */
+  .cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:14px; margin:18px 0;}
+  .scard{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand); border-radius:var(--radius-sm); padding:15px 17px;}
+  .scard h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; margin:0 0 9px; color:var(--brand-dark); display:flex; align-items:center; gap:7px;}
+  .scard ul{margin:0; padding-left:18px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13.5px; line-height:1.5; color:var(--ink-soft);}
+  .scard li{margin-bottom:5px;}
+
+  /* references */
+  .refs{counter-reset:ref; list-style:none; padding:0; margin:18px 0; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13.5px; line-height:1.55;}
+  .refs li{counter-increment:ref; padding:9px 0 9px 38px; border-bottom:1px solid var(--line-soft); position:relative; color:var(--ink-soft);}
+  .refs li::before{content:counter(ref); position:absolute; left:0; top:9px; font-weight:700; color:var(--brand); background:var(--brand-bg); width:26px; height:26px; border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:12px;}
+  .refs a{color:var(--brand-dark);}
+
+  /* footer */
+  .footnote{margin-top:50px; padding-top:22px; border-top:3px double var(--ink); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); line-height:1.6;}
+  .footnote strong{color:var(--ink-soft);}
+
+  .lang-fr{display:none;}
+
+  @media (max-width:640px){
+    body{font-size:17px;}
+    .masthead h1{font-size:30px;}
+    .toc ol{columns:1;}
+    .sec-head h2{font-size:22px;}
+    .standfirst{font-size:18px;}
+  }
+
+  @media print{
+    body{background:#fff; font-size:11pt;}
+    .langbar{display:none;}
+    .wrap{max-width:100%; padding:0;}
+    section{page-break-inside:avoid; margin:24px 0;}
+    .patient,.callout,.infobox,.emerging,.scard,.toc{break-inside:avoid;}
+    thead th{background:#005f9e !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .sec-num{background:#0083d0 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    a{color:var(--ink); text-decoration:none;}
+    .patient,.infobox{background:#f4f9fc !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<div class="langbar ui">
+  <span class="lab">Language / Langue</span>
+  <button class="langbtn active" id="btn-en" onclick="setLang('en')">English</button>
+  <button class="langbtn" id="btn-fr" onclick="setLang('fr')">Français</button>
+</div>
+
+<!-- ============================ ENGLISH ============================ -->
+<div class="wrap lang-en" id="content-en">
+
+  <header class="masthead">
+    <div class="brand-logo" style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:0 0 22px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;"><span style="font-size:20px; font-weight:800; letter-spacing:-.01em; color:var(--brand-dark);">Jewish General Hospital</span><span style="font-size:13px; font-weight:600; color:var(--ink-faint); letter-spacing:.02em;">Division of Medical Genetics</span><span style="font-size:13px; font-weight:600; color:var(--ink-faint); letter-spacing:.02em;">· McGill University</span></div>
+    <div class="eyebrow">Division of Medical Genetics · Clinical Prevention &amp; Surveillance Protocol</div>
+    <h1>Hypermobile Ehlers–Danlos Syndrome (hEDS) and Hypermobility Spectrum Disorder (HSD)</h1>
+    <p class="standfirst">A practical guide to living well with hypermobile EDS and hypermobility spectrum disorder: what raises your risk, what to watch for, and which checks and treatments are worth doing. Written for both patients and the clinicians who care for them.</p>
+
+    <div class="author-panel">
+      <div class="who">Andrew Shuen, MD PhD, FRCPC, DABMGG <span style="font-weight:400;color:var(--ink-faint);">(CPSO 101845)</span></div>
+      <div class="role">Medical Geneticist · Division of Medical Genetics, Jewish General Hospital (CIUSSS West-Central Montreal) · McGill University</div>
+      <div class="author-contact">
+        <span><i class="ti ti-mail"></i>andrew.shuen.med@ssss.gouv.qc.ca</span>
+        <span><i class="ti ti-phone"></i>514 340 8222, ext. 23965</span>
+        <span><i class="ti ti-printer"></i>Fax 514 340 8712</span>
+        <span><i class="ti ti-map-pin"></i>3755 Côte Sainte-Catherine Road, Montreal QC H3T 1E2</span>
+      </div>
+    </div>
+
+    <div class="meta-chips ui">
+      <span class="chip"><i class="ti ti-dna-2"></i>Connective tissue disorder</span>
+      <span class="chip"><i class="ti ti-sitemap"></i>Genetically complex / likely polygenic</span>
+      <span class="chip"><i class="ti ti-flask"></i>No confirmatory genetic test</span>
+      <span class="chip"><i class="ti ti-calendar-stats"></i>2017 criteria (revision expected)</span>
+    </div>
+
+    <div class="legend ui">
+      <span class="item"><span class="swatch patient"></span>Plain-language summary for patients</span>
+      <span class="item"><span class="swatch clinical"></span>Clinical detail for providers</span>
+    </div>
+  </header>
+
+  <nav class="toc ui">
+    <h2>In this protocol</h2>
+    <ol>
+      <li><span class="n">1</span><a href="#en-1">Understanding hEDS</a></li>
+      <li><span class="n">2</span><a href="#en-2">Risk and burden by domain</a></li>
+      <li><span class="n">3</span><a href="#en-3">Joint stability and the musculoskeletal system</a></li>
+      <li><span class="n">4</span><a href="#en-4">Pain management</a></li>
+      <li><span class="n">5</span><a href="#en-5">Bone health and osteoporosis</a></li>
+      <li><span class="n">6</span><a href="#en-6">Cardiovascular surveillance</a></li>
+      <li><span class="n">7</span><a href="#en-7">Autonomic function and POTS</a></li>
+      <li><span class="n">8</span><a href="#en-8">Gastrointestinal and mast cell issues</a></li>
+      <li><span class="n">9</span><a href="#en-9">Pregnancy and anesthesia</a></li>
+      <li><span class="n">10</span><a href="#en-10">Genetic counselling and family</a></li>
+      <li><span class="n">11</span><a href="#en-11">Lifestyle, nutrition, and self-management</a></li>
+      <li><span class="n">12</span><a href="#en-12">Emerging and investigational</a></li>
+      <li><span class="n">13</span><a href="#en-13">Summary of recommendations</a></li>
+      <li><span class="n">14</span><a href="#en-14">References</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="en-1">
+    <div class="sec-head"><span class="sec-num">1</span><h2>Understanding hypermobile EDS</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
+      <p>Hypermobile EDS is a condition of the connective tissue. Connective tissue is the material that holds your joints, skin, and blood vessels together and gives them support. In hEDS this tissue is more stretchy and less supportive than usual. The most common features are loose joints that move too far or slip out of place, soft or velvety skin, easy bruising, and chronic pain.</p>
+      <p>hEDS is generally the least severe form of EDS. It does not shorten life expectancy. But it can affect many parts of the body at once, and the mix of symptoms is different for every person. No single person has all of them.</p>
+      <p>There is no blood test that confirms hEDS yet. The diagnosis is made by a doctor based on a set of physical findings, your family history, and ruling out other conditions.</p>
+      <p>You may also hear the term hypermobility spectrum disorder, or HSD. This is for people who have hypermobile joints that cause real symptoms but who do not tick every box on the hEDS checklist. HSD is not a milder or less real condition. The symptoms and their impact can be just as significant, and the care is the same. The two labels mostly tell us how the findings line up, not how much you are affected. Everything in this guide applies to both hEDS and HSD unless noted.</p>
+    </div>
+    <p>Hypermobile EDS is one of 14 recognized subtypes of Ehlers–Danlos syndrome and is by far the most common, while remaining the only subtype without an identified causative gene or available confirmatory molecular test. It sits on a clinical continuum with hypermobility spectrum disorder (HSD), which describes symptomatic joint hypermobility that does not meet full hEDS criteria. Management is essentially identical across hEDS and HSD, and this protocol applies to both unless a section states otherwise.</p>
+    <p>Diagnosis currently follows the 2017 International Classification of the Ehlers–Danlos Syndromes. This requires all three criteria: (1) generalized joint hypermobility by age- and sex-adjusted Beighton score (post-puberty ≥5/9; ≥4/9 over age 50); (2) two or more of Feature A (≥5 systemic connective tissue manifestations), Feature B (first-degree relative independently meeting criteria), and Feature C (musculoskeletal complications); and (3) exclusion of alternative diagnoses, including other heritable connective tissue disorders and, critically, vascular and classical EDS, Marfan syndrome, and Loeys–Dietz syndrome.</p>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-alert-triangle"></i>Diagnostic priority</div>
+      The single most important task at first assessment is to exclude vascular EDS (COL3A1), Marfan syndrome (FBN1), and Loeys–Dietz syndrome. These carry arterial and aortic risk that hEDS does not, and they change surveillance and prognosis entirely. When the phenotype is atypical, when there is significant skin fragility or aortic dilation beyond a mild root, or when family history includes arterial dissection, send molecular testing (an aortopathy/EDS gene panel) before settling on an hEDS label.
+    </div>
+    <div class="subhead"><h3>Where HSD fits</h3><span class="riskpill low">Same management</span></div>
+    <p>Hypermobility spectrum disorder is the diagnosis for people with symptomatic joint hypermobility who do not meet the full 2017 hEDS criteria, for example those with generalized hypermobility but fewer than the required systemic features, or those whose hypermobility is historical, localized, or peripheral. The 2017 framework defines several HSD patterns: generalized (G-HSD), peripheral (P-HSD), localized (L-HSD), and historical (H-HSD). The introduction of HSD in 2017 was deliberate, replacing the older and overlapping labels of joint hypermobility syndrome and benign joint hypermobility, and was designed to capture the large group of symptomatic patients who fall outside strict hEDS criteria so they are not left without a diagnosis or care.</p>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-equal"></i>HSD is not a lesser diagnosis</div>
+      HSD and hEDS are managed the same way, and symptom burden in HSD can equal or exceed that of hEDS. The distinction is a classification of how the phenotype maps to criteria, not a measure of severity or legitimacy. Patients can also move between categories over time as features accrue or are documented. Throughout this protocol, every surveillance and management recommendation applies to both hEDS and HSD unless explicitly stated. The same diagnostic-exclusion priority applies: rule out vascular EDS, Marfan, and Loeys–Dietz in HSD just as in hEDS when red flags are present.
+    </div>
+    <p>A revision to the diagnostic criteria is anticipated, with the Ehlers–Danlos Society's international hEDS/HSD Criteria Review Study expected to report. Anticipated changes include broader joint assessment beyond the Beighton score and more formal incorporation of systemic comorbidities such as dysautonomia and GI dysfunction, which may also shift where the hEDS/HSD boundary sits. Until published, the 2017 criteria remain the standard.</p>
+
+    <div class="subhead"><h3>The genetics of hEDS and HSD</h3><span class="riskpill low">Active research area</span></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
+      <p>People often ask why there is no genetic test for hEDS when the other types of EDS have one. The honest answer is that hEDS is genetically complicated. The other EDS types are usually caused by a change in a single gene, often a collagen gene, which a lab can find. hEDS does not seem to work that way. Instead of one strong gene, it looks like many genes each add a small amount of risk, and these combine with each other and with life factors to produce the condition. This is called a polygenic, or complex, pattern.</p>
+      <p>This is why hEDS clearly runs in families, yet no single gene shows up on a test. It is not that the cause is missing. It is that the cause is spread across many small pieces we are only starting to map. Research is moving quickly, and the first large genetic studies have now found their first signals.</p>
+    </div>
+    <p>hEDS is the most common EDS subtype yet the least genetically understood, and HSD shares this lack of a molecular marker. Unlike the other EDS subtypes, which are caused by defined pathogenic variants in extracellular matrix proteins, collagen genes, or collagen-modifying enzymes, hEDS and HSD have no single causative gene and no molecular diagnostic test. Pedigrees show clear familial clustering and high heritability, which historically led to its description as autosomal dominant. Current evidence reframes this: hEDS is better understood as a genetically complex, likely polygenic condition in which many common and rare variants each contribute small effects, interacting with one another and with environmental and hormonal factors. The apparent dominant transmission in families reflects this aggregate heritable load rather than a single segregating allele in most cases.</p>
+    <p>Several lines of recent work are beginning to define the architecture. A 2025 GWAS meta-analysis (1,815 cases, 5,008 controls) identified the first genome-wide significant loci, including a regulatory region near <em>ACKR3</em> on chromosome 2, with functional annotation implicating neuroimmune and pain-signaling pathways, and flagged additional candidates including <em>SLC39A13</em> (a zinc transporter previously implicated in a rare recessive EDS) and <em>PSMC3</em>. The same work found significant genetic correlation between hEDS and joint hypermobility, ME/CFS, fibromyalgia, migraine, anxiety, depression, autism spectrum disorder, and GI disorders, consistent with shared heritable biology across these comorbid conditions. Candidate-gene research has separately implicated the kallikrein family (e.g. <em>KLK15</em>) on chromosome 19. The Ehlers–Danlos Society's HEDGE study, the largest dedicated hEDS sequencing effort (over 1,000 participants), reported at ASHG that no single gene explains hEDS, pointing instead to multiple rare variants and complex interactions; its first peer-reviewed papers began appearing from late 2025.</p>
+    <div class="infobox">
+      <div class="itag"><i class="ti ti-dna-2"></i>What genetic testing can and cannot do today</div>
+      <p>There is no clinical genetic test that confirms or excludes hEDS. Sequencing is still valuable, but for a different purpose: to <strong>exclude the testable connective tissue disorders that mimic hEDS</strong> and carry higher risk. A normal panel does not rule out hEDS; it rules out the more dangerous alternatives.</p>
+      <p>The candidate genes above (<em>ACKR3</em>, <em>SLC39A13</em>, <em>KLK15</em>, <em>PSMC3</em>) are research findings, not validated clinical tests. They should not be ordered or interpreted as diagnostic for hEDS, and polygenic risk scores for hEDS are not yet clinically actionable.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="en-2">
+    <div class="sec-head"><span class="sec-num">2</span><h2>Risk and burden by domain</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
+      <p>hEDS and HSD are not cancer syndromes, so this is not about lifetime cancer risk. Instead, the table below shows the body systems these conditions can affect and roughly how often. Use it to know what is worth watching for. Most issues are manageable, and many people never develop the more serious ones.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Domain</th><th>Typical burden</th><th>Level</th><th>What it means clinically</th></tr></thead>
+        <tbody>
+          <tr><td>Joint instability, subluxation, dislocation</td><td>Very common (defining feature)</td><td><span class="lvl high">High</span></td><td>Recurrent, often spontaneous; more frequent in younger patients and females</td></tr>
+          <tr><td>Chronic pain (myofascial + neuropathic)</td><td>Very common</td><td><span class="lvl high">High</span></td><td>Onset adolescence to mid-life; major driver of disability and reduced quality of life</td></tr>
+          <tr><td>Early osteoarthritis / low bone density</td><td>Common</td><td><span class="lvl mod">Moderate</span></td><td>Driven by joint stress, deconditioning, reduced weight-bearing</td></tr>
+          <tr><td>Autonomic dysfunction / POTS</td><td>Common</td><td><span class="lvl mod">Moderate</span></td><td>Strong association; orthostatic intolerance, palpitations, fatigue, syncope</td></tr>
+          <tr><td>GI dysmotility (reflux, bloating, constipation)</td><td>Common</td><td><span class="lvl mod">Moderate</span></td><td>Functional; rarely structural; overlaps with autonomic dysfunction</td></tr>
+          <tr><td>Mast cell activation symptoms</td><td>Subset</td><td><span class="lvl mod">Moderate</span></td><td>Enriched in the POTS+hEDS group; flushing, allergic-type and GI symptoms</td></tr>
+          <tr><td>Mild aortic root dilation / mitral valve prolapse</td><td>Uncommon, usually non-progressive</td><td><span class="lvl low">Low</span></td><td>Aortic root dilation ~2–3% in hEDS cohorts; baseline echo indicated, rarely progressive</td></tr>
+          <tr><td>Pregnancy complications (PROM, rapid labour)</td><td>Variable</td><td><span class="lvl low">Low–Mod</span></td><td>Generally manageable with planning; not a contraindication to pregnancy</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Levels reflect the typical frequency and clinical weight of each domain in hEDS and HSD, not a validated, gene-stratified risk model (none exists, because no single gene is known). They are offered as a practical surveillance guide and apply to both conditions.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="en-3">
+    <div class="sec-head"><span class="sec-num">3</span><h2>Joint stability and the musculoskeletal system</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
+      <p>Loose, unstable joints are the core of hEDS. The most effective treatment is not a pill. It is steady, gentle strengthening that teaches the muscles around a joint to do the support work the ligaments cannot. This takes months, and flares are normal, but it works.</p>
+      <p>The goal is to build strength without forcing joints to their extreme range. Low-impact activity such as swimming, cycling, and controlled resistance work is ideal. High-impact and contact sports raise the risk of dislocation and should usually be avoided.</p>
+    </div>
+    <div class="subhead"><h3>Surveillance and management checklist</h3><span class="riskpill high">Core domain</span></div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Referral to physiotherapy with EDS/hypermobility experience, emphasizing proprioceptive retraining, core stability, and graded low-load strengthening. First-line and highest-yield intervention.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Activity counselling: favour low-impact conditioning (swimming, cycling, controlled resistance); avoid joint hyperextension and end-range loading.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Occupational therapy for joint protection, ergonomics, and pacing in daily activities.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Bracing, kinesiology taping, and orthotics for specific unstable joints or high-risk activities. Adjunctive; not a substitute for strengthening.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Referral for surgical opinion only after sustained conservative management fails. Outcomes are less predictable in hEDS due to tissue laxity; counsel realistically.</span></li>
+      <li><i class="ti ti-circle-x"></i><span><span class="ck-label notrec">Avoid</span>High-impact and contact sports; aggressive joint manipulation; routine surgery as a first-line approach.</span></li>
+    </ul>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-bulb"></i>Practice point</div>
+      Set expectations early. Strengthening programs in hypermobility are slow and require months of consistency before benefit. Patients often abandon them after early flares. Framing flares as expected and adjusting load, rather than stopping, is one of the most useful things you can do at follow-up.
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="en-4">
+    <div class="sec-head"><span class="sec-num">4</span><h2>Pain management</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
+      <p>Pain in hEDS comes from unstable joints, small repeated injuries, and muscles working overtime to hold things together. Over time the nervous system can also become more sensitive to pain. Because the causes are layered, the best results come from combining approaches rather than relying on one.</p>
+      <p>Medication is a helper, not the foundation. The foundation is movement, sleep, stress management, and pacing. Opioids are a last resort because they work poorly for this kind of pain and carry real risks.</p>
+    </div>
+    <div class="clinical-note">Non-pharmacological (first line)</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Physiotherapy-led stabilization and proprioceptive training (see Section 3). The primary pain intervention.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Pacing and activity modification to prevent overuse flares; sleep optimization; weight management.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Psychological support (CBT, mindfulness, biofeedback) for central sensitization and the bidirectional pain–mood relationship.</span></li>
+    </ul>
+    <div class="clinical-note">Pharmacological (adjunctive)</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>NSAIDs for acute musculoskeletal flares. Use with caution given GI sensitivity; short courses preferred.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Neuropathic agents for chronic/neuropathic pain: gabapentinoids, low-dose tricyclics (e.g. amitriptyline), or SNRIs (e.g. duloxetine). Titrate slowly.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Topical analgesics and short-course muscle relaxants for localized flares.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Nabilone (synthetic cannabinoid) in selected refractory cases with sleep disturbance or central sensitization, under close supervision. Limited evidence in hEDS specifically.</span></li>
+      <li><i class="ti ti-circle-x"></i><span><span class="ck-label notrec">Avoid</span>Opioids except as a true last resort, for the shortest possible duration. Poor efficacy in chronic hypermobility pain and significant dependence risk.</span></li>
+    </ul>
+    <div class="infobox">
+      <div class="itag"><i class="ti ti-device-watch"></i>Supportive devices and adjuncts</div>
+      <p><strong>Bracing and external supports.</strong> Joint braces, ring splints, soft cervical supports, and full-body or compression garments can improve proprioception, reduce subluxations, and limit muscular strain during activity. These are adjuncts to a strengthening and proprioceptive program, not a replacement for it, and prolonged reliance on rigid bracing should be avoided to prevent deconditioning. An occupational therapist or physiotherapist can fit and individualize supports. One option some patients find useful is the <a href="https://bodybraid.com/discount/SHUEN5" target="_blank" rel="noopener">BodyBraid</a>, a latex-free elastic wrap that adds gentle external reinforcement along the body's spiral lines of support. Because it adds resistance without restricting range of motion, it can sharpen joint position sense, steady posture, and reduce the strain and fatigue of holding unstable joints (<a href="https://bodybraid.com/discount/SHUEN5" target="_blank" rel="noopener">discount link</a>). Evidence is limited to patient experience rather than trials, so use it alongside, not instead of, strengthening.</p>
+      <p><strong>Non-invasive vagus nerve stimulation.</strong> Transcutaneous auricular vagus nerve stimulation has been studied for autonomic balance and pain modulation in small trials (see Section 12 for the evidence caveats). The evidence remains preliminary; it may be considered as an adjunct in motivated patients but is not established therapy. For patients who want to try it, the <a href="https://nuropod.com?sca_ref=10434358.acL1uJfcZe" target="_blank" rel="noopener">Nurosym (Nuropod)</a> is a wearable ear-clip device (<a href="https://nuropod.com?sca_ref=10434358.acL1uJfcZe" target="_blank" rel="noopener">referral and discount link</a>). Because hEDS often comes with dysautonomia, poor sleep, fatigue, and pain, the potential benefit is calmer autonomic balance (the "rest and digest" state), which may ease palpitations, lightheadedness, and fatigue. Here is a short video on <a href="https://www.youtube.com/watch?v=tUMahnLsF2c" target="_blank" rel="noopener">how to use the Nurosym</a>, plus some <a href="https://docsend.com/view/s/daq3n9p6tc7tvrvv" target="_blank" rel="noopener">helpful resources</a>.</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="en-5">
+    <div class="sec-head"><span class="sec-num">5</span><h2>Bone health and osteoporosis</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
+      <p>People with hEDS are more likely to have lower bone density. This happens partly because pain and unstable joints make it harder to stay active and do the weight-bearing exercise that keeps bones strong. Frequent slips and falls also add fracture risk. The good news is that bone health responds well to exercise, vitamin D, calcium, and early screening.</p>
+    </div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Optimize vitamin D and dietary calcium; supplement to correct documented deficiency.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Encourage regular low-impact weight-bearing activity within joint-protective limits.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>DXA bone densitometry where risk factors are present: low activity, prior fragility fracture, corticosteroid exposure, or other osteoporosis risks. There is no hEDS-specific screening schedule; individualize. Repeat interval guided by baseline result and standard osteoporosis guidance.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Pharmacologic osteoporosis therapy per standard guidelines if DXA and fracture-risk assessment warrant.</span></li>
+    </ul>
+    <p>The evidence linking hEDS to reduced bone mineral density is observational and likely multifactorial (connective tissue effects on bone matrix, deconditioning, reduced loading). Treat bone health as you would in any patient with elevated risk factors, with a lower threshold for baseline DXA given the activity limitations hEDS imposes.</p>
+    <div class="infobox">
+      <div class="itag"><i class="ti ti-vibrate"></i>Low-intensity vibration option</div>
+      <p>Low-intensity whole-body vibration has been studied as an adjunct for bone density and balance, with mixed results (see Section 12). The signal studied for bone is a gentle, low-magnitude one. The higher-intensity vibration delivered by inexpensive consumer plates is a different, unstudied stimulus and should not be assumed equivalent. If considered at all, it is an optional adjunct and not a substitute for weight-bearing exercise, resistance training, and standard bone-health measures.</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="en-6">
+    <div class="sec-head"><span class="sec-num">6</span><h2>Cardiovascular surveillance</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
+      <p>Unlike some other forms of EDS, hEDS does not cause dangerous artery problems. A small number of people have a mildly enlarged aortic root or a mitral valve that does not close perfectly. These are usually mild and stable. A single heart ultrasound at diagnosis is the standard check.</p>
+    </div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Baseline transthoracic echocardiogram at diagnosis to assess aortic root and valves.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>If the baseline echo is normal, routine serial imaging is generally not required in adults. Repeat only if symptoms develop, the root is borderline/dilated, or the diagnosis is uncertain. In children, follow-up imaging may be considered.</span></li>
+      <li><i class="ti ti-circle-x"></i><span><span class="ck-label notrec">Avoid</span>Aggressive aortic surveillance protocols appropriate to Marfan, Loeys–Dietz, or vascular EDS. These do not apply to confirmed hEDS and cause unnecessary anxiety and cost.</span></li>
+    </ul>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-heartbeat"></i>Clinical anchor</div>
+      Aortic root dilation occurs in roughly 2–3% of hEDS patients and is typically mild and non-progressive, in contrast with the progressive aortopathy of Marfan, Loeys–Dietz, and vascular EDS. A dilated or progressing aortic root in a presumed hEDS patient should prompt reconsideration of the diagnosis and genetic testing for an aortopathy gene.
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section id="en-7">
+    <div class="sec-head"><span class="sec-num">7</span><h2>Autonomic function and POTS</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
+      <p>Many people with hEDS have trouble with the automatic nervous system, the part that controls heart rate and blood pressure without you thinking about it. The most common form is POTS, where your heart races and you feel dizzy, lightheaded, or exhausted when you stand up. This happens because stretchy blood vessels let blood pool in the legs. It is uncomfortable but treatable, often without medication.</p>
+    </div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Screen for orthostatic intolerance symptoms at intake: lightheadedness, palpitations, fatigue, brain fog, presyncope on standing.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Active stand test or 10-minute orthostatic vitals where POTS is suspected; refer for tilt-table or autonomic assessment if diagnosis is unclear.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>First-line POTS management: increased fluid (isotonic) and salt intake, compression garments (waist-high preferred), recumbent/seated exercise reconditioning.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Pharmacotherapy where conservative measures are insufficient: beta-blockers, ivabradine, fludrocortisone, or midodrine, individualized. Refer to autonomic specialist for refractory cases.</span></li>
+    </ul>
+    <p>The association is strong: hEDS patients are markedly more likely to carry a POTS diagnosis than the general population, and hypermobility is common among POTS cohorts. There are no POTS therapies targeted specifically to hEDS; management mirrors general POTS care. Recognizing and treating dysautonomia frequently improves fatigue, GI symptoms, and overall function. Alongside fluids, salt, and compression, some patients add non-invasive auricular vagus nerve stimulation such as the <a href="https://nuropod.com?sca_ref=10434358.acL1uJfcZe" target="_blank" rel="noopener">Nurosym (Nuropod)</a> to support autonomic balance (see <a href="https://www.youtube.com/watch?v=tUMahnLsF2c" target="_blank" rel="noopener">how to use the Nurosym</a>); evidence in hEDS and POTS is preliminary, so it is an optional adjunct.</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="en-8">
+    <div class="sec-head"><span class="sec-num">8</span><h2>Gastrointestinal and mast cell issues</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
+      <p>Stomach and bowel symptoms are common in hEDS: reflux, bloating, feeling full quickly, constipation, or loose stools. These are usually problems with how the gut moves rather than damage to the gut itself. Some people also have mast cell symptoms, where the body's allergy cells are overactive, causing flushing, hives, or food reactions. Both can be managed.</p>
+    </div>
+    <div class="clinical-note">Gastrointestinal</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Address functional GI symptoms (reflux, dysmotility, constipation) with standard measures; these overlap with autonomic dysfunction and often improve when POTS is treated.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Gastroenterology referral for severe, refractory, or alarm-feature symptoms. Investigate structural and organic causes before attributing to hEDS.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>For reflux, neuromuscular training of the swallowing and diaphragm muscles may help some patients as an adjunct to standard reflux measures. Evidence is limited.</span></li>
+    </ul>
+    <div class="clinical-note">Mast cell activation</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Consider MCAS in patients with the POTS+hEDS cluster who have flushing, urticaria, allergic-type or GI symptoms. A trial of H1/H2 antihistamines is low-risk and can be diagnostic-therapeutic.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Formal MCAS workup (serum tryptase, mediator testing) where symptoms are significant; refer to allergy/immunology. Diagnostic criteria remain debated.</span></li>
+    </ul>
+    <div class="infobox">
+      <div class="itag"><i class="ti ti-link"></i>The "trifecta"</div>
+      <p>hEDS, POTS, and MCAS co-occur far more than chance. In patients with both POTS and hEDS, reported MCAS prevalence is substantially higher than in hEDS without POTS. The proposed shared mechanism involves connective tissue, autonomic, and mast cell interplay. Practically: when one is present, screen for the other two.</p>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section id="en-9">
+    <div class="sec-head"><span class="sec-num">9</span><h2>Pregnancy and anesthesia</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
+      <p>hEDS is not a reason to avoid pregnancy. Most pregnancies go well with planning. Some women have faster labour, early waters breaking, or more joint pain as the pregnancy goes on. It is also worth telling your dentist and anesthetist that you have hEDS, because local anesthetics sometimes work less well, which is easily managed once they know.</p>
+    </div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Pre-conception and antenatal counselling: discuss rapid labour, premature rupture of membranes, increased joint pain and instability, and a delivery plan with the obstetric team.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Flag hEDS to anesthesia and dentistry. Reduced efficacy of local anesthetics is reported; plan accordingly for epidurals, dental work, and minor procedures.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Pelvic floor and antenatal physiotherapy for hypermobility-related pelvic girdle pain.</span></li>
+    </ul>
+    <p>Obstetric risk in hEDS is generally lower and more manageable than in vascular EDS, where pregnancy carries serious vascular and uterine rupture risk. This distinction reinforces the importance of confirming subtype before counselling.</p>
+  </section>
+
+  <!-- 10 -->
+  <section id="en-10">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Genetic counselling and family</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
+      <p>hEDS runs in families. In practice we often see it passed from one generation to the next in a pattern that looks autosomal dominant, so a parent with hEDS has roughly a 1 in 2 chance of a child inheriting the tendency. But the biology underneath is more complex than one gene: many small genetic factors add up, which is why no single gene shows on a test and why relatives can be affected very differently, some barely, some severely. Because of this, we cannot predict how strongly a child will be affected, and there is no test to confirm hEDS or to test family members for it.</p>
+    </div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Take a three-generation pedigree. Look specifically for features suggesting a different, testable connective tissue disorder (arterial events, aortic disease, marked skin fragility).</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Counsel an apparently autosomal dominant familial pattern (~50% chance a child inherits the predisposition) while explaining the underlying genetics are complex and likely polygenic, with highly variable expressivity. Emphasize that no molecular confirmation or cascade test exists for hEDS, and that candidate genes and polygenic scores remain research tools, not clinical tests.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Offer molecular testing (EDS/aortopathy panel) when the presentation is atypical, to exclude vascular EDS, classical EDS, Marfan, and Loeys–Dietz, which are testable and carry different risks.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Reproductive counselling. Because there is no identified gene, prenatal and pre-implantation genetic testing are not available for hEDS itself, only for excludable testable subtypes if found.</span></li>
+    </ul>
+  </section>
+
+  <!-- 11 -->
+  <section id="en-11">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Lifestyle, nutrition, and a functional-medicine approach</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
+      <p>Daily habits do a lot of the work in hEDS. There is no single "EDS diet" that cures the condition, but the way you eat, hydrate, sleep, and move changes how you feel week to week. The approach here is systems-based: instead of treating each symptom in isolation, we look at the systems underneath, your gut, your nervous system, inflammation, and nutrient status, and support each one where there is a reasonable basis to do so. The goal is to give your connective tissue, muscles, and energy systems the raw materials and the calm they need to work better.</p>
+      <p>Below I explain not just what to do, but why it helps, so the changes feel worth keeping.</p>
+    </div>
+
+    <div class="clinical-note">Why these changes matter</div>
+    <p>Lifestyle change in hEDS is not generic wellness advice. Each pillar maps to a mechanism that is dysregulated in this population. Framing the rationale improves adherence, which is the rate-limiting step for every intervention in this protocol.</p>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Why</span><strong>Protein and micronutrients build the matrix.</strong> Collagen and muscle repair depend on adequate protein, vitamin C, zinc, copper, and B vitamins. Many hEDS patients run low on vitamin D, B6, B12, iron, and magnesium. Correcting documented deficiencies supports tissue repair, energy, and muscle function rather than chasing a cosmetic "collagen" claim.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Why</span><strong>Hydration and salt stabilize the autonomic system.</strong> Stretchy vessels pool blood; expanding plasma volume with fluid and salt is the single most effective non-drug lever for POTS symptoms, reducing dizziness, fatigue, and brain fog.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Why</span><strong>An anti-inflammatory, whole-food pattern lowers the background noise.</strong> A diet rich in vegetables, fish, olive oil, legumes, and fibre, and lower in ultra-processed food, refined sugar, and excess alcohol, supports the gut barrier and dampens the low-grade inflammation that amplifies pain and mast cell reactivity.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Why</span><strong>Gut balance feeds the whole system.</strong> GI symptoms are common in hEDS and tied to the autonomic and mast cell picture. Fibre, fermented foods, and identifying personal trigger foods support motility, the microbiome, and immune regulation, which in turn can ease systemic symptoms.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Why</span><strong>Sleep, stress regulation, and pacing retrain the pain system.</strong> Restorative sleep and practices that activate the parasympathetic nervous system (breathwork, mindfulness, gentle vagal activation) down-regulate central sensitization, the process that turns short-term pain into chronic pain.</span></li>
+    </ul>
+
+    <div class="clinical-note">Practical recommendations</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Whole-food, anti-inflammatory eating pattern (Mediterranean-style is a reasonable default) with adequate protein. Maintain a healthy weight to reduce joint load.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Generous fluid and salt intake if POTS or orthostatic intolerance is present (absent hypertension or other contraindication). Electrolyte/isotonic drinks are reasonable.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Test, then treat: check and correct vitamin D, B12, B6, iron, magnesium, and ferritin. Replace what is low rather than supplementing blindly.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Support gut health with dietary fibre, prebiotic foods, and fermented foods; a quality probiotic is reasonable, especially with GI or mast cell symptoms.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Targeted supplements with a plausible mechanism and good safety: magnesium (cramps, sleep, constipation), vitamin C (collagen cofactor), quercetin (mast cell stabilization in the MCAS cluster), curcumin (anti-inflammatory), omega-3, and creatine for muscle support. Discuss dose individually; quality and interactions matter.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>A food and symptom diary to map individual intolerances, particularly with GI or mast cell symptoms.</span></li>
+      <li><i class="ti ti-circle-x"></i><span><span class="ck-label notrec">Caution</span>Very restrictive elimination diets and large, unguided megadose stacks. More is not better; some supplements interact or burden the gut. Build the stack deliberately, with a reason for each item.</span></li>
+    </ul>
+
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-info-circle"></i>An honest note on evidence</div>
+      Most diet and supplement strategies in hEDS rest on mechanism and clinical experience rather than large trials, because that research barely exists yet. That does not make them worthless: correcting real deficiencies and reducing inflammation are sound, low-risk moves. It does mean we stay humble, individualize, and keep the foundation, physiotherapy, pacing, sleep, and treating comorbidities, at the centre. Supplements support that foundation; they do not replace it.
+    </div>
+
+    <div class="infobox">
+      <div class="itag"><i class="ti ti-player-play"></i>Recommended patient resource</div>
+      <p>Dr. Heidi Collins is a physician who also has hEDS and has lectured extensively on nutrition and supplementation for EDS. Her talk is a useful, patient-friendly deep dive into the dietary and micronutrient approach described above.</p>
+      <p><strong>Diet and Supplements for Persons with EDS — Dr. Heidi Collins:</strong> <a href="https://www.youtube.com/watch?v=pEfuB-UWRZM">youtube.com/watch?v=pEfuB-UWRZM</a></p>
+    </div>
+
+  </section>
+
+  <!-- 12 -->
+  <section id="en-12">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Emerging and investigational</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
+      <p>Some newer approaches are being studied for hEDS symptoms. They are promising but not yet proven, so think of them as add-ons to try alongside the established treatments, not replacements for them. Talk to your doctor before spending money on devices or therapies marketed online.</p>
+    </div>
+    <div class="emerging">
+      <div class="etag"><i class="ti ti-flask-2"></i>Investigational — trial / adjunct evidence only</div>
+      <p><strong>Vagus nerve stimulation (VNS).</strong> Non-invasive auricular VNS is being studied for chronic pain and inflammation via the cholinergic anti-inflammatory pathway, and for autonomic balance in dysautonomia. Early signals are of interest but evidence specific to hEDS is limited. Reasonable as an adjunct in motivated patients; not a substitute for first-line care.</p>
+      <p><strong>Whole-body vibration (WBV) platforms.</strong> Studied as an adjunct for bone density and balance by mimicking weight-bearing load. Trial results are mixed and modest. May complement, but not replace, exercise, vitamin D/calcium, and standard osteoporosis therapy.</p>
+      <p><strong>Revised diagnostic criteria.</strong> The anticipated hEDS/HSD criteria update is expected to broaden joint assessment and formally incorporate systemic comorbidities. This may reclassify some current HSD patients and refine the phenotype.</p>
+      <p><strong>Gene discovery.</strong> The HEDGE study and recent GWAS meta-analyses are beginning to define the polygenic architecture of hEDS, with early candidate loci near <em>ACKR3</em>, <em>SLC39A13</em>, <em>KLK15</em>, and <em>PSMC3</em>. These are research findings, not yet clinical tests, but they point toward future molecular subtyping and, eventually, the possibility of a genetic test or polygenic risk tool. Watch this space over the next few years.</p>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section id="en-13">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Summary of recommendations</h2></div>
+    <div class="cardgrid">
+      <div class="scard">
+        <h4><i class="ti ti-stretching"></i>Musculoskeletal</h4>
+        <ul>
+          <li>EDS-aware physiotherapy is first-line and highest-yield</li>
+          <li>Low-impact conditioning; avoid hyperextension and high-impact sport</li>
+          <li>Bracing/orthotics as adjuncts; surgery only after conservative failure</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <h4><i class="ti ti-mood-suprised"></i>Pain</h4>
+        <ul>
+          <li>Multimodal: movement, sleep, pacing, psychological support</li>
+          <li>NSAIDs (caution), neuropathic agents as adjuncts</li>
+          <li>Opioids last resort only</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <h4><i class="ti ti-bone"></i>Bone</h4>
+        <ul>
+          <li>Optimize vitamin D and calcium</li>
+          <li>Weight-bearing activity within limits</li>
+          <li>Lower threshold for baseline DXA</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <h4><i class="ti ti-heartbeat"></i>Cardiac</h4>
+        <ul>
+          <li>Baseline echo at diagnosis</li>
+          <li>No routine serial imaging if normal</li>
+          <li>Re-evaluate diagnosis if aorta dilates</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <h4><i class="ti ti-activity"></i>Autonomic / POTS</h4>
+        <ul>
+          <li>Screen at intake; active stand test</li>
+          <li>Fluids, salt, compression, reconditioning first</li>
+          <li>Medication and specialist referral if refractory</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <h4><i class="ti ti-stethoscope"></i>GI / Mast cell</h4>
+        <ul>
+          <li>Manage functional GI; refer if alarm features</li>
+          <li>Consider MCAS in the POTS+hEDS cluster</li>
+          <li>Antihistamine trial is low-risk</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <h4><i class="ti ti-dna"></i>Genetics</h4>
+        <ul>
+          <li>Three-generation pedigree</li>
+          <li>AD pattern, ~50% risk, no confirmatory test</li>
+          <li>Panel testing to exclude testable subtypes</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <h4><i class="ti ti-baby-carriage"></i>Pregnancy</h4>
+        <ul>
+          <li>Not a contraindication; plan delivery</li>
+          <li>Counsel rapid labour, PROM, joint pain</li>
+          <li>Flag anesthesia and dentistry</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-checklist"></i>Cross-cutting</div>
+      The two interventions that change long-term outcomes most are consistent, EDS-aware physiotherapy and the recognition and treatment of comorbidities (POTS, MCAS, GI, mood). Confirm the subtype first: excluding vascular EDS, Marfan, and Loeys–Dietz is the safety-critical step that everything else depends on.
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section id="en-14">
+    <div class="sec-head"><span class="sec-num">14</span><h2>References</h2></div>
+    <ol class="refs ui">
+      <li>Malfait F, Francomano C, Byers P, et al. The 2017 international classification of the Ehlers–Danlos syndromes. <em>Am J Med Genet C Semin Med Genet.</em> 2017;175(1):8–26.</li>
+      <li>Tinkle B, Castori M, Berglund B, et al. Hypermobile Ehlers–Danlos syndrome (a.k.a. Ehlers–Danlos syndrome Type III and Ehlers–Danlos syndrome hypermobility type): Clinical description and natural history. <em>Am J Med Genet C Semin Med Genet.</em> 2017;175(1):48–69.</li>
+      <li>Tofts LJ, Simmonds J, Schwartz SB, et al. Pediatric joint hypermobility: a diagnostic framework and narrative review. <em>Orphanet J Rare Dis.</em> 2023;18:104.</li>
+      <li>Ritelli M, Chiarelli N, Cinquina V, et al. Looking back and beyond the 2017 diagnostic criteria for hypermobile Ehlers–Danlos syndrome. <em>Am J Med Genet A.</em> 2024;194(3):e63426.</li>
+      <li>Kohn A, Chang C. The relationship between hypermobile Ehlers–Danlos syndrome (hEDS), postural orthostatic tachycardia syndrome (POTS), and mast cell activation syndrome (MCAS). <em>Clin Rev Allergy Immunol.</em> 2020;58(3):273–297.</li>
+      <li>Hakim A, O'Callaghan C, De Wandele I, et al. Cardiovascular autonomic dysfunction in Ehlers–Danlos syndrome — hypermobile type. <em>Am J Med Genet C Semin Med Genet.</em> 2017;175(1):168–174.</li>
+      <li>Fikree A, Aktar R, Grahame R, et al. Functional gastrointestinal disorders are associated with the joint hypermobility syndrome in secondary care. <em>Neurogastroenterol Motil.</em> 2015;27(4):569–579.</li>
+      <li>Atzinger CL, Meyer RA, Khoury PR, et al. Cross-sectional and longitudinal assessment of aortic root dilation and valvular anomalies in hypermobile and classic Ehlers–Danlos syndrome. <em>J Pediatr.</em> 2011;158(5):826–830.</li>
+      <li>Vandersteen A, Cosemans N, et al. Cardiac defects of hypermobile EDS and HSD: a retrospective cohort study. <em>BMC Cardiovasc Disord.</em> 2024;24:165.</li>
+      <li>Engelbert RH, Juul-Kristensen B, Pacey V, et al. The evidence-based rationale for physical therapy treatment of children, adolescents, and adults diagnosed with joint hypermobility syndrome/hypermobile EDS. <em>Am J Med Genet C Semin Med Genet.</em> 2017;175(1):158–167.</li>
+      <li>Castori M, Morlino S, Celletti C, et al. Management of pain and fatigue in the joint hypermobility syndrome (a.k.a. Ehlers–Danlos syndrome, hypermobility type). <em>Am J Med Genet A.</em> 2012;158A(8):2055–2070.</li>
+      <li>The Ehlers–Danlos Society. hEDS/HSD Criteria Review Study (international consensus, in progress). Accessed 2026.</li>
+      <li>Norris Q, Laukaitis C, Subramanian DN, et al. Complex genetics and regulatory drivers of hypermobile Ehlers–Danlos syndrome: insights from a genome-wide association study meta-analysis. <em>medRxiv</em> (preprint). 2025. doi:10.1101/2025.09.19.25336146.</li>
+      <li>The Ehlers–Danlos Society. The HEDGE Study (Hypermobile EDS Genetic Evaluation): ASHG abstracts 2024; first publications from 2025.</li>
+      <li>Forghani I, See J, et al. Hypermobile Ehlers–Danlos syndrome: diagnostic challenges and the role of genetic testing. <em>Genes (Basel).</em> 2025;16(5):530.</li>
+    </ol>
+  </section>
+
+  <div class="footnote ui">
+    <p><strong>Disclaimer.</strong> This protocol is intended to support, not replace, clinical judgment and individualized care. It is a practice aid for patients and clinicians and does not constitute a personalized medical recommendation. Guidelines for hypermobile EDS and its comorbidities continue to evolve, and a revision to the diagnostic criteria is anticipated. Verify all start ages, surveillance intervals, screening thresholds, and management details against the current versions of the relevant guidelines and society statements before applying them to an individual patient.</p>
+    <p><strong>Andrew Shuen, MD PhD, FRCPC, DABMGG</strong> · Medical Geneticist · Division of Medical Genetics, Jewish General Hospital (CIUSSS West-Central Montreal) · McGill University · 3755 Côte Sainte-Catherine Road, Montreal QC H3T 1E2 · andrew.shuen.med@ssss.gouv.qc.ca · 514 340 8222, ext. 23965</p>
+  </div>
+</div>
+
+<!-- ============================ FRANÇAIS ============================ -->
+<div class="wrap lang-fr" id="content-fr">
+
+  <header class="masthead">
+    <div class="brand-logo" style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:0 0 22px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;"><span style="font-size:20px; font-weight:800; letter-spacing:-.01em; color:var(--brand-dark);">Jewish General Hospital</span><span style="font-size:13px; font-weight:600; color:var(--ink-faint); letter-spacing:.02em;">Division of Medical Genetics</span><span style="font-size:13px; font-weight:600; color:var(--ink-faint); letter-spacing:.02em;">· McGill University</span></div>
+    <div class="eyebrow">Division de génétique médicale · Protocole clinique de prévention et de surveillance</div>
+    <h1>Syndrome d'Ehlers–Danlos hypermobile (SEDh) et trouble du spectre de l'hypermobilité (TSH)</h1>
+    <p class="standfirst">Un guide pratique pour bien vivre avec le SED hypermobile et le trouble du spectre de l'hypermobilité : ce qui augmente votre risque, ce qu'il faut surveiller, et quels examens et traitements valent la peine. Rédigé pour les patients et pour les cliniciens qui les soignent.</p>
+
+    <div class="author-panel">
+      <div class="who">Andrew Shuen, MD PhD, FRCPC, DABMGG <span style="font-weight:400;color:var(--ink-faint);">(CPSO 101845)</span></div>
+      <div class="role">Généticien médical · Division de génétique médicale, Hôpital général juif (CIUSSS du Centre-Ouest-de-l'Île-de-Montréal) · Université McGill</div>
+      <div class="author-contact">
+        <span><i class="ti ti-mail"></i>andrew.shuen.med@ssss.gouv.qc.ca</span>
+        <span><i class="ti ti-phone"></i>514 340 8222, poste 23965</span>
+        <span><i class="ti ti-printer"></i>Téléc. 514 340 8712</span>
+        <span><i class="ti ti-map-pin"></i>3755, chemin de la Côte-Sainte-Catherine, Montréal QC H3T 1E2</span>
+      </div>
+    </div>
+
+    <div class="meta-chips ui">
+      <span class="chip"><i class="ti ti-dna-2"></i>Trouble du tissu conjonctif</span>
+      <span class="chip"><i class="ti ti-sitemap"></i>Génétiquement complexe / probablement polygénique</span>
+      <span class="chip"><i class="ti ti-flask"></i>Aucun test génétique confirmatoire</span>
+      <span class="chip"><i class="ti ti-calendar-stats"></i>Critères 2017 (révision attendue)</span>
+    </div>
+
+    <div class="legend ui">
+      <span class="item"><span class="swatch patient"></span>Résumé en langage simple pour les patients</span>
+      <span class="item"><span class="swatch clinical"></span>Détails cliniques pour les soignants</span>
+    </div>
+  </header>
+
+  <nav class="toc ui">
+    <h2>Dans ce protocole</h2>
+    <ol>
+      <li><span class="n">1</span><a href="#fr-1">Comprendre le SEDh</a></li>
+      <li><span class="n">2</span><a href="#fr-2">Risque et fardeau par domaine</a></li>
+      <li><span class="n">3</span><a href="#fr-3">Stabilité articulaire et système musculosquelettique</a></li>
+      <li><span class="n">4</span><a href="#fr-4">Prise en charge de la douleur</a></li>
+      <li><span class="n">5</span><a href="#fr-5">Santé osseuse et ostéoporose</a></li>
+      <li><span class="n">6</span><a href="#fr-6">Surveillance cardiovasculaire</a></li>
+      <li><span class="n">7</span><a href="#fr-7">Fonction autonome et SThPO</a></li>
+      <li><span class="n">8</span><a href="#fr-8">Troubles digestifs et mastocytaires</a></li>
+      <li><span class="n">9</span><a href="#fr-9">Grossesse et anesthésie</a></li>
+      <li><span class="n">10</span><a href="#fr-10">Conseil génétique et famille</a></li>
+      <li><span class="n">11</span><a href="#fr-11">Mode de vie, nutrition et autogestion</a></li>
+      <li><span class="n">12</span><a href="#fr-12">Approches émergentes et expérimentales</a></li>
+      <li><span class="n">13</span><a href="#fr-13">Résumé des recommandations</a></li>
+      <li><span class="n">14</span><a href="#fr-14">Références</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="fr-1">
+    <div class="sec-head"><span class="sec-num">1</span><h2>Comprendre le SED hypermobile</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
+      <p>Le SED hypermobile est un trouble du tissu conjonctif. Le tissu conjonctif est la matière qui tient ensemble vos articulations, votre peau et vos vaisseaux sanguins et qui leur donne du soutien. Dans le SEDh, ce tissu est plus élastique et moins solide que la normale. Les signes les plus fréquents sont des articulations lâches qui vont trop loin ou se déboîtent, une peau douce ou veloutée, des ecchymoses faciles et une douleur chronique.</p>
+      <p>Le SEDh est généralement la forme la moins sévère de SED. Il ne réduit pas l'espérance de vie. Mais il peut toucher plusieurs parties du corps à la fois, et la combinaison de symptômes est différente chez chaque personne. Personne ne les présente tous.</p>
+      <p>Il n'existe pas encore de test sanguin qui confirme le SEDh. Le diagnostic est posé par un médecin à partir d'un ensemble de constats physiques, de vos antécédents familiaux et de l'exclusion d'autres maladies.</p>
+      <p>Vous entendrez peut-être aussi le terme trouble du spectre de l'hypermobilité, ou TSH. Il s'applique aux personnes dont les articulations hypermobiles causent de vrais symptômes mais qui ne cochent pas toutes les cases de la liste du SEDh. Le TSH n'est pas une condition plus légère ou moins réelle. Les symptômes et leur impact peuvent être tout aussi importants, et les soins sont les mêmes. Les deux étiquettes indiquent surtout comment les constats s'alignent, et non à quel point vous êtes touché. Tout ce qui est dans ce guide s'applique au SEDh et au TSH, sauf indication contraire.</p>
+    </div>
+    <p>Le SED hypermobile est l'un des 14 sous-types reconnus du syndrome d'Ehlers–Danlos et de loin le plus fréquent, tout en demeurant le seul sous-type sans gène causal identifié ni test moléculaire confirmatoire disponible. Il se situe sur un continuum clinique avec le trouble du spectre de l'hypermobilité (TSH), qui désigne une hypermobilité articulaire symptomatique ne satisfaisant pas tous les critères du SEDh. La prise en charge est essentiellement identique pour le SEDh et le TSH, et ce protocole s'applique aux deux sauf si une section indique le contraire.</p>
+    <p>Le diagnostic suit actuellement la Classification internationale 2017 des syndromes d'Ehlers–Danlos. Elle exige les trois critères : (1) hypermobilité articulaire généralisée selon le score de Beighton ajusté pour l'âge et le sexe (après la puberté ≥5/9; ≥4/9 après 50 ans); (2) au moins deux des éléments suivants : caractéristique A (≥5 manifestations systémiques du tissu conjonctif), caractéristique B (parent au premier degré satisfaisant indépendamment les critères) et caractéristique C (complications musculosquelettiques); et (3) exclusion des diagnostics alternatifs, dont d'autres troubles héréditaires du tissu conjonctif et, de façon cruciale, le SED vasculaire et classique, le syndrome de Marfan et le syndrome de Loeys–Dietz.</p>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-alert-triangle"></i>Priorité diagnostique</div>
+      La tâche la plus importante lors de la première évaluation est d'exclure le SED vasculaire (COL3A1), le syndrome de Marfan (FBN1) et le syndrome de Loeys–Dietz. Ceux-ci comportent un risque artériel et aortique que le SEDh n'a pas, et ils modifient entièrement la surveillance et le pronostic. Lorsque le phénotype est atypique, en présence d'une fragilité cutanée importante ou d'une dilatation aortique au-delà d'une racine légère, ou si les antécédents familiaux incluent une dissection artérielle, demandez un test moléculaire (panel de gènes aortopathie/SED) avant de retenir l'étiquette de SEDh.
+    </div>
+    <div class="subhead"><h3>La place du TSH</h3><span class="riskpill low">Même prise en charge</span></div>
+    <p>Le trouble du spectre de l'hypermobilité est le diagnostic des personnes ayant une hypermobilité articulaire symptomatique qui ne satisfont pas tous les critères 2017 du SEDh, par exemple celles avec une hypermobilité généralisée mais moins de manifestations systémiques que requis, ou celles dont l'hypermobilité est historique, localisée ou périphérique. Le cadre 2017 définit plusieurs patrons de TSH : généralisé (G-TSH), périphérique (P-TSH), localisé (L-TSH) et historique (H-TSH). L'introduction du TSH en 2017 était délibérée, remplaçant les anciennes étiquettes qui se chevauchaient (syndrome d'hypermobilité articulaire et hypermobilité articulaire bénigne), et visait à inclure le grand groupe de patients symptomatiques qui sortent des critères stricts du SEDh, afin qu'ils ne restent pas sans diagnostic ni soins.</p>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-equal"></i>Le TSH n'est pas un diagnostic mineur</div>
+      Le TSH et le SEDh se prennent en charge de la même façon, et le fardeau symptomatique du TSH peut égaler ou dépasser celui du SEDh. La distinction est une classification de la façon dont le phénotype correspond aux critères, et non une mesure de gravité ou de légitimité. Les patients peuvent aussi passer d'une catégorie à l'autre avec le temps, à mesure que des caractéristiques apparaissent ou sont documentées. Dans tout ce protocole, chaque recommandation de surveillance et de prise en charge s'applique au SEDh et au TSH, sauf indication explicite. La même priorité d'exclusion diagnostique s'applique : écarter le SED vasculaire, le Marfan et le Loeys–Dietz dans le TSH comme dans le SEDh en présence de signaux d'alarme.
+    </div>
+    <p>Une révision des critères diagnostiques est attendue, l'étude internationale de révision des critères SEDh/TSH de la Ehlers–Danlos Society devant publier ses résultats. Les changements anticipés comprennent une évaluation articulaire plus large que le score de Beighton et une intégration plus formelle des comorbidités systémiques comme la dysautonomie et la dysfonction digestive, ce qui pourrait aussi déplacer la frontière entre le SEDh et le TSH. Jusqu'à publication, les critères 2017 demeurent la norme.</p>
+
+    <div class="subhead"><h3>La génétique du SEDh et du TSH</h3><span class="riskpill low">Domaine de recherche actif</span></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
+      <p>On demande souvent pourquoi il n'existe pas de test génétique pour le SEDh alors que les autres types de SED en ont un. La réponse honnête est que le SEDh est génétiquement compliqué. Les autres types de SED sont habituellement causés par un changement dans un seul gène, souvent un gène du collagène, qu'un laboratoire peut trouver. Le SEDh ne semble pas fonctionner ainsi. Au lieu d'un seul gène fort, il semble que de nombreux gènes ajoutent chacun une petite part de risque, et qu'ils se combinent entre eux et avec des facteurs de vie pour produire la condition. On appelle cela un patron polygénique, ou complexe.</p>
+      <p>C'est pourquoi le SEDh est clairement familial, mais qu'aucun gène unique n'apparaît au test. Ce n'est pas que la cause manque. C'est que la cause est répartie sur de nombreuses petites pièces que l'on commence à peine à cartographier. La recherche avance vite, et les premières grandes études génétiques ont maintenant trouvé leurs premiers signaux.</p>
+    </div>
+    <p>Le SEDh est le sous-type de SED le plus fréquent, mais le moins compris sur le plan génétique, et le TSH partage cette absence de marqueur moléculaire. Contrairement aux autres sous-types de SED, causés par des variants pathogènes définis dans des protéines de la matrice extracellulaire, des gènes du collagène ou des enzymes de modification du collagène, le SEDh et le TSH n'ont pas de gène causal unique ni de test moléculaire diagnostique. Les arbres généalogiques montrent un regroupement familial clair et une héritabilité élevée, ce qui a historiquement mené à le décrire comme autosomique dominant. Les données actuelles recadrent cela : le SEDh se comprend mieux comme une condition génétiquement complexe, probablement polygénique, dans laquelle de nombreux variants communs et rares contribuent chacun de petits effets, en interaction entre eux et avec des facteurs environnementaux et hormonaux. La transmission apparemment dominante dans les familles reflète cette charge héréditaire agrégée plutôt qu'un seul allèle ségrégeant dans la plupart des cas.</p>
+    <p>Plusieurs travaux récents commencent à définir cette architecture. Une méta-analyse GWAS de 2025 (1 815 cas, 5 008 témoins) a identifié les premiers loci significatifs à l'échelle du génome, dont une région régulatrice près d'<em>ACKR3</em> sur le chromosome 2, l'annotation fonctionnelle impliquant des voies neuro-immunes et de signalisation de la douleur, et a signalé d'autres candidats dont <em>SLC39A13</em> (un transporteur de zinc déjà impliqué dans une forme rare et récessive de SED) et <em>PSMC3</em>. Ce même travail a trouvé une corrélation génétique significative entre le SEDh et l'hypermobilité articulaire, l'EM/SFC, la fibromyalgie, la migraine, l'anxiété, la dépression, le trouble du spectre de l'autisme et les troubles digestifs, compatible avec une biologie héréditaire partagée entre ces conditions comorbides. La recherche sur les gènes candidats a aussi impliqué séparément la famille des kallikréines (p. ex. <em>KLK15</em>) sur le chromosome 19. L'étude HEDGE de la Ehlers–Danlos Society, le plus grand effort de séquençage dédié au SEDh (plus de 1 000 participants), a rapporté à l'ASHG qu'aucun gène unique n'explique le SEDh, pointant plutôt vers de multiples variants rares et des interactions complexes; ses premiers articles révisés par les pairs ont commencé à paraître à partir de la fin de 2025.</p>
+    <div class="infobox">
+      <div class="itag"><i class="ti ti-dna-2"></i>Ce que le test génétique peut et ne peut pas faire aujourd'hui</div>
+      <p>Il n'existe pas de test génétique clinique qui confirme ou exclut le SEDh. Le séquençage reste utile, mais dans un autre but : <strong>exclure les troubles du tissu conjonctif testables qui imitent le SEDh</strong> et comportent un risque plus élevé. Un panel normal n'écarte pas le SEDh; il écarte les alternatives plus dangereuses.</p>
+      <p>Les gènes candidats ci-dessus (<em>ACKR3</em>, <em>SLC39A13</em>, <em>KLK15</em>, <em>PSMC3</em>) sont des résultats de recherche, et non des tests cliniques validés. Ils ne doivent pas être demandés ni interprétés comme diagnostiques du SEDh, et les scores de risque polygénique pour le SEDh ne sont pas encore exploitables en clinique.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="fr-2">
+    <div class="sec-head"><span class="sec-num">2</span><h2>Risque et fardeau par domaine</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
+      <p>Le SEDh et le TSH ne sont pas des syndromes de cancer; il ne s'agit donc pas d'un risque de cancer à vie. Le tableau ci-dessous montre plutôt les systèmes du corps que ces conditions peuvent toucher et à quelle fréquence approximative. Servez-vous-en pour savoir quoi surveiller. La plupart des problèmes se gèrent bien, et beaucoup de gens ne développent jamais les plus graves.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Domaine</th><th>Fardeau habituel</th><th>Niveau</th><th>Signification clinique</th></tr></thead>
+        <tbody>
+          <tr><td>Instabilité articulaire, subluxation, luxation</td><td>Très fréquent (signe déterminant)</td><td><span class="lvl high">Élevé</span></td><td>Récurrent, souvent spontané; plus fréquent chez les jeunes et les femmes</td></tr>
+          <tr><td>Douleur chronique (myofasciale + neuropathique)</td><td>Très fréquent</td><td><span class="lvl high">Élevé</span></td><td>Début de l'adolescence à la quarantaine; cause majeure d'incapacité et de baisse de qualité de vie</td></tr>
+          <tr><td>Arthrose précoce / faible densité osseuse</td><td>Fréquent</td><td><span class="lvl mod">Modéré</span></td><td>Lié au stress articulaire, au déconditionnement, à la réduction de la mise en charge</td></tr>
+          <tr><td>Dysfonction autonome / SThPO</td><td>Fréquent</td><td><span class="lvl mod">Modéré</span></td><td>Association forte; intolérance orthostatique, palpitations, fatigue, syncope</td></tr>
+          <tr><td>Dysmotilité digestive (reflux, ballonnement, constipation)</td><td>Fréquent</td><td><span class="lvl mod">Modéré</span></td><td>Fonctionnel; rarement structurel; chevauchement avec la dysfonction autonome</td></tr>
+          <tr><td>Symptômes d'activation mastocytaire</td><td>Sous-groupe</td><td><span class="lvl mod">Modéré</span></td><td>Enrichi dans le groupe SThPO+SEDh; bouffées, symptômes allergiques et digestifs</td></tr>
+          <tr><td>Dilatation légère de la racine aortique / prolapsus mitral</td><td>Peu fréquent, habituellement non évolutif</td><td><span class="lvl low">Faible</span></td><td>Dilatation aortique ~2–3 % dans les cohortes SEDh; échographie de base indiquée, rarement évolutive</td></tr>
+          <tr><td>Complications de grossesse (RPM, travail rapide)</td><td>Variable</td><td><span class="lvl low">Faible–Mod</span></td><td>Généralement gérable avec planification; pas une contre-indication à la grossesse</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Les niveaux reflètent la fréquence et le poids clinique habituels de chaque domaine dans le SEDh et le TSH, et non un modèle de risque validé et stratifié par gène (il n'en existe pas, aucun gène unique n'étant connu). Ils sont offerts comme guide pratique de surveillance et s'appliquent aux deux conditions.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="fr-3">
+    <div class="sec-head"><span class="sec-num">3</span><h2>Stabilité articulaire et système musculosquelettique</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
+      <p>Des articulations lâches et instables sont au cœur du SEDh. Le traitement le plus efficace n'est pas un médicament. C'est un renforcement doux et régulier qui apprend aux muscles autour d'une articulation à faire le travail de soutien que les ligaments ne peuvent pas faire. Cela prend des mois, et les poussées sont normales, mais ça fonctionne.</p>
+      <p>Le but est de bâtir de la force sans forcer les articulations jusqu'à leur amplitude extrême. Les activités à faible impact comme la natation, le vélo et le travail de résistance contrôlé sont idéales. Les sports à fort impact et de contact augmentent le risque de luxation et devraient généralement être évités.</p>
+    </div>
+    <div class="subhead"><h3>Liste de surveillance et de prise en charge</h3><span class="riskpill high">Domaine central</span></div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Orientation en physiothérapie avec expérience du SED/de l'hypermobilité, axée sur le réentraînement proprioceptif, la stabilité du tronc et un renforcement progressif à faible charge. Intervention de première ligne au rendement le plus élevé.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Conseils d'activité : privilégier le conditionnement à faible impact (natation, vélo, résistance contrôlée); éviter l'hyperextension articulaire et la charge en fin d'amplitude.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Ergothérapie pour la protection articulaire, l'ergonomie et le dosage de l'effort au quotidien.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Orthèses, taping kinésiologique et orthèses plantaires pour des articulations instables précises ou des activités à risque. Mesure d'appoint; ne remplace pas le renforcement.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Avis chirurgical seulement après échec d'une prise en charge conservatrice soutenue. Les résultats sont moins prévisibles dans le SEDh en raison de la laxité tissulaire; conseiller de façon réaliste.</span></li>
+      <li><i class="ti ti-circle-x"></i><span><span class="ck-label notrec">À éviter</span>Sports à fort impact et de contact; manipulations articulaires agressives; chirurgie d'emblée comme approche de première ligne.</span></li>
+    </ul>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-bulb"></i>Point pratique</div>
+      Établir les attentes tôt. Les programmes de renforcement dans l'hypermobilité sont lents et exigent des mois de constance avant d'apporter un bénéfice. Les patients les abandonnent souvent après les premières poussées. Présenter les poussées comme attendues et ajuster la charge, plutôt que d'arrêter, est l'une des choses les plus utiles à faire au suivi.
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="fr-4">
+    <div class="sec-head"><span class="sec-num">4</span><h2>Prise en charge de la douleur</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
+      <p>La douleur dans le SEDh provient d'articulations instables, de petites blessures répétées et de muscles qui travaillent sans cesse pour tout tenir en place. Avec le temps, le système nerveux peut aussi devenir plus sensible à la douleur. Comme les causes sont multiples, les meilleurs résultats viennent de la combinaison d'approches plutôt que d'une seule.</p>
+      <p>Le médicament est une aide, pas la fondation. La fondation, c'est le mouvement, le sommeil, la gestion du stress et le dosage de l'effort. Les opioïdes sont un dernier recours, car ils agissent mal sur ce type de douleur et comportent de vrais risques.</p>
+    </div>
+    <div class="clinical-note">Non pharmacologique (première ligne)</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Stabilisation et entraînement proprioceptif dirigés par la physiothérapie (voir section 3). Intervention principale contre la douleur.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Dosage de l'effort et modification des activités pour prévenir les poussées de surmenage; optimisation du sommeil; gestion du poids.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Soutien psychologique (TCC, pleine conscience, biorétroaction) pour la sensibilisation centrale et la relation bidirectionnelle douleur–humeur.</span></li>
+    </ul>
+    <div class="clinical-note">Pharmacologique (appoint)</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>AINS pour les poussées musculosquelettiques aiguës. À utiliser avec prudence vu la sensibilité digestive; cures courtes à privilégier.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Agents neuropathiques pour la douleur chronique/neuropathique : gabapentinoïdes, tricycliques à faible dose (p. ex. amitriptyline) ou IRSN (p. ex. duloxétine). Titrer lentement.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Analgésiques topiques et myorelaxants en cure courte pour les poussées localisées.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Nabilone (cannabinoïde de synthèse) dans des cas réfractaires sélectionnés avec troubles du sommeil ou sensibilisation centrale, sous supervision étroite. Données limitées spécifiquement dans le SEDh.</span></li>
+      <li><i class="ti ti-circle-x"></i><span><span class="ck-label notrec">À éviter</span>Opioïdes sauf en véritable dernier recours, pour la durée la plus courte possible. Faible efficacité dans la douleur chronique d'hypermobilité et risque important de dépendance.</span></li>
+    </ul>
+    <div class="infobox">
+      <div class="itag"><i class="ti ti-device-watch"></i>Appareils et soutiens d'appoint</div>
+      <p><strong>Orthèses et soutiens externes.</strong> Les orthèses articulaires, attelles annulaires, soutiens cervicaux souples et vêtements de compression peuvent améliorer la proprioception, réduire les subluxations et limiter la tension musculaire à l'effort. Ce sont des appoints à un programme de renforcement et de proprioception, et non un remplacement; il faut éviter une dépendance prolongée à une orthèse rigide pour prévenir le déconditionnement. Un ergothérapeute ou un physiothérapeute peut ajuster et individualiser ces soutiens. Certains patients apprécient le <a href="https://bodybraid.com/discount/SHUEN5" target="_blank" rel="noopener">BodyBraid</a>, une bande élastique sans latex qui offre un renforcement externe doux le long des lignes de soutien en spirale du corps. Comme elle ajoute de la résistance sans limiter l'amplitude de mouvement, elle peut affiner la sensation de position des articulations, stabiliser la posture et réduire la tension et la fatigue liées au maintien d'articulations instables (<a href="https://bodybraid.com/discount/SHUEN5" target="_blank" rel="noopener">lien de rabais</a>). Les données se limitent à l'expérience des patients et non à des essais; à utiliser en complément du renforcement, jamais à sa place.</p>
+      <p><strong>Stimulation vagale non invasive.</strong> La stimulation vagale auriculaire transcutanée a été étudiée pour l'équilibre autonome et la modulation de la douleur dans de petits essais (voir section 12 pour les réserves sur les données). Les données demeurent préliminaires; elle peut être envisagée comme appoint chez des patients motivés, mais n'est pas un traitement établi. Pour les patients qui souhaitent l'essayer, le <a href="https://nuropod.com?sca_ref=10434358.acL1uJfcZe" target="_blank" rel="noopener">Nurosym (Nuropod)</a> est un appareil portable à pince d'oreille (<a href="https://nuropod.com?sca_ref=10434358.acL1uJfcZe" target="_blank" rel="noopener">lien de parrainage et de rabais</a>). Comme le SEDh s'accompagne souvent de dysautonomie, de mauvais sommeil, de fatigue et de douleur, le bénéfice possible est un meilleur équilibre autonome (l'état « repos et digestion »), ce qui peut atténuer les palpitations, les étourdissements et la fatigue. Voici une courte vidéo sur <a href="https://www.youtube.com/watch?v=tUMahnLsF2c" target="_blank" rel="noopener">l'utilisation du Nurosym</a>, ainsi que des <a href="https://docsend.com/view/s/daq3n9p6tc7tvrvv" target="_blank" rel="noopener">ressources utiles</a>.</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="fr-5">
+    <div class="sec-head"><span class="sec-num">5</span><h2>Santé osseuse et ostéoporose</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
+      <p>Les personnes atteintes de SEDh sont plus susceptibles d'avoir une densité osseuse plus faible. Cela s'explique en partie parce que la douleur et l'instabilité articulaire rendent plus difficile le maintien d'une activité et des exercices en mise en charge qui gardent les os solides. Les glissades et les chutes fréquentes ajoutent aussi un risque de fracture. La bonne nouvelle : la santé osseuse répond bien à l'exercice, à la vitamine D, au calcium et au dépistage précoce.</p>
+    </div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Optimiser la vitamine D et le calcium alimentaire; supplémenter pour corriger une carence documentée.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Encourager une activité régulière en mise en charge à faible impact, dans les limites de protection articulaire.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Ostéodensitométrie (DXA) en présence de facteurs de risque : faible activité, fracture de fragilité antérieure, exposition aux corticostéroïdes ou autres risques d'ostéoporose. Il n'existe pas de calendrier de dépistage propre au SEDh; individualiser. Intervalle de répétition guidé par le résultat de base et les recommandations standard sur l'ostéoporose.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Traitement pharmacologique de l'ostéoporose selon les recommandations standard si la DXA et l'évaluation du risque de fracture le justifient.</span></li>
+    </ul>
+    <p>Les données reliant le SEDh à une densité minérale osseuse réduite sont observationnelles et probablement multifactorielles (effets du tissu conjonctif sur la matrice osseuse, déconditionnement, réduction de la mise en charge). Traitez la santé osseuse comme chez tout patient à facteurs de risque élevés, avec un seuil plus bas pour une DXA de base vu les limitations d'activité qu'impose le SEDh.</p>
+    <div class="infobox">
+      <div class="itag"><i class="ti ti-vibrate"></i>Option de vibration de faible intensité</div>
+      <p>La vibration corps entier de faible intensité a été étudiée comme appoint pour la densité osseuse et l'équilibre, avec des résultats mitigés (voir section 12). Le signal étudié pour l'os est doux et de faible magnitude. La vibration de plus haute intensité des plateformes grand public bon marché est un stimulus différent et non étudié, qu'on ne peut présumer équivalent. Si elle est envisagée, c'est un appoint optionnel et non un substitut à l'exercice en mise en charge, à l'entraînement en résistance et aux mesures standard de santé osseuse.</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="fr-6">
+    <div class="sec-head"><span class="sec-num">6</span><h2>Surveillance cardiovasculaire</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
+      <p>Contrairement à certaines autres formes de SED, le SEDh ne cause pas de problèmes artériels dangereux. Un petit nombre de personnes ont une racine aortique légèrement élargie ou une valve mitrale qui ne ferme pas parfaitement. Ces situations sont habituellement légères et stables. Une seule échographie du cœur au moment du diagnostic est l'examen standard.</p>
+    </div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Échocardiographie transthoracique de base au diagnostic pour évaluer la racine aortique et les valves.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Si l'échographie de base est normale, l'imagerie sérielle de routine n'est généralement pas requise chez l'adulte. Répéter seulement si des symptômes apparaissent, si la racine est limite/dilatée ou si le diagnostic est incertain. Chez l'enfant, une imagerie de suivi peut être envisagée.</span></li>
+      <li><i class="ti ti-circle-x"></i><span><span class="ck-label notrec">À éviter</span>Les protocoles de surveillance aortique intensive propres au Marfan, au Loeys–Dietz ou au SED vasculaire. Ils ne s'appliquent pas au SEDh confirmé et causent anxiété et coûts inutiles.</span></li>
+    </ul>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-heartbeat"></i>Repère clinique</div>
+      La dilatation de la racine aortique survient chez environ 2–3 % des patients SEDh et est typiquement légère et non évolutive, contrairement à l'aortopathie progressive du Marfan, du Loeys–Dietz et du SED vasculaire. Une racine aortique dilatée ou évolutive chez un patient présumé SEDh doit faire reconsidérer le diagnostic et mener à un test génétique d'un gène d'aortopathie.
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section id="fr-7">
+    <div class="sec-head"><span class="sec-num">7</span><h2>Fonction autonome et SThPO</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
+      <p>Beaucoup de personnes atteintes de SEDh ont des problèmes avec le système nerveux autonome, la partie qui contrôle le rythme cardiaque et la pression artérielle sans que vous y pensiez. La forme la plus fréquente est le SThPO (syndrome de tachycardie posturale orthostatique), où votre cœur s'emballe et vous vous sentez étourdi, faible ou épuisé en vous levant. Cela arrive parce que des vaisseaux élastiques laissent le sang s'accumuler dans les jambes. C'est inconfortable mais traitable, souvent sans médicament.</p>
+    </div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Dépister les symptômes d'intolérance orthostatique à l'accueil : étourdissements, palpitations, fatigue, brouillard cérébral, présyncope au lever.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Test de lever actif ou signes vitaux orthostatiques sur 10 minutes en cas de suspicion de SThPO; orienter vers un test sur table basculante ou une évaluation autonome si le diagnostic est incertain.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Prise en charge de première ligne du SThPO : augmentation de l'apport en liquides (isotoniques) et en sel, vêtements de compression (taille haute à privilégier), réentraînement à l'exercice en position couchée/assise.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Pharmacothérapie lorsque les mesures conservatrices sont insuffisantes : bêtabloquants, ivabradine, fludrocortisone ou midodrine, individualisée. Orienter vers un spécialiste en troubles autonomes pour les cas réfractaires.</span></li>
+    </ul>
+    <p>L'association est forte : les patients SEDh sont nettement plus susceptibles d'avoir un diagnostic de SThPO que la population générale, et l'hypermobilité est fréquente dans les cohortes de SThPO. Il n'existe pas de traitement du SThPO ciblé spécifiquement sur le SEDh; la prise en charge reflète les soins généraux du SThPO. Reconnaître et traiter la dysautonomie améliore souvent la fatigue, les symptômes digestifs et le fonctionnement global. En plus des liquides, du sel et de la compression, certains patients ajoutent une stimulation vagale auriculaire non invasive, comme le <a href="https://nuropod.com?sca_ref=10434358.acL1uJfcZe" target="_blank" rel="noopener">Nurosym (Nuropod)</a>, pour soutenir l'équilibre autonome (voir <a href="https://www.youtube.com/watch?v=tUMahnLsF2c" target="_blank" rel="noopener">l'utilisation du Nurosym</a>); les données dans le SEDh et le SThPO sont préliminaires, il s'agit donc d'un appoint facultatif.</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="fr-8">
+    <div class="sec-head"><span class="sec-num">8</span><h2>Troubles digestifs et mastocytaires</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
+      <p>Les symptômes d'estomac et d'intestin sont fréquents dans le SEDh : reflux, ballonnement, sensation d'être vite rassasié, constipation ou selles molles. Ce sont habituellement des problèmes de motilité du tube digestif plutôt que des dommages au tube digestif lui-même. Certaines personnes ont aussi des symptômes mastocytaires, où les cellules allergiques du corps sont hyperactives, causant bouffées, urticaire ou réactions alimentaires. Les deux se gèrent.</p>
+    </div>
+    <div class="clinical-note">Gastro-intestinal</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Traiter les symptômes digestifs fonctionnels (reflux, dysmotilité, constipation) par des mesures standard; ils chevauchent la dysfonction autonome et s'améliorent souvent quand le SThPO est traité.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Orientation en gastroentérologie pour des symptômes sévères, réfractaires ou avec signes d'alarme. Rechercher des causes structurelles et organiques avant de les attribuer au SEDh.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Pour le reflux, l'entraînement neuromusculaire des muscles de la déglutition et du diaphragme peut aider certains patients en appoint des mesures antireflux standard. Les données sont limitées.</span></li>
+    </ul>
+    <div class="clinical-note">Activation mastocytaire</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Envisager le SAMa chez les patients du groupe SThPO+SEDh présentant bouffées, urticaire, symptômes allergiques ou digestifs. Un essai d'antihistaminiques H1/H2 est à faible risque et peut être diagnostique-thérapeutique.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Bilan formel du SAMa (tryptase sérique, dosage des médiateurs) lorsque les symptômes sont importants; orienter en allergie/immunologie. Les critères diagnostiques restent débattus.</span></li>
+    </ul>
+    <div class="infobox">
+      <div class="itag"><i class="ti ti-link"></i>Le « trio »</div>
+      <p>Le SEDh, le SThPO et le SAMa coexistent bien plus que par hasard. Chez les patients ayant à la fois un SThPO et un SEDh, la prévalence rapportée du SAMa est nettement plus élevée que dans le SEDh sans SThPO. Le mécanisme commun proposé fait intervenir le tissu conjonctif, le système autonome et les mastocytes. En pratique : quand l'un est présent, dépistez les deux autres.</p>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section id="fr-9">
+    <div class="sec-head"><span class="sec-num">9</span><h2>Grossesse et anesthésie</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
+      <p>Le SEDh n'est pas une raison d'éviter la grossesse. La plupart des grossesses se déroulent bien avec de la planification. Certaines femmes ont un travail plus rapide, une rupture précoce des eaux ou plus de douleurs articulaires au fil de la grossesse. Il vaut aussi la peine de dire à votre dentiste et à votre anesthésiste que vous avez un SEDh, car les anesthésiques locaux fonctionnent parfois moins bien, ce qui se gère facilement une fois qu'ils le savent.</p>
+    </div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Conseil préconceptionnel et prénatal : discuter du travail rapide, de la rupture prématurée des membranes, de l'augmentation de la douleur et de l'instabilité articulaires, et d'un plan d'accouchement avec l'équipe obstétricale.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Signaler le SEDh à l'anesthésie et à la dentisterie. Une efficacité réduite des anesthésiques locaux est rapportée; planifier en conséquence pour les péridurales, les soins dentaires et les interventions mineures.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Physiothérapie périnéale et prénatale pour la douleur de la ceinture pelvienne liée à l'hypermobilité.</span></li>
+    </ul>
+    <p>Le risque obstétrical dans le SEDh est généralement plus faible et plus gérable que dans le SED vasculaire, où la grossesse comporte un risque vasculaire et de rupture utérine sérieux. Cette distinction renforce l'importance de confirmer le sous-type avant de conseiller.</p>
+  </section>
+
+  <!-- 10 -->
+  <section id="fr-10">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Conseil génétique et famille</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
+      <p>Le SEDh est familial. En pratique, on le voit souvent passer d'une génération à l'autre selon un patron qui ressemble à l'autosomique dominant, donc un parent atteint a environ 1 chance sur 2 qu'un enfant hérite de la prédisposition. Mais la biologie sous-jacente est plus complexe qu'un seul gène : de nombreux petits facteurs génétiques s'additionnent, ce qui explique pourquoi aucun gène unique n'apparaît au test et pourquoi les proches peuvent être touchés très différemment, certains à peine, d'autres sévèrement. Pour cette raison, on ne peut pas prédire à quel point un enfant sera atteint, et il n'existe pas de test pour confirmer le SEDh ni pour tester les membres de la famille.</p>
+    </div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Établir un arbre généalogique sur trois générations. Rechercher précisément les signes évoquant un autre trouble du tissu conjonctif testable (événements artériels, maladie aortique, fragilité cutanée marquée).</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Conseiller un patron familial apparemment autosomique dominant (~50 % de probabilité qu'un enfant hérite de la prédisposition) tout en expliquant que la génétique sous-jacente est complexe et probablement polygénique, avec une expressivité très variable. Souligner qu'aucune confirmation moléculaire ni test en cascade n'existe pour le SEDh, et que les gènes candidats et les scores polygéniques demeurent des outils de recherche, non des tests cliniques.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Offrir un test moléculaire (panel SED/aortopathie) lorsque la présentation est atypique, pour exclure le SED vasculaire, le SED classique, le Marfan et le Loeys–Dietz, qui sont testables et comportent des risques différents.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Conseil reproductif. Comme aucun gène n'est identifié, le test génétique prénatal et préimplantatoire n'est pas disponible pour le SEDh lui-même, seulement pour les sous-types testables exclus s'ils sont trouvés.</span></li>
+    </ul>
+  </section>
+
+  <!-- 11 -->
+  <section id="fr-11">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Mode de vie, nutrition et autogestion</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
+      <p>Les habitudes quotidiennes font une grande partie du travail dans le SEDh. Il n'existe pas de « régime SED » unique qui guérit la maladie, mais votre façon de manger, de vous hydrater, de dormir et de bouger change comment vous vous sentez d'une semaine à l'autre. L'approche ici est systémique : au lieu de traiter chaque symptôme isolément, on regarde les systèmes sous-jacents, votre intestin, votre système nerveux, l'inflammation et votre statut nutritionnel, et on soutient chacun d'eux lorsqu'il existe une base raisonnable de le faire. Le but est de donner à votre tissu conjonctif, à vos muscles et à vos systèmes d'énergie les matières premières et le calme dont ils ont besoin pour mieux fonctionner.</p>
+      <p>Ci-dessous, j'explique non seulement quoi faire, mais pourquoi cela aide, pour que les changements valent la peine d'être maintenus.</p>
+    </div>
+
+    <div class="clinical-note">Pourquoi ces changements comptent</div>
+    <p>Le changement de mode de vie dans le SEDh n'est pas un conseil de bien-être générique. Chaque pilier correspond à un mécanisme dérégulé dans cette population. Expliquer la raison améliore l'observance, qui est l'étape limitante de toutes les interventions de ce protocole.</p>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Pourquoi</span><strong>Les protéines et les micronutriments construisent la matrice.</strong> La réparation du collagène et du muscle dépend d'un apport suffisant en protéines, vitamine C, zinc, cuivre et vitamines B. Beaucoup de patients SEDh sont bas en vitamine D, B6, B12, fer et magnésium. Corriger les carences documentées soutient la réparation tissulaire, l'énergie et la fonction musculaire, plutôt que de courir après une allégation cosmétique de « collagène ».</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Pourquoi</span><strong>L'hydratation et le sel stabilisent le système autonome.</strong> Des vaisseaux élastiques laissent le sang s'accumuler; augmenter le volume plasmatique avec liquides et sel est le levier non médicamenteux le plus efficace contre les symptômes du SThPO, réduisant étourdissements, fatigue et brouillard cérébral.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Pourquoi</span><strong>Un régime anti-inflammatoire à base d'aliments entiers réduit le bruit de fond.</strong> Une alimentation riche en légumes, poisson, huile d'olive, légumineuses et fibres, et plus pauvre en aliments ultra-transformés, sucre raffiné et excès d'alcool, soutient la barrière intestinale et atténue l'inflammation de bas grade qui amplifie la douleur et la réactivité mastocytaire.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Pourquoi</span><strong>L'équilibre intestinal nourrit tout le système.</strong> Les symptômes digestifs sont fréquents dans le SEDh et liés au tableau autonome et mastocytaire. Les fibres, les aliments fermentés et l'identification des aliments déclencheurs personnels soutiennent la motilité, le microbiote et la régulation immunitaire, ce qui à son tour peut soulager les symptômes systémiques.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Pourquoi</span><strong>Le sommeil, la régulation du stress et le dosage de l'effort rééduquent le système de la douleur.</strong> Un sommeil réparateur et les pratiques qui activent le système nerveux parasympathique (respiration, pleine conscience, activation vagale douce) régulent à la baisse la sensibilisation centrale, le processus qui transforme une douleur passagère en douleur chronique.</span></li>
+    </ul>
+
+    <div class="clinical-note">Recommandations pratiques</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Modèle alimentaire anti-inflammatoire à base d'aliments entiers (le style méditerranéen est un défaut raisonnable) avec assez de protéines. Maintenir un poids santé pour réduire la charge articulaire.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Apport généreux en liquides et en sel en présence de SThPO ou d'intolérance orthostatique (en l'absence d'hypertension ou autre contre-indication). Les boissons électrolytiques/isotoniques sont raisonnables.</span></li>
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Tester, puis traiter : vérifier et corriger vitamine D, B12, B6, fer, magnésium et ferritine. Remplacer ce qui est bas plutôt que de supplémenter à l'aveugle.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Soutenir la santé intestinale avec fibres alimentaires, aliments prébiotiques et fermentés; un probiotique de qualité est raisonnable, surtout avec des symptômes digestifs ou mastocytaires.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Suppléments ciblés à mécanisme plausible et bonne innocuité : magnésium (crampes, sommeil, constipation), vitamine C (cofacteur du collagène), quercétine (stabilisation mastocytaire dans le groupe SAMa), curcumine (anti-inflammatoire), oméga-3 et créatine pour le soutien musculaire. Discuter la dose individuellement; la qualité et les interactions comptent.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Un journal alimentaire et de symptômes pour cartographier les intolérances individuelles, surtout en présence de symptômes digestifs ou mastocytaires.</span></li>
+      <li><i class="ti ti-circle-x"></i><span><span class="ck-label notrec">Prudence</span>Régimes d'élimination très restrictifs et grandes piles de suppléments non encadrées. Plus n'est pas mieux; certains suppléments interagissent ou surchargent l'intestin. Bâtir la pile délibérément, avec une raison pour chaque élément.</span></li>
+    </ul>
+
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-info-circle"></i>Une note honnête sur les preuves</div>
+      La plupart des stratégies de diète et de suppléments dans le SEDh reposent sur le mécanisme et l'expérience clinique plutôt que sur de grands essais, car cette recherche existe à peine. Cela ne les rend pas inutiles : corriger de vraies carences et réduire l'inflammation sont des gestes sensés et à faible risque. Cela veut dire qu'on reste humble, qu'on individualise et qu'on garde au centre la fondation : physiothérapie, dosage de l'effort, sommeil et traitement des comorbidités. Les suppléments soutiennent cette fondation; ils ne la remplacent pas.
+    </div>
+
+    <div class="infobox">
+      <div class="itag"><i class="ti ti-player-play"></i>Ressource recommandée pour les patients</div>
+      <p>La Dre Heidi Collins est une médecin qui est elle-même atteinte de SEDh et qui a beaucoup enseigné sur la nutrition et la supplémentation dans le SED. Sa conférence est une plongée utile et accessible dans l'approche alimentaire et micronutritionnelle décrite ci-dessus.</p>
+      <p><strong>Diet and Supplements for Persons with EDS — Dre Heidi Collins :</strong> <a href="https://www.youtube.com/watch?v=pEfuB-UWRZM">youtube.com/watch?v=pEfuB-UWRZM</a></p>
+    </div>
+
+  </section>
+
+  <!-- 12 -->
+  <section id="fr-12">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Approches émergentes et expérimentales</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
+      <p>Certaines approches plus récentes sont à l'étude pour les symptômes du SEDh. Elles sont prometteuses mais pas encore prouvées; voyez-les donc comme des compléments à essayer en parallèle des traitements établis, et non comme des remplacements. Parlez-en à votre médecin avant de dépenser pour des appareils ou des thérapies vendus en ligne.</p>
+    </div>
+    <div class="emerging">
+      <div class="etag"><i class="ti ti-flask-2"></i>Expérimental — données d'essai / d'appoint seulement</div>
+      <p><strong>Stimulation du nerf vague (SNV).</strong> La SNV auriculaire non invasive est à l'étude pour la douleur chronique et l'inflammation via la voie anti-inflammatoire cholinergique, et pour l'équilibre autonome dans la dysautonomie. Les premiers signaux sont intéressants, mais les données propres au SEDh sont limitées. Raisonnable comme appoint chez des patients motivés; ne remplace pas les soins de première ligne.</p>
+      <p><strong>Plateformes de vibration corps entier (VCE).</strong> À l'étude comme appoint pour la densité osseuse et l'équilibre en imitant la charge en mise en charge. Les résultats d'essais sont mitigés et modestes. Peut compléter, mais non remplacer, l'exercice, la vitamine D/le calcium et le traitement standard de l'ostéoporose.</p>
+      <p><strong>Critères diagnostiques révisés.</strong> La mise à jour attendue des critères SEDh/TSH devrait élargir l'évaluation articulaire et intégrer formellement les comorbidités systémiques. Cela pourrait reclasser certains patients actuellement TSH et préciser le phénotype.</p>
+      <p><strong>Découverte de gènes.</strong> L'étude HEDGE et de récentes méta-analyses GWAS commencent à définir l'architecture polygénique du SEDh, avec des loci candidats précoces près d'<em>ACKR3</em>, <em>SLC39A13</em>, <em>KLK15</em> et <em>PSMC3</em>. Ce sont des résultats de recherche, pas encore des tests cliniques, mais ils ouvrent la voie à un futur sous-typage moléculaire et, éventuellement, à la possibilité d'un test génétique ou d'un outil de risque polygénique. À suivre dans les prochaines années.</p>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section id="fr-13">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Résumé des recommandations</h2></div>
+    <div class="cardgrid">
+      <div class="scard">
+        <h4><i class="ti ti-stretching"></i>Musculosquelettique</h4>
+        <ul>
+          <li>La physiothérapie adaptée au SED est de première ligne et la plus rentable</li>
+          <li>Conditionnement à faible impact; éviter l'hyperextension et le sport à fort impact</li>
+          <li>Orthèses en appoint; chirurgie seulement après échec conservateur</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <h4><i class="ti ti-mood-suprised"></i>Douleur</h4>
+        <ul>
+          <li>Multimodale : mouvement, sommeil, dosage, soutien psychologique</li>
+          <li>AINS (prudence), agents neuropathiques en appoint</li>
+          <li>Opioïdes en dernier recours seulement</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <h4><i class="ti ti-bone"></i>Os</h4>
+        <ul>
+          <li>Optimiser la vitamine D et le calcium</li>
+          <li>Activité en mise en charge dans les limites</li>
+          <li>Seuil plus bas pour une DXA de base</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <h4><i class="ti ti-heartbeat"></i>Cardiaque</h4>
+        <ul>
+          <li>Échographie de base au diagnostic</li>
+          <li>Pas d'imagerie sérielle de routine si normale</li>
+          <li>Réévaluer le diagnostic si l'aorte se dilate</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <h4><i class="ti ti-activity"></i>Autonome / SThPO</h4>
+        <ul>
+          <li>Dépister à l'accueil; test de lever actif</li>
+          <li>Liquides, sel, compression, réentraînement d'abord</li>
+          <li>Médicament et orientation spécialisée si réfractaire</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <h4><i class="ti ti-stethoscope"></i>Digestif / Mastocytaire</h4>
+        <ul>
+          <li>Gérer le digestif fonctionnel; orienter si signes d'alarme</li>
+          <li>Envisager le SAMa dans le groupe SThPO+SEDh</li>
+          <li>L'essai d'antihistaminique est à faible risque</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <h4><i class="ti ti-dna"></i>Génétique</h4>
+        <ul>
+          <li>Arbre généalogique sur trois générations</li>
+          <li>Mode AD, risque ~50 %, aucun test confirmatoire</li>
+          <li>Panel pour exclure les sous-types testables</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <h4><i class="ti ti-baby-carriage"></i>Grossesse</h4>
+        <ul>
+          <li>Pas une contre-indication; planifier l'accouchement</li>
+          <li>Conseiller travail rapide, RPM, douleur articulaire</li>
+          <li>Signaler à l'anesthésie et à la dentisterie</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-checklist"></i>Transversal</div>
+      Les deux interventions qui changent le plus les résultats à long terme sont une physiothérapie constante et adaptée au SED, et la reconnaissance et le traitement des comorbidités (SThPO, SAMa, digestif, humeur). Confirmer d'abord le sous-type : exclure le SED vasculaire, le Marfan et le Loeys–Dietz est l'étape critique pour la sécurité dont tout le reste dépend.
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section id="fr-14">
+    <div class="sec-head"><span class="sec-num">14</span><h2>Références</h2></div>
+    <ol class="refs ui">
+      <li>Malfait F, Francomano C, Byers P, et al. The 2017 international classification of the Ehlers–Danlos syndromes. <em>Am J Med Genet C Semin Med Genet.</em> 2017;175(1):8–26.</li>
+      <li>Tinkle B, Castori M, Berglund B, et al. Hypermobile Ehlers–Danlos syndrome (a.k.a. Ehlers–Danlos syndrome Type III and Ehlers–Danlos syndrome hypermobility type): Clinical description and natural history. <em>Am J Med Genet C Semin Med Genet.</em> 2017;175(1):48–69.</li>
+      <li>Tofts LJ, Simmonds J, Schwartz SB, et al. Pediatric joint hypermobility: a diagnostic framework and narrative review. <em>Orphanet J Rare Dis.</em> 2023;18:104.</li>
+      <li>Ritelli M, Chiarelli N, Cinquina V, et al. Looking back and beyond the 2017 diagnostic criteria for hypermobile Ehlers–Danlos syndrome. <em>Am J Med Genet A.</em> 2024;194(3):e63426.</li>
+      <li>Kohn A, Chang C. The relationship between hypermobile Ehlers–Danlos syndrome (hEDS), postural orthostatic tachycardia syndrome (POTS), and mast cell activation syndrome (MCAS). <em>Clin Rev Allergy Immunol.</em> 2020;58(3):273–297.</li>
+      <li>Hakim A, O'Callaghan C, De Wandele I, et al. Cardiovascular autonomic dysfunction in Ehlers–Danlos syndrome — hypermobile type. <em>Am J Med Genet C Semin Med Genet.</em> 2017;175(1):168–174.</li>
+      <li>Fikree A, Aktar R, Grahame R, et al. Functional gastrointestinal disorders are associated with the joint hypermobility syndrome in secondary care. <em>Neurogastroenterol Motil.</em> 2015;27(4):569–579.</li>
+      <li>Atzinger CL, Meyer RA, Khoury PR, et al. Cross-sectional and longitudinal assessment of aortic root dilation and valvular anomalies in hypermobile and classic Ehlers–Danlos syndrome. <em>J Pediatr.</em> 2011;158(5):826–830.</li>
+      <li>Vandersteen A, Cosemans N, et al. Cardiac defects of hypermobile EDS and HSD: a retrospective cohort study. <em>BMC Cardiovasc Disord.</em> 2024;24:165.</li>
+      <li>Engelbert RH, Juul-Kristensen B, Pacey V, et al. The evidence-based rationale for physical therapy treatment of children, adolescents, and adults diagnosed with joint hypermobility syndrome/hypermobile EDS. <em>Am J Med Genet C Semin Med Genet.</em> 2017;175(1):158–167.</li>
+      <li>Castori M, Morlino S, Celletti C, et al. Management of pain and fatigue in the joint hypermobility syndrome (a.k.a. Ehlers–Danlos syndrome, hypermobility type). <em>Am J Med Genet A.</em> 2012;158A(8):2055–2070.</li>
+      <li>The Ehlers–Danlos Society. hEDS/HSD Criteria Review Study (international consensus, in progress). Accessed 2026.</li>
+      <li>Norris Q, Laukaitis C, Subramanian DN, et al. Complex genetics and regulatory drivers of hypermobile Ehlers–Danlos syndrome: insights from a genome-wide association study meta-analysis. <em>medRxiv</em> (preprint). 2025. doi:10.1101/2025.09.19.25336146.</li>
+      <li>The Ehlers–Danlos Society. The HEDGE Study (Hypermobile EDS Genetic Evaluation): ASHG abstracts 2024; first publications from 2025.</li>
+      <li>Forghani I, See J, et al. Hypermobile Ehlers–Danlos syndrome: diagnostic challenges and the role of genetic testing. <em>Genes (Basel).</em> 2025;16(5):530.</li>
+    </ol>
+  </section>
+
+  <div class="footnote ui">
+    <p><strong>Avis.</strong> Ce protocole vise à soutenir, et non à remplacer, le jugement clinique et les soins individualisés. C'est un outil de pratique pour les patients et les cliniciens et il ne constitue pas une recommandation médicale personnalisée. Les recommandations pour le SED hypermobile et ses comorbidités continuent d'évoluer, et une révision des critères diagnostiques est attendue. Vérifiez tous les âges de début, les intervalles de surveillance, les seuils de dépistage et les détails de prise en charge par rapport aux versions actuelles des recommandations et énoncés de sociétés pertinents avant de les appliquer à un patient individuel.</p>
+    <p><strong>Andrew Shuen, MD PhD, FRCPC, DABMGG</strong> · Généticien médical · Division de génétique médicale, Hôpital général juif (CIUSSS du Centre-Ouest-de-l'Île-de-Montréal) · Université McGill · 3755, chemin de la Côte-Sainte-Catherine, Montréal QC H3T 1E2 · andrew.shuen.med@ssss.gouv.qc.ca · 514 340 8222, poste 23965</p>
+  </div>
+</div>
+
+<script>
+  function setLang(lang){
+    var en = document.getElementById('content-en');
+    var fr = document.getElementById('content-fr');
+    var bEn = document.getElementById('btn-en');
+    var bFr = document.getElementById('btn-fr');
+    if(lang === 'fr'){
+      en.style.display='none'; fr.style.display='block';
+      bFr.classList.add('active'); bEn.classList.remove('active');
+      document.documentElement.lang='fr';
+    } else {
+      fr.style.display='none'; en.style.display='block';
+      bEn.classList.add('active'); bFr.classList.remove('active');
+      document.documentElement.lang='en';
+    }
+    window.scrollTo(0,0);
+  }
+  // default English
+  setLang('en');
+</script>
+
+</body>
+</html>

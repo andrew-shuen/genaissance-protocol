@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIPT — Patient guide</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+  :root{
+    --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+    --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+    --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+    --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+    --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+    --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+    --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+    --radius:14px; --radius-sm:9px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:18px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 22px 80px;}
+  .ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; line-height:1.2;}
+  a{color:var(--brand); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  /* Language toggle */
+  .langbar{
+    position:sticky; top:0; z-index:50; background:var(--paper);
+    border-bottom:1px solid var(--line); padding:10px 22px;
+    display:flex; gap:8px; justify-content:space-between; align-items:center;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .langbar-left{display:flex; gap:8px; align-items:center;}
+  .langbar-right{display:flex; gap:8px; align-items:center;}
+  .langbar button{
+    border:1px solid var(--brand-line); background:var(--paper); color:var(--brand-dark);
+    padding:7px 18px; border-radius:999px; cursor:pointer; font-size:14px; font-weight:600;
+    letter-spacing:.02em;
+  }
+  .langbar-right button.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+  .langbar .util-btn{border-color:var(--line); color:var(--ink-soft); padding:7px 14px;
+    display:inline-flex; align-items:center; gap:6px;}
+  .langbar .util-btn:hover{background:var(--cream); color:var(--brand-dark); border-color:var(--brand-line);}
+  .langbar .util-btn.active{background:var(--brand-bg); color:var(--brand-dark); border-color:var(--brand-line);}
+  @media(max-width:560px){
+    .langbar{flex-wrap:wrap; gap:8px;}
+    .langbar .util-btn{padding:7px 11px; font-size:13px;}
+  }
+
+  /* Masthead */
+  .masthead{padding:46px 0 26px; border-bottom:3px double var(--line);}
+  .eyebrow{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; text-transform:uppercase;
+    letter-spacing:.16em; font-size:12px; color:var(--brand-dark); font-weight:700;}
+  .masthead h1{font-size:38px; margin:12px 0 8px;}
+  .standfirst{font-size:20px; color:var(--ink-soft); margin:0 0 22px;}
+  .authpanel{
+    background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:16px 18px; font-size:15.5px; color:var(--ink-soft);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .authpanel strong{color:var(--ink);}
+  .meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .chip{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+    background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);
+    padding:5px 11px; border-radius:999px; font-weight:600;}
+  .legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:18px; font-size:13.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--ink-soft);}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .swatch{width:14px; height:14px; border-radius:4px; display:inline-block;}
+
+  /* TOC */
+  .toc{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 24px; margin:30px 0; }
+  .toc h2{font-size:15px; text-transform:uppercase; letter-spacing:.12em; margin:0 0 14px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--brand-dark);}
+  .toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:15.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .toc li{margin-bottom:8px; break-inside:avoid;}
+  @media(max-width:640px){.toc ol{columns:1;}}
+
+  /* Sections */
+  section{padding:30px 0; border-top:1px solid var(--line-soft);}
+  .secnum{display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px;
+    background:var(--brand); color:#fff; border-radius:9px; font-weight:700; font-size:17px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; margin-right:12px; vertical-align:middle;}
+  h2.sec{font-size:27px; margin:0 0 16px; display:flex; align-items:center;}
+  h3{font-size:20px; color:var(--brand-dark); margin:26px 0 8px;}
+
+  /* Patient panel */
+  .patient{background:var(--brand-bg); border:1px solid var(--brand-line);
+    border-radius:var(--radius); padding:18px 20px; margin:14px 0 20px;}
+  .patient .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px;
+    text-transform:uppercase; letter-spacing:.13em; color:var(--brand-dark); font-weight:700;
+    display:flex; align-items:center; gap:7px; margin-bottom:8px;}
+  .patient p{margin:8px 0; color:#1f3a4d;}
+
+  /* Gene/subtype pill header */
+  .genehead{display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin:24px 0 6px;}
+  .genepill{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+    background:var(--ink); color:#fff; padding:6px 14px; border-radius:8px; font-size:15px;}
+  .badge{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; font-weight:700;
+    padding:4px 11px; border-radius:999px;}
+  .badge.high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+  .badge.mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+  .badge.low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+  /* Checklist */
+  .check{list-style:none; padding:0; margin:14px 0;}
+  .check li{display:flex; gap:11px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+    align-items:flex-start;}
+  .check li i{font-size:20px; flex-shrink:0; margin-top:1px;}
+  .ti-check{color:var(--brand);} .ti-minus{color:var(--ink-faint);} .ti-x{color:var(--red);}
+  .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.06em; padding:2px 8px; border-radius:5px; margin-left:6px;
+    white-space:nowrap;}
+  .tag.routine{background:var(--brand-bg); color:var(--brand-dark);}
+  .tag.optional{background:var(--amber-bg); color:var(--amber);}
+  .tag.notrec{background:var(--line-soft); color:var(--ink-faint);}
+
+  /* Tables */
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:15.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  th,td{text-align:left; padding:11px 13px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{background:var(--cream); color:var(--brand-dark); font-size:13px; text-transform:uppercase;
+    letter-spacing:.05em;}
+  .pill{display:inline-block; padding:3px 10px; border-radius:999px; font-size:12.5px; font-weight:700;}
+  .pill.high{background:var(--red-bg); color:var(--red);}
+  .pill.mod{background:var(--amber-bg); color:var(--amber);}
+  .pill.low{background:var(--brand-bg); color:var(--brand-dark);}
+
+  /* Callouts */
+  .rec{background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:14px 18px; margin:16px 0;}
+  .info{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm);
+    padding:14px 18px; margin:16px 0;}
+  .info .ptag, .emerging .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px;
+    text-transform:uppercase; letter-spacing:.13em; font-weight:700; display:flex; align-items:center;
+    gap:7px; margin-bottom:6px;}
+  .info .ptag{color:var(--brand-dark);}
+  .emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm);
+    padding:14px 18px; margin:16px 0;}
+  .emerging .ptag{color:var(--purple);}
+
+  /* Summary cards */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin:18px 0;}
+  .card{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand);
+    border-radius:var(--radius-sm); padding:15px 17px; font-size:15px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .card h4{margin:0 0 7px; font-size:15px; color:var(--brand-dark);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .card.amber{border-top-color:var(--amber-line);}
+  .card.amber h4{color:var(--amber);}
+
+  /* References */
+  ol.refs{font-size:14.5px; color:var(--ink-soft); line-height:1.5;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; padding-left:22px;}
+  ol.refs li{margin-bottom:10px;}
+
+  .footer{margin-top:40px; padding-top:18px; border-top:3px double var(--line);
+    font-size:13.5px; color:var(--ink-faint); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+  .lang-fr{display:none;}
+
+  /* ============== ON-SCREEN PDF PREVIEW (mirrors print layout) ============== */
+  body.pdf-preview{background:#5b6b78;}
+  body.pdf-preview .wrap{
+    max-width:816px;            /* 8.5in at 96dpi */
+    background:#fff; margin:24px auto 60px;
+    padding:54px 57px;          /* ~ Letter margins */
+    box-shadow:0 6px 28px rgba(0,0,0,.28); border-radius:2px;
+  }
+  body.pdf-preview{font-size:14px; line-height:1.45;}
+  body.pdf-preview .toc{display:none;}
+  body.pdf-preview .masthead{padding:0 0 16px; margin-bottom:6px;}
+  body.pdf-preview .masthead h1{font-size:30px; margin:8px 0 6px;}
+  body.pdf-preview .standfirst{font-size:16px; margin-bottom:16px;}
+  body.pdf-preview section{padding:14px 0;}
+  body.pdf-preview h2.sec{font-size:20px; margin:0 0 9px;}
+  body.pdf-preview .secnum{width:28px; height:28px; font-size:15px; margin-right:10px;}
+  body.pdf-preview h3{font-size:15.5px; margin:14px 0 5px;}
+  body.pdf-preview .patient{margin:9px 0 13px; padding:12px 15px;}
+  body.pdf-preview .patient p{margin:6px 0;}
+  body.pdf-preview .check li{padding:7px 0;}
+  body.pdf-preview table{font-size:12.5px;}
+  body.pdf-preview .rec,
+  body.pdf-preview .info,
+  body.pdf-preview .emerging{font-size:13px; padding:11px 14px;}
+  body.pdf-preview .cards{grid-template-columns:1fr 1fr; gap:11px;}
+  body.pdf-preview .card{font-size:13px;}
+  body.pdf-preview ol.refs{font-size:12.5px;}
+  /* visual page-break guides matching the forced print breaks */
+  body.pdf-preview #en8,
+  body.pdf-preview #fr8{
+    border-top:2px dashed var(--brand-line); margin-top:14px; padding-top:20px;
+    position:relative;
+  }
+  body.pdf-preview #en8::before,
+  body.pdf-preview #fr8::before{
+    content:"\2702  new page in PDF"; position:absolute; top:-9px; right:0;
+    background:#fff; padding:0 8px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:10px; color:var(--brand-dark); letter-spacing:.04em;
+  }
+
+  /* ===================== PRINT / PDF ===================== */
+  @page{
+    size:Letter;
+    margin:16mm 15mm 15mm;
+  }
+  @media print{
+    :root{ --cream:#fff; }
+    html,body{background:#fff !important;}
+    body{
+      font-size:10.5pt; line-height:1.4; color:#15212b;
+      -webkit-print-color-adjust:exact; print-color-adjust:exact;
+    }
+    .wrap{max-width:100%; padding:0;}
+
+    /* Hide on-screen UI; print only the active language */
+    .langbar{display:none !important;}
+    .toc{display:none !important;}                 /* TOC not useful in a flat PDF */
+    .lang-fr[style*="block"]{}                      /* respect JS-set display */
+
+    a{color:#15212b !important; text-decoration:none;}
+
+    /* Masthead tightened, centred feel, no oversize gaps */
+    .masthead{padding:0 0 14px; margin-bottom:6px;}
+    .masthead h1{font-size:23pt; margin:8px 0 6px;}
+    .standfirst{font-size:12pt; margin-bottom:14px;}
+    .eyebrow{font-size:8.5pt;}
+    .authpanel{font-size:10pt; padding:10px 12px;}
+    .meta{margin-top:10px;}
+    .chip{font-size:8.5pt; padding:3px 8px;}
+    .legend{font-size:9pt; margin-top:12px; gap:12px;}
+
+    /* Section flow: avoid orphaned headers, keep blocks intact */
+    section{
+      padding:12px 0; border-top:1px solid var(--line-soft);
+      break-inside:auto;
+    }
+    h2.sec{
+      font-size:15pt; margin:0 0 8px;
+      break-after:avoid; page-break-after:avoid;
+    }
+    h3{
+      font-size:11.5pt; margin:12px 0 4px;
+      break-after:avoid; page-break-after:avoid;
+    }
+    .secnum{width:26px; height:26px; font-size:12pt; margin-right:9px;}
+
+    /* Keep cohesive units together */
+    .patient,.rec,.info,.emerging,.card,
+    .genehead,.check li,tr,thead,
+    .cards .card{
+      break-inside:avoid; page-break-inside:avoid;
+    }
+    .genehead{break-after:avoid; page-break-after:avoid;}
+    .patient{margin:8px 0 12px; padding:11px 14px;}
+    .patient p{margin:5px 0;}
+
+    /* Checklists tighter */
+    .check li{padding:6px 0;}
+    .check li i{font-size:13pt;}
+    .tag{font-size:7.5pt; padding:1px 6px;}
+
+    /* Tables print cleanly, headers repeat across page breaks */
+    table{font-size:9pt; margin:10px 0; break-inside:auto;}
+    thead{display:table-header-group;}
+    th,td{padding:6px 8px;}
+    .pill{font-size:8pt; padding:2px 7px;}
+
+    /* Callouts */
+    .rec,.info,.emerging{padding:9px 12px; margin:10px 0; font-size:9.5pt;}
+    .info .ptag,.emerging .ptag,.patient .ptag{font-size:8.5pt; margin-bottom:4px;}
+
+    /* Summary cards: 2-up grid that fits the page width */
+    .cards{
+      grid-template-columns:1fr 1fr; gap:9px; margin:10px 0;
+      break-inside:auto;
+    }
+    .card{padding:10px 12px; font-size:9.5pt;}
+    .card h4{font-size:10pt; margin-bottom:5px;}
+
+    /* References: avoid splitting a single citation across pages */
+    ol.refs{font-size:9pt;}
+    ol.refs li{margin-bottom:6px; break-inside:avoid; page-break-inside:avoid;}
+
+    /* Each major section can start fresh if it would otherwise be cramped;
+       use sparingly: force a fresh page before the summary and references */
+    #en8, #fr8{ break-before:page; page-break-before:always; }
+
+    .footer{
+      margin-top:18px; padding-top:12px; font-size:8.5pt;
+      break-inside:avoid;
+    }
+
+    /* Repeating running footer with page numbers */
+    @page{
+      @bottom-center{
+        content:"NIPT — patient guide";
+        font-family:Helvetica,Arial,sans-serif; font-size:7.5pt; color:#6a7681;
+      }
+      @bottom-right{
+        content:"Page " counter(page) " of " counter(pages);
+        font-family:Helvetica,Arial,sans-serif; font-size:7.5pt; color:#6a7681;
+      }
+    }
+  }
+
+  /* ---- figures (ported from primer, ATM palette) ---- */
+  .fig{margin:18px 0 6px; border:1px solid var(--line); border-radius:var(--radius);
+    background:#fbfdfe; padding:18px 16px 12px;}
+  .fig svg{width:100%; height:auto; display:block;}
+  .fig figcaption{margin-top:10px; font-size:13px; color:var(--ink-faint); line-height:1.45;
+    text-align:center; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .fig-key{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--brand-dark); font-weight:700;}
+  .fig text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  @media print{
+    .fig{break-inside:avoid; page-break-inside:avoid; padding:10px 12px; margin:10px 0 4px;}
+    .fig figcaption{font-size:8.5pt;}
+  }
+</style>
+</head>
+<body>
+<div class="langbar ui">
+  <div class="langbar-left">
+    <button id="btn-pdf" class="util-btn" onclick="togglePdfView()" title="Preview the print/PDF layout on screen"><i class="ti ti-file-type-pdf"></i> PDF view</button>
+    <button id="btn-print" class="util-btn" onclick="window.print()" title="Print or save as PDF"><i class="ti ti-printer"></i> Print / Save PDF</button>
+    <a class="util-btn" href="index.html" title="Back to all protocols" style="text-decoration:none"><i class="ti ti-arrow-left"></i> All protocols</a>
+  </div>
+  <div class="langbar-right">
+    <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+    <button id="btn-fr" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+<div class="wrap">
+<div class="lang-en" id="lang-en"><header class="masthead"><div class="eyebrow">Patient Education · Prenatal Screening</div><h1>NIPT (non-invasive prenatal testing)</h1><p class="standfirst">A screening test done in pregnancy from a sample of the pregnant parent’s blood, which carries small pieces of DNA from the placenta. It estimates the chance of certain chromosome conditions — it does not diagnose them.</p><div class="authpanel"><strong>Dr. Andrew Shuen, MD PhD FRCPC DABMGG</strong><br>Medical Genetics, Jewish General Hospital (JGH), Montreal</div><div class="meta"><span class="chip">Prenatal screen · molecular</span><span class="chip">From a blood sample</span><span class="chip">A screen, not a diagnosis</span><span class="chip">Usually from 10 weeks</span></div></header><nav class="toc ui"><h2>Contents</h2><ol><li><a href="#en1">What it is</a></li><li><a href="#en2">What it looks at</a></li><li><a href="#en3">How it works</a></li><li><a href="#en4">What it finds</a></li><li><a href="#en5">What it can miss</a></li><li><a href="#en6">Why a result can be inconclusive</a></li><li><a href="#en7">What to expect</a></li><li><a href="#en8">Sorting out the words</a></li><li><a href="#en9">Remember</a></li><li><a href="#en10">Reference</a></li></ol></nav><section id="en1"><h2 class="sec"><span class="secnum">1</span> What it is</h2><div class="patient"><div class="ptag"><i class="ti ti-user-heart"></i> For patients</div><p>During pregnancy, small pieces of DNA from the placenta cross into the pregnant parent’s bloodstream and mix with the parent’s own DNA. NIPT reads these pieces from an ordinary blood sample and uses them to estimate the chance that the baby has certain chromosome conditions — most commonly an extra copy of chromosome 21 (Down syndrome), 18, or 13.</p><p>The key thing to understand is that NIPT is a screening test, not a diagnosis. It does not give a yes-or-no answer; it tells you whether the chance is higher or lower than average. Because it is just a blood draw from the parent, it carries no risk to the pregnancy, which is part of why it can be offered so early and so widely.</p></div><figure class="fig"><svg viewBox="0 0 700 196" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A scale of DNA from a single letter, to one gene, to a whole chromosome, to the whole genome. Standard NIPT works at the level of whole chromosomes; the expanded genome-wide version reads markers across the entire genome.">
+  <text x="20" y="26" font-size="13.5" font-weight="700" fill="var(--brand-dark)">What this test measures</text>
+  <line x1="24" y1="118" x2="676" y2="118" stroke="var(--line)" stroke-width="1.5"/>
+  <!-- one letter -->
+  <rect x="40" y="86" width="26" height="26" rx="4" fill="#fff" stroke="var(--line)" stroke-width="1.4"/>
+  <text x="53" y="104" text-anchor="middle" font-size="12" fill="var(--ink-faint)" font-weight="700">A</text>
+  <text x="53" y="138" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">one letter</text>
+  <!-- one gene -->
+  <rect x="150" y="80" width="70" height="38" rx="5" fill="#fff" stroke="var(--line)" stroke-width="1.4"/>
+  <line x1="160" y1="99" x2="210" y2="99" stroke="var(--ink-faint)" stroke-width="2"/>
+  <text x="185" y="138" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">one gene</text>
+  <!-- one chromosome (standard, highlighted) -->
+  <g>
+    <rect x="300" y="60" width="120" height="58" rx="8" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/>
+    <path d="M348 70 q-8 12 0 22 q-8 12 0 22 M372 70 q8 12 0 22 q8 12 0 22" fill="none" stroke="var(--brand-dark)" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="360" cy="92" r="4" fill="var(--brand-dark)"/>
+    <text x="360" y="138" text-anchor="middle" font-size="12" fill="var(--brand-dark)" font-weight="700">one chromosome</text>
+  </g>
+  <!-- whole genome (expanded, highlighted) -->
+  <g>
+    <rect x="500" y="60" width="160" height="58" rx="8" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/>
+    <line x1="512" y1="74" x2="648" y2="74" stroke="var(--brand-dark)" stroke-width="2.2"/>
+    <line x1="512" y1="84" x2="648" y2="84" stroke="var(--brand-dark)" stroke-width="2.2"/>
+    <line x1="512" y1="94" x2="648" y2="94" stroke="var(--brand-dark)" stroke-width="2.2"/>
+    <line x1="512" y1="104" x2="648" y2="104" stroke="var(--brand-dark)" stroke-width="2.2"/>
+    <text x="580" y="138" text-anchor="middle" font-size="12" fill="var(--brand-dark)" font-weight="700">whole genome</text>
+  </g>
+  <!-- standard bracket -->
+  <path d="M300 150 q0 6 6 6 l54 0 m0 0 l54 0 q6 0 6 -6" fill="none" stroke="var(--brand)" stroke-width="1.4"/>
+  <text x="360" y="170" text-anchor="middle" font-size="11" fill="var(--brand)" font-weight="700">standard NIPT</text>
+  <text x="360" y="184" text-anchor="middle" font-size="10.5" fill="var(--ink-faint)">common trisomies</text>
+  <!-- expanded bracket -->
+  <path d="M500 150 q0 6 6 6 l74 0 m0 0 l74 0 q6 0 6 -6" fill="none" stroke="var(--brand)" stroke-width="1.4"/>
+  <text x="580" y="170" text-anchor="middle" font-size="11" fill="var(--brand)" font-weight="700">expanded version</text>
+  <text x="580" y="184" text-anchor="middle" font-size="10.5" fill="var(--ink-faint)">+ aneuploidies &amp; microdeletions genome-wide</text>
+</svg>
+<figcaption>Standard NIPT works at the scale of <span class="fig-key">whole chromosomes</span>; the expanded version reads markers across the <span class="fig-key">whole genome</span>, picking up aneuploidies and microdeletions anywhere.</figcaption></figure><div class="analogy"><i class="ti ti-book"></i> Think of the placenta as quietly dropping loose pages into the bloodstream. NIPT gathers those pages to estimate whether a whole volume — a chromosome — seems to be present in an extra copy. It is a strong hint, not the final count.</div></section><section id="en2"><h2 class="sec"><span class="secnum">2</span> What it looks at</h2><p>Most of the DNA in the sample is the parent’s; only a smaller share comes from the placenta. The lab measures the overall balance of chromosome pieces across the sample. If the pieces belonging to one chromosome — say chromosome 21 — are present in slightly greater quantity than expected, that suggests the baby may have an extra copy of it.</p><p>Many NIPT options also report the baby’s sex and can screen for a few additional conditions, such as changes in the number of sex chromosomes. The accuracy is high for the common trisomies (21, 18, 13) and lower for rarer findings, which is one reason results are always interpreted in context rather than taken at face value.</p><p>Beyond the standard panel, an expanded version of the test reads markers across the whole genome rather than only a preset list. Because it looks genome-wide, it can flag extra or missing whole chromosomes (aneuploidies) anywhere, as well as microdeletions — small missing pieces of a chromosome — across all the chromosomes, including some linked to dominant single-gene conditions that often arise from a new (de novo) change in the baby rather than being inherited.<sup><a href="https://pubmed.ncbi.nlm.nih.gov/39865331/" target="_blank" rel="noopener" style="color:var(--brand);text-decoration:none">1</a></sup> This expanded testing is an addition, not a substitute: it does not replace the integrated prenatal screening offered through routine care, and a normal result on either does not rule everything out.</p><figure class="fig"><svg viewBox="0 0 700 226" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A blood tube holds mostly the parent's own DNA fragments and a smaller share from the placenta. The lab measures the balance of chromosome pieces to estimate the chance of an extra chromosome.">
+  <text x="20" y="24" font-size="13.5" font-weight="700" fill="var(--brand-dark)">One blood sample — mostly parent DNA, some from the placenta</text>
+  <!-- tube -->
+  <path d="M44 44 h44 v118 a22 22 0 0 1 -44 0 z" fill="#fbfdfe" stroke="var(--ink-faint)" stroke-width="1.5"/>
+  <rect x="40" y="38" width="52" height="10" rx="3" fill="#e7eef2" stroke="var(--ink-faint)" stroke-width="1.2"/>
+  <circle cx="54" cy="60" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="60" r="3.6" fill="#cdd9df"/>
+  <circle cx="76" cy="60" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="60" r="3.6" fill="#cdd9df"/>
+  <circle cx="54" cy="73" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="73" r="3.6" fill="var(--brand)"/>
+  <circle cx="76" cy="73" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="73" r="3.6" fill="#cdd9df"/>
+  <circle cx="54" cy="86" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="86" r="3.6" fill="#cdd9df"/>
+  <circle cx="76" cy="86" r="3.6" fill="var(--brand)"/>
+  <circle cx="87" cy="86" r="3.6" fill="#cdd9df"/>
+  <circle cx="54" cy="99" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="99" r="3.6" fill="#cdd9df"/>
+  <circle cx="76" cy="99" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="99" r="3.6" fill="#cdd9df"/>
+  <circle cx="54" cy="112" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="112" r="3.6" fill="#cdd9df"/>
+  <circle cx="76" cy="112" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="112" r="3.6" fill="#cdd9df"/>
+  <circle cx="54" cy="125" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="125" r="3.6" fill="#cdd9df"/>
+  <circle cx="76" cy="125" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="125" r="3.6" fill="#cdd9df"/>
+  <circle cx="54" cy="138" r="3.6" fill="var(--brand)"/>
+  <circle cx="65" cy="138" r="3.6" fill="#cdd9df"/>
+  <circle cx="76" cy="138" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="138" r="3.6" fill="#cdd9df"/>
+  <circle cx="54" cy="151" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="151" r="3.6" fill="var(--brand)"/>
+  <circle cx="76" cy="151" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="151" r="3.6" fill="var(--brand)"/>
+  <circle cx="54" cy="164" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="164" r="3.6" fill="#cdd9df"/>
+  <circle cx="76" cy="164" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="164" r="3.6" fill="#cdd9df"/>
+  <!-- legend -->
+  <circle cx="120" cy="64" r="5" fill="var(--brand)"/>
+  <text x="132" y="68" font-size="12.5" fill="var(--brand-dark)" font-weight="700">fragments from the placenta</text>
+  <circle cx="120" cy="88" r="5" fill="#cdd9df"/>
+  <text x="132" y="92" font-size="12.5" fill="var(--ink-faint)">fragments from the parent</text>
+  <!-- arrow -->
+  <path d="M120 120 h44 m-9 -6 l9 6 l-9 6" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- balance concept: two stacks compared -->
+  <text x="180" y="118" font-size="12.5" fill="var(--ink-soft)">The lab measures the balance of</text>
+  <text x="180" y="135" font-size="12.5" fill="var(--ink-soft)">chromosome pieces. If chromosome 21</text>
+  <text x="180" y="152" font-size="12.5" fill="var(--ink-soft)">is slightly over-represented, that points</text>
+  <text x="180" y="169" font-size="12.5" fill="var(--ink-soft)">to a possible extra copy.</text>
+  <!-- result chip -->
+  <rect x="180" y="184" width="360" height="30" rx="8" fill="var(--brand-bg)" stroke="var(--brand-line)"/>
+  <text x="360" y="204" text-anchor="middle" font-size="12.5" fill="var(--brand-dark)" font-weight="700">Result: a chance — not a yes-or-no answer</text>
+</svg><figcaption>The sample is mostly the parent’s DNA with a smaller placental share; their <span class="fig-key">balance</span> gives a chance, not a definite answer.</figcaption></figure></section><section id="en3"><h2 class="sec"><span class="secnum">3</span> How it works</h2><p>A sample of the pregnant parent’s blood is taken, usually from about ten weeks of pregnancy — by then there is normally enough placental DNA in the blood to test. In the lab, the DNA fragments are read and counted, and the balance of chromosome pieces is compared against what is expected in an unaffected pregnancy. From that balance, the lab calculates a chance for each condition screened.</p><p>The result usually comes back as either “lower chance” or “higher chance” for each condition, rather than a number. Occasionally the test cannot give a result — often because the share of placental DNA in the sample was too low — and a repeat sample is needed. Because the DNA being read comes from the placenta rather than the baby directly, the placenta and baby very occasionally differ, which is one reason a higher-chance result is confirmed with a diagnostic test before any decision.</p><figure class="fig"><svg viewBox="0 0 790 142" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A horizontal flow: all pregnancies are screened with NIPT. A group is flagged as higher chance, but most of that flagged group are in fact unaffected. Only a diagnostic test such as CVS or amniocentesis can tell the genuinely affected pregnancy from the false alarms."><text x="20" y="26" font-size="13.5" font-weight="700" fill="var(--brand-dark)">A screen sorts everyone; a diagnostic test sorts the flagged from the false alarms</text><rect x="20" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="21.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="39.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 39.6 51.0)"/><line x1="34.6" y1="56.0" x2="37.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="42" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="43.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="61.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 61.6 51.0)"/><line x1="56.6" y1="56.0" x2="59.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="64" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="65.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#c0392b"/><ellipse cx="83.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 83.6 51.0)"/><line x1="78.6" y1="56.0" x2="81.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="86" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="87.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="105.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 105.6 51.0)"/><line x1="100.6" y1="56.0" x2="103.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="108" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="109.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="127.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 127.6 51.0)"/><line x1="122.6" y1="56.0" x2="125.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="130" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="131.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="149.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 149.6 51.0)"/><line x1="144.6" y1="56.0" x2="147.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="152" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="153.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="171.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 171.6 51.0)"/><line x1="166.6" y1="56.0" x2="169.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="174" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="175.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="193.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 193.6 51.0)"/><line x1="188.6" y1="56.0" x2="191.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><text x="102.0" y="118" text-anchor="middle" font-size="11" fill="var(--ink-faint)">all pregnancies screened</text><path d="M201 76 l22 0 m-8 -6 l8 6 l-8 6" stroke="var(--brand)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="231" y="54" width="90" height="44" rx="10" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/><text x="276" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="var(--brand-dark)">NIPT</text><text x="276" y="92" text-anchor="middle" font-size="10.5" fill="var(--brand-dark)">a screen</text><path d="M326 76 l22 0 m-8 -6 l8 6 l-8 6" stroke="var(--brand)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="356" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="357.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#c0392b"/><ellipse cx="375.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 375.6 51.0)"/><line x1="370.6" y1="56.0" x2="373.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="378" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="379.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="397.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 397.6 51.0)"/><line x1="392.6" y1="56.0" x2="395.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="400" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="401.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="419.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 419.6 51.0)"/><line x1="414.6" y1="56.0" x2="417.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="422" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="423.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="441.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 441.6 51.0)"/><line x1="436.6" y1="56.0" x2="439.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><text x="394.0" y="118" text-anchor="middle" font-size="10.5" fill="var(--ink-soft)">flagged: higher chance</text><path d="M448 76 l22 0 m-8 -6 l8 6 l-8 6" stroke="var(--amber)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="478" y="50" width="126" height="52" rx="10" fill="#fff" stroke="var(--amber)" stroke-width="2"/><text x="541" y="72" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--amber)">Diagnostic test</text><text x="541" y="89" text-anchor="middle" font-size="10" fill="var(--ink-soft)">CVS / amniocentesis</text><path d="M609 76 l20 0 m-8 -6 l8 6 l-8 6" stroke="var(--amber)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="637" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="638.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#c0392b"/><ellipse cx="656.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 656.6 51.0)"/><line x1="651.6" y1="56.0" x2="654.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="659" y="54" width="15.8" height="28.8" rx="3.6" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="660.4" y="68.2" width="13.0" height="13.2" rx="2.2" fill="#7bb661"/><ellipse cx="676.8" cy="51.0" rx="4.3" ry="2.9" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 676.8 51.0)"/><line x1="671.8" y1="56.0" x2="674.8" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="679" y="54" width="15.8" height="28.8" rx="3.6" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="680.4" y="68.2" width="13.0" height="13.2" rx="2.2" fill="#7bb661"/><ellipse cx="696.8" cy="51.0" rx="4.3" ry="2.9" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 696.8 51.0)"/><line x1="691.8" y1="56.0" x2="694.8" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="699" y="54" width="15.8" height="28.8" rx="3.6" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="700.4" y="68.2" width="13.0" height="13.2" rx="2.2" fill="#7bb661"/><ellipse cx="716.8" cy="51.0" rx="4.3" ry="2.9" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 716.8 51.0)"/><line x1="711.8" y1="56.0" x2="714.8" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><text x="646" y="44" text-anchor="middle" font-size="9.5" fill="var(--red)" font-weight="700">affected</text><text x="687" y="118" text-anchor="middle" font-size="10" fill="var(--ink-soft)">truth sorted out</text></svg><figcaption>A higher-chance result does not mean affected. Most flagged pregnancies turn out fine — only a <span class="fig-key">diagnostic test</span> can tell the genuinely affected one from the false alarms.</figcaption></figure></section><section id="en4"><h2 class="sec"><span class="secnum">4</span> What it finds</h2><ul class="check"><li><i class="ti ti-check"></i> <div>A raised or lowered chance of the common chromosome conditions — trisomy 21, 18, and 13.<span class="tag finds">Finds</span></div></li><li><i class="ti ti-check"></i> <div>Often the baby’s sex, and in some panels a few additional conditions such as changes in the sex chromosomes.<span class="tag finds">Finds</span></div></li><li><i class="ti ti-check"></i> <div>A result early in pregnancy from a simple blood draw, with no risk to the pregnancy.<span class="tag finds">Finds</span></div></li></ul></section><section id="en5"><h2 class="sec"><span class="secnum">5</span> What it can miss</h2><ul class="check"><li><i class="ti ti-x"></i> <div>Most single-gene conditions, and the fine detail of a chromosome — NIPT looks at whole-chromosome amounts, not spelling.<span class="tag misses">To know</span></div></li><li><i class="ti ti-x"></i> <div>Some affected pregnancies: no screen catches every case, and it can occasionally give a false alarm that turns out not to be confirmed.<span class="tag misses">To know</span></div></li><li><i class="ti ti-x"></i> <div>Because the DNA comes from the placenta, results occasionally do not match the baby, so a higher-chance result is not a diagnosis.<span class="tag misses">To know</span></div></li></ul></section><section id="en6"><h2 class="sec"><span class="secnum">6</span> Why a result can be inconclusive</h2><p>Sometimes NIPT cannot give a clear result and comes back as inconclusive (you may also see “no call” or “no result”). This usually comes down to the fetal fraction — the share of the DNA in the sample that came from the placenta. If that share is too low, there simply is not enough placental DNA to read reliably, and the test cannot reach an answer.</p><p>Several things can lower the fetal fraction or otherwise make a sample harder to interpret. A higher body weight tends to lower the fetal fraction, because there is more of the parent’s own DNA diluting the placental share. Testing very early in pregnancy can mean the placental share has not yet risen enough. Some inflammatory or autoimmune conditions, and certain medications, can change the mix of DNA in the blood. In a twin pregnancy the picture is more complex, because each placenta contributes its own DNA. And in IVF pregnancies the fetal fraction can read differently, so results may need extra care to interpret.</p><p>An inconclusive result is not itself bad news about the baby — it simply means the test could not read the sample well enough. The usual next step is a repeat sample a little later in pregnancy, or a discussion of other options such as diagnostic testing.</p><figure class="fig"><svg viewBox="0 0 700 232" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The fetal fraction is the share of DNA in the sample that comes from the placenta. If it falls below a minimum, the test cannot give a reliable result. Higher body weight, very early testing, some inflammatory conditions, twins, and IVF pregnancies can affect it.">
+  <text x="20" y="24" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Fetal fraction — enough placental DNA to read?</text>
+  <!-- stacked bar -->
+  <text x="20" y="56" font-size="12" fill="var(--ink-faint)">the sample</text>
+  <rect x="20" y="66" width="500" height="34" rx="7" fill="#eef3f6" stroke="var(--line)"/>
+  <!-- placental portion -->
+  <rect x="20" y="66" width="80" height="34" rx="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.6"/>
+  <text x="60" y="88" text-anchor="middle" font-size="11.5" fill="var(--brand-dark)" font-weight="700">placenta</text>
+  <text x="300" y="88" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">parent’s own DNA</text>
+  <!-- threshold marker -->
+  <line x1="70" y1="58" x2="70" y2="110" stroke="var(--amber)" stroke-width="2" stroke-dasharray="3 3"/>
+  <text x="70" y="124" text-anchor="middle" font-size="11" fill="var(--amber)" font-weight="700">minimum needed</text>
+  <text x="540" y="88" font-size="12" fill="var(--ink-soft)">below it → inconclusive</text>
+  <!-- factors row -->
+  <text x="20" y="160" font-size="12.5" font-weight="700" fill="var(--ink)">Things that can lower it or complicate the read:</text>
+  <g font-size="11.5" fill="var(--ink-soft)">
+    <rect x="20" y="172" width="150" height="40" rx="8" fill="#fbfdfe" stroke="var(--line)"/>
+    <text x="95" y="190" text-anchor="middle">higher body weight</text>
+    <text x="95" y="205" text-anchor="middle" fill="var(--ink-faint)" font-size="10.5">more parent DNA</text>
+    <rect x="180" y="172" width="120" height="40" rx="8" fill="#fbfdfe" stroke="var(--line)"/>
+    <text x="240" y="190" text-anchor="middle">very early test</text>
+    <text x="240" y="205" text-anchor="middle" fill="var(--ink-faint)" font-size="10.5">share still low</text>
+    <rect x="310" y="172" width="150" height="40" rx="8" fill="#fbfdfe" stroke="var(--line)"/>
+    <text x="385" y="190" text-anchor="middle">inflammatory</text>
+    <text x="385" y="205" text-anchor="middle" fill="var(--ink-faint)" font-size="10.5">conditions / meds</text>
+    <rect x="470" y="172" width="90" height="40" rx="8" fill="#fbfdfe" stroke="var(--line)"/>
+    <text x="515" y="190" text-anchor="middle">twins</text>
+    <text x="515" y="205" text-anchor="middle" fill="var(--ink-faint)" font-size="10.5">two placentas</text>
+    <rect x="570" y="172" width="110" height="40" rx="8" fill="#fbfdfe" stroke="var(--line)"/>
+    <text x="625" y="190" text-anchor="middle">IVF pregnancy</text>
+    <text x="625" y="205" text-anchor="middle" fill="var(--ink-faint)" font-size="10.5">reads differently</text>
+  </g>
+</svg><figcaption>If the <span class="fig-key">fetal fraction</span> is too low, the test cannot read the sample and the result is inconclusive — a repeat sample a little later usually helps.</figcaption></figure></section><section id="en7"><h2 class="sec"><span class="secnum">7</span> What to expect</h2><div class="patient"><div class="ptag"><i class="ti ti-clipboard-heart"></i> What to expect</div><p>NIPT is a simple blood draw, usually offered from about ten weeks of pregnancy. Results typically take one to two weeks. A “lower chance” result is reassuring but does not completely rule a condition out; a “higher chance” result does not mean the condition is certain — it is normally followed by a diagnostic test such as CVS or amniocentesis, which can give a definite answer.</p><p>Whether to have NIPT at all is your choice, and it is worth thinking ahead about what different results might mean for you. Your healthcare team or a genetic counsellor can talk through the options before and after the test, at whatever pace feels right.</p></div></section><section id="en8"><h2 class="sec"><span class="secnum">8</span> Sorting out the words</h2><h3>A few terms you may see</h3><table><thead><tr><th>Term</th><th>In plain language</th></tr></thead><tbody><tr><td><strong>Chromosome</strong></td><td>A package your DNA is organised into. You have 46, in 23 pairs.</td></tr><tr><td><strong>Trisomy</strong></td><td>Having three copies of a chromosome instead of the usual two.</td></tr><tr><td><strong>Screen vs. diagnosis</strong></td><td>A screen gives a chance; a diagnostic test gives a clearer yes-or-no.</td></tr><tr><td><strong>Placenta</strong></td><td>The organ that nourishes the baby; its DNA is what NIPT reads.</td></tr><tr><td><strong>Fetal fraction</strong></td><td>The share of DNA in the sample that comes from the placenta; if too low, the test cannot give a result.</td></tr><tr><td><strong>Microdeletion</strong></td><td>A small missing piece of a chromosome, too small to see on older tests.</td></tr><tr><td><strong>De novo</strong></td><td>A change that is new in the baby rather than inherited from a parent.</td></tr><tr><td><strong>CVS / amniocentesis</strong></td><td>Diagnostic procedures that can confirm a result NIPT only suggests.</td></tr></tbody></table><div class="rec"><i class="ti ti-message-circle"></i> If a word on your report is not here, ask your healthcare team or a genetic counsellor. There are no bad questions.</div></section><section id="en9"><h2 class="sec"><span class="secnum">9</span> Remember</h2><div class="info"><div class="ptag"><i class="ti ti-user-heart"></i> Remember</div><p style="margin:6px 0 0">This is general education and does not replace a consultation. NIPT is a screening test: a result tells you about chance, and the next step — reassurance, or a diagnostic test — is decided together with your healthcare team.</p></div></section><section id="en10"><h2 class="sec"><span class="secnum">10</span> Reference</h2><ol style="font-size:14px;color:var(--ink-soft);padding-left:20px;line-height:1.5;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif"><li>Liao J, Xu N, Gao H, et al. Advances in prenatal cell-free DNA screening for dominant monogenic conditions: a review of current progress and future directions in clinical implementation. <em>Prenatal Diagnosis</em>. 2025;45(4):445–452. <a href="https://pubmed.ncbi.nlm.nih.gov/39865331/" target="_blank" rel="noopener">PubMed</a></li></ol></section><div class="footer"><p>This page is patient-education material intended to support, not replace, individual counselling. It explains a category of prenatal screening in general terms; the exact conditions screened and the interpretation of any result depend on your situation and the laboratory used. Prepared for Medical Genetics, Jewish General Hospital, Montreal.</p></div></div>
+<div class="lang-fr" id="lang-fr"><header class="masthead"><div class="eyebrow">Information aux patients · Dépistage prénatal</div><h1>DPNI (dépistage prénatal non invasif)</h1><p class="standfirst">Un test de dépistage réalisé pendant la grossesse à partir d’un échantillon de sang du parent enceinte, qui contient de petits fragments d’ADN du placenta. Il estime la probabilité de certaines anomalies chromosomiques — il ne les diagnostique pas.</p><div class="authpanel"><strong>D<sup>r</sup> Andrew Shuen, MD PhD FRCPC DABMGG</strong><br>Génétique médicale, Hôpital général juif (HGJ), Montréal</div><div class="meta"><span class="chip">Dépistage prénatal · moléculaire</span><span class="chip">À partir d’une prise de sang</span><span class="chip">Un dépistage, non un diagnostic</span><span class="chip">Habituellement dès 10 semaines</span></div></header><nav class="toc ui"><h2>Sommaire</h2><ol><li><a href="#fr1">Ce que c’est</a></li><li><a href="#fr2">Ce qu’il examine</a></li><li><a href="#fr3">Comment ça fonctionne</a></li><li><a href="#fr4">Ce qu’il trouve</a></li><li><a href="#fr5">Ce qu’il peut manquer</a></li><li><a href="#fr6">Pourquoi un résultat peut être non concluant</a></li><li><a href="#fr7">À quoi s’attendre</a></li><li><a href="#fr8">Le sens des mots</a></li><li><a href="#fr9">À retenir</a></li><li><a href="#fr10">Référence</a></li></ol></nav><section id="fr1"><h2 class="sec"><span class="secnum">1</span> Ce que c’est</h2><div class="patient"><div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div><p>Pendant la grossesse, de petits fragments d’ADN du placenta passent dans le sang du parent enceinte et se mêlent à l’ADN du parent. Le DPNI lit ces fragments à partir d’une simple prise de sang et s’en sert pour estimer la probabilité que le bébé ait certaines anomalies chromosomiques — le plus souvent une copie supplémentaire du chromosome 21 (syndrome de Down), 18 ou 13.</p><p>L’essentiel à comprendre est que le DPNI est un test de dépistage, non un diagnostic. Il ne donne pas une réponse par oui ou non; il indique si la probabilité est plus élevée ou plus faible que la moyenne. Comme il s’agit seulement d’une prise de sang chez le parent, il ne comporte aucun risque pour la grossesse, ce qui explique en partie pourquoi il peut être offert si tôt et si largement.</p></div><figure class="fig"><svg viewBox="0 0 700 196" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A scale of DNA from a single letter, to un gène, to a whole chromosome, to the génome entier. Standard NIPT works at the level of whole chromosomes; the expanded genome-wide version reads markers across the entire genome.">
+  <text x="20" y="26" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Ce que ce test mesure</text>
+  <line x1="24" y1="118" x2="676" y2="118" stroke="var(--line)" stroke-width="1.5"/>
+  <!-- une lettre -->
+  <rect x="40" y="86" width="26" height="26" rx="4" fill="#fff" stroke="var(--line)" stroke-width="1.4"/>
+  <text x="53" y="104" text-anchor="middle" font-size="12" fill="var(--ink-faint)" font-weight="700">A</text>
+  <text x="53" y="138" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">une lettre</text>
+  <!-- un gène -->
+  <rect x="150" y="80" width="70" height="38" rx="5" fill="#fff" stroke="var(--line)" stroke-width="1.4"/>
+  <line x1="160" y1="99" x2="210" y2="99" stroke="var(--ink-faint)" stroke-width="2"/>
+  <text x="185" y="138" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">un gène</text>
+  <!-- un chromosome (standard, highlighted) -->
+  <g>
+    <rect x="300" y="60" width="120" height="58" rx="8" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/>
+    <path d="M348 70 q-8 12 0 22 q-8 12 0 22 M372 70 q8 12 0 22 q8 12 0 22" fill="none" stroke="var(--brand-dark)" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="360" cy="92" r="4" fill="var(--brand-dark)"/>
+    <text x="360" y="138" text-anchor="middle" font-size="12" fill="var(--brand-dark)" font-weight="700">un chromosome</text>
+  </g>
+  <!-- génome entier (expanded, highlighted) -->
+  <g>
+    <rect x="500" y="60" width="160" height="58" rx="8" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/>
+    <line x1="512" y1="74" x2="648" y2="74" stroke="var(--brand-dark)" stroke-width="2.2"/>
+    <line x1="512" y1="84" x2="648" y2="84" stroke="var(--brand-dark)" stroke-width="2.2"/>
+    <line x1="512" y1="94" x2="648" y2="94" stroke="var(--brand-dark)" stroke-width="2.2"/>
+    <line x1="512" y1="104" x2="648" y2="104" stroke="var(--brand-dark)" stroke-width="2.2"/>
+    <text x="580" y="138" text-anchor="middle" font-size="12" fill="var(--brand-dark)" font-weight="700">génome entier</text>
+  </g>
+  <!-- standard bracket -->
+  <path d="M300 150 q0 6 6 6 l54 0 m0 0 l54 0 q6 0 6 -6" fill="none" stroke="var(--brand)" stroke-width="1.4"/>
+  <text x="360" y="170" text-anchor="middle" font-size="11" fill="var(--brand)" font-weight="700">DPNI standard</text>
+  <text x="360" y="184" text-anchor="middle" font-size="10.5" fill="var(--ink-faint)">trisomies courantes</text>
+  <!-- expanded bracket -->
+  <path d="M500 150 q0 6 6 6 l74 0 m0 0 l74 0 q6 0 6 -6" fill="none" stroke="var(--brand)" stroke-width="1.4"/>
+  <text x="580" y="170" text-anchor="middle" font-size="11" fill="var(--brand)" font-weight="700">version élargie</text>
+  <text x="580" y="184" text-anchor="middle" font-size="10.5" fill="var(--ink-faint)">+ aneuploïdies et microdélétions à l’échelle du génome</text>
+</svg>
+<figcaption>Le DPNI standard fonctionne à l’échelle des <span class="fig-key">chromosomes entiers</span>; la version élargie lit des marqueurs dans tout le <span class="fig-key">génome</span>, détectant aneuploïdies et microdélétions n’importe où.</figcaption></figure><div class="analogy"><i class="ti ti-book"></i> Imaginez le placenta laissant tomber discrètement des pages détachées dans le sang. Le DPNI rassemble ces pages pour estimer si un tome entier — un chromosome — semble présent en copie supplémentaire. C’est un indice fort, non le décompte final.</div></section><section id="fr2"><h2 class="sec"><span class="secnum">2</span> Ce qu’il examine</h2><p>La majeure partie de l’ADN de l’échantillon provient du parent; seule une part plus petite vient du placenta. Le laboratoire mesure l’équilibre global des fragments de chromosomes dans l’échantillon. Si les fragments appartenant à un chromosome — disons le chromosome 21 — sont présents en quantité légèrement plus grande que prévu, cela suggère que le bébé pourrait en avoir une copie supplémentaire.</p><p>Plusieurs options de DPNI indiquent aussi le sexe du bébé et peuvent dépister quelques affections supplémentaires, comme des changements du nombre de chromosomes sexuels. La précision est élevée pour les trisomies courantes (21, 18, 13) et plus faible pour les trouvailles plus rares, une des raisons pour lesquelles les résultats sont toujours interprétés en contexte plutôt que pris au pied de la lettre.</p><p>Au-delà du panel standard, une version élargie du test lit des marqueurs dans l’ensemble du génome plutôt que sur une seule liste prédéfinie. Comme elle examine tout le génome, elle peut signaler des chromosomes entiers en trop ou manquants (aneuploïdies) n’importe où, ainsi que des microdélétions — de petits morceaux manquants d’un chromosome — sur tous les chromosomes, y compris certaines liées à des maladies monogéniques dominantes qui surviennent souvent à partir d’un nouveau changement (de novo) chez le bébé plutôt que d’être héritées.<sup><a href="https://pubmed.ncbi.nlm.nih.gov/39865331/" target="_blank" rel="noopener" style="color:var(--brand);text-decoration:none">1</a></sup> Ce test élargi est un ajout, non un substitut : il ne remplace pas le dépistage prénatal intégré offert dans les soins courants, et un résultat normal à l’un comme à l’autre n’écarte pas tout.</p><figure class="fig"><svg viewBox="0 0 700 226" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A blood tube holds mostly the parent's own DNA fragments and a smaller share from the placenta. Le laboratoire mesure l’équilibre des chromosome pieces to estimate the chance of an extra chromosome.">
+  <text x="20" y="24" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Un échantillon de sang — surtout l’ADN du parent, une partie du placenta</text>
+  <!-- tube -->
+  <path d="M44 44 h44 v118 a22 22 0 0 1 -44 0 z" fill="#fbfdfe" stroke="var(--ink-faint)" stroke-width="1.5"/>
+  <rect x="40" y="38" width="52" height="10" rx="3" fill="#e7eef2" stroke="var(--ink-faint)" stroke-width="1.2"/>
+  <circle cx="54" cy="60" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="60" r="3.6" fill="#cdd9df"/>
+  <circle cx="76" cy="60" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="60" r="3.6" fill="#cdd9df"/>
+  <circle cx="54" cy="73" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="73" r="3.6" fill="var(--brand)"/>
+  <circle cx="76" cy="73" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="73" r="3.6" fill="#cdd9df"/>
+  <circle cx="54" cy="86" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="86" r="3.6" fill="#cdd9df"/>
+  <circle cx="76" cy="86" r="3.6" fill="var(--brand)"/>
+  <circle cx="87" cy="86" r="3.6" fill="#cdd9df"/>
+  <circle cx="54" cy="99" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="99" r="3.6" fill="#cdd9df"/>
+  <circle cx="76" cy="99" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="99" r="3.6" fill="#cdd9df"/>
+  <circle cx="54" cy="112" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="112" r="3.6" fill="#cdd9df"/>
+  <circle cx="76" cy="112" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="112" r="3.6" fill="#cdd9df"/>
+  <circle cx="54" cy="125" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="125" r="3.6" fill="#cdd9df"/>
+  <circle cx="76" cy="125" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="125" r="3.6" fill="#cdd9df"/>
+  <circle cx="54" cy="138" r="3.6" fill="var(--brand)"/>
+  <circle cx="65" cy="138" r="3.6" fill="#cdd9df"/>
+  <circle cx="76" cy="138" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="138" r="3.6" fill="#cdd9df"/>
+  <circle cx="54" cy="151" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="151" r="3.6" fill="var(--brand)"/>
+  <circle cx="76" cy="151" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="151" r="3.6" fill="var(--brand)"/>
+  <circle cx="54" cy="164" r="3.6" fill="#cdd9df"/>
+  <circle cx="65" cy="164" r="3.6" fill="#cdd9df"/>
+  <circle cx="76" cy="164" r="3.6" fill="#cdd9df"/>
+  <circle cx="87" cy="164" r="3.6" fill="#cdd9df"/>
+  <!-- legend -->
+  <circle cx="120" cy="64" r="5" fill="var(--brand)"/>
+  <text x="132" y="68" font-size="12.5" fill="var(--brand-dark)" font-weight="700">fragments du placenta</text>
+  <circle cx="120" cy="88" r="5" fill="#cdd9df"/>
+  <text x="132" y="92" font-size="12.5" fill="var(--ink-faint)">fragments du parent</text>
+  <!-- arrow -->
+  <path d="M120 120 h44 m-9 -6 l9 6 l-9 6" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- balance concept: two stacks compared -->
+  <text x="180" y="118" font-size="12.5" fill="var(--ink-soft)">Le laboratoire mesure l’équilibre des</text>
+  <text x="180" y="135" font-size="12.5" fill="var(--ink-soft)">fragments de chromosomes. Si le chromosome 21</text>
+  <text x="180" y="152" font-size="12.5" fill="var(--ink-soft)">est légèrement surreprésenté, cela indique</text>
+  <text x="180" y="169" font-size="12.5" fill="var(--ink-soft)">une possible copie supplémentaire.</text>
+  <!-- result chip -->
+  <rect x="180" y="184" width="360" height="30" rx="8" fill="var(--brand-bg)" stroke="var(--brand-line)"/>
+  <text x="360" y="204" text-anchor="middle" font-size="12.5" fill="var(--brand-dark)" font-weight="700">Résultat : une probabilité — non une réponse par oui ou non</text>
+</svg><figcaption>L’échantillon contient surtout l’ADN du parent et une part placentaire plus petite; leur <span class="fig-key">équilibre</span> donne une probabilité, non une réponse définitive.</figcaption></figure></section><section id="fr3"><h2 class="sec"><span class="secnum">3</span> Comment ça fonctionne</h2><p>Un échantillon de sang du parent enceinte est prélevé, habituellement dès environ dix semaines de grossesse — il y a alors normalement assez d’ADN placentaire dans le sang pour faire le test. Au laboratoire, les fragments d’ADN sont lus et comptés, et l’équilibre des fragments de chromosomes est comparé à ce qui est attendu dans une grossesse non atteinte. À partir de cet équilibre, le laboratoire calcule une probabilité pour chaque affection dépistée.</p><p>Le résultat revient habituellement sous forme de « probabilité plus faible » ou « probabilité plus élevée » pour chaque affection, plutôt qu’un chiffre. Parfois, le test ne peut pas donner de résultat — souvent parce que la part d’ADN placentaire dans l’échantillon était trop faible — et un nouvel échantillon est nécessaire. Comme l’ADN lu provient du placenta plutôt que du bébé directement, le placenta et le bébé diffèrent très rarement, une des raisons pour lesquelles un résultat à probabilité plus élevée est confirmé par un test diagnostique avant toute décision.</p><figure class="fig"><svg viewBox="0 0 790 142" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A horizontal flow: all pregnancies are screened with DPNI. A group is flagged as higher chance, but most of that flagged group are in fact unatteinte. Only a diagnostic test such as CVS or amniocentesis can tell the genuinely atteinte pregnancy from the false alarms."><text x="20" y="26" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Le dépistage trie tout le monde; le test diagnostique distingue les vrais cas des fausses alertes</text><rect x="20" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="21.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="39.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 39.6 51.0)"/><line x1="34.6" y1="56.0" x2="37.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="42" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="43.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="61.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 61.6 51.0)"/><line x1="56.6" y1="56.0" x2="59.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="64" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="65.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#c0392b"/><ellipse cx="83.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 83.6 51.0)"/><line x1="78.6" y1="56.0" x2="81.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="86" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="87.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="105.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 105.6 51.0)"/><line x1="100.6" y1="56.0" x2="103.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="108" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="109.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="127.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 127.6 51.0)"/><line x1="122.6" y1="56.0" x2="125.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="130" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="131.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="149.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 149.6 51.0)"/><line x1="144.6" y1="56.0" x2="147.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="152" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="153.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="171.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 171.6 51.0)"/><line x1="166.6" y1="56.0" x2="169.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="174" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="175.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="193.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 193.6 51.0)"/><line x1="188.6" y1="56.0" x2="191.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><text x="102.0" y="118" text-anchor="middle" font-size="11" fill="var(--ink-faint)">toutes les grossesses dépistées</text><path d="M201 76 l22 0 m-8 -6 l8 6 l-8 6" stroke="var(--brand)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="231" y="54" width="90" height="44" rx="10" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/><text x="276" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="var(--brand-dark)">DPNI</text><text x="276" y="92" text-anchor="middle" font-size="10.5" fill="var(--brand-dark)">un dépistage</text><path d="M326 76 l22 0 m-8 -6 l8 6 l-8 6" stroke="var(--brand)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="356" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="357.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#c0392b"/><ellipse cx="375.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 375.6 51.0)"/><line x1="370.6" y1="56.0" x2="373.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="378" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="379.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="397.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 397.6 51.0)"/><line x1="392.6" y1="56.0" x2="395.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="400" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="401.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="419.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 419.6 51.0)"/><line x1="414.6" y1="56.0" x2="417.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="422" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="423.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#7bb661"/><ellipse cx="441.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 441.6 51.0)"/><line x1="436.6" y1="56.0" x2="439.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><text x="394.0" y="118" text-anchor="middle" font-size="10.5" fill="var(--ink-soft)">signalées : probabilité élevée</text><path d="M448 76 l22 0 m-8 -6 l8 6 l-8 6" stroke="var(--amber)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="478" y="50" width="126" height="52" rx="10" fill="#fff" stroke="var(--amber)" stroke-width="2"/><text x="541" y="72" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--amber)">Test diagnostique</text><text x="541" y="89" text-anchor="middle" font-size="10" fill="var(--ink-soft)">PVC / amniocentèse</text><path d="M609 76 l20 0 m-8 -6 l8 6 l-8 6" stroke="var(--amber)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="637" y="54" width="17.6" height="32.0" rx="4.0" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="638.4" y="69.9" width="14.8" height="14.7" rx="2.4" fill="#c0392b"/><ellipse cx="656.6" cy="51.0" rx="4.8" ry="3.2" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 656.6 51.0)"/><line x1="651.6" y1="56.0" x2="654.6" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="659" y="54" width="15.8" height="28.8" rx="3.6" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="660.4" y="68.2" width="13.0" height="13.2" rx="2.2" fill="#7bb661"/><ellipse cx="676.8" cy="51.0" rx="4.3" ry="2.9" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 676.8 51.0)"/><line x1="671.8" y1="56.0" x2="674.8" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="679" y="54" width="15.8" height="28.8" rx="3.6" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="680.4" y="68.2" width="13.0" height="13.2" rx="2.2" fill="#7bb661"/><ellipse cx="696.8" cy="51.0" rx="4.3" ry="2.9" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 696.8 51.0)"/><line x1="691.8" y1="56.0" x2="694.8" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="699" y="54" width="15.8" height="28.8" rx="3.6" fill="#fff" stroke="var(--ink-soft)" stroke-width="1.4"/><rect x="700.4" y="68.2" width="13.0" height="13.2" rx="2.2" fill="#7bb661"/><ellipse cx="716.8" cy="51.0" rx="4.3" ry="2.9" fill="none" stroke="var(--ink-soft)" stroke-width="1.4" transform="rotate(35 716.8 51.0)"/><line x1="711.8" y1="56.0" x2="714.8" y2="52.0" stroke="var(--ink-soft)" stroke-width="1.4"/><text x="646" y="44" text-anchor="middle" font-size="9.5" fill="var(--red)" font-weight="700">atteinte</text><text x="687" y="118" text-anchor="middle" font-size="10" fill="var(--ink-soft)">la vérité démêlée</text></svg><figcaption>Un résultat à probabilité plus élevée ne signifie pas atteinte. La plupart des grossesses signalées se révèlent normales — seul un <span class="fig-key">test diagnostique</span> peut distinguer la grossesse réellement atteinte des fausses alertes.</figcaption></figure></section><section id="fr4"><h2 class="sec"><span class="secnum">4</span> Ce qu’il trouve</h2><ul class="check"><li><i class="ti ti-check"></i> <div>Une probabilité accrue ou diminuée des anomalies chromosomiques courantes — trisomie 21, 18 et 13.<span class="tag finds">Trouve</span></div></li><li><i class="ti ti-check"></i> <div>Souvent le sexe du bébé, et dans certains panels quelques affections supplémentaires comme des changements des chromosomes sexuels.<span class="tag finds">Trouve</span></div></li><li><i class="ti ti-check"></i> <div>Un résultat tôt dans la grossesse à partir d’une simple prise de sang, sans risque pour la grossesse.<span class="tag finds">Trouve</span></div></li></ul></section><section id="fr5"><h2 class="sec"><span class="secnum">5</span> Ce qu’il peut manquer</h2><ul class="check"><li><i class="ti ti-x"></i> <div>La plupart des maladies monogéniques, et le détail fin d’un chromosome — le DPNI examine des quantités de chromosomes entiers, non l’orthographe.<span class="tag misses">À savoir</span></div></li><li><i class="ti ti-x"></i> <div>Certaines grossesses atteintes : aucun dépistage ne détecte tous les cas, et il peut parfois donner une fausse alerte qui ne se confirme pas.<span class="tag misses">À savoir</span></div></li><li><i class="ti ti-x"></i> <div>Comme l’ADN provient du placenta, les résultats ne correspondent parfois pas au bébé; un résultat à probabilité plus élevée n’est donc pas un diagnostic.<span class="tag misses">À savoir</span></div></li></ul></section><section id="fr6"><h2 class="sec"><span class="secnum">6</span> Pourquoi un résultat peut être non concluant</h2><p>Parfois, le DPNI ne peut pas donner de résultat clair et revient comme non concluant (vous verrez aussi « absence de résultat »). Cela tient généralement à la fraction fœtale — la part de l’ADN de l’échantillon qui provient du placenta. Si cette part est trop faible, il n’y a tout simplement pas assez d’ADN placentaire pour une lecture fiable, et le test ne peut pas aboutir à une réponse.</p><p>Plusieurs facteurs peuvent abaisser la fraction fœtale ou rendre un échantillon plus difficile à interpréter. Un poids corporel plus élevé tend à abaisser la fraction fœtale, car il y a davantage d’ADN du parent qui dilue la part placentaire. Un test très tôt dans la grossesse peut signifier que la part placentaire n’a pas encore assez augmenté. Certaines affections inflammatoires ou auto-immunes, et certains médicaments, peuvent modifier le mélange d’ADN dans le sang. Dans une grossesse gémellaire, le tableau est plus complexe, car chaque placenta apporte son propre ADN. Et dans les grossesses par FIV, la fraction fœtale peut se lire différemment, de sorte que les résultats peuvent demander une interprétation plus prudente.</p><p>Un résultat non concluant n’est pas en soi une mauvaise nouvelle au sujet du bébé — il signifie seulement que le test n’a pas pu lire l’échantillon assez bien. L’étape habituelle est un nouvel échantillon un peu plus tard dans la grossesse, ou une discussion sur d’autres options comme un test diagnostique.</p><figure class="fig"><svg viewBox="0 0 700 232" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The fetal fraction is the share of DNA in l’échantillon that comes from the placenta. If it falls below a minimum, the test cannot give a reliable result. Higher body weight, test très précoceing, some inflammatoires conditions, jumeaux, and IVF pregnancies can affect it.">
+  <text x="20" y="24" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Fraction fœtale — assez d’ADN placentaire pour lire?</text>
+  <!-- stacked bar -->
+  <text x="20" y="56" font-size="12" fill="var(--ink-faint)">l’échantillon</text>
+  <rect x="20" y="66" width="500" height="34" rx="7" fill="#eef3f6" stroke="var(--line)"/>
+  <!-- placental portion -->
+  <rect x="20" y="66" width="80" height="34" rx="7" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.6"/>
+  <text x="60" y="88" text-anchor="middle" font-size="11.5" fill="var(--brand-dark)" font-weight="700">placenta</text>
+  <text x="300" y="88" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">ADN du parent</text>
+  <!-- threshold marker -->
+  <line x1="70" y1="58" x2="70" y2="110" stroke="var(--amber)" stroke-width="2" stroke-dasharray="3 3"/>
+  <text x="70" y="124" text-anchor="middle" font-size="11" fill="var(--amber)" font-weight="700">minimum requis</text>
+  <text x="540" y="88" font-size="12" fill="var(--ink-soft)">en dessous → non concluant</text>
+  <!-- factors row -->
+  <text x="20" y="160" font-size="12.5" font-weight="700" fill="var(--ink)">Ce qui peut l’abaisser ou compliquer la lecture :</text>
+  <g font-size="11.5" fill="var(--ink-soft)">
+    <rect x="20" y="172" width="150" height="40" rx="8" fill="#fbfdfe" stroke="var(--line)"/>
+    <text x="95" y="190" text-anchor="middle">poids plus élevé</text>
+    <text x="95" y="205" text-anchor="middle" fill="var(--ink-faint)" font-size="10.5">plus d’ADN du parent</text>
+    <rect x="180" y="172" width="120" height="40" rx="8" fill="#fbfdfe" stroke="var(--line)"/>
+    <text x="240" y="190" text-anchor="middle">test très précoce</text>
+    <text x="240" y="205" text-anchor="middle" fill="var(--ink-faint)" font-size="10.5">part encore faible</text>
+    <rect x="310" y="172" width="150" height="40" rx="8" fill="#fbfdfe" stroke="var(--line)"/>
+    <text x="385" y="190" text-anchor="middle">inflammatoires</text>
+    <text x="385" y="205" text-anchor="middle" fill="var(--ink-faint)" font-size="10.5">affections / médic.</text>
+    <rect x="470" y="172" width="90" height="40" rx="8" fill="#fbfdfe" stroke="var(--line)"/>
+    <text x="515" y="190" text-anchor="middle">jumeaux</text>
+    <text x="515" y="205" text-anchor="middle" fill="var(--ink-faint)" font-size="10.5">deux placentas</text>
+    <rect x="570" y="172" width="110" height="40" rx="8" fill="#fbfdfe" stroke="var(--line)"/>
+    <text x="625" y="190" text-anchor="middle">grossesse FIV</text>
+    <text x="625" y="205" text-anchor="middle" fill="var(--ink-faint)" font-size="10.5">lecture différente</text>
+  </g>
+</svg><figcaption>Si la <span class="fig-key">fraction fœtale</span> est trop faible, le test ne peut pas lire l’échantillon et le résultat est non concluant — un nouvel échantillon un peu plus tard aide habituellement.</figcaption></figure></section><section id="fr7"><h2 class="sec"><span class="secnum">7</span> À quoi s’attendre</h2><div class="patient"><div class="ptag"><i class="ti ti-clipboard-heart"></i> À quoi s’attendre</div><p>Le DPNI est une simple prise de sang, habituellement offerte dès environ dix semaines de grossesse. Les résultats prennent généralement une à deux semaines. Un résultat « probabilité plus faible » est rassurant mais n’écarte pas complètement une affection; un résultat « probabilité plus élevée » ne signifie pas que l’affection est certaine — il est normalement suivi d’un test diagnostique comme le PVC ou l’amniocentèse, qui peut donner une réponse définitive.</p><p>Le choix de faire ou non le DPNI vous appartient, et il vaut la peine de réfléchir à l’avance à ce que différents résultats pourraient signifier pour vous. Votre équipe de soins ou un conseiller en génétique peut discuter des options avant et après le test, au rythme qui vous convient.</p></div></section><section id="fr8"><h2 class="sec"><span class="secnum">8</span> Le sens des mots</h2><h3>Quelques termes que vous pourriez voir</h3><table><thead><tr><th>Terme</th><th>En langage simple</th></tr></thead><tbody><tr><td><strong>Chromosome</strong></td><td>Un paquet dans lequel votre ADN est organisé. Vous en avez 46, en 23 paires.</td></tr><tr><td><strong>Trisomie</strong></td><td>Avoir trois copies d’un chromosome au lieu des deux habituelles.</td></tr><tr><td><strong>Dépistage vs diagnostic</strong></td><td>Un dépistage donne une probabilité; un test diagnostique donne un oui-ou-non plus clair.</td></tr><tr><td><strong>Placenta</strong></td><td>L’organe qui nourrit le bébé; c’est son ADN que lit le DPNI.</td></tr><tr><td><strong>Fraction fœtale</strong></td><td>La part de l’ADN de l’échantillon provenant du placenta; si trop faible, le test ne peut pas donner de résultat.</td></tr><tr><td><strong>Microdélétion</strong></td><td>Un petit morceau manquant d’un chromosome, trop petit pour les tests plus anciens.</td></tr><tr><td><strong>De novo</strong></td><td>Un changement nouveau chez le bébé, non hérité d’un parent.</td></tr><tr><td><strong>PVC / amniocentèse</strong></td><td>Interventions diagnostiques qui peuvent confirmer un résultat que le DPNI ne fait que suggérer.</td></tr></tbody></table><div class="rec"><i class="ti ti-message-circle"></i> Si un mot de votre rapport ne figure pas ici, demandez à votre équipe de soins ou à un conseiller en génétique. Il n’y a pas de mauvaises questions.</div></section><section id="fr9"><h2 class="sec"><span class="secnum">9</span> À retenir</h2><div class="info"><div class="ptag"><i class="ti ti-user-heart"></i> À retenir</div><p style="margin:6px 0 0">Ceci est de l’information générale et ne remplace pas une consultation. Le DPNI est un test de dépistage : un résultat renseigne sur une probabilité, et la prochaine étape — rassurance ou test diagnostique — se décide avec votre équipe de soins.</p></div></section><section id="fr10"><h2 class="sec"><span class="secnum">10</span> Référence</h2><ol style="font-size:14px;color:var(--ink-soft);padding-left:20px;line-height:1.5;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif"><li>Liao J, Xu N, Gao H, et al. Advances in prenatal cell-free DNA screening for dominant monogenic conditions: a review of current progress and future directions in clinical implementation. <em>Prenatal Diagnosis</em>. 2025;45(4):445–452. <a href="https://pubmed.ncbi.nlm.nih.gov/39865331/" target="_blank" rel="noopener">PubMed</a></li></ol></section><div class="footer"><p>Cette page est un document d’information destiné aux patients, visant à soutenir, et non à remplacer, le conseil individuel. Elle explique en termes généraux une catégorie de dépistage prénatal; les affections exactes dépistées et l’interprétation de tout résultat dépendent de votre situation et du laboratoire utilisé. Préparé pour la Génétique médicale, Hôpital général juif, Montréal.</p></div></div>
+</div>
+<script>
+function setLang(l){document.getElementById('lang-en').style.display=(l==='en')?'block':'none';document.getElementById('lang-fr').style.display=(l==='fr')?'block':'none';document.getElementById('btn-en').classList.toggle('active',l==='en');document.getElementById('btn-fr').classList.toggle('active',l==='fr');document.documentElement.lang=l;window.scrollTo(0,0);}
+function togglePdfView(){var on=document.body.classList.toggle('pdf-preview');document.getElementById('btn-pdf').classList.toggle('active',on);window.scrollTo(0,0);}
+setLang('en');
+</script>
+</body>
+</html>

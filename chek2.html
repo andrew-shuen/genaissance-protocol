@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHEK2 Cancer Prevention and Surveillance Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px; line-height:1.62;
+}
+.wrap{max-width:880px; margin:0 auto; padding:0 22px 80px;}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* language toggle */
+.langbar{
+  position:sticky; top:0; z-index:50; background:var(--paper);
+  border-bottom:1px solid var(--line); display:flex; gap:8px;
+  padding:10px 22px; justify-content:center; box-shadow:0 1px 0 rgba(0,0,0,.02);
+}
+.langbar .inner{max-width:880px; width:100%; display:flex; gap:8px; justify-content:flex-end;}
+.langbtn{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; font-weight:600;
+  letter-spacing:.02em; cursor:pointer; border:1px solid var(--brand-line);
+  background:var(--paper); color:var(--brand-dark); padding:7px 16px; border-radius:999px;
+  transition:all .15s;
+}
+.langbtn:hover{background:var(--brand-bg);}
+.langbtn.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+
+/* masthead */
+.masthead{padding:46px 0 26px; border-bottom:2px solid var(--ink);}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--brand-dark); margin:0 0 14px;
+}
+h1{font-size:38px; line-height:1.12; margin:0 0 14px; font-weight:600; letter-spacing:-.01em;}
+.standfirst{font-size:20px; color:var(--ink-soft); margin:0 0 26px; line-height:1.5;}
+.authorpanel{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:18px 20px; margin:0 0 18px;
+}
+.authorpanel .who{font-size:15px; line-height:1.5; margin:0 0 4px;}
+.authorpanel .who strong{color:var(--ink);}
+.authorpanel .who span{color:var(--ink-faint);}
+.metachips{display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 0;}
+.chip{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:600;
+  background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);
+  border-radius:999px; padding:5px 12px; display:inline-flex; align-items:center; gap:6px;
+}
+.legend{
+  display:flex; flex-wrap:wrap; gap:18px; margin:20px 0 0; padding:14px 16px;
+  background:var(--cream); border:1px solid var(--line); border-radius:var(--radius-sm);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+}
+.legend .lg{display:flex; align-items:center; gap:8px; color:var(--ink-soft);}
+.swatch{width:16px; height:16px; border-radius:4px; flex:0 0 auto;}
+.sw-patient{background:var(--brand-bg); border:1px solid var(--brand-line);}
+.sw-clin{background:var(--paper); border:1px solid var(--line);}
+
+/* TOC */
+.toc{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:22px 24px; margin:28px 0;
+}
+.toc h2{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 14px;
+}
+.toc ol{margin:0; padding:0; list-style:none; counter-reset:toc;
+  columns:2; column-gap:36px;}
+.toc li{counter-increment:toc; margin:0 0 9px; break-inside:avoid; font-size:15px; line-height:1.4;}
+.toc li::before{content:counter(toc); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight:700; color:var(--brand); font-size:12px; margin-right:9px;}
+.toc a{color:var(--ink-soft); text-decoration:none;}
+.toc a:hover{color:var(--brand); text-decoration:underline;}
+
+/* sections */
+section{margin:42px 0 0; scroll-margin-top:70px;}
+.secnum{
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:15px;
+  width:32px; height:32px; border-radius:8px; background:var(--brand); color:#fff;
+  margin-right:12px; flex:0 0 auto;
+}
+h2.sec{font-size:27px; font-weight:600; margin:0 0 6px; line-height:1.2; display:flex; align-items:center;}
+h2.sec span.txt{display:inline-block;}
+h3{font-size:20px; font-weight:600; margin:28px 0 8px; color:var(--ink); line-height:1.25;}
+h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; color:var(--brand-dark); margin:22px 0 8px;}
+p{margin:0 0 14px;}
+a{color:var(--brand);}
+
+/* patient panel */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:18px 20px; margin:14px 0 20px;
+}
+.patient .tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--brand-dark);
+  display:flex; align-items:center; gap:7px; margin:0 0 9px;
+}
+.patient p{color:var(--brand-dark); margin:0 0 10px;}
+.patient p:last-child{margin-bottom:0;}
+
+/* risk pills */
+.pill{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.03em; padding:3px 10px; border-radius:999px; display:inline-flex; align-items:center; gap:5px;
+  white-space:nowrap;
+}
+.pill-high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.pill-mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.pill-low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* gene header pill */
+.genehdr{
+  display:flex; flex-wrap:wrap; align-items:center; gap:12px; padding:14px 18px;
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-sm);
+  margin:24px 0 14px; border-left:4px solid var(--brand);
+}
+.genehdr .gname{font-size:18px; font-weight:600; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:16px 0 20px;}
+table{border-collapse:collapse; width:100%; font-size:15px; background:var(--paper);
+  border:1px solid var(--line); border-radius:var(--radius-sm); overflow:hidden;}
+caption{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+  color:var(--ink-faint); text-align:left; padding:0 0 8px; caption-side:top;}
+th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; font-weight:700;
+  letter-spacing:.02em; text-align:left; background:var(--brand-dark); color:#fff; padding:11px 14px;}
+td{padding:11px 14px; border-top:1px solid var(--line); vertical-align:top;}
+tbody tr:nth-child(even){background:var(--cream);}
+
+/* checklist */
+.checklist{list-style:none; margin:14px 0 18px; padding:0;}
+.checklist li{display:flex; gap:12px; padding:11px 0; border-bottom:1px solid var(--line-soft); align-items:flex-start;}
+.checklist li:last-child{border-bottom:none;}
+.checklist .ic{flex:0 0 auto; width:24px; height:24px; border-radius:6px; display:flex;
+  align-items:center; justify-content:center; font-size:15px; margin-top:1px;}
+.ic-yes{background:var(--brand-bg); color:var(--brand-dark);}
+.ic-opt{background:var(--amber-bg); color:var(--amber);}
+.ic-no{background:var(--line-soft); color:var(--ink-faint);}
+.checklist .body{flex:1;}
+.checklist .body .h{font-weight:600;}
+.checklist .body .meta{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint);}
+.tagmini{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+  letter-spacing:.05em; text-transform:uppercase; padding:2px 7px; border-radius:5px; margin-left:8px; white-space:nowrap;}
+.tm-routine{background:var(--brand-bg); color:var(--brand-dark);}
+.tm-opt{background:var(--amber-bg); color:var(--amber);}
+.tm-no{background:var(--line-soft); color:var(--ink-faint);}
+
+/* callouts */
+.callout{border-left:4px solid var(--brand); background:var(--paper); border:1px solid var(--line);
+  border-left:4px solid var(--brand); border-radius:var(--radius-sm); padding:16px 18px; margin:18px 0;}
+.callout .ttl{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:14px;
+  color:var(--brand-dark); margin:0 0 8px; display:flex; align-items:center; gap:8px;}
+.callout p:last-child{margin-bottom:0;}
+.infobox{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm);
+  padding:16px 18px; margin:18px 0;}
+.infobox .ttl{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:13px;
+  color:var(--brand-dark); text-transform:uppercase; letter-spacing:.05em; margin:0 0 8px; display:flex; align-items:center; gap:8px;}
+.infobox p:last-child{margin-bottom:0;}
+.emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-left:4px solid var(--purple);
+  border-radius:var(--radius-sm); padding:16px 18px; margin:18px 0;}
+.emerging .ttl{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:13px;
+  color:var(--purple); text-transform:uppercase; letter-spacing:.05em; margin:0 0 8px; display:flex; align-items:center; gap:8px;}
+.emerging p{color:#2f2870;} .emerging p:last-child{margin-bottom:0;}
+
+/* summary cards */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin:18px 0;}
+.card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px;
+  border-top:3px solid var(--brand);}
+.card h4{margin:0 0 10px; color:var(--brand-dark);}
+.card ul{margin:0; padding:0 0 0 2px; list-style:none;}
+.card li{font-size:14px; padding:5px 0 5px 22px; position:relative; line-height:1.4;}
+.card li::before{content:"\f274"; font-family:"tabler-icons"; position:absolute; left:0; top:5px;
+  color:var(--brand); font-size:14px;}
+
+/* references */
+.refs{counter-reset:ref; list-style:none; margin:14px 0; padding:0;}
+.refs li{counter-increment:ref; position:relative; padding:9px 0 9px 38px; border-bottom:1px solid var(--line-soft);
+  font-size:14.5px; line-height:1.5;}
+.refs li::before{content:counter(ref); position:absolute; left:0; top:9px;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:12px; color:#fff;
+  background:var(--brand); width:24px; height:24px; border-radius:6px; display:flex; align-items:center; justify-content:center;}
+
+/* footer */
+.footer{margin:50px 0 0; padding:22px 0 0; border-top:3px double var(--ink);}
+.footer p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); line-height:1.6;}
+
+.lang-fr{display:none;}
+
+@media (max-width:620px){
+  h1{font-size:29px;} .standfirst{font-size:18px;} body{font-size:16px;}
+  .toc ol{columns:1;} h2.sec{font-size:23px;}
+}
+@media print{
+  body{background:#fff; font-size:11.5pt; color:#000;}
+  .langbar{display:none;} .wrap{max-width:100%; padding:0;}
+  section{page-break-inside:avoid;} .patient,.callout,.infobox,.emerging,.card,table{page-break-inside:avoid;}
+  a{color:#000; text-decoration:none;} .toc{page-break-after:always;}
+  .masthead{padding-top:0;}
+}
+</style>
+</head>
+<body>
+
+<div class="langbar">
+  <div class="inner">
+    <button class="langbtn active ui" id="btn-en" onclick="setLang('en')">English</button>
+    <button class="langbtn ui" id="btn-fr" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ============================ ENGLISH ============================ -->
+<div class="lang-en" id="lang-en">
+
+  <header class="masthead">
+    <p class="eyebrow">Cancer Prevention &amp; Surveillance Protocol</p>
+    <h1>CHEK2-Related Cancer Predisposition</h1>
+    <p class="standfirst">A prevention and surveillance protocol for people who carry a pathogenic <em>CHEK2</em> variant, and for the clinicians who care for them. CHEK2 is a moderate-risk gene. Your personal plan depends heavily on your family history.</p>
+
+    <div class="authorpanel">
+      <p class="who"><strong>Dr. Andrew Shuen, MD PhD FRCPC DABMGG</strong> <span>— Cancer Genetics, Cancer Prevention Centre, Jewish General Hospital (JGH), Montreal</span></p>
+    </div>
+
+    <div class="metachips ui">
+      <span class="chip"><i class="ti ti-dna-2"></i> Gene: CHEK2</span>
+      <span class="chip"><i class="ti ti-categories"></i> Moderate penetrance</span>
+      <span class="chip"><i class="ti ti-clipboard-check"></i> NCCN v1.2026 aligned</span>
+      <span class="chip"><i class="ti ti-calendar"></i> Review annually</span>
+    </div>
+
+    <div class="legend ui">
+      <span class="lg"><span class="swatch sw-patient"></span> Plain-language patient summary</span>
+      <span class="lg"><span class="swatch sw-clin"></span> Clinical detail for providers</span>
+      <span class="lg"><span class="pill pill-high">High</span> <span class="pill pill-mod">Moderate</span> <span class="pill pill-low">Low / standard</span></span>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <h2 class="ui">Contents</h2>
+    <ol>
+      <li><a href="#en-1">Understanding CHEK2</a></li>
+      <li><a href="#en-2">Lifetime risks by variant type</a></li>
+      <li><a href="#en-3">Breast surveillance (females)</a></li>
+      <li><a href="#en-4">Prostate surveillance (males)</a></li>
+      <li><a href="#en-5">Other organs &amp; colorectal</a></li>
+      <li><a href="#en-6">Risk-reducing surgery</a></li>
+      <li><a href="#en-7">Medical prevention</a></li>
+      <li><a href="#en-8">Genetic counselling &amp; family testing</a></li>
+      <li><a href="#en-9">Lifestyle &amp; nutrition</a></li>
+      <li><a href="#en-10">Emerging &amp; investigational</a></li>
+      <li><a href="#en-11">Summary of recommendations</a></li>
+      <li><a href="#en-12">References</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="en-1">
+    <h2 class="sec"><span class="secnum ui">1</span><span class="txt">Understanding CHEK2</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> For patients</p>
+      <p>CHEK2 is a gene that helps your cells repair damaged DNA and stop cancer from forming. When one copy of this gene is not working, that repair system is a little weaker. This raises your chance of certain cancers, mainly breast cancer in women and, to a smaller degree, prostate cancer in men.</p>
+      <p>CHEK2 is a moderate-risk gene, not a high-risk one. That is an important difference. Many people who carry a CHEK2 variant never develop cancer. Your actual risk depends a lot on your family history. The more close relatives who have had breast or prostate cancer, the higher your own risk, and the more careful your screening plan should be.</p>
+      <p>The plan below is a starting point. We adjust it for you using your family history and a personal risk calculator.</p>
+    </div>
+
+    <p><em>CHEK2</em> (checkpoint kinase 2) encodes a serine/threonine kinase activated by ATM in response to DNA double-strand breaks. Once activated, CHEK2 phosphorylates downstream targets including p53, BRCA1, and CDC25, coordinating cell-cycle arrest, DNA repair, and apoptosis. Loss-of-function variants impair this checkpoint, permitting propagation of cells carrying unrepaired DNA damage.</p>
+
+    <p><em>CHEK2</em>-related cancer predisposition is inherited in an autosomal dominant manner, but penetrance is intermediate. A classic vertical inheritance pattern is often <strong>not</strong> seen, because many carriers remain unaffected. Cancer risk behaves as a continuous variable that is strongly modified by family history, polygenic background, breast density, hormonal and reproductive factors, and the specific variant. The dominant clinical association is ER-positive female breast cancer. There is a more modest association with prostate cancer, particularly for protein-truncating variants. Associations with other sites are weaker, conflicting, or have been revised downward.</p>
+
+    <h4>Variant classes matter</h4>
+    <p>Not all <em>CHEK2</em> variants confer the same risk. The most-studied variant is the protein-truncating <em>c.1100delC</em>. Three variants historically reported as pathogenic — <em>c.470T&gt;C (p.Ile157Thr)</em>, <em>c.1283C&gt;T (p.Ser428Phe)</em>, and <em>c.1427C&gt;T (p.Thr476Met)</em> — are now regarded as lower-penetrance and, in isolation, are not associated with clinically actionable risk on their own. ENIGMA reporting guidance suggests only variants conferring a twofold or greater risk be clinically reported. Distinguishing higher-penetrance (truncating) from lower-penetrance variants is the first step in building a surveillance plan.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="en-2">
+    <h2 class="sec"><span class="secnum ui">2</span><span class="txt">Lifetime risks by variant type</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> For patients</p>
+      <p>The numbers below are ranges, not a fixed prediction. They show that family history changes your risk a great deal. A woman with a CHEK2 variant and no affected relatives has a much lower breast cancer risk than a woman with several affected close relatives. We use a calculator called CanRisk to turn your family tree into a personal number.</p>
+    </div>
+
+    <p>Published penetrance estimates vary widely because of differences in study design, ascertainment, and variant mix. The figures below should be read as population-level approximations. For individual counselling I use a validated risk model (CanRisk / BOADICEA) that integrates the <em>CHEK2</em> result with family history, breast density, and reproductive factors.</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Approximate lifetime / cumulative cancer risk by variant class and modifiers. General-population female breast cancer lifetime risk is roughly 12–13%.</caption>
+        <thead>
+          <tr><th>Cancer / setting</th><th>Approximate risk</th><th>Level</th><th>Basis</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Female breast — truncating variant, range across studies</td><td>~20–40% lifetime (≈2–3× population; up to ~33% by age 80 in population-based data)</td><td><span class="pill pill-mod">Moderate</span></td><td>BCAC; Australian BCFR; meta-analyses</td></tr>
+          <tr><td>Female breast — no affected first-degree relatives</td><td>~20% lifetime; may approach population range</td><td><span class="pill pill-mod">Moderate</span></td><td>Polish founder cohort</td></tr>
+          <tr><td>Female breast — one affected first-degree relative</td><td>~28–34% lifetime</td><td><span class="pill pill-mod">Moderate</span></td><td>Polish founder cohort</td></tr>
+          <tr><td>Female breast — strong family history (multiple relatives)</td><td>up to ~44% lifetime</td><td><span class="pill pill-high">High</span></td><td>Polish founder cohort</td></tr>
+          <tr><td>Female breast — biallelic / homozygous carriers</td><td>Substantially higher than monoallelic; earlier onset; more multiple primaries</td><td><span class="pill pill-high">High</span></td><td>Rainville 2020 (Myriad cohort)</td></tr>
+          <tr><td>Female breast — low-penetrance variants (I157T, S428F, T476M) in isolation</td><td>Near-population to mildly elevated</td><td><span class="pill pill-low">Low / standard</span></td><td>Bychkovsky 2022; Hernandez 2024</td></tr>
+          <tr><td>Prostate (truncating variants, esp. with family history)</td><td>Modestly elevated; aggressive-disease signal in some series</td><td><span class="pill pill-mod">Moderate</span></td><td>NCCN; prostate meta-analysis</td></tr>
+          <tr><td>Male breast</td><td>Elevated over baseline but absolute risk low</td><td><span class="pill pill-low">Low / standard</span></td><td>Myriad clinical summary</td></tr>
+          <tr><td>Colorectal</td><td>No consistent excess in recent large data; NCCN now advises population screening absent family history</td><td><span class="pill pill-low">Low / standard</span></td><td>NCCN revision; retrospective cohort</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <p class="ttl ui"><i class="ti ti-alert-triangle"></i> Evidence quality</p>
+      <p>Breast cancer risk is the best-established association and is guideline-actionable. Prostate risk is supported but management is largely shared-decision-making. The colorectal association has been revised downward and is no longer a basis for intensified screening in the absence of family history. Treat single-number lifetime estimates with caution; family-history-adjusted modelling is preferred.</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="en-3">
+    <h2 class="sec"><span class="secnum ui">3</span><span class="txt">Breast surveillance (female carriers)</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> For patients</p>
+      <p>Breast cancer is the main thing we watch for. For most women with a CHEK2 variant, this means a yearly mammogram starting at age 40, and often a yearly breast MRI as well. Breast MRI finds cancers earlier, especially in dense breasts. We decide together when to add MRI and when to start, based on your risk number and your family history.</p>
+      <p>If your estimated lifetime risk is high, we may start imaging earlier. If you carry one of the lower-risk variants and have no strong family history, your plan may look closer to standard screening.</p>
+    </div>
+
+    <div class="genehdr">
+      <span class="gname">CHEK2 — higher-penetrance (truncating) variant</span>
+      <span class="pill pill-mod">Moderate breast risk</span>
+    </div>
+    <ul class="checklist">
+      <li><span class="ic ic-yes"><i class="ti ti-check"></i></span><div class="body"><span class="h">Breast awareness &amp; clinical exam</span><span class="tagmini tm-routine">Routine</span><div class="meta">Educate on breast self-awareness; periodic clinical breast exam.</div></div></li>
+      <li><span class="ic ic-yes"><i class="ti ti-check"></i></span><div class="body"><span class="h">Annual mammography from age 40</span><span class="tagmini tm-routine">Routine</span><div class="meta">With tomosynthesis where available. Start earlier if family history dictates (e.g. ~10 yr before youngest breast cancer in family).</div></div></li>
+      <li><span class="ic ic-yes"><i class="ti ti-check"></i></span><div class="body"><span class="h">Annual breast MRI with contrast — consider from age 30–40</span><span class="tagmini tm-routine">Routine / individualized</span><div class="meta">NCCN supports consideration of MRI from age 40; modelling suggests starting at 30–35 may reduce mortality &gt;55%. Regional practice varies. Use estimated lifetime risk to set the start age.</div></div></li>
+      <li><span class="ic ic-opt"><i class="ti ti-adjustments"></i></span><div class="body"><span class="h">Risk-model-driven start age</span><span class="tagmini tm-opt">Recommended approach</span><div class="meta">CanRisk-estimated LTR ≥20–30% → annual mammography 40–50; ≥30% → MRI ± mammography from ~35; ≥50% → individualized imaging from ~25.</div></div></li>
+    </ul>
+
+    <div class="genehdr">
+      <span class="gname">CHEK2 — biallelic / homozygous carrier</span>
+      <span class="pill pill-high">High breast risk</span>
+    </div>
+    <ul class="checklist">
+      <li><span class="ic ic-yes"><i class="ti ti-check"></i></span><div class="body"><span class="h">Intensified, earlier surveillance</span><span class="tagmini tm-routine">Routine</span><div class="meta">Higher risk and more multiple primaries than monoallelic carriers. Consider MRI + mammography beginning at a younger age, individualized. Manage akin to a high-risk program.</div></div></li>
+    </ul>
+
+    <div class="genehdr">
+      <span class="gname">CHEK2 — low-penetrance variant (I157T, S428F, T476M) in isolation</span>
+      <span class="pill pill-low">Near-standard</span>
+    </div>
+    <ul class="checklist">
+      <li><span class="ic ic-opt"><i class="ti ti-adjustments"></i></span><div class="body"><span class="h">Individualize on family history</span><span class="tagmini tm-opt">Individualized</span><div class="meta">In isolation these are not a basis for high-risk imaging. Tailor screening to family history and other risk factors; may default to population screening.</div></div></li>
+    </ul>
+  </section>
+
+  <!-- 4 -->
+  <section id="en-4">
+    <h2 class="sec"><span class="secnum ui">4</span><span class="txt">Prostate surveillance (male carriers)</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> For patients</p>
+      <p>Men who carry a CHEK2 variant have a somewhat higher chance of prostate cancer, mostly with the truncating variants and especially if prostate cancer runs in the family. We usually discuss starting PSA blood-test screening around age 40. This is a shared decision: PSA screening has benefits and trade-offs, and we will go through them together.</p>
+    </div>
+    <ul class="checklist">
+      <li><span class="ic ic-yes"><i class="ti ti-check"></i></span><div class="body"><span class="h">PSA screening — consider annually from age 40</span><span class="tagmini tm-routine">Routine consideration</span><div class="meta">NCCN supports consideration of annual PSA from age 40 for truncating variants, within shared decision-making, particularly with a family history of prostate cancer.</div></div></li>
+      <li><span class="ic ic-opt"><i class="ti ti-adjustments"></i></span><div class="body"><span class="h">Baseline DRE and risk discussion</span><span class="tagmini tm-opt">Optional</span><div class="meta">Discuss aggressive-disease signal in some CHEK2 series; individualize interval and thresholds with urology where indicated.</div></div></li>
+      <li><span class="ic ic-no"><i class="ti ti-minus"></i></span><div class="body"><span class="h">Male breast imaging</span><span class="tagmini tm-no">Not routine</span><div class="meta">No established male breast cancer screening protocol. Teach symptom awareness and clinical exam.</div></div></li>
+    </ul>
+  </section>
+
+  <!-- 5 -->
+  <section id="en-5">
+    <h2 class="sec"><span class="secnum ui">5</span><span class="txt">Other organs and colorectal screening</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> For patients</p>
+      <p>Earlier guidelines suggested CHEK2 carriers needed extra colon screening. Newer and larger data did not confirm a meaningful extra colon cancer risk for most carriers. So unless colon cancer runs in your family, you follow the same colon screening as everyone else. Other organ links to CHEK2 are weak or unproven.</p>
+    </div>
+    <ul class="checklist">
+      <li><span class="ic ic-no"><i class="ti ti-minus"></i></span><div class="body"><span class="h">Colorectal — gene-based intensified screening</span><span class="tagmini tm-no">Not recommended</span><div class="meta">NCCN has revised CHEK2 guidance: no consistent CRC excess; follow general-population colorectal screening in the absence of family history. Personalize if there is a CRC family history.</div></div></li>
+      <li><span class="ic ic-no"><i class="ti ti-minus"></i></span><div class="body"><span class="h">Thyroid, kidney, other sites</span><span class="tagmini tm-no">Not recommended</span><div class="meta">Associations are weak, conflicting, or not actionable. No gene-specific surveillance.</div></div></li>
+      <li><span class="ic ic-opt"><i class="ti ti-adjustments"></i></span><div class="body"><span class="h">Family-history-driven additions</span><span class="tagmini tm-opt">Case-by-case</span><div class="meta">Where the pedigree shows a clustering at a specific site, individualize beyond the gene-based default.</div></div></li>
+    </ul>
+  </section>
+
+  <!-- 6 -->
+  <section id="en-6">
+    <h2 class="sec"><span class="secnum ui">6</span><span class="txt">Risk-reducing surgery</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> For patients</p>
+      <p>For most women with a CHEK2 variant, surgery to remove the breasts to prevent cancer is not routinely recommended. Because CHEK2 is a moderate-risk gene, careful screening is usually enough. Surgery can still be a reasonable personal choice for some women with a strong family history or a very high estimated risk. This is always a shared, unhurried decision.</p>
+    </div>
+    <p>There are no outcome data demonstrating a survival benefit of bilateral risk-reducing mastectomy (RRM) specifically for heterozygous <em>CHEK2</em> carriers. Most international guidelines, including NCCN, do not recommend routine RRM but support considering it within a personalized risk assessment and shared decision-making, weighted by family history and estimated lifetime risk. For a CHEK2 carrier already affected by breast cancer, evidence is insufficient to mandate contralateral risk-reducing mastectomy; manage based on family history and individual factors. There is no role for risk-reducing gynaecologic surgery on the basis of <em>CHEK2</em> alone. There is no hormonal contraindication specific to <em>CHEK2</em>.</p>
+  </section>
+
+  <!-- 7 -->
+  <section id="en-7">
+    <h2 class="sec"><span class="secnum ui">7</span><span class="txt">Medical prevention (chemoprevention)</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> For patients</p>
+      <p>Some women at higher breast cancer risk can take a daily medication that lowers that risk. These are anti-estrogen pills. They are an option to discuss, not something everyone needs. We weigh your risk against the possible side effects together.</p>
+    </div>
+    <p>Endocrine chemoprevention (a selective estrogen receptor modulator such as tamoxifen, or an aromatase inhibitor such as anastrozole or exemestane in postmenopausal women) can be discussed for female <em>CHEK2</em> carriers who meet a risk threshold for benefit, consistent with general moderate-to-high-risk breast cancer prevention guidance. Because CHEK2-associated breast cancer is predominantly ER-positive, endocrine prevention is biologically rational. Candidacy is driven by estimated risk (e.g. 5-year or lifetime risk thresholds), age, menopausal status, and contraindications (thromboembolic risk for SERMs; bone health for aromatase inhibitors), not by the <em>CHEK2</em> result alone.</p>
+    <div class="infobox">
+      <p class="ttl ui"><i class="ti ti-pill"></i> Canadian dosing context</p>
+      <p>Tamoxifen 20 mg once daily for 5 years is the usual chemopreventive regimen in premenopausal candidates. In postmenopausal candidates, an aromatase inhibitor (e.g. anastrozole 1 mg daily, or exemestane 25 mg daily) is an alternative where appropriate. Confirm current eligibility, baseline bone density for aromatase inhibitors, and thromboembolic risk for SERMs before initiation. There is no CHEK2-specific aspirin chemoprevention indication.</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section id="en-8">
+    <h2 class="sec"><span class="secnum ui">8</span><span class="txt">Genetic counselling and family testing</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> For patients</p>
+      <p>CHEK2 is passed down in families. Each of your children, brothers, sisters, and parents has a 1 in 2 chance of carrying the same variant. We can test your adult relatives so that those who carry it can start the right screening and those who do not can be reassured. This is called cascade testing. If you are planning a family, we can also talk through reproductive options.</p>
+    </div>
+    <p><em>CHEK2</em>-related cancer predisposition is autosomal dominant. First-degree relatives of a heterozygous carrier have a 50% chance of carrying the familial variant. Cascade (predictive) testing of at-risk adult relatives is offered once the familial variant is identified, allowing risk-appropriate surveillance for carriers and de-escalation to population screening for non-carriers. Counselling should cover the moderate, family-history-dependent nature of the risk to avoid overestimation.</p>
+    <p>For biallelic scenarios, reproductive counselling is relevant: all offspring of a biallelic carrier inherit at least one variant, and if the partner is also a carrier, offspring may be biallelic. Reproductive options (including prenatal diagnosis and preimplantation genetic testing) can be discussed where clinically appropriate, recognizing that <em>CHEK2</em> is a moderate-risk adult-onset predisposition and decisions are individual. A three-generation pedigree should anchor every assessment and is the primary input to risk modelling.</p>
+  </section>
+
+  <!-- 9 -->
+  <section id="en-9">
+    <h2 class="sec"><span class="secnum ui">9</span><span class="txt">Lifestyle and nutrition</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> For patients</p>
+      <p>Healthy habits lower breast cancer risk for everyone, and that includes CHEK2 carriers. The biggest levers are keeping alcohol low, staying physically active, keeping a healthy weight especially after menopause, and not smoking. These do not replace screening, but they help.</p>
+    </div>
+    <p>General breast cancer risk-reduction measures apply and may be especially worthwhile given a moderately elevated baseline. Evidence-supported measures include limiting alcohol (risk rises with intake), maintaining regular physical activity, avoiding excess weight gain and post-menopausal obesity, and not smoking. Where relevant, discuss the modest risk associated with combined menopausal hormone therapy in the context of an already elevated baseline. These measures are adjuncts to, not substitutes for, imaging surveillance.</p>
+  </section>
+
+  <!-- 10 -->
+  <section id="en-10">
+    <h2 class="sec"><span class="secnum ui">10</span><span class="txt">Emerging and investigational</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> For patients</p>
+      <p>Research is improving how we estimate your personal risk and how early we can catch cancer. Some of these tools are promising but not yet standard care. We will tell you clearly when something is established versus still being studied.</p>
+    </div>
+    <div class="emerging">
+      <p class="ttl ui"><i class="ti ti-flask"></i> Investigational — not standard of care</p>
+      <p><strong>Polygenic risk scores (PRS).</strong> Combining a <em>CHEK2</em> result with a breast cancer PRS can refine individual risk and may move a carrier across a screening threshold. Integration into models such as CanRisk is advancing but clinical implementation is still maturing.</p>
+      <p><strong>MRI start-age optimization.</strong> Modelling suggests beginning breast MRI at 30–35 may substantially reduce mortality in CHEK2 heterozygotes, but the optimal start age is not settled across jurisdictions and remains an area of active study.</p>
+      <p><strong>Whole-body MRI and multi-cancer early detection (MCED) blood tests.</strong> These are under investigation for hereditary-risk populations. They are not validated for routine CHEK2 surveillance and should be framed as research or self-directed, not guideline-endorsed.</p>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section id="en-11">
+    <h2 class="sec"><span class="secnum ui">11</span><span class="txt">Summary of recommendations</span></h2>
+    <h4>Screening by variant class</h4>
+    <div class="cardgrid">
+      <div class="card">
+        <h4>Truncating variant — female</h4>
+        <ul>
+          <li>Annual mammography from age 40</li>
+          <li>Annual breast MRI — consider from 30–40, risk-model driven</li>
+          <li>Breast awareness + clinical exam</li>
+          <li>Start age advanced by family history</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Biallelic / homozygous — female</h4>
+        <ul>
+          <li>Intensified, earlier imaging</li>
+          <li>MRI + mammography, individualized younger start</li>
+          <li>Manage as high-risk program</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Low-penetrance variant (I157T, S428F, T476M)</h4>
+        <ul>
+          <li>Individualize on family history</li>
+          <li>Often defaults to population screening</li>
+          <li>Not a basis for high-risk imaging alone</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Male carriers</h4>
+        <ul>
+          <li>Consider annual PSA from age 40 (truncating)</li>
+          <li>Shared decision-making, weighted by family history</li>
+          <li>Symptom awareness for male breast</li>
+        </ul>
+      </div>
+    </div>
+    <h4>Cross-cutting recommendations</h4>
+    <div class="cardgrid">
+      <div class="card">
+        <h4>Risk assessment</h4>
+        <ul>
+          <li>Use CanRisk / BOADICEA with family history</li>
+          <li>Re-estimate as family history evolves</li>
+          <li>Distinguish higher- vs lower-penetrance variants first</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Surgery &amp; prevention</h4>
+        <ul>
+          <li>RRM not routine; consider if high modelled risk</li>
+          <li>Endocrine chemoprevention by risk threshold</li>
+          <li>No CHEK2-specific aspirin indication</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Colorectal &amp; other sites</h4>
+        <ul>
+          <li>Population colorectal screening absent family history</li>
+          <li>No gene-based thyroid/kidney surveillance</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Family &amp; lifestyle</h4>
+        <ul>
+          <li>Cascade testing for first-degree relatives</li>
+          <li>Limit alcohol, stay active, avoid weight gain, no smoking</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section id="en-12">
+    <h2 class="sec"><span class="secnum ui">12</span><span class="txt">References</span></h2>
+    <ol class="refs">
+      <li>Hanson H, Pal T, Tischkowitz M, Stewart D. CHEK2-Related Cancer Predisposition. In: GeneReviews® [Internet]. Seattle: University of Washington; initial posting 2025, last revision March 25, 2026.</li>
+      <li>National Comprehensive Cancer Network. Genetic/Familial High-Risk Assessment: Breast, Ovarian, Pancreatic, and Prostate. NCCN Clinical Practice Guidelines in Oncology, Version 1.2026.</li>
+      <li>Hanson H, Astiazaran-Symonds E, Amendola LM, et al. Management of individuals with germline pathogenic/likely pathogenic variants in CHEK2: A clinical practice resource of the ACMG. Genet Med. 2023;25(9):100870.</li>
+      <li>Näslund-Koch C, Nordestgaard BG, Bojesen SE. Increased risk for other cancers in addition to breast cancer for CHEK2*1100delC heterozygotes estimated from the Copenhagen General Population Study. J Clin Oncol. 2016;34(11):1208–1216.</li>
+      <li>Cybulski C, Wokołorczyk D, Jakubowska A, et al. Risk of breast cancer in women with a CHEK2 mutation with and without a family history of breast cancer. J Clin Oncol. 2011;29(28):3747–3752.</li>
+      <li>Cybulski C, Górski B, Huzarski T, et al. CHEK2 is a multiorgan cancer susceptibility gene. Am J Hum Genet. 2004;75(6):1131–1135.</li>
+      <li>Adank MA, Hes FJ, van Zelst-Stams WA, et al. Cancer risks in first-degree relatives of CHEK2 mutation carriers: effects of mutation type and cancer site in proband. Br J Cancer. 2013;108(1):223–227.</li>
+      <li>Boddicker NJ, Hu C, Weitzel JN, et al. Population-based estimates of the age-specific cumulative risk of breast cancer for pathogenic variants in CHEK2: findings from the Australian Breast Cancer Family Registry / CARRIERS. (representative penetrance estimate, ~33% to age 80).</li>
+      <li>Rainville I, Hatcher S, Rosenthal E, et al. High risk of breast cancer in women with biallelic pathogenic variants in CHEK2. Breast Cancer Res Treat. 2020;180(2):503–509.</li>
+      <li>Bychkovsky BL, Agaoglu NB, Horton C, et al. Differences in cancer phenotypes among frequent CHEK2 variants. JAMA Oncol. 2022;8(11):1598–1606.</li>
+      <li>Lowry KP, Geuzinge HA, Stout NK, et al. Breast cancer screening strategies for women with pathogenic variants in moderate-penetrance genes including CHEK2: a comparative modeling analysis. JAMA Oncol. 2022;8(4):587–596.</li>
+      <li>Spurdle AB, Greville-Heygate S, Antoniou AC, et al. Standardized reporting of germline cancer susceptibility variants (ENIGMA). Hum Mutat. 2019;40(9):1576–1584.</li>
+      <li>Schaeffer EM, Srinivas S, Adra N, et al. NCCN Clinical Practice Guidelines in Oncology: Prostate Cancer (early detection / CHEK2 PSA consideration). NCCN, 2025–2026.</li>
+    </ol>
+  </section>
+
+  <footer class="footer">
+    <p><strong>Disclaimer.</strong> This protocol is intended to support, not replace, individual clinical judgment and shared decision-making. Cancer genetics guidelines evolve frequently; surveillance start ages, intervals, and risk estimates change as new evidence emerges. Verify all recommendations against the current versions of NCCN, GeneReviews, and ACMG resources before clinical application. Risk figures are population-level approximations; individual risk should be estimated with a validated family-history model. Prepared by Dr. Andrew Shuen, Cancer Prevention Centre, Jewish General Hospital, Montreal.</p>
+  </footer>
+
+</div>
+
+<!-- ============================ FRANÇAIS ============================ -->
+<div class="lang-fr" id="lang-fr">
+
+  <header class="masthead">
+    <p class="eyebrow">Protocole de prévention et de surveillance du cancer</p>
+    <h1>Prédisposition au cancer liée à CHEK2</h1>
+    <p class="standfirst">Un protocole de prévention et de surveillance pour les personnes porteuses d'un variant pathogène de <em>CHEK2</em>, et pour les cliniciens qui les suivent. CHEK2 est un gène à risque modéré. Votre plan personnel dépend beaucoup de vos antécédents familiaux.</p>
+
+    <div class="authorpanel">
+      <p class="who"><strong>Dr Andrew Shuen, MD PhD FRCPC DABMGG</strong> <span>— Génétique du cancer, Centre de prévention du cancer, Hôpital général juif (HGJ), Montréal</span></p>
+    </div>
+
+    <div class="metachips ui">
+      <span class="chip"><i class="ti ti-dna-2"></i> Gène : CHEK2</span>
+      <span class="chip"><i class="ti ti-categories"></i> Pénétrance modérée</span>
+      <span class="chip"><i class="ti ti-clipboard-check"></i> Aligné sur NCCN v1.2026</span>
+      <span class="chip"><i class="ti ti-calendar"></i> Révision annuelle</span>
+    </div>
+
+    <div class="legend ui">
+      <span class="lg"><span class="swatch sw-patient"></span> Résumé en langage simple pour les patients</span>
+      <span class="lg"><span class="swatch sw-clin"></span> Détails cliniques pour les professionnels</span>
+      <span class="lg"><span class="pill pill-high">Élevé</span> <span class="pill pill-mod">Modéré</span> <span class="pill pill-low">Faible / standard</span></span>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <h2 class="ui">Sommaire</h2>
+    <ol>
+      <li><a href="#fr-1">Comprendre CHEK2</a></li>
+      <li><a href="#fr-2">Risques à vie selon le type de variant</a></li>
+      <li><a href="#fr-3">Surveillance mammaire (femmes)</a></li>
+      <li><a href="#fr-4">Surveillance prostatique (hommes)</a></li>
+      <li><a href="#fr-5">Autres organes et côlon</a></li>
+      <li><a href="#fr-6">Chirurgie de réduction du risque</a></li>
+      <li><a href="#fr-7">Prévention médicale</a></li>
+      <li><a href="#fr-8">Conseil génétique et tests familiaux</a></li>
+      <li><a href="#fr-9">Mode de vie et nutrition</a></li>
+      <li><a href="#fr-10">Émergent et expérimental</a></li>
+      <li><a href="#fr-11">Résumé des recommandations</a></li>
+      <li><a href="#fr-12">Références</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="fr-1">
+    <h2 class="sec"><span class="secnum ui">1</span><span class="txt">Comprendre CHEK2</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> Pour les patients</p>
+      <p>CHEK2 est un gène qui aide vos cellules à réparer l'ADN endommagé et à empêcher le cancer de se former. Quand une copie de ce gène ne fonctionne pas, ce système de réparation est un peu plus faible. Cela augmente votre risque de certains cancers, surtout le cancer du sein chez la femme et, dans une moindre mesure, le cancer de la prostate chez l'homme.</p>
+      <p>CHEK2 est un gène à risque modéré, pas à risque élevé. C'est une différence importante. Beaucoup de personnes porteuses d'un variant CHEK2 ne développent jamais de cancer. Votre risque réel dépend beaucoup de vos antécédents familiaux. Plus vous avez de proches parents ayant eu un cancer du sein ou de la prostate, plus votre propre risque est élevé, et plus votre plan de dépistage doit être attentif.</p>
+      <p>Le plan ci-dessous est un point de départ. Nous l'adaptons à vous avec vos antécédents familiaux et un calculateur de risque personnel.</p>
+    </div>
+
+    <p><em>CHEK2</em> (checkpoint kinase 2) code une sérine/thréonine kinase activée par ATM en réponse aux cassures double brin de l'ADN. Une fois activée, CHEK2 phosphoryle des cibles en aval, dont p53, BRCA1 et CDC25, coordonnant l'arrêt du cycle cellulaire, la réparation de l'ADN et l'apoptose. Les variants avec perte de fonction altèrent ce point de contrôle, permettant la propagation de cellules porteuses de dommages à l'ADN non réparés.</p>
+
+    <p>La prédisposition au cancer liée à <em>CHEK2</em> se transmet de façon autosomique dominante, mais la pénétrance est intermédiaire. Un schéma vertical classique n'est souvent <strong>pas</strong> observé, car de nombreux porteurs restent indemnes. Le risque de cancer se comporte comme une variable continue fortement modifiée par les antécédents familiaux, le fond polygénique, la densité mammaire, les facteurs hormonaux et reproductifs, ainsi que le variant précis. L'association clinique dominante est le cancer du sein ER-positif chez la femme. L'association avec le cancer de la prostate est plus modeste, surtout pour les variants tronquants. Les associations avec d'autres sites sont plus faibles, contradictoires, ou ont été revues à la baisse.</p>
+
+    <h4>Les classes de variants comptent</h4>
+    <p>Tous les variants de <em>CHEK2</em> ne confèrent pas le même risque. Le variant le plus étudié est le variant tronquant <em>c.1100delC</em>. Trois variants historiquement rapportés comme pathogènes — <em>c.470T&gt;C (p.Ile157Thr)</em>, <em>c.1283C&gt;T (p.Ser428Phe)</em> et <em>c.1427C&gt;T (p.Thr476Met)</em> — sont maintenant considérés comme de plus faible pénétrance et, isolément, ne sont pas associés à un risque cliniquement exploitable à eux seuls. Les recommandations de déclaration ENIGMA suggèrent de ne rapporter cliniquement que les variants conférant un risque d'au moins le double. Distinguer les variants de plus forte pénétrance (tronquants) de ceux de plus faible pénétrance est la première étape pour bâtir un plan de surveillance.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="fr-2">
+    <h2 class="sec"><span class="secnum ui">2</span><span class="txt">Risques à vie selon le type de variant</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> Pour les patients</p>
+      <p>Les chiffres ci-dessous sont des fourchettes, pas une prédiction fixe. Ils montrent que les antécédents familiaux changent beaucoup votre risque. Une femme porteuse d'un variant CHEK2 sans parent atteint a un risque de cancer du sein bien plus faible qu'une femme avec plusieurs proches atteints. Nous utilisons un calculateur appelé CanRisk pour traduire votre arbre familial en un chiffre personnel.</p>
+    </div>
+
+    <p>Les estimations de pénétrance publiées varient largement en raison des différences de conception d'étude, de mode de recrutement et de mélange de variants. Les chiffres ci-dessous doivent être lus comme des approximations à l'échelle populationnelle. Pour le conseil individuel, j'utilise un modèle de risque validé (CanRisk / BOADICEA) qui intègre le résultat <em>CHEK2</em> aux antécédents familiaux, à la densité mammaire et aux facteurs reproductifs.</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Risque approximatif de cancer à vie / cumulé selon la classe de variant et les modificateurs. Le risque à vie de cancer du sein dans la population générale féminine est d'environ 12–13 %.</caption>
+        <thead>
+          <tr><th>Cancer / contexte</th><th>Risque approximatif</th><th>Niveau</th><th>Base</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Sein (femme) — variant tronquant, fourchette des études</td><td>~20–40 % à vie (≈2–3× la population ; jusqu'à ~33 % à 80 ans dans les données populationnelles)</td><td><span class="pill pill-mod">Modéré</span></td><td>BCAC ; BCFR australien ; méta-analyses</td></tr>
+          <tr><td>Sein (femme) — aucun parent du 1er degré atteint</td><td>~20 % à vie ; peut approcher la fourchette populationnelle</td><td><span class="pill pill-mod">Modéré</span></td><td>Cohorte fondatrice polonaise</td></tr>
+          <tr><td>Sein (femme) — un parent du 1er degré atteint</td><td>~28–34 % à vie</td><td><span class="pill pill-mod">Modéré</span></td><td>Cohorte fondatrice polonaise</td></tr>
+          <tr><td>Sein (femme) — antécédents familiaux marqués (plusieurs parents)</td><td>jusqu'à ~44 % à vie</td><td><span class="pill pill-high">Élevé</span></td><td>Cohorte fondatrice polonaise</td></tr>
+          <tr><td>Sein (femme) — porteuses bialléliques / homozygotes</td><td>Nettement plus élevé que monoallélique ; survenue plus précoce ; plus de tumeurs primitives multiples</td><td><span class="pill pill-high">Élevé</span></td><td>Rainville 2020 (cohorte Myriad)</td></tr>
+          <tr><td>Sein (femme) — variants de faible pénétrance (I157T, S428F, T476M) isolés</td><td>Proche de la population à légèrement élevé</td><td><span class="pill pill-low">Faible / standard</span></td><td>Bychkovsky 2022 ; Hernandez 2024</td></tr>
+          <tr><td>Prostate (variants tronquants, surtout avec antécédents familiaux)</td><td>Modérément élevé ; signal de maladie agressive dans certaines séries</td><td><span class="pill pill-mod">Modéré</span></td><td>NCCN ; méta-analyse prostate</td></tr>
+          <tr><td>Sein (homme)</td><td>Plus élevé que la base mais risque absolu faible</td><td><span class="pill pill-low">Faible / standard</span></td><td>Résumé clinique Myriad</td></tr>
+          <tr><td>Côlon-rectum</td><td>Pas d'excès constant dans les données récentes ; NCCN recommande le dépistage populationnel en l'absence d'antécédents familiaux</td><td><span class="pill pill-low">Faible / standard</span></td><td>Révision NCCN ; cohorte rétrospective</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <p class="ttl ui"><i class="ti ti-alert-triangle"></i> Qualité de la preuve</p>
+      <p>Le risque de cancer du sein est l'association la mieux établie et exploitable selon les guides. Le risque prostatique est soutenu mais la prise en charge relève surtout d'une décision partagée. L'association colorectale a été revue à la baisse et ne justifie plus un dépistage intensifié en l'absence d'antécédents familiaux. Interprétez avec prudence les estimations à vie sous forme d'un chiffre unique ; la modélisation ajustée aux antécédents familiaux est préférable.</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="fr-3">
+    <h2 class="sec"><span class="secnum ui">3</span><span class="txt">Surveillance mammaire (femmes porteuses)</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> Pour les patients</p>
+      <p>Le cancer du sein est ce que nous surveillons en priorité. Pour la plupart des femmes porteuses d'un variant CHEK2, cela signifie une mammographie annuelle dès 40 ans, et souvent une IRM mammaire annuelle aussi. L'IRM mammaire détecte les cancers plus tôt, surtout dans les seins denses. Nous décidons ensemble quand ajouter l'IRM et quand commencer, selon votre chiffre de risque et vos antécédents familiaux.</p>
+      <p>Si votre risque à vie estimé est élevé, nous pouvons commencer l'imagerie plus tôt. Si vous portez l'un des variants à plus faible risque sans antécédents familiaux marqués, votre plan peut ressembler davantage au dépistage standard.</p>
+    </div>
+
+    <div class="genehdr">
+      <span class="gname">CHEK2 — variant de plus forte pénétrance (tronquant)</span>
+      <span class="pill pill-mod">Risque mammaire modéré</span>
+    </div>
+    <ul class="checklist">
+      <li><span class="ic ic-yes"><i class="ti ti-check"></i></span><div class="body"><span class="h">Sensibilisation mammaire et examen clinique</span><span class="tagmini tm-routine">Systématique</span><div class="meta">Éduquer à la connaissance de ses seins ; examen clinique mammaire périodique.</div></div></li>
+      <li><span class="ic ic-yes"><i class="ti ti-check"></i></span><div class="body"><span class="h">Mammographie annuelle dès 40 ans</span><span class="tagmini tm-routine">Systématique</span><div class="meta">Avec tomosynthèse si disponible. Commencer plus tôt si les antécédents familiaux l'imposent (p. ex. ~10 ans avant le cas le plus jeune dans la famille).</div></div></li>
+      <li><span class="ic ic-yes"><i class="ti ti-check"></i></span><div class="body"><span class="h">IRM mammaire annuelle avec contraste — à envisager dès 30–40 ans</span><span class="tagmini tm-routine">Systématique / individualisé</span><div class="meta">NCCN soutient l'envisager dès 40 ans ; la modélisation suggère que commencer à 30–35 ans pourrait réduire la mortalité de &gt;55 %. La pratique varie selon les régions. Utiliser le risque à vie estimé pour fixer l'âge de départ.</div></div></li>
+      <li><span class="ic ic-opt"><i class="ti ti-adjustments"></i></span><div class="body"><span class="h">Âge de départ guidé par le modèle de risque</span><span class="tagmini tm-opt">Approche recommandée</span><div class="meta">Risque à vie estimé par CanRisk ≥20–30 % → mammographie annuelle 40–50 ; ≥30 % → IRM ± mammographie dès ~35 ; ≥50 % → imagerie individualisée dès ~25.</div></div></li>
+    </ul>
+
+    <div class="genehdr">
+      <span class="gname">CHEK2 — porteuse biallélique / homozygote</span>
+      <span class="pill pill-high">Risque mammaire élevé</span>
+    </div>
+    <ul class="checklist">
+      <li><span class="ic ic-yes"><i class="ti ti-check"></i></span><div class="body"><span class="h">Surveillance intensifiée et plus précoce</span><span class="tagmini tm-routine">Systématique</span><div class="meta">Risque plus élevé et davantage de tumeurs primitives multiples que chez les porteuses monoalléliques. Envisager IRM + mammographie à un âge plus jeune, individualisé. Gérer comme un programme à risque élevé.</div></div></li>
+    </ul>
+
+    <div class="genehdr">
+      <span class="gname">CHEK2 — variant de faible pénétrance (I157T, S428F, T476M) isolé</span>
+      <span class="pill pill-low">Proche du standard</span>
+    </div>
+    <ul class="checklist">
+      <li><span class="ic ic-opt"><i class="ti ti-adjustments"></i></span><div class="body"><span class="h">Individualiser selon les antécédents familiaux</span><span class="tagmini tm-opt">Individualisé</span><div class="meta">Isolés, ces variants ne justifient pas une imagerie à risque élevé. Adapter le dépistage aux antécédents familiaux et autres facteurs ; peut revenir au dépistage populationnel.</div></div></li>
+    </ul>
+  </section>
+
+  <!-- 4 -->
+  <section id="fr-4">
+    <h2 class="sec"><span class="secnum ui">4</span><span class="txt">Surveillance prostatique (hommes porteurs)</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> Pour les patients</p>
+      <p>Les hommes porteurs d'un variant CHEK2 ont un risque un peu plus élevé de cancer de la prostate, surtout avec les variants tronquants et surtout si ce cancer est présent dans la famille. Nous discutons habituellement de commencer le dépistage par dosage de l'APS (PSA) vers 40 ans. C'est une décision partagée : le dépistage par APS a des avantages et des compromis, que nous reverrons ensemble.</p>
+    </div>
+    <ul class="checklist">
+      <li><span class="ic ic-yes"><i class="ti ti-check"></i></span><div class="body"><span class="h">Dépistage par APS — à envisager annuellement dès 40 ans</span><span class="tagmini tm-routine">À envisager systématiquement</span><div class="meta">NCCN soutient l'envisager dès 40 ans pour les variants tronquants, dans le cadre d'une décision partagée, surtout avec des antécédents familiaux de cancer de la prostate.</div></div></li>
+      <li><span class="ic ic-opt"><i class="ti ti-adjustments"></i></span><div class="body"><span class="h">Toucher rectal de référence et discussion du risque</span><span class="tagmini tm-opt">Optionnel</span><div class="meta">Discuter du signal de maladie agressive dans certaines séries CHEK2 ; individualiser l'intervalle et les seuils avec l'urologie au besoin.</div></div></li>
+      <li><span class="ic ic-no"><i class="ti ti-minus"></i></span><div class="body"><span class="h">Imagerie mammaire chez l'homme</span><span class="tagmini tm-no">Non systématique</span><div class="meta">Aucun protocole établi de dépistage du cancer du sein chez l'homme. Enseigner la connaissance des symptômes et l'examen clinique.</div></div></li>
+    </ul>
+  </section>
+
+  <!-- 5 -->
+  <section id="fr-5">
+    <h2 class="sec"><span class="secnum ui">5</span><span class="txt">Autres organes et dépistage colorectal</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> Pour les patients</p>
+      <p>D'anciennes recommandations suggéraient que les porteurs de CHEK2 avaient besoin d'un dépistage du côlon supplémentaire. Des données plus récentes et plus larges n'ont pas confirmé de risque significatif supplémentaire de cancer du côlon pour la plupart des porteurs. Donc, sauf si le cancer du côlon est présent dans votre famille, vous suivez le même dépistage du côlon que tout le monde. Les liens entre CHEK2 et d'autres organes sont faibles ou non prouvés.</p>
+    </div>
+    <ul class="checklist">
+      <li><span class="ic ic-no"><i class="ti ti-minus"></i></span><div class="body"><span class="h">Côlon-rectum — dépistage intensifié fondé sur le gène</span><span class="tagmini tm-no">Non recommandé</span><div class="meta">NCCN a révisé ses recommandations CHEK2 : pas d'excès constant de cancer colorectal ; suivre le dépistage populationnel en l'absence d'antécédents familiaux. Personnaliser s'il y a des antécédents familiaux de cancer colorectal.</div></div></li>
+      <li><span class="ic ic-no"><i class="ti ti-minus"></i></span><div class="body"><span class="h">Thyroïde, rein, autres sites</span><span class="tagmini tm-no">Non recommandé</span><div class="meta">Les associations sont faibles, contradictoires ou non exploitables. Aucune surveillance spécifique au gène.</div></div></li>
+      <li><span class="ic ic-opt"><i class="ti ti-adjustments"></i></span><div class="body"><span class="h">Ajouts guidés par les antécédents familiaux</span><span class="tagmini tm-opt">Au cas par cas</span><div class="meta">Lorsque l'arbre familial montre un regroupement à un site précis, individualiser au-delà de la conduite fondée sur le gène.</div></div></li>
+    </ul>
+  </section>
+
+  <!-- 6 -->
+  <section id="fr-6">
+    <h2 class="sec"><span class="secnum ui">6</span><span class="txt">Chirurgie de réduction du risque</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> Pour les patients</p>
+      <p>Pour la plupart des femmes porteuses d'un variant CHEK2, une chirurgie pour retirer les seins afin de prévenir le cancer n'est pas recommandée de routine. Comme CHEK2 est un gène à risque modéré, une surveillance attentive suffit généralement. La chirurgie peut tout de même être un choix personnel raisonnable pour certaines femmes ayant des antécédents familiaux marqués ou un risque estimé très élevé. C'est toujours une décision partagée, prise sans précipitation.</p>
+    </div>
+    <p>Il n'existe pas de données de résultats démontrant un bénéfice de survie de la mastectomie bilatérale de réduction du risque (MRR) spécifiquement pour les porteuses hétérozygotes de <em>CHEK2</em>. La plupart des guides internationaux, dont NCCN, ne recommandent pas la MRR de routine mais soutiennent de l'envisager dans le cadre d'une évaluation personnalisée du risque et d'une décision partagée, pondérée par les antécédents familiaux et le risque à vie estimé. Pour une porteuse de CHEK2 déjà atteinte d'un cancer du sein, la preuve est insuffisante pour imposer une mastectomie controlatérale de réduction du risque ; gérer selon les antécédents familiaux et les facteurs individuels. Il n'y a pas d'indication de chirurgie gynécologique de réduction du risque sur la seule base de <em>CHEK2</em>. Il n'y a pas de contre-indication hormonale spécifique à <em>CHEK2</em>.</p>
+  </section>
+
+  <!-- 7 -->
+  <section id="fr-7">
+    <h2 class="sec"><span class="secnum ui">7</span><span class="txt">Prévention médicale (chimioprévention)</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> Pour les patients</p>
+      <p>Certaines femmes à risque plus élevé de cancer du sein peuvent prendre un médicament quotidien qui réduit ce risque. Ce sont des comprimés anti-œstrogènes. C'est une option à discuter, pas une nécessité pour tout le monde. Nous pesons ensemble votre risque face aux effets secondaires possibles.</p>
+    </div>
+    <p>La chimioprévention endocrine (un modulateur sélectif des récepteurs des œstrogènes comme le tamoxifène, ou un inhibiteur de l'aromatase comme l'anastrozole ou l'exémestane chez les femmes ménopausées) peut être discutée pour les porteuses de <em>CHEK2</em> qui atteignent un seuil de risque justifiant un bénéfice, conformément aux recommandations générales de prévention du cancer du sein à risque modéré à élevé. Comme le cancer du sein associé à CHEK2 est majoritairement ER-positif, la prévention endocrine est biologiquement rationnelle. L'admissibilité est déterminée par le risque estimé (p. ex. seuils de risque à 5 ans ou à vie), l'âge, le statut ménopausique et les contre-indications (risque thromboembolique pour les SERM ; santé osseuse pour les inhibiteurs de l'aromatase), et non par le seul résultat <em>CHEK2</em>.</p>
+    <div class="infobox">
+      <p class="ttl ui"><i class="ti ti-pill"></i> Contexte posologique canadien</p>
+      <p>Le tamoxifène 20 mg une fois par jour pendant 5 ans est le schéma chimiopréventif habituel chez les candidates préménopausées. Chez les candidates ménopausées, un inhibiteur de l'aromatase (p. ex. anastrozole 1 mg par jour, ou exémestane 25 mg par jour) est une option lorsque cela convient. Confirmer l'admissibilité actuelle, la densité osseuse de référence pour les inhibiteurs de l'aromatase, et le risque thromboembolique pour les SERM avant l'instauration. Il n'y a pas d'indication de chimioprévention par l'aspirine spécifique à CHEK2.</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section id="fr-8">
+    <h2 class="sec"><span class="secnum ui">8</span><span class="txt">Conseil génétique et tests familiaux</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> Pour les patients</p>
+      <p>CHEK2 se transmet dans les familles. Chacun de vos enfants, frères, sœurs et parents a 1 chance sur 2 de porter le même variant. Nous pouvons tester vos proches adultes pour que ceux qui le portent commencent le bon dépistage et que ceux qui ne le portent pas soient rassurés. C'est ce qu'on appelle le test en cascade. Si vous planifiez une famille, nous pouvons aussi discuter des options reproductives.</p>
+    </div>
+    <p>La prédisposition au cancer liée à <em>CHEK2</em> est autosomique dominante. Les parents du premier degré d'une porteuse hétérozygote ont 50 % de chances de porter le variant familial. Le test en cascade (prédictif) des proches adultes à risque est offert une fois le variant familial identifié, permettant une surveillance adaptée au risque pour les porteurs et un retour au dépistage populationnel pour les non-porteurs. Le conseil doit souligner le caractère modéré et dépendant des antécédents familiaux du risque, afin d'éviter une surestimation.</p>
+    <p>Pour les situations bialléliques, le conseil reproductif est pertinent : tous les enfants d'un porteur biallélique héritent d'au moins un variant, et si le partenaire est aussi porteur, les enfants peuvent être bialléliques. Les options reproductives (dont le diagnostic prénatal et le test génétique préimplantatoire) peuvent être discutées lorsque cela est cliniquement approprié, en reconnaissant que <em>CHEK2</em> est une prédisposition à risque modéré et à survenue adulte, et que les décisions sont individuelles. Un arbre généalogique sur trois générations doit ancrer chaque évaluation et constitue la principale donnée d'entrée de la modélisation du risque.</p>
+  </section>
+
+  <!-- 9 -->
+  <section id="fr-9">
+    <h2 class="sec"><span class="secnum ui">9</span><span class="txt">Mode de vie et nutrition</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> Pour les patients</p>
+      <p>De saines habitudes réduisent le risque de cancer du sein pour tout le monde, y compris les porteurs de CHEK2. Les leviers les plus importants sont de limiter l'alcool, de rester actif physiquement, de maintenir un poids santé surtout après la ménopause, et de ne pas fumer. Cela ne remplace pas le dépistage, mais cela aide.</p>
+    </div>
+    <p>Les mesures générales de réduction du risque de cancer du sein s'appliquent et peuvent être particulièrement utiles compte tenu d'un risque de base modérément élevé. Les mesures appuyées par les données incluent limiter l'alcool (le risque augmente avec la consommation), maintenir une activité physique régulière, éviter une prise de poids excessive et l'obésité postménopausique, et ne pas fumer. Le cas échéant, discuter du risque modeste associé à l'hormonothérapie ménopausique combinée dans le contexte d'un risque de base déjà élevé. Ces mesures sont des compléments, et non des substituts, à la surveillance par imagerie.</p>
+  </section>
+
+  <!-- 10 -->
+  <section id="fr-10">
+    <h2 class="sec"><span class="secnum ui">10</span><span class="txt">Émergent et expérimental</span></h2>
+    <div class="patient">
+      <p class="tag ui"><i class="ti ti-user-heart"></i> Pour les patients</p>
+      <p>La recherche améliore notre façon d'estimer votre risque personnel et la précocité avec laquelle nous pouvons détecter un cancer. Certains de ces outils sont prometteurs mais ne font pas encore partie des soins standards. Nous vous dirons clairement ce qui est établi et ce qui est encore à l'étude.</p>
+    </div>
+    <div class="emerging">
+      <p class="ttl ui"><i class="ti ti-flask"></i> Expérimental — ne fait pas partie des soins standards</p>
+      <p><strong>Scores de risque polygénique (PRS).</strong> Combiner un résultat <em>CHEK2</em> à un PRS du cancer du sein peut affiner le risque individuel et peut faire franchir à une porteuse un seuil de dépistage. L'intégration dans des modèles comme CanRisk progresse, mais la mise en œuvre clinique est encore en cours de maturation.</p>
+      <p><strong>Optimisation de l'âge de départ de l'IRM.</strong> La modélisation suggère que commencer l'IRM mammaire à 30–35 ans pourrait réduire substantiellement la mortalité chez les porteuses hétérozygotes de CHEK2, mais l'âge de départ optimal n'est pas arrêté d'une juridiction à l'autre et reste un domaine d'étude actif.</p>
+      <p><strong>IRM corps entier et tests sanguins de détection précoce multicancers (MCED).</strong> Ils sont à l'étude pour les populations à risque héréditaire. Ils ne sont pas validés pour la surveillance de routine de CHEK2 et doivent être présentés comme relevant de la recherche ou d'une démarche personnelle, et non comme recommandés par les guides.</p>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section id="fr-11">
+    <h2 class="sec"><span class="secnum ui">11</span><span class="txt">Résumé des recommandations</span></h2>
+    <h4>Dépistage par classe de variant</h4>
+    <div class="cardgrid">
+      <div class="card">
+        <h4>Variant tronquant — femme</h4>
+        <ul>
+          <li>Mammographie annuelle dès 40 ans</li>
+          <li>IRM mammaire annuelle — envisager dès 30–40 ans, guidée par le modèle</li>
+          <li>Sensibilisation mammaire + examen clinique</li>
+          <li>Âge de départ avancé selon les antécédents familiaux</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Biallélique / homozygote — femme</h4>
+        <ul>
+          <li>Imagerie intensifiée et plus précoce</li>
+          <li>IRM + mammographie, départ individualisé plus jeune</li>
+          <li>Gérer comme un programme à risque élevé</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Variant de faible pénétrance (I157T, S428F, T476M)</h4>
+        <ul>
+          <li>Individualiser selon les antécédents familiaux</li>
+          <li>Revient souvent au dépistage populationnel</li>
+          <li>Ne justifie pas seul une imagerie à risque élevé</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Hommes porteurs</h4>
+        <ul>
+          <li>Envisager l'APS annuel dès 40 ans (tronquant)</li>
+          <li>Décision partagée, pondérée par les antécédents familiaux</li>
+          <li>Connaissance des symptômes pour le sein masculin</li>
+        </ul>
+      </div>
+    </div>
+    <h4>Recommandations transversales</h4>
+    <div class="cardgrid">
+      <div class="card">
+        <h4>Évaluation du risque</h4>
+        <ul>
+          <li>Utiliser CanRisk / BOADICEA avec les antécédents familiaux</li>
+          <li>Réestimer à mesure que les antécédents évoluent</li>
+          <li>Distinguer d'abord variants de forte vs faible pénétrance</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Chirurgie et prévention</h4>
+        <ul>
+          <li>MRR non systématique ; envisager si risque modélisé élevé</li>
+          <li>Chimioprévention endocrine selon le seuil de risque</li>
+          <li>Pas d'indication d'aspirine spécifique à CHEK2</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Côlon et autres sites</h4>
+        <ul>
+          <li>Dépistage colorectal populationnel sans antécédents familiaux</li>
+          <li>Pas de surveillance thyroïde/rein fondée sur le gène</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Famille et mode de vie</h4>
+        <ul>
+          <li>Test en cascade pour les parents du 1er degré</li>
+          <li>Limiter l'alcool, rester actif, éviter la prise de poids, ne pas fumer</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section id="fr-12">
+    <h2 class="sec"><span class="secnum ui">12</span><span class="txt">Références</span></h2>
+    <ol class="refs">
+      <li>Hanson H, Pal T, Tischkowitz M, Stewart D. CHEK2-Related Cancer Predisposition. In: GeneReviews® [Internet]. Seattle: University of Washington; initial posting 2025, last revision March 25, 2026.</li>
+      <li>National Comprehensive Cancer Network. Genetic/Familial High-Risk Assessment: Breast, Ovarian, Pancreatic, and Prostate. NCCN Clinical Practice Guidelines in Oncology, Version 1.2026.</li>
+      <li>Hanson H, Astiazaran-Symonds E, Amendola LM, et al. Management of individuals with germline pathogenic/likely pathogenic variants in CHEK2: A clinical practice resource of the ACMG. Genet Med. 2023;25(9):100870.</li>
+      <li>Näslund-Koch C, Nordestgaard BG, Bojesen SE. Increased risk for other cancers in addition to breast cancer for CHEK2*1100delC heterozygotes estimated from the Copenhagen General Population Study. J Clin Oncol. 2016;34(11):1208–1216.</li>
+      <li>Cybulski C, Wokołorczyk D, Jakubowska A, et al. Risk of breast cancer in women with a CHEK2 mutation with and without a family history of breast cancer. J Clin Oncol. 2011;29(28):3747–3752.</li>
+      <li>Cybulski C, Górski B, Huzarski T, et al. CHEK2 is a multiorgan cancer susceptibility gene. Am J Hum Genet. 2004;75(6):1131–1135.</li>
+      <li>Adank MA, Hes FJ, van Zelst-Stams WA, et al. Cancer risks in first-degree relatives of CHEK2 mutation carriers: effects of mutation type and cancer site in proband. Br J Cancer. 2013;108(1):223–227.</li>
+      <li>Boddicker NJ, Hu C, Weitzel JN, et al. Population-based estimates of the age-specific cumulative risk of breast cancer for pathogenic variants in CHEK2: findings from the Australian Breast Cancer Family Registry / CARRIERS. (representative penetrance estimate, ~33% to age 80).</li>
+      <li>Rainville I, Hatcher S, Rosenthal E, et al. High risk of breast cancer in women with biallelic pathogenic variants in CHEK2. Breast Cancer Res Treat. 2020;180(2):503–509.</li>
+      <li>Bychkovsky BL, Agaoglu NB, Horton C, et al. Differences in cancer phenotypes among frequent CHEK2 variants. JAMA Oncol. 2022;8(11):1598–1606.</li>
+      <li>Lowry KP, Geuzinge HA, Stout NK, et al. Breast cancer screening strategies for women with pathogenic variants in moderate-penetrance genes including CHEK2: a comparative modeling analysis. JAMA Oncol. 2022;8(4):587–596.</li>
+      <li>Spurdle AB, Greville-Heygate S, Antoniou AC, et al. Standardized reporting of germline cancer susceptibility variants (ENIGMA). Hum Mutat. 2019;40(9):1576–1584.</li>
+      <li>Schaeffer EM, Srinivas S, Adra N, et al. NCCN Clinical Practice Guidelines in Oncology: Prostate Cancer (early detection / CHEK2 PSA consideration). NCCN, 2025–2026.</li>
+    </ol>
+  </section>
+
+  <footer class="footer">
+    <p><strong>Avis.</strong> Ce protocole vise à soutenir, et non à remplacer, le jugement clinique individuel et la décision partagée. Les recommandations en génétique du cancer évoluent fréquemment ; les âges de départ, les intervalles et les estimations de risque changent à mesure que de nouvelles données émergent. Vérifiez toutes les recommandations par rapport aux versions actuelles des ressources NCCN, GeneReviews et ACMG avant toute application clinique. Les chiffres de risque sont des approximations populationnelles ; le risque individuel doit être estimé avec un modèle validé tenant compte des antécédents familiaux. Préparé par le Dr Andrew Shuen, Centre de prévention du cancer, Hôpital général juif, Montréal.</p>
+  </footer>
+
+</div>
+
+</div>
+
+<script>
+function setLang(l){
+  document.getElementById('lang-en').style.display = (l==='en')?'block':'none';
+  document.getElementById('lang-fr').style.display = (l==='fr')?'block':'none';
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  document.getElementById('btn-fr').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+}
+setLang('en');
+</script>
+
+</body>
+</html>

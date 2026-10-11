@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whole exome sequencing — Patient guide</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+  :root{
+    --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+    --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+    --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+    --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+    --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+    --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+    --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+    --radius:14px; --radius-sm:9px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:18px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 22px 80px;}
+  .ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; line-height:1.2;}
+  a{color:var(--brand); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  /* Language toggle */
+  .langbar{
+    position:sticky; top:0; z-index:50; background:var(--paper);
+    border-bottom:1px solid var(--line); padding:10px 22px;
+    display:flex; gap:8px; justify-content:space-between; align-items:center;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .langbar-left{display:flex; gap:8px; align-items:center;}
+  .langbar-right{display:flex; gap:8px; align-items:center;}
+  .langbar button{
+    border:1px solid var(--brand-line); background:var(--paper); color:var(--brand-dark);
+    padding:7px 18px; border-radius:999px; cursor:pointer; font-size:14px; font-weight:600;
+    letter-spacing:.02em;
+  }
+  .langbar-right button.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+  .langbar .util-btn{border-color:var(--line); color:var(--ink-soft); padding:7px 14px;
+    display:inline-flex; align-items:center; gap:6px;}
+  .langbar .util-btn:hover{background:var(--cream); color:var(--brand-dark); border-color:var(--brand-line);}
+  .langbar .util-btn.active{background:var(--brand-bg); color:var(--brand-dark); border-color:var(--brand-line);}
+  @media(max-width:560px){
+    .langbar{flex-wrap:wrap; gap:8px;}
+    .langbar .util-btn{padding:7px 11px; font-size:13px;}
+  }
+
+  /* Masthead */
+  .masthead{padding:46px 0 26px; border-bottom:3px double var(--line);}
+  .eyebrow{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; text-transform:uppercase;
+    letter-spacing:.16em; font-size:12px; color:var(--brand-dark); font-weight:700;}
+  .masthead h1{font-size:38px; margin:12px 0 8px;}
+  .standfirst{font-size:20px; color:var(--ink-soft); margin:0 0 22px;}
+  .authpanel{
+    background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:16px 18px; font-size:15.5px; color:var(--ink-soft);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .authpanel strong{color:var(--ink);}
+  .meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .chip{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+    background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);
+    padding:5px 11px; border-radius:999px; font-weight:600;}
+  .legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:18px; font-size:13.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--ink-soft);}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .swatch{width:14px; height:14px; border-radius:4px; display:inline-block;}
+
+  /* TOC */
+  .toc{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 24px; margin:30px 0; }
+  .toc h2{font-size:15px; text-transform:uppercase; letter-spacing:.12em; margin:0 0 14px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--brand-dark);}
+  .toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:15.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .toc li{margin-bottom:8px; break-inside:avoid;}
+  @media(max-width:640px){.toc ol{columns:1;}}
+
+  /* Sections */
+  section{padding:30px 0; border-top:1px solid var(--line-soft);}
+  .secnum{display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px;
+    background:var(--brand); color:#fff; border-radius:9px; font-weight:700; font-size:17px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; margin-right:12px; vertical-align:middle;}
+  h2.sec{font-size:27px; margin:0 0 16px; display:flex; align-items:center;}
+  h3{font-size:20px; color:var(--brand-dark); margin:26px 0 8px;}
+
+  /* Patient panel */
+  .patient{background:var(--brand-bg); border:1px solid var(--brand-line);
+    border-radius:var(--radius); padding:18px 20px; margin:14px 0 20px;}
+  .patient .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px;
+    text-transform:uppercase; letter-spacing:.13em; color:var(--brand-dark); font-weight:700;
+    display:flex; align-items:center; gap:7px; margin-bottom:8px;}
+  .patient p{margin:8px 0; color:#1f3a4d;}
+
+  /* Gene/subtype pill header */
+  .genehead{display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin:24px 0 6px;}
+  .genepill{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+    background:var(--ink); color:#fff; padding:6px 14px; border-radius:8px; font-size:15px;}
+  .badge{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; font-weight:700;
+    padding:4px 11px; border-radius:999px;}
+  .badge.high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+  .badge.mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+  .badge.low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+  /* Checklist */
+  .check{list-style:none; padding:0; margin:14px 0;}
+  .check li{display:flex; gap:11px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+    align-items:flex-start;}
+  .check li i{font-size:20px; flex-shrink:0; margin-top:1px;}
+  .ti-check{color:var(--brand);} .ti-minus{color:var(--ink-faint);} .ti-x{color:var(--red);}
+  .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.06em; padding:2px 8px; border-radius:5px; margin-left:6px;
+    white-space:nowrap;}
+  .tag.routine{background:var(--brand-bg); color:var(--brand-dark);}
+  .tag.optional{background:var(--amber-bg); color:var(--amber);}
+  .tag.notrec{background:var(--line-soft); color:var(--ink-faint);}
+
+  /* Tables */
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:15.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  th,td{text-align:left; padding:11px 13px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{background:var(--cream); color:var(--brand-dark); font-size:13px; text-transform:uppercase;
+    letter-spacing:.05em;}
+  .pill{display:inline-block; padding:3px 10px; border-radius:999px; font-size:12.5px; font-weight:700;}
+  .pill.high{background:var(--red-bg); color:var(--red);}
+  .pill.mod{background:var(--amber-bg); color:var(--amber);}
+  .pill.low{background:var(--brand-bg); color:var(--brand-dark);}
+
+  /* Callouts */
+  .rec{background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:14px 18px; margin:16px 0;}
+  .info{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm);
+    padding:14px 18px; margin:16px 0;}
+  .info .ptag, .emerging .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px;
+    text-transform:uppercase; letter-spacing:.13em; font-weight:700; display:flex; align-items:center;
+    gap:7px; margin-bottom:6px;}
+  .info .ptag{color:var(--brand-dark);}
+  .emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm);
+    padding:14px 18px; margin:16px 0;}
+  .emerging .ptag{color:var(--purple);}
+
+  /* Summary cards */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin:18px 0;}
+  .card{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand);
+    border-radius:var(--radius-sm); padding:15px 17px; font-size:15px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .card h4{margin:0 0 7px; font-size:15px; color:var(--brand-dark);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .card.amber{border-top-color:var(--amber-line);}
+  .card.amber h4{color:var(--amber);}
+
+  /* References */
+  ol.refs{font-size:14.5px; color:var(--ink-soft); line-height:1.5;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; padding-left:22px;}
+  ol.refs li{margin-bottom:10px;}
+
+  .footer{margin-top:40px; padding-top:18px; border-top:3px double var(--line);
+    font-size:13.5px; color:var(--ink-faint); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+  .lang-fr{display:none;}
+
+  /* ============== ON-SCREEN PDF PREVIEW (mirrors print layout) ============== */
+  body.pdf-preview{background:#5b6b78;}
+  body.pdf-preview .wrap{
+    max-width:816px;            /* 8.5in at 96dpi */
+    background:#fff; margin:24px auto 60px;
+    padding:54px 57px;          /* ~ Letter margins */
+    box-shadow:0 6px 28px rgba(0,0,0,.28); border-radius:2px;
+  }
+  body.pdf-preview{font-size:14px; line-height:1.45;}
+  body.pdf-preview .toc{display:none;}
+  body.pdf-preview .masthead{padding:0 0 16px; margin-bottom:6px;}
+  body.pdf-preview .masthead h1{font-size:30px; margin:8px 0 6px;}
+  body.pdf-preview .standfirst{font-size:16px; margin-bottom:16px;}
+  body.pdf-preview section{padding:14px 0;}
+  body.pdf-preview h2.sec{font-size:20px; margin:0 0 9px;}
+  body.pdf-preview .secnum{width:28px; height:28px; font-size:15px; margin-right:10px;}
+  body.pdf-preview h3{font-size:15.5px; margin:14px 0 5px;}
+  body.pdf-preview .patient{margin:9px 0 13px; padding:12px 15px;}
+  body.pdf-preview .patient p{margin:6px 0;}
+  body.pdf-preview .check li{padding:7px 0;}
+  body.pdf-preview table{font-size:12.5px;}
+  body.pdf-preview .rec,
+  body.pdf-preview .info,
+  body.pdf-preview .emerging{font-size:13px; padding:11px 14px;}
+  body.pdf-preview .cards{grid-template-columns:1fr 1fr; gap:11px;}
+  body.pdf-preview .card{font-size:13px;}
+  body.pdf-preview ol.refs{font-size:12.5px;}
+  /* visual page-break guides matching the forced print breaks */
+  body.pdf-preview #en8,
+  body.pdf-preview #fr8{
+    border-top:2px dashed var(--brand-line); margin-top:14px; padding-top:20px;
+    position:relative;
+  }
+  body.pdf-preview #en8::before,
+  body.pdf-preview #fr8::before{
+    content:"\2702  new page in PDF"; position:absolute; top:-9px; right:0;
+    background:#fff; padding:0 8px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:10px; color:var(--brand-dark); letter-spacing:.04em;
+  }
+
+  /* ===================== PRINT / PDF ===================== */
+  @page{
+    size:Letter;
+    margin:16mm 15mm 15mm;
+  }
+  @media print{
+    :root{ --cream:#fff; }
+    html,body{background:#fff !important;}
+    body{
+      font-size:10.5pt; line-height:1.4; color:#15212b;
+      -webkit-print-color-adjust:exact; print-color-adjust:exact;
+    }
+    .wrap{max-width:100%; padding:0;}
+
+    /* Hide on-screen UI; print only the active language */
+    .langbar{display:none !important;}
+    .toc{display:none !important;}                 /* TOC not useful in a flat PDF */
+    .lang-fr[style*="block"]{}                      /* respect JS-set display */
+
+    a{color:#15212b !important; text-decoration:none;}
+
+    /* Masthead tightened, centred feel, no oversize gaps */
+    .masthead{padding:0 0 14px; margin-bottom:6px;}
+    .masthead h1{font-size:23pt; margin:8px 0 6px;}
+    .standfirst{font-size:12pt; margin-bottom:14px;}
+    .eyebrow{font-size:8.5pt;}
+    .authpanel{font-size:10pt; padding:10px 12px;}
+    .meta{margin-top:10px;}
+    .chip{font-size:8.5pt; padding:3px 8px;}
+    .legend{font-size:9pt; margin-top:12px; gap:12px;}
+
+    /* Section flow: avoid orphaned headers, keep blocks intact */
+    section{
+      padding:12px 0; border-top:1px solid var(--line-soft);
+      break-inside:auto;
+    }
+    h2.sec{
+      font-size:15pt; margin:0 0 8px;
+      break-after:avoid; page-break-after:avoid;
+    }
+    h3{
+      font-size:11.5pt; margin:12px 0 4px;
+      break-after:avoid; page-break-after:avoid;
+    }
+    .secnum{width:26px; height:26px; font-size:12pt; margin-right:9px;}
+
+    /* Keep cohesive units together */
+    .patient,.rec,.info,.emerging,.card,
+    .genehead,.check li,tr,thead,
+    .cards .card{
+      break-inside:avoid; page-break-inside:avoid;
+    }
+    .genehead{break-after:avoid; page-break-after:avoid;}
+    .patient{margin:8px 0 12px; padding:11px 14px;}
+    .patient p{margin:5px 0;}
+
+    /* Checklists tighter */
+    .check li{padding:6px 0;}
+    .check li i{font-size:13pt;}
+    .tag{font-size:7.5pt; padding:1px 6px;}
+
+    /* Tables print cleanly, headers repeat across page breaks */
+    table{font-size:9pt; margin:10px 0; break-inside:auto;}
+    thead{display:table-header-group;}
+    th,td{padding:6px 8px;}
+    .pill{font-size:8pt; padding:2px 7px;}
+
+    /* Callouts */
+    .rec,.info,.emerging{padding:9px 12px; margin:10px 0; font-size:9.5pt;}
+    .info .ptag,.emerging .ptag,.patient .ptag{font-size:8.5pt; margin-bottom:4px;}
+
+    /* Summary cards: 2-up grid that fits the page width */
+    .cards{
+      grid-template-columns:1fr 1fr; gap:9px; margin:10px 0;
+      break-inside:auto;
+    }
+    .card{padding:10px 12px; font-size:9.5pt;}
+    .card h4{font-size:10pt; margin-bottom:5px;}
+
+    /* References: avoid splitting a single citation across pages */
+    ol.refs{font-size:9pt;}
+    ol.refs li{margin-bottom:6px; break-inside:avoid; page-break-inside:avoid;}
+
+    /* Each major section can start fresh if it would otherwise be cramped;
+       use sparingly: force a fresh page before the summary and references */
+    #en8, #fr8{ break-before:page; page-break-before:always; }
+
+    .footer{
+      margin-top:18px; padding-top:12px; font-size:8.5pt;
+      break-inside:avoid;
+    }
+
+    /* Repeating running footer with page numbers */
+    @page{
+      @bottom-center{
+        content:"Whole exome sequencing — patient guide";
+        font-family:Helvetica,Arial,sans-serif; font-size:7.5pt; color:#6a7681;
+      }
+      @bottom-right{
+        content:"Page " counter(page) " of " counter(pages);
+        font-family:Helvetica,Arial,sans-serif; font-size:7.5pt; color:#6a7681;
+      }
+    }
+  }
+
+  /* ---- figures (ported from primer, ATM palette) ---- */
+  .fig{margin:18px 0 6px; border:1px solid var(--line); border-radius:var(--radius);
+    background:#fbfdfe; padding:18px 16px 12px;}
+  .fig svg{width:100%; height:auto; display:block;}
+  .fig figcaption{margin-top:10px; font-size:13px; color:var(--ink-faint); line-height:1.45;
+    text-align:center; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .fig-key{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--brand-dark); font-weight:700;}
+  .fig text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  @media print{
+    .fig{break-inside:avoid; page-break-inside:avoid; padding:10px 12px; margin:10px 0 4px;}
+    .fig figcaption{font-size:8.5pt;}
+  }
+  /* closing one-line analogy */
+  .analogy{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-style:italic; color:var(--ink-soft); background:var(--cream);
+    border-left:3px solid var(--brand-line); border-radius:var(--radius-sm);
+    padding:12px 16px; margin:18px 0 4px; font-size:16.5px; line-height:1.5;}
+  .analogy i{color:var(--brand-dark); font-style:normal; margin-right:6px;}
+  @media print{.analogy{font-size:10pt; padding:8px 12px; break-inside:avoid;}}
+</style>
+</head>
+<body>
+<div class="langbar ui">
+  <div class="langbar-left">
+    <button id="btn-pdf" class="util-btn" onclick="togglePdfView()" title="Preview the print/PDF layout on screen"><i class="ti ti-file-type-pdf"></i> PDF view</button>
+    <button id="btn-print" class="util-btn" onclick="window.print()" title="Print or save as PDF"><i class="ti ti-printer"></i> Print / Save PDF</button>
+    <a class="util-btn" href="index.html" title="Back to all protocols" style="text-decoration:none"><i class="ti ti-arrow-left"></i> All protocols</a>
+  </div>
+  <div class="langbar-right">
+    <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+    <button id="btn-fr" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+<div class="wrap">
+<div class="lang-en" id="lang-en"><header class="masthead"><div class="eyebrow">Patient Education · Genetic Testing</div><h1>Whole exome sequencing (WES)</h1><p class="standfirst">A laboratory test that reads the letters of nearly all of your genes at once — the small part of your DNA that carries the instructions for making proteins. It looks across thousands of genes in a single test to find a change that may explain a health concern.</p><div class="authpanel"><strong>Dr. Andrew Shuen, MD PhD FRCPC DABMGG</strong><br>Medical Genetics, Jewish General Hospital (JGH), Montreal</div><div class="meta"><span class="chip">Molecular test</span><span class="chip">From a blood or saliva sample</span><span class="chip">Reads the coding part of your DNA</span><span class="chip">Thousands of genes at once</span></div></header><nav class="toc ui"><h2>Contents</h2><ol><li><a href="#en1">What it is</a></li><li><a href="#en2">What it looks at</a></li><li><a href="#en3">How it works</a></li><li><a href="#en4">What it finds</a></li><li><a href="#en5">What it can miss</a></li><li><a href="#en6">Good to know</a></li><li><a href="#en7">Sorting out the words</a></li><li><a href="#en8">Remember</a></li></ol></nav>
+
+<section id="en1"><h2 class="sec"><span class="secnum">1</span> What it is</h2><div class="patient"><div class="ptag"><i class="ti ti-user-heart"></i> For patients</div><p>Your DNA is like a very long cookbook. Most of the book is not recipes at all — it is notes, spacing, and instructions about when to cook. The actual recipes, the parts that spell out how to build the proteins your body runs on, make up only a small fraction of the book. Those recipe pages, taken together, are called the exome.</p><p>Whole exome sequencing reads the letters of nearly all of those recipe pages in one test, across thousands of genes at the same time. Instead of opening the book at one chapter, it skims every recipe looking for a spelling change that might explain a symptom, a diagnosis, or a family pattern. It is usually done from a simple blood or saliva sample.</p></div>
+
+<figure class="fig"><svg viewBox="0 0 700 196" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A scale of DNA from a single letter, to one gene, to a whole chromosome, to the whole genome. Whole exome sequencing reads the coding pieces of genes scattered across all the chromosomes.">
+  <text x="20" y="26" font-size="13.5" font-weight="700" fill="var(--brand-dark)">What this test reads</text>
+  <line x1="24" y1="118" x2="676" y2="118" stroke="var(--line)" stroke-width="1.5"/>
+  <!-- one letter -->
+  <rect x="40" y="86" width="26" height="26" rx="4" fill="#fff" stroke="var(--line)" stroke-width="1.4"/>
+  <text x="53" y="104" text-anchor="middle" font-size="12" fill="var(--ink-faint)" font-weight="700">A</text>
+  <text x="53" y="138" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">one letter</text>
+  <!-- one gene -->
+  <rect x="150" y="80" width="70" height="38" rx="5" fill="#fff" stroke="var(--line)" stroke-width="1.4"/>
+  <line x1="160" y1="99" x2="210" y2="99" stroke="var(--ink-faint)" stroke-width="2"/>
+  <text x="185" y="138" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">one gene</text>
+  <!-- one chromosome -->
+  <g>
+    <rect x="300" y="60" width="120" height="58" rx="8" fill="#fff" stroke="var(--line)" stroke-width="1.6"/>
+    <path d="M348 70 q-8 12 0 22 q-8 12 0 22 M372 70 q8 12 0 22 q8 12 0 22" fill="none" stroke="var(--ink-faint)" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="360" cy="92" r="4" fill="var(--ink-faint)"/>
+    <text x="360" y="138" text-anchor="middle" font-size="12" fill="var(--ink-faint)" font-weight="700">one chromosome</text>
+  </g>
+  <!-- whole genome, with coding slivers highlighted -->
+  <g>
+    <rect x="500" y="60" width="160" height="58" rx="8" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/>
+    <line x1="512" y1="74" x2="648" y2="74" stroke="#cdd9df" stroke-width="3"/>
+    <line x1="512" y1="84" x2="648" y2="84" stroke="#cdd9df" stroke-width="3"/>
+    <line x1="512" y1="94" x2="648" y2="94" stroke="#cdd9df" stroke-width="3"/>
+    <line x1="512" y1="104" x2="648" y2="104" stroke="#cdd9df" stroke-width="3"/>
+    <!-- coding slivers in brand -->
+    <rect x="520" y="71" width="10" height="6" fill="var(--brand-dark)"/>
+    <rect x="556" y="71" width="8" height="6" fill="var(--brand-dark)"/>
+    <rect x="600" y="71" width="9" height="6" fill="var(--brand-dark)"/>
+    <rect x="534" y="81" width="9" height="6" fill="var(--brand-dark)"/>
+    <rect x="588" y="81" width="8" height="6" fill="var(--brand-dark)"/>
+    <rect x="624" y="81" width="9" height="6" fill="var(--brand-dark)"/>
+    <rect x="516" y="91" width="8" height="6" fill="var(--brand-dark)"/>
+    <rect x="566" y="91" width="9" height="6" fill="var(--brand-dark)"/>
+    <rect x="612" y="91" width="8" height="6" fill="var(--brand-dark)"/>
+    <rect x="540" y="101" width="9" height="6" fill="var(--brand-dark)"/>
+    <rect x="596" y="101" width="8" height="6" fill="var(--brand-dark)"/>
+    <text x="580" y="138" text-anchor="middle" font-size="12" fill="var(--brand-dark)" font-weight="700">the exome</text>
+  </g>
+  <!-- bracket -->
+  <path d="M500 150 q0 6 6 6 l74 0 m0 0 l74 0 q6 0 6 -6" fill="none" stroke="var(--brand)" stroke-width="1.4"/>
+  <text x="580" y="170" text-anchor="middle" font-size="11" fill="var(--brand)" font-weight="700">whole exome sequencing</text>
+  <text x="560" y="184" text-anchor="middle" font-size="10" fill="var(--ink-faint)">coding pieces of genes, across all chromosomes</text>
+</svg>
+<figcaption>WES reads the <span class="fig-key">coding pieces</span> of your genes — the recipe pages — which are scattered in small stretches across all the chromosomes and add up to only a thin slice of the <span class="fig-key">whole genome</span>.</figcaption></figure>
+</section>
+
+<section id="en2"><h2 class="sec"><span class="secnum">2</span> What it looks at</h2><p>The exome is the part of your DNA that spells out proteins. It is only about one to two parts in a hundred of all your DNA, yet a large share of the changes known to cause disease sit within it. By reading nearly all of it at once, the test casts a very wide net across thousands of genes rather than checking a single suspected one.</p><p>This wide scope is the test's strength and also a limit. Because it focuses on the recipe pages, it reads the coding stretches well but does not look closely at the much larger space between and around genes. A whole genome test reads everything; a single-gene or panel test reads far less but in finer detail. WES sits in between: broad coverage of the coding regions, where most known disease-causing changes are found.</p>
+
+<figure class="fig"><svg viewBox="0 0 700 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A gene drawn as a bar made of coding exon blocks separated by non-coding gaps. Whole exome sequencing reads the filled coding blocks and not the greyed-out gaps between them.">
+  <text x="20" y="24" font-size="13.5" font-weight="700" fill="var(--brand-dark)">A gene is mostly spacing — the recipe is in the filled blocks</text>
+  <!-- gene bar -->
+  <line x1="40" y1="78" x2="660" y2="78" stroke="#cdd9df" stroke-width="3"/>
+  <!-- exons (coding, filled) and introns (gaps) -->
+  <rect x="40" y="62" width="48" height="32" rx="4" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <rect x="150" y="62" width="40" height="32" rx="4" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <rect x="262" y="62" width="56" height="32" rx="4" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <rect x="392" y="62" width="36" height="32" rx="4" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <rect x="500" y="62" width="50" height="32" rx="4" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <rect x="612" y="62" width="48" height="32" rx="4" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <text x="350" y="128" text-anchor="middle" font-size="12.5" fill="var(--brand-dark)" font-weight="700">coding blocks (exons) — read by WES</text>
+  <text x="350" y="150" text-anchor="middle" font-size="12" fill="var(--ink-faint)">grey line between blocks = non-coding spacing — mostly not read</text>
+  <!-- key -->
+  <rect x="40" y="166" width="16" height="12" rx="3" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.6"/>
+  <text x="64" y="176" font-size="11.5" fill="var(--ink-faint)">exon (coding)</text>
+  <line x1="200" y1="172" x2="226" y2="172" stroke="#cdd9df" stroke-width="3"/>
+  <text x="234" y="176" font-size="11.5" fill="var(--ink-faint)">spacing (non-coding)</text>
+</svg>
+<figcaption>Within each gene, the <span class="fig-key">exons</span> are the coding blocks that spell out the protein. WES reads these blocks across nearly all genes and largely skips the spacing in between.</figcaption></figure>
+</section>
+
+<section id="en3"><h2 class="sec"><span class="secnum">3</span> How it works</h2><p>It starts with an ordinary blood or saliva sample. In the laboratory, the DNA is first pulled out of your cells and cleaned up. Because reading every letter of all your DNA would be far more than is needed, the lab uses a kind of molecular fishing step to pull out only the coding recipe pages — the exome — and set the rest aside. A machine then reads the order of letters across those pages many times over, so the reading is reliable even where a page is hard to read.</p><p>Finally, your letters are lined up against a standard reference copy of the human cookbook. Wherever your spelling differs from the reference, that spot is flagged as a variant. A specialist then sorts the long list of differences, because most are harmless, and looks for any that could explain the health concern that prompted the test.</p>
+
+<figure class="fig"><svg viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A four-step workflow: a sample is collected, DNA is extracted, the coding pages are read and compared to a reference, and the differences are flagged.">
+  <!-- box 1 -->
+  <rect x="20" y="40" width="150" height="62" rx="9" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <text x="95" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--brand-dark)">Sample taken</text>
+  <text x="95" y="86" text-anchor="middle" font-size="11.5" fill="var(--ink-soft)">blood or saliva</text>
+  <!-- arrow -->
+  <path d="M174 71 h26 m-7 -6 l7 6 l-7 6" fill="none" stroke="var(--ink-faint)" stroke-width="2"/>
+  <!-- box 2 -->
+  <rect x="204" y="40" width="150" height="62" rx="9" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <text x="279" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--brand-dark)">DNA extracted</text>
+  <text x="279" y="86" text-anchor="middle" font-size="11.5" fill="var(--ink-soft)">coding pages pulled out</text>
+  <!-- arrow -->
+  <path d="M358 71 h26 m-7 -6 l7 6 l-7 6" fill="none" stroke="var(--ink-faint)" stroke-width="2"/>
+  <!-- box 3 -->
+  <rect x="388" y="40" width="150" height="62" rx="9" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <text x="463" y="63" text-anchor="middle" font-size="13" font-weight="700" fill="var(--brand-dark)">Letters read &amp;</text>
+  <text x="463" y="80" text-anchor="middle" font-size="13" font-weight="700" fill="var(--brand-dark)">compared</text>
+  <text x="463" y="96" text-anchor="middle" font-size="11" fill="var(--ink-soft)">vs a reference copy</text>
+  <!-- arrow -->
+  <path d="M542 71 h26 m-7 -6 l7 6 l-7 6" fill="none" stroke="var(--ink-faint)" stroke-width="2"/>
+  <!-- box 4 -->
+  <rect x="572" y="40" width="120" height="62" rx="9" fill="var(--brand)" stroke="var(--brand-dark)" stroke-width="2"/>
+  <text x="632" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Differences</text>
+  <text x="632" y="86" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">flagged</text>
+  <text x="356" y="128" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">Each flagged difference is then sorted by a specialist — most are harmless.</text>
+</svg>
+<figcaption>From sample to result: the coding pages are read many times over, lined up against a <span class="fig-key">reference</span>, and any differences are <span class="fig-key">flagged</span> for a specialist to interpret.</figcaption></figure>
+</section>
+
+<section id="en4"><h2 class="sec"><span class="secnum">4</span> What it finds</h2><p>Because it reads thousands of genes at once, WES is well suited to situations where the cause of a condition is not obvious and could lie in any of many genes. It is often used when symptoms point to a genetic cause but a single specific test has not given an answer.</p><ul class="check"><li><i class="ti ti-check"></i> A spelling change in a single gene that explains a diagnosis, when the gene was not known in advance</li><li><i class="ti ti-check"></i> Changes in genes linked to conditions with many possible causes, found by reading them all together</li><li><i class="ti ti-check"></i> A new (de novo) change present in a child but not in either parent, especially when parents are tested alongside the child</li><li><i class="ti ti-check"></i> Carrier changes that do not affect you but could be relevant for family planning</li><li><i class="ti ti-check"></i> Occasionally, an unexpected finding in a gene unrelated to the original question, which is only reported under agreed rules and with your consent</li></ul>
+
+<figure class="fig"><svg viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two short rows of DNA letters lined up: your sequence above and the reference below. Most letters match, and a single mismatched letter is highlighted as a flagged variant.">
+  <text x="20" y="24" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Reading your letters against a reference</text>
+  <text x="20" y="58" font-size="12.5" fill="var(--ink-soft)" font-weight="700">your DNA</text>
+  <text x="20" y="100" font-size="12.5" fill="var(--ink-soft)" font-weight="700">reference</text>
+  <!-- letters -->
+  <g font-size="17" font-weight="700" text-anchor="middle" font-family="monospace">
+    <!-- your row -->
+    <text x="180" y="62" fill="var(--ink-soft)">G</text>
+    <text x="220" y="62" fill="var(--ink-soft)">A</text>
+    <text x="260" y="62" fill="var(--ink-soft)">T</text>
+    <text x="300" y="62" fill="var(--ink-soft)">C</text>
+    <rect x="326" y="44" width="28" height="26" rx="4" fill="var(--amber-bg)" stroke="var(--amber-line)" stroke-width="2"/>
+    <text x="340" y="62" fill="var(--amber)">T</text>
+    <text x="380" y="62" fill="var(--ink-soft)">G</text>
+    <text x="420" y="62" fill="var(--ink-soft)">A</text>
+    <text x="460" y="62" fill="var(--ink-soft)">C</text>
+    <text x="500" y="62" fill="var(--ink-soft)">G</text>
+    <!-- reference row -->
+    <text x="180" y="104" fill="var(--ink-faint)">G</text>
+    <text x="220" y="104" fill="var(--ink-faint)">A</text>
+    <text x="260" y="104" fill="var(--ink-faint)">T</text>
+    <text x="300" y="104" fill="var(--ink-faint)">C</text>
+    <text x="340" y="104" fill="var(--ink-faint)">A</text>
+    <text x="380" y="104" fill="var(--ink-faint)">G</text>
+    <text x="420" y="104" fill="var(--ink-faint)">A</text>
+    <text x="460" y="104" fill="var(--ink-faint)">C</text>
+    <text x="500" y="104" fill="var(--ink-faint)">G</text>
+  </g>
+  <!-- pointer -->
+  <path d="M340 112 v12" stroke="var(--amber)" stroke-width="2"/>
+  <text x="340" y="140" text-anchor="middle" font-size="12" fill="var(--amber)" font-weight="700">one differing letter — flagged as a variant</text>
+  <text x="600" y="80" text-anchor="middle" font-size="12" fill="var(--ink-faint)">most letters match</text>
+</svg>
+<figcaption>Where your letters match the reference, nothing is flagged. A single differing letter is marked as a <span class="fig-key">variant</span> for a specialist to weigh — many such differences are harmless.</figcaption></figure>
+</section>
+
+<section id="en5"><h2 class="sec"><span class="secnum">5</span> What it can miss</h2><p>Reading the recipe pages well still leaves parts of the cookbook unread. WES is broad but not complete, and several kinds of change fall outside what it reads clearly.</p><ul class="check"><li><i class="ti ti-x"></i> Changes in the spacing between and around genes — the non-coding DNA the test largely skips</li><li><i class="ti ti-x"></i> Large missing or extra pieces of a chromosome, which are better seen by other tests such as microarray or karyotype</li><li><i class="ti ti-minus"></i> Certain repeated stretches of DNA that are hard to read with this method, such as the repeat behind fragile X</li><li><i class="ti ti-minus"></i> A spelling change in a gene whose link to disease is not yet understood, so the finding cannot be interpreted today</li><li><i class="ti ti-minus"></i> A change of uncertain meaning — a variant of uncertain significance — which is neither cleared nor confirmed and may be revisited later</li></ul>
+
+<figure class="fig"><svg viewBox="0 0 700 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two columns. On the left, what whole exome sequencing reads well: spelling changes in the coding parts of genes. On the right, what it tends to miss: non-coding spacing, large missing or extra chromosome pieces, and certain repeats.">
+  <!-- finds column -->
+  <rect x="24" y="34" width="312" height="138" rx="10" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <text x="180" y="58" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Reads well</text>
+  <g font-size="12.5" fill="var(--ink-soft)">
+    <circle cx="52" cy="86" r="4" fill="var(--brand)"/><text x="66" y="90">single-letter changes in coding DNA</text>
+    <circle cx="52" cy="116" r="4" fill="var(--brand)"/><text x="66" y="120">small insertions or losses within genes</text>
+    <circle cx="52" cy="146" r="4" fill="var(--brand)"/><text x="66" y="150">changes across thousands of genes at once</text>
+  </g>
+  <!-- misses column -->
+  <rect x="364" y="34" width="312" height="138" rx="10" fill="var(--amber-bg)" stroke="var(--amber-line)" stroke-width="1.8"/>
+  <text x="520" y="58" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--amber)">Tends to miss</text>
+  <g font-size="11.5" fill="var(--ink-soft)">
+    <path d="M388 82 l8 8 m0 -8 l-8 8" stroke="var(--amber)" stroke-width="2"/><text x="406" y="90">spacing between &amp; around genes</text>
+    <path d="M388 112 l8 8 m0 -8 l-8 8" stroke="var(--amber)" stroke-width="2"/><text x="406" y="120">large missing or extra chromosome bits</text>
+    <path d="M388 142 l8 8 m0 -8 l-8 8" stroke="var(--amber)" stroke-width="2"/><text x="406" y="150">certain hard-to-read repeated stretches</text>
+  </g>
+</svg>
+<figcaption>WES reads <span class="fig-key">coding changes</span> across many genes well, but a normal result does not rule everything out: <span class="fig-key">non-coding</span> changes, large rearrangements, and some repeats may need a different test.</figcaption></figure>
+</section>
+
+<section id="en6"><h2 class="sec"><span class="secnum">6</span> Good to know</h2><div class="patient"><div class="ptag"><i class="ti ti-clipboard-heart"></i> Good to know</div><p>WES is usually a single blood or saliva sample. Results typically take a few weeks, because the reading and the careful sorting of differences both take time. Often the most useful approach is to test a child together with both parents, which makes it much easier to tell a meaningful change from a harmless one.</p><p>Before the test, it is worth deciding with your team how you would like unexpected findings handled — changes found by chance in genes unrelated to the original question. These are only looked for and reported under agreed rules and with your consent. A result that finds nothing does not always mean there is no genetic cause; it may mean the cause lies outside what this test reads, and other tests may be suggested.</p></div>
+<div class="info"><div class="ptag"><i class="ti ti-refresh"></i> Results can be revisited</div><p style="margin:6px 0 0">Our understanding of genes keeps growing. A difference that cannot be interpreted today — a variant of uncertain significance — may become clearer in the future, which is why some findings are re-reviewed over time.</p></div>
+</section>
+
+<section id="en7"><h2 class="sec"><span class="secnum">7</span> Sorting out the words</h2><h3>A few terms you may see</h3><table><thead><tr><th>Term</th><th>In plain language</th></tr></thead><tbody><tr><td><strong>Gene</strong></td><td>A single recipe in your DNA — instructions for making one protein.</td></tr><tr><td><strong>Exome</strong></td><td>All the coding recipe pages together; the part WES reads.</td></tr><tr><td><strong>Exon</strong></td><td>A coding block within a gene — a piece that spells out protein.</td></tr><tr><td><strong>Variant</strong></td><td>A spot where your DNA spelling differs from the reference. Most are harmless.</td></tr><tr><td><strong>Reference</strong></td><td>A standard copy of human DNA your letters are compared against.</td></tr><tr><td><strong>De novo</strong></td><td>A change that is new in a person rather than inherited from a parent.</td></tr><tr><td><strong>Variant of uncertain significance</strong></td><td>A difference whose effect is not yet known — neither cleared nor confirmed.</td></tr><tr><td><strong>Unexpected (secondary) finding</strong></td><td>A change found by chance in a gene unrelated to the original question.</td></tr><tr><td><strong>Trio testing</strong></td><td>Testing a child together with both parents to interpret a change.</td></tr></tbody></table><div class="rec"><i class="ti ti-message-circle"></i> If a word on your report is not here, ask your healthcare team or a genetic counsellor. There are no bad questions.</div></section>
+
+<section id="en8"><h2 class="sec"><span class="secnum">8</span> Remember</h2><div class="info"><div class="ptag"><i class="ti ti-user-heart"></i> Remember</div><p style="margin:6px 0 0">This is general education and does not replace a consultation. Whole exome sequencing reads the coding part of your DNA across many genes; what any result means depends on your situation and is interpreted together with your genetics team.</p></div>
+<div class="analogy"><i class="ti ti-book"></i> Think of WES as skimming every recipe in a vast cookbook for a single misspelled word — broad enough to check thousands of recipes at once, but only the recipes, not the notes in the margins.</div>
+</section>
+
+<div class="footer"><p>This page is patient-education material intended to support, not replace, individual counselling. It explains a category of genetic test in general terms; the genes examined and the interpretation of any result depend on your situation and the laboratory used. Prepared for Medical Genetics, Jewish General Hospital, Montreal.</p></div></div>
+<div class="lang-fr" id="lang-fr"><header class="masthead"><div class="eyebrow">Information aux patients · Tests génétiques</div><h1>Séquençage de l'exome entier (WES)</h1><p class="standfirst">Un test de laboratoire qui lit les lettres de la quasi-totalité de vos gènes en une seule fois — la petite partie de votre ADN qui contient les instructions pour fabriquer les protéines. Il examine des milliers de gènes en un seul test afin de repérer un changement pouvant expliquer un problème de santé.</p><div class="authpanel"><strong>Dr Andrew Shuen, MD PhD FRCPC DABMGG</strong><br>Génétique médicale, Hôpital général juif (HGJ), Montréal</div><div class="meta"><span class="chip">Test moléculaire</span><span class="chip">À partir de sang ou de salive</span><span class="chip">Lit la partie codante de l'ADN</span><span class="chip">Des milliers de gènes à la fois</span></div></header><nav class="toc ui"><h2>Sommaire</h2><ol><li><a href="#fr1">Ce que c'est</a></li><li><a href="#fr2">Ce qu'il examine</a></li><li><a href="#fr3">Comment ça fonctionne</a></li><li><a href="#fr4">Ce qu'il trouve</a></li><li><a href="#fr5">Ce qu'il peut manquer</a></li><li><a href="#fr6">Bon à savoir</a></li><li><a href="#fr7">Le sens des mots</a></li><li><a href="#fr8">À retenir</a></li></ol></nav>
+
+<section id="fr1"><h2 class="sec"><span class="secnum">1</span> Ce que c'est</h2><div class="patient"><div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div><p>Votre ADN ressemble à un très long livre de recettes. La majeure partie du livre n'est pas constituée de recettes : ce sont des notes, des espaces et des indications sur le moment de cuisiner. Les véritables recettes — les pages qui précisent comment fabriquer les protéines dont votre corps a besoin — ne représentent qu'une petite fraction du livre. Ces pages de recettes, prises ensemble, s'appellent l'exome.</p><p>Le séquençage de l'exome entier lit les lettres de la quasi-totalité de ces pages de recettes en un seul test, à travers des milliers de gènes en même temps. Plutôt que d'ouvrir le livre à un seul chapitre, il parcourt chaque recette à la recherche d'une faute d'orthographe qui pourrait expliquer un symptôme, un diagnostic ou un schéma familial. Il se fait habituellement à partir d'un simple prélèvement de sang ou de salive.</p></div>
+
+<figure class="fig"><svg viewBox="0 0 700 196" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Une échelle de l'ADN allant d'une seule lettre, à un gène, à un chromosome entier, jusqu'au génome entier. Le séquençage de l'exome entier lit les morceaux codants des gènes répartis sur tous les chromosomes.">
+  <text x="20" y="26" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Ce que ce test lit</text>
+  <line x1="24" y1="118" x2="676" y2="118" stroke="var(--line)" stroke-width="1.5"/>
+  <rect x="40" y="86" width="26" height="26" rx="4" fill="#fff" stroke="var(--line)" stroke-width="1.4"/>
+  <text x="53" y="104" text-anchor="middle" font-size="12" fill="var(--ink-faint)" font-weight="700">A</text>
+  <text x="53" y="138" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">une lettre</text>
+  <rect x="150" y="80" width="70" height="38" rx="5" fill="#fff" stroke="var(--line)" stroke-width="1.4"/>
+  <line x1="160" y1="99" x2="210" y2="99" stroke="var(--ink-faint)" stroke-width="2"/>
+  <text x="185" y="138" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">un gène</text>
+  <g>
+    <rect x="300" y="60" width="120" height="58" rx="8" fill="#fff" stroke="var(--line)" stroke-width="1.6"/>
+    <path d="M348 70 q-8 12 0 22 q-8 12 0 22 M372 70 q8 12 0 22 q8 12 0 22" fill="none" stroke="var(--ink-faint)" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="360" cy="92" r="4" fill="var(--ink-faint)"/>
+    <text x="360" y="138" text-anchor="middle" font-size="12" fill="var(--ink-faint)" font-weight="700">un chromosome</text>
+  </g>
+  <g>
+    <rect x="500" y="60" width="160" height="58" rx="8" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/>
+    <line x1="512" y1="74" x2="648" y2="74" stroke="#cdd9df" stroke-width="3"/>
+    <line x1="512" y1="84" x2="648" y2="84" stroke="#cdd9df" stroke-width="3"/>
+    <line x1="512" y1="94" x2="648" y2="94" stroke="#cdd9df" stroke-width="3"/>
+    <line x1="512" y1="104" x2="648" y2="104" stroke="#cdd9df" stroke-width="3"/>
+    <rect x="520" y="71" width="10" height="6" fill="var(--brand-dark)"/>
+    <rect x="556" y="71" width="8" height="6" fill="var(--brand-dark)"/>
+    <rect x="600" y="71" width="9" height="6" fill="var(--brand-dark)"/>
+    <rect x="534" y="81" width="9" height="6" fill="var(--brand-dark)"/>
+    <rect x="588" y="81" width="8" height="6" fill="var(--brand-dark)"/>
+    <rect x="624" y="81" width="9" height="6" fill="var(--brand-dark)"/>
+    <rect x="516" y="91" width="8" height="6" fill="var(--brand-dark)"/>
+    <rect x="566" y="91" width="9" height="6" fill="var(--brand-dark)"/>
+    <rect x="612" y="91" width="8" height="6" fill="var(--brand-dark)"/>
+    <rect x="540" y="101" width="9" height="6" fill="var(--brand-dark)"/>
+    <rect x="596" y="101" width="8" height="6" fill="var(--brand-dark)"/>
+    <text x="580" y="138" text-anchor="middle" font-size="12" fill="var(--brand-dark)" font-weight="700">l'exome</text>
+  </g>
+  <path d="M500 150 q0 6 6 6 l74 0 m0 0 l74 0 q6 0 6 -6" fill="none" stroke="var(--brand)" stroke-width="1.4"/>
+  <text x="580" y="170" text-anchor="middle" font-size="11" fill="var(--brand)" font-weight="700">séquençage de l'exome entier</text>
+  <text x="560" y="184" text-anchor="middle" font-size="10" fill="var(--ink-faint)">morceaux codants, répartis sur tous les chromosomes</text>
+</svg>
+<figcaption>Le WES lit les <span class="fig-key">morceaux codants</span> de vos gènes — les pages de recettes — répartis en courts segments sur tous les chromosomes et qui ne représentent qu'une mince tranche du <span class="fig-key">génome entier</span>.</figcaption></figure>
+</section>
+
+<section id="fr2"><h2 class="sec"><span class="secnum">2</span> Ce qu'il examine</h2><p>L'exome est la partie de votre ADN qui précise les protéines. Il ne représente qu'environ une à deux parties sur cent de tout votre ADN, et pourtant une grande proportion des changements connus pour causer une maladie s'y trouvent. En le lisant presque en entier d'un coup, le test jette un très large filet sur des milliers de gènes plutôt que de vérifier un seul gène soupçonné.</p><p>Cette large portée est à la fois la force et la limite du test. Comme il se concentre sur les pages de recettes, il lit bien les segments codants mais n'examine pas de près l'espace beaucoup plus vaste entre et autour des gènes. Un test du génome entier lit tout; un test d'un seul gène ou d'un panel lit beaucoup moins mais de façon plus fine. Le WES se situe entre les deux : une large couverture des régions codantes, là où se trouvent la plupart des changements connus pour causer une maladie.</p>
+
+<figure class="fig"><svg viewBox="0 0 700 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Un gène dessiné comme une barre faite de blocs codants (exons) séparés par des espaces non codants. Le séquençage de l'exome entier lit les blocs codants remplis et non les espaces grisés entre eux.">
+  <text x="20" y="24" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Un gène est surtout de l'espace — la recette est dans les blocs remplis</text>
+  <line x1="40" y1="78" x2="660" y2="78" stroke="#cdd9df" stroke-width="3"/>
+  <rect x="40" y="62" width="48" height="32" rx="4" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <rect x="150" y="62" width="40" height="32" rx="4" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <rect x="262" y="62" width="56" height="32" rx="4" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <rect x="392" y="62" width="36" height="32" rx="4" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <rect x="500" y="62" width="50" height="32" rx="4" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <rect x="612" y="62" width="48" height="32" rx="4" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <text x="350" y="128" text-anchor="middle" font-size="12.5" fill="var(--brand-dark)" font-weight="700">blocs codants (exons) — lus par le WES</text>
+  <text x="350" y="150" text-anchor="middle" font-size="12" fill="var(--ink-faint)">la ligne grise entre les blocs = espace non codant — surtout non lu</text>
+  <rect x="40" y="166" width="16" height="12" rx="3" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.6"/>
+  <text x="64" y="176" font-size="11.5" fill="var(--ink-faint)">exon (codant)</text>
+  <line x1="210" y1="172" x2="236" y2="172" stroke="#cdd9df" stroke-width="3"/>
+  <text x="244" y="176" font-size="11.5" fill="var(--ink-faint)">espace (non codant)</text>
+</svg>
+<figcaption>À l'intérieur de chaque gène, les <span class="fig-key">exons</span> sont les blocs codants qui précisent la protéine. Le WES lit ces blocs dans la quasi-totalité des gènes et saute en grande partie l'espace intermédiaire.</figcaption></figure>
+</section>
+
+<section id="fr3"><h2 class="sec"><span class="secnum">3</span> Comment ça fonctionne</h2><p>Tout commence par un prélèvement ordinaire de sang ou de salive. Au laboratoire, l'ADN est d'abord extrait de vos cellules et purifié. Comme lire chaque lettre de tout votre ADN serait bien plus que nécessaire, le laboratoire utilise une sorte de pêche moléculaire pour ne retenir que les pages de recettes codantes — l'exome — et mettre le reste de côté. Une machine lit ensuite l'ordre des lettres sur ces pages plusieurs fois, afin que la lecture soit fiable même là où une page est difficile à lire.</p><p>Enfin, vos lettres sont alignées sur une copie de référence standard du livre de recettes humain. Partout où votre orthographe diffère de la référence, cet endroit est signalé comme un variant. Un spécialiste trie ensuite la longue liste de différences, car la plupart sont inoffensives, et recherche celles qui pourraient expliquer le problème de santé à l'origine du test.</p>
+
+<figure class="fig"><svg viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Un déroulement en quatre étapes : un prélèvement est réalisé, l'ADN est extrait, les pages codantes sont lues et comparées à une référence, et les différences sont signalées.">
+  <rect x="20" y="40" width="150" height="62" rx="9" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <text x="95" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--brand-dark)">Prélèvement</text>
+  <text x="95" y="86" text-anchor="middle" font-size="11.5" fill="var(--ink-soft)">sang ou salive</text>
+  <path d="M174 71 h26 m-7 -6 l7 6 l-7 6" fill="none" stroke="var(--ink-faint)" stroke-width="2"/>
+  <rect x="204" y="40" width="150" height="62" rx="9" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <text x="279" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--brand-dark)">ADN extrait</text>
+  <text x="279" y="86" text-anchor="middle" font-size="11" fill="var(--ink-soft)">pages codantes retenues</text>
+  <path d="M358 71 h26 m-7 -6 l7 6 l-7 6" fill="none" stroke="var(--ink-faint)" stroke-width="2"/>
+  <rect x="388" y="40" width="150" height="62" rx="9" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2"/>
+  <text x="463" y="63" text-anchor="middle" font-size="13" font-weight="700" fill="var(--brand-dark)">Lettres lues et</text>
+  <text x="463" y="80" text-anchor="middle" font-size="13" font-weight="700" fill="var(--brand-dark)">comparées</text>
+  <text x="463" y="96" text-anchor="middle" font-size="11" fill="var(--ink-soft)">à une copie de référence</text>
+  <path d="M542 71 h26 m-7 -6 l7 6 l-7 6" fill="none" stroke="var(--ink-faint)" stroke-width="2"/>
+  <rect x="572" y="40" width="120" height="62" rx="9" fill="var(--brand)" stroke="var(--brand-dark)" stroke-width="2"/>
+  <text x="632" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Différences</text>
+  <text x="632" y="86" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">signalées</text>
+  <text x="356" y="128" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">Chaque différence signalée est ensuite triée par un spécialiste — la plupart sont inoffensives.</text>
+</svg>
+<figcaption>Du prélèvement au résultat : les pages codantes sont lues plusieurs fois, alignées sur une <span class="fig-key">référence</span>, et toute différence est <span class="fig-key">signalée</span> pour qu'un spécialiste l'interprète.</figcaption></figure>
+</section>
+
+<section id="fr4"><h2 class="sec"><span class="secnum">4</span> Ce qu'il trouve</h2><p>Comme il lit des milliers de gènes à la fois, le WES convient bien aux situations où la cause d'une affection n'est pas évidente et pourrait se trouver dans l'un de nombreux gènes. Il est souvent utilisé lorsque les symptômes évoquent une cause génétique mais qu'un test précis unique n'a pas donné de réponse.</p><ul class="check"><li><i class="ti ti-check"></i> Un changement d'orthographe dans un seul gène expliquant un diagnostic, lorsque le gène n'était pas connu à l'avance</li><li><i class="ti ti-check"></i> Des changements dans des gènes liés à des affections aux multiples causes possibles, trouvés en les lisant tous ensemble</li><li><i class="ti ti-check"></i> Un changement nouveau (de novo) présent chez un enfant mais chez aucun des parents, surtout lorsque les parents sont testés en même temps que l'enfant</li><li><i class="ti ti-check"></i> Des changements de porteur qui ne vous affectent pas mais pourraient être pertinents pour un projet familial</li><li><i class="ti ti-check"></i> Parfois, un résultat inattendu dans un gène sans lien avec la question initiale, rapporté uniquement selon des règles convenues et avec votre consentement</li></ul>
+
+<figure class="fig"><svg viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Deux courtes rangées de lettres d'ADN alignées : votre séquence en haut et la référence en bas. La plupart des lettres correspondent, et une seule lettre différente est mise en évidence comme un variant signalé.">
+  <text x="20" y="24" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Lire vos lettres par rapport à une référence</text>
+  <text x="20" y="58" font-size="12.5" fill="var(--ink-soft)" font-weight="700">votre ADN</text>
+  <text x="20" y="100" font-size="12.5" fill="var(--ink-soft)" font-weight="700">référence</text>
+  <g font-size="17" font-weight="700" text-anchor="middle" font-family="monospace">
+    <text x="180" y="62" fill="var(--ink-soft)">G</text>
+    <text x="220" y="62" fill="var(--ink-soft)">A</text>
+    <text x="260" y="62" fill="var(--ink-soft)">T</text>
+    <text x="300" y="62" fill="var(--ink-soft)">C</text>
+    <rect x="326" y="44" width="28" height="26" rx="4" fill="var(--amber-bg)" stroke="var(--amber-line)" stroke-width="2"/>
+    <text x="340" y="62" fill="var(--amber)">T</text>
+    <text x="380" y="62" fill="var(--ink-soft)">G</text>
+    <text x="420" y="62" fill="var(--ink-soft)">A</text>
+    <text x="460" y="62" fill="var(--ink-soft)">C</text>
+    <text x="500" y="62" fill="var(--ink-soft)">G</text>
+    <text x="180" y="104" fill="var(--ink-faint)">G</text>
+    <text x="220" y="104" fill="var(--ink-faint)">A</text>
+    <text x="260" y="104" fill="var(--ink-faint)">T</text>
+    <text x="300" y="104" fill="var(--ink-faint)">C</text>
+    <text x="340" y="104" fill="var(--ink-faint)">A</text>
+    <text x="380" y="104" fill="var(--ink-faint)">G</text>
+    <text x="420" y="104" fill="var(--ink-faint)">A</text>
+    <text x="460" y="104" fill="var(--ink-faint)">C</text>
+    <text x="500" y="104" fill="var(--ink-faint)">G</text>
+  </g>
+  <path d="M340 112 v12" stroke="var(--amber)" stroke-width="2"/>
+  <text x="340" y="140" text-anchor="middle" font-size="12" fill="var(--amber)" font-weight="700">une lettre différente — signalée comme variant</text>
+  <text x="600" y="80" text-anchor="middle" font-size="12" fill="var(--ink-faint)">la plupart correspondent</text>
+</svg>
+<figcaption>Là où vos lettres correspondent à la référence, rien n'est signalé. Une seule lettre différente est marquée comme <span class="fig-key">variant</span> à évaluer par un spécialiste — bon nombre de ces différences sont inoffensives.</figcaption></figure>
+</section>
+
+<section id="fr5"><h2 class="sec"><span class="secnum">5</span> Ce qu'il peut manquer</h2><p>Bien lire les pages de recettes laisse tout de même des parties du livre non lues. Le WES est large mais non complet, et plusieurs types de changements échappent à ce qu'il lit clairement.</p><ul class="check"><li><i class="ti ti-x"></i> Les changements dans l'espace entre et autour des gènes — l'ADN non codant que le test saute en grande partie</li><li><i class="ti ti-x"></i> Les grands morceaux manquants ou en trop d'un chromosome, mieux vus par d'autres tests comme la micropuce ou le caryotype</li><li><i class="ti ti-minus"></i> Certaines suites répétées d'ADN difficiles à lire avec cette méthode, comme la répétition derrière le syndrome de l'X fragile</li><li><i class="ti ti-minus"></i> Un changement d'orthographe dans un gène dont le lien avec une maladie n'est pas encore compris, de sorte que le résultat ne peut être interprété aujourd'hui</li><li><i class="ti ti-minus"></i> Un changement de signification incertaine — un variant de signification incertaine — qui n'est ni écarté ni confirmé et pourra être réexaminé plus tard</li></ul>
+
+<figure class="fig"><svg viewBox="0 0 700 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Deux colonnes. À gauche, ce que le séquençage de l'exome entier lit bien : les changements d'orthographe dans les parties codantes des gènes. À droite, ce qu'il tend à manquer : l'espace non codant, les grands morceaux de chromosome manquants ou en trop, et certaines répétitions.">
+  <rect x="24" y="34" width="312" height="138" rx="10" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="1.8"/>
+  <text x="180" y="58" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--brand-dark)">Lit bien</text>
+  <g font-size="12.5" fill="var(--ink-soft)">
+    <circle cx="52" cy="86" r="4" fill="var(--brand)"/><text x="66" y="90">changements d'une lettre en zone codante</text>
+    <circle cx="52" cy="116" r="4" fill="var(--brand)"/><text x="66" y="120">petits ajouts ou pertes dans les gènes</text>
+    <circle cx="52" cy="146" r="4" fill="var(--brand)"/><text x="66" y="150">changements dans des milliers de gènes</text>
+  </g>
+  <rect x="364" y="34" width="312" height="138" rx="10" fill="var(--amber-bg)" stroke="var(--amber-line)" stroke-width="1.8"/>
+  <text x="520" y="58" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--amber)">Tend à manquer</text>
+  <g font-size="11" fill="var(--ink-soft)">
+    <path d="M388 82 l8 8 m0 -8 l-8 8" stroke="var(--amber)" stroke-width="2"/><text x="406" y="90">espace entre et autour des gènes</text>
+    <path d="M388 112 l8 8 m0 -8 l-8 8" stroke="var(--amber)" stroke-width="2"/><text x="406" y="120">grands morceaux de chromosome en trop/manquants</text>
+    <path d="M388 142 l8 8 m0 -8 l-8 8" stroke="var(--amber)" stroke-width="2"/><text x="406" y="150">certaines suites répétées difficiles à lire</text>
+  </g>
+</svg>
+<figcaption>Le WES lit bien les <span class="fig-key">changements codants</span> dans de nombreux gènes, mais un résultat normal n'écarte pas tout : les changements <span class="fig-key">non codants</span>, les grands remaniements et certaines répétitions peuvent nécessiter un autre test.</figcaption></figure>
+</section>
+
+<section id="fr6"><h2 class="sec"><span class="secnum">6</span> Bon à savoir</h2><div class="patient"><div class="ptag"><i class="ti ti-clipboard-heart"></i> Bon à savoir</div><p>Le WES se fait habituellement à partir d'un seul prélèvement de sang ou de salive. Les résultats prennent généralement quelques semaines, car la lecture et le tri minutieux des différences demandent tous deux du temps. Souvent, l'approche la plus utile consiste à tester un enfant avec ses deux parents, ce qui facilite beaucoup la distinction entre un changement important et un changement inoffensif.</p><p>Avant le test, il vaut la peine de décider avec votre équipe comment vous souhaitez que soient gérés les résultats inattendus — des changements découverts par hasard dans des gènes sans lien avec la question initiale. On ne les recherche et ne les rapporte que selon des règles convenues et avec votre consentement. Un résultat qui ne trouve rien ne signifie pas toujours qu'il n'y a pas de cause génétique; il se peut que la cause se situe hors de ce que ce test lit, et d'autres tests peuvent être proposés.</p></div>
+<div class="info"><div class="ptag"><i class="ti ti-refresh"></i> Les résultats peuvent être réexaminés</div><p style="margin:6px 0 0">Notre compréhension des gènes ne cesse de croître. Une différence qui ne peut être interprétée aujourd'hui — un variant de signification incertaine — peut devenir plus claire à l'avenir, c'est pourquoi certains résultats sont réévalués avec le temps.</p></div>
+</section>
+
+<section id="fr7"><h2 class="sec"><span class="secnum">7</span> Le sens des mots</h2><h3>Quelques termes que vous pourriez voir</h3><table><thead><tr><th>Terme</th><th>En langage simple</th></tr></thead><tbody><tr><td><strong>Gène</strong></td><td>Une seule recette dans votre ADN — les instructions pour fabriquer une protéine.</td></tr><tr><td><strong>Exome</strong></td><td>L'ensemble des pages de recettes codantes; la partie que lit le WES.</td></tr><tr><td><strong>Exon</strong></td><td>Un bloc codant dans un gène — un morceau qui précise une protéine.</td></tr><tr><td><strong>Variant</strong></td><td>Un endroit où l'orthographe de votre ADN diffère de la référence. La plupart sont inoffensifs.</td></tr><tr><td><strong>Référence</strong></td><td>Une copie standard de l'ADN humain à laquelle vos lettres sont comparées.</td></tr><tr><td><strong>De novo</strong></td><td>Un changement nouveau chez une personne plutôt qu'hérité d'un parent.</td></tr><tr><td><strong>Variant de signification incertaine</strong></td><td>Une différence dont l'effet n'est pas encore connu — ni écartée ni confirmée.</td></tr><tr><td><strong>Résultat inattendu (secondaire)</strong></td><td>Un changement trouvé par hasard dans un gène sans lien avec la question initiale.</td></tr><tr><td><strong>Test en trio</strong></td><td>Tester un enfant avec ses deux parents pour interpréter un changement.</td></tr></tbody></table><div class="rec"><i class="ti ti-message-circle"></i> Si un mot de votre rapport ne figure pas ici, demandez à votre équipe de soins ou à un conseiller en génétique. Il n'y a pas de mauvaises questions.</div></section>
+
+<section id="fr8"><h2 class="sec"><span class="secnum">8</span> À retenir</h2><div class="info"><div class="ptag"><i class="ti ti-user-heart"></i> À retenir</div><p style="margin:6px 0 0">Ceci est de l'information générale et ne remplace pas une consultation. Le séquençage de l'exome entier lit la partie codante de votre ADN dans de nombreux gènes; ce que signifie tout résultat dépend de votre situation et s'interprète avec votre équipe de génétique.</p></div>
+<div class="analogy"><i class="ti ti-book"></i> Voyez le WES comme un survol de chaque recette d'un immense livre de cuisine à la recherche d'un seul mot mal orthographié — assez large pour vérifier des milliers de recettes d'un coup, mais seulement les recettes, pas les notes dans la marge.</div>
+</section>
+
+<div class="footer"><p>Cette page est un document d'information destiné aux patients, visant à soutenir, et non à remplacer, le conseil individuel. Elle explique en termes généraux une catégorie de test génétique; les gènes examinés et l'interprétation de tout résultat dépendent de votre situation et du laboratoire utilisé. Préparé pour la Génétique médicale, Hôpital général juif, Montréal.</p></div></div>
+</div>
+<script>
+function setLang(l){document.getElementById('lang-en').style.display=(l==='en')?'block':'none';document.getElementById('lang-fr').style.display=(l==='fr')?'block':'none';document.getElementById('btn-en').classList.toggle('active',l==='en');document.getElementById('btn-fr').classList.toggle('active',l==='fr');document.documentElement.lang=l;window.scrollTo(0,0);}
+function togglePdfView(){var on=document.body.classList.toggle('pdf-preview');document.getElementById('btn-pdf').classList.toggle('active',on);window.scrollTo(0,0);}
+</script>
+</body>
+</html>

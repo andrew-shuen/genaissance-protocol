@@ -1,0 +1,500 @@
+{
+  "reviewed": "2026-06",
+  "intro": {
+    "en": "Welcome. Before your genetics appointment, please read the short guide for your referral and complete the questionnaire(s). Filling these out ahead of time lets us spend your visit focused on you and your questions. Choose the reason you were referred to begin.",
+    "fr": "Bienvenue. Avant votre rendez-vous en génétique, veuillez lire le court guide correspondant à votre référence et remplir le ou les questionnaires. Les remplir à l'avance nous permet de consacrer votre visite à vous et à vos questions. Choisissez le motif de votre référence pour commencer."
+  },
+  "uiLabels": {
+    "about": {
+      "en": "Why you were referred",
+      "fr": "Pourquoi vous avez été référé"
+    },
+    "expect": {
+      "en": "What to expect at your visit",
+      "fr": "À quoi s'attendre lors de votre visite"
+    },
+    "learn": {
+      "en": "Learn more before your visit",
+      "fr": "En savoir plus avant votre visite"
+    },
+    "doNow": {
+      "en": "Please complete before your appointment",
+      "fr": "À remplir avant votre rendez-vous"
+    }
+  },
+  "consent": {
+    "who": {
+      "en": "Consent form",
+      "fr": "Formulaire de consentement"
+    },
+    "note": {
+      "en": "Please review and sign this consent before your appointment.",
+      "fr": "Veuillez lire et signer ce consentement avant votre rendez-vous."
+    },
+    "urls": {
+      "en": "https://hipaa.jotform.com/sign/251346523528053",
+      "fr": "https://hipaa.jotform.com/sign/251254970854059"
+    }
+  },
+  "types": [
+    {
+      "key": "cancer",
+      "accent": "cancer",
+      "label": {
+        "en": "Cancer genetics",
+        "fr": "Génétique du cancer"
+      },
+      "summary": {
+        "en": "Family or personal history of cancer",
+        "fr": "Antécédents familiaux ou personnels de cancer"
+      },
+      "about": {
+        "en": "You have been referred because something in your personal or family health history suggests it may be worth looking at whether an inherited factor contributes to cancer risk. Many cancers are not inherited, and being referred does not mean you have a genetic condition. The visit helps clarify your risk and whether testing could be helpful for you.",
+        "fr": "Vous avez été référé parce que quelque chose dans vos antécédents personnels ou familiaux laisse penser qu'il pourrait être utile de vérifier si un facteur héréditaire contribue au risque de cancer. Beaucoup de cancers ne sont pas héréditaires, et être référé ne signifie pas que vous avez une maladie génétique. La visite aide à clarifier votre risque et à déterminer si un test pourrait vous être utile."
+      },
+      "expect": {
+        "en": "We will review your personal and family history together, explain what a genetic test can and cannot tell you, and discuss your options. Nothing is decided in advance, and testing is always your choice.",
+        "fr": "Nous passerons en revue vos antécédents personnels et familiaux ensemble, expliquerons ce qu'un test génétique peut et ne peut pas révéler, et discuterons de vos options. Rien n'est décidé d'avance, et le test demeure toujours votre choix."
+      },
+      "primers": [
+        {
+          "label": {
+            "en": "Genetics 101",
+            "fr": "La génétique en bref"
+          },
+          "anchor": "genetics-101"
+        },
+        {
+          "label": {
+            "en": "Cancer genetics 101",
+            "fr": "Génétique du cancer en bref"
+          },
+          "anchor": "cancer-genetics-101"
+        },
+        {
+          "label": {
+            "en": "Hereditary cancer syndromes",
+            "fr": "Syndromes de cancer héréditaire"
+          },
+          "section": "cancer"
+        },
+        {
+          "label": {
+            "en": "Gene panel testing",
+            "fr": "Test par panel de gènes"
+          },
+          "file": "gene-panel.html"
+        },
+        {
+          "label": {
+            "en": "Liquid biopsy",
+            "fr": "Biopsie liquide"
+          },
+          "file": "liquid-biopsy.html"
+        },
+        {
+          "label": {
+            "en": "Skin biopsy in genetics",
+            "fr": "Biopsie cutanée en génétique"
+          },
+          "file": "skin-biopsy.html"
+        },
+        {
+          "label": {
+            "en": "What to expect from testing",
+            "fr": "À quoi s'attendre du test"
+          },
+          "anchor": "what-to-expect"
+        },
+        {
+          "label": {
+            "en": "Cascade testing",
+            "fr": "Dépistage en cascade"
+          },
+          "anchor": "cascade-testing"
+        },
+        {
+          "label": {
+            "en": "Genetic privacy",
+            "fr": "Vie privée génétique"
+          },
+          "anchor": "genetic-privacy"
+        }
+      ],
+      "questionnaires": [
+        {
+          "who": {
+            "en": "Please complete this questionnaire",
+            "fr": "Veuillez remplir ce questionnaire"
+          },
+          "note": {
+            "en": "It asks about your health and your family history, including ages and types of any cancers. Having family details on hand helps.",
+            "fr": "Il porte sur votre santé et vos antécédents familiaux, y compris les âges et types de cancers. Avoir les détails familiaux à portée de main est utile."
+          },
+          "forms": {
+            "en": "250616161210240",
+            "fr": "250643846636262"
+          }
+        },
+        {
+          "who": {
+            "en": "Family history questionnaire",
+            "fr": "Questionnaire d'histoire familiale"
+          },
+          "note": {
+            "en": "An online family history questionnaire. It builds a picture of health conditions across your family. Having details of relatives' ages and any conditions on hand helps.",
+            "fr": "Un questionnaire d'histoire familiale en ligne. Il dresse un portrait des problèmes de santé dans votre famille. Avoir à portée de main l'âge des proches et leurs problèmes de santé est utile."
+          },
+          "external": "https://familyhistory.invitae.com/questionnaire/en/PBBP0o"
+        }
+      ]
+    },
+    {
+      "key": "adult",
+      "accent": "adult",
+      "label": {
+        "en": "Adult genetics",
+        "fr": "Génétique de l'adulte"
+      },
+      "summary": {
+        "en": "An adult-onset or inherited condition",
+        "fr": "Une affection à début adulte ou héréditaire"
+      },
+      "about": {
+        "en": "You have been referred to look into a possible inherited condition, or a question about your genetic health. This may be because of your own symptoms, your family history, or a question you or your doctor wanted explored. The visit is a conversation, not a commitment to any test.",
+        "fr": "Vous avez été référé pour examiner une possible affection héréditaire, ou une question concernant votre santé génétique. Cela peut être lié à vos propres symptômes, à votre histoire familiale, ou à une question que vous ou votre médecin souhaitiez explorer. La visite est une conversation, et non un engagement à passer un test."
+      },
+      "expect": {
+        "en": "We will talk through your history and the specific question that led to the referral, explain what testing could and could not tell you, and go over your options together.",
+        "fr": "Nous discuterons de vos antécédents et de la question précise qui a mené à la référence, expliquerons ce qu'un test pourrait et ne pourrait pas révéler, et examinerons vos options ensemble."
+      },
+      "primers": [
+        {
+          "label": {
+            "en": "Genetics 101",
+            "fr": "La génétique en bref"
+          },
+          "anchor": "genetics-101"
+        },
+        {
+          "label": {
+            "en": "Triplet repeat expansions",
+            "fr": "Expansions de triplets"
+          },
+          "anchor": "triplet-repeats"
+        },
+        {
+          "label": {
+            "en": "What to expect from testing",
+            "fr": "À quoi s'attendre du test"
+          },
+          "anchor": "what-to-expect"
+        },
+        {
+          "label": {
+            "en": "Cascade testing",
+            "fr": "Dépistage en cascade"
+          },
+          "anchor": "cascade-testing"
+        },
+        {
+          "label": {
+            "en": "Genetic privacy",
+            "fr": "Vie privée génétique"
+          },
+          "anchor": "genetic-privacy"
+        }
+      ],
+      "questionnaires": [
+        {
+          "who": {
+            "en": "Please complete this questionnaire",
+            "fr": "Veuillez remplir ce questionnaire"
+          },
+          "note": {
+            "en": "It asks about your health, any symptoms, and your family history.",
+            "fr": "Il porte sur votre santé, vos symptômes éventuels et vos antécédents familiaux."
+          },
+          "forms": {
+            "en": "250838168089267",
+            "fr": "251007250262241"
+          }
+        },
+        {
+          "who": {
+            "en": "Family history questionnaire",
+            "fr": "Questionnaire d'histoire familiale"
+          },
+          "note": {
+            "en": "An online family history questionnaire. It builds a picture of health conditions across your family. Having details of relatives' ages and any conditions on hand helps.",
+            "fr": "Un questionnaire d'histoire familiale en ligne. Il dresse un portrait des problèmes de santé dans votre famille. Avoir à portée de main l'âge des proches et leurs problèmes de santé est utile."
+          },
+          "external": "https://familyhistory.invitae.com/questionnaire/en/PBBP0o"
+        }
+      ]
+    },
+    {
+      "key": "nicu",
+      "accent": "pediatric",
+      "label": {
+        "en": "Newborn (NICU)",
+        "fr": "Nouveau-né (USIN)"
+      },
+      "summary": {
+        "en": "Genetics assessment for a newborn in care",
+        "fr": "Évaluation génétique pour un nouveau-né hospitalisé"
+      },
+      "about": {
+        "en": "Your baby has been referred for a genetics assessment while in newborn care. This is done to help understand your baby's health and guide their care. A parent or guardian completes the questionnaire on the baby's behalf.",
+        "fr": "Votre bébé a été référé pour une évaluation génétique pendant son séjour aux soins néonatals. Cela vise à mieux comprendre la santé de votre bébé et à orienter ses soins. Un parent ou tuteur remplit le questionnaire au nom du bébé."
+      },
+      "expect": {
+        "en": "We will review the pregnancy, your baby's findings, and your family history, and explain what any testing could mean. The care team is there to support your family through this.",
+        "fr": "Nous passerons en revue la grossesse, les constatations concernant votre bébé et vos antécédents familiaux, et expliquerons ce que tout test pourrait signifier. L'équipe soignante est là pour soutenir votre famille."
+      },
+      "primers": [
+        {
+          "label": {
+            "en": "Genetics 101",
+            "fr": "La génétique en bref"
+          },
+          "anchor": "genetics-101"
+        },
+        {
+          "label": {
+            "en": "What to expect from testing",
+            "fr": "À quoi s'attendre du test"
+          },
+          "anchor": "what-to-expect"
+        },
+        {
+          "label": {
+            "en": "Cascade testing",
+            "fr": "Dépistage en cascade"
+          },
+          "anchor": "cascade-testing"
+        },
+        {
+          "label": {
+            "en": "Genetic privacy",
+            "fr": "Vie privée génétique"
+          },
+          "anchor": "genetic-privacy"
+        }
+      ],
+      "questionnaires": [
+        {
+          "who": {
+            "en": "A parent or guardian: please complete this for your baby",
+            "fr": "Un parent ou tuteur : veuillez remplir ceci pour votre bébé"
+          },
+          "note": {
+            "en": "It asks about the pregnancy, the birth, and your family history.",
+            "fr": "Il porte sur la grossesse, la naissance et vos antécédents familiaux."
+          },
+          "forms": {
+            "en": "260665437050253",
+            "fr": "260665639401257"
+          }
+        },
+        {
+          "who": {
+            "en": "Family history questionnaire",
+            "fr": "Questionnaire d'histoire familiale"
+          },
+          "note": {
+            "en": "An online family history questionnaire. It builds a picture of health conditions across your family. Having details of relatives' ages and any conditions on hand helps.",
+            "fr": "Un questionnaire d'histoire familiale en ligne. Il dresse un portrait des problèmes de santé dans votre famille. Avoir à portée de main l'âge des proches et leurs problèmes de santé est utile."
+          },
+          "external": "https://familyhistory.invitae.com/questionnaire/en/PBBP0o"
+        }
+      ]
+    },
+    {
+      "key": "prenatal",
+      "accent": "prenatal",
+      "label": {
+        "en": "Prenatal",
+        "fr": "Prénatal"
+      },
+      "summary": {
+        "en": "A question identified during pregnancy",
+        "fr": "Une question identifiée pendant la grossesse"
+      },
+      "about": {
+        "en": "You have been referred during pregnancy, often after a screening result, an ultrasound finding, or a family history question. The visit helps you understand what was found and what your options are. For prenatal referrals, it is helpful for both parents to provide their history, so there are two questionnaires below.",
+        "fr": "Vous avez été référé pendant la grossesse, souvent après un résultat de dépistage, une constatation à l'échographie ou une question d'histoire familiale. La visite vous aide à comprendre ce qui a été trouvé et quelles sont vos options. Pour les références prénatales, il est utile que les deux parents fournissent leurs antécédents; il y a donc deux questionnaires ci-dessous."
+      },
+      "expect": {
+        "en": "We will explain what was found, the difference between screening and diagnostic testing, the options available at this stage of pregnancy, and the timing involved. Testing is your choice, and we will support you whatever you decide.",
+        "fr": "Nous expliquerons ce qui a été trouvé, la différence entre dépistage et test diagnostique, les options disponibles à ce stade de la grossesse, et les délais en jeu. Le test est votre choix, et nous vous soutiendrons quelle que soit votre décision."
+      },
+      "primers": [
+        {
+          "label": {
+            "en": "Genetics 101",
+            "fr": "La génétique en bref"
+          },
+          "anchor": "genetics-101"
+        },
+        {
+          "label": {
+            "en": "What to expect from testing",
+            "fr": "À quoi s'attendre du test"
+          },
+          "anchor": "what-to-expect"
+        },
+        {
+          "label": {
+            "en": "Cascade testing",
+            "fr": "Dépistage en cascade"
+          },
+          "anchor": "cascade-testing"
+        },
+        {
+          "label": {
+            "en": "Genetic privacy",
+            "fr": "Vie privée génétique"
+          },
+          "anchor": "genetic-privacy"
+        },
+        {
+          "label": {
+            "en": "Possible results",
+            "fr": "Résultats possibles"
+          },
+          "anchor": "possible-results"
+        }
+      ],
+      "questionnaires": [
+        {
+          "who": {
+            "en": "For the mother (pregnant parent)",
+            "fr": "Pour la mère (parent enceinte)"
+          },
+          "note": {
+            "en": "The prenatal questionnaire. It asks about the pregnancy, screening and ultrasound results so far, and your family history.",
+            "fr": "Le questionnaire prénatal. Il porte sur la grossesse, les résultats de dépistage et d'échographie à ce jour, et vos antécédents familiaux."
+          },
+          "forms": {
+            "en": "250599203985266",
+            "fr": "250628818429264"
+          }
+        },
+        {
+          "who": {
+            "en": "For the father (other biological parent)",
+            "fr": "Pour le père (autre parent biologique)"
+          },
+          "note": {
+            "en": "The adult questionnaire, about the father's own health and family history. This helps give a complete picture for the pregnancy.",
+            "fr": "Le questionnaire pour adultes, concernant la santé et les antécédents familiaux du père. Cela aide à dresser un portrait complet pour la grossesse."
+          },
+          "forms": {
+            "en": "250838168089267",
+            "fr": "251007250262241"
+          }
+        },
+        {
+          "who": {
+            "en": "Family history form — for the mother",
+            "fr": "Formulaire d'histoire familiale — pour la mère"
+          },
+          "note": {
+            "en": "An online family history questionnaire. It builds a picture of health conditions across your family.",
+            "fr": "Un questionnaire d'histoire familiale en ligne. Il dresse un portrait des problèmes de santé dans votre famille."
+          },
+          "external": "https://familyhistory.invitae.com/questionnaire/en/PBBP0o"
+        },
+        {
+          "who": {
+            "en": "Family history form — for the father",
+            "fr": "Formulaire d'histoire familiale — pour le père"
+          },
+          "note": {
+            "en": "An online family history questionnaire. It builds a picture of health conditions across your family.",
+            "fr": "Un questionnaire d'histoire familiale en ligne. Il dresse un portrait des problèmes de santé dans votre famille."
+          },
+          "external": "https://familyhistory.invitae.com/questionnaire/en/PBBP0o"
+        }
+      ]
+    },
+    {
+      "key": "connective",
+      "accent": "connective",
+      "label": {
+        "en": "Connective tissue",
+        "fr": "Tissu conjonctif"
+      },
+      "summary": {
+        "en": "Joint, skin, or blood-vessel concerns",
+        "fr": "Préoccupations articulaires, cutanées ou vasculaires"
+      },
+      "about": {
+        "en": "You have been referred to look into a possible connective tissue condition, which can affect joints, skin, and sometimes the heart and blood vessels. Being referred does not mean you have a specific diagnosis; the visit helps sort out what is going on and whether testing would help.",
+        "fr": "Vous avez été référé pour examiner une possible affection du tissu conjonctif, qui peut toucher les articulations, la peau et parfois le cœur et les vaisseaux sanguins. Être référé ne signifie pas que vous avez un diagnostic précis; la visite aide à comprendre la situation et à déterminer si un test serait utile."
+      },
+      "expect": {
+        "en": "We will review your symptoms and family history, sometimes examine joints and skin, and discuss whether heart or vessel imaging or genetic testing would be helpful for you.",
+        "fr": "Nous passerons en revue vos symptômes et vos antécédents familiaux, examinerons parfois les articulations et la peau, et discuterons de l'utilité d'une imagerie cardiaque ou vasculaire ou d'un test génétique pour vous."
+      },
+      "primers": [
+        {
+          "label": {
+            "en": "Genetics 101",
+            "fr": "La génétique en bref"
+          },
+          "anchor": "genetics-101"
+        },
+        {
+          "label": {
+            "en": "What to expect from testing",
+            "fr": "À quoi s'attendre du test"
+          },
+          "anchor": "what-to-expect"
+        },
+        {
+          "label": {
+            "en": "Cascade testing",
+            "fr": "Dépistage en cascade"
+          },
+          "anchor": "cascade-testing"
+        },
+        {
+          "label": {
+            "en": "Genetic privacy",
+            "fr": "Vie privée génétique"
+          },
+          "anchor": "genetic-privacy"
+        }
+      ],
+      "questionnaires": [
+        {
+          "who": {
+            "en": "Please complete this questionnaire",
+            "fr": "Veuillez remplir ce questionnaire"
+          },
+          "note": {
+            "en": "It asks about your joint, skin, heart, and eye history, and your family history.",
+            "fr": "Il porte sur vos antécédents articulaires, cutanés, cardiaques et oculaires, ainsi que vos antécédents familiaux."
+          },
+          "forms": {
+            "en": "251934256351255",
+            "fr": "251934708076261"
+          }
+        },
+        {
+          "who": {
+            "en": "Family history questionnaire",
+            "fr": "Questionnaire d'histoire familiale"
+          },
+          "note": {
+            "en": "An online family history questionnaire. It builds a picture of health conditions across your family. Having details of relatives' ages and any conditions on hand helps.",
+            "fr": "Un questionnaire d'histoire familiale en ligne. Il dresse un portrait des problèmes de santé dans votre famille. Avoir à portée de main l'âge des proches et leurs problèmes de santé est utile."
+          },
+          "external": "https://familyhistory.invitae.com/questionnaire/en/PBBP0o"
+        }
+      ]
+    }
+  ]
+}

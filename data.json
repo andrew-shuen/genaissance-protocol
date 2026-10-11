@@ -1,0 +1,1384 @@
+{
+  "reviewed": "2026-06",
+  "groups": [
+    {
+      "key": "learn",
+      "label": {
+        "en": "Learn the basics",
+        "fr": "Notions de base"
+      },
+      "blurb": {
+        "en": "Plain-language primers on the concepts behind the protocols: how genes and inheritance work, how cancer risk can be inherited, repeat expansions, testing relatives, and how your genetic information is protected.",
+        "fr": "Des introductions en langage clair aux notions derrière les protocoles : le fonctionnement des gènes et de l'hérédité, la transmission du risque de cancer, les expansions de répétitions, le test des proches, et la protection de votre information génétique."
+      }
+    },
+    {
+      "key": "tests",
+      "label": {
+        "en": "Types of tests",
+        "fr": "Types de tests"
+      },
+      "blurb": {
+        "en": "A plain-language guide to the laboratory tests you may be offered, from focused gene panels to whole exome sequencing, and the chromosome and prenatal tests, so you know what each one looks at.",
+        "fr": "Un guide en langage clair des analyses de laboratoire qui peuvent vous être proposées, des panels de gènes ciblés au séquençage de l'exome entier, ainsi que des tests chromosomiques et prénataux, pour que vous sachiez ce que chacun examine."
+      }
+    },
+    {
+      "key": "derm",
+      "label": {
+        "en": "Skin biopsy in genetics",
+        "fr": "Biopsie cutanée en génétique"
+      },
+      "blurb": {
+        "en": "A small skin sample can be a window into the genome. It supplies living cells for culture, biochemical study, and DNA analysis, and can reveal variants confined to certain tissues that a blood test would miss.",
+        "fr": "Un petit échantillon de peau peut être une fenêtre sur le génome. Il fournit des cellules vivantes pour la culture, l'étude biochimique et l'analyse de l'ADN, et peut révéler des variants limités à certains tissus qu'une prise de sang ne détecterait pas."
+      }
+    },
+    {
+      "key": "connective",
+      "label": {
+        "en": "Connective tissue",
+        "fr": "Tissu conjonctif"
+      }
+    },
+    {
+      "key": "cancer",
+      "label": {
+        "en": "Hereditary cancer",
+        "fr": "Cancers héréditaires"
+      }
+    },
+    {
+      "key": "adult",
+      "label": {
+        "en": "Adult conditions",
+        "fr": "Conditions de l'adulte"
+      }
+    },
+    {
+      "key": "cardiac",
+      "label": {
+        "en": "Cardiac genetics",
+        "fr": "Génétique cardiaque"
+      },
+      "blurb": {
+        "en": "Inherited heart-rhythm and heart-muscle conditions where a genetic diagnosis guides surveillance, treatment, and testing of relatives.",
+        "fr": "Affections héréditaires du rythme et du muscle cardiaques où un diagnostic génétique oriente la surveillance, le traitement et le test des proches."
+      }
+    },
+    {
+      "key": "prenatal",
+      "label": {
+        "en": "Prenatal / preconception",
+        "fr": "Prénatal / préconception"
+      },
+      "blurb": {
+        "en": "Findings and screening before or during pregnancy, including carrier screening and the work-up prompted by fetal imaging or prenatal testing.",
+        "fr": "Constatations et dépistage avant ou pendant la grossesse, y compris le dépistage des porteurs et le bilan motivé par l'imagerie fœtale ou les tests prénataux."
+      }
+    },
+    {
+      "key": "pediatric",
+      "label": {
+        "en": "Pediatric conditions",
+        "fr": "Conditions pédiatriques"
+      },
+      "blurb": {
+        "en": "Conditions presenting in infancy or childhood that warrant genetics assessment and tailored surveillance.",
+        "fr": "Conditions se manifestant durant la petite enfance ou l'enfance qui justifient une évaluation génétique et une surveillance adaptée."
+      }
+    }
+  ],
+  "protocols": [
+    {
+      "group": "learn",
+      "panel": "overlay",
+      "anchor": "genetics-101",
+      "title": "Genetics 101",
+      "desc": {
+        "en": "How genes and inheritance work",
+        "fr": "Les gènes et l'hérédité"
+      }
+    },
+    {
+      "group": "learn",
+      "panel": "overlay-cancer101",
+      "anchor": "cancer-genetics-101",
+      "title": {
+        "en": "Cancer genetics 101",
+        "fr": "Génétique du cancer en bref"
+      },
+      "desc": {
+        "en": "How cancer risk can be inherited",
+        "fr": "Comment le risque de cancer peut s'hériter"
+      }
+    },
+    {
+      "group": "learn",
+      "panel": "overlay-process",
+      "anchor": "what-to-expect",
+      "title": {
+        "en": "What to expect from testing",
+        "fr": "À quoi s'attendre du test"
+      },
+      "desc": {
+        "en": "The steps from first visit to results",
+        "fr": "Les étapes, de la première visite aux résultats"
+      }
+    },
+    {
+      "group": "learn",
+      "panel": "overlay-results",
+      "anchor": "possible-results",
+      "title": {
+        "en": "Possible results",
+        "fr": "Résultats possibles"
+      },
+      "desc": {
+        "en": "Positive, negative, and uninformative",
+        "fr": "Positif, négatif et non informatif"
+      }
+    },
+    {
+      "group": "learn",
+      "panel": "overlay-risk",
+      "anchor": "penetrance-risk",
+      "title": {
+        "en": "Penetrance and risk",
+        "fr": "Pénétrance et risque"
+      },
+      "desc": {
+        "en": "Higher risk is not a certainty",
+        "fr": "Un risque accru n'est pas une certitude"
+      }
+    },
+    {
+      "group": "learn",
+      "panel": "overlay-repeats",
+      "anchor": "triplet-repeats",
+      "title": {
+        "en": "Triplet repeat expansions",
+        "fr": "Expansions de triplets"
+      },
+      "desc": {
+        "en": "How expanding repeats cause disease",
+        "fr": "Comment les répétitions allongées causent la maladie"
+      }
+    },
+    {
+      "group": "learn",
+      "panel": "overlay-cascade",
+      "anchor": "cascade-testing",
+      "title": {
+        "en": "Cascade testing",
+        "fr": "Dépistage en cascade"
+      },
+      "desc": {
+        "en": "Testing relatives for a family variant",
+        "fr": "Tester les proches pour un variant familial"
+      }
+    },
+    {
+      "group": "learn",
+      "panel": "overlay-gina",
+      "anchor": "genetic-privacy",
+      "title": {
+        "en": "Genetic privacy",
+        "fr": "Vie privée génétique"
+      },
+      "desc": {
+        "en": "GINA and your protections",
+        "fr": "GINA et vos protections"
+      }
+    },
+    {
+      "group": "learn",
+      "file": "cnv.html",
+      "title": {
+        "en": "Copy number variations",
+        "fr": "Variations du nombre de copies"
+      },
+      "desc": {
+        "en": "Missing or duplicated stretches of DNA",
+        "fr": "Segments d'ADN manquants ou dupliqués"
+      }
+    },
+    {
+      "group": "learn",
+      "file": "aneuploidy.html",
+      "title": {
+        "en": "Aneuploidy",
+        "fr": "Aneuploïdie"
+      },
+      "desc": {
+        "en": "Having an extra or missing chromosome",
+        "fr": "Un chromosome en trop ou en moins"
+      }
+    },
+    {
+      "group": "learn",
+      "file": "balanced-translocations.html",
+      "title": {
+        "en": "Balanced translocations",
+        "fr": "Translocations équilibrées"
+      },
+      "desc": {
+        "en": "Rearranged chromosomes with no material lost",
+        "fr": "Chromosomes réarrangés sans perte de matériel"
+      }
+    },
+    {
+      "group": "tests",
+      "file": "gene-panel.html",
+      "title": {
+        "en": "Gene panel testing",
+        "fr": "Test par panel de gènes"
+      },
+      "desc": {
+        "en": "A defined set of genes tested together",
+        "fr": "Un ensemble défini de gènes testés ensemble"
+      },
+      "subheadBefore": {
+        "en": "Molecular tests",
+        "fr": "Tests moléculaires"
+      }
+    },
+    {
+      "group": "tests",
+      "file": "wes.html",
+      "title": {
+        "en": "Whole exome sequencing",
+        "fr": "Séquençage de l'exome entier"
+      },
+      "desc": {
+        "en": "The protein-coding parts of all genes",
+        "fr": "Les parties codantes de tous les gènes"
+      }
+    },
+    {
+      "group": "tests",
+      "file": "nipt.html",
+      "title": {
+        "en": "NIPT",
+        "fr": "DPNI"
+      },
+      "desc": {
+        "en": "Cell-free DNA screen from a maternal blood sample",
+        "fr": "Dépistage par ADN libre à partir d'un prélèvement sanguin maternel"
+      }
+    },
+    {
+      "group": "tests",
+      "file": "liquid-biopsy.html",
+      "title": {
+        "en": "Liquid biopsy",
+        "fr": "Biopsie liquide"
+      },
+      "desc": {
+        "en": "Cell-free tumour DNA from a blood sample",
+        "fr": "ADN tumoral libre à partir d'un prélèvement sanguin"
+      }
+    },
+    {
+      "group": "tests",
+      "file": "fragile-x.html",
+      "title": {
+        "en": "Fragile X testing",
+        "fr": "Test du X fragile"
+      },
+      "desc": {
+        "en": "FMR1 repeat expansion analysis",
+        "fr": "Analyse de l'expansion de répétitions FMR1"
+      },
+      "subheadAfter": {
+        "en": "Chromosomal tests",
+        "fr": "Tests chromosomiques"
+      }
+    },
+    {
+      "group": "tests",
+      "file": "karyotype.html",
+      "title": {
+        "en": "Karyotype",
+        "fr": "Caryotype"
+      },
+      "desc": {
+        "en": "A picture of all the chromosomes",
+        "fr": "Une image de tous les chromosomes"
+      }
+    },
+    {
+      "group": "tests",
+      "file": "microarray.html",
+      "title": {
+        "en": "Chromosomal microarray",
+        "fr": "Micropuce chromosomique"
+      },
+      "desc": {
+        "en": "Detects missing or extra segments of DNA",
+        "fr": "Détecte les segments d'ADN manquants ou en surplus"
+      }
+    },
+    {
+      "group": "tests",
+      "file": "qf-pcr.html",
+      "title": "QF-PCR",
+      "desc": {
+        "en": "Rapid check for common chromosome counts",
+        "fr": "Vérification rapide des trisomies courantes"
+      },
+      "subheadAfter": {
+        "en": "Prenatal sampling",
+        "fr": "Prélèvements prénataux"
+      }
+    },
+    {
+      "group": "tests",
+      "file": "cvs.html",
+      "title": {
+        "en": "Chorionic villus sampling",
+        "fr": "Prélèvement de villosités choriales"
+      },
+      "desc": {
+        "en": "Early placental sampling for prenatal diagnosis",
+        "fr": "Prélèvement placentaire précoce pour le diagnostic prénatal"
+      }
+    },
+    {
+      "group": "tests",
+      "file": "amniocentesis.html",
+      "title": {
+        "en": "Amniocentesis",
+        "fr": "Amniocentèse"
+      },
+      "desc": {
+        "en": "Sampling fluid for prenatal diagnosis",
+        "fr": "Prélèvement de liquide pour le diagnostic prénatal"
+      },
+      "subheadAfter": {
+        "en": "Preimplantation testing (PGT)",
+        "fr": "Test préimplantatoire (DPI)"
+      }
+    },
+    {
+      "group": "tests",
+      "file": "pgt-a.html",
+      "title": "PGT-A",
+      "desc": {
+        "en": "Embryo screening for chromosome number (aneuploidy)",
+        "fr": "Dépistage embryonnaire du nombre de chromosomes (aneuploïdie)"
+      }
+    },
+    {
+      "group": "tests",
+      "file": "pgt-m.html",
+      "title": "PGT-M",
+      "desc": {
+        "en": "Embryo testing for a known single-gene condition",
+        "fr": "Test embryonnaire pour une maladie monogénique connue"
+      }
+    },
+    {
+      "group": "tests",
+      "file": "pgt-sr.html",
+      "title": "PGT-SR",
+      "desc": {
+        "en": "Embryo testing for chromosome rearrangements",
+        "fr": "Test embryonnaire pour réarrangements chromosomiques"
+      }
+    },
+    {
+      "group": "connective",
+      "file": "heds.html",
+      "title": "hEDS / HSD",
+      "desc": {
+        "en": "Hypermobile Ehlers-Danlos / spectrum",
+        "fr": "Syndrome d'Ehlers-Danlos hypermobile / spectre"
+      }
+    },
+    {
+      "group": "connective",
+      "file": "marfan.html",
+      "title": {
+        "en": "Marfan syndrome",
+        "fr": "Syndrome de Marfan"
+      },
+      "desc": {
+        "en": "FBN1, aortic and skeletal features",
+        "fr": "FBN1, atteinte aortique et squelettique"
+      }
+    },
+    {
+      "group": "connective",
+      "file": "loeys-dietz.html",
+      "title": "Loeys-Dietz",
+      "desc": {
+        "en": "TGF-beta pathway, arterial tortuosity",
+        "fr": "Voie TGF-bêta, tortuosité artérielle"
+      }
+    },
+    {
+      "group": "connective",
+      "file": "taad.html",
+      "title": "TAAD",
+      "desc": {
+        "en": "Thoracic aortic aneurysm and dissection",
+        "fr": "Anévrisme et dissection de l'aorte thoracique"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "brca1.html",
+      "title": "BRCA1",
+      "desc": {
+        "en": "Breast, ovarian and related risk",
+        "fr": "Risque de cancer du sein, de l'ovaire et apparentés"
+      },
+      "subheadBefore": {
+        "en": "Hereditary breast and ovarian cancer (HBOC)",
+        "fr": "Cancer héréditaire du sein et de l'ovaire (HBOC)"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "brca2.html",
+      "title": "BRCA2",
+      "desc": {
+        "en": "Breast, ovarian and related risk",
+        "fr": "Risque de cancer du sein, de l'ovaire et apparentés"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "palb2.html",
+      "title": "PALB2",
+      "desc": {
+        "en": "Breast and pancreatic risk",
+        "fr": "Risque de cancer du sein et du pancréas"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "brip1.html",
+      "title": "BRIP1",
+      "desc": {
+        "en": "Ovarian cancer risk",
+        "fr": "Risque de cancer de l'ovaire"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "rad51c.html",
+      "title": "RAD51C",
+      "desc": {
+        "en": "Ovarian cancer risk",
+        "fr": "Risque de cancer de l'ovaire"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "rad51d.html",
+      "title": "RAD51D",
+      "desc": {
+        "en": "Ovarian cancer risk",
+        "fr": "Risque de cancer de l'ovaire"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "bard1.html",
+      "title": "BARD1",
+      "desc": {
+        "en": "Breast cancer risk",
+        "fr": "Risque de cancer du sein"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "atm.html",
+      "title": "ATM",
+      "desc": {
+        "en": "Moderate breast and pancreatic risk",
+        "fr": "Risque modéré de cancer du sein et du pancréas"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "chek2.html",
+      "title": "CHEK2",
+      "desc": {
+        "en": "Moderate-risk breast and other",
+        "fr": "Risque modéré, sein et autres"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "lynch.html",
+      "title": "Lynch syndrome",
+      "desc": {
+        "en": "Colorectal, endometrial and more",
+        "fr": "Côlon-rectum, endomètre et autres"
+      },
+      "subheadBefore": {
+        "en": "Lynch syndrome / mismatch repair (MMR)",
+        "fr": "Syndrome de Lynch / réparation des mésappariements (MMR)"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "mlh1.html",
+      "title": "MLH1",
+      "desc": {
+        "en": "Lynch syndrome mismatch repair",
+        "fr": "Réparation des mésappariements (Lynch)"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "msh2.html",
+      "title": "MSH2",
+      "desc": {
+        "en": "Lynch syndrome mismatch repair",
+        "fr": "Réparation des mésappariements (Lynch)"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "msh6.html",
+      "title": "MSH6",
+      "desc": {
+        "en": "Lynch syndrome mismatch repair",
+        "fr": "Réparation des mésappariements (Lynch)"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "pms2.html",
+      "title": "PMS2",
+      "desc": {
+        "en": "Lynch syndrome mismatch repair",
+        "fr": "Réparation des mésappariements (Lynch)"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "epcam.html",
+      "title": "EPCAM",
+      "desc": {
+        "en": "Deletions silencing MSH2 (Lynch)",
+        "fr": "Délétions silencant MSH2 (Lynch)"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "apc.html",
+      "title": "APC",
+      "desc": {
+        "en": "Familial adenomatous polyposis (FAP)",
+        "fr": "Polypose adénomateuse familiale (PAF)"
+      },
+      "subheadBefore": {
+        "en": "Polyposis syndromes",
+        "fr": "Syndromes de polypose"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "bmpr1a.html",
+      "title": "BMPR1A",
+      "desc": {
+        "en": "Juvenile polyposis syndrome",
+        "fr": "Polypose juvénile"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "smad4.html",
+      "title": "SMAD4",
+      "desc": {
+        "en": "Juvenile polyposis syndrome",
+        "fr": "Polypose juvénile"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "stk11.html",
+      "title": "STK11",
+      "desc": {
+        "en": "Peutz-Jeghers syndrome",
+        "fr": "Syndrome de Peutz-Jeghers"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "grem1.html",
+      "title": "GREM1",
+      "desc": {
+        "en": "Hereditary mixed polyposis (SCG5)",
+        "fr": "Polypose mixte héréditaire (SCG5)"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "mutyh.html",
+      "title": "MUTYH",
+      "desc": {
+        "en": "MUTYH-associated polyposis (MAP)",
+        "fr": "Polypose associée à MUTYH (MAP)"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "nthl1.html",
+      "title": "NTHL1",
+      "desc": {
+        "en": "NTHL1-associated polyposis",
+        "fr": "Polypose associée à NTHL1"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "pole.html",
+      "title": "POLE",
+      "desc": {
+        "en": "Polymerase proofreading polyposis",
+        "fr": "Polypose par défaut de relecture"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "pold1.html",
+      "title": "POLD1",
+      "desc": {
+        "en": "Polymerase proofreading polyposis",
+        "fr": "Polypose par défaut de relecture"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "tp53.html",
+      "title": "TP53",
+      "desc": {
+        "en": "Li-Fraumeni syndrome",
+        "fr": "Syndrome de Li-Fraumeni"
+      },
+      "subheadBefore": {
+        "en": "Li-Fraumeni syndrome",
+        "fr": "Syndrome de Li-Fraumeni"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "pten.html",
+      "title": "PTEN / PHTS",
+      "desc": {
+        "en": "Cowden and related (PHTS)",
+        "fr": "Cowden et apparentés (PHTS)"
+      },
+      "subheadBefore": {
+        "en": "PTEN hamartoma tumour syndrome",
+        "fr": "Syndrome tumoral hamartomateux PTEN"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "cdh1.html",
+      "title": "CDH1",
+      "desc": {
+        "en": "Hereditary diffuse gastric cancer",
+        "fr": "Cancer gastrique diffus héréditaire"
+      },
+      "subheadBefore": {
+        "en": "Hereditary diffuse gastric cancer (HDGC)",
+        "fr": "Cancer gastrique diffus héréditaire (HDGC)"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "ctnna1.html",
+      "title": "CTNNA1",
+      "desc": {
+        "en": "Hereditary diffuse gastric cancer",
+        "fr": "Cancer gastrique diffus héréditaire"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "nf1.html",
+      "title": "NF1",
+      "desc": {
+        "en": "Neurofibromatosis type 1 tumour risk",
+        "fr": "Risque tumoral, neurofibromatose type 1"
+      },
+      "subheadBefore": {
+        "en": "NF1-associated tumour predisposition",
+        "fr": "Prédisposition tumorale associée à NF1"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "hoxb13.html",
+      "title": "HOXB13",
+      "desc": {
+        "en": "Hereditary prostate cancer",
+        "fr": "Cancer de la prostate héréditaire"
+      },
+      "subheadBefore": {
+        "en": "Hereditary prostate cancer",
+        "fr": "Cancer de la prostate héréditaire"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "cdkn2a.html",
+      "title": "CDKN2A",
+      "desc": {
+        "en": "Familial melanoma and pancreatic",
+        "fr": "Mélanome familial et cancer du pancréas"
+      },
+      "subheadBefore": {
+        "en": "Familial melanoma / pancreatic cancer",
+        "fr": "Mélanome familial / cancer du pancréas"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "mitf.html",
+      "title": "MITF",
+      "desc": {
+        "en": "Melanoma and renal risk (E318K)",
+        "fr": "Risque de mélanome et rénal (E318K)"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "apoe.html",
+      "title": "APOE",
+      "desc": {
+        "en": "Alzheimer's risk and lipid effects",
+        "fr": "Risque d'Alzheimer et effets lipidiques"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "huntington.html",
+      "title": {
+        "en": "Huntington's disease",
+        "fr": "Maladie de Huntington"
+      },
+      "desc": {
+        "en": "HTT repeat expansion, adult-onset",
+        "fr": "Expansion de répétitions HTT, début à l'âge adulte"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "als-ftd.html",
+      "title": {
+        "en": "ALS-FTD",
+        "fr": "SLA-DFT"
+      },
+      "desc": {
+        "en": "C9orf72 and related motor neuron / dementia overlap",
+        "fr": "C9orf72 et chevauchement neurone moteur / démence apparenté"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "early-onset-alzheimer.html",
+      "title": {
+        "en": "Early-onset Alzheimer's",
+        "fr": "Alzheimer précoce"
+      },
+      "desc": {
+        "en": "APP, PSEN1, PSEN2 familial forms",
+        "fr": "Formes familiales APP, PSEN1, PSEN2"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "lpa.html",
+      "title": "Lp(a)",
+      "desc": {
+        "en": "Elevated lipoprotein(a)",
+        "fr": "Lipoprotéine(a) élevée"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "pcsk9.html",
+      "title": "PCSK9",
+      "desc": {
+        "en": "Cholesterol and cardiovascular risk",
+        "fr": "Cholestérol et risque cardiovasculaire"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "hemochromatosis.html",
+      "title": "Hereditary hemochromatosis",
+      "desc": {
+        "en": "HFE, iron overload",
+        "fr": "HFE, surcharge en fer"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "alpha1.html",
+      "title": "Alpha-1 antitrypsin",
+      "desc": {
+        "en": "SERPINA1, lung and liver",
+        "fr": "SERPINA1, poumon et foie"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "mody.html",
+      "title": "MODY",
+      "desc": {
+        "en": "Monogenic diabetes",
+        "fr": "Diabète monogénique"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "hht.html",
+      "title": "HHT",
+      "desc": {
+        "en": "Hereditary hemorrhagic telangiectasia",
+        "fr": "Télangiectasie hémorragique héréditaire"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "wilson.html",
+      "title": "Wilson disease",
+      "desc": {
+        "en": "ATP7B, copper overload",
+        "fr": "ATP7B, surcharge en cuivre"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "adpkd.html",
+      "title": "Polycystic kidney disease",
+      "desc": {
+        "en": "ADPKD, PKD1/PKD2",
+        "fr": "ADPKD, PKD1/PKD2"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "fmf.html",
+      "title": "Familial Mediterranean fever",
+      "desc": {
+        "en": "MEFV",
+        "fr": "MEFV"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "myotonic-dystrophy.html",
+      "title": "Myotonic dystrophy",
+      "desc": {
+        "en": "DMPK repeat expansion",
+        "fr": "Expansion DMPK"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "fh-adult.html",
+      "title": "Familial hypercholesterolemia",
+      "desc": {
+        "en": "LDLR, APOB, PCSK9",
+        "fr": "LDLR, APOB, PCSK9"
+      }
+    },
+    {
+      "group": "adult",
+      "file": "hboc-adult.html",
+      "title": "Inherited cancer risk",
+      "desc": {
+        "en": "When to consider cancer genetics",
+        "fr": "Quand envisager la génétique du cancer"
+      }
+    },
+    {
+      "group": "cardiac",
+      "file": "arrhythmias.html",
+      "title": {
+        "en": "Arrhythmias",
+        "fr": "Arythmies"
+      },
+      "desc": {
+        "en": "Long QT, Brugada and related channelopathies",
+        "fr": "QT long, Brugada et canalopathies apparentées"
+      }
+    },
+    {
+      "group": "cardiac",
+      "file": "cardiomyopathies.html",
+      "title": {
+        "en": "Cardiomyopathies",
+        "fr": "Cardiomyopathies"
+      },
+      "desc": {
+        "en": "Hypertrophic, dilated and arrhythmogenic",
+        "fr": "Hypertrophique, dilatée et arythmogène"
+      }
+    },
+    {
+      "group": "cardiac",
+      "file": "long-qt.html",
+      "title": "Long QT syndrome",
+      "desc": {
+        "en": "KCNQ1, KCNH2, SCN5A",
+        "fr": "KCNQ1, KCNH2, SCN5A"
+      }
+    },
+    {
+      "group": "cardiac",
+      "file": "brugada.html",
+      "title": "Brugada syndrome",
+      "desc": {
+        "en": "SCN5A channelopathy",
+        "fr": "Canalopathie SCN5A"
+      }
+    },
+    {
+      "group": "cardiac",
+      "file": "cpvt.html",
+      "title": "CPVT",
+      "desc": {
+        "en": "Catecholaminergic VT, RYR2",
+        "fr": "TV catécholaminergique, RYR2"
+      }
+    },
+    {
+      "group": "cardiac",
+      "file": "hcm.html",
+      "title": "Hypertrophic cardiomyopathy",
+      "desc": {
+        "en": "Sarcomere genes (MYH7, MYBPC3)",
+        "fr": "Gènes sarcomériques (MYH7, MYBPC3)"
+      }
+    },
+    {
+      "group": "cardiac",
+      "file": "dcm.html",
+      "title": "Dilated cardiomyopathy",
+      "desc": {
+        "en": "TTN, LMNA and others",
+        "fr": "TTN, LMNA et autres"
+      }
+    },
+    {
+      "group": "cardiac",
+      "file": "acm.html",
+      "title": "Arrhythmogenic cardiomyopathy",
+      "desc": {
+        "en": "Desmosomal genes (PKP2)",
+        "fr": "Gènes desmosomaux (PKP2)"
+      }
+    },
+    {
+      "group": "cardiac",
+      "file": "fh.html",
+      "title": "Familial hypercholesterolemia",
+      "desc": {
+        "en": "LDLR, APOB, PCSK9",
+        "fr": "LDLR, APOB, PCSK9"
+      }
+    },
+    {
+      "group": "cardiac",
+      "file": "taad-cardiac.html",
+      "title": "Thoracic aortic aneurysm",
+      "desc": {
+        "en": "FBN1, TGFBR, ACTA2",
+        "fr": "FBN1, TGFBR, ACTA2"
+      }
+    },
+    {
+      "group": "cardiac",
+      "file": "arvc.html",
+      "title": "ARVC",
+      "desc": {
+        "en": "Arrhythmogenic RV cardiomyopathy",
+        "fr": "Cardiomyopathie VD arythmogène"
+      }
+    },
+    {
+      "group": "cardiac",
+      "file": "sudden-death.html",
+      "title": "Sudden cardiac death work-up",
+      "desc": {
+        "en": "Evaluation after unexplained death",
+        "fr": "Bilan après décès inexpliqué"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "expanded-carrier-screening.html",
+      "title": {
+        "en": "Expanded carrier screening",
+        "fr": "Dépistage élargi des porteurs"
+      },
+      "desc": {
+        "en": "Recessive and X-linked risk before or during pregnancy",
+        "fr": "Risque récessif et lié à l'X avant ou pendant la grossesse"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "sickle-cell.html",
+      "title": {
+        "en": "Sickle cell anemia",
+        "fr": "Anémie falciforme"
+      },
+      "desc": {
+        "en": "HBB carrier screening and recurrence risk",
+        "fr": "Dépistage des porteurs HBB et risque de récurrence"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "thalassemia.html",
+      "title": {
+        "en": "Thalassemia",
+        "fr": "Thalassémie"
+      },
+      "desc": {
+        "en": "Alpha and beta globin carrier screening",
+        "fr": "Dépistage des porteurs de globine alpha et bêta"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "cardiac-malformation.html",
+      "title": {
+        "en": "Cardiac malformation",
+        "fr": "Malformation cardiaque"
+      },
+      "desc": {
+        "en": "Congenital heart defect on fetal imaging",
+        "fr": "Cardiopathie congénitale à l'imagerie fœtale"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "abnormal-nipt.html",
+      "title": {
+        "en": "Abnormal NIPT",
+        "fr": "DPNI anormal"
+      },
+      "desc": {
+        "en": "Screen-positive non-invasive prenatal testing",
+        "fr": "Dépistage prénatal non invasif positif"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "premature-ovarian-failure.html",
+      "title": {
+        "en": "Premature ovarian failure",
+        "fr": "Insuffisance ovarienne prématurée"
+      },
+      "desc": {
+        "en": "Early loss of ovarian function; fragile X link",
+        "fr": "Perte précoce de la fonction ovarienne; lien avec le X fragile"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "recurrent-miscarriage.html",
+      "title": {
+        "en": "Recurrent miscarriage",
+        "fr": "Fausses couches à répétition"
+      },
+      "desc": {
+        "en": "Repeated pregnancy loss, preconception work-up",
+        "fr": "Pertes de grossesse répétées, bilan préconceptionnel"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "increased-nt.html",
+      "title": {
+        "en": "Increased nuchal translucency",
+        "fr": "Clarté nucale augmentée"
+      },
+      "desc": {
+        "en": "Enlarged fluid space, first-trimester marker",
+        "fr": "Espace liquidien élargi, marqueur du premier trimestre"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "increased-nuchal-fold.html",
+      "title": {
+        "en": "Increased nuchal fold",
+        "fr": "Pli nucal augmenté"
+      },
+      "desc": {
+        "en": "Thickened fold, second-trimester marker",
+        "fr": "Pli épaissi, marqueur du deuxième trimestre"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "absent-nasal-bone.html",
+      "title": {
+        "en": "Absent nasal bone",
+        "fr": "Os nasal absent"
+      },
+      "desc": {
+        "en": "Soft marker on prenatal ultrasound",
+        "fr": "Marqueur léger à l'échographie prénatale"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "short-limbs.html",
+      "title": {
+        "en": "Short limbs",
+        "fr": "Membres courts"
+      },
+      "desc": {
+        "en": "Shortened long bones on ultrasound",
+        "fr": "Os longs raccourcis à l'échographie"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "sga.html",
+      "title": {
+        "en": "Small for gestational age",
+        "fr": "Petit pour l'âge gestationnel"
+      },
+      "desc": {
+        "en": "Growth below expected for gestation",
+        "fr": "Croissance inférieure à l'attendu pour l'âge"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "lga.html",
+      "title": {
+        "en": "Large for gestational age",
+        "fr": "Grand pour l'âge gestationnel"
+      },
+      "desc": {
+        "en": "Growth above expected for gestation",
+        "fr": "Croissance supérieure à l'attendu pour l'âge"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "anencephaly.html",
+      "title": {
+        "en": "Anencephaly",
+        "fr": "Anencéphalie"
+      },
+      "desc": {
+        "en": "Neural tube defect of the skull and brain",
+        "fr": "Anomalie du tube neural du crâne et du cerveau"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "gastroschisis.html",
+      "title": {
+        "en": "Gastroschisis",
+        "fr": "Gastroschisis"
+      },
+      "desc": {
+        "en": "Abdominal wall defect, bowel outside",
+        "fr": "Anomalie de la paroi abdominale, intestin à l'extérieur"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "omphalocele.html",
+      "title": {
+        "en": "Omphalocele",
+        "fr": "Omphalocèle"
+      },
+      "desc": {
+        "en": "Abdominal wall defect at the umbilicus",
+        "fr": "Anomalie de la paroi abdominale à l'ombilic"
+      }
+    },
+    {
+      "group": "prenatal",
+      "file": "fertility.html",
+      "title": "Fertility",
+      "desc": {
+        "en": "Genetic causes of infertility, preconception",
+        "fr": "Causes génétiques d'infertilité, préconception"
+      }
+    },
+    {
+      "group": "pediatric",
+      "file": "bws.html",
+      "title": {
+        "en": "Beckwith-Wiedemann",
+        "fr": "Beckwith-Wiedemann"
+      },
+      "desc": {
+        "en": "Overgrowth and tumour predisposition",
+        "fr": "Excès de croissance et prédisposition tumorale"
+      }
+    },
+    {
+      "group": "pediatric",
+      "file": "russell-silver.html",
+      "title": {
+        "en": "Russell-Silver",
+        "fr": "Russell-Silver"
+      },
+      "desc": {
+        "en": "Growth restriction and asymmetry",
+        "fr": "Retard de croissance et asymétrie"
+      }
+    },
+    {
+      "group": "pediatric",
+      "file": "down-syndrome.html",
+      "title": "Down syndrome",
+      "desc": {
+        "en": "Trisomy 21",
+        "fr": "Trisomie 21"
+      }
+    },
+    {
+      "group": "pediatric",
+      "file": "22q11.html",
+      "title": "22q11.2 deletion",
+      "desc": {
+        "en": "DiGeorge / velocardiofacial",
+        "fr": "DiGeorge / vélocardiofacial"
+      }
+    },
+    {
+      "group": "pediatric",
+      "file": "fragile-x-syndrome.html",
+      "title": "Fragile X syndrome",
+      "desc": {
+        "en": "FMR1, intellectual disability",
+        "fr": "FMR1, déficience intellectuelle"
+      }
+    },
+    {
+      "group": "pediatric",
+      "file": "prader-willi.html",
+      "title": "Prader-Willi syndrome",
+      "desc": {
+        "en": "Imprinting, hyperphagia",
+        "fr": "Empreinte, hyperphagie"
+      }
+    },
+    {
+      "group": "pediatric",
+      "file": "angelman.html",
+      "title": "Angelman syndrome",
+      "desc": {
+        "en": "Imprinting, UBE3A",
+        "fr": "Empreinte, UBE3A"
+      }
+    },
+    {
+      "group": "pediatric",
+      "file": "noonan.html",
+      "title": "Noonan syndrome",
+      "desc": {
+        "en": "RASopathy, cardiac features",
+        "fr": "RASopathie, atteinte cardiaque"
+      }
+    },
+    {
+      "group": "pediatric",
+      "file": "williams.html",
+      "title": "Williams syndrome",
+      "desc": {
+        "en": "7q11.23 deletion",
+        "fr": "Délétion 7q11.23"
+      }
+    },
+    {
+      "group": "pediatric",
+      "file": "turner.html",
+      "title": "Turner syndrome",
+      "desc": {
+        "en": "45,X, short stature",
+        "fr": "45,X, petite taille"
+      }
+    },
+    {
+      "group": "pediatric",
+      "file": "klinefelter.html",
+      "title": "Klinefelter syndrome",
+      "desc": {
+        "en": "47,XXY",
+        "fr": "47,XXY"
+      }
+    },
+    {
+      "group": "pediatric",
+      "file": "rett.html",
+      "title": "Rett syndrome",
+      "desc": {
+        "en": "MECP2, regression",
+        "fr": "MECP2, régression"
+      }
+    },
+    {
+      "group": "derm",
+      "file": "skin-biopsy.html",
+      "title": {
+        "en": "Skin biopsy in genetics",
+        "fr": "Biopsie cutanée en génétique"
+      },
+      "desc": {
+        "en": "When and why a skin sample is taken",
+        "fr": "Quand et pourquoi un échantillon de peau est prélevé"
+      }
+    },
+    {
+      "group": "derm",
+      "file": "skin-biopsy-what-to-expect.html",
+      "title": {
+        "en": "What to expect",
+        "fr": "À quoi s'attendre"
+      },
+      "desc": {
+        "en": "How the biopsy is done, step by step",
+        "fr": "Comment la biopsie se déroule, étape par étape"
+      }
+    },
+    {
+      "group": "derm",
+      "file": "fibroblast-culture.html",
+      "title": {
+        "en": "Fibroblast culture",
+        "fr": "Culture de fibroblastes"
+      },
+      "desc": {
+        "en": "Growing skin cells for biochemical and DNA testing",
+        "fr": "Mise en culture de cellules cutanées pour analyses biochimiques et ADN"
+      }
+    },
+    {
+      "group": "derm",
+      "file": "mosaicism.html",
+      "title": {
+        "en": "Mosaicism testing",
+        "fr": "Test de mosaïcisme"
+      },
+      "desc": {
+        "en": "Detecting variants present only in some tissues",
+        "fr": "Détection de variants présents seulement dans certains tissus"
+      }
+    }
+  ]
+}

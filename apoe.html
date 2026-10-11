@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APOE Genotype: Prevention and Surveillance Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+  :root{
+    --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+    --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+    --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+    --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+    --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+    --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+    --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+    --radius:14px; --radius-sm:9px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:18px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px; margin:0 auto; padding:0 22px 80px;}
+  .ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+  /* Language toggle */
+  .langbar{
+    position:sticky; top:0; z-index:50; background:rgba(244,249,252,.94);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+    display:flex; gap:8px; justify-content:center; padding:10px 0; margin-bottom:0;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .langbar button{
+    font-size:13px; font-weight:600; letter-spacing:.03em; cursor:pointer;
+    border:1px solid var(--brand-line); background:var(--paper); color:var(--brand-dark);
+    padding:7px 18px; border-radius:999px; transition:all .15s;
+  }
+  .langbar button.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+
+  /* Masthead */
+  .masthead{padding:38px 0 26px; border-bottom:3px double var(--line);}
+  .eyebrow{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; text-transform:uppercase;
+    letter-spacing:.16em; font-size:12px; font-weight:700; color:var(--brand-dark);
+  }
+  h1{font-size:34px; line-height:1.18; margin:.32em 0 .2em; font-weight:700; letter-spacing:-.01em;}
+  .standfirst{font-size:20px; color:var(--ink-soft); margin:.2em 0 1.1em; font-style:italic;}
+  .authors{
+    background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:15px 18px; font-size:15px; line-height:1.5;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--ink-soft);
+  }
+  .authors .a{margin:3px 0;}
+  .authors strong{color:var(--ink);}
+  .metachips{display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 4px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .chip{font-size:12px; font-weight:600; background:var(--brand-bg); color:var(--brand-dark);
+    border:1px solid var(--brand-line); border-radius:999px; padding:5px 12px;}
+  .legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:14px; font-size:13px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--ink-soft);}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .swatch{width:13px;height:13px;border-radius:3px;display:inline-block;border:1px solid rgba(0,0,0,.12);}
+
+  /* TOC */
+  .toc{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 24px; margin:28px 0; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .toc h2{font-size:13px; text-transform:uppercase; letter-spacing:.12em; color:var(--brand-dark);
+    margin:0 0 12px; font-family:inherit;}
+  .toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:14.5px;}
+  .toc li{margin:5px 0; break-inside:avoid;}
+  .toc a{color:var(--ink-soft); text-decoration:none;}
+  .toc a:hover{color:var(--brand); text-decoration:underline;}
+
+  /* Section headers */
+  section{margin:38px 0 0; scroll-margin-top:62px;}
+  h2.sec{display:flex; align-items:flex-start; gap:13px; font-size:25px; line-height:1.22;
+    margin:0 0 14px; letter-spacing:-.01em;}
+  .num{flex:none; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:15px;
+    font-weight:700; background:var(--brand); color:#fff; width:32px; height:32px; border-radius:8px;
+    display:inline-flex; align-items:center; justify-content:center; margin-top:4px;}
+  h3{font-size:19px; margin:26px 0 8px; color:var(--brand-dark);}
+  h4{font-size:16.5px; margin:18px 0 6px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color:var(--ink); letter-spacing:.01em;}
+  p{margin:10px 0;}
+
+  /* Patient panel */
+  .patient{
+    background:var(--brand-bg); border:1px solid var(--brand-line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:16px 20px; margin:14px 0 18px;
+  }
+  .patient .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px;
+    font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--brand-dark);
+    display:flex; align-items:center; gap:7px; margin-bottom:6px;}
+  .patient p{margin:7px 0; color:#173849;}
+
+  /* Gene/genotype header pills */
+  .genohead{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:30px 0 6px;
+    padding-bottom:9px; border-bottom:2px solid var(--line);}
+  .genohead .name{font-size:20px; font-weight:700; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .pill{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:700;
+    padding:4px 12px; border-radius:999px; letter-spacing:.02em;}
+  .pill.high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+  .pill.mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+  .pill.low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+  /* Checklists */
+  .check{list-style:none; padding:0; margin:12px 0; font-size:16.5px;}
+  .check li{display:flex; gap:11px; padding:9px 0; border-bottom:1px solid var(--line-soft); align-items:flex-start;}
+  .check li:last-child{border-bottom:none;}
+  .check i{flex:none; margin-top:3px; font-size:19px;}
+  .ti-circle-check{color:var(--brand);}
+  .ti-circle-minus{color:var(--ink-faint);}
+  .ti-alert-triangle{color:var(--amber);}
+  .ti-circle-x{color:var(--red);}
+  .ck-tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.06em; padding:2px 7px; border-radius:5px; margin-left:6px; white-space:nowrap;}
+  .ck-routine{background:var(--brand-bg); color:var(--brand-dark);}
+  .ck-optional{background:var(--amber-bg); color:var(--amber);}
+  .ck-notrec{background:var(--red-bg); color:var(--red);}
+
+  /* Tables */
+  table{width:100%; border-collapse:collapse; margin:16px 0; font-size:15px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  th,td{text-align:left; padding:11px 13px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{background:var(--brand-bg); color:var(--brand-dark); font-size:12.5px; text-transform:uppercase;
+    letter-spacing:.05em; border-bottom:2px solid var(--brand-line);}
+  tr:nth-child(even) td{background:var(--cream);}
+  .risk-pill{display:inline-block; font-weight:700; font-size:12px; padding:3px 10px; border-radius:999px;}
+  .r-high{background:var(--red-bg); color:var(--red);}
+  .r-mod{background:var(--amber-bg); color:var(--amber);}
+  .r-low{background:var(--brand-bg); color:var(--brand-dark);}
+
+  /* Callouts */
+  .rec{background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:14px 18px; margin:14px 0;}
+  .rec .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.1em; color:var(--brand-dark); margin-bottom:5px;}
+  .info{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm);
+    padding:14px 18px; margin:14px 0;}
+  .info .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.1em; color:var(--brand-dark); margin-bottom:5px; display:flex; gap:7px; align-items:center;}
+  .emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-left:4px solid var(--purple);
+    border-radius:var(--radius-sm); padding:14px 18px; margin:14px 0;}
+  .emerging .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.1em; color:var(--purple); margin-bottom:5px; display:flex; gap:7px; align-items:center;}
+  .warn{background:var(--amber-bg); border:1px solid var(--amber-line); border-left:4px solid var(--amber);
+    border-radius:var(--radius-sm); padding:14px 18px; margin:14px 0;}
+  .warn .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.1em; color:var(--amber); margin-bottom:5px; display:flex; gap:7px; align-items:center;}
+
+  /* Summary cards */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin:18px 0;}
+  .card{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand);
+    border-radius:var(--radius-sm); padding:15px 17px;}
+  .card h4{margin:0 0 8px; color:var(--brand-dark);}
+  .card ul{margin:0; padding-left:18px; font-size:14.5px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--ink-soft);}
+  .card li{margin:5px 0;}
+
+  /* References */
+  .refs{font-size:14px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--ink-soft);}
+  .refs ol{padding-left:22px;}
+  .refs li{margin:9px 0; line-height:1.5;}
+
+  /* Footer */
+  .footer{margin-top:46px; padding-top:20px; border-top:3px double var(--line);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; color:var(--ink-faint); line-height:1.55;}
+
+  [data-lang]{display:none;}
+  body.en [data-lang="en"]{display:block;}
+  body.fr [data-lang="fr"]{display:block;}
+  span[data-lang]{display:inline;}
+  body.en span[data-lang="en"]{display:inline;}
+  body.fr span[data-lang="fr"]{display:inline;}
+  body.en span[data-lang="fr"]{display:none;}
+  body.fr span[data-lang="en"]{display:none;}
+
+  @media (max-width:640px){
+    body{font-size:16.5px;}
+    h1{font-size:27px;}
+    .toc ol{columns:1;}
+    h2.sec{font-size:21px;}
+  }
+  @media print{
+    body{background:#fff; font-size:11.5pt;}
+    .langbar{display:none;}
+    .wrap{max-width:100%;}
+    section{break-inside:avoid;}
+    .patient,.rec,.info,.emerging,.warn,.card,table{break-inside:avoid;}
+    a{color:var(--ink); text-decoration:none;}
+    .toc{break-inside:avoid;}
+  }
+</style>
+</head>
+<body class="en">
+
+<div class="langbar ui">
+  <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+  <button id="btn-fr" onclick="setLang('fr')">Français</button>
+</div>
+
+<div class="wrap">
+
+<!-- ============================= ENGLISH ============================= -->
+<div data-lang="en">
+
+  <header class="masthead">
+    <div class="eyebrow">Precision Prevention &middot; Clinical Protocol</div>
+    <h1>APOE Genotype: Risk Interpretation, Prevention, and Surveillance</h1>
+    <p class="standfirst">A practical, evidence-calibrated guide to interpreting APOE genotype for Alzheimer's disease and cardiovascular risk, with prevention and monitoring stratified by genotype.</p>
+    <div class="authors">
+      <div class="a"><strong>Dr. Andrew Shuen, MD PhD FRCPC DABMGG</strong> &mdash; Cancer Genetics &amp; Precision Medicine, Cancer Prevention Centre, Jewish General Hospital (JGH), Montreal</div>
+    </div>
+    <div class="metachips">
+      <span class="chip">Late-onset Alzheimer's risk gene</span>
+      <span class="chip">Lipid / cardiovascular modifier</span>
+      <span class="chip">Risk factor, not a diagnosis</span>
+      <span class="chip">Bilingual EN / FR</span>
+    </div>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--red-bg);border-color:var(--red-line)"></span> High risk / not recommended</span>
+      <span><span class="swatch" style="background:var(--amber-bg);border-color:var(--amber-line)"></span> Moderate / optional</span>
+      <span><span class="swatch" style="background:var(--brand-bg);border-color:var(--brand-line)"></span> Standard / routine</span>
+      <span><span class="swatch" style="background:var(--purple-bg);border-color:var(--purple-line)"></span> Emerging / investigational</span>
+    </div>
+  </header>
+
+  <nav class="toc ui">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#s1-en">Understanding APOE</a></li>
+      <li><a href="#s2-en">Risk by genotype</a></li>
+      <li><a href="#s3-en">Cognitive surveillance by genotype</a></li>
+      <li><a href="#s4-en">Cardiovascular &amp; lipid management</a></li>
+      <li><a href="#s5-en">Anti-amyloid therapy &amp; ARIA</a></li>
+      <li><a href="#s6-en">Brain-health risk reduction</a></li>
+      <li><a href="#s7-en">Genetic counselling &amp; testing</a></li>
+      <li><a href="#s8-en">Lifestyle and nutrition</a></li>
+      <li><a href="#s9-en">Women, hormones, and timing</a></li>
+      <li><a href="#s10-en">Emerging &amp; investigational</a></li>
+      <li><a href="#s11-en">Summary of recommendations</a></li>
+      <li><a href="#s12-en">References</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="s1-en">
+    <h2 class="sec"><span class="num">1</span> Understanding APOE</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>APOE is a gene everyone carries. It comes in three common versions, called e2, e3, and e4. You inherit one version from each parent, so you have two copies. Your pair of versions is your "genotype."</p>
+      <p>The e4 version raises the chance of developing Alzheimer's disease later in life and tends to raise cholesterol. The e2 version usually lowers cholesterol but can sometimes cause a different lipid problem. The e3 version is the most common and is considered neutral.</p>
+      <p>The most important message: APOE is a risk factor, not a diagnosis. Many people with the higher-risk e4 version live into their 80s and 90s with a sharp mind. Many people without it still develop dementia. Your habits, heart health, and other factors matter a great deal.</p>
+    </div>
+    <p>APOE on chromosome 19q13.2 encodes apolipoprotein E, a glycoprotein central to lipid transport and the principal cholesterol carrier in the central nervous system. Three common alleles (&epsilon;2, &epsilon;3, &epsilon;4) are defined by single-nucleotide changes at codons 112 and 158, producing six genotypes: &epsilon;2/&epsilon;2, &epsilon;2/&epsilon;3, &epsilon;3/&epsilon;3, &epsilon;2/&epsilon;4, &epsilon;3/&epsilon;4, and &epsilon;4/&epsilon;4.</p>
+    <p>The &epsilon;4 allele is the strongest common genetic risk factor for late-onset Alzheimer's disease (AD). Mechanistically, the Cys-to-Arg substitutions at codons 112 and 158 alter apoE structure and impair microglial clearance of amyloid-beta, accelerating amyloid accumulation. &epsilon;4 carriers begin accumulating amyloid years earlier than non-carriers; one or two &epsilon;4 alleles shift the age of amyloid-PET onset earlier by roughly 7.5 years, while the rate of accumulation is similar across genotypes.</p>
+    <p>A 2024 analysis reframed &epsilon;4/&epsilon;4 homozygosity as a distinct, near-deterministic genetic form of AD: in European-ancestry cohorts, &epsilon;4 homozygotes show almost universal amyloid pathology by age 80 and a high lifetime probability of symptomatic disease. This remains debated, and penetrance is not complete, but it underscores that &epsilon;4/&epsilon;4 carries categorically higher risk than &epsilon;3/&epsilon;4.</p>
+    <div class="warn">
+      <div class="tag"><i class="ti ti-alert-triangle"></i> Important caveats</div>
+      <p>Most published risk estimates derive from European-ancestry cohorts. The magnitude of &epsilon;4-associated AD risk varies by genetic ancestry and is generally lower in African-ancestry and some East Asian populations. Apply population-specific framing where possible, and interpret with caution outside the reference population.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="s2-en">
+    <h2 class="sec"><span class="num">2</span> Risk by genotype</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>The table below gives rough lifetime estimates. These are population averages from research studies, not a personal prediction. Your own risk depends on family history, age, sex, ancestry, heart health, and lifestyle.</p>
+    </div>
+    <p>Approximate lifetime AD risk and relative risk (vs &epsilon;3/&epsilon;3), and the directional lipid effect. Figures are pooled estimates, predominantly from European-ancestry data, and ranges vary by source, age cut-off, and ascertainment.</p>
+    <table>
+      <thead>
+        <tr><th>Genotype</th><th>Population freq. (approx.)</th><th>AD lifetime risk (to ~85)</th><th>Relative AD risk</th><th>Lipid / CV effect</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>&epsilon;2/&epsilon;2</strong></td><td>~0.5%</td>
+          <td><span class="risk-pill r-low">Below average</span></td><td>Reduced</td>
+          <td>Lower LDL-C; risk of type III hyperlipoproteinemia (familial dysbetalipoproteinemia) with second hit</td>
+        </tr>
+        <tr>
+          <td><strong>&epsilon;2/&epsilon;3</strong></td><td>~11%</td>
+          <td><span class="risk-pill r-low">Below average</span></td><td>Reduced</td>
+          <td>Mildly lower LDL-C</td>
+        </tr>
+        <tr>
+          <td><strong>&epsilon;3/&epsilon;3</strong></td><td>~60%</td>
+          <td><span class="risk-pill r-low">Reference (~10–15%)</span></td><td>1.0 (reference)</td>
+          <td>Neutral</td>
+        </tr>
+        <tr>
+          <td><strong>&epsilon;2/&epsilon;4</strong></td><td>~2%</td>
+          <td><span class="risk-pill r-mod">Moderately raised</span></td><td>~2–3&times;</td>
+          <td>Competing effects; LDL often elevated; remnant accumulation possible</td>
+        </tr>
+        <tr>
+          <td><strong>&epsilon;3/&epsilon;4</strong></td><td>~21%</td>
+          <td><span class="risk-pill r-mod">Raised</span></td><td>~3–4&times;</td>
+          <td>Higher LDL-C; increased atherosclerotic risk</td>
+        </tr>
+        <tr>
+          <td><strong>&epsilon;4/&epsilon;4</strong></td><td>~2%</td>
+          <td><span class="risk-pill r-high">High (~50–60%)</span></td><td>~12–15&times;</td>
+          <td>Highest LDL-C; strongest atherosclerotic association</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="info">
+      <div class="tag"><i class="ti ti-info-circle"></i> Reading these numbers honestly</div>
+      <p>Even at &epsilon;4/&epsilon;4, roughly 4 in 10 carriers do not develop dementia by 85. Relative risk multipliers (12–15&times;) sound alarming but anchor to a modest baseline. Onset for &epsilon;3/&epsilon;4 typically becomes relevant in the 60s–70s; for &epsilon;4/&epsilon;4, subtle changes can appear in the 50s–60s. Sex matters: female &epsilon;4 carriers show somewhat higher AD risk than males with the same genotype, particularly post-menopause.</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="s3-en">
+    <h2 class="sec"><span class="num">3</span> Cognitive surveillance by genotype</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>There is no routine brain scan or memory test recommended just because of your APOE result. What helps most is paying attention to changes over time, controlling blood pressure and other heart-health factors, and staying mentally and physically active. If you or your family notice real changes in memory or thinking, that is the time for a focused medical assessment.</p>
+    </div>
+    <div class="warn">
+      <div class="tag"><i class="ti ti-alert-triangle"></i> Framing</div>
+      <p>No major guideline recommends imaging or fluid biomarker screening for cognition in asymptomatic people based on APOE genotype alone. The recommendations below are pragmatic, consensus-level monitoring for a precision-prevention setting, not guideline mandates. Their main value is establishing a baseline and reinforcing modifiable risk reduction.</p>
+    </div>
+
+    <div class="genohead"><span class="name">&epsilon;3/&epsilon;3 and &epsilon;2 carriers</span><span class="pill low">Standard population approach</span></div>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>Standard primary-care cognitive vigilance; act on symptoms, not genotype.<span class="ck-tag ck-routine">Routine</span></div></li>
+      <li><i class="ti ti-circle-minus"></i><div>No genotype-driven cognitive testing or imaging.<span class="ck-tag ck-optional">Not indicated</span></div></li>
+    </ul>
+
+    <div class="genohead"><span class="name">&epsilon;3/&epsilon;4 (one e4 copy)</span><span class="pill mod">Raised risk</span></div>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>Baseline cognitive function discussion and documentation, ideally from the 50s.<span class="ck-tag ck-routine">Routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Aggressive management of modifiable risk: blood pressure, lipids, glucose, sleep, hearing, physical activity.<span class="ck-tag ck-routine">Routine</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Brief validated cognitive instrument (e.g. MoCA) if subjective or informant-reported concern emerges.<span class="ck-tag ck-optional">Optional / symptom-triggered</span></div></li>
+      <li><i class="ti ti-circle-minus"></i><div>Amyloid PET or CSF/plasma biomarkers in asymptomatic carriers.<span class="ck-tag ck-notrec">Not recommended</span></div></li>
+    </ul>
+
+    <div class="genohead"><span class="name">&epsilon;4/&epsilon;4 (two e4 copies)</span><span class="pill high">High risk</span></div>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>Baseline cognitive documentation, ideally from the late 40s–50s, with periodic informal review.<span class="ck-tag ck-routine">Routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Intensive modifiable-risk optimization (vascular, metabolic, sensory, sleep).<span class="ck-tag ck-routine">Routine</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Low threshold for formal neuropsychological assessment at first credible concern.<span class="ck-tag ck-optional">Optional</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Plasma biomarkers (e.g. p-tau217) only within a diagnostic workup or research protocol once symptoms emerge, with counselling.<span class="ck-tag ck-optional">Investigational / case-by-case</span></div></li>
+      <li><i class="ti ti-circle-minus"></i><div>Population-style amyloid PET screening while asymptomatic.<span class="ck-tag ck-notrec">Not recommended</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 4 -->
+  <section id="s4-en">
+    <h2 class="sec"><span class="num">4</span> Cardiovascular &amp; lipid management</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>APOE affects your heart as well as your brain. The e4 version tends to raise LDL ("bad" cholesterol) and the risk of clogged arteries. The e2 version usually lowers LDL but, in a small number of people, can cause a rare cholesterol disorder. Good news: cholesterol and blood-pressure control are among the most effective things you can do, and they protect the brain too.</p>
+    </div>
+    <p>Vascular risk is a shared pathway. Optimizing cardiovascular health is the single most actionable lever for &epsilon;4 carriers, given the overlap between vascular disease and dementia risk and the strong &epsilon;4–LDL association.</p>
+
+    <div class="genohead"><span class="name">&epsilon;4 carriers (&epsilon;3/&epsilon;4, &epsilon;4/&epsilon;4)</span><span class="pill mod">LDL-raising</span></div>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>Standard lipid screening per Canadian Cardiovascular Society (CCS) guidelines; treat to risk-appropriate LDL-C/non-HDL-C targets.<span class="ck-tag ck-routine">Routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Statins are first-line and effective; &epsilon;4 carriers may show somewhat smaller LDL reduction, so titrate and add ezetimibe or a PCSK9 inhibitor if targets are not met.<span class="ck-tag ck-routine">Routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Reinforce blood-pressure control, glycemic control, and smoking cessation; these compound &epsilon;4-related risk.<span class="ck-tag ck-routine">Routine</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Lp(a) measurement once in a lifetime as part of global CV risk refinement.<span class="ck-tag ck-optional">Optional</span></div></li>
+    </ul>
+
+    <div class="genohead"><span class="name">&epsilon;2/&epsilon;2 (and &epsilon;2/&epsilon;4)</span><span class="pill mod">Dysbetalipoproteinemia watch</span></div>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>Screen for type III hyperlipoproteinemia (familial dysbetalipoproteinemia) if mixed hyperlipidemia, elevated remnants, palmar/tuberoeruptive xanthomas, or premature CV disease.<span class="ck-tag ck-routine">Routine if features present</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>&epsilon;2/&epsilon;2 alone is not diagnostic; type III requires a second metabolic hit (obesity, diabetes, hypothyroidism, estrogen-deficiency). Treat the second hit.<span class="ck-tag ck-routine">Routine</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Fibrates are useful where hypertriglyceridemia and remnant accumulation predominate; statins for LDL-driven risk.<span class="ck-tag ck-optional">Per phenotype</span></div></li>
+    </ul>
+    <div class="info">
+      <div class="tag"><i class="ti ti-calculator"></i> Practical note on statin response</div>
+      <p>APOE genotype modestly influences statin LDL response (&epsilon;2 carriers tend to respond more, &epsilon;4 carriers less), but genotype should not change the decision to treat. Treat to target and intensify therapy as needed regardless of APOE.</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="s5-en">
+    <h2 class="sec"><span class="num">5</span> Anti-amyloid therapy &amp; ARIA risk</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>For people who already have early Alzheimer's disease, newer antibody medicines (lecanemab, donanemab) can slightly slow decline. APOE matters a lot here. People with two e4 copies have a higher risk of a brain side effect called ARIA (swelling or small bleeds seen on MRI), and the benefit in this group appears smaller. This is a decision for a specialist, made with MRI monitoring and a careful discussion of risks and benefits. It applies only to people with symptoms, not to healthy carriers.</p>
+    </div>
+    <p>APOE genotype is the single most consequential patient-level variable for amyloid-related imaging abnormality (ARIA) risk with anti-amyloid monoclonal antibodies, and it bears on efficacy.</p>
+    <table>
+      <thead><tr><th>Genotype</th><th>ARIA-E risk</th><th>Efficacy signal</th><th>Implication</th></tr></thead>
+      <tbody>
+        <tr><td>&epsilon;4 non-carrier</td><td><span class="risk-pill r-low">Lower</span></td><td>Present</td><td>Standard monitoring</td></tr>
+        <tr><td>&epsilon;4 heterozygote</td><td><span class="risk-pill r-mod">Intermediate</span></td><td>Present</td><td>Heightened MRI vigilance</td></tr>
+        <tr><td>&epsilon;4 homozygote</td><td><span class="risk-pill r-high">Highest</span></td><td>Attenuated / debated</td><td>Most intensive monitoring; some regulators restrict use</td></tr>
+      </tbody>
+    </table>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>APOE genotyping is a standard part of the pre-treatment workup for lecanemab/donanemab, to inform consent, agent choice, and MRI monitoring intensity.<span class="ck-tag ck-routine">Routine (treatment candidates)</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>&epsilon;4/&epsilon;4 candidates require the most explicit risk–benefit discussion. Some agencies (e.g. UK MHRA, EMA) restricted approval to non-carriers or heterozygotes; a Bayesian reanalysis suggested limited efficacy in homozygotes.<span class="ck-tag ck-optional">Specialist decision</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Concomitant antithrombotic/anticoagulant therapy raises intracerebral hemorrhage risk if ARIA occurs; weigh carefully.<span class="ck-tag ck-optional">Case-by-case</span></div></li>
+      <li><i class="ti ti-circle-x"></i><div>These therapies are for symptomatic early AD with confirmed amyloid pathology only, never for asymptomatic genotype carriers.<span class="ck-tag ck-notrec">Not for prevention</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 6 -->
+  <section id="s6-en">
+    <h2 class="sec"><span class="num">6</span> Brain-health risk reduction</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>The strongest evidence for lowering dementia risk is not a pill. It is a set of habits: stay physically active, keep blood pressure and cholesterol in range, treat hearing loss, protect sleep, stay socially and mentally engaged, do not smoke, and limit alcohol. These help everyone, and they may help e4 carriers most.</p>
+    </div>
+    <p>The Lancet Commission identifies a set of modifiable factors associated with a meaningful share of dementia risk across the life course. Evidence is observational for most, but the interventions are low-risk, vascular-protective, and broadly beneficial. For &epsilon;4 carriers the absolute benefit of risk-factor control is plausibly larger.</p>
+    <div class="cards">
+      <div class="card"><h4>Vascular</h4><ul><li>Blood pressure to target (midlife control especially)</li><li>LDL-C to risk-based target</li><li>Glycemic control; avoid central obesity</li></ul></div>
+      <div class="card"><h4>Sensory &amp; sleep</h4><ul><li>Correct hearing loss (hearing aids)</li><li>Screen/treat sleep apnea</li><li>Prioritize sleep quantity and quality</li></ul></div>
+      <div class="card"><h4>Behaviour</h4><ul><li>Regular aerobic + resistance exercise</li><li>No smoking; limit alcohol</li><li>Social engagement; cognitively stimulating activity</li></ul></div>
+    </div>
+    <div class="warn">
+      <div class="tag"><i class="ti ti-alert-triangle"></i> Honest evidence note</div>
+      <p>No supplement or drug is proven to prevent AD in &epsilon;4 carriers. Claims for specific nutraceuticals are not supported by robust randomized evidence. The defensible position is rigorous vascular and lifestyle optimization.</p>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section id="s7-en">
+    <h2 class="sec"><span class="num">7</span> Genetic counselling &amp; testing</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Choosing to learn your APOE result is a personal decision. It can guide prevention, but it cannot tell you for certain whether you will develop Alzheimer's. Some people find the information motivating; others find it distressing. Counselling before testing helps you decide if it is right for you, and to think through implications for insurance, family, and your own peace of mind.</p>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>Offer pre- and post-test genetic counselling. APOE is susceptibility testing, not diagnostic; results are probabilistic and carry psychological weight.<span class="ck-tag ck-routine">Routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Address insurance and disclosure context. In Canada, the Genetic Non-Discrimination Act prohibits requiring or using genetic test results for contracts/services, but discuss real-world implications.<span class="ck-tag ck-routine">Routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Distinguish APOE susceptibility from autosomal-dominant early-onset AD genes (APP, PSEN1, PSEN2). Strong early-onset family history warrants referral for diagnostic gene testing, not just APOE.<span class="ck-tag ck-routine">Routine</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Cascade implications are limited; APOE is common and low-penetrance, so routine predictive cascade testing of relatives is generally not pursued.<span class="ck-tag ck-optional">Case-by-case</span></div></li>
+      <li><i class="ti ti-circle-minus"></i><div>Predictive APOE testing in asymptomatic minors.<span class="ck-tag ck-notrec">Not recommended</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 8 -->
+  <section id="s8-en">
+    <h2 class="sec"><span class="num">8</span> Lifestyle and nutrition</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>A Mediterranean-style pattern of eating supports both heart and brain. Emphasize vegetables, legumes, whole grains, fish, nuts, and olive oil. Limit saturated fat, ultra-processed foods, and excess alcohol. Move your body most days. These are sensible for everyone and especially worthwhile if you carry e4.</p>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>Mediterranean or MIND dietary pattern; reduce saturated and trans fat, which interacts adversely with &epsilon;4-related lipid handling.<span class="ck-tag ck-routine">Routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Regular aerobic and resistance exercise; target guideline activity levels.<span class="ck-tag ck-routine">Routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Weight management and limiting alcohol (relevant to both AD risk and &epsilon;2-related triglyceride elevation).<span class="ck-tag ck-routine">Routine</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Omega-3 intake from diet is reasonable; high-dose supplementation for AD prevention in &epsilon;4 carriers is not proven and remains under study.<span class="ck-tag ck-optional">Optional</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 9 -->
+  <section id="s9-en">
+    <h2 class="sec"><span class="num">9</span> Women, hormones, and timing</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Women who carry e4 appear to have a somewhat higher Alzheimer's risk than men with the same genotype, and the years around menopause may be a sensitive window. Whether hormone therapy helps is not settled. If you are considering hormone therapy, the decision should be individualized with your physician and based on your overall health, not on APOE alone.</p>
+    </div>
+    <p>Female &epsilon;4 carriers show a higher AD risk than male carriers of the same genotype, with the difference concentrated around and after menopause; estrogen's effects on amyloid clearance, blood-brain barrier integrity, and neuroinflammation are proposed mechanisms.</p>
+    <ul class="check">
+      <li><i class="ti ti-alert-triangle"></i><div>Menopausal hormone therapy decisions should follow standard menopause/CV indications and individualized risk-benefit; evidence for HT as APOE-targeted cognitive prevention is inconclusive.<span class="ck-tag ck-optional">Individualized</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Counsel female &epsilon;4 carriers on the post-menopausal window as a period to intensify vascular and lifestyle risk reduction.<span class="ck-tag ck-routine">Routine</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 10 -->
+  <section id="s10-en">
+    <h2 class="sec"><span class="num">10</span> Emerging &amp; investigational</h2>
+    <div class="emerging">
+      <div class="tag"><i class="ti ti-flask"></i> Trial-only / investigational</div>
+      <p><strong>APOE4-lowering and gene-targeted approaches.</strong> Reducing APOE4 in carriers has been proposed as a therapeutic goal; antisense, gene-editing, and APOE2-delivery strategies are preclinical or early-phase only.</p>
+      <p><strong>Prevention trials in &epsilon;4/&epsilon;4 and high-risk carriers.</strong> Secondary-prevention trials (e.g. anti-amyloid and combination approaches in cognitively unimpaired high-risk individuals) are ongoing; participation is the appropriate route to access, not off-label use.</p>
+      <p><strong>Plasma biomarkers (p-tau217 and others).</strong> Increasingly accurate for AD pathology and likely to enter diagnostic pathways, but not validated as genotype-driven screening tests in asymptomatic people.</p>
+      <p><strong>Structural &epsilon;4 "correctors" and small molecules.</strong> Compounds aiming to shift apoE4 toward an apoE3-like conformation are experimental.</p>
+    </div>
+    <p>Direct patients interested in prevention trials to registered studies (clinicaltrials.gov; Canadian sites where available). Frame all of the above as investigational and not part of standard care.</p>
+  </section>
+
+  <!-- 11 -->
+  <section id="s11-en">
+    <h2 class="sec"><span class="num">11</span> Summary of recommendations</h2>
+    <h3>By genotype</h3>
+    <div class="cards">
+      <div class="card"><h4>&epsilon;2 carriers / &epsilon;2/&epsilon;2</h4><ul><li>Watch for type III hyperlipoproteinemia if mixed hyperlipidemia or xanthomas</li><li>Treat second metabolic hits</li><li>Below-average AD risk; standard cognitive approach</li></ul></div>
+      <div class="card"><h4>&epsilon;3/&epsilon;3</h4><ul><li>Reference risk</li><li>Standard population prevention</li><li>No genotype-driven testing</li></ul></div>
+      <div class="card"><h4>&epsilon;3/&epsilon;4</h4><ul><li>Aggressive vascular/lipid control</li><li>Baseline cognitive documentation in 50s</li><li>Symptom-triggered cognitive testing</li></ul></div>
+      <div class="card"><h4>&epsilon;4/&epsilon;4</h4><ul><li>Highest AD and LDL risk</li><li>Intensive modifiable-risk optimization</li><li>Low threshold for formal assessment if symptomatic</li><li>Special ARIA caution if anti-amyloid therapy considered</li></ul></div>
+    </div>
+    <h3>Cross-cutting</h3>
+    <div class="rec"><div class="tag">Recommendation</div><p>Frame APOE as a risk factor, not a diagnosis. Lead every encounter with modifiable risk reduction, which is the most evidence-based and actionable lever.</p></div>
+    <div class="rec"><div class="tag">Recommendation</div><p>Offer pre- and post-test counselling; do not test asymptomatic minors; distinguish APOE from autosomal-dominant AD genes.</p></div>
+    <div class="rec"><div class="tag">Recommendation</div><p>Optimize lipids to guideline targets with statins first-line; treat regardless of APOE genotype.</p></div>
+    <div class="rec"><div class="tag">Recommendation</div><p>Reserve amyloid PET, CSF/plasma biomarkers, and anti-amyloid antibodies for symptomatic diagnostic and treatment pathways, not genotype-based screening.</p></div>
+  </section>
+
+  <!-- 12 -->
+  <section id="s12-en">
+    <h2 class="sec"><span class="num">12</span> References</h2>
+    <div class="refs">
+      <ol>
+        <li>Fortea J, Pegueroles J, Alcolea D, et al. APOE4 homozygozity represents a distinct genetic form of Alzheimer's disease. <em>Nature Medicine</em>. 2024;30(5):1284-1291.</li>
+        <li>Belloy ME, Andrews SJ, Le Guen Y, et al. APOE genotype and Alzheimer disease risk across age, sex, and population ancestry. <em>JAMA Neurology</em>. 2023;80(12):1284-1294.</li>
+        <li>Vance JM, Farrer LA, Huang Y, et al. Report of the APOE4 NIA/ADSP Consortium Working Group: reducing APOE4 in carriers is a therapeutic goal for Alzheimer's disease. <em>Annals of Neurology</em>. 2024;95(4):625-634.</li>
+        <li>Williams DM, et al. Population attributable fractions for APOE alleles in Alzheimer's disease (UCL multi-cohort analysis). <em>ALZFORUM news summary</em>. 2026.</li>
+        <li>Cummings J, Apostolova L, Rabinovici GD, et al. Lecanemab: appropriate use recommendations. <em>Journal of Prevention of Alzheimer's Disease</em>. 2023.</li>
+        <li>Teipel SJ, et al. Clinical efficacy of anti-amyloid antibodies in apolipoprotein E &epsilon;4 homozygotes: a Bayesian reanalysis of lecanemab and donanemab phase 3 results. <em>Alzheimer's &amp; Dementia: TRCI</em>. 2025.</li>
+        <li>van Dyck CH, Swanson CJ, Aisen P, et al. Lecanemab in early Alzheimer's disease (Clarity AD). <em>New England Journal of Medicine</em>. 2023;388:9-21.</li>
+        <li>Sims JR, Zimmer JA, Evans CD, et al. Donanemab in early symptomatic Alzheimer disease (TRAILBLAZER-ALZ 2). <em>JAMA</em>. 2023;330(6):512-527.</li>
+        <li>Marais AD. Apolipoprotein E and familial dysbetalipoproteinemia (type III hyperlipoproteinemia): pathophysiology and management. <em>Pathology</em>. 2019;51(2):165-176.</li>
+        <li>Pearson GJ, Thanassoulis G, Anderson TJ, et al. 2021 Canadian Cardiovascular Society guidelines for the management of dyslipidemia. <em>Canadian Journal of Cardiology</em>. 2021;37(8):1129-1150.</li>
+        <li>Livingston G, Huntley J, Liu KY, et al. Dementia prevention, intervention, and care: 2024 report of the Lancet standing Commission. <em>The Lancet</em>. 2024;404:572-628.</li>
+        <li>Genetic Non-Discrimination Act, S.C. 2017, c. 3 (Canada).</li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="footer">
+    <p><strong>Disclaimer.</strong> This protocol is intended to support, not replace, clinical judgment and individualized patient care. Guidelines and evidence evolve. Start ages, screening intervals, lipid targets, and drug-specific (anti-amyloid) recommendations change frequently; verify all specifics against the current versions of NCCN, the Canadian Cardiovascular Society, relevant neurology/dementia guidelines, and product monographs before clinical use. APOE testing is susceptibility testing and does not establish a diagnosis. Prepared for use within a precision-prevention practice; not a substitute for specialist assessment.</p>
+    <p>&copy; Dr. Andrew Shuen / GENGIQC. Document version 1.0. For clinician and patient education.</p>
+  </div>
+
+</div>
+
+<!-- ============================= FRANÇAIS ============================= -->
+<div data-lang="fr">
+
+  <header class="masthead">
+    <div class="eyebrow">Prévention de précision &middot; Protocole clinique</div>
+    <h1>Génotype APOE : interprétation du risque, prévention et surveillance</h1>
+    <p class="standfirst">Un guide pratique et calibré sur les données probantes pour interpréter le génotype APOE dans le risque de maladie d'Alzheimer et le risque cardiovasculaire, avec prévention et suivi stratifiés selon le génotype.</p>
+    <div class="authors">
+      <div class="a"><strong>D<sup>r</sup> Andrew Shuen, MD PhD FRCPC DABMGG</strong> &mdash; Génétique du cancer et médecine de précision, Centre de prévention du cancer, Hôpital général juif (HGJ), Montréal</div>
+    </div>
+    <div class="metachips">
+      <span class="chip">Gène de risque d'Alzheimer tardif</span>
+      <span class="chip">Modificateur lipidique / cardiovasculaire</span>
+      <span class="chip">Facteur de risque, non un diagnostic</span>
+      <span class="chip">Bilingue EN / FR</span>
+    </div>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--red-bg);border-color:var(--red-line)"></span> Risque élevé / non recommandé</span>
+      <span><span class="swatch" style="background:var(--amber-bg);border-color:var(--amber-line)"></span> Modéré / optionnel</span>
+      <span><span class="swatch" style="background:var(--brand-bg);border-color:var(--brand-line)"></span> Standard / de routine</span>
+      <span><span class="swatch" style="background:var(--purple-bg);border-color:var(--purple-line)"></span> Émergent / expérimental</span>
+    </div>
+  </header>
+
+  <nav class="toc ui">
+    <h2>Sommaire</h2>
+    <ol>
+      <li><a href="#s1-fr">Comprendre l'APOE</a></li>
+      <li><a href="#s2-fr">Risque selon le génotype</a></li>
+      <li><a href="#s3-fr">Surveillance cognitive par génotype</a></li>
+      <li><a href="#s4-fr">Prise en charge cardiovasculaire et lipidique</a></li>
+      <li><a href="#s5-fr">Anticorps anti-amyloïdes et ARIA</a></li>
+      <li><a href="#s6-fr">Réduction du risque pour la santé cérébrale</a></li>
+      <li><a href="#s7-fr">Conseil génétique et tests</a></li>
+      <li><a href="#s8-fr">Mode de vie et nutrition</a></li>
+      <li><a href="#s9-fr">Femmes, hormones et moment opportun</a></li>
+      <li><a href="#s10-fr">Approches émergentes et expérimentales</a></li>
+      <li><a href="#s11-fr">Résumé des recommandations</a></li>
+      <li><a href="#s12-fr">Références</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="s1-fr">
+    <h2 class="sec"><span class="num">1</span> Comprendre l'APOE</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>L'APOE est un gène que tout le monde possède. Il existe en trois versions courantes, appelées e2, e3 et e4. Vous héritez d'une version de chaque parent, vous avez donc deux copies. Votre paire de versions constitue votre « génotype ».</p>
+      <p>La version e4 augmente le risque de développer la maladie d'Alzheimer plus tard dans la vie et tend à élever le cholestérol. La version e2 abaisse généralement le cholestérol, mais peut parfois causer un autre trouble lipidique. La version e3 est la plus fréquente et est considérée comme neutre.</p>
+      <p>Le message le plus important : l'APOE est un facteur de risque, non un diagnostic. Beaucoup de personnes porteuses de la version e4 à risque plus élevé vivent jusqu'à 80 ou 90 ans avec un esprit vif. Beaucoup de personnes sans cette version développent tout de même une démence. Vos habitudes, votre santé cardiaque et d'autres facteurs comptent énormément.</p>
+    </div>
+    <p>Le gène APOE, situé en 19q13.2, code l'apolipoprotéine E, une glycoprotéine centrale au transport des lipides et principal transporteur du cholestérol dans le système nerveux central. Trois allèles courants (&epsilon;2, &epsilon;3, &epsilon;4) sont définis par des changements nucléotidiques aux codons 112 et 158, produisant six génotypes : &epsilon;2/&epsilon;2, &epsilon;2/&epsilon;3, &epsilon;3/&epsilon;3, &epsilon;2/&epsilon;4, &epsilon;3/&epsilon;4 et &epsilon;4/&epsilon;4.</p>
+    <p>L'allèle &epsilon;4 est le plus fort facteur de risque génétique commun de la maladie d'Alzheimer (MA) à début tardif. Sur le plan mécanistique, les substitutions Cys-Arg aux codons 112 et 158 modifient la structure de l'apoE et nuisent à la clairance microgliale de l'amyloïde-bêta, accélérant son accumulation. Les porteurs d'&epsilon;4 accumulent l'amyloïde des années plus tôt que les non-porteurs; une ou deux copies d'&epsilon;4 avancent l'âge d'apparition à la TEP-amyloïde d'environ 7,5 ans, alors que le rythme d'accumulation est semblable entre génotypes.</p>
+    <p>Une analyse de 2024 a reconceptualisé l'homozygotie &epsilon;4/&epsilon;4 comme une forme génétique distincte et quasi déterministe de la MA : dans les cohortes d'ascendance européenne, les homozygotes &epsilon;4 présentent une pathologie amyloïde presque universelle vers 80 ans et une forte probabilité de maladie symptomatique au cours de la vie. Cela demeure débattu et la pénétrance n'est pas complète, mais cela souligne que &epsilon;4/&epsilon;4 comporte un risque catégoriquement plus élevé que &epsilon;3/&epsilon;4.</p>
+    <div class="warn">
+      <div class="tag"><i class="ti ti-alert-triangle"></i> Mises en garde importantes</div>
+      <p>La plupart des estimations de risque publiées proviennent de cohortes d'ascendance européenne. L'ampleur du risque de MA associé à &epsilon;4 varie selon l'ascendance génétique et est généralement plus faible dans les populations d'ascendance africaine et dans certaines populations d'Asie de l'Est. Appliquez un cadrage propre à la population lorsque possible et interprétez avec prudence hors de la population de référence.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="s2-fr">
+    <h2 class="sec"><span class="num">2</span> Risque selon le génotype</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Le tableau ci-dessous donne des estimations approximatives sur la vie entière. Ce sont des moyennes de population tirées d'études de recherche, non une prédiction personnelle. Votre propre risque dépend des antécédents familiaux, de l'âge, du sexe, de l'ascendance, de la santé cardiaque et du mode de vie.</p>
+    </div>
+    <p>Risque approximatif de MA sur la vie et risque relatif (vs &epsilon;3/&epsilon;3), ainsi que l'effet lipidique directionnel. Les chiffres sont des estimations regroupées, majoritairement de données d'ascendance européenne; les intervalles varient selon la source, l'âge limite et la méthode de constatation.</p>
+    <table>
+      <thead>
+        <tr><th>Génotype</th><th>Fréq. population (approx.)</th><th>Risque de MA sur la vie (~85 ans)</th><th>Risque relatif de MA</th><th>Effet lipidique / CV</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>&epsilon;2/&epsilon;2</strong></td><td>~0,5 %</td>
+          <td><span class="risk-pill r-low">Sous la moyenne</span></td><td>Réduit</td>
+          <td>LDL-C plus bas; risque d'hyperlipoprotéinémie de type III (dysbêtalipoprotéinémie familiale) avec second facteur</td>
+        </tr>
+        <tr>
+          <td><strong>&epsilon;2/&epsilon;3</strong></td><td>~11 %</td>
+          <td><span class="risk-pill r-low">Sous la moyenne</span></td><td>Réduit</td>
+          <td>LDL-C légèrement plus bas</td>
+        </tr>
+        <tr>
+          <td><strong>&epsilon;3/&epsilon;3</strong></td><td>~60 %</td>
+          <td><span class="risk-pill r-low">Référence (~10–15 %)</span></td><td>1,0 (référence)</td>
+          <td>Neutre</td>
+        </tr>
+        <tr>
+          <td><strong>&epsilon;2/&epsilon;4</strong></td><td>~2 %</td>
+          <td><span class="risk-pill r-mod">Modérément élevé</span></td><td>~2–3&times;</td>
+          <td>Effets opposés; LDL souvent élevé; accumulation de résidus possible</td>
+        </tr>
+        <tr>
+          <td><strong>&epsilon;3/&epsilon;4</strong></td><td>~21 %</td>
+          <td><span class="risk-pill r-mod">Élevé</span></td><td>~3–4&times;</td>
+          <td>LDL-C plus élevé; risque athéroscléreux accru</td>
+        </tr>
+        <tr>
+          <td><strong>&epsilon;4/&epsilon;4</strong></td><td>~2 %</td>
+          <td><span class="risk-pill r-high">Élevé (~50–60 %)</span></td><td>~12–15&times;</td>
+          <td>LDL-C le plus élevé; association athéroscléreuse la plus forte</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="info">
+      <div class="tag"><i class="ti ti-info-circle"></i> Lire ces chiffres honnêtement</div>
+      <p>Même chez les &epsilon;4/&epsilon;4, environ 4 porteurs sur 10 ne développent pas de démence avant 85 ans. Les multiplicateurs de risque relatif (12–15&times;) paraissent alarmants mais s'appliquent à un risque de base modeste. L'apparition pour &epsilon;3/&epsilon;4 devient pertinente dans la soixantaine-soixante-dix ans; pour &epsilon;4/&epsilon;4, des changements subtils peuvent apparaître dans la cinquantaine-soixantaine. Le sexe compte : les femmes porteuses d'&epsilon;4 présentent un risque de MA un peu plus élevé que les hommes de même génotype, surtout après la ménopause.</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="s3-fr">
+    <h2 class="sec"><span class="num">3</span> Surveillance cognitive par génotype</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Aucun examen cérébral ou test de mémoire de routine n'est recommandé uniquement en raison de votre résultat APOE. Ce qui aide le plus, c'est de rester attentif aux changements au fil du temps, de maîtriser la tension artérielle et les autres facteurs de santé cardiaque, et de rester actif mentalement et physiquement. Si vous ou vos proches remarquez de réels changements de mémoire ou de pensée, c'est le moment d'une évaluation médicale ciblée.</p>
+    </div>
+    <div class="warn">
+      <div class="tag"><i class="ti ti-alert-triangle"></i> Cadrage</div>
+      <p>Aucune ligne directrice majeure ne recommande l'imagerie ou les biomarqueurs liquidiens pour la cognition chez les personnes asymptomatiques sur la seule base du génotype APOE. Les recommandations ci-dessous sont un suivi pragmatique, de niveau consensus, pour un contexte de prévention de précision, et non des exigences de lignes directrices. Leur principale valeur est d'établir une référence et de renforcer la réduction des risques modifiables.</p>
+    </div>
+
+    <div class="genohead"><span class="name">&epsilon;3/&epsilon;3 et porteurs d'&epsilon;2</span><span class="pill low">Approche populationnelle standard</span></div>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>Vigilance cognitive standard en première ligne; agir sur les symptômes, non sur le génotype.<span class="ck-tag ck-routine">De routine</span></div></li>
+      <li><i class="ti ti-circle-minus"></i><div>Aucun test cognitif ni imagerie déclenché par le génotype.<span class="ck-tag ck-optional">Non indiqué</span></div></li>
+    </ul>
+
+    <div class="genohead"><span class="name">&epsilon;3/&epsilon;4 (une copie e4)</span><span class="pill mod">Risque élevé</span></div>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>Discussion et documentation cognitives de référence, idéalement dès la cinquantaine.<span class="ck-tag ck-routine">De routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Prise en charge énergique des risques modifiables : tension, lipides, glycémie, sommeil, audition, activité physique.<span class="ck-tag ck-routine">De routine</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Outil cognitif bref validé (p. ex. MoCA) si une préoccupation subjective ou rapportée par un proche apparaît.<span class="ck-tag ck-optional">Optionnel / selon symptômes</span></div></li>
+      <li><i class="ti ti-circle-minus"></i><div>TEP-amyloïde ou biomarqueurs LCR/plasma chez les porteurs asymptomatiques.<span class="ck-tag ck-notrec">Non recommandé</span></div></li>
+    </ul>
+
+    <div class="genohead"><span class="name">&epsilon;4/&epsilon;4 (deux copies e4)</span><span class="pill high">Risque élevé</span></div>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>Documentation cognitive de référence, idéalement dès la fin quarantaine-cinquantaine, avec revue informelle périodique.<span class="ck-tag ck-routine">De routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Optimisation intensive des risques modifiables (vasculaire, métabolique, sensoriel, sommeil).<span class="ck-tag ck-routine">De routine</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Seuil bas pour une évaluation neuropsychologique formelle à la première préoccupation crédible.<span class="ck-tag ck-optional">Optionnel</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Biomarqueurs plasmatiques (p. ex. p-tau217) seulement dans un bilan diagnostique ou un protocole de recherche une fois les symptômes présents, avec counseling.<span class="ck-tag ck-optional">Expérimental / cas par cas</span></div></li>
+      <li><i class="ti ti-circle-minus"></i><div>Dépistage par TEP-amyloïde de type populationnel chez l'asymptomatique.<span class="ck-tag ck-notrec">Non recommandé</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 4 -->
+  <section id="s4-fr">
+    <h2 class="sec"><span class="num">4</span> Prise en charge cardiovasculaire et lipidique</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>L'APOE touche autant le cœur que le cerveau. La version e4 tend à élever le LDL (« mauvais » cholestérol) et le risque d'artères obstruées. La version e2 abaisse généralement le LDL mais, chez un petit nombre de personnes, peut causer un trouble rare du cholestérol. Bonne nouvelle : la maîtrise du cholestérol et de la tension artérielle est parmi les choses les plus efficaces que vous puissiez faire, et elle protège aussi le cerveau.</p>
+    </div>
+    <p>Le risque vasculaire est une voie commune. L'optimisation de la santé cardiovasculaire est le levier le plus concret pour les porteurs d'&epsilon;4, vu le chevauchement entre maladie vasculaire et risque de démence et la forte association &epsilon;4–LDL.</p>
+
+    <div class="genohead"><span class="name">Porteurs d'&epsilon;4 (&epsilon;3/&epsilon;4, &epsilon;4/&epsilon;4)</span><span class="pill mod">Élève le LDL</span></div>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>Dépistage lipidique standard selon les lignes directrices de la Société canadienne de cardiologie (SCC); traiter vers les cibles de LDL-C/non-HDL-C adaptées au risque.<span class="ck-tag ck-routine">De routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Les statines sont de première intention et efficaces; les porteurs d'&epsilon;4 peuvent avoir une réduction du LDL un peu moindre, alors titrer et ajouter ézétimibe ou un inhibiteur de PCSK9 si les cibles ne sont pas atteintes.<span class="ck-tag ck-routine">De routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Renforcer la maîtrise de la tension, de la glycémie et l'arrêt tabagique; ces facteurs amplifient le risque lié à &epsilon;4.<span class="ck-tag ck-routine">De routine</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Mesure de la Lp(a) une fois dans la vie pour affiner le risque CV global.<span class="ck-tag ck-optional">Optionnel</span></div></li>
+    </ul>
+
+    <div class="genohead"><span class="name">&epsilon;2/&epsilon;2 (et &epsilon;2/&epsilon;4)</span><span class="pill mod">Surveillance dysbêtalipoprotéinémie</span></div>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>Dépister l'hyperlipoprotéinémie de type III (dysbêtalipoprotéinémie familiale) en présence d'hyperlipidémie mixte, de résidus élevés, de xanthomes palmaires/tubéroéruptifs ou de maladie CV précoce.<span class="ck-tag ck-routine">De routine si signes présents</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>&epsilon;2/&epsilon;2 seul n'est pas diagnostique; le type III requiert un second facteur métabolique (obésité, diabète, hypothyroïdie, carence en œstrogènes). Traiter ce second facteur.<span class="ck-tag ck-routine">De routine</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Les fibrates sont utiles lorsque l'hypertriglycéridémie et l'accumulation de résidus prédominent; statines pour le risque lié au LDL.<span class="ck-tag ck-optional">Selon le phénotype</span></div></li>
+    </ul>
+    <div class="info">
+      <div class="tag"><i class="ti ti-calculator"></i> Note pratique sur la réponse aux statines</div>
+      <p>Le génotype APOE influence modestement la réponse du LDL aux statines (les porteurs d'&epsilon;2 répondent davantage, ceux d'&epsilon;4 moins), mais le génotype ne devrait pas modifier la décision de traiter. Traiter jusqu'à la cible et intensifier au besoin, peu importe l'APOE.</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="s5-fr">
+    <h2 class="sec"><span class="num">5</span> Anticorps anti-amyloïdes et risque d'ARIA</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Pour les personnes ayant déjà une maladie d'Alzheimer précoce, de nouveaux médicaments à base d'anticorps (lécanemab, donanemab) peuvent ralentir légèrement le déclin. L'APOE compte beaucoup ici. Les personnes ayant deux copies e4 ont un risque plus élevé d'un effet secondaire cérébral appelé ARIA (œdème ou petits saignements visibles à l'IRM), et le bénéfice dans ce groupe semble moindre. C'est une décision de spécialiste, prise avec un suivi par IRM et une discussion attentive des risques et bénéfices. Cela ne concerne que les personnes symptomatiques, non les porteurs en bonne santé.</p>
+    </div>
+    <p>Le génotype APOE est la variable la plus déterminante au niveau du patient pour le risque d'anomalies d'imagerie liées à l'amyloïde (ARIA) avec les anticorps monoclonaux anti-amyloïdes, et il influence l'efficacité.</p>
+    <table>
+      <thead><tr><th>Génotype</th><th>Risque d'ARIA-E</th><th>Signal d'efficacité</th><th>Implication</th></tr></thead>
+      <tbody>
+        <tr><td>Non-porteur d'&epsilon;4</td><td><span class="risk-pill r-low">Plus faible</span></td><td>Présent</td><td>Suivi standard</td></tr>
+        <tr><td>Hétérozygote &epsilon;4</td><td><span class="risk-pill r-mod">Intermédiaire</span></td><td>Présent</td><td>Vigilance IRM accrue</td></tr>
+        <tr><td>Homozygote &epsilon;4</td><td><span class="risk-pill r-high">Le plus élevé</span></td><td>Atténué / débattu</td><td>Suivi le plus intensif; certains organismes restreignent l'usage</td></tr>
+      </tbody>
+    </table>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>Le génotypage APOE fait partie du bilan préalable standard au lécanemab/donanemab, pour éclairer le consentement, le choix de l'agent et l'intensité du suivi IRM.<span class="ck-tag ck-routine">De routine (candidats au traitement)</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Les candidats &epsilon;4/&epsilon;4 nécessitent la discussion bénéfice-risque la plus explicite. Certains organismes (p. ex. MHRA au R.-U., EMA) ont restreint l'approbation aux non-porteurs ou hétérozygotes; une réanalyse bayésienne a suggéré une efficacité limitée chez les homozygotes.<span class="ck-tag ck-optional">Décision de spécialiste</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Un traitement antithrombotique/anticoagulant concomitant augmente le risque d'hémorragie intracérébrale en cas d'ARIA; à pondérer soigneusement.<span class="ck-tag ck-optional">Cas par cas</span></div></li>
+      <li><i class="ti ti-circle-x"></i><div>Ces traitements sont réservés à la MA précoce symptomatique avec pathologie amyloïde confirmée, jamais aux porteurs asymptomatiques.<span class="ck-tag ck-notrec">Non préventif</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 6 -->
+  <section id="s6-fr">
+    <h2 class="sec"><span class="num">6</span> Réduction du risque pour la santé cérébrale</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>La preuve la plus solide pour réduire le risque de démence n'est pas une pilule. C'est un ensemble d'habitudes : rester physiquement actif, garder la tension et le cholestérol dans les cibles, traiter la perte auditive, protéger le sommeil, rester engagé socialement et mentalement, ne pas fumer et limiter l'alcool. Cela aide tout le monde et pourrait aider le plus les porteurs d'e4.</p>
+    </div>
+    <p>La Commission du Lancet identifie un ensemble de facteurs modifiables associés à une part appréciable du risque de démence au cours de la vie. Les données sont surtout observationnelles, mais les interventions sont à faible risque, protectrices sur le plan vasculaire et largement bénéfiques. Chez les porteurs d'&epsilon;4, le bénéfice absolu de la maîtrise des facteurs de risque est plausiblement plus grand.</p>
+    <div class="cards">
+      <div class="card"><h4>Vasculaire</h4><ul><li>Tension à la cible (maîtrise en milieu de vie surtout)</li><li>LDL-C à la cible selon le risque</li><li>Maîtrise glycémique; éviter l'obésité abdominale</li></ul></div>
+      <div class="card"><h4>Sensoriel et sommeil</h4><ul><li>Corriger la perte auditive (appareils auditifs)</li><li>Dépister/traiter l'apnée du sommeil</li><li>Prioriser la quantité et la qualité du sommeil</li></ul></div>
+      <div class="card"><h4>Comportement</h4><ul><li>Exercice aérobie + résistance régulier</li><li>Non-tabagisme; limiter l'alcool</li><li>Engagement social; activité cognitivement stimulante</li></ul></div>
+    </div>
+    <div class="warn">
+      <div class="tag"><i class="ti ti-alert-triangle"></i> Note honnête sur les données</div>
+      <p>Aucun supplément ni médicament n'a été démontré pour prévenir la MA chez les porteurs d'&epsilon;4. Les allégations sur des nutraceutiques précis ne sont pas appuyées par des données randomisées robustes. La position défendable est une optimisation rigoureuse vasculaire et du mode de vie.</p>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section id="s7-fr">
+    <h2 class="sec"><span class="num">7</span> Conseil génétique et tests</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Choisir de connaître votre résultat APOE est une décision personnelle. Il peut orienter la prévention, mais il ne peut pas dire avec certitude si vous développerez la maladie d'Alzheimer. Certaines personnes trouvent l'information motivante; d'autres la trouvent angoissante. Le counseling avant le test vous aide à décider si c'est le bon choix pour vous et à réfléchir aux implications pour l'assurance, la famille et votre tranquillité d'esprit.</p>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>Offrir un conseil génétique pré- et post-test. L'APOE est un test de susceptibilité, non diagnostique; les résultats sont probabilistes et ont un poids psychologique.<span class="ck-tag ck-routine">De routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Aborder le contexte de l'assurance et de la divulgation. Au Canada, la Loi sur la non-discrimination génétique interdit d'exiger ou d'utiliser des résultats de tests génétiques pour des contrats/services, mais discuter des implications concrètes.<span class="ck-tag ck-routine">De routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Distinguer la susceptibilité APOE des gènes de MA autosomique dominante à début précoce (APP, PSEN1, PSEN2). De solides antécédents familiaux de début précoce justifient une orientation vers un test diagnostique, pas seulement l'APOE.<span class="ck-tag ck-routine">De routine</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Les implications en cascade sont limitées; l'APOE étant commun et à faible pénétrance, le test prédictif en cascade chez les proches n'est généralement pas poursuivi.<span class="ck-tag ck-optional">Cas par cas</span></div></li>
+      <li><i class="ti ti-circle-minus"></i><div>Test prédictif APOE chez les mineurs asymptomatiques.<span class="ck-tag ck-notrec">Non recommandé</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 8 -->
+  <section id="s8-fr">
+    <h2 class="sec"><span class="num">8</span> Mode de vie et nutrition</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Une alimentation de type méditerranéen soutient à la fois le cœur et le cerveau. Privilégiez légumes, légumineuses, grains entiers, poisson, noix et huile d'olive. Limitez les gras saturés, les aliments ultra-transformés et l'excès d'alcool. Bougez la plupart des jours. Ces conseils sont judicieux pour tous et particulièrement utiles si vous portez l'e4.</p>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-circle-check"></i><div>Régime méditerranéen ou MIND; réduire les gras saturés et trans, qui interagissent défavorablement avec la gestion lipidique liée à &epsilon;4.<span class="ck-tag ck-routine">De routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Exercice aérobie et de résistance régulier; viser les niveaux d'activité recommandés.<span class="ck-tag ck-routine">De routine</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Gestion du poids et limitation de l'alcool (pertinent pour le risque de MA et l'élévation des triglycérides liée à &epsilon;2).<span class="ck-tag ck-routine">De routine</span></div></li>
+      <li><i class="ti ti-alert-triangle"></i><div>Un apport en oméga-3 d'origine alimentaire est raisonnable; la supplémentation à forte dose pour prévenir la MA chez les porteurs d'&epsilon;4 n'est pas démontrée et demeure à l'étude.<span class="ck-tag ck-optional">Optionnel</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 9 -->
+  <section id="s9-fr">
+    <h2 class="sec"><span class="num">9</span> Femmes, hormones et moment opportun</h2>
+    <div class="patient">
+      <div class="tag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Les femmes porteuses de l'e4 semblent avoir un risque d'Alzheimer un peu plus élevé que les hommes de même génotype, et les années entourant la ménopause pourraient être une période sensible. L'utilité de l'hormonothérapie n'est pas établie. Si vous envisagez une hormonothérapie, la décision doit être individualisée avec votre médecin et fondée sur votre santé globale, non sur l'APOE seul.</p>
+    </div>
+    <p>Les femmes porteuses d'&epsilon;4 présentent un risque de MA plus élevé que les hommes du même génotype, la différence se concentrant autour et après la ménopause; les effets des œstrogènes sur la clairance de l'amyloïde, l'intégrité de la barrière hémato-encéphalique et la neuro-inflammation sont des mécanismes proposés.</p>
+    <ul class="check">
+      <li><i class="ti ti-alert-triangle"></i><div>Les décisions d'hormonothérapie de la ménopause doivent suivre les indications standard ménopause/CV et un rapport bénéfice-risque individualisé; les données sur l'HT comme prévention cognitive ciblée selon l'APOE ne sont pas concluantes.<span class="ck-tag ck-optional">Individualisé</span></div></li>
+      <li><i class="ti ti-circle-check"></i><div>Conseiller les femmes porteuses d'&epsilon;4 sur la période post-ménopausique comme moment pour intensifier la réduction des risques vasculaires et liés au mode de vie.<span class="ck-tag ck-routine">De routine</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 10 -->
+  <section id="s10-fr">
+    <h2 class="sec"><span class="num">10</span> Approches émergentes et expérimentales</h2>
+    <div class="emerging">
+      <div class="tag"><i class="ti ti-flask"></i> Recherche seulement / expérimental</div>
+      <p><strong>Réduction d'APOE4 et approches ciblant le gène.</strong> Réduire l'APOE4 chez les porteurs a été proposé comme objectif thérapeutique; les stratégies antisens, d'édition génique et de livraison d'APOE2 sont précliniques ou en phase précoce seulement.</p>
+      <p><strong>Essais de prévention chez les &epsilon;4/&epsilon;4 et porteurs à haut risque.</strong> Des essais de prévention secondaire (p. ex. approches anti-amyloïdes et combinées chez des personnes à haut risque sans atteinte cognitive) sont en cours; la participation est la voie appropriée pour y accéder, non l'usage hors indication.</p>
+      <p><strong>Biomarqueurs plasmatiques (p-tau217 et autres).</strong> De plus en plus précis pour la pathologie de la MA et susceptibles d'entrer dans les parcours diagnostiques, mais non validés comme tests de dépistage selon le génotype chez les personnes asymptomatiques.</p>
+      <p><strong>« Correcteurs » structuraux d'&epsilon;4 et petites molécules.</strong> Des composés visant à rapprocher l'apoE4 d'une conformation de type apoE3 sont expérimentaux.</p>
+    </div>
+    <p>Orientez les patients intéressés par les essais de prévention vers des études enregistrées (clinicaltrials.gov; sites canadiens lorsque disponibles). Présentez tout ce qui précède comme expérimental et hors des soins standard.</p>
+  </section>
+
+  <!-- 11 -->
+  <section id="s11-fr">
+    <h2 class="sec"><span class="num">11</span> Résumé des recommandations</h2>
+    <h3>Selon le génotype</h3>
+    <div class="cards">
+      <div class="card"><h4>Porteurs d'&epsilon;2 / &epsilon;2/&epsilon;2</h4><ul><li>Surveiller l'hyperlipoprotéinémie de type III si hyperlipidémie mixte ou xanthomes</li><li>Traiter les seconds facteurs métaboliques</li><li>Risque de MA sous la moyenne; approche cognitive standard</li></ul></div>
+      <div class="card"><h4>&epsilon;3/&epsilon;3</h4><ul><li>Risque de référence</li><li>Prévention populationnelle standard</li><li>Aucun test déclenché par le génotype</li></ul></div>
+      <div class="card"><h4>&epsilon;3/&epsilon;4</h4><ul><li>Maîtrise vasculaire/lipidique énergique</li><li>Documentation cognitive de référence dans la cinquantaine</li><li>Test cognitif déclenché par les symptômes</li></ul></div>
+      <div class="card"><h4>&epsilon;4/&epsilon;4</h4><ul><li>Risque de MA et de LDL le plus élevé</li><li>Optimisation intensive des risques modifiables</li><li>Seuil bas pour évaluation formelle si symptomatique</li><li>Prudence ARIA particulière si anti-amyloïde envisagé</li></ul></div>
+    </div>
+    <h3>Transversales</h3>
+    <div class="rec"><div class="tag">Recommandation</div><p>Présenter l'APOE comme un facteur de risque, non un diagnostic. Amorcer chaque rencontre par la réduction des risques modifiables, le levier le plus fondé sur les preuves et le plus concret.</p></div>
+    <div class="rec"><div class="tag">Recommandation</div><p>Offrir un counseling pré- et post-test; ne pas tester les mineurs asymptomatiques; distinguer l'APOE des gènes de MA autosomique dominante.</p></div>
+    <div class="rec"><div class="tag">Recommandation</div><p>Optimiser les lipides aux cibles des lignes directrices, statines de première intention; traiter peu importe le génotype APOE.</p></div>
+    <div class="rec"><div class="tag">Recommandation</div><p>Réserver la TEP-amyloïde, les biomarqueurs LCR/plasma et les anticorps anti-amyloïdes aux parcours diagnostiques et thérapeutiques symptomatiques, non au dépistage selon le génotype.</p></div>
+  </section>
+
+  <!-- 12 -->
+  <section id="s12-fr">
+    <h2 class="sec"><span class="num">12</span> Références</h2>
+    <div class="refs">
+      <ol>
+        <li>Fortea J, Pegueroles J, Alcolea D, et al. APOE4 homozygozity represents a distinct genetic form of Alzheimer's disease. <em>Nature Medicine</em>. 2024;30(5):1284-1291.</li>
+        <li>Belloy ME, Andrews SJ, Le Guen Y, et al. APOE genotype and Alzheimer disease risk across age, sex, and population ancestry. <em>JAMA Neurology</em>. 2023;80(12):1284-1294.</li>
+        <li>Vance JM, Farrer LA, Huang Y, et al. Report of the APOE4 NIA/ADSP Consortium Working Group: reducing APOE4 in carriers is a therapeutic goal for Alzheimer's disease. <em>Annals of Neurology</em>. 2024;95(4):625-634.</li>
+        <li>Williams DM, et al. Population attributable fractions for APOE alleles in Alzheimer's disease (UCL multi-cohort analysis). <em>ALZFORUM news summary</em>. 2026.</li>
+        <li>Cummings J, Apostolova L, Rabinovici GD, et al. Lecanemab: appropriate use recommendations. <em>Journal of Prevention of Alzheimer's Disease</em>. 2023.</li>
+        <li>Teipel SJ, et al. Clinical efficacy of anti-amyloid antibodies in apolipoprotein E &epsilon;4 homozygotes: a Bayesian reanalysis of lecanemab and donanemab phase 3 results. <em>Alzheimer's &amp; Dementia: TRCI</em>. 2025.</li>
+        <li>van Dyck CH, Swanson CJ, Aisen P, et al. Lecanemab in early Alzheimer's disease (Clarity AD). <em>New England Journal of Medicine</em>. 2023;388:9-21.</li>
+        <li>Sims JR, Zimmer JA, Evans CD, et al. Donanemab in early symptomatic Alzheimer disease (TRAILBLAZER-ALZ 2). <em>JAMA</em>. 2023;330(6):512-527.</li>
+        <li>Marais AD. Apolipoprotein E and familial dysbetalipoproteinemia (type III hyperlipoproteinemia): pathophysiology and management. <em>Pathology</em>. 2019;51(2):165-176.</li>
+        <li>Pearson GJ, Thanassoulis G, Anderson TJ, et al. 2021 Canadian Cardiovascular Society guidelines for the management of dyslipidemia. <em>Canadian Journal of Cardiology</em>. 2021;37(8):1129-1150.</li>
+        <li>Livingston G, Huntley J, Liu KY, et al. Dementia prevention, intervention, and care: 2024 report of the Lancet standing Commission. <em>The Lancet</em>. 2024;404:572-628.</li>
+        <li>Genetic Non-Discrimination Act, S.C. 2017, c. 3 (Canada).</li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="footer">
+    <p><strong>Avis.</strong> Ce protocole vise à soutenir, et non à remplacer, le jugement clinique et les soins individualisés. Les lignes directrices et les données évoluent. Les âges de début, les intervalles de dépistage, les cibles lipidiques et les recommandations propres aux médicaments (anti-amyloïdes) changent fréquemment; vérifiez tous les détails par rapport aux versions courantes du NCCN, de la Société canadienne de cardiologie, des lignes directrices pertinentes en neurologie/démence et des monographies de produit avant tout usage clinique. Le test APOE est un test de susceptibilité et n'établit pas de diagnostic. Préparé pour un usage en pratique de prévention de précision; ne remplace pas une évaluation spécialisée.</p>
+    <p>&copy; D<sup>r</sup> Andrew Shuen / GENGIQC. Version du document 1.0. Pour l'éducation des cliniciens et des patients.</p>
+  </div>
+
+</div>
+
+</div>
+
+<script>
+  function setLang(l){
+    document.body.classList.remove('en','fr');
+    document.body.classList.add(l);
+    document.getElementById('btn-en').classList.toggle('active', l==='en');
+    document.getElementById('btn-fr').classList.toggle('active', l==='fr');
+  }
+</script>
+
+</body>
+</html>

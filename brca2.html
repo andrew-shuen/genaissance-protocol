@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRCA2 Cancer Prevention and Surveillance Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased;
+}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.wrap{max-width:880px; margin:0 auto; padding:0 22px 80px;}
+
+/* Language toggle */
+.langbar{
+  position:sticky; top:0; z-index:50; background:var(--paper);
+  border-bottom:1px solid var(--line); padding:10px 22px;
+  display:flex; gap:8px; justify-content:center; align-items:center;
+  box-shadow:0 1px 3px rgba(0,0,0,.03);
+}
+.langbar button{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13px; font-weight:600; letter-spacing:.02em;
+  padding:7px 18px; border-radius:var(--radius-sm); cursor:pointer;
+  border:1px solid var(--brand-line); background:var(--paper); color:var(--brand-dark);
+  transition:all .15s;
+}
+.langbar button.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+.langbar .lab{font-size:11px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.1em; margin-right:6px;}
+
+/* Masthead */
+.masthead{padding:46px 0 28px; border-bottom:2px solid var(--ink);}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--brand-dark); margin-bottom:14px;
+}
+h1{font-size:36px; line-height:1.16; margin:0 0 14px; font-weight:600; letter-spacing:-.01em;}
+.standfirst{font-size:19px; color:var(--ink-soft); margin:0 0 26px; line-height:1.5;}
+.authorpanel{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:18px 20px; margin:0 0 18px;
+}
+.authorpanel .who{font-weight:600; font-size:16px;}
+.authorpanel .aff{font-size:14px; color:var(--ink-faint); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.authorpanel .author + .author{margin-top:12px; padding-top:12px; border-top:1px solid var(--line-soft);}
+.metachips{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 0;}
+.chip{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:600;
+  background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);
+  padding:5px 11px; border-radius:30px; display:inline-flex; align-items:center; gap:6px;
+}
+.legend{
+  display:flex; flex-wrap:wrap; gap:16px; margin-top:20px; padding-top:18px;
+  border-top:1px solid var(--line-soft);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-soft);
+}
+.legend span{display:inline-flex; align-items:center; gap:7px;}
+.legend .sw{width:15px; height:15px; border-radius:4px; display:inline-block;}
+
+/* TOC */
+.toc{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:22px 24px; margin:30px 0;
+}
+.toc h2{font-size:13px; text-transform:uppercase; letter-spacing:.12em; color:var(--ink-faint);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; margin:0 0 14px;}
+.toc ol{margin:0; padding:0; list-style:none; columns:2; column-gap:34px;}
+.toc li{margin:0 0 9px; font-size:14.5px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none;}
+.toc a:hover{color:var(--brand);}
+.toc .n{color:var(--brand); font-weight:700; margin-right:8px;}
+
+/* Section headers */
+section{margin:46px 0 0; scroll-margin-top:64px;}
+.shead{display:flex; align-items:flex-start; gap:14px; margin:0 0 18px;}
+.snum{
+  flex:none; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+  background:var(--brand); color:#fff; width:34px; height:34px; border-radius:9px;
+  display:flex; align-items:center; justify-content:center; font-size:16px; margin-top:3px;
+}
+.shead h2{font-size:25px; margin:0; font-weight:600; line-height:1.2;}
+h3{font-size:19px; margin:30px 0 10px; font-weight:600; color:var(--ink);}
+h4{font-size:16px; margin:20px 0 8px; font-weight:600; color:var(--brand-dark);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+p{margin:0 0 14px;}
+a{color:var(--brand);}
+
+/* Patient panel */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line); border-left:5px solid var(--brand);
+  border-radius:var(--radius); padding:18px 22px; margin:0 0 22px; color:var(--brand-dark);
+}
+.patient .tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase; display:flex; align-items:center; gap:7px; margin-bottom:9px;
+}
+.patient p{margin:0 0 10px; color:#14405e;}
+.patient p:last-child{margin-bottom:0;}
+
+/* Gene/organ header pill */
+.genepill{
+  display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-sm);
+  padding:12px 16px; margin:26px 0 14px;
+}
+.genepill .name{font-weight:600; font-size:18px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.riskbadge{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  padding:4px 11px; border-radius:30px; letter-spacing:.03em;
+}
+.r-high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.r-mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.r-low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* Checklists */
+.checklist{list-style:none; margin:14px 0; padding:0;}
+.checklist li{
+  display:flex; gap:12px; padding:11px 0; border-bottom:1px solid var(--line-soft);
+  font-size:15.5px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; align-items:flex-start;
+}
+.checklist li:last-child{border-bottom:none;}
+.checklist .ic{flex:none; margin-top:2px; font-size:19px;}
+.checklist .yes{color:var(--brand);}
+.checklist .opt{color:var(--amber);}
+.checklist .no{color:var(--ink-faint);}
+.checklist .meta{display:block; color:var(--ink-faint); font-size:13px; margin-top:3px;}
+.tagmini{
+  font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+  padding:2px 7px; border-radius:4px; margin-left:8px; vertical-align:middle;
+}
+.tagmini.routine{background:var(--brand-bg); color:var(--brand-dark);}
+.tagmini.optional{background:var(--amber-bg); color:var(--amber);}
+.tagmini.notrec{background:var(--line-soft); color:var(--ink-faint);}
+
+/* Recommendation callout */
+.rec{
+  background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:15px 18px; margin:16px 0;
+}
+.rec .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--brand-dark); margin-bottom:6px;}
+
+/* Tables */
+.tablewrap{overflow-x:auto; margin:18px 0;}
+table{border-collapse:collapse; width:100%; font-size:14.5px;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+th,td{text-align:left; padding:11px 13px; border-bottom:1px solid var(--line); vertical-align:top;}
+th{background:var(--brand-dark); color:#fff; font-weight:600; font-size:13px; letter-spacing:.02em;}
+tr:nth-child(even) td{background:var(--cream);}
+.pill{display:inline-block; font-weight:700; font-size:12px; padding:3px 9px; border-radius:30px;}
+.pill.high{background:var(--red-bg); color:var(--red);}
+.pill.mod{background:var(--amber-bg); color:var(--amber);}
+.pill.low{background:var(--brand-bg); color:var(--brand-dark);}
+
+/* Info / calculator box */
+.infobox{
+  background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius);
+  padding:16px 20px; margin:18px 0;
+}
+.infobox .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--brand-dark); margin-bottom:8px;
+  display:flex; align-items:center; gap:7px;}
+.infobox p{color:#14405e; margin-bottom:8px;}
+
+/* Emerging box */
+.emerging{
+  background:var(--purple-bg); border:1px solid var(--purple-line); border-left:5px solid var(--purple);
+  border-radius:var(--radius); padding:16px 20px; margin:18px 0;
+}
+.emerging .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--purple); margin-bottom:8px;
+  display:flex; align-items:center; gap:7px;}
+.emerging p{color:#322a72; margin-bottom:8px;}
+
+/* Bleeding tiers / generic note */
+.note{background:var(--amber-bg); border:1px solid var(--amber-line); border-radius:var(--radius-sm);
+  padding:13px 16px; margin:14px 0; font-size:14.5px; color:#5c3a08;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* Summary cards */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; margin:20px 0;}
+.card{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand);
+  border-radius:var(--radius); padding:18px 20px;}
+.card h4{margin:0 0 10px; color:var(--brand-dark);}
+.card ul{margin:0; padding-left:18px; font-size:14.5px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.card li{margin-bottom:7px;}
+
+/* References */
+.refs{counter-reset:ref; list-style:none; padding:0; margin:18px 0; font-size:14px;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.refs li{counter-increment:ref; padding:10px 0 10px 38px; position:relative; border-bottom:1px solid var(--line-soft); line-height:1.5;}
+.refs li::before{content:counter(ref); position:absolute; left:0; top:10px; font-weight:700;
+  color:var(--brand); background:var(--brand-bg); width:26px; height:26px; border-radius:7px;
+  display:flex; align-items:center; justify-content:center; font-size:13px;}
+
+/* Footer */
+.footer{margin-top:54px; padding-top:22px; border-top:3px double var(--ink);
+  font-size:13.5px; color:var(--ink-faint); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; line-height:1.55;}
+
+.lang-fr{display:none;}
+body.show-fr .lang-en{display:none;}
+body.show-fr .lang-fr{display:block;}
+
+@media (max-width:640px){
+  h1{font-size:28px;} .toc ol{columns:1;} .standfirst{font-size:17px;}
+  .shead h2{font-size:21px;}
+}
+@media print{
+  body{background:#fff; font-size:11pt;}
+  .langbar{display:none;}
+  .wrap{max-width:100%;}
+  section{page-break-inside:avoid;}
+  .patient,.rec,.infobox,.emerging,.card,.genepill{break-inside:avoid;}
+  a{color:var(--ink); text-decoration:none;}
+  .footer{page-break-inside:avoid;}
+}
+</style>
+</head>
+<body class="show-en">
+
+<div class="langbar ui">
+  <span class="lab">Language / Langue</span>
+  <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+  <button id="btn-fr" onclick="setLang('fr')">Français</button>
+</div>
+
+<div class="wrap">
+
+<!-- ============ ENGLISH ============ -->
+<div class="lang-en">
+
+  <header class="masthead">
+    <div class="eyebrow ui">Hereditary Cancer Genetics · Prevention &amp; Surveillance Protocol</div>
+    <h1>Living With a BRCA2 Pathogenic Variant</h1>
+    <p class="standfirst">A prevention and surveillance protocol for people who carry a pathogenic or likely pathogenic variant in BRCA2. Written for patients and their care teams together.</p>
+
+    <div class="authorpanel ui">
+      <div class="author">
+        <div class="who">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</div>
+        <div class="aff">Cancer Genetics · Cancer Prevention Centre, Jewish General Hospital (JGH), Montreal</div>
+      </div>
+    </div>
+
+    <div class="metachips ui">
+      <span class="chip"><i class="ti ti-dna-2"></i> Gene: BRCA2</span>
+      <span class="chip"><i class="ti ti-shield-check"></i> Autosomal dominant</span>
+      <span class="chip"><i class="ti ti-calendar"></i> Aligned to NCCN v2.2026</span>
+      <span class="chip"><i class="ti ti-map-pin"></i> Canadian dosing context</span>
+    </div>
+
+    <div class="legend ui">
+      <span><span class="sw" style="background:var(--brand)"></span> Patient summary</span>
+      <span><i class="ti ti-circle-check yes" style="color:var(--brand)"></i> Routine</span>
+      <span><i class="ti ti-circle-dashed opt" style="color:var(--amber)"></i> Optional / case-by-case</span>
+      <span><i class="ti ti-circle-minus no" style="color:var(--ink-faint)"></i> Not routinely recommended</span>
+    </div>
+  </header>
+
+  <nav class="toc ui">
+    <h2>Contents</h2>
+    <ol>
+      <li><span class="n">1</span><a href="#en-understand">Understanding BRCA2</a></li>
+      <li><span class="n">2</span><a href="#en-risks">Lifetime risks</a></li>
+      <li><span class="n">3</span><a href="#en-breast-f">Breast surveillance (female)</a></li>
+      <li><span class="n">4</span><a href="#en-ovarian">Ovarian / tubal surveillance</a></li>
+      <li><span class="n">5</span><a href="#en-male">Breast &amp; prostate (male)</a></li>
+      <li><span class="n">6</span><a href="#en-panc">Pancreatic surveillance</a></li>
+      <li><span class="n">7</span><a href="#en-mel">Melanoma &amp; skin</a></li>
+      <li><span class="n">8</span><a href="#en-surgery">Risk-reducing surgery &amp; hormones</a></li>
+      <li><span class="n">9</span><a href="#en-chemo">Medical prevention</a></li>
+      <li><span class="n">10</span><a href="#en-counsel">Genetic counselling</a></li>
+      <li><span class="n">11</span><a href="#en-lifestyle">Lifestyle &amp; nutrition</a></li>
+      <li><span class="n">12</span><a href="#en-emerging">Emerging &amp; investigational</a></li>
+      <li><span class="n">13</span><a href="#en-summary">Summary of recommendations</a></li>
+      <li><span class="n">14</span><a href="#en-refs">References</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="en-understand">
+    <div class="shead"><div class="snum ui">1</div><h2>Understanding BRCA2</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> For you</div>
+      <p>BRCA2 is a gene that helps your cells repair damaged DNA. Everyone has two copies. You inherited one copy that does not work properly. Your cells still repair DNA using the working copy, but over a lifetime some cells can lose that backup. When that happens, cancer can start more easily.</p>
+      <p>This raises your chance of certain cancers, mainly breast, ovarian, prostate, and pancreatic. It does not mean you will get cancer. Many carriers never do. The point of this protocol is to find any cancer early, or prevent it, while you live a full life.</p>
+      <p>You can pass this variant to your children. Each child has a 1 in 2 chance of inheriting it. Your siblings and parents may also carry it.</p>
+    </div>
+    <p>BRCA2 (13q13.1) encodes a protein essential to homologous recombination repair of DNA double-strand breaks. A germline pathogenic or likely pathogenic (P/LP) variant produces a loss-of-function allele; somatic loss of the second allele in a target tissue impairs high-fidelity repair, driving genomic instability and tumourigenesis. Inheritance is autosomal dominant with high but incomplete and tissue-specific penetrance.</p>
+    <p>BRCA2 differs from BRCA1 in its tumour spectrum and penetrance pattern. Compared with BRCA1, BRCA2 carries a lower ovarian cancer risk, later mean age of ovarian onset, a markedly higher male breast cancer risk, a higher aggressive-prostate-cancer risk, and a clearer pancreatic cancer and melanoma signal. These differences justify gene-specific surveillance rather than a generic "BRCA" plan. Penetrance is modified by family history, variant position, and polygenic background; quantitative risk for a given carrier is best estimated with a validated model (for example BOADICEA / CanRisk) rather than a single population figure.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="en-risks">
+    <div class="shead"><div class="snum ui">2</div><h2>Lifetime risks</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> For you</div>
+      <p>The table below shows approximate lifetime chances of each cancer for a BRCA2 carrier, next to the general population. These are ranges, not certainties. Your own number depends on your family history. We can calculate a personalized estimate for you.</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Cancer</th><th>General population</th><th>BRCA2 carrier (approx. lifetime)</th><th>Level</th></tr></thead>
+        <tbody>
+          <tr><td>Female breast</td><td>~12%</td><td>~45–69% (to age 80)</td><td><span class="pill high">High</span></td></tr>
+          <tr><td>Contralateral (second) breast</td><td>—</td><td>~20–30% over 10–20 yrs after first</td><td><span class="pill high">High</span></td></tr>
+          <tr><td>Ovarian / tubal / peritoneal</td><td>~1.1–1.8%</td><td>~13–29%</td><td><span class="pill mod">Moderate</span></td></tr>
+          <tr><td>Male breast</td><td>~0.1%</td><td>~6–9% (to age 80)</td><td><span class="pill mod">Moderate</span></td></tr>
+          <tr><td>Prostate</td><td>~11%</td><td>~19–61% (often more aggressive)</td><td><span class="pill high">High</span></td></tr>
+          <tr><td>Pancreatic</td><td>~1.7%</td><td>~5–10%</td><td><span class="pill mod">Moderate</span></td></tr>
+          <tr><td>Melanoma (cutaneous &amp; uveal)</td><td>~1–2%</td><td>Modestly increased</td><td><span class="pill low">Low / standard</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Ranges are drawn from NCCN, NCI, and large carrier cohorts; figures vary by study, ascertainment, and family history. Use a validated risk model for individualized counselling. Breast and ovarian estimates apply to people with the relevant organs; estimates here are not adjusted for prior risk-reducing surgery.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="en-breast-f">
+    <div class="shead"><div class="snum ui">3</div><h2>Breast surveillance — female</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> For you</div>
+      <p>Breast cancer is the most likely cancer for a BRCA2 carrier with breasts. The plan finds it early. From your late twenties you start yearly breast MRI. From age 30 you add yearly mammogram. Many clinics stagger the two so you have a scan every six months. You also learn what your breasts normally feel like and report any change.</p>
+      <p>Surgery to remove both breasts (risk-reducing mastectomy) is an option that lowers risk the most. It is a personal choice. We will talk it through. It is covered in section 8.</p>
+    </div>
+    <div class="genepill ui"><span class="name">Breast (female)</span><span class="riskbadge r-high">High risk</span></div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check ic yes"></i><div>Breast awareness <span class="tagmini routine">Routine</span><span class="meta">From age 18. Report any persistent change.</span></div></li>
+      <li><i class="ti ti-circle-check ic yes"></i><div>Clinical breast exam, every 6–12 months <span class="tagmini routine">Routine</span><span class="meta">From age 25.</span></div></li>
+      <li><i class="ti ti-circle-check ic yes"></i><div>Annual breast MRI with contrast <span class="tagmini routine">Routine</span><span class="meta">From age 25 (ages 25–29: MRI alone, or mammogram only if MRI unavailable).</span></div></li>
+      <li><i class="ti ti-circle-check ic yes"></i><div>Annual mammogram, added to MRI <span class="tagmini routine">Routine</span><span class="meta">From age 30 to 75. Consider tomosynthesis. Often staggered 6 months from MRI.</span></div></li>
+      <li><i class="ti ti-circle-dashed ic opt"></i><div>Management after age 75 <span class="tagmini optional">Individualized</span><span class="meta">Decide case by case based on health and preference.</span></div></li>
+    </ul>
+    <div class="rec">
+      <div class="tag ui">Clinical note</div>
+      <p>If risk-reducing mastectomy is elected, imaging surveillance of the chest wall is not routinely required; clinical follow-up replaces it. Screening intensity is reduced but residual tissue risk is not zero.</p>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="en-ovarian">
+    <div class="shead"><div class="snum ui">4</div><h2>Ovarian, tubal &amp; peritoneal surveillance</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> For you</div>
+      <p>There is no reliable screening test for ovarian cancer. Blood tests (CA-125) and ultrasound miss too many early cancers. So screening is not the main strategy. The most effective step is surgery to remove the tubes and ovaries once childbearing is complete, usually between ages 40 and 45 for BRCA2. This is covered in section 8.</p>
+      <p>Until then, tell us about new bloating, pelvic pain, feeling full quickly, or urinary changes that last more than a few weeks.</p>
+    </div>
+    <div class="genepill ui"><span class="name">Ovary / fallopian tube / peritoneum</span><span class="riskbadge r-mod">Moderate risk</span></div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-minus ic no"></i><div>Transvaginal ultrasound + CA-125 <span class="tagmini notrec">Not recommended as routine</span><span class="meta">May be considered short-term from age ~30–35 if surgery is deferred, but does not reliably detect early disease and has not improved survival.</span></div></li>
+      <li><i class="ti ti-circle-check ic yes"></i><div>Risk-reducing salpingo-oophorectomy (RRSO) <span class="tagmini routine">Routine option</span><span class="meta">Age 40–45 after childbearing. The primary risk-management strategy. See section 8.</span></div></li>
+      <li><i class="ti ti-circle-check ic yes"></i><div>Symptom awareness <span class="tagmini routine">Routine</span><span class="meta">Persistent bloating, early satiety, pelvic/abdominal pain, urinary urgency.</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 5 -->
+  <section id="en-male">
+    <div class="shead"><div class="snum ui">5</div><h2>Breast &amp; prostate surveillance — male</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> For you</div>
+      <p>Men with BRCA2 have a real, if modest, breast cancer risk and a higher risk of prostate cancer, which tends to be more aggressive. We teach breast self-exam and do a yearly breast exam. From age 40 we start yearly prostate (PSA) checks.</p>
+    </div>
+    <div class="genepill ui"><span class="name">Male breast</span><span class="riskbadge r-mod">Moderate risk</span></div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check ic yes"></i><div>Breast self-exam training <span class="tagmini routine">Routine</span><span class="meta">From age 35.</span></div></li>
+      <li><i class="ti ti-circle-check ic yes"></i><div>Clinical breast exam, annual <span class="tagmini routine">Routine</span><span class="meta">From age 35.</span></div></li>
+      <li><i class="ti ti-circle-dashed ic opt"></i><div>Mammogram in men <span class="tagmini optional">Case-by-case</span><span class="meta">Consider baseline if gynecomastia or increased breast tissue; not routine.</span></div></li>
+    </ul>
+    <div class="genepill ui"><span class="name">Prostate</span><span class="riskbadge r-high">High risk</span></div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check ic yes"></i><div>Annual PSA <span class="tagmini routine">Routine</span><span class="meta">From age 40 (NCCN: recommended for BRCA2). Pair with shared decision-making.</span></div></li>
+      <li><i class="ti ti-circle-dashed ic opt"></i><div>Digital rectal exam <span class="tagmini optional">Adjunct</span><span class="meta">May accompany PSA per local practice.</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 6 -->
+  <section id="en-panc">
+    <div class="shead"><div class="snum ui">6</div><h2>Pancreatic surveillance</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> For you</div>
+      <p>BRCA2 raises pancreatic cancer risk above average, though it is still uncommon. For BRCA2, screening can be considered even without a family history. It uses MRI of the pancreas and sometimes an endoscopic ultrasound, done at a centre with experience, ideally within a research program. The benefit is still being studied.</p>
+    </div>
+    <div class="genepill ui"><span class="name">Pancreas</span><span class="riskbadge r-mod">Moderate risk</span></div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-dashed ic opt"></i><div>Annual MRI/MRCP and/or endoscopic ultrasound (EUS) <span class="tagmini optional">Consider</span><span class="meta">For BRCA2, consider regardless of family history (NCCN). Start often around age 50, or 10 years before the youngest affected relative. High-volume centre, preferably in a study.</span></div></li>
+    </ul>
+    <div class="note ui"><i class="ti ti-info-circle"></i> Evidence quality: pancreatic surveillance is expert-consensus, not proven to reduce mortality in this population. It should be framed honestly and ideally delivered through a structured program (for example a CAPS-aligned protocol).</div>
+  </section>
+
+  <!-- 7 -->
+  <section id="en-mel">
+    <div class="shead"><div class="snum ui">7</div><h2>Melanoma &amp; skin</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> For you</div>
+      <p>BRCA2 modestly raises the risk of melanoma, including a rare eye form. There is no special protocol. Standard sun protection and a skin check if you notice a changing mole are enough for most carriers.</p>
+    </div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-dashed ic opt"></i><div>Periodic skin examination <span class="tagmini optional">Optional</span><span class="meta">Reasonable; intensify if personal/family melanoma history.</span></div></li>
+      <li><i class="ti ti-circle-dashed ic opt"></i><div>Dilated eye exam <span class="tagmini optional">Optional</span><span class="meta">Consider for uveal melanoma awareness; not a mandated interval.</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 8 -->
+  <section id="en-surgery">
+    <div class="shead"><div class="snum ui">8</div><h2>Risk-reducing surgery &amp; hormone considerations</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> For you</div>
+      <p>Two surgeries lower cancer risk the most. Removing both breasts lowers breast cancer risk by roughly 90% or more. Removing the tubes and ovaries (usually ages 40–45 for BRCA2) lowers ovarian cancer risk by around 80% or more and also lowers breast cancer risk. Both are personal decisions with trade-offs, including early menopause after ovary removal. We will discuss timing, fertility, and hormone therapy.</p>
+    </div>
+
+    <h3>Risk-reducing mastectomy (RRM)</h3>
+    <p>Bilateral RRM reduces breast cancer risk by approximately 90–95%. It is an option, not a requirement. Discussion covers reconstruction, residual tissue risk, and that no overall-survival benefit is guaranteed for every carrier. Surveillance (section 3) is the alternative.</p>
+
+    <h3>Risk-reducing salpingo-oophorectomy (RRSO)</h3>
+    <p>For BRCA2, RRSO is recommended at age 40–45, after completion of childbearing. The later window than BRCA1 (35–40) reflects later ovarian-cancer onset in BRCA2. RRSO reduces ovarian/tubal/peritoneal cancer risk by roughly 80% (residual peritoneal risk persists) and is associated with reduced breast cancer risk in BRCA2 carriers. Occult neoplasia is found in a minority of specimens, so send tissue for SEE-FIM sectioning.</p>
+
+    <div class="infobox ui">
+      <div class="tag ui"><i class="ti ti-flask"></i> Salpingectomy with delayed oophorectomy</div>
+      <p>Removing the tubes first and delaying ovary removal is being studied (TUBA-WISP II) as a way to postpone surgical menopause. It is investigational and not yet a guideline substitute for RRSO. Completion oophorectomy at the guideline age is still advised.</p>
+    </div>
+
+    <h3>Hormone considerations after RRSO</h3>
+    <p>Premenopausal RRSO causes surgical menopause, with bone, cardiovascular, cognitive, and quality-of-life consequences. For carriers without a personal history of breast cancer, hormone replacement therapy to the age of natural menopause is generally reasonable to mitigate these harms and does not negate the breast-cancer benefit of oophorectomy. Individualize after breast cancer or with strong contraindications.</p>
+    <div class="note ui"><i class="ti ti-info-circle"></i> Combined oral contraceptives reduce ovarian cancer risk and are an option before surgery; weigh the small breast-cancer signal in shared decision-making.</div>
+  </section>
+
+  <!-- 9 -->
+  <section id="en-chemo">
+    <div class="shead"><div class="snum ui">9</div><h2>Medical (chemo-) prevention</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> For you</div>
+      <p>Some medicines can lower breast or ovarian cancer risk. Anti-estrogen tablets (such as tamoxifen) can reduce breast cancer risk. Birth control pills can reduce ovarian cancer risk. These are options to weigh, not requirements. We will look at the benefits and the side effects for you.</p>
+    </div>
+    <h4 class="ui">Breast risk reduction</h4>
+    <p>Selective estrogen receptor modulators (tamoxifen, raloxifene) and aromatase inhibitors reduce breast cancer incidence in high-risk women. The evidence in BRCA2 specifically is more supportive than in BRCA1, given the higher proportion of hormone-receptor-positive tumours. Discuss as an option, particularly when RRM is declined. In Canada, tamoxifen 20 mg daily for 5 years is the usual regimen; screen for venous thromboembolism and endometrial risk.</p>
+    <h4 class="ui">Ovarian risk reduction</h4>
+    <p>Combined oral contraceptives reduce ovarian cancer risk by roughly 50% with duration of use. They are a reasonable bridge before RRSO. The associated breast-cancer consideration is modest and is balanced individually.</p>
+    <div class="note ui"><i class="ti ti-info-circle"></i> Evidence level: chemoprevention is an option (category 2A-type), not a mandate. Benefit is real but smaller than surgery, and uptake is individual.</div>
+  </section>
+
+  <!-- 10 -->
+  <section id="en-counsel">
+    <div class="shead"><div class="snum ui">10</div><h2>Genetic counselling</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> For you</div>
+      <p>Your result matters for your family. Each first-degree relative (parents, siblings, children) has a 1 in 2 chance of carrying the same variant. We can help you share the news and arrange testing for them (cascade testing). If you are planning a family, there are reproductive options to discuss, including testing during pregnancy or testing embryos before pregnancy.</p>
+    </div>
+    <p>Cascade testing of at-risk relatives is the highest-yield downstream action. Provide a family letter and coordinate predictive testing of first-degree relatives, extending outward as variants are confirmed. Construct a three-generation pedigree to refine personal risk and to identify relatives who warrant earlier surveillance.</p>
+    <p>Reproductive options for carriers include prenatal diagnosis and preimplantation genetic testing for monogenic conditions (PGT-M). Present these neutrally. Document informed consent and the option to decline.</p>
+    <div class="infobox ui">
+      <div class="tag ui"><i class="ti ti-calculator"></i> Risk modelling</div>
+      <p>Use a validated model (BOADICEA / CanRisk) incorporating pedigree, hormonal, and where available polygenic data to generate an individualized estimate rather than quoting a single population figure.</p>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section id="en-lifestyle">
+    <div class="shead"><div class="snum ui">11</div><h2>Lifestyle &amp; nutrition</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> For you</div>
+      <p>Lifestyle does not undo a BRCA2 variant, but it shifts your overall risk. Keeping a healthy weight, staying active, limiting alcohol, and not smoking all help. After menopause especially, extra weight and alcohol raise breast cancer risk. These habits also protect your heart and bones, which matters after ovary removal.</p>
+    </div>
+    <p>General cancer-prevention guidance applies and is evidence-aligned: maintain a healthy body weight, exercise regularly, limit alcohol (each drink incrementally raises breast cancer risk), avoid tobacco, and follow population colorectal and other screening. After premenopausal RRSO, prioritize bone density monitoring, weight-bearing exercise, adequate calcium and vitamin D, and cardiovascular risk management. These measures are adjuncts to, not substitutes for, the surveillance and surgical strategies above.</p>
+    <p><strong>Stomach cancer and <em>H. pylori</em>.</strong> BRCA2 pathogenic variants are associated with a modestly increased risk of gastric cancer (roughly a two- to three-fold relative risk in some cohorts), although the absolute lifetime risk remains low, and routine endoscopic screening is not recommended without a family history of gastric cancer or upper-GI symptoms. <em>Helicobacter pylori</em> infection is the leading modifiable cause of gastric cancer, and eradication lowers gastric cancer risk in the general population, including in first-degree relatives of people with gastric cancer. It is therefore reasonable to offer one-time non-invasive testing (stool antigen or urea breath test) and to treat if positive, particularly with a family history of gastric cancer, ancestry from a high-incidence region, or persistent dyspepsia. Direct evidence in BRCA2 carriers is limited, so this is expert opinion rather than a guideline-mandated step. Refer for upper endoscopy for alarm symptoms (dysphagia, bleeding, weight loss, anaemia) or a strong family history.</p>
+  </section>
+
+  <!-- 12 -->
+  <section id="en-emerging">
+    <div class="shead"><div class="snum ui">12</div><h2>Emerging &amp; investigational</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> For you</div>
+      <p>Research is active. Some studies test whether removing the tubes first and the ovaries later is safe. Others test new prevention drugs and better imaging. These are not standard care yet. Ask us if a trial might fit you.</p>
+    </div>
+    <div class="emerging ui">
+      <div class="tag ui"><i class="ti ti-microscope"></i> Trial-only / investigational</div>
+      <p><strong>Salpingectomy with delayed oophorectomy</strong> (TUBA-WISP II): tests whether removing tubes first, with later oophorectomy, preserves protection while delaying surgical menopause. Not yet a guideline substitute.</p>
+      <p><strong>RANKL inhibition (denosumab)</strong>: preclinical and early-phase work explores breast-cancer risk reduction in carriers. Investigational.</p>
+      <p><strong>Polygenic risk scores</strong> added to monogenic risk: may refine individual estimates and screening intensity; implementation studies ongoing.</p>
+      <p><strong>Contrast-enhanced mammography and abbreviated MRI</strong>: studied as alternatives or supplements to full-protocol MRI.</p>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section id="en-summary">
+    <div class="shead"><div class="snum ui">13</div><h2>Summary of recommendations</h2></div>
+    <h3>Surveillance by organ</h3>
+    <div class="cardgrid">
+      <div class="card">
+        <h4 class="ui">Breast (female)</h4>
+        <ul>
+          <li>Breast awareness from 18</li>
+          <li>Clinical exam q6–12mo from 25</li>
+          <li>Annual MRI from 25</li>
+          <li>Add annual mammogram from 30–75</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="ui">Ovary / tube</h4>
+        <ul>
+          <li>No reliable screening test</li>
+          <li>RRSO age 40–45 after childbearing</li>
+          <li>Symptom awareness</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="ui">Male breast &amp; prostate</h4>
+        <ul>
+          <li>Breast self-exam &amp; clinical exam from 35</li>
+          <li>Annual PSA from 40</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="ui">Pancreas</h4>
+        <ul>
+          <li>Consider MRI/MRCP ± EUS</li>
+          <li>Often from ~50, high-volume centre</li>
+          <li>Ideally within a program</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="ui">Skin / eye</h4>
+        <ul>
+          <li>Sun protection</li>
+          <li>Skin / dilated eye exam optional</li>
+        </ul>
+      </div>
+    </div>
+    <h3>Cross-cutting</h3>
+    <div class="cardgrid">
+      <div class="card">
+        <h4 class="ui">Surgery &amp; hormones</h4>
+        <ul>
+          <li>RRM: ~90–95% breast risk reduction (optional)</li>
+          <li>RRSO 40–45: ~80% ovarian reduction</li>
+          <li>HRT to natural menopause reasonable if no breast cancer history</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="ui">Medical prevention</h4>
+        <ul>
+          <li>Tamoxifen/AI option for breast</li>
+          <li>Oral contraceptive option for ovary</li>
+          <li>Shared decision-making</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="ui">Family &amp; counselling</h4>
+        <ul>
+          <li>Cascade testing of first-degree relatives</li>
+          <li>Three-generation pedigree</li>
+          <li>PGT-M / prenatal options offered neutrally</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="ui">Lifestyle</h4>
+        <ul>
+          <li>Healthy weight, activity</li>
+          <li>Limit alcohol, no tobacco</li>
+          <li>Bone &amp; CV care post-RRSO</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section id="en-refs">
+    <div class="shead"><div class="snum ui">14</div><h2>References</h2></div>
+    <ol class="refs ui">
+      <li>Daly MB, Pal T, AlHilli Z, et al. Genetic/Familial High-Risk Assessment: Breast, Ovarian, Pancreatic, and Prostate. NCCN Clinical Practice Guidelines in Oncology, Version 2.2026. J Natl Compr Canc Netw. 2026.</li>
+      <li>Bevers TB, et al. NCCN Clinical Practice Guidelines in Oncology: Breast Cancer Screening and Diagnosis, Version 2.2025. National Comprehensive Cancer Network; 2025.</li>
+      <li>National Cancer Institute. BRCA Gene Changes: Cancer Risk and Genetic Testing Fact Sheet. NCI; updated 2025.</li>
+      <li>Kuchenbaecker KB, Hopper JL, Barnes DR, et al. Risks of Breast, Ovarian, and Contralateral Breast Cancer for BRCA1 and BRCA2 Mutation Carriers. JAMA. 2017;317(23):2402–2416.</li>
+      <li>Mavaddat N, Antoniou AC, Mooij TM, et al. Risk-reducing salpingo-oophorectomy, natural menopause, and breast cancer risk: an international prospective cohort of BRCA1 and BRCA2 mutation carriers. Breast Cancer Res. 2020;22:8.</li>
+      <li>Rebbeck TR, Friebel T, Lynch HT, et al. Bilateral prophylactic mastectomy reduces breast cancer risk in BRCA1 and BRCA2 mutation carriers. J Clin Oncol. 2004;22(6):1055–1062.</li>
+      <li>Goggins M, Overbeek KA, Brand R, et al. Management of patients with increased risk for familial pancreatic cancer: updated recommendations from the International Cancer of the Pancreas Screening (CAPS) Consortium. Gut. 2020;69(1):7–17.</li>
+      <li>Monticciolo DL, Newell MS, Moy L, et al. Breast Cancer Screening for Women at Higher-Than-Average Risk: Updated Recommendations From the ACR. J Am Coll Radiol. 2023;20(9):902–914.</li>
+      <li>Lee A, Mavaddat N, Wilcox AN, et al. BOADICEA: a comprehensive breast cancer risk prediction model incorporating genetic and nongenetic risk factors. Genet Med. 2019;21(8):1708–1718.</li>
+      <li>Steenbeek MP, et al. TUBectomy with delayed oophorectomy as an alternative to risk-reducing salpingo-oophorectomy (TUBA-WISP II): study protocol. Int J Gynecol Cancer. 2023.</li>
+    </ol>
+  </section>
+
+  <div class="footer ui">
+    <p><strong>Disclaimer.</strong> This protocol supports, and does not replace, individual clinical judgment. Guidelines evolve and intervals, start ages, and recommendations are revised regularly. Verify all specifics against the current versions of the cited guidelines before applying them to a patient. Risk figures are approximate ranges; individualized estimates require a validated model and full family history.</p>
+    <p>Dr. Andrew Shuen, MD PhD FRCPC DABMGG · Cancer Genetics, Cancer Prevention Centre, Jewish General Hospital, Montreal.</p>
+  </div>
+
+</div>
+
+<!-- ============ FRANÇAIS ============ -->
+<div class="lang-fr">
+
+  <header class="masthead">
+    <div class="eyebrow ui">Génétique du cancer héréditaire · Protocole de prévention et de surveillance</div>
+    <h1>Vivre avec un variant pathogène de BRCA2</h1>
+    <p class="standfirst">Un protocole de prévention et de surveillance pour les personnes porteuses d'un variant pathogène ou probablement pathogène du gène BRCA2. Rédigé à la fois pour les patients et leur équipe soignante.</p>
+
+    <div class="authorpanel ui">
+      <div class="author">
+        <div class="who">D<sup>r</sup> Andrew Shuen, MD PhD FRCPC DABMGG</div>
+        <div class="aff">Génétique du cancer · Centre de prévention du cancer, Hôpital général juif (HGJ), Montréal</div>
+      </div>
+    </div>
+
+    <div class="metachips ui">
+      <span class="chip"><i class="ti ti-dna-2"></i> Gène : BRCA2</span>
+      <span class="chip"><i class="ti ti-shield-check"></i> Autosomique dominant</span>
+      <span class="chip"><i class="ti ti-calendar"></i> Aligné sur NCCN v2.2026</span>
+      <span class="chip"><i class="ti ti-map-pin"></i> Contexte posologique canadien</span>
+    </div>
+
+    <div class="legend ui">
+      <span><span class="sw" style="background:var(--brand)"></span> Résumé pour le patient</span>
+      <span><i class="ti ti-circle-check yes" style="color:var(--brand)"></i> Systématique</span>
+      <span><i class="ti ti-circle-dashed opt" style="color:var(--amber)"></i> Optionnel / au cas par cas</span>
+      <span><i class="ti ti-circle-minus no" style="color:var(--ink-faint)"></i> Non recommandé de routine</span>
+    </div>
+  </header>
+
+  <nav class="toc ui">
+    <h2>Sommaire</h2>
+    <ol>
+      <li><span class="n">1</span><a href="#fr-understand">Comprendre BRCA2</a></li>
+      <li><span class="n">2</span><a href="#fr-risks">Risques à vie</a></li>
+      <li><span class="n">3</span><a href="#fr-breast-f">Surveillance mammaire (femmes)</a></li>
+      <li><span class="n">4</span><a href="#fr-ovarian">Surveillance ovarienne / tubaire</a></li>
+      <li><span class="n">5</span><a href="#fr-male">Sein et prostate (hommes)</a></li>
+      <li><span class="n">6</span><a href="#fr-panc">Surveillance pancréatique</a></li>
+      <li><span class="n">7</span><a href="#fr-mel">Mélanome et peau</a></li>
+      <li><span class="n">8</span><a href="#fr-surgery">Chirurgie de réduction du risque et hormones</a></li>
+      <li><span class="n">9</span><a href="#fr-chemo">Prévention médicale</a></li>
+      <li><span class="n">10</span><a href="#fr-counsel">Conseil génétique</a></li>
+      <li><span class="n">11</span><a href="#fr-lifestyle">Mode de vie et nutrition</a></li>
+      <li><span class="n">12</span><a href="#fr-emerging">Pistes émergentes et expérimentales</a></li>
+      <li><span class="n">13</span><a href="#fr-summary">Résumé des recommandations</a></li>
+      <li><span class="n">14</span><a href="#fr-refs">Références</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="fr-understand">
+    <div class="shead"><div class="snum ui">1</div><h2>Comprendre BRCA2</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> Pour vous</div>
+      <p>BRCA2 est un gène qui aide vos cellules à réparer l'ADN endommagé. Chaque personne en possède deux copies. Vous avez hérité d'une copie qui ne fonctionne pas correctement. Vos cellules réparent encore l'ADN grâce à la copie fonctionnelle, mais au fil de la vie certaines cellules peuvent perdre cette copie de secours. Lorsque cela arrive, un cancer peut se déclencher plus facilement.</p>
+      <p>Cela augmente votre risque de certains cancers, surtout du sein, de l'ovaire, de la prostate et du pancréas. Cela ne veut pas dire que vous aurez un cancer. Beaucoup de personnes porteuses n'en développent jamais. Le but de ce protocole est de détecter tôt un cancer, ou de le prévenir, tout en vous laissant vivre pleinement.</p>
+      <p>Vous pouvez transmettre ce variant à vos enfants. Chaque enfant a une chance sur deux d'en hériter. Vos frères, sœurs et parents peuvent aussi en être porteurs.</p>
+    </div>
+    <p>BRCA2 (13q13.1) code une protéine essentielle à la réparation des cassures double brin de l'ADN par recombinaison homologue. Un variant germinal pathogène ou probablement pathogène (P/PP) produit un allèle avec perte de fonction; la perte somatique du second allèle dans un tissu cible compromet la réparation fidèle, ce qui favorise l'instabilité génomique et la tumorigenèse. La transmission est autosomique dominante, à pénétrance élevée mais incomplète et spécifique au tissu.</p>
+    <p>BRCA2 se distingue de BRCA1 par son spectre tumoral et son profil de pénétrance. Comparé à BRCA1, BRCA2 comporte un risque ovarien plus faible, un âge moyen d'apparition ovarienne plus tardif, un risque de cancer du sein masculin nettement plus élevé, un risque accru de cancer de la prostate agressif, ainsi qu'un signal plus net pour le cancer du pancréas et le mélanome. Ces différences justifient une surveillance propre au gène plutôt qu'un plan « BRCA » générique. La pénétrance est modifiée par les antécédents familiaux, la position du variant et le fond polygénique; le risque quantitatif pour une personne donnée s'estime mieux avec un modèle validé (par exemple BOADICEA / CanRisk) qu'avec un seul chiffre populationnel.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="fr-risks">
+    <div class="shead"><div class="snum ui">2</div><h2>Risques à vie</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> Pour vous</div>
+      <p>Le tableau ci-dessous montre les probabilités approximatives, sur toute une vie, de chaque cancer pour une personne porteuse de BRCA2, à côté de la population générale. Ce sont des fourchettes, pas des certitudes. Votre chiffre personnel dépend de vos antécédents familiaux. Nous pouvons calculer une estimation personnalisée pour vous.</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Cancer</th><th>Population générale</th><th>Porteur BRCA2 (à vie, approx.)</th><th>Niveau</th></tr></thead>
+        <tbody>
+          <tr><td>Sein (femmes)</td><td>~12 %</td><td>~45–69 % (jusqu'à 80 ans)</td><td><span class="pill high">Élevé</span></td></tr>
+          <tr><td>Sein controlatéral (second)</td><td>—</td><td>~20–30 % sur 10–20 ans après le premier</td><td><span class="pill high">Élevé</span></td></tr>
+          <tr><td>Ovaire / trompe / péritoine</td><td>~1,1–1,8 %</td><td>~13–29 %</td><td><span class="pill mod">Modéré</span></td></tr>
+          <tr><td>Sein (hommes)</td><td>~0,1 %</td><td>~6–9 % (jusqu'à 80 ans)</td><td><span class="pill mod">Modéré</span></td></tr>
+          <tr><td>Prostate</td><td>~11 %</td><td>~19–61 % (souvent plus agressif)</td><td><span class="pill high">Élevé</span></td></tr>
+          <tr><td>Pancréas</td><td>~1,7 %</td><td>~5–10 %</td><td><span class="pill mod">Modéré</span></td></tr>
+          <tr><td>Mélanome (cutané et uvéal)</td><td>~1–2 %</td><td>Modérément augmenté</td><td><span class="pill low">Faible / standard</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Les fourchettes proviennent du NCCN, du NCI et de grandes cohortes de personnes porteuses; les chiffres varient selon l'étude, le mode de recrutement et les antécédents familiaux. Utilisez un modèle de risque validé pour le conseil individualisé. Les estimations du sein et de l'ovaire s'appliquent aux personnes possédant les organes concernés; elles ne tiennent pas compte d'une chirurgie de réduction du risque antérieure.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="fr-breast-f">
+    <div class="shead"><div class="snum ui">3</div><h2>Surveillance mammaire — femmes</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> Pour vous</div>
+      <p>Le cancer du sein est le cancer le plus probable pour une personne porteuse de BRCA2 ayant des seins. Le plan vise à le détecter tôt. Dès la fin de la vingtaine, vous commencez une IRM mammaire annuelle. Dès 30 ans, vous ajoutez une mammographie annuelle. Beaucoup de cliniques alternent les deux pour que vous ayez un examen tous les six mois. Vous apprenez aussi à connaître l'aspect normal de vos seins et signalez tout changement.</p>
+      <p>L'ablation des deux seins (mastectomie de réduction du risque) est une option qui réduit le plus le risque. C'est un choix personnel. Nous en discuterons. Ce sujet est traité à la section 8.</p>
+    </div>
+    <div class="genepill ui"><span class="name">Sein (femmes)</span><span class="riskbadge r-high">Risque élevé</span></div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check ic yes"></i><div>Connaissance de ses seins <span class="tagmini routine">Systématique</span><span class="meta">Dès 18 ans. Signaler tout changement persistant.</span></div></li>
+      <li><i class="ti ti-circle-check ic yes"></i><div>Examen clinique des seins, tous les 6–12 mois <span class="tagmini routine">Systématique</span><span class="meta">Dès 25 ans.</span></div></li>
+      <li><i class="ti ti-circle-check ic yes"></i><div>IRM mammaire annuelle avec contraste <span class="tagmini routine">Systématique</span><span class="meta">Dès 25 ans (25–29 ans : IRM seule, ou mammographie seulement si l'IRM n'est pas disponible).</span></div></li>
+      <li><i class="ti ti-circle-check ic yes"></i><div>Mammographie annuelle, ajoutée à l'IRM <span class="tagmini routine">Systématique</span><span class="meta">De 30 à 75 ans. Envisager la tomosynthèse. Souvent décalée de 6 mois par rapport à l'IRM.</span></div></li>
+      <li><i class="ti ti-circle-dashed ic opt"></i><div>Prise en charge après 75 ans <span class="tagmini optional">Individualisée</span><span class="meta">À décider au cas par cas selon l'état de santé et les préférences.</span></div></li>
+    </ul>
+    <div class="rec">
+      <div class="tag ui">Note clinique</div>
+      <p>En cas de mastectomie de réduction du risque, la surveillance par imagerie de la paroi thoracique n'est pas requise de routine; un suivi clinique la remplace. L'intensité du dépistage diminue, mais le risque tissulaire résiduel n'est pas nul.</p>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="fr-ovarian">
+    <div class="shead"><div class="snum ui">4</div><h2>Surveillance ovarienne, tubaire et péritonéale</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> Pour vous</div>
+      <p>Il n'existe pas de test de dépistage fiable du cancer de l'ovaire. Les analyses de sang (CA-125) et l'échographie laissent passer trop de cancers précoces. Le dépistage n'est donc pas la stratégie principale. L'étape la plus efficace est l'ablation des trompes et des ovaires une fois le projet d'enfant terminé, en général entre 40 et 45 ans pour BRCA2. Ce sujet est traité à la section 8.</p>
+      <p>D'ici là, signalez-nous tout nouveau ballonnement, douleur pelvienne, sensation de satiété rapide ou changement urinaire qui dure plus de quelques semaines.</p>
+    </div>
+    <div class="genepill ui"><span class="name">Ovaire / trompe / péritoine</span><span class="riskbadge r-mod">Risque modéré</span></div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-minus ic no"></i><div>Échographie endovaginale + CA-125 <span class="tagmini notrec">Non recommandé de routine</span><span class="meta">Peut être envisagé à court terme dès ~30–35 ans si la chirurgie est reportée, mais ne détecte pas fiablement la maladie précoce et n'améliore pas la survie.</span></div></li>
+      <li><i class="ti ti-circle-check ic yes"></i><div>Salpingo-ovariectomie de réduction du risque (SORR) <span class="tagmini routine">Option systématique</span><span class="meta">40–45 ans, après le projet d'enfant. Stratégie principale. Voir section 8.</span></div></li>
+      <li><i class="ti ti-circle-check ic yes"></i><div>Vigilance des symptômes <span class="tagmini routine">Systématique</span><span class="meta">Ballonnement persistant, satiété précoce, douleur pelvienne ou abdominale, besoin urinaire pressant.</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 5 -->
+  <section id="fr-male">
+    <div class="shead"><div class="snum ui">5</div><h2>Surveillance du sein et de la prostate — hommes</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> Pour vous</div>
+      <p>Les hommes porteurs de BRCA2 ont un risque réel, quoique modéré, de cancer du sein et un risque accru de cancer de la prostate, qui tend à être plus agressif. Nous enseignons l'auto-examen des seins et faisons un examen mammaire annuel. Dès 40 ans, nous commençons un dosage annuel du PSA pour la prostate.</p>
+    </div>
+    <div class="genepill ui"><span class="name">Sein (hommes)</span><span class="riskbadge r-mod">Risque modéré</span></div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check ic yes"></i><div>Apprentissage de l'auto-examen des seins <span class="tagmini routine">Systématique</span><span class="meta">Dès 35 ans.</span></div></li>
+      <li><i class="ti ti-circle-check ic yes"></i><div>Examen clinique des seins, annuel <span class="tagmini routine">Systématique</span><span class="meta">Dès 35 ans.</span></div></li>
+      <li><i class="ti ti-circle-dashed ic opt"></i><div>Mammographie chez l'homme <span class="tagmini optional">Au cas par cas</span><span class="meta">Envisager un examen de référence en cas de gynécomastie ou de tissu mammaire accru; non systématique.</span></div></li>
+    </ul>
+    <div class="genepill ui"><span class="name">Prostate</span><span class="riskbadge r-high">Risque élevé</span></div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check ic yes"></i><div>PSA annuel <span class="tagmini routine">Systématique</span><span class="meta">Dès 40 ans (NCCN : recommandé pour BRCA2). À associer à une décision partagée.</span></div></li>
+      <li><i class="ti ti-circle-dashed ic opt"></i><div>Toucher rectal <span class="tagmini optional">Complément</span><span class="meta">Peut accompagner le PSA selon la pratique locale.</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 6 -->
+  <section id="fr-panc">
+    <div class="shead"><div class="snum ui">6</div><h2>Surveillance pancréatique</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> Pour vous</div>
+      <p>BRCA2 augmente le risque de cancer du pancréas au-dessus de la moyenne, mais il reste peu fréquent. Pour BRCA2, un dépistage peut être envisagé même sans antécédents familiaux. Il repose sur une IRM du pancréas et parfois une échoendoscopie, réalisées dans un centre expérimenté, idéalement dans le cadre d'un programme de recherche. Le bénéfice est encore à l'étude.</p>
+    </div>
+    <div class="genepill ui"><span class="name">Pancréas</span><span class="riskbadge r-mod">Risque modéré</span></div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-dashed ic opt"></i><div>IRM/CPRM et/ou échoendoscopie (EUS) annuelle <span class="tagmini optional">À envisager</span><span class="meta">Pour BRCA2, à envisager indépendamment des antécédents familiaux (NCCN). Début souvent vers 50 ans, ou 10 ans avant le plus jeune parent atteint. Centre à fort volume, de préférence dans une étude.</span></div></li>
+    </ul>
+    <div class="note ui"><i class="ti ti-info-circle"></i> Qualité de la preuve : la surveillance pancréatique relève du consensus d'experts et n'a pas démontré de réduction de la mortalité dans cette population. Elle doit être présentée honnêtement et idéalement réalisée dans un programme structuré (par exemple un protocole aligné sur CAPS).</div>
+  </section>
+
+  <!-- 7 -->
+  <section id="fr-mel">
+    <div class="shead"><div class="snum ui">7</div><h2>Mélanome et peau</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> Pour vous</div>
+      <p>BRCA2 augmente modérément le risque de mélanome, y compris une forme rare de l'œil. Il n'y a pas de protocole spécial. Pour la plupart des personnes porteuses, une protection solaire standard et un examen de la peau si vous remarquez un grain de beauté qui change suffisent.</p>
+    </div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-dashed ic opt"></i><div>Examen périodique de la peau <span class="tagmini optional">Optionnel</span><span class="meta">Raisonnable; à intensifier en cas d'antécédents personnels ou familiaux de mélanome.</span></div></li>
+      <li><i class="ti ti-circle-dashed ic opt"></i><div>Examen ophtalmologique avec dilatation <span class="tagmini optional">Optionnel</span><span class="meta">À envisager pour le mélanome uvéal; pas d'intervalle imposé.</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 8 -->
+  <section id="fr-surgery">
+    <div class="shead"><div class="snum ui">8</div><h2>Chirurgie de réduction du risque et considérations hormonales</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> Pour vous</div>
+      <p>Deux chirurgies réduisent le plus le risque de cancer. L'ablation des deux seins réduit le risque de cancer du sein d'environ 90 % ou plus. L'ablation des trompes et des ovaires (en général entre 40 et 45 ans pour BRCA2) réduit le risque de cancer de l'ovaire d'environ 80 % ou plus et réduit aussi le risque de cancer du sein. Les deux sont des décisions personnelles avec des compromis, dont une ménopause précoce après l'ablation des ovaires. Nous parlerons du moment, de la fertilité et de l'hormonothérapie.</p>
+    </div>
+
+    <h3>Mastectomie de réduction du risque (MRR)</h3>
+    <p>La MRR bilatérale réduit le risque de cancer du sein d'environ 90 à 95 %. C'est une option, pas une obligation. La discussion porte sur la reconstruction, le risque tissulaire résiduel et le fait qu'un bénéfice de survie globale n'est pas garanti pour chaque personne porteuse. La surveillance (section 3) est l'alternative.</p>
+
+    <h3>Salpingo-ovariectomie de réduction du risque (SORR)</h3>
+    <p>Pour BRCA2, la SORR est recommandée entre 40 et 45 ans, après le projet d'enfant. Cette fenêtre plus tardive que pour BRCA1 (35–40 ans) reflète l'apparition plus tardive du cancer de l'ovaire dans BRCA2. La SORR réduit le risque de cancer de l'ovaire, de la trompe et du péritoine d'environ 80 % (un risque péritonéal résiduel persiste) et s'associe à une réduction du risque de cancer du sein chez les personnes porteuses de BRCA2. Une néoplasie occulte est retrouvée dans une minorité de pièces; il faut donc envoyer le tissu pour un sectionnement SEE-FIM.</p>
+
+    <div class="infobox ui">
+      <div class="tag ui"><i class="ti ti-flask"></i> Salpingectomie avec ovariectomie différée</div>
+      <p>Retirer d'abord les trompes et différer l'ablation des ovaires est à l'étude (TUBA-WISP II) comme moyen de retarder la ménopause chirurgicale. Cette approche est expérimentale et ne remplace pas encore la SORR selon les lignes directrices. L'ovariectomie de complément à l'âge recommandé reste conseillée.</p>
+    </div>
+
+    <h3>Considérations hormonales après la SORR</h3>
+    <p>La SORR préménopausique provoque une ménopause chirurgicale, avec des conséquences osseuses, cardiovasculaires, cognitives et sur la qualité de vie. Pour les personnes porteuses sans antécédent personnel de cancer du sein, une hormonothérapie substitutive jusqu'à l'âge de la ménopause naturelle est généralement raisonnable pour atténuer ces effets et n'annule pas le bénéfice de l'ovariectomie sur le cancer du sein. À individualiser après un cancer du sein ou en présence de contre-indications fortes.</p>
+    <div class="note ui"><i class="ti ti-info-circle"></i> Les contraceptifs oraux combinés réduisent le risque de cancer de l'ovaire et constituent une option avant la chirurgie; pesez le léger signal sur le cancer du sein dans la décision partagée.</div>
+  </section>
+
+  <!-- 9 -->
+  <section id="fr-chemo">
+    <div class="shead"><div class="snum ui">9</div><h2>Prévention médicale (chimioprévention)</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> Pour vous</div>
+      <p>Certains médicaments peuvent réduire le risque de cancer du sein ou de l'ovaire. Des comprimés anti-œstrogènes (comme le tamoxifène) peuvent réduire le risque de cancer du sein. Les contraceptifs oraux peuvent réduire le risque de cancer de l'ovaire. Ce sont des options à évaluer, pas des obligations. Nous examinerons ensemble les bénéfices et les effets indésirables pour vous.</p>
+    </div>
+    <h4 class="ui">Réduction du risque mammaire</h4>
+    <p>Les modulateurs sélectifs des récepteurs des œstrogènes (tamoxifène, raloxifène) et les inhibiteurs de l'aromatase réduisent l'incidence du cancer du sein chez les femmes à haut risque. Les données sont plus favorables pour BRCA2 que pour BRCA1, en raison de la plus forte proportion de tumeurs hormonosensibles. À présenter comme une option, notamment lorsque la MRR est refusée. Au Canada, le schéma habituel est tamoxifène 20 mg par jour pendant 5 ans; surveiller le risque de thromboembolie veineuse et le risque endométrial.</p>
+    <h4 class="ui">Réduction du risque ovarien</h4>
+    <p>Les contraceptifs oraux combinés réduisent le risque de cancer de l'ovaire d'environ 50 % selon la durée d'utilisation. Ils constituent un pont raisonnable avant la SORR. La considération associée sur le cancer du sein est modeste et s'évalue au cas par cas.</p>
+    <div class="note ui"><i class="ti ti-info-circle"></i> Niveau de preuve : la chimioprévention est une option (de type catégorie 2A), pas une obligation. Le bénéfice est réel mais moindre que celui de la chirurgie, et l'adhésion est individuelle.</div>
+  </section>
+
+  <!-- 10 -->
+  <section id="fr-counsel">
+    <div class="shead"><div class="snum ui">10</div><h2>Conseil génétique</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> Pour vous</div>
+      <p>Votre résultat a de l'importance pour votre famille. Chaque parent au premier degré (parents, frères, sœurs, enfants) a une chance sur deux de porter le même variant. Nous pouvons vous aider à transmettre l'information et à organiser leur test (test en cascade). Si vous planifiez une famille, il existe des options de procréation à discuter, dont le test pendant la grossesse ou le test des embryons avant la grossesse.</p>
+    </div>
+    <p>Le test en cascade des proches à risque est l'action en aval la plus rentable. Fournissez une lettre familiale et coordonnez le test prédictif des parents au premier degré, en élargissant à mesure que des variants sont confirmés. Construisez un arbre généalogique sur trois générations pour affiner le risque personnel et repérer les proches justifiant une surveillance plus précoce.</p>
+    <p>Les options de procréation pour les personnes porteuses incluent le diagnostic prénatal et le test génétique préimplantatoire des maladies monogéniques (DPI-M). À présenter de façon neutre. Documentez le consentement éclairé et le droit de refuser.</p>
+    <div class="infobox ui">
+      <div class="tag ui"><i class="ti ti-calculator"></i> Modélisation du risque</div>
+      <p>Utilisez un modèle validé (BOADICEA / CanRisk) intégrant l'arbre généalogique, les facteurs hormonaux et, lorsque disponibles, les données polygéniques, pour produire une estimation individualisée plutôt que de citer un seul chiffre populationnel.</p>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section id="fr-lifestyle">
+    <div class="shead"><div class="snum ui">11</div><h2>Mode de vie et nutrition</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> Pour vous</div>
+      <p>Le mode de vie n'efface pas un variant BRCA2, mais il modifie votre risque global. Maintenir un poids santé, rester actif, limiter l'alcool et ne pas fumer aident tous. Après la ménopause surtout, le surpoids et l'alcool augmentent le risque de cancer du sein. Ces habitudes protègent aussi votre cœur et vos os, ce qui compte après l'ablation des ovaires.</p>
+    </div>
+    <p>Les recommandations générales de prévention du cancer s'appliquent et sont fondées sur des données probantes : maintenir un poids santé, faire de l'exercice régulièrement, limiter l'alcool (chaque verre augmente progressivement le risque de cancer du sein), éviter le tabac et suivre le dépistage colorectal et les autres dépistages populationnels. Après une SORR préménopausique, priorisez la surveillance de la densité osseuse, l'exercice en charge, un apport suffisant en calcium et en vitamine D, et la gestion du risque cardiovasculaire. Ces mesures complètent, sans les remplacer, les stratégies de surveillance et de chirurgie ci-dessus.</p>
+    <p><strong>Cancer de l'estomac et <em>H. pylori</em>.</strong> Les variants pathogènes de BRCA2 sont associés à une légère hausse du risque de cancer gastrique (risque relatif d'environ 2 à 3 dans certaines cohortes), bien que le risque absolu à vie demeure faible; le dépistage endoscopique systématique n'est pas recommandé en l'absence d'antécédents familiaux de cancer gastrique ou de symptômes digestifs hauts. L'infection par <em>Helicobacter pylori</em> est la principale cause modifiable du cancer gastrique, et son éradication réduit le risque dans la population générale, y compris chez les parents au premier degré de personnes atteintes. Il est donc raisonnable d'offrir un test non invasif unique (antigène fécal ou test respiratoire à l'urée) et de traiter si positif, surtout en présence d'antécédents familiaux de cancer gastrique, d'une origine d'une région à forte incidence ou d'une dyspepsie persistante. Les données directes chez les porteurs de BRCA2 sont limitées; il s'agit donc d'un avis d'experts plutôt que d'une étape exigée par les lignes directrices. Référer pour une endoscopie haute en cas de symptômes d'alarme (dysphagie, saignement, perte de poids, anémie) ou d'antécédents familiaux marqués.</p>
+  </section>
+
+  <!-- 12 -->
+  <section id="fr-emerging">
+    <div class="shead"><div class="snum ui">12</div><h2>Pistes émergentes et expérimentales</h2></div>
+    <div class="patient">
+      <div class="tag ui"><i class="ti ti-user-heart"></i> Pour vous</div>
+      <p>La recherche est active. Certaines études testent si retirer d'abord les trompes et plus tard les ovaires est sûr. D'autres testent de nouveaux médicaments de prévention et une meilleure imagerie. Ce ne sont pas encore des soins courants. Demandez-nous si une étude pourrait vous convenir.</p>
+    </div>
+    <div class="emerging ui">
+      <div class="tag ui"><i class="ti ti-microscope"></i> Recherche seulement / expérimental</div>
+      <p><strong>Salpingectomie avec ovariectomie différée</strong> (TUBA-WISP II) : teste si retirer d'abord les trompes, avec ovariectomie plus tardive, préserve la protection tout en retardant la ménopause chirurgicale. Ne remplace pas encore les lignes directrices.</p>
+      <p><strong>Inhibition du RANKL (dénosumab)</strong> : des travaux précliniques et de phase précoce explorent la réduction du risque de cancer du sein chez les personnes porteuses. Expérimental.</p>
+      <p><strong>Scores de risque polygénique</strong> ajoutés au risque monogénique : pourraient affiner les estimations individuelles et l'intensité du dépistage; études d'implantation en cours.</p>
+      <p><strong>Mammographie avec contraste et IRM abrégée</strong> : étudiées comme alternatives ou compléments à l'IRM à protocole complet.</p>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section id="fr-summary">
+    <div class="shead"><div class="snum ui">13</div><h2>Résumé des recommandations</h2></div>
+    <h3>Surveillance par organe</h3>
+    <div class="cardgrid">
+      <div class="card">
+        <h4 class="ui">Sein (femmes)</h4>
+        <ul>
+          <li>Connaissance des seins dès 18 ans</li>
+          <li>Examen clinique tous les 6–12 mois dès 25 ans</li>
+          <li>IRM annuelle dès 25 ans</li>
+          <li>Ajouter mammographie annuelle de 30 à 75 ans</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="ui">Ovaire / trompe</h4>
+        <ul>
+          <li>Pas de test de dépistage fiable</li>
+          <li>SORR à 40–45 ans après le projet d'enfant</li>
+          <li>Vigilance des symptômes</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="ui">Sein (hommes) et prostate</h4>
+        <ul>
+          <li>Auto-examen et examen clinique dès 35 ans</li>
+          <li>PSA annuel dès 40 ans</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="ui">Pancréas</h4>
+        <ul>
+          <li>Envisager IRM/CPRM ± EUS</li>
+          <li>Souvent dès ~50 ans, centre à fort volume</li>
+          <li>Idéalement dans un programme</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="ui">Peau / œil</h4>
+        <ul>
+          <li>Protection solaire</li>
+          <li>Examen de la peau / des yeux optionnel</li>
+        </ul>
+      </div>
+    </div>
+    <h3>Transversal</h3>
+    <div class="cardgrid">
+      <div class="card">
+        <h4 class="ui">Chirurgie et hormones</h4>
+        <ul>
+          <li>MRR : ~90–95 % de réduction du risque mammaire (option)</li>
+          <li>SORR 40–45 ans : ~80 % de réduction ovarienne</li>
+          <li>THS jusqu'à la ménopause naturelle raisonnable sans antécédent de cancer du sein</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="ui">Prévention médicale</h4>
+        <ul>
+          <li>Tamoxifène/IA en option pour le sein</li>
+          <li>Contraceptif oral en option pour l'ovaire</li>
+          <li>Décision partagée</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="ui">Famille et conseil</h4>
+        <ul>
+          <li>Test en cascade des parents au premier degré</li>
+          <li>Arbre généalogique sur trois générations</li>
+          <li>DPI-M / options prénatales présentés de façon neutre</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="ui">Mode de vie</h4>
+        <ul>
+          <li>Poids santé, activité</li>
+          <li>Limiter l'alcool, pas de tabac</li>
+          <li>Soin des os et du cœur après la SORR</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section id="fr-refs">
+    <div class="shead"><div class="snum ui">14</div><h2>Références</h2></div>
+    <ol class="refs ui">
+      <li>Daly MB, Pal T, AlHilli Z, et al. Genetic/Familial High-Risk Assessment: Breast, Ovarian, Pancreatic, and Prostate. NCCN Clinical Practice Guidelines in Oncology, Version 2.2026. J Natl Compr Canc Netw. 2026.</li>
+      <li>Bevers TB, et al. NCCN Clinical Practice Guidelines in Oncology: Breast Cancer Screening and Diagnosis, Version 2.2025. National Comprehensive Cancer Network; 2025.</li>
+      <li>National Cancer Institute. BRCA Gene Changes: Cancer Risk and Genetic Testing Fact Sheet. NCI; updated 2025.</li>
+      <li>Kuchenbaecker KB, Hopper JL, Barnes DR, et al. Risks of Breast, Ovarian, and Contralateral Breast Cancer for BRCA1 and BRCA2 Mutation Carriers. JAMA. 2017;317(23):2402–2416.</li>
+      <li>Mavaddat N, Antoniou AC, Mooij TM, et al. Risk-reducing salpingo-oophorectomy, natural menopause, and breast cancer risk: an international prospective cohort of BRCA1 and BRCA2 mutation carriers. Breast Cancer Res. 2020;22:8.</li>
+      <li>Rebbeck TR, Friebel T, Lynch HT, et al. Bilateral prophylactic mastectomy reduces breast cancer risk in BRCA1 and BRCA2 mutation carriers. J Clin Oncol. 2004;22(6):1055–1062.</li>
+      <li>Goggins M, Overbeek KA, Brand R, et al. Management of patients with increased risk for familial pancreatic cancer: updated recommendations from the International Cancer of the Pancreas Screening (CAPS) Consortium. Gut. 2020;69(1):7–17.</li>
+      <li>Monticciolo DL, Newell MS, Moy L, et al. Breast Cancer Screening for Women at Higher-Than-Average Risk: Updated Recommendations From the ACR. J Am Coll Radiol. 2023;20(9):902–914.</li>
+      <li>Lee A, Mavaddat N, Wilcox AN, et al. BOADICEA: a comprehensive breast cancer risk prediction model incorporating genetic and nongenetic risk factors. Genet Med. 2019;21(8):1708–1718.</li>
+      <li>Steenbeek MP, et al. TUBectomy with delayed oophorectomy as an alternative to risk-reducing salpingo-oophorectomy (TUBA-WISP II): study protocol. Int J Gynecol Cancer. 2023.</li>
+    </ol>
+  </section>
+
+  <div class="footer ui">
+    <p><strong>Avis.</strong> Ce protocole appuie, sans le remplacer, le jugement clinique individuel. Les lignes directrices évoluent et les intervalles, âges de début et recommandations sont révisés régulièrement. Vérifiez tous les détails auprès des versions courantes des lignes directrices citées avant de les appliquer à un patient. Les chiffres de risque sont des fourchettes approximatives; une estimation individualisée nécessite un modèle validé et des antécédents familiaux complets.</p>
+    <p>D<sup>r</sup> Andrew Shuen, MD PhD FRCPC DABMGG · Génétique du cancer, Centre de prévention du cancer, Hôpital général juif, Montréal.</p>
+  </div>
+
+</div>
+
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.toggle('show-fr', l==='fr');
+  document.body.classList.toggle('show-en', l==='en');
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  document.getElementById('btn-fr').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+  window.scrollTo(0,0);
+}
+</script>
+
+</body>
+</html>

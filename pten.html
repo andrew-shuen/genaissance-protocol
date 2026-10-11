@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PTEN Hamartoma Tumour Syndrome — Prevention and Surveillance Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:18px; line-height:1.62;
+}
+.wrap{max-width:880px; margin:0 auto; padding:30px 22px 80px;}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* Language toggle */
+.langbar{
+  display:flex; gap:8px; justify-content:flex-end; align-items:center;
+  margin-bottom:18px; position:sticky; top:0; z-index:20;
+  background:linear-gradient(var(--cream) 70%, rgba(244,249,252,0));
+  padding:10px 0 8px;
+}
+.langbtn{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13px; letter-spacing:.04em; font-weight:600;
+  border:1px solid var(--brand-line); background:var(--paper); color:var(--brand-dark);
+  padding:7px 16px; border-radius:999px; cursor:pointer; transition:.15s;
+}
+.langbtn:hover{background:var(--brand-bg);}
+.langbtn.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+
+/* Masthead */
+.masthead{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:30px 30px 26px; box-shadow:0 1px 0 rgba(21,33,43,.03);}
+.eyebrow{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--brand-dark); font-weight:700; margin-bottom:10px;}
+h1{font-size:33px; line-height:1.18; margin:0 0 12px; color:var(--ink); font-weight:700;}
+.standfirst{font-size:19px; color:var(--ink-soft); margin:0 0 22px;}
+.authors{border-top:1px solid var(--line-soft); padding-top:16px; margin-top:4px;}
+.author{font-size:15px; color:var(--ink-soft); margin:4px 0; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.author b{color:var(--ink); font-weight:600;}
+.meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;}
+.chip{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; background:var(--cream); border:1px solid var(--line); color:var(--ink-soft); padding:5px 11px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;}
+.chip i{color:var(--brand);}
+.legend{display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; padding-top:16px; border-top:1px solid var(--line-soft); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; color:var(--ink-faint);}
+.legend span{display:inline-flex; align-items:center; gap:7px;}
+.swatch{width:13px; height:13px; border-radius:4px; display:inline-block;}
+
+/* TOC */
+.toc{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:22px 26px; margin:24px 0;}
+.toc h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--brand-dark); margin:0 0 14px;}
+.toc ol{margin:0; padding:0; list-style:none; columns:2; column-gap:32px;}
+.toc li{font-size:15px; margin:0 0 9px; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none; display:flex; gap:9px;}
+.toc a:hover{color:var(--brand-dark);}
+.toc .n{color:var(--brand); font-weight:700; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; min-width:18px;}
+
+/* Sections */
+section{margin:38px 0; scroll-margin-top:70px;}
+.sechead{display:flex; align-items:baseline; gap:14px; margin:0 0 16px;}
+.secnum{flex:none; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:15px; color:#fff; background:var(--brand); width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center;}
+.sechead h2{font-size:25px; margin:0; color:var(--ink); font-weight:700; line-height:1.25;}
+h3{font-size:20px; color:var(--brand-dark); margin:26px 0 10px;}
+h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:15px; letter-spacing:.02em; color:var(--ink); margin:20px 0 8px; font-weight:700;}
+p{margin:0 0 14px;}
+a{color:var(--brand-dark);}
+
+/* Patient panel */
+.patient{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius); padding:18px 22px; margin:0 0 20px;}
+.patient .lab{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--brand-dark); font-weight:700; display:flex; align-items:center; gap:7px; margin-bottom:9px;}
+.patient p{color:var(--brand-dark); margin:0 0 10px;}
+.patient p:last-child{margin-bottom:0;}
+
+/* Gene/organ header pills */
+.organ{display:flex; flex-wrap:wrap; align-items:center; gap:11px; margin:28px 0 12px; padding-bottom:8px; border-bottom:2px solid var(--line);}
+.organ h3{margin:0; border:0;}
+.risk-pill{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:700; letter-spacing:.03em; padding:4px 12px; border-radius:999px; text-transform:uppercase;}
+.risk-high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.risk-mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.risk-low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* Checklists */
+.checklist{list-style:none; margin:6px 0 16px; padding:0;}
+.checklist li{display:flex; gap:11px; padding:9px 0; border-bottom:1px solid var(--line-soft); align-items:flex-start;}
+.checklist li:last-child{border-bottom:0;}
+.checklist .ico{flex:none; margin-top:2px; font-size:18px;}
+.ico-do{color:var(--brand);}
+.ico-opt{color:var(--amber);}
+.ico-no{color:var(--ink-faint);}
+.checklist .txt{font-size:16px;}
+.tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; letter-spacing:.05em; font-weight:700; text-transform:uppercase; padding:2px 8px; border-radius:5px; margin-left:6px; vertical-align:middle;}
+.tag-routine{background:var(--brand-bg); color:var(--brand-dark);}
+.tag-opt{background:var(--amber-bg); color:var(--amber);}
+.tag-no{background:var(--line-soft); color:var(--ink-faint);}
+
+/* Tables */
+.tablewrap{overflow-x:auto; margin:16px 0;}
+table{border-collapse:collapse; width:100%; font-size:15px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+th{background:var(--brand-dark); color:#fff; text-align:left; padding:11px 13px; font-size:13px; letter-spacing:.02em; font-weight:600;}
+td{padding:11px 13px; border-bottom:1px solid var(--line); vertical-align:top;}
+tr:nth-child(even) td{background:var(--cream);}
+.dotpill{font-weight:700; padding:2px 9px; border-radius:999px; font-size:13px; white-space:nowrap;}
+.dot-high{background:var(--red-bg); color:var(--red);}
+.dot-mod{background:var(--amber-bg); color:var(--amber);}
+.dot-low{background:var(--brand-bg); color:var(--brand-dark);}
+
+/* Callouts */
+.callout{border-left:4px solid var(--brand); background:var(--paper); border-top:1px solid var(--line); border-right:1px solid var(--line); border-bottom:1px solid var(--line); border-radius:0 var(--radius-sm) var(--radius-sm) 0; padding:16px 20px; margin:18px 0;}
+.callout .lab{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; font-weight:700; color:var(--brand-dark); display:flex; gap:7px; align-items:center; margin-bottom:8px;}
+.callout p:last-child{margin-bottom:0;}
+.info{border-left-color:var(--brand);}
+.info .lab{color:var(--brand-dark);}
+.emerging{background:var(--purple-bg); border-color:var(--purple-line); border-left:4px solid var(--purple);}
+.emerging .lab{color:var(--purple);}
+.emerging p{color:var(--ink-soft);}
+
+/* Summary cards */
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin:18px 0;}
+.card{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand); border-radius:var(--radius-sm); padding:16px 18px;}
+.card h4{margin:0 0 8px; color:var(--brand-dark);}
+.card ul{margin:0; padding-left:18px; font-size:15px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.card li{margin:0 0 6px;}
+
+/* References */
+.refs{counter-reset:ref; list-style:none; margin:10px 0; padding:0;}
+.refs li{counter-increment:ref; position:relative; padding:9px 0 9px 38px; border-bottom:1px solid var(--line-soft); font-size:14.5px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--ink-soft); line-height:1.5;}
+.refs li::before{content:counter(ref); position:absolute; left:0; top:9px; font-weight:700; color:var(--brand); background:var(--brand-bg); width:26px; height:26px; border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:13px;}
+
+/* Footer */
+.footnote{margin-top:46px; padding-top:22px; border-top:3px double var(--line); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; color:var(--ink-faint); line-height:1.6;}
+
+.fr{display:none;}
+body.show-fr .en{display:none;}
+body.show-fr .fr{display:block;}
+
+@media (max-width:640px){
+  body{font-size:17px;}
+  h1{font-size:27px;}
+  .toc ol{columns:1;}
+  .masthead{padding:22px 20px;}
+}
+@media print{
+  body{background:#fff; font-size:11.5pt;}
+  .langbar{display:none;}
+  .wrap{max-width:100%; padding:0;}
+  section{page-break-inside:avoid;}
+  .patient,.callout,.card,.toc,.masthead{break-inside:avoid;}
+  a{color:var(--ink);}
+  th{background:#005f9e !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  .secnum,.refs li::before{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="langbar ui">
+  <button class="langbtn active" id="btn-en" onclick="setLang('en')">English</button>
+  <button class="langbtn" id="btn-fr" onclick="setLang('fr')">Français</button>
+</div>
+
+<!-- ============ ENGLISH ============ -->
+<div class="en">
+
+<div class="masthead">
+  <div class="eyebrow">Hereditary Cancer Genetics · Surveillance Protocol</div>
+  <h1>PTEN Hamartoma Tumour Syndrome: A Cancer Prevention and Surveillance Protocol</h1>
+  <p class="standfirst">A practical guide for patients and clinicians on cancer risk, screening, and risk reduction in people who carry a germline pathogenic variant in <i>PTEN</i> (including Cowden syndrome and Bannayan-Riley-Ruvalcaba syndrome).</p>
+  <div class="authors">
+    <div class="author"><b>Dr. Andrew Shuen, MD PhD FRCPC DABMGG</b> — Cancer Genetics, Cancer Prevention Centre, Jewish General Hospital (JGH), Montreal</div>
+  </div>
+  <div class="meta ui">
+    <span class="chip"><i class="ti ti-dna-2"></i> Gene: PTEN</span>
+    <span class="chip"><i class="ti ti-versions"></i> Autosomal dominant</span>
+    <span class="chip"><i class="ti ti-calendar"></i> Reviewed June 2026</span>
+    <span class="chip"><i class="ti ti-book"></i> NCCN · GENTURIS · 2025 Int'l Consensus</span>
+  </div>
+  <div class="legend ui">
+    <span><span class="swatch" style="background:var(--brand-bg);border:1px solid var(--brand-line)"></span> Patient summary</span>
+    <span><span class="swatch" style="background:var(--red-bg);border:1px solid var(--red-line)"></span> High risk</span>
+    <span><span class="swatch" style="background:var(--amber-bg);border:1px solid var(--amber-line)"></span> Moderate risk</span>
+    <span><span class="swatch" style="background:var(--brand-bg);border:1px solid var(--brand-line)"></span> Low / standard</span>
+  </div>
+</div>
+
+<nav class="toc ui">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#en-1"><span class="n">1</span> Understanding the condition</a></li>
+    <li><a href="#en-2"><span class="n">2</span> Lifetime cancer risks</a></li>
+    <li><a href="#en-3"><span class="n">3</span> Breast surveillance</a></li>
+    <li><a href="#en-4"><span class="n">4</span> Thyroid surveillance</a></li>
+    <li><a href="#en-5"><span class="n">5</span> Endometrial surveillance</a></li>
+    <li><a href="#en-6"><span class="n">6</span> Colorectal surveillance</a></li>
+    <li><a href="#en-7"><span class="n">7</span> Renal surveillance</a></li>
+    <li><a href="#en-8"><span class="n">8</span> Skin and other findings</a></li>
+    <li><a href="#en-9"><span class="n">9</span> Children and adolescents</a></li>
+    <li><a href="#en-10"><span class="n">10</span> Risk-reducing surgery</a></li>
+    <li><a href="#en-11"><span class="n">11</span> Genetic counselling</a></li>
+    <li><a href="#en-12"><span class="n">12</span> Lifestyle and nutrition</a></li>
+    <li><a href="#en-13"><span class="n">13</span> Emerging and investigational</a></li>
+    <li><a href="#en-14"><span class="n">14</span> Summary of recommendations</a></li>
+    <li><a href="#en-15"><span class="n">15</span> References</a></li>
+  </ol>
+</nav>
+
+<!-- 1 -->
+<section id="en-1">
+  <div class="sechead"><span class="secnum ui">1</span><h2>Understanding the condition</h2></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> For patients</div>
+    <p>PTEN hamartoma tumour syndrome, or PHTS, is an inherited condition caused by a change in a gene called <i>PTEN</i>. This gene normally helps control how cells grow. When it does not work properly, cells can grow into harmless lumps called hamartomas, and the risk of certain cancers goes up over a lifetime.</p>
+    <p>The cancers seen most often are breast, thyroid, and uterine (endometrial) cancer. Kidney and bowel cancer can also occur but are less common. Many people with PHTS also have a larger head size, certain skin bumps, or benign growths. Having PHTS does not mean you will get cancer. It means we watch you more closely so that anything that appears is found early, when it is easiest to treat.</p>
+    <p>You may hear other names for this condition, such as Cowden syndrome or Bannayan-Riley-Ruvalcaba syndrome. These are part of the same PTEN spectrum.</p>
+  </div>
+  <p>PTEN hamartoma tumour syndrome (PHTS) is an autosomal dominant disorder caused by germline pathogenic or likely pathogenic variants in <i>PTEN</i>, a tumour suppressor gene on chromosome 10q23 that encodes a phosphatase antagonising the PI3K/AKT/mTOR pathway. Loss of PTEN function drives unregulated cellular proliferation and survival.</p>
+  <p>PHTS is an umbrella molecular diagnosis. It encompasses several historically distinct clinical entities that share <i>PTEN</i> as the causative gene: Cowden syndrome (CS), Bannayan-Riley-Ruvalcaba syndrome (BRRS), PTEN-related Proteus syndrome, and Proteus-like syndrome. Estimated prevalence is approximately 1 in 200,000, though this is likely an underestimate given variable expressivity and incomplete ascertainment.</p>
+  <p>Clinical features beyond cancer predisposition include macrocephaly (a major criterion), trichilemmomas, papillomatous papules, oral mucosal lesions, acral keratoses, lipomas, vascular anomalies, gastrointestinal hamartomatous polyps, Lhermitte-Duclos disease (dysplastic cerebellar gangliocytoma, a major criterion in adults), and a recognised association with autism spectrum disorder and developmental delay, particularly in children presenting with macrocephaly.</p>
+  <div class="callout info">
+    <div class="lab ui"><i class="ti ti-info-circle"></i> Diagnosis basis</div>
+    <p>This protocol applies to individuals with a confirmed germline <i>PTEN</i> pathogenic or likely pathogenic variant. Surveillance for individuals meeting clinical Cowden criteria without an identified variant should be individualised in consultation with a genetics service. Risk magnitude across PHTS is driven by <i>PTEN</i> status rather than by the legacy clinical label (CS vs BRRS); surveillance is therefore organised by organ rather than by subtype, with subtype-relevant notes where they matter.</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="en-2">
+  <div class="sechead"><span class="secnum ui">2</span><h2>Lifetime cancer risks</h2></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> For patients</div>
+    <p>The numbers below are estimates of lifetime risk. They come from studies of people who were often referred because they already had symptoms, so the true risk for someone found through family testing may be lower. Use these figures to understand why we screen, not as a prediction of what will happen to you.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Cancer site</th><th>Approx. lifetime risk</th><th>Level</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Breast (female)</td><td>Up to ~85%</td><td><span class="dotpill dot-high">High</span></td><td>Average age at diagnosis 38–46; principal driver of surveillance in women</td></tr>
+        <tr><td>Thyroid (epithelial)</td><td>~35%</td><td><span class="dotpill dot-high">High</span></td><td>Follicular histology enriched; risk begins in childhood</td></tr>
+        <tr><td>Endometrial</td><td>~28%</td><td><span class="dotpill dot-mod">Moderate</span></td><td>Risk rises from the late 30s onward</td></tr>
+        <tr><td>Renal cell</td><td>~34%</td><td><span class="dotpill dot-mod">Moderate</span></td><td>Predominantly papillary; rare early-onset cases reported</td></tr>
+        <tr><td>Colorectal</td><td>~9–17%</td><td><span class="dotpill dot-mod">Moderate</span></td><td>Absolute risk before age 50 is low (0–5%); high polyp burden possible</td></tr>
+        <tr><td>Melanoma</td><td>~6%</td><td><span class="dotpill dot-low">Low</span></td><td>Evidence weaker; managed by dermatologic surveillance</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout info">
+    <div class="lab ui"><i class="ti ti-alert-triangle"></i> Interpret with caution</div>
+    <p>Published lifetime risks derive largely from ascertainment-biased cohorts enriched for affected, symptomatic probands. Penetrance estimates for individuals identified through cascade testing or incidental variant detection are likely lower, particularly for colorectal and renal cancer. Counsel patients on this uncertainty and avoid presenting single figures as deterministic.</p>
+  </div>
+</section>
+
+<!-- 3 Breast -->
+<section id="en-3">
+  <div class="sechead"><span class="secnum ui">3</span><h2>Breast surveillance</h2></div>
+  <div class="organ"><h3>Breast</h3><span class="risk-pill risk-high">High risk</span></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> For patients</div>
+    <p>Breast cancer is the main reason women with PHTS need close screening. We recommend starting breast MRI in your late 20s to early 30s, with mammograms added from age 30. Screening every year gives us the best chance to catch a cancer early. Some women choose preventive surgery instead of screening, which we discuss in section 10.</p>
+    <p>Get to know how your breasts normally look and feel, and tell us about any new lump or change without waiting for your next scan.</p>
+  </div>
+  <h4 class="ui">Women</h4>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Breast awareness and clinical breast exam, every 6–12 months, from age 25 <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Annual contrast-enhanced breast MRI, from age 30 (consider 25–29 if family history of early breast cancer) <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Annual mammography (with tomosynthesis where available), from age 30; alternate with MRI to give an imaging study every 6 months <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-dashed ico ico-opt"></i><span class="txt">Discuss risk-reducing mastectomy as an alternative to imaging surveillance <span class="tag tag-opt">Optional</span></span></li>
+    <li><i class="ti ti-circle-minus ico ico-no"></i><span class="txt">Screening ultrasound as a routine addition to MRI plus mammography (reserve for MRI-intolerant patients) <span class="tag tag-no">Not routine</span></span></li>
+  </ul>
+  <h4 class="ui">Men</h4>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Breast awareness; clinical exam as part of routine review. Routine breast imaging is not recommended in men <span class="tag tag-routine">Routine</span></span></li>
+  </ul>
+  <p>The published female lifetime breast cancer risk in PHTS (up to ~85%) places these patients in the highest surveillance tier, comparable to <i>BRCA</i> carriers. Annual MRI is the most sensitive modality; mammography adds detection of calcification-predominant lesions. Staggering MRI and mammography by six months provides an imaging examination twice yearly. Start ages reflect NCCN and the 2025 International PHTS Consensus; individualise earlier initiation when there is a notably early family history.</p>
+</section>
+
+<!-- 4 Thyroid -->
+<section id="en-4">
+  <div class="sechead"><span class="secnum ui">4</span><h2>Thyroid surveillance</h2></div>
+  <div class="organ"><h3>Thyroid</h3><span class="risk-pill risk-high">High risk</span></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> For patients</div>
+    <p>The thyroid is a gland in the neck. People with PHTS have a higher chance of thyroid nodules and thyroid cancer, and this risk starts in childhood. We check the thyroid with an ultrasound, which is painless and uses no radiation. Most nodules we find are not cancer, but finding them early lets us act when needed.</p>
+  </div>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Annual thyroid ultrasound, beginning at diagnosis. In children, begin at age 7 (NCCN) — see note below <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Annual neck palpation and clinical thyroid assessment <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Manage detected nodules per standard thyroid nodule guidelines (e.g. ATA), including risk-stratified FNA <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-minus ico ico-no"></i><span class="txt">Prophylactic thyroidectomy in the absence of suspicious nodules <span class="tag tag-no">Not recommended</span></span></li>
+  </ul>
+  <div class="callout info">
+    <div class="lab ui"><i class="ti ti-info-circle"></i> Paediatric start age is contested</div>
+    <p>NCCN and prior AACR paediatric guidance recommend annual thyroid ultrasound from age 7. The 2024 AACR update and European GENTURIS guidance note this risks overdiagnosis of indolent disease and suggest some centres defer routine ultrasound to age 18, initiating earlier with a family history of early thyroid cancer. This is a genuine area of expert disagreement; counsel families on the trade-off between early detection and overtreatment, and consider managing paediatric surveillance through a high-volume centre.</p>
+  </div>
+  <p>Thyroid cancer in PHTS is enriched for follicular histology, though papillary thyroid cancer remains the most common subtype. Differentiate PHTS-associated structural thyroid disease (which can include multinodular goitre and adenomas) from malignancy using established sonographic risk stratification.</p>
+</section>
+
+<!-- 5 Endometrial -->
+<section id="en-5">
+  <div class="sechead"><span class="secnum ui">5</span><h2>Endometrial surveillance</h2></div>
+  <div class="organ"><h3>Endometrium (uterus)</h3><span class="risk-pill risk-mod">Moderate risk</span></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> For patients</div>
+    <p>Women with PHTS have a higher chance of cancer of the uterine lining. The most important thing you can do is report any abnormal bleeding right away, especially bleeding after menopause or between periods. This symptom is the earliest and most reliable warning sign, and it usually leads to a simple office test.</p>
+  </div>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Patient education on prompt reporting of abnormal uterine or postmenopausal bleeding <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-dashed ico ico-opt"></i><span class="txt">Consider endometrial biopsy and/or transvaginal ultrasound from age 35, individualised <span class="tag tag-opt">Optional</span></span></li>
+    <li><i class="ti ti-circle-dashed ico ico-opt"></i><span class="txt">Discuss risk-reducing hysterectomy after childbearing is complete <span class="tag tag-opt">Optional</span></span></li>
+  </ul>
+  <p>Evidence for imaging- or biopsy-based endometrial surveillance is weak; symptom awareness is the cornerstone, because abnormal bleeding presents early and is highly actionable. Transvaginal ultrasound has limited specificity for endometrial cancer in premenopausal women. NCCN frames endometrial biopsy and transvaginal ultrasound from age 35 as options to consider rather than mandates. Risk-reducing hysterectomy is a reasonable discussion for women who have completed childbearing, weighed against surgical morbidity.</p>
+</section>
+
+<!-- 6 Colorectal -->
+<section id="en-6">
+  <div class="sechead"><span class="secnum ui">6</span><h2>Colorectal surveillance</h2></div>
+  <div class="organ"><h3>Colon and rectum</h3><span class="risk-pill risk-mod">Moderate risk</span></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> For patients</div>
+    <p>PHTS can cause polyps in the bowel, and there is a modestly raised risk of bowel cancer over a lifetime. We screen with colonoscopy, which both finds and removes polyps. Most people start at age 35 to 40. How often you need a repeat depends on what we find.</p>
+  </div>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Colonoscopy beginning at age 35 (earlier with symptoms or a strongly positive family history) <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Repeat at intervals of about 5 years, or more often depending on polyp burden <span class="tag tag-routine">Routine</span></span></li>
+  </ul>
+  <div class="callout info">
+    <div class="lab ui"><i class="ti ti-info-circle"></i> Interval can be individualised</div>
+    <p>NCCN and the US Multi-Society Task Force advise colonoscopy from age 35 at roughly 5-year intervals, adjusted for polyp burden. Some European guidance starts at 40. Observational data show low colorectal cancer and advanced-adenoma yield in PHTS, supporting personalised intervals (1–10 years) based on prior findings rather than a fixed schedule. Polyps may be hamartomatous, adenomatous, or mixed; manage by histology and burden.</p>
+  </div>
+</section>
+
+<!-- 7 Renal -->
+<section id="en-7">
+  <div class="sechead"><span class="secnum ui">7</span><h2>Renal surveillance</h2></div>
+  <div class="organ"><h3>Kidneys</h3><span class="risk-pill risk-mod">Moderate risk</span></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> For patients</div>
+    <p>There is a raised lifetime risk of kidney cancer with PHTS. We screen with imaging of the kidneys, usually starting around age 40. The test is painless and quick. Tell us about blood in your urine or new flank pain at any age.</p>
+  </div>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Renal imaging (ultrasound, or CT/MRI per local practice) every 1–2 years from age 40 <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-dashed ico ico-opt"></i><span class="txt">Consider earlier or more frequent imaging with a personal or family history of early renal cancer <span class="tag tag-opt">Optional</span></span></li>
+  </ul>
+  <p>Renal cell carcinoma in PHTS is predominantly papillary. NCCN recommends renal imaging every 1–2 years from age 40. Case reports of early-onset RCC (including in the third decade) have prompted proposals to lower the start age, but prospective series show few events before 40, so a lowered universal start age is not yet guideline-endorsed. Individualise where the personal or family history warrants.</p>
+</section>
+
+<!-- 8 Skin/other -->
+<section id="en-8">
+  <div class="sechead"><span class="secnum ui">8</span><h2>Skin and other findings</h2></div>
+  <div class="organ"><h3>Skin, brain, and benign disease</h3><span class="risk-pill risk-low">Standard / low</span></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> For patients</div>
+    <p>PHTS often causes harmless skin bumps and benign growths. These are usually not dangerous, but a yearly skin check helps us watch for melanoma and keep track of any changes. Some people develop a benign brain growth called Lhermitte-Duclos disease, which can cause headaches or balance problems; tell us about these symptoms.</p>
+  </div>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Annual dermatologic examination (skin and oral mucosa) <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Annual comprehensive physical examination, including neurologic review <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-dashed ico ico-opt"></i><span class="txt">Brain MRI if neurologic symptoms suggest Lhermitte-Duclos disease <span class="tag tag-opt">Symptom-driven</span></span></li>
+    <li><i class="ti ti-circle-minus ico ico-no"></i><span class="txt">Routine screening brain MRI in asymptomatic adults <span class="tag tag-no">Not recommended</span></span></li>
+  </ul>
+  <p>Mucocutaneous lesions (trichilemmomas, papillomatous papules, acral keratoses, oral papillomas) are diagnostically useful but rarely require intervention beyond symptomatic or cosmetic management. Melanoma risk is modest and addressed through annual skin surveillance. Lhermitte-Duclos disease is managed symptomatically; routine neuroimaging in asymptomatic individuals is not supported.</p>
+</section>
+
+<!-- 9 Paediatric -->
+<section id="en-9">
+  <div class="sechead"><span class="secnum ui">9</span><h2>Children and adolescents</h2></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> For patients and families</div>
+    <p>Cancer risk in childhood is low, but the thyroid does need attention from a young age. Children with PHTS also more often have a larger head size, and some have developmental or autism-related needs. Care for children focuses on the thyroid, the skin, general growth and development, and support where needed.</p>
+  </div>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Annual thyroid ultrasound from age 7 (NCCN) — see the contested start-age note in section 4 <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Annual skin check and physical examination, including head circumference <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-dashed ico ico-opt"></i><span class="txt">Developmental and autism-spectrum assessment where clinically indicated <span class="tag tag-opt">As indicated</span></span></li>
+    <li><i class="ti ti-circle-minus ico ico-no"></i><span class="txt">Breast, colon, renal, and endometrial surveillance in childhood <span class="tag tag-no">Not in childhood</span></span></li>
+  </ul>
+  <p>Adult-organ surveillance (breast, colon, renal, endometrial) begins at the adult start ages above and is not indicated in childhood. Paediatric care centres on thyroid surveillance, dermatologic and physical review, growth monitoring, and neurodevelopmental support. Vascular malformations and symptomatic hamartomas may require management and have historically responded to mTOR inhibitors in selected cases.</p>
+</section>
+
+<!-- 10 Surgery -->
+<section id="en-10">
+  <div class="sechead"><span class="secnum ui">10</span><h2>Risk-reducing surgery and medical prevention</h2></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> For patients</div>
+    <p>Because breast cancer risk is high, some women choose preventive (risk-reducing) mastectomy instead of yearly imaging. This greatly lowers the risk but is a major decision. Removing the uterus after you have finished having children is another option some women consider. These are personal choices, and we will give you the information and time to decide.</p>
+  </div>
+  <h4 class="ui">Breast</h4>
+  <p>Risk-reducing bilateral mastectomy reduces breast cancer risk by roughly 90% and is a reasonable option given the high lifetime risk in female <i>PTEN</i> carriers. It is a choice, not a mandate; many women elect intensive imaging surveillance instead. Decision-making should address residual risk, reconstruction, and the psychological impact of either path.</p>
+  <h4 class="ui">Endometrium</h4>
+  <p>Risk-reducing hysterectomy is a reasonable discussion after childbearing is complete, weighed against surgical and hormonal consequences. There is no established role for routine concurrent risk-reducing oophorectomy in PHTS, as ovarian cancer is not a defining feature of the syndrome.</p>
+  <h4 class="ui">Medical prevention</h4>
+  <p>There is no established pharmacologic chemoprevention specific to PHTS. Endocrine risk-reducing agents (e.g. tamoxifen) used in other high-risk breast settings are not formally validated for PHTS and should be considered only on an individualised basis within a high-risk breast programme. Counsel that mTOR pathway agents remain investigational for cancer prevention in this population.</p>
+  <div class="callout info">
+    <div class="lab ui"><i class="ti ti-info-circle"></i> Evidence note</div>
+    <p>Surgical risk-reduction data in PHTS are extrapolated largely from broader high-risk breast and gynaecologic cohorts rather than PHTS-specific trials. Frame these as evidence-informed options, not guideline-mandated steps.</p>
+  </div>
+</section>
+
+<!-- 11 Counselling -->
+<section id="en-11">
+  <div class="sechead"><span class="secnum ui">11</span><h2>Genetic counselling and family testing</h2></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> For patients</div>
+    <p>PHTS is passed down in families. Each of your children, brothers, sisters, and parents has a 1 in 2 chance of carrying the same gene change. We can offer testing to relatives, called cascade testing, so that those who carry it can start screening and those who do not can avoid it. If you are planning a family, there are reproductive options we can discuss.</p>
+  </div>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Offer cascade testing to first-degree relatives (50% prior probability per relative) <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Construct and update a three-generation pedigree <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Discuss reproductive options: prenatal diagnosis and preimplantation genetic testing (PGT-M) <span class="tag tag-routine">Routine</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Document the specific variant and its classification; re-contact if reclassified <span class="tag tag-routine">Routine</span></span></li>
+  </ul>
+  <p>PHTS is autosomal dominant; offspring of an affected individual have a 50% risk of inheriting the variant. Most cases are inherited, but de novo variants occur, and constitutional mosaicism has been reported in overgrowth phenotypes. Cascade testing identifies at-risk relatives for surveillance and spares non-carriers unnecessary screening. Reproductive options include prenatal diagnosis and PGT-M. Maintain documentation of the precise variant to support future reclassification and family testing.</p>
+</section>
+
+<!-- 12 Lifestyle -->
+<section id="en-12">
+  <div class="sechead"><span class="secnum ui">12</span><h2>Lifestyle and nutrition</h2></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> For patients</div>
+    <p>No diet or supplement is proven to lower cancer risk specifically in PHTS. The same healthy habits that help everyone still apply: avoid tobacco, keep alcohol low, stay physically active, eat plenty of vegetables and fibre, and protect your skin from sun. These do not replace screening, but they support your overall health.</p>
+  </div>
+  <p>There is no PHTS-specific dietary or supplement intervention with proven cancer-risk reduction. General evidence-based cancer-prevention guidance applies: tobacco cessation, moderation of alcohol, regular physical activity, maintenance of a healthy weight, a diet rich in vegetables and fibre, and sun protection given the dermatologic and modest melanoma considerations. Counsel patients that lifestyle measures complement but do not substitute for structured surveillance.</p>
+</section>
+
+<!-- 13 Emerging -->
+<section id="en-13">
+  <div class="sechead"><span class="secnum ui">13</span><h2>Emerging and investigational</h2></div>
+  <div class="callout emerging">
+    <div class="lab ui"><i class="ti ti-flask"></i> Investigational — trial settings only</div>
+    <p><b>Lowering renal surveillance start age.</b> Reports of early-onset renal cell carcinoma have prompted proposals for earlier or more frequent renal imaging. Not yet guideline-endorsed; restrict to individualised decisions or research protocols.</p>
+    <p><b>mTOR pathway inhibition.</b> Agents targeting the PI3K/AKT/mTOR axis have shown response in symptomatic overgrowth and vascular anomalies, and are of theoretical interest for cancer prevention. Use for cancer prevention remains investigational.</p>
+    <p><b>Refining penetrance estimates.</b> Prospective, ascertainment-corrected cohorts are needed to establish true organ-specific risks for cascade-identified carriers, which may justify de-escalating some current schedules.</p>
+    <p><b>Whole-body MRI.</b> Whole-body MRI is under study in several hereditary cancer syndromes. Its role in PHTS is not established and it is not a substitute for organ-specific surveillance here.</p>
+  </div>
+</section>
+
+<!-- 14 Summary -->
+<section id="en-14">
+  <div class="sechead"><span class="secnum ui">14</span><h2>Summary of recommendations</h2></div>
+  <h3>Surveillance by organ</h3>
+  <div class="cards">
+    <div class="card">
+      <h4>Breast <span class="risk-pill risk-high" style="font-size:10px">High</span></h4>
+      <ul>
+        <li>Clinical exam + awareness from 25</li>
+        <li>Annual MRI from 30 (25–29 if early FHx)</li>
+        <li>Annual mammography from 30</li>
+        <li>Discuss risk-reducing mastectomy</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Thyroid <span class="risk-pill risk-high" style="font-size:10px">High</span></h4>
+      <ul>
+        <li>Annual ultrasound from diagnosis</li>
+        <li>Paediatric start age 7 vs 18 — see note</li>
+        <li>Manage nodules per ATA</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Endometrium <span class="risk-pill risk-mod" style="font-size:10px">Mod</span></h4>
+      <ul>
+        <li>Report abnormal bleeding promptly</li>
+        <li>Biopsy / TVUS from 35 (optional)</li>
+        <li>Discuss hysterectomy post-childbearing</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Colorectal <span class="risk-pill risk-mod" style="font-size:10px">Mod</span></h4>
+      <ul>
+        <li>Colonoscopy from 35</li>
+        <li>Interval ~5 y, adjust to polyps</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Renal <span class="risk-pill risk-mod" style="font-size:10px">Mod</span></h4>
+      <ul>
+        <li>Imaging every 1–2 y from 40</li>
+        <li>Earlier if personal/family history</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Skin / other <span class="risk-pill risk-low" style="font-size:10px">Low</span></h4>
+      <ul>
+        <li>Annual dermatologic exam</li>
+        <li>Annual physical + neuro review</li>
+        <li>Brain MRI only if symptomatic</li>
+      </ul>
+    </div>
+  </div>
+  <h3>Cross-cutting recommendations</h3>
+  <div class="cards">
+    <div class="card">
+      <h4>Genetics</h4>
+      <ul>
+        <li>Cascade testing for first-degree relatives</li>
+        <li>Three-generation pedigree</li>
+        <li>PGT-M and prenatal options</li>
+        <li>Re-contact on variant reclassification</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>General</h4>
+      <ul>
+        <li>Coordinate multidisciplinary care</li>
+        <li>Symptom education across organs</li>
+        <li>Standard lifestyle prevention</li>
+        <li>Individualise to family history</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 15 References -->
+<section id="en-15">
+  <div class="sechead"><span class="secnum ui">15</span><h2>References</h2></div>
+  <ol class="refs">
+    <li>Yehia L, Eng C. PTEN Hamartoma Tumor Syndrome. In: GeneReviews. Seattle: University of Washington; initial posting 2001, last revision August 7, 2025. NCBI Bookshelf NBK1488.</li>
+    <li>Daly MB, Pal T, AlHilli Z, et al. NCCN Clinical Practice Guidelines in Oncology: Genetic/Familial High-Risk Assessment — Breast, Ovarian, and Pancreatic. Version 3.2024. National Comprehensive Cancer Network, 2024.</li>
+    <li>Eng C, Tischkowitz M, Hodgson S, et al. Cancer and Overgrowth Manifestations of PTEN Hamartoma Tumor Syndrome: Management Recommendations from the International PHTS Consensus Guidelines Working Group. Clin Cancer Res. 2025;31(9):1754–1765.</li>
+    <li>Tischkowitz M, Colas C, Pouwels S, et al. Cancer Surveillance Guideline for individuals with PTEN hamartoma tumour syndrome (ERN GENTURIS). Eur J Hum Genet. 2020;28:1387–1393.</li>
+    <li>Schultz KAP, et al. Update on Pediatric Surveillance Recommendations for PTEN Hamartoma Tumor Syndrome, DICER1-Related Tumor Predisposition, and Tuberous Sclerosis Complex. Clin Cancer Res. 2025;31(2):234–244.</li>
+    <li>Tan MH, Mester JL, Ngeow J, et al. Lifetime cancer risks in individuals with germline PTEN mutations. Clin Cancer Res. 2012;18(2):400–407.</li>
+    <li>Pilarski R, Burt R, Kohlman W, et al. Cowden syndrome and the PTEN hamartoma tumor syndrome: systematic review and revised diagnostic criteria. J Natl Cancer Inst. 2013;105(21):1607–1616.</li>
+    <li>Stanich PP, et al. / US Multi-Society Task Force on Colorectal Cancer. Recommendations on surveillance in hamartomatous polyposis and PHTS. Gastroenterology / Am J Gastroenterol, 2022.</li>
+    <li>van der Klift HM, et al. Detection and Yield of Colorectal Cancer Surveillance in Adults with PTEN Hamartoma Tumour Syndrome. Cancers (Basel), 2022;14(16):3979.</li>
+    <li>Mester JL, Tilot AK, Eng C, et al. Early-onset renal cell carcinoma in PTEN hamartoma tumour syndrome. npj Genom Med. 2020;5:40.</li>
+    <li>Monticciolo DL, Newell MS, Moy L, et al. Breast Cancer Screening for Women at Higher-Than-Average Risk: Updated Recommendations From the ACR. J Am Coll Radiol. 2023;20(9):902–914.</li>
+    <li>2025 American Thyroid Association Management Guidelines for Adult Patients with Differentiated Thyroid Cancer. Thyroid. 2025.</li>
+  </ol>
+</section>
+
+<div class="footnote ui">
+  This protocol is intended to support, not replace, individual clinical judgement. Guidelines for PHTS are based substantially on expert consensus and evolve as evidence accrues. Surveillance start ages, intervals, and management should be verified against the current versions of NCCN, ERN GENTURIS, the 2025 International PHTS Consensus, and relevant specialty-society guidelines before clinical application. Risk figures derive from ascertainment-biased cohorts and may overestimate penetrance for cascade-identified carriers. Prepared by Dr. Andrew Shuen, Cancer Genetics, Cancer Prevention Centre, Jewish General Hospital, Montreal. Reviewed June 2026.
+</div>
+
+</div><!-- /en -->
+
+<!-- ============ FRANÇAIS ============ -->
+<div class="fr">
+
+<div class="masthead">
+  <div class="eyebrow">Génétique du cancer héréditaire · Protocole de surveillance</div>
+  <h1>Syndrome des hamartomes liés à PTEN : protocole de prévention et de surveillance du cancer</h1>
+  <p class="standfirst">Un guide pratique destiné aux patients et aux cliniciens portant sur le risque de cancer, le dépistage et la réduction du risque chez les personnes porteuses d'un variant pathogène germinal du gène <i>PTEN</i> (incluant le syndrome de Cowden et le syndrome de Bannayan-Riley-Ruvalcaba).</p>
+  <div class="authors">
+    <div class="author"><b>Dr Andrew Shuen, MD PhD FRCPC DABMGG</b> — Génétique du cancer, Centre de prévention du cancer, Hôpital général juif (HGJ), Montréal</div>
+  </div>
+  <div class="meta ui">
+    <span class="chip"><i class="ti ti-dna-2"></i> Gène : PTEN</span>
+    <span class="chip"><i class="ti ti-versions"></i> Autosomique dominant</span>
+    <span class="chip"><i class="ti ti-calendar"></i> Révisé en juin 2026</span>
+    <span class="chip"><i class="ti ti-book"></i> NCCN · GENTURIS · Consensus int. 2025</span>
+  </div>
+  <div class="legend ui">
+    <span><span class="swatch" style="background:var(--brand-bg);border:1px solid var(--brand-line)"></span> Résumé pour les patients</span>
+    <span><span class="swatch" style="background:var(--red-bg);border:1px solid var(--red-line)"></span> Risque élevé</span>
+    <span><span class="swatch" style="background:var(--amber-bg);border:1px solid var(--amber-line)"></span> Risque modéré</span>
+    <span><span class="swatch" style="background:var(--brand-bg);border:1px solid var(--brand-line)"></span> Faible / standard</span>
+  </div>
+</div>
+
+<nav class="toc ui">
+  <h2>Sommaire</h2>
+  <ol>
+    <li><a href="#fr-1"><span class="n">1</span> Comprendre la maladie</a></li>
+    <li><a href="#fr-2"><span class="n">2</span> Risques de cancer à vie</a></li>
+    <li><a href="#fr-3"><span class="n">3</span> Surveillance du sein</a></li>
+    <li><a href="#fr-4"><span class="n">4</span> Surveillance de la thyroïde</a></li>
+    <li><a href="#fr-5"><span class="n">5</span> Surveillance de l'endomètre</a></li>
+    <li><a href="#fr-6"><span class="n">6</span> Surveillance colorectale</a></li>
+    <li><a href="#fr-7"><span class="n">7</span> Surveillance rénale</a></li>
+    <li><a href="#fr-8"><span class="n">8</span> Peau et autres manifestations</a></li>
+    <li><a href="#fr-9"><span class="n">9</span> Enfants et adolescents</a></li>
+    <li><a href="#fr-10"><span class="n">10</span> Chirurgie de réduction du risque</a></li>
+    <li><a href="#fr-11"><span class="n">11</span> Conseil génétique</a></li>
+    <li><a href="#fr-12"><span class="n">12</span> Mode de vie et nutrition</a></li>
+    <li><a href="#fr-13"><span class="n">13</span> Données émergentes</a></li>
+    <li><a href="#fr-14"><span class="n">14</span> Résumé des recommandations</a></li>
+    <li><a href="#fr-15"><span class="n">15</span> Références</a></li>
+  </ol>
+</nav>
+
+<!-- 1 -->
+<section id="fr-1">
+  <div class="sechead"><span class="secnum ui">1</span><h2>Comprendre la maladie</h2></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> Pour les patients</div>
+    <p>Le syndrome des hamartomes lié à PTEN, ou PHTS, est une maladie héréditaire causée par une modification d'un gène appelé <i>PTEN</i>. Ce gène aide normalement à contrôler la croissance des cellules. Lorsqu'il ne fonctionne pas bien, les cellules peuvent former des masses bénignes appelées hamartomes, et le risque de certains cancers augmente au cours de la vie.</p>
+    <p>Les cancers les plus fréquents sont ceux du sein, de la thyroïde et de l'utérus (endomètre). Le cancer du rein et celui de l'intestin peuvent aussi survenir, mais ils sont plus rares. Beaucoup de personnes atteintes du PHTS ont aussi une tête plus grosse, certaines petites bosses sur la peau ou des excroissances bénignes. Être atteint du PHTS ne veut pas dire que vous aurez un cancer. Cela veut dire que nous vous suivons de plus près afin de détecter tôt ce qui pourrait apparaître, au moment où c'est le plus facile à traiter.</p>
+    <p>Vous entendrez peut-être d'autres noms pour cette maladie, comme le syndrome de Cowden ou le syndrome de Bannayan-Riley-Ruvalcaba. Ils font partie du même spectre lié à PTEN.</p>
+  </div>
+  <p>Le syndrome des hamartomes lié à PTEN (PHTS) est une maladie autosomique dominante causée par des variants germinaux pathogènes ou probablement pathogènes du gène <i>PTEN</i>, un gène suppresseur de tumeur situé sur le chromosome 10q23 qui code une phosphatase antagoniste de la voie PI3K/AKT/mTOR. La perte de fonction de PTEN entraîne une prolifération et une survie cellulaires dérégulées.</p>
+  <p>Le PHTS est un diagnostic moléculaire générique. Il regroupe plusieurs entités cliniques historiquement distinctes qui partagent <i>PTEN</i> comme gène causal : le syndrome de Cowden (SC), le syndrome de Bannayan-Riley-Ruvalcaba (SBRR), le syndrome de Protée lié à PTEN et le syndrome de type Protée. La prévalence estimée est d'environ 1 sur 200 000, ce qui est probablement sous-estimé compte tenu de l'expressivité variable et d'un repérage incomplet.</p>
+  <p>Les manifestations au-delà de la prédisposition au cancer comprennent la macrocéphalie (un critère majeur), les trichilemmomes, les papules papillomateuses, les lésions muqueuses buccales, les kératoses acrales, les lipomes, les anomalies vasculaires, les polypes hamartomateux gastro-intestinaux, la maladie de Lhermitte-Duclos (gangliocytome cérébelleux dysplasique, un critère majeur chez l'adulte), ainsi qu'une association reconnue avec le trouble du spectre de l'autisme et le retard de développement, surtout chez les enfants présentant une macrocéphalie.</p>
+  <div class="callout info">
+    <div class="lab ui"><i class="ti ti-info-circle"></i> Base du diagnostic</div>
+    <p>Ce protocole s'applique aux personnes ayant un variant germinal pathogène ou probablement pathogène confirmé du gène <i>PTEN</i>. La surveillance des personnes répondant aux critères cliniques du syndrome de Cowden sans variant identifié doit être individualisée en collaboration avec un service de génétique. L'ampleur du risque dans le PHTS dépend du statut <i>PTEN</i> plutôt que de l'ancienne étiquette clinique (SC ou SBRR) ; la surveillance est donc organisée par organe plutôt que par sous-type, avec des notes propres aux sous-types lorsqu'elles sont pertinentes.</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="fr-2">
+  <div class="sechead"><span class="secnum ui">2</span><h2>Risques de cancer à vie</h2></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> Pour les patients</div>
+    <p>Les chiffres ci-dessous sont des estimations du risque sur une vie entière. Ils proviennent d'études portant sur des personnes souvent dirigées vers la génétique parce qu'elles avaient déjà des symptômes. Le risque réel d'une personne repérée par un test familial peut donc être plus faible. Utilisez ces chiffres pour comprendre pourquoi nous faisons du dépistage, et non comme une prédiction de ce qui vous arrivera.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Siège du cancer</th><th>Risque à vie approx.</th><th>Niveau</th><th>Remarques</th></tr></thead>
+      <tbody>
+        <tr><td>Sein (femme)</td><td>Jusqu'à ~85 %</td><td><span class="dotpill dot-high">Élevé</span></td><td>Âge moyen au diagnostic 38–46 ans ; principal moteur de la surveillance chez la femme</td></tr>
+        <tr><td>Thyroïde (épithélial)</td><td>~35 %</td><td><span class="dotpill dot-high">Élevé</span></td><td>Histologie folliculaire enrichie ; le risque débute dans l'enfance</td></tr>
+        <tr><td>Endomètre</td><td>~28 %</td><td><span class="dotpill dot-mod">Modéré</span></td><td>Le risque augmente à partir de la fin de la trentaine</td></tr>
+        <tr><td>Rein (carcinome rénal)</td><td>~34 %</td><td><span class="dotpill dot-mod">Modéré</span></td><td>Surtout papillaire ; de rares cas précoces rapportés</td></tr>
+        <tr><td>Colorectal</td><td>~9–17 %</td><td><span class="dotpill dot-mod">Modéré</span></td><td>Risque absolu avant 50 ans faible (0–5 %) ; charge polypeuse parfois élevée</td></tr>
+        <tr><td>Mélanome</td><td>~6 %</td><td><span class="dotpill dot-low">Faible</span></td><td>Données plus faibles ; pris en charge par la surveillance dermatologique</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout info">
+    <div class="lab ui"><i class="ti ti-alert-triangle"></i> À interpréter avec prudence</div>
+    <p>Les risques à vie publiés proviennent en grande partie de cohortes biaisées par le mode de recrutement, enrichies en cas symptomatiques. Les estimations de pénétrance pour les personnes repérées par test en cascade ou par découverte fortuite d'un variant sont probablement plus faibles, surtout pour les cancers colorectal et rénal. Informez les patients de cette incertitude et évitez de présenter un chiffre unique comme une certitude.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="fr-3">
+  <div class="sechead"><span class="secnum ui">3</span><h2>Surveillance du sein</h2></div>
+  <div class="organ"><h3>Sein</h3><span class="risk-pill risk-high">Risque élevé</span></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> Pour les patients</div>
+    <p>Le cancer du sein est la principale raison pour laquelle les femmes atteintes du PHTS ont besoin d'un dépistage rapproché. Nous recommandons de commencer l'IRM mammaire vers la fin de la vingtaine ou le début de la trentaine, avec ajout de la mammographie à partir de 30 ans. Un dépistage chaque année offre les meilleures chances de détecter un cancer tôt. Certaines femmes choisissent une chirurgie préventive plutôt que le dépistage ; nous en parlons à la section 10.</p>
+    <p>Apprenez à connaître l'aspect et la sensation habituels de vos seins, et signalez-nous toute nouvelle masse ou tout changement sans attendre votre prochain examen.</p>
+  </div>
+  <h4 class="ui">Femmes</h4>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Connaissance des seins et examen clinique, tous les 6 à 12 mois, dès 25 ans <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">IRM mammaire avec contraste annuelle, dès 30 ans (envisager 25–29 ans en cas d'antécédent familial précoce) <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Mammographie annuelle (avec tomosynthèse si disponible), dès 30 ans ; alterner avec l'IRM pour avoir un examen d'imagerie tous les 6 mois <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-dashed ico ico-opt"></i><span class="txt">Discuter de la mastectomie de réduction du risque comme solution de rechange à la surveillance par imagerie <span class="tag tag-opt">Optionnel</span></span></li>
+    <li><i class="ti ti-circle-minus ico ico-no"></i><span class="txt">Échographie de dépistage en ajout systématique à l'IRM et à la mammographie (réserver aux patientes intolérantes à l'IRM) <span class="tag tag-no">Non systématique</span></span></li>
+  </ul>
+  <h4 class="ui">Hommes</h4>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Connaissance des seins ; examen clinique lors du suivi habituel. L'imagerie mammaire systématique n'est pas recommandée chez l'homme <span class="tag tag-routine">Systématique</span></span></li>
+  </ul>
+  <p>Le risque de cancer du sein à vie chez la femme atteinte du PHTS (jusqu'à ~85 %) place ces patientes dans la catégorie de surveillance la plus élevée, comparable aux porteuses de variants <i>BRCA</i>. L'IRM annuelle est la modalité la plus sensible ; la mammographie ajoute la détection des lésions à prédominance de microcalcifications. Décaler l'IRM et la mammographie de six mois permet d'obtenir un examen d'imagerie deux fois par an. Les âges de début reflètent les recommandations du NCCN et du Consensus international PHTS 2025 ; individualiser un début plus précoce en cas d'antécédent familial notablement précoce.</p>
+</section>
+
+<!-- 4 -->
+<section id="fr-4">
+  <div class="sechead"><span class="secnum ui">4</span><h2>Surveillance de la thyroïde</h2></div>
+  <div class="organ"><h3>Thyroïde</h3><span class="risk-pill risk-high">Risque élevé</span></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> Pour les patients</div>
+    <p>La thyroïde est une glande située dans le cou. Les personnes atteintes du PHTS ont plus de risque de présenter des nodules thyroïdiens et un cancer de la thyroïde, et ce risque débute dès l'enfance. Nous examinons la thyroïde par échographie, un examen indolore et sans radiation. La plupart des nodules trouvés ne sont pas cancéreux, mais les détecter tôt nous permet d'agir au besoin.</p>
+  </div>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Échographie thyroïdienne annuelle, dès le diagnostic. Chez l'enfant, débuter à 7 ans (NCCN) — voir la note ci-dessous <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Palpation cervicale et évaluation clinique de la thyroïde chaque année <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Prendre en charge les nodules détectés selon les recommandations standard (p. ex. ATA), y compris la cytoponction stratifiée selon le risque <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-minus ico ico-no"></i><span class="txt">Thyroïdectomie prophylactique en l'absence de nodules suspects <span class="tag tag-no">Non recommandé</span></span></li>
+  </ul>
+  <div class="callout info">
+    <div class="lab ui"><i class="ti ti-info-circle"></i> L'âge de début pédiatrique fait débat</div>
+    <p>Le NCCN et les recommandations pédiatriques antérieures de l'AACR préconisent une échographie thyroïdienne annuelle dès 7 ans. La mise à jour AACR 2024 et les recommandations européennes GENTURIS soulignent le risque de surdiagnostic de maladies indolentes et suggèrent que certains centres reportent l'échographie systématique à 18 ans, en débutant plus tôt en cas d'antécédent familial de cancer thyroïdien précoce. Il s'agit d'un véritable désaccord entre experts ; informez les familles du compromis entre détection précoce et surtraitement, et envisagez de confier la surveillance pédiatrique à un centre à fort volume.</p>
+  </div>
+  <p>Le cancer de la thyroïde dans le PHTS est enrichi en histologie folliculaire, bien que le carcinome papillaire demeure le sous-type le plus fréquent. Distinguez la maladie thyroïdienne structurelle associée au PHTS (qui peut inclure goitre multinodulaire et adénomes) de la malignité à l'aide de la stratification échographique du risque établie.</p>
+</section>
+
+<!-- 5 -->
+<section id="fr-5">
+  <div class="sechead"><span class="secnum ui">5</span><h2>Surveillance de l'endomètre</h2></div>
+  <div class="organ"><h3>Endomètre (utérus)</h3><span class="risk-pill risk-mod">Risque modéré</span></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> Pour les patients</div>
+    <p>Les femmes atteintes du PHTS ont plus de risque de cancer de la muqueuse de l'utérus. Le plus important est de signaler immédiatement tout saignement anormal, surtout après la ménopause ou entre les règles. Ce symptôme est le signe d'alerte le plus précoce et le plus fiable, et il mène habituellement à un test simple au cabinet.</p>
+  </div>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Éducation de la patiente sur le signalement rapide de saignements utérins anormaux ou postménopausiques <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-dashed ico ico-opt"></i><span class="txt">Envisager une biopsie de l'endomètre et/ou une échographie endovaginale dès 35 ans, de façon individualisée <span class="tag tag-opt">Optionnel</span></span></li>
+    <li><i class="ti ti-circle-dashed ico ico-opt"></i><span class="txt">Discuter d'une hystérectomie de réduction du risque une fois le projet familial complété <span class="tag tag-opt">Optionnel</span></span></li>
+  </ul>
+  <p>Les données soutenant une surveillance de l'endomètre par imagerie ou biopsie sont faibles ; la connaissance des symptômes est la pierre angulaire, car les saignements anormaux apparaissent tôt et sont très exploitables. L'échographie endovaginale a une spécificité limitée pour le cancer de l'endomètre chez la femme non ménopausée. Le NCCN présente la biopsie de l'endomètre et l'échographie endovaginale dès 35 ans comme des options à envisager plutôt que comme des obligations. L'hystérectomie de réduction du risque est une discussion raisonnable pour les femmes ayant complété leur projet familial, à mettre en balance avec la morbidité chirurgicale.</p>
+</section>
+
+<!-- 6 -->
+<section id="fr-6">
+  <div class="sechead"><span class="secnum ui">6</span><h2>Surveillance colorectale</h2></div>
+  <div class="organ"><h3>Côlon et rectum</h3><span class="risk-pill risk-mod">Risque modéré</span></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> Pour les patients</div>
+    <p>Le PHTS peut causer des polypes dans l'intestin, et il existe un risque modérément accru de cancer de l'intestin au cours de la vie. Nous faisons le dépistage par coloscopie, qui permet à la fois de trouver et d'enlever les polypes. La plupart des personnes commencent entre 35 et 40 ans. La fréquence des examens dépend de ce que nous trouvons.</p>
+  </div>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Coloscopie dès 35 ans (plus tôt en cas de symptômes ou d'antécédent familial fortement positif) <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Répéter à intervalles d'environ 5 ans, ou plus souvent selon la charge polypeuse <span class="tag tag-routine">Systématique</span></span></li>
+  </ul>
+  <div class="callout info">
+    <div class="lab ui"><i class="ti ti-info-circle"></i> L'intervalle peut être individualisé</div>
+    <p>Le NCCN et l'US Multi-Society Task Force recommandent une coloscopie dès 35 ans à environ 5 ans d'intervalle, ajusté selon la charge polypeuse. Certaines recommandations européennes débutent à 40 ans. Les données observationnelles montrent un faible rendement en cancers colorectaux et en adénomes avancés dans le PHTS, ce qui appuie des intervalles personnalisés (1 à 10 ans) selon les constatations antérieures plutôt qu'un calendrier fixe. Les polypes peuvent être hamartomateux, adénomateux ou mixtes ; les prendre en charge selon l'histologie et la charge.</p>
+  </div>
+</section>
+
+<!-- 7 -->
+<section id="fr-7">
+  <div class="sechead"><span class="secnum ui">7</span><h2>Surveillance rénale</h2></div>
+  <div class="organ"><h3>Reins</h3><span class="risk-pill risk-mod">Risque modéré</span></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> Pour les patients</div>
+    <p>Il existe un risque accru de cancer du rein au cours de la vie avec le PHTS. Nous faisons le dépistage par imagerie des reins, généralement à partir de 40 ans. L'examen est indolore et rapide. Signalez-nous la présence de sang dans les urines ou une nouvelle douleur au flanc, à tout âge.</p>
+  </div>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Imagerie rénale (échographie, ou TDM/IRM selon la pratique locale) tous les 1 à 2 ans dès 40 ans <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-dashed ico ico-opt"></i><span class="txt">Envisager une imagerie plus précoce ou plus fréquente en cas d'antécédent personnel ou familial de cancer rénal précoce <span class="tag tag-opt">Optionnel</span></span></li>
+  </ul>
+  <p>Le carcinome rénal dans le PHTS est principalement papillaire. Le NCCN recommande une imagerie rénale tous les 1 à 2 ans dès 40 ans. Des cas de carcinome rénal précoce (y compris dans la troisième décennie) ont incité à proposer un âge de début plus bas, mais les séries prospectives montrent peu d'événements avant 40 ans ; un abaissement universel de l'âge de début n'est donc pas encore appuyé par les recommandations. Individualiser lorsque l'antécédent personnel ou familial le justifie.</p>
+</section>
+
+<!-- 8 -->
+<section id="fr-8">
+  <div class="sechead"><span class="secnum ui">8</span><h2>Peau et autres manifestations</h2></div>
+  <div class="organ"><h3>Peau, cerveau et maladies bénignes</h3><span class="risk-pill risk-low">Standard / faible</span></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> Pour les patients</div>
+    <p>Le PHTS cause souvent des bosses cutanées bénignes et des excroissances sans danger. Elles sont généralement inoffensives, mais un examen de la peau chaque année nous aide à surveiller le mélanome et à suivre tout changement. Certaines personnes développent une excroissance bénigne du cerveau appelée maladie de Lhermitte-Duclos, qui peut causer des maux de tête ou des troubles de l'équilibre ; signalez-nous ces symptômes.</p>
+  </div>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Examen dermatologique annuel (peau et muqueuse buccale) <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Examen physique complet annuel, incluant une revue neurologique <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-dashed ico ico-opt"></i><span class="txt">IRM cérébrale si les symptômes neurologiques évoquent une maladie de Lhermitte-Duclos <span class="tag tag-opt">Selon les symptômes</span></span></li>
+    <li><i class="ti ti-circle-minus ico ico-no"></i><span class="txt">IRM cérébrale de dépistage systématique chez l'adulte asymptomatique <span class="tag tag-no">Non recommandé</span></span></li>
+  </ul>
+  <p>Les lésions mucocutanées (trichilemmomes, papules papillomateuses, kératoses acrales, papillomes buccaux) sont utiles au diagnostic mais nécessitent rarement une intervention au-delà d'une prise en charge symptomatique ou esthétique. Le risque de mélanome est modeste et géré par la surveillance cutanée annuelle. La maladie de Lhermitte-Duclos est prise en charge de façon symptomatique ; l'imagerie neurologique systématique chez les personnes asymptomatiques n'est pas appuyée.</p>
+</section>
+
+<!-- 9 -->
+<section id="fr-9">
+  <div class="sechead"><span class="secnum ui">9</span><h2>Enfants et adolescents</h2></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> Pour les patients et les familles</div>
+    <p>Le risque de cancer dans l'enfance est faible, mais la thyroïde demande une attention dès le jeune âge. Les enfants atteints du PHTS ont aussi plus souvent une tête plus grosse, et certains ont des besoins liés au développement ou à l'autisme. Les soins aux enfants se concentrent sur la thyroïde, la peau, la croissance et le développement, ainsi que sur le soutien au besoin.</p>
+  </div>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Échographie thyroïdienne annuelle dès 7 ans (NCCN) — voir la note sur l'âge de début débattu à la section 4 <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Examen cutané et physique annuel, incluant le périmètre crânien <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-dashed ico ico-opt"></i><span class="txt">Évaluation du développement et du spectre de l'autisme lorsque cliniquement indiqué <span class="tag tag-opt">Selon l'indication</span></span></li>
+    <li><i class="ti ti-circle-minus ico ico-no"></i><span class="txt">Surveillance du sein, du côlon, des reins et de l'endomètre dans l'enfance <span class="tag tag-no">Pas dans l'enfance</span></span></li>
+  </ul>
+  <p>La surveillance des organes de l'adulte (sein, côlon, rein, endomètre) débute aux âges indiqués ci-dessus et n'est pas indiquée dans l'enfance. Les soins pédiatriques se concentrent sur la surveillance thyroïdienne, l'examen dermatologique et physique, le suivi de la croissance et le soutien neurodéveloppemental. Les malformations vasculaires et les hamartomes symptomatiques peuvent nécessiter une prise en charge et ont historiquement répondu aux inhibiteurs de mTOR dans des cas sélectionnés.</p>
+</section>
+
+<!-- 10 -->
+<section id="fr-10">
+  <div class="sechead"><span class="secnum ui">10</span><h2>Chirurgie de réduction du risque et prévention médicale</h2></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> Pour les patients</div>
+    <p>Comme le risque de cancer du sein est élevé, certaines femmes choisissent une mastectomie préventive (de réduction du risque) plutôt qu'une imagerie annuelle. Cela réduit fortement le risque, mais c'est une décision importante. Le retrait de l'utérus après la fin du projet familial est une autre option que certaines femmes envisagent. Ce sont des choix personnels, et nous vous donnerons l'information et le temps nécessaires pour décider.</p>
+  </div>
+  <h4 class="ui">Sein</h4>
+  <p>La mastectomie bilatérale de réduction du risque diminue le risque de cancer du sein d'environ 90 % et constitue une option raisonnable compte tenu du risque élevé à vie chez les porteuses de variants <i>PTEN</i>. C'est un choix et non une obligation ; de nombreuses femmes optent plutôt pour une surveillance intensive par imagerie. La décision doit aborder le risque résiduel, la reconstruction et l'impact psychologique de l'une ou l'autre voie.</p>
+  <h4 class="ui">Endomètre</h4>
+  <p>L'hystérectomie de réduction du risque est une discussion raisonnable une fois le projet familial complété, à mettre en balance avec les conséquences chirurgicales et hormonales. Il n'y a pas de rôle établi pour une ovariectomie de réduction du risque concomitante systématique dans le PHTS, le cancer de l'ovaire n'étant pas une caractéristique déterminante du syndrome.</p>
+  <h4 class="ui">Prévention médicale</h4>
+  <p>Il n'existe pas de chimioprévention pharmacologique établie propre au PHTS. Les agents endocriniens de réduction du risque (p. ex. tamoxifène) utilisés dans d'autres contextes mammaires à haut risque ne sont pas formellement validés pour le PHTS et ne devraient être envisagés que de façon individualisée dans un programme mammaire à haut risque. Informez que les agents de la voie mTOR demeurent expérimentaux pour la prévention du cancer dans cette population.</p>
+  <div class="callout info">
+    <div class="lab ui"><i class="ti ti-info-circle"></i> Note sur les données</div>
+    <p>Les données de réduction chirurgicale du risque dans le PHTS sont en grande partie extrapolées de cohortes mammaires et gynécologiques à haut risque plus larges plutôt que d'essais propres au PHTS. Présentez-les comme des options éclairées par les données, et non comme des étapes imposées par les recommandations.</p>
+  </div>
+</section>
+
+<!-- 11 -->
+<section id="fr-11">
+  <div class="sechead"><span class="secnum ui">11</span><h2>Conseil génétique et test familial</h2></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> Pour les patients</div>
+    <p>Le PHTS se transmet dans les familles. Chacun de vos enfants, frères, sœurs et parents a 1 chance sur 2 de porter la même modification génétique. Nous pouvons offrir un test aux proches, appelé test en cascade, afin que ceux qui le portent puissent commencer le dépistage et que ceux qui ne le portent pas puissent l'éviter. Si vous planifiez une famille, il existe des options de procréation dont nous pouvons discuter.</p>
+  </div>
+  <ul class="checklist">
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Offrir le test en cascade aux apparentés au premier degré (probabilité a priori de 50 % par apparenté) <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Établir et mettre à jour un arbre généalogique sur trois générations <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Discuter des options de procréation : diagnostic prénatal et test génétique préimplantatoire (DPI-M) <span class="tag tag-routine">Systématique</span></span></li>
+    <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Documenter le variant précis et sa classification ; recontacter en cas de reclassification <span class="tag tag-routine">Systématique</span></span></li>
+  </ul>
+  <p>Le PHTS est autosomique dominant ; les enfants d'une personne atteinte ont un risque de 50 % d'hériter du variant. La plupart des cas sont héréditaires, mais des variants de novo surviennent, et une mosaïque constitutionnelle a été rapportée dans les phénotypes de surcroissance. Le test en cascade repère les apparentés à risque pour la surveillance et évite un dépistage inutile aux non-porteurs. Les options de procréation incluent le diagnostic prénatal et le DPI-M. Maintenez la documentation du variant précis pour soutenir une reclassification future et le test familial.</p>
+</section>
+
+<!-- 12 -->
+<section id="fr-12">
+  <div class="sechead"><span class="secnum ui">12</span><h2>Mode de vie et nutrition</h2></div>
+  <div class="patient">
+    <div class="lab"><i class="ti ti-user-heart"></i> Pour les patients</div>
+    <p>Aucun régime ni supplément n'est prouvé pour réduire le risque de cancer propre au PHTS. Les mêmes bonnes habitudes utiles à tous s'appliquent : éviter le tabac, limiter l'alcool, rester physiquement actif, manger beaucoup de légumes et de fibres, et protéger votre peau du soleil. Cela ne remplace pas le dépistage, mais soutient votre santé globale.</p>
+  </div>
+  <p>Il n'existe aucune intervention diététique ou supplémentaire propre au PHTS dont la réduction du risque de cancer soit prouvée. Les recommandations générales de prévention du cancer fondées sur des données s'appliquent : arrêt du tabac, modération de l'alcool, activité physique régulière, maintien d'un poids santé, alimentation riche en légumes et en fibres, et protection solaire compte tenu des considérations dermatologiques et du risque modeste de mélanome. Informez les patients que les mesures liées au mode de vie complètent la surveillance structurée mais ne s'y substituent pas.</p>
+</section>
+
+<!-- 13 -->
+<section id="fr-13">
+  <div class="sechead"><span class="secnum ui">13</span><h2>Données émergentes et expérimentales</h2></div>
+  <div class="callout emerging">
+    <div class="lab ui"><i class="ti ti-flask"></i> Expérimental — cadre de recherche uniquement</div>
+    <p><b>Abaissement de l'âge de début de la surveillance rénale.</b> Des cas de carcinome rénal précoce ont incité à proposer une imagerie rénale plus précoce ou plus fréquente. Non encore appuyé par les recommandations ; à réserver aux décisions individualisées ou aux protocoles de recherche.</p>
+    <p><b>Inhibition de la voie mTOR.</b> Les agents ciblant l'axe PI3K/AKT/mTOR ont montré une réponse dans la surcroissance symptomatique et les anomalies vasculaires, et présentent un intérêt théorique pour la prévention du cancer. Leur utilisation pour la prévention du cancer demeure expérimentale.</p>
+    <p><b>Affinement des estimations de pénétrance.</b> Des cohortes prospectives, corrigées pour le biais de recrutement, sont nécessaires pour établir les véritables risques propres à chaque organe chez les porteurs repérés en cascade, ce qui pourrait justifier d'alléger certains calendriers actuels.</p>
+    <p><b>IRM corps entier.</b> L'IRM corps entier est à l'étude dans plusieurs syndromes de cancer héréditaire. Son rôle dans le PHTS n'est pas établi et elle ne remplace pas ici la surveillance propre à chaque organe.</p>
+  </div>
+</section>
+
+<!-- 14 -->
+<section id="fr-14">
+  <div class="sechead"><span class="secnum ui">14</span><h2>Résumé des recommandations</h2></div>
+  <h3>Surveillance par organe</h3>
+  <div class="cards">
+    <div class="card">
+      <h4>Sein <span class="risk-pill risk-high" style="font-size:10px">Élevé</span></h4>
+      <ul>
+        <li>Examen clinique + connaissance dès 25 ans</li>
+        <li>IRM annuelle dès 30 ans (25–29 si ATCD précoce)</li>
+        <li>Mammographie annuelle dès 30 ans</li>
+        <li>Discuter de la mastectomie préventive</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Thyroïde <span class="risk-pill risk-high" style="font-size:10px">Élevé</span></h4>
+      <ul>
+        <li>Échographie annuelle dès le diagnostic</li>
+        <li>Début pédiatrique 7 ans vs 18 ans — voir note</li>
+        <li>Prise en charge des nodules selon l'ATA</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Endomètre <span class="risk-pill risk-mod" style="font-size:10px">Modéré</span></h4>
+      <ul>
+        <li>Signaler rapidement tout saignement anormal</li>
+        <li>Biopsie / échographie EV dès 35 ans (option)</li>
+        <li>Hystérectomie après projet familial</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Colorectal <span class="risk-pill risk-mod" style="font-size:10px">Modéré</span></h4>
+      <ul>
+        <li>Coloscopie dès 35 ans</li>
+        <li>Intervalle ~5 ans, ajusté aux polypes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Rein <span class="risk-pill risk-mod" style="font-size:10px">Modéré</span></h4>
+      <ul>
+        <li>Imagerie tous les 1–2 ans dès 40 ans</li>
+        <li>Plus tôt selon ATCD personnel/familial</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Peau / autres <span class="risk-pill risk-low" style="font-size:10px">Faible</span></h4>
+      <ul>
+        <li>Examen dermatologique annuel</li>
+        <li>Examen physique + neuro annuel</li>
+        <li>IRM cérébrale seulement si symptômes</li>
+      </ul>
+    </div>
+  </div>
+  <h3>Recommandations transversales</h3>
+  <div class="cards">
+    <div class="card">
+      <h4>Génétique</h4>
+      <ul>
+        <li>Test en cascade pour les apparentés au 1er degré</li>
+        <li>Arbre généalogique sur trois générations</li>
+        <li>DPI-M et options prénatales</li>
+        <li>Recontacter en cas de reclassification du variant</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Général</h4>
+      <ul>
+        <li>Coordonner des soins multidisciplinaires</li>
+        <li>Éducation aux symptômes pour chaque organe</li>
+        <li>Prévention standard liée au mode de vie</li>
+        <li>Individualiser selon l'antécédent familial</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 15 -->
+<section id="fr-15">
+  <div class="sechead"><span class="secnum ui">15</span><h2>Références</h2></div>
+  <ol class="refs">
+    <li>Yehia L, Eng C. PTEN Hamartoma Tumor Syndrome. In: GeneReviews. Seattle: University of Washington; initial posting 2001, last revision August 7, 2025. NCBI Bookshelf NBK1488.</li>
+    <li>Daly MB, Pal T, AlHilli Z, et al. NCCN Clinical Practice Guidelines in Oncology: Genetic/Familial High-Risk Assessment — Breast, Ovarian, and Pancreatic. Version 3.2024. National Comprehensive Cancer Network, 2024.</li>
+    <li>Eng C, Tischkowitz M, Hodgson S, et al. Cancer and Overgrowth Manifestations of PTEN Hamartoma Tumor Syndrome: Management Recommendations from the International PHTS Consensus Guidelines Working Group. Clin Cancer Res. 2025;31(9):1754–1765.</li>
+    <li>Tischkowitz M, Colas C, Pouwels S, et al. Cancer Surveillance Guideline for individuals with PTEN hamartoma tumour syndrome (ERN GENTURIS). Eur J Hum Genet. 2020;28:1387–1393.</li>
+    <li>Schultz KAP, et al. Update on Pediatric Surveillance Recommendations for PTEN Hamartoma Tumor Syndrome, DICER1-Related Tumor Predisposition, and Tuberous Sclerosis Complex. Clin Cancer Res. 2025;31(2):234–244.</li>
+    <li>Tan MH, Mester JL, Ngeow J, et al. Lifetime cancer risks in individuals with germline PTEN mutations. Clin Cancer Res. 2012;18(2):400–407.</li>
+    <li>Pilarski R, Burt R, Kohlman W, et al. Cowden syndrome and the PTEN hamartoma tumor syndrome: systematic review and revised diagnostic criteria. J Natl Cancer Inst. 2013;105(21):1607–1616.</li>
+    <li>Stanich PP, et al. / US Multi-Society Task Force on Colorectal Cancer. Recommendations on surveillance in hamartomatous polyposis and PHTS. Gastroenterology / Am J Gastroenterol, 2022.</li>
+    <li>van der Klift HM, et al. Detection and Yield of Colorectal Cancer Surveillance in Adults with PTEN Hamartoma Tumour Syndrome. Cancers (Basel), 2022;14(16):3979.</li>
+    <li>Mester JL, Tilot AK, Eng C, et al. Early-onset renal cell carcinoma in PTEN hamartoma tumour syndrome. npj Genom Med. 2020;5:40.</li>
+    <li>Monticciolo DL, Newell MS, Moy L, et al. Breast Cancer Screening for Women at Higher-Than-Average Risk: Updated Recommendations From the ACR. J Am Coll Radiol. 2023;20(9):902–914.</li>
+    <li>2025 American Thyroid Association Management Guidelines for Adult Patients with Differentiated Thyroid Cancer. Thyroid. 2025.</li>
+  </ol>
+</section>
+
+<div class="footnote ui">
+  Ce protocole vise à soutenir, et non à remplacer, le jugement clinique individuel. Les recommandations pour le PHTS reposent en grande partie sur un consensus d'experts et évoluent à mesure que les données s'accumulent. Les âges de début, les intervalles et la prise en charge de la surveillance doivent être vérifiés par rapport aux versions courantes du NCCN, de l'ERN GENTURIS, du Consensus international PHTS 2025 et des recommandations des sociétés savantes pertinentes avant toute application clinique. Les chiffres de risque proviennent de cohortes biaisées par le mode de recrutement et peuvent surestimer la pénétrance pour les porteurs repérés en cascade. Préparé par le Dr Andrew Shuen, Génétique du cancer, Centre de prévention du cancer, Hôpital général juif, Montréal. Révisé en juin 2026.
+</div>
+
+</div><!-- /fr -->
+
+</div><!-- /wrap -->
+
+<script>
+function setLang(l){
+  var b=document.body;
+  if(l==='fr'){b.classList.add('show-fr'); document.documentElement.lang='fr';}
+  else{b.classList.remove('show-fr'); document.documentElement.lang='en';}
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  document.getElementById('btn-fr').classList.toggle('active', l==='fr');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

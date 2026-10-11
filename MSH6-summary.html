@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSH6-Associated Lynch Syndrome &mdash; Summary</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+
+  :root{
+    --ink:#15212b;
+    --ink-soft:#3c4a55;
+    --ink-faint:#6a7681;
+    --line:#dde6ec;
+    --line-soft:#eef3f6;
+    --paper:#ffffff;
+    --cream:#f4f9fc;
+    --teal:#0083d0; --brand:#0083d0; --brand-line:#9cd0ef; --brand-bg:#e3f2fb;
+    --teal-bg:#e3f2fb;
+    --teal-line:#9cd0ef;
+    --blue:#005f9e;
+    --blue-bg:#e3f2fb;
+    --blue-line:#9cd0ef;
+    --amber:#9a5b00;
+    --amber-bg:#fdf0db;
+    --amber-line:#f0a93a;
+    --red:#b3271e;
+    --red-bg:#fcebe9;
+    --red-line:#f0a097;
+    --purple:#3c3489;
+    --purple-bg:#eeedfe;
+    --purple-line:#b3aef0;
+    --radius:14px;
+    --radius-sm:9px;
+  }
+  *{box-sizing:border-box;}
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    margin:0;
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.62;
+    font-size:17px;
+  }
+  .wrap{ max-width:860px; margin:0 auto; padding:0 22px 90px; }
+
+  /* ---------- Masthead ---------- */
+  .masthead{
+    padding:54px 0 30px;
+    border-bottom:3px double var(--line);
+    margin-bottom:8px;
+  }
+  .eyebrow{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    font-size:12px;
+    font-weight:600;
+    color:var(--teal);
+    margin:0 0 16px;
+  }
+  h1.title{
+    font-size:38px;
+    line-height:1.16;
+    font-weight:600;
+    margin:0 0 18px;
+    letter-spacing:-0.01em;
+  }
+  .standfirst{
+    font-size:19px;
+    color:var(--ink-soft);
+    margin:0 0 22px;
+    line-height:1.55;
+  }
+  .authors{
+    margin:0 0 24px;
+    padding:16px 20px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-left:4px solid var(--teal);
+    border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  }
+  .authors .byline{
+    margin:0 0 6px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:15.5px;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1.5;
+  }
+  .authors .affil{
+    margin:0;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    color:var(--ink-faint);
+    line-height:1.5;
+  }
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 18px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    color:var(--ink-faint);
+    align-items:center;
+  }
+  .meta-row .chip{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:30px;
+    padding:5px 13px;
+  }
+  .meta-row .chip i{ color:var(--teal); }
+
+  /* ---------- Audience legend ---------- */
+  .legend{
+    display:flex; flex-wrap:wrap; gap:14px;
+    margin:26px 0 6px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+  }
+  .legend .key{ display:flex; align-items:center; gap:8px; color:var(--ink-soft); }
+  .swatch{ width:14px; height:14px; border-radius:4px; flex:none; }
+  .sw-patient{ background:var(--teal-bg); border:1.5px solid var(--teal-line); }
+  .sw-clinician{ background:var(--paper); border:1.5px solid var(--line); }
+
+  /* ---------- TOC ---------- */
+  nav.toc{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px 26px;
+    margin:30px 0 46px;
+  }
+  nav.toc h2{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    text-transform:uppercase; letter-spacing:.14em;
+    font-size:12px; font-weight:700; color:var(--ink-faint);
+    margin:0 0 14px;
+  }
+  nav.toc ol{ margin:0; padding:0; list-style:none; counter-reset:toc;
+    column-count:2; column-gap:34px; }
+  nav.toc li{ counter-increment:toc; margin:0 0 9px; break-inside:avoid; }
+  nav.toc a{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:14.5px; color:var(--ink-soft); text-decoration:none;
+    display:flex; gap:10px; align-items:baseline;
+  }
+  nav.toc a:hover{ color:var(--teal); }
+  nav.toc a::before{
+    content:counter(toc,decimal-leading-zero);
+    color:var(--teal); font-weight:600; font-size:12px; flex:none;
+  }
+
+  /* ---------- Section ---------- */
+  section{ margin:0 0 14px; padding:30px 0 8px; border-top:1px solid var(--line-soft); }
+  section:first-of-type{ border-top:none; }
+  .sec-head{ display:flex; align-items:center; gap:14px; margin:0 0 20px; }
+  .sec-num{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px; font-weight:700; color:var(--paper);
+    background:var(--teal); width:34px; height:34px; flex:none;
+    border-radius:9px; display:flex; align-items:center; justify-content:center;
+  }
+  h2.sec-title{ font-size:27px; font-weight:600; margin:0; letter-spacing:-0.01em; line-height:1.2; }
+  h3{ font-size:20px; font-weight:600; margin:30px 0 10px; }
+  h4{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--teal); margin:24px 0 8px;
+  }
+  p{ margin:0 0 15px; }
+  a{ color:var(--blue); }
+
+  /* ---------- Gene section header ---------- */
+  .gene-head{
+    display:flex; align-items:center; gap:12px;
+    background:var(--purple-bg); border:1px solid var(--purple-line);
+    border-radius:var(--radius-sm); padding:12px 18px; margin:34px 0 4px;
+  }
+  .gene-head .tag{
+    font-family:"Helvetica Neue",Arial,sans-serif; font-weight:700;
+    font-size:13px; letter-spacing:.04em; color:var(--paper);
+    background:var(--purple); border-radius:6px; padding:4px 10px; flex:none;
+  }
+  .gene-head .gene-title{ font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:16px; font-weight:600; color:#26215c; margin:0; }
+  .risk-pill{
+    font-family:"Helvetica Neue",Arial,sans-serif; font-size:11.5px; font-weight:700;
+    border-radius:20px; padding:3px 10px; margin-left:auto; white-space:nowrap;
+  }
+  .risk-pill.hi{ background:var(--red-bg); color:var(--red); border:1px solid var(--red-line); }
+  .risk-pill.mid{ background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line); }
+  .risk-pill.lo{ background:var(--teal-bg); color:var(--teal); border:1px solid var(--teal-line); }
+
+  /* ---------- Patient summary card ---------- */
+  .patient-card{
+    background:var(--teal-bg);
+    border:1px solid var(--teal-line);
+    border-radius:var(--radius);
+    padding:20px 24px;
+    margin:0 0 26px;
+  }
+  .patient-card .lbl{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    text-transform:uppercase; letter-spacing:.12em;
+    font-size:11.5px; font-weight:700; color:var(--teal);
+    display:flex; align-items:center; gap:7px; margin:0 0 9px;
+  }
+  .patient-card p{ margin:0; color:#004a7c; font-size:16.5px; }
+  .patient-card p + p{ margin-top:10px; }
+
+  /* ---------- Clinical detail block ---------- */
+  .clinical{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:15.5px;
+    line-height:1.62;
+    color:var(--ink-soft);
+  }
+  .clinical h4{ margin-top:18px; }
+  .clinical p{ margin:0 0 13px; }
+  .clinical ul{ margin:0 0 14px; padding-left:20px; }
+  .clinical li{ margin:0 0 6px; }
+
+  /* ---------- Screening list (per gene) ---------- */
+  ul.screen{ list-style:none; margin:4px 0 18px; padding:0;
+    font-family:"Helvetica Neue",Arial,sans-serif; font-size:15px; }
+  ul.screen li{ position:relative; padding:9px 0 9px 30px; color:var(--ink-soft);
+    border-bottom:1px solid var(--line-soft); line-height:1.5; }
+  ul.screen li:last-child{ border-bottom:none; }
+  ul.screen li i{ position:absolute; left:0; top:10px; color:var(--teal); font-size:18px; }
+  ul.screen .organ{ font-weight:700; color:var(--ink); }
+
+  /* ---------- Recommendation callout ---------- */
+  .rec{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-left:4px solid var(--teal);
+    border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+    padding:15px 20px;
+    margin:0 0 16px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:15px;
+  }
+  .rec.amber{ border-left-color:var(--amber); }
+  .rec.amber .rlbl{ color:var(--amber); }
+  .rec.red{ border-left-color:var(--red); background:var(--red-bg); }
+  .rec.red .rlbl{ color:var(--red); }
+  .rec .rlbl{ font-weight:700; color:var(--teal); display:block; margin-bottom:4px;
+    text-transform:uppercase; letter-spacing:.05em; font-size:12px; }
+
+  /* ---------- Lists ---------- */
+  ul.ticks{ list-style:none; margin:0 0 16px; padding:0;
+    font-family:"Helvetica Neue",Arial,sans-serif; font-size:15px; }
+  ul.ticks li{ position:relative; padding:5px 0 5px 28px; color:var(--ink-soft);
+    border-bottom:1px solid var(--line-soft); }
+  ul.ticks li:last-child{ border-bottom:none; }
+  ul.ticks li i{ position:absolute; left:0; top:7px; color:var(--teal); font-size:18px; }
+
+  /* ---------- Risk table ---------- */
+  .table-wrap{ overflow-x:auto; margin:0 0 10px; border:1px solid var(--line);
+    border-radius:var(--radius-sm); }
+  table.risk{ border-collapse:collapse; width:100%; min-width:560px;
+    font-family:"Helvetica Neue",Arial,sans-serif; font-size:14.5px; }
+  table.risk thead th{ background:var(--teal); color:#fff; font-weight:600;
+    text-align:left; padding:12px 14px; font-size:13.5px; }
+  table.risk thead th:first-child{ border-top-left-radius:var(--radius-sm); }
+  table.risk thead th:last-child{ border-top-right-radius:var(--radius-sm); }
+  table.risk td{ padding:10px 14px; border-top:1px solid var(--line); color:var(--ink-soft); }
+  table.risk tbody tr:nth-child(odd){ background:var(--cream); }
+  table.risk td:first-child{ font-weight:600; color:var(--ink); }
+  .pct{ font-variant-numeric:tabular-nums; }
+
+  /* ---------- Bleeding risk tiers ---------- */
+  .tiers{ display:grid; grid-template-columns:1fr; gap:14px; margin:8px 0 20px; }
+  @media(min-width:680px){ .tiers{ grid-template-columns:repeat(3,1fr); } }
+  .tier{ border-radius:var(--radius-sm); padding:16px 18px;
+    font-family:"Helvetica Neue",Arial,sans-serif; }
+  .tier h5{ margin:0 0 10px; font-size:14px; font-weight:700; display:flex; align-items:center; gap:8px; }
+  .tier ul{ margin:0; padding:0; list-style:none; font-size:13.5px; line-height:1.5; }
+  .tier li{ padding:4px 0; border-top:1px solid rgba(0,0,0,.06); }
+  .tier li:first-child{ border-top:none; }
+  .tier.low{ background:var(--teal-bg); }
+  .tier.low h5{ color:var(--teal); } .tier.low li{ color:#004a7c; }
+  .tier.mod{ background:var(--amber-bg); }
+  .tier.mod h5{ color:var(--amber); } .tier.mod li{ color:#633806; }
+  .tier.high{ background:var(--red-bg); }
+  .tier.high h5{ color:var(--red); } .tier.high li{ color:#791f1f; }
+
+  /* ---------- Calculator / info box ---------- */
+  .calc{
+    background:var(--blue-bg); border:1px solid var(--blue-line);
+    border-radius:var(--radius); padding:20px 24px; margin:0 0 22px;
+  }
+  .calc .lbl{ font-family:"Helvetica Neue",Arial,sans-serif; text-transform:uppercase;
+    letter-spacing:.1em; font-size:11.5px; font-weight:700; color:var(--blue);
+    display:flex; align-items:center; gap:7px; margin:0 0 10px; }
+  .calc p{ color:#005f9e; font-family:"Helvetica Neue",Arial,sans-serif; font-size:15px; }
+  .calc a{ color:var(--blue); word-break:break-all; font-weight:600; }
+  .calc .bands{ list-style:none; margin:12px 0 0; padding:0;
+    font-family:"Helvetica Neue",Arial,sans-serif; font-size:14px; }
+  .calc .bands li{ padding:7px 0 7px 26px; position:relative; color:#005f9e;
+    border-top:1px solid var(--blue-line); }
+  .calc .bands li:first-child{ border-top:none; }
+  .calc .bands li i{ position:absolute; left:0; top:8px; font-size:16px; }
+  .dot-red{ color:var(--red); } .dot-amber{ color:var(--amber); } .dot-teal{ color:var(--teal); }
+
+  /* ---------- Emerging evidence box ---------- */
+  .emerging{
+    background:var(--purple-bg); border:1px solid var(--purple-line);
+    border-radius:var(--radius); padding:18px 22px; margin:0 0 16px;
+  }
+  .emerging .lbl{ font-family:"Helvetica Neue",Arial,sans-serif; text-transform:uppercase;
+    letter-spacing:.1em; font-size:11.5px; font-weight:700; color:var(--purple);
+    display:flex; align-items:center; gap:7px; margin:0 0 8px; }
+  .emerging p{ color:#26215c; font-family:"Helvetica Neue",Arial,sans-serif; font-size:14.5px; margin:0 0 10px; }
+  .emerging p:last-child{ margin-bottom:0; }
+
+  /* ---------- Summary section cards ---------- */
+  .summary-grid{ display:grid; grid-template-columns:1fr; gap:14px; }
+  @media(min-width:680px){ .summary-grid{ grid-template-columns:1fr 1fr; } }
+  .sum-card{ background:var(--paper); border:1px solid var(--line);
+    border-radius:var(--radius-sm); padding:16px 20px;
+    font-family:"Helvetica Neue",Arial,sans-serif; }
+  .sum-card.span{ grid-column:1/-1; }
+  .sum-card h5{ margin:0 0 10px; font-size:14px; font-weight:700; color:var(--teal);
+    display:flex; align-items:center; gap:8px; }
+  .sum-card.purple h5{ color:var(--purple); }
+  .sum-card p{ font-size:14px; color:var(--ink-soft); margin:0 0 8px; line-height:1.55; }
+  .sum-card p:last-child{ margin-bottom:0; }
+  .sum-card .gene{ font-weight:700; color:var(--ink); }
+
+  /* ---------- References ---------- */
+  .refs{ counter-reset:ref; list-style:none; margin:0; padding:0;
+    font-family:"Helvetica Neue",Arial,sans-serif; font-size:13.5px; color:var(--ink-soft);
+    line-height:1.5; }
+  .refs li{ counter-increment:ref; position:relative; padding:9px 0 9px 38px;
+    border-top:1px solid var(--line-soft); }
+  .refs li:first-child{ border-top:none; }
+  .refs li::before{ content:counter(ref); position:absolute; left:0; top:9px;
+    font-weight:700; color:var(--teal); background:var(--teal-bg);
+    width:26px; height:22px; border-radius:6px; display:flex; align-items:center;
+    justify-content:center; font-size:12px; }
+
+  .footer-note{ margin-top:40px; padding-top:20px; border-top:3px double var(--line);
+    font-family:"Helvetica Neue",Arial,sans-serif; font-size:12.5px; color:var(--ink-faint);
+    line-height:1.55; }
+  hr.soft{ border:none; border-top:1px solid var(--line-soft); margin:26px 0; }
+
+  /* ---------- Institutional logos ---------- */
+  .logo-bar{ display:flex; align-items:center; justify-content:space-between; gap:16px;
+    margin:0 0 26px; padding:0 0 22px; border-bottom:1px solid var(--line-soft); }
+  .logo-bar img{ height:54px; width:auto; max-width:46%; object-fit:contain; display:block; }
+  .logo-bar .logo-right{ margin-left:auto; }
+  @media(max-width:520px){ .logo-bar img{ height:40px; } }
+  @media print{ .logo-bar{ border-bottom:1px solid var(--line-soft); } }
+
+  /* ---------- Language toggle ---------- */
+  .lang-bar{ position:sticky; top:0; z-index:50; display:flex; gap:8px; justify-content:flex-end;
+    padding:10px 0; background:linear-gradient(var(--cream) 70%, rgba(244,249,252,0)); margin-bottom:-8px; }
+  .lang-btn{ font-family:"Helvetica Neue",Arial,sans-serif; font-size:13px; font-weight:700;
+    letter-spacing:.03em; cursor:pointer; border:1px solid var(--brand-line,#9cd0ef);
+    background:var(--paper); color:var(--brand,#0083d0); border-radius:30px; padding:6px 16px;
+    transition:all .15s ease; }
+  .lang-btn:hover{ background:var(--brand-bg,#e3f2fb); }
+  .lang-btn.active{ background:var(--brand,#0083d0); color:#fff; border-color:var(--brand,#0083d0); }
+  [hidden]{ display:none !important; }
+  @media print{ .lang-bar{ display:none; } }
+
+
+  .lang-bar{ position:sticky; top:0; z-index:50; display:flex; gap:8px; align-items:center; justify-content:space-between;
+    padding:10px 0; background:linear-gradient(var(--cream) 70%, rgba(244,249,252,0)); margin-bottom:-8px; }
+  .bar-left{ display:flex; gap:8px; align-items:center; }
+  .bar-center{ display:flex; gap:0; align-items:center; }
+  .bar-right{ display:flex; gap:8px; align-items:center; }
+  .util-btn{ font-family:"Helvetica Neue",Arial,sans-serif; font-size:12.5px; font-weight:700;
+    letter-spacing:.02em; cursor:pointer; border:1px solid var(--line,#dde6ec);
+    background:var(--paper); color:var(--ink-soft,#3c4a55); border-radius:30px; padding:6px 14px;
+    display:inline-flex; align-items:center; gap:6px; transition:all .15s ease; }
+  .util-btn:hover{ background:var(--brand-bg,#e3f2fb); color:var(--brand-dark,#005f9e); border-color:var(--brand-line,#9cd0ef); }
+  .util-btn.active{ background:var(--brand,#0083d0); color:#fff; border-color:var(--brand,#0083d0); }
+  .util-btn i{ font-size:15px; }
+  /* segmented Summary / Full-protocol toggle */
+  .seg{ display:inline-flex; border:1px solid var(--brand-line,#9cd0ef); border-radius:30px; overflow:hidden; }
+  .seg a, .seg span{ font-family:"Helvetica Neue",Arial,sans-serif; font-size:12.5px; font-weight:700;
+    padding:6px 15px; text-decoration:none; color:var(--brand,#0083d0); background:var(--paper); transition:all .15s ease; }
+  .seg a:hover{ background:var(--brand-bg,#e3f2fb); }
+  .seg .seg-active{ background:var(--brand,#0083d0); color:#fff; cursor:default; }
+  .lang-btn{ font-family:"Helvetica Neue",Arial,sans-serif; font-size:13px; font-weight:700;
+    letter-spacing:.03em; cursor:pointer; border:1px solid var(--brand-line,#9cd0ef);
+    background:var(--paper); color:var(--brand,#0083d0); border-radius:30px; padding:6px 16px;
+    transition:all .15s ease; }
+  .lang-btn:hover{ background:var(--brand-bg,#e3f2fb); }
+  .lang-btn.active{ background:var(--brand,#0083d0); color:#fff; border-color:var(--brand,#0083d0); }
+  [hidden]{ display:none !important; }
+  body.pdf-preview{ background:#8a949c; }
+  body.pdf-preview .wrap{ background:var(--paper); max-width:816px; margin:24px auto; padding:48px 60px 60px;
+    box-shadow:0 4px 24px rgba(0,0,0,.25); }
+  body.pdf-preview .lang-bar{ position:static; box-shadow:none; }
+  body.pdf-preview .pagebreak-guide{ display:block; }
+  .pagebreak-guide{ display:none; border-top:2px dashed #9aa4ab; margin:18px 0; }
+  @media print{ .lang-bar{ display:none; } }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="lang-bar">
+    <div class="bar-left">
+      <button class="util-btn" id="btn-pdfview" onclick="togglePdfView()"><i class="ti ti-file-text"></i> <span id="pdfview-label">PDF view</span></button>
+      <button class="util-btn" onclick="window.print()"><i class="ti ti-printer"></i> Print / Save PDF</button>
+    </div>
+    <div class="bar-center"><div class="seg" id="seg-en"><span class="seg-active">Summary</span><a href="msh6.html">Full protocol</a></div><div class="seg" id="seg-fr" hidden><span class="seg-active">Sommaire</span><a href="msh6.html">Protocole complet</a></div></div>
+    <div class="bar-right">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">English</button>
+      <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">Fran&ccedil;ais</button>
+    </div>
+  </div>
+
+  <div id="lang-en">
+  <header class="masthead" style="padding-top:18px;">
+    <p class="eyebrow">Quick-Reference Summary</p>
+    <h1 class="title">MSH6-Associated Lynch Syndrome</h1>
+    <p class="standfirst" style="margin-bottom:6px;">Endometrial-predominant; lower, later colorectal risk &nbsp; <span class="risk-pill mid">Endometrial 16&ndash;49% &middot; CRC 20&ndash;44%</span></p>
+    <p class="byline" style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;color:var(--ink-soft);margin:6px 0 0;">Dr. Andrew Shuen, Dr. William Foulkes, Dr. Polymnia Galiatsatos &middot; Cancer Prevention Centre, JGH, Montreal</p>
+  </header>
+
+  <section style="margin-top:8px;">
+    <div class="patient-card"><p class="lbl"><i class="ti ti-heart-handshake"></i> What this means for you</p><p>MSH6 behaves differently from MLH1 and MSH2: the womb (endometrial) risk is high, while bowel cancer risk is lower and tends to appear later. Screening reflects this. Colonoscopy can often start a little later, around age 30 to 35, and gynaecologic awareness is especially important, since abnormal bleeding is usually an early, treatable sign. A daily low-dose aspirin still lowers risk.</p></div>
+  </section>
+
+  <section>
+    <h4 style="color:var(--brand);">Lifetime risk by site</h4>
+    <p><span class="risk-pill hi" style="margin:3px 5px 3px 0; display:inline-block;">Endometrial (uterine): 16&ndash;49%</span><span class="risk-pill mid" style="margin:3px 5px 3px 0; display:inline-block;">Colorectal (CRC): 20&ndash;44%</span><span class="risk-pill mid" style="margin:3px 5px 3px 0; display:inline-block;">Ovarian: ~1&ndash;11% (variable)</span><span class="risk-pill lo" style="margin:3px 5px 3px 0; display:inline-block;">Breast (emerging): ~2&times; population (unconfirmed)</span><span class="risk-pill lo" style="margin:3px 5px 3px 0; display:inline-block;">Gastric / urinary / other: low (&lt;1&ndash;few %)</span></p>
+  </section>
+
+  <section>
+    <h4 style="color:var(--brand);">Key surveillance at a glance</h4>
+    <ul class="screen">
+      <li><i class="ti ti-circle-check"></i> <span class="organ">Colorectal:</span> per NCCN, colonoscopy from age 30&ndash;35 (or 2&ndash;5 years before the youngest family case if diagnosed before 30), every 1&ndash;3 years, reflecting lower and later-onset risk than MLH1/MSH2.</li>
+      <li><i class="ti ti-circle-check"></i> <span class="organ">Endometrial / ovarian:</span> the predominant risk &mdash; strong education on abnormal bleeding (usually early and curable); endometrial biopsy to evaluate symptoms; risk-reducing hysterectomy + BSO after childbearing (see surgery section).</li>
+    </ul>
+  </section>
+
+  <div class="pagebreak-guide"></div>
+
+  <section>
+    <h4 style="color:var(--brand);">Risk-reducing options</h4>
+    <ul class="screen"><li>Low-dose aspirin (81 mg) to lower bowel cancer risk; reassess bleeding risk yearly.</li><li>Hysterectomy reasonable after childbearing; ovarian (BSO) decision individualized.</li><li>Not smoking, limiting alcohol, activity, healthy weight, fibre-rich diet.</li></ul>
+  </section>
+
+  <section>
+    <div class="rec red"><span class="rlbl">Red flags &mdash; when to escalate</span><ul style="margin:6px 0 0;padding-left:18px;"><li>New colorectal or unusual cancer before a scheduled scope</li><li>Abnormal uterine bleeding (women) &mdash; prompt endometrial evaluation</li><li>Strong or shifting family cancer history &mdash; re-refer to genetics</li><li>New or evolving family history that raises the suspected risk tier</li></ul></div>
+  </section>
+
+  <footer class="doc-footer">
+    <p>Full protocol, references, and detail: <a href="msh6.html" style="color:var(--brand);font-weight:700;">msh6.html</a></p>
+    <p style="font-size:12px;color:var(--ink-faint);margin-top:6px;">This summary supports, and does not replace, clinical judgment and the full protocol. Consensus-only measures are marked in the full document. Guidelines (NCCN, GeneReviews, SOGC) consulted June 2026; verify current versions.</p>
+  </footer>
+  </div>
+
+  <div id="lang-fr" hidden>
+  <header class="masthead" style="padding-top:18px;">
+    <p class="eyebrow">Sommaire de référence rapide</p>
+    <h1 class="title">Syndrome de Lynch lié à MSH6</h1>
+    <p class="standfirst" style="margin-bottom:6px;">À prédominance endométriale; risque colorectal plus faible et plus tardif &nbsp; <span class="risk-pill mid">Endomètre 16&ndash;49&nbsp;% &middot; CCR 20&ndash;44&nbsp;%</span></p>
+    <p class="byline" style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;color:var(--ink-soft);margin:6px 0 0;">Dr Andrew Shuen, Dr William Foulkes, Dre Polymnia Galiatsatos &middot; Centre de prévention du cancer, HGJ, Montréal</p>
+  </header>
+
+  <section style="margin-top:8px;">
+    <div class="patient-card"><p class="lbl"><i class="ti ti-heart-handshake"></i> Ce que cela signifie pour vous</p><p>MSH6 se comporte différemment de MLH1 et MSH2 : le risque utérin (endométrial) est élevé, tandis que le risque de cancer de l'intestin est plus faible et tend à apparaître plus tard. Le dépistage en tient compte. La coloscopie peut souvent débuter un peu plus tard, vers 30 à 35 ans, et la vigilance gynécologique est particulièrement importante, car les saignements anormaux sont habituellement un signe précoce et traitable. Une faible dose quotidienne d'aspirine réduit tout de même le risque.</p></div>
+  </section>
+
+  <section>
+    <h4 style="color:var(--brand);">Risque à vie par site</h4>
+    <p><span class="risk-pill hi" style="margin:3px 5px 3px 0; display:inline-block;">Endomètre (utérus): 16&ndash;49%</span><span class="risk-pill mid" style="margin:3px 5px 3px 0; display:inline-block;">Cancer colorectal (CCR): 20&ndash;44%</span><span class="risk-pill mid" style="margin:3px 5px 3px 0; display:inline-block;">Ovaire: ~1&ndash;11% (variable)</span><span class="risk-pill lo" style="margin:3px 5px 3px 0; display:inline-block;">Sein (émergent): ~2&times; population (unconfirmed)</span><span class="risk-pill lo" style="margin:3px 5px 3px 0; display:inline-block;">Estomac / urinaire / autre: low (&lt;1&ndash;few %)</span></p>
+  </section>
+
+  <section>
+    <h4 style="color:var(--brand);">Surveillance clé en un coup d'œil</h4>
+    <ul class="screen">
+      <li><i class="ti ti-circle-check"></i> <span class="organ">Côlon-rectum:</span> selon le NCCN, coloscopie dès 30&ndash;35 ans (ou 2&ndash;5 ans avant le cas familial le plus jeune si diagnostiqué avant 30 ans), tous les 1&ndash;3 ans, reflétant un risque plus faible et plus tardif que MLH1/MSH2.</li>
+      <li><i class="ti ti-circle-check"></i> <span class="organ">Endomètre / ovaire:</span> le risque prédominant &mdash; éducation soutenue sur les saignements anormaux (habituellement précoces et curables); biopsie de l'endomètre pour évaluer les symptômes; hystérectomie + SOB de réduction du risque après la grossesse (voir section chirurgie).</li>
+    </ul>
+  </section>
+
+  <div class="pagebreak-guide"></div>
+
+  <section>
+    <h4 style="color:var(--brand);">Options de réduction du risque</h4>
+    <ul class="screen"><li>Faible dose d'aspirine (81 mg) pour réduire le risque de cancer de l'intestin; réévaluer le risque de saignement chaque année.</li><li>Hystérectomie raisonnable après la grossesse; décision ovarienne (SOB) individualisée.</li><li>Ne pas fumer, limiter l'alcool, activité physique, poids santé, alimentation riche en fibres.</li></ul>
+  </section>
+
+  <section>
+    <div class="rec red"><span class="rlbl">Signaux d'alarme &mdash; quand intensifier</span><ul style="margin:6px 0 0;padding-left:18px;"><li>Nouveau cancer colorectal ou inhabituel avant une coloscopie prévue</li><li>Saignement utérin anormal (femmes) &mdash; évaluation endométriale rapide</li><li>Antécédents familiaux marqués ou changeants &mdash; réorienter en génétique</li><li>Antécédents familiaux nouveaux ou évolutifs élevant le niveau de risque présumé</li></ul></div>
+  </section>
+
+  <footer class="doc-footer">
+    <p>Protocole complet, références et détails&nbsp;: <a href="msh6.html" style="color:var(--brand);font-weight:700;">msh6.html</a></p>
+    <p style="font-size:12px;color:var(--ink-faint);margin-top:6px;">Ce sommaire appuie, sans le remplacer, le jugement clinique et le protocole complet. Les mesures fondées uniquement sur un consensus sont indiquées dans le document complet. Lignes directrices (NCCN, GeneReviews, SOGC) consultées en juin 2026; vérifier les versions actuelles.</p>
+  </footer>
+  </div>
+
+</div>
+<script>
+  function setLang(l){
+    var en=document.getElementById('lang-en'), fr=document.getElementById('lang-fr');
+    var be=document.getElementById('btn-en'), bf=document.getElementById('btn-fr');
+    var se=document.getElementById('seg-en'), sf=document.getElementById('seg-fr');
+    if(l==='fr'){ en.hidden=true; fr.hidden=false; bf.classList.add('active'); be.classList.remove('active'); if(se)se.hidden=true; if(sf)sf.hidden=false; document.documentElement.lang='fr'; }
+    else { fr.hidden=true; en.hidden=false; be.classList.add('active'); bf.classList.remove('active'); if(sf)sf.hidden=true; if(se)se.hidden=false; document.documentElement.lang='en'; }
+  }
+  function togglePdfView(){
+    var on=document.body.classList.toggle('pdf-preview');
+    var b=document.getElementById('btn-pdfview'), lbl=document.getElementById('pdfview-label');
+    if(on){ b.classList.add('active'); lbl.textContent='Exit PDF view'; } else { b.classList.remove('active'); lbl.textContent='PDF view'; }
+  }
+</script>
+</body>
+</html>

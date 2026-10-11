@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chorionic villus sampling (CVS) — Patient guide</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+  :root{
+    --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+    --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+    --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+    --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+    --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+    --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+    --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+    --radius:14px; --radius-sm:9px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:18px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 22px 80px;}
+  .ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; line-height:1.2;}
+  a{color:var(--brand); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  /* Language toggle */
+  .langbar{
+    position:sticky; top:0; z-index:50; background:var(--paper);
+    border-bottom:1px solid var(--line); padding:10px 22px;
+    display:flex; gap:8px; justify-content:space-between; align-items:center;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .langbar-left{display:flex; gap:8px; align-items:center;}
+  .langbar-right{display:flex; gap:8px; align-items:center;}
+  .langbar button{
+    border:1px solid var(--brand-line); background:var(--paper); color:var(--brand-dark);
+    padding:7px 18px; border-radius:999px; cursor:pointer; font-size:14px; font-weight:600;
+    letter-spacing:.02em;
+  }
+  .langbar-right button.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+  .langbar .util-btn{border-color:var(--line); color:var(--ink-soft); padding:7px 14px;
+    display:inline-flex; align-items:center; gap:6px;}
+  .langbar .util-btn:hover{background:var(--cream); color:var(--brand-dark); border-color:var(--brand-line);}
+  .langbar .util-btn.active{background:var(--brand-bg); color:var(--brand-dark); border-color:var(--brand-line);}
+  @media(max-width:560px){
+    .langbar{flex-wrap:wrap; gap:8px;}
+    .langbar .util-btn{padding:7px 11px; font-size:13px;}
+  }
+
+  /* Masthead */
+  .masthead{padding:46px 0 26px; border-bottom:3px double var(--line);}
+  .eyebrow{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; text-transform:uppercase;
+    letter-spacing:.16em; font-size:12px; color:var(--brand-dark); font-weight:700;}
+  .masthead h1{font-size:38px; margin:12px 0 8px;}
+  .standfirst{font-size:20px; color:var(--ink-soft); margin:0 0 22px;}
+  .authpanel{
+    background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:16px 18px; font-size:15.5px; color:var(--ink-soft);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .authpanel strong{color:var(--ink);}
+  .meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .chip{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+    background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);
+    padding:5px 11px; border-radius:999px; font-weight:600;}
+  .legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:18px; font-size:13.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--ink-soft);}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .swatch{width:14px; height:14px; border-radius:4px; display:inline-block;}
+
+  /* TOC */
+  .toc{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 24px; margin:30px 0; }
+  .toc h2{font-size:15px; text-transform:uppercase; letter-spacing:.12em; margin:0 0 14px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--brand-dark);}
+  .toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:15.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .toc li{margin-bottom:8px; break-inside:avoid;}
+  @media(max-width:640px){.toc ol{columns:1;}}
+
+  /* Sections */
+  section{padding:30px 0; border-top:1px solid var(--line-soft);}
+  .secnum{display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px;
+    background:var(--brand); color:#fff; border-radius:9px; font-weight:700; font-size:17px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; margin-right:12px; vertical-align:middle;}
+  h2.sec{font-size:27px; margin:0 0 16px; display:flex; align-items:center;}
+  h3{font-size:20px; color:var(--brand-dark); margin:26px 0 8px;}
+
+  /* Patient panel */
+  .patient{background:var(--brand-bg); border:1px solid var(--brand-line);
+    border-radius:var(--radius); padding:18px 20px; margin:14px 0 20px;}
+  .patient .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px;
+    text-transform:uppercase; letter-spacing:.13em; color:var(--brand-dark); font-weight:700;
+    display:flex; align-items:center; gap:7px; margin-bottom:8px;}
+  .patient p{margin:8px 0; color:#1f3a4d;}
+
+  /* Gene/subtype pill header */
+  .genehead{display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin:24px 0 6px;}
+  .genepill{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+    background:var(--ink); color:#fff; padding:6px 14px; border-radius:8px; font-size:15px;}
+  .badge{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; font-weight:700;
+    padding:4px 11px; border-radius:999px;}
+  .badge.high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+  .badge.mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+  .badge.low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+  /* Checklist */
+  .check{list-style:none; padding:0; margin:14px 0;}
+  .check li{display:flex; gap:11px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+    align-items:flex-start;}
+  .check li i{font-size:20px; flex-shrink:0; margin-top:1px;}
+  .ti-check{color:var(--brand);} .ti-minus{color:var(--ink-faint);} .ti-x{color:var(--red);}
+  .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.06em; padding:2px 8px; border-radius:5px; margin-left:6px;
+    white-space:nowrap;}
+  .tag.routine{background:var(--brand-bg); color:var(--brand-dark);}
+  .tag.optional{background:var(--amber-bg); color:var(--amber);}
+  .tag.notrec{background:var(--line-soft); color:var(--ink-faint);}
+
+  /* Tables */
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:15.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  th,td{text-align:left; padding:11px 13px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{background:var(--cream); color:var(--brand-dark); font-size:13px; text-transform:uppercase;
+    letter-spacing:.05em;}
+  .pill{display:inline-block; padding:3px 10px; border-radius:999px; font-size:12.5px; font-weight:700;}
+  .pill.high{background:var(--red-bg); color:var(--red);}
+  .pill.mod{background:var(--amber-bg); color:var(--amber);}
+  .pill.low{background:var(--brand-bg); color:var(--brand-dark);}
+
+  /* Callouts */
+  .rec{background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:14px 18px; margin:16px 0;}
+  .info{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm);
+    padding:14px 18px; margin:16px 0;}
+  .info .ptag, .emerging .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px;
+    text-transform:uppercase; letter-spacing:.13em; font-weight:700; display:flex; align-items:center;
+    gap:7px; margin-bottom:6px;}
+  .info .ptag{color:var(--brand-dark);}
+  .emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm);
+    padding:14px 18px; margin:16px 0;}
+  .emerging .ptag{color:var(--purple);}
+
+  /* Summary cards */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin:18px 0;}
+  .card{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand);
+    border-radius:var(--radius-sm); padding:15px 17px; font-size:15px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .card h4{margin:0 0 7px; font-size:15px; color:var(--brand-dark);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .card.amber{border-top-color:var(--amber-line);}
+  .card.amber h4{color:var(--amber);}
+
+  /* References */
+  ol.refs{font-size:14.5px; color:var(--ink-soft); line-height:1.5;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; padding-left:22px;}
+  ol.refs li{margin-bottom:10px;}
+
+  .footer{margin-top:40px; padding-top:18px; border-top:3px double var(--line);
+    font-size:13.5px; color:var(--ink-faint); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+  .lang-fr{display:none;}
+
+  /* ============== ON-SCREEN PDF PREVIEW (mirrors print layout) ============== */
+  body.pdf-preview{background:#5b6b78;}
+  body.pdf-preview .wrap{
+    max-width:816px;            /* 8.5in at 96dpi */
+    background:#fff; margin:24px auto 60px;
+    padding:54px 57px;          /* ~ Letter margins */
+    box-shadow:0 6px 28px rgba(0,0,0,.28); border-radius:2px;
+  }
+  body.pdf-preview{font-size:14px; line-height:1.45;}
+  body.pdf-preview .toc{display:none;}
+  body.pdf-preview .masthead{padding:0 0 16px; margin-bottom:6px;}
+  body.pdf-preview .masthead h1{font-size:30px; margin:8px 0 6px;}
+  body.pdf-preview .standfirst{font-size:16px; margin-bottom:16px;}
+  body.pdf-preview section{padding:14px 0;}
+  body.pdf-preview h2.sec{font-size:20px; margin:0 0 9px;}
+  body.pdf-preview .secnum{width:28px; height:28px; font-size:15px; margin-right:10px;}
+  body.pdf-preview h3{font-size:15.5px; margin:14px 0 5px;}
+  body.pdf-preview .patient{margin:9px 0 13px; padding:12px 15px;}
+  body.pdf-preview .patient p{margin:6px 0;}
+  body.pdf-preview .check li{padding:7px 0;}
+  body.pdf-preview table{font-size:12.5px;}
+  body.pdf-preview .rec,
+  body.pdf-preview .info,
+  body.pdf-preview .emerging{font-size:13px; padding:11px 14px;}
+  body.pdf-preview .cards{grid-template-columns:1fr 1fr; gap:11px;}
+  body.pdf-preview .card{font-size:13px;}
+  body.pdf-preview ol.refs{font-size:12.5px;}
+  /* visual page-break guides matching the forced print breaks */
+  body.pdf-preview #en7,
+  body.pdf-preview #fr7{
+    border-top:2px dashed var(--brand-line); margin-top:14px; padding-top:20px;
+    position:relative;
+  }
+  body.pdf-preview #en7::before,
+  body.pdf-preview #fr7::before{
+    content:"\2702  new page in PDF"; position:absolute; top:-9px; right:0;
+    background:#fff; padding:0 8px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:10px; color:var(--brand-dark); letter-spacing:.04em;
+  }
+
+  /* ===================== PRINT / PDF ===================== */
+  @page{
+    size:Letter;
+    margin:16mm 15mm 15mm;
+  }
+  @media print{
+    :root{ --cream:#fff; }
+    html,body{background:#fff !important;}
+    body{
+      font-size:10.5pt; line-height:1.4; color:#15212b;
+      -webkit-print-color-adjust:exact; print-color-adjust:exact;
+    }
+    .wrap{max-width:100%; padding:0;}
+
+    /* Hide on-screen UI; print only the active language */
+    .langbar{display:none !important;}
+    .toc{display:none !important;}                 /* TOC not useful in a flat PDF */
+    .lang-fr[style*="block"]{}                      /* respect JS-set display */
+
+    a{color:#15212b !important; text-decoration:none;}
+
+    /* Masthead tightened, centred feel, no oversize gaps */
+    .masthead{padding:0 0 14px; margin-bottom:6px;}
+    .masthead h1{font-size:23pt; margin:8px 0 6px;}
+    .standfirst{font-size:12pt; margin-bottom:14px;}
+    .eyebrow{font-size:8.5pt;}
+    .authpanel{font-size:10pt; padding:10px 12px;}
+    .meta{margin-top:10px;}
+    .chip{font-size:8.5pt; padding:3px 8px;}
+    .legend{font-size:9pt; margin-top:12px; gap:12px;}
+
+    /* Section flow: avoid orphaned headers, keep blocks intact */
+    section{
+      padding:12px 0; border-top:1px solid var(--line-soft);
+      break-inside:auto;
+    }
+    h2.sec{
+      font-size:15pt; margin:0 0 8px;
+      break-after:avoid; page-break-after:avoid;
+    }
+    h3{
+      font-size:11.5pt; margin:12px 0 4px;
+      break-after:avoid; page-break-after:avoid;
+    }
+    .secnum{width:26px; height:26px; font-size:12pt; margin-right:9px;}
+
+    /* Keep cohesive units together */
+    .patient,.rec,.info,.emerging,.card,
+    .genehead,.check li,tr,thead,
+    .cards .card{
+      break-inside:avoid; page-break-inside:avoid;
+    }
+    .genehead{break-after:avoid; page-break-after:avoid;}
+    .patient{margin:8px 0 12px; padding:11px 14px;}
+    .patient p{margin:5px 0;}
+
+    /* Checklists tighter */
+    .check li{padding:6px 0;}
+    .check li i{font-size:13pt;}
+    .tag{font-size:7.5pt; padding:1px 6px;}
+
+    /* Tables print cleanly, headers repeat across page breaks */
+    table{font-size:9pt; margin:10px 0; break-inside:auto;}
+    thead{display:table-header-group;}
+    th,td{padding:6px 8px;}
+    .pill{font-size:8pt; padding:2px 7px;}
+
+    /* Callouts */
+    .rec,.info,.emerging{padding:9px 12px; margin:10px 0; font-size:9.5pt;}
+    .info .ptag,.emerging .ptag,.patient .ptag{font-size:8.5pt; margin-bottom:4px;}
+
+    /* Summary cards: 2-up grid that fits the page width */
+    .cards{
+      grid-template-columns:1fr 1fr; gap:9px; margin:10px 0;
+      break-inside:auto;
+    }
+    .card{padding:10px 12px; font-size:9.5pt;}
+    .card h4{font-size:10pt; margin-bottom:5px;}
+
+    /* References: avoid splitting a single citation across pages */
+    ol.refs{font-size:9pt;}
+    ol.refs li{margin-bottom:6px; break-inside:avoid; page-break-inside:avoid;}
+
+    /* Each major section can start fresh if it would otherwise be cramped;
+       use sparingly: force a fresh page before the summary and references */
+    #en7, #fr7{ break-before:page; page-break-before:always; }
+
+    .footer{
+      margin-top:18px; padding-top:12px; font-size:8.5pt;
+      break-inside:avoid;
+    }
+
+    /* Repeating running footer with page numbers */
+    @page{
+      @bottom-center{
+        content:"Chorionic villus sampling (CVS)";
+        font-family:Helvetica,Arial,sans-serif; font-size:7.5pt; color:#6a7681;
+      }
+      @bottom-right{
+        content:"Page " counter(page) " of " counter(pages);
+        font-family:Helvetica,Arial,sans-serif; font-size:7.5pt; color:#6a7681;
+      }
+    }
+  }
+
+  /* ---- figures (ported from primer, ATM palette) ---- */
+  .fig{margin:18px 0 6px; border:1px solid var(--line); border-radius:var(--radius);
+    background:#fbfdfe; padding:18px 16px 12px;}
+  .fig svg{width:100%; height:auto; display:block;}
+  .fig figcaption{margin-top:10px; font-size:13px; color:var(--ink-faint); line-height:1.45;
+    text-align:center; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .fig-key{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--brand-dark); font-weight:700;}
+  .fig text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  @media print{
+    .fig{break-inside:avoid; page-break-inside:avoid; padding:10px 12px; margin:10px 0 4px;}
+    .fig figcaption{font-size:8.5pt;}
+  }
+</style>
+</head>
+<body>
+<div class="langbar ui">
+  <div class="langbar-left">
+    <button id="btn-pdf" class="util-btn" onclick="togglePdfView()" title="Preview the print/PDF layout on screen"><i class="ti ti-file-type-pdf"></i> PDF view</button>
+    <button id="btn-print" class="util-btn" onclick="window.print()" title="Print or save as PDF"><i class="ti ti-printer"></i> Print / Save PDF</button>
+    <a class="util-btn" href="index.html" title="Back to all protocols" style="text-decoration:none"><i class="ti ti-arrow-left"></i> All protocols</a>
+  </div>
+  <div class="langbar-right">
+    <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+    <button id="btn-fr" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+<div class="wrap">
+<div class="lang-en" id="lang-en"><header class="masthead"><div class="eyebrow">Patient Education · Genetic Testing</div><h1>Chorionic villus sampling (CVS)</h1><p class="standfirst">An early prenatal procedure that takes a tiny sample of the placenta, so its DNA can be tested for diagnosis.</p><div class="authpanel"><strong>Dr. Andrew Shuen, MD PhD FRCPC DABMGG</strong><br>Medical Genetics, Jewish General Hospital (JGH), Montreal</div><div class="meta"><span class="chip">Prenatal sampling</span><span class="chip">A sampling procedure</span><span class="chip">Usually 11–14 weeks</span><span class="chip">Gives a diagnosis</span></div></header><nav class="toc ui"><h2>Contents</h2><ol><li><a href="#en1">What it is</a></li><li><a href="#en2">What it makes possible</a></li><li><a href="#en3">How it works</a></li><li><a href="#en4">What it allows</a></li><li><a href="#en5">Things to know</a></li><li><a href="#en6">What to expect</a></li><li><a href="#en7">Sorting out the words</a></li><li><a href="#en8">Remember</a></li></ol></nav><section id="en1"><h2 class="sec"><span class="secnum">1</span> What it is</h2><div class="patient"><div class="ptag"><i class="ti ti-user-heart"></i> For patients</div><p>CVS is a procedure, not a laboratory test in itself: it collects a small sample of the placenta (chorionic villi) early in pregnancy so that the DNA in it can be tested. Because the placenta shares the baby's DNA, this gives a diagnostic answer rather than a screen. It is usually offered when there is a specific reason to seek a clear answer, such as a higher-chance screening result.</p></div><div class="analogy"><i class="ti ti-book"></i> CVS gathers the actual pages to be read; the diagnosis comes from the laboratory test — karyotype, microarray, or a single-gene test — run on them.</div><figure class="fig"><svg viewBox="0 0 700 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scale of DNA from one letter to the whole genome, with the part read by Chorionic villus sampling (CVS) highlighted."><line x1="40" y1="96" x2="660" y2="96" stroke="var(--line)" stroke-width="2"/><rect x="55" y="60" width="24" height="34" rx="6" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/><text x="67.0" y="82" text-anchor="middle" font-size="13" fill="var(--brand-dark)" font-weight="700">one letter</text><line x1="55" y1="94" x2="55" y2="100" stroke="var(--line)" stroke-width="1.5"/><rect x="150" y="60" width="120" height="34" rx="6" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/><text x="210.0" y="82" text-anchor="middle" font-size="13" fill="var(--brand-dark)" font-weight="700">one gene</text><line x1="150" y1="94" x2="150" y2="100" stroke="var(--line)" stroke-width="1.5"/><rect x="300" y="60" width="200" height="34" rx="6" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/><text x="400.0" y="82" text-anchor="middle" font-size="13" fill="var(--brand-dark)" font-weight="700">one chromosome</text><line x1="300" y1="94" x2="300" y2="100" stroke="var(--line)" stroke-width="1.5"/><rect x="500" y="60" width="150" height="34" rx="6" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/><text x="575.0" y="82" text-anchor="middle" font-size="13" fill="var(--brand-dark)" font-weight="700">whole genome</text><line x1="500" y1="94" x2="500" y2="100" stroke="var(--line)" stroke-width="1.5"/><text x="40" y="36" font-size="13" fill="var(--brand-dark)" font-weight="700">What this test reads</text><text x="40" y="124" font-size="12" fill="var(--ink-faint)">smaller → larger stretch of DNA</text></svg><figcaption data-en="How much of your DNA this test reads: the highlighted block shows the scale it works at." data-fr="Quelle part de votre ADN ce test lit : le bloc en surbrillance indique l'échelle à laquelle il fonctionne.">How much of your DNA this test reads: the highlighted block shows the scale it works at.</figcaption></figure></section><section id="en2"><h2 class="sec"><span class="secnum">2</span> What it makes possible</h2><p>Once collected, the sample can be sent for whichever test answers the question — a karyotype or microarray for chromosomes, or a single-gene test if a specific condition is known in the family. CVS can be done earlier in pregnancy than amniocentesis, which is one reason it may be chosen.</p><figure class="fig"><svg viewBox="0 0 680 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram illustrating Chorionic villus sampling (CVS)"><text x="20" y="24" font-size="13" font-weight="700" fill="var(--brand-dark)">Around 11–14 weeks: a sample of the placenta</text><path d="M120 60 C70 60 60 150 130 175 C200 150 190 60 140 60 Z" fill="#fbf3f6" stroke="var(--ink-faint)" stroke-width="1.5"/><circle cx="130" cy="130" r="22" fill="#f6f8f9" stroke="var(--ink-faint)"/><path d="M95 80 A40 40 0 0 1 165 86" fill="none" stroke="var(--brand)" stroke-width="9" stroke-linecap="round"/><line x1="230" y1="70" x2="150" y2="105" stroke="var(--red)" stroke-width="2.5"/><text x="250" y="74" font-size="12" fill="var(--ink-soft)">placenta sampled</text><path d="M250 120 l40 0 m-8 -6 l8 6 l-8 6" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="300" y="104" width="360" height="34" rx="8" fill="var(--brand-bg)" stroke="var(--brand-line)"/><text x="480" y="126" text-anchor="middle" font-size="12" fill="var(--brand-dark)" font-weight="700">lab test runs on the sample (karyotype, array, or single-gene)</text></svg><figcaption data-en="CVS collects a small placental sample; the diagnosis comes from the lab test run on it." data-fr="Le PVC prélève un petit échantillon placentaire; le diagnostic vient du test de laboratoire réalisé sur celui-ci.">CVS collects a small placental sample; the diagnosis comes from the lab test run on it.</figcaption></figure></section><section id="en3"><h2 class="sec"><span class="secnum">3</span> How it works</h2><p>Guided by ultrasound, a doctor takes a tiny sample of the placenta (the chorionic villi), either through the abdomen or the cervix. The cells in the sample share the baby's DNA, so they can be sent to whichever laboratory test answers the question — a karyotype or microarray for chromosomes, or a single-gene test for a specific condition known in the family. CVS itself is the collection step; the diagnosis comes from the lab test that follows.</p><figure class="fig"><svg viewBox="0 0 720 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Step diagram showing how Chorionic villus sampling (CVS) goes from sample to result."><rect x="10" y="34" width="156" height="66" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="26" cy="50" r="11" fill="var(--brand)"/><text x="26" y="54" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">1</text><text x="88" y="72" text-anchor="middle" font-size="12.5" fill="var(--ink)">Ultrasound guidance</text><path d="M170 67 l12 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="184" y="34" width="156" height="66" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="200" cy="50" r="11" fill="var(--brand)"/><text x="200" y="54" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">2</text><text x="263" y="72" text-anchor="middle" font-size="12.5" fill="var(--ink)">Placenta sample taken</text><path d="M344 67 l12 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="359" y="34" width="156" height="66" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="375" cy="50" r="11" fill="var(--brand)"/><text x="375" y="54" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">3</text><text x="437" y="72" text-anchor="middle" font-size="12.5" fill="var(--ink)">Sent to lab test</text><path d="M518 67 l12 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="534" y="34" width="156" height="66" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="550" cy="50" r="11" fill="var(--brand)"/><text x="550" y="54" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">4</text><text x="612" y="72" text-anchor="middle" font-size="12.5" fill="var(--ink)">Result interpreted</text></svg><figcaption data-en="From sample to result, step by step." data-fr="De l'échantillon au résultat, étape par étape.">From sample to result, step by step.</figcaption></figure></section><section id="en4"><h2 class="sec"><span class="secnum">4</span> What it allows</h2><ul class="check"><li><i class="ti ti-check"></i> <div>A diagnostic answer earlier in pregnancy than amniocentesis.<span class="tag finds">Finds</span></div></li><li><i class="ti ti-check"></i> <div>Chromosome testing and, when relevant, single-gene testing.<span class="tag finds">Finds</span></div></li><li><i class="ti ti-check"></i> <div>Clear results when a specific condition is being looked for.<span class="tag finds">Finds</span></div></li></ul></section><section id="en5"><h2 class="sec"><span class="secnum">5</span> Things to know</h2><ul class="check"><li><i class="ti ti-x"></i> <div>It tests placental DNA, which very occasionally differs from the baby's.<span class="tag misses">To know</span></div></li><li><i class="ti ti-x"></i> <div>It only answers the questions the laboratory test is set to look at.<span class="tag misses">To know</span></div></li><li><i class="ti ti-x"></i> <div>Like any procedure, it carries a small risk that your team will explain.<span class="tag misses">To know</span></div></li></ul><figure class="fig"><svg viewBox="0 0 690 195" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two columns contrasting what Chorionic villus sampling (CVS) can find versus what it can miss."><rect x="10" y="30" width="320" height="150" rx="12" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><text x="30" y="56" font-size="14" font-weight="700" fill="var(--brand-dark)">Finds</text><path d="M28 78 l5 6 l10 -12" stroke="var(--brand-dark)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="50" y="82" font-size="12.5" fill="var(--ink-soft)">A diagnostic answer earlier in</text><text x="50" y="97" font-size="12.5" fill="var(--ink-soft)">pregnancy than amniocentesis.</text><path d="M28 120 l5 6 l10 -12" stroke="var(--brand-dark)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="50" y="124" font-size="12.5" fill="var(--ink-soft)">Chromosome testing and, when</text><text x="50" y="139" font-size="12.5" fill="var(--ink-soft)">relevant, single-gene testing.</text><path d="M28 162 l5 6 l10 -12" stroke="var(--brand-dark)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="50" y="166" font-size="12.5" fill="var(--ink-soft)">Clear results when a specific</text><text x="50" y="181" font-size="12.5" fill="var(--ink-soft)">condition is being looked for.</text><rect x="360" y="30" width="320" height="150" rx="12" fill="var(--amber-bg)" stroke="var(--amber-line)" stroke-width="1.5"/><text x="380" y="56" font-size="14" font-weight="700" fill="var(--amber)">Can miss</text><path d="M378 73 l11 11 M389 73 l-11 11" stroke="var(--amber)" stroke-width="2.5" stroke-linecap="round"/><text x="400" y="82" font-size="12.5" fill="var(--ink-soft)">It tests placental DNA, which very</text><text x="400" y="97" font-size="12.5" fill="var(--ink-soft)">occasionally differs from the</text><path d="M378 115 l11 11 M389 115 l-11 11" stroke="var(--amber)" stroke-width="2.5" stroke-linecap="round"/><text x="400" y="124" font-size="12.5" fill="var(--ink-soft)">It only answers the questions the</text><text x="400" y="139" font-size="12.5" fill="var(--ink-soft)">laboratory test is set to look at.</text><path d="M378 157 l11 11 M389 157 l-11 11" stroke="var(--amber)" stroke-width="2.5" stroke-linecap="round"/><text x="400" y="166" font-size="12.5" fill="var(--ink-soft)">Like any procedure, it carries a</text><text x="400" y="181" font-size="12.5" fill="var(--ink-soft)">small risk that your team will</text></svg><figcaption data-en="At a glance: what this test can find, and what it cannot." data-fr="En un coup d'œil : ce que ce test peut trouver, et ce qu'il ne peut pas.">At a glance: what this test can find, and what it cannot.</figcaption></figure></section><section id="en6"><h2 class="sec"><span class="secnum">6</span> What to expect</h2><div class="patient"><div class="ptag"><i class="ti ti-clipboard-heart"></i> What to expect</div><p>CVS is usually done between about 11 and 14 weeks of pregnancy, guided by ultrasound. Your obstetric team will explain how the sample is taken, the small risks involved, and how to prepare. Genetic counselling beforehand helps you weigh whether a diagnostic procedure is right for you; it is always your choice.</p></div></section><section id="en7"><h2 class="sec"><span class="secnum">7</span> Sorting out the words</h2><h3>A few terms you may see</h3><table><thead><tr><th>Term</th><th>In plain language</th></tr></thead><tbody><tr><td><strong>Gene</strong></td><td>One “recipe” in your DNA — the instructions for one job.</td></tr><tr><td><strong>Variant</strong></td><td>A change in the spelling of a gene; a “typo.” May or may not matter.</td></tr><tr><td><strong>Chromosome</strong></td><td>A package your DNA is organised into. You have 46.</td></tr><tr><td><strong>Sequencing</strong></td><td>Reading DNA letter by letter.</td></tr><tr><td><strong>Screen vs. diagnosis</strong></td><td>A screen gives a chance; a diagnostic test gives a clearer yes-or-no.</td></tr><tr><td><strong>VUS</strong></td><td>A variant of uncertain significance: an effect not yet known. Not used to guide care.</td></tr></tbody></table><div class="rec"><i class="ti ti-message-circle"></i> If a word on your report is not here, ask your genetics team. There are no bad questions, and lab wording is often more technical than it needs to be.</div></section><section id="en8"><div class="info"><div class="ptag"><i class="ti ti-user-heart"></i> Remember</div><p style="margin:6px 0 0">This is general education and does not replace a consultation. Which test is right for you, and what your result means, is decided together with your genetics team.</p></div></section><div class="footer"><p>This page is patient-education material intended to support, not replace, individual genetic counselling. It explains a category of genetic test in general terms; the exact tests available and their interpretation depend on your situation and the laboratory used. Prepared for Medical Genetics, Jewish General Hospital, Montreal.</p></div></div>
+<div class="lang-fr" id="lang-fr"><header class="masthead"><div class="eyebrow">Information aux patients · Tests génétiques</div><h1>Prélèvement de villosités choriales (PVC)</h1><p class="standfirst">Une intervention prénatale précoce qui prélève un minuscule échantillon du placenta, afin d'en tester l'ADN pour un diagnostic.</p><div class="authpanel"><strong>D<sup>r</sup> Andrew Shuen, MD PhD FRCPC DABMGG</strong><br>Génétique médicale, Hôpital général juif (HGJ), Montréal</div><div class="meta"><span class="chip">Prélèvement prénatal</span><span class="chip">Une intervention de prélèvement</span><span class="chip">Habituellement 11–14 semaines</span><span class="chip">Donne un diagnostic</span></div></header><nav class="toc ui"><h2>Sommaire</h2><ol><li><a href="#fr1">Ce que c'est</a></li><li><a href="#fr2">Ce qu'il rend possible</a></li><li><a href="#fr3">Comment ça fonctionne</a></li><li><a href="#fr4">Ce qu'il permet</a></li><li><a href="#fr5">À savoir</a></li><li><a href="#fr6">à quoi s'attendre</a></li><li><a href="#fr7">Le sens des mots</a></li><li><a href="#fr8">À retenir</a></li></ol></nav><section id="fr1"><h2 class="sec"><span class="secnum">1</span> Ce que c'est</h2><div class="patient"><div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div><p>Le PVC est une intervention, et non un test de laboratoire en soi : il recueille un petit échantillon du placenta (villosités choriales) tôt dans la grossesse afin que l'ADN qu'il contient puisse être testé. Comme le placenta partage l'ADN du bébé, cela donne une réponse diagnostique plutôt qu'un dépistage. Il est habituellement proposé lorsqu'il y a une raison précise de chercher une réponse claire, comme un résultat de dépistage à probabilité plus élevée.</p></div><div class="analogy"><i class="ti ti-book"></i> Le PVC rassemble les pages à lire; le diagnostic vient du test de laboratoire — caryotype, micropuce ou test d'un seul gène — réalisé sur celles-ci.</div><figure class="fig"><svg viewBox="0 0 700 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scale of DNA from one letter to the whole genome, with the part read by Chorionic villus sampling (CVS) highlighted."><line x1="40" y1="96" x2="660" y2="96" stroke="var(--line)" stroke-width="2"/><rect x="55" y="60" width="24" height="34" rx="6" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/><text x="67.0" y="82" text-anchor="middle" font-size="13" fill="var(--brand-dark)" font-weight="700">one letter</text><line x1="55" y1="94" x2="55" y2="100" stroke="var(--line)" stroke-width="1.5"/><rect x="150" y="60" width="120" height="34" rx="6" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/><text x="210.0" y="82" text-anchor="middle" font-size="13" fill="var(--brand-dark)" font-weight="700">one gene</text><line x1="150" y1="94" x2="150" y2="100" stroke="var(--line)" stroke-width="1.5"/><rect x="300" y="60" width="200" height="34" rx="6" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/><text x="400.0" y="82" text-anchor="middle" font-size="13" fill="var(--brand-dark)" font-weight="700">one chromosome</text><line x1="300" y1="94" x2="300" y2="100" stroke="var(--line)" stroke-width="1.5"/><rect x="500" y="60" width="150" height="34" rx="6" fill="var(--brand-bg)" stroke="var(--brand)" stroke-width="2.5"/><text x="575.0" y="82" text-anchor="middle" font-size="13" fill="var(--brand-dark)" font-weight="700">whole genome</text><line x1="500" y1="94" x2="500" y2="100" stroke="var(--line)" stroke-width="1.5"/><text x="40" y="36" font-size="13" fill="var(--brand-dark)" font-weight="700">What this test reads</text><text x="40" y="124" font-size="12" fill="var(--ink-faint)">smaller → larger stretch of DNA</text></svg><figcaption data-en="How much of your DNA this test reads: the highlighted block shows the scale it works at." data-fr="Quelle part de votre ADN ce test lit : le bloc en surbrillance indique l'échelle à laquelle il fonctionne.">Quelle part de votre ADN ce test lit : le bloc en surbrillance indique l'échelle à laquelle il fonctionne.</figcaption></figure></section><section id="fr2"><h2 class="sec"><span class="secnum">2</span> Ce qu'il rend possible</h2><p>Une fois prélevé, l'échantillon peut être envoyé pour le test qui répond à la question — un caryotype ou une micropuce pour les chromosomes, ou un test d'un seul gène si une affection précise est connue dans la famille. Le PVC peut être fait plus tôt dans la grossesse que l'amniocentèse, ce qui est une des raisons de le choisir.</p><figure class="fig"><svg viewBox="0 0 680 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram illustrating Chorionic villus sampling (CVS)"><text x="20" y="24" font-size="13" font-weight="700" fill="var(--brand-dark)">Vers 11–14 semaines : un échantillon du placenta</text><path d="M120 60 C70 60 60 150 130 175 C200 150 190 60 140 60 Z" fill="#fbf3f6" stroke="var(--ink-faint)" stroke-width="1.5"/><circle cx="130" cy="130" r="22" fill="#f6f8f9" stroke="var(--ink-faint)"/><path d="M95 80 A40 40 0 0 1 165 86" fill="none" stroke="var(--brand)" stroke-width="9" stroke-linecap="round"/><line x1="230" y1="70" x2="150" y2="105" stroke="var(--red)" stroke-width="2.5"/><text x="250" y="74" font-size="12" fill="var(--ink-soft)">placenta prélevé</text><path d="M250 120 l40 0 m-8 -6 l8 6 l-8 6" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="300" y="104" width="360" height="34" rx="8" fill="var(--brand-bg)" stroke="var(--brand-line)"/><text x="480" y="126" text-anchor="middle" font-size="12" fill="var(--brand-dark)" font-weight="700">lab test runs on the sample (karyotype, array, or single-gene)</text></svg><figcaption data-en="CVS collects a small placental sample; the diagnosis comes from the lab test run on it." data-fr="Le PVC prélève un petit échantillon placentaire; le diagnostic vient du test de laboratoire réalisé sur celui-ci.">Le PVC prélève un petit échantillon placentaire; le diagnostic vient du test de laboratoire réalisé sur celui-ci.</figcaption></figure></section><section id="fr3"><h2 class="sec"><span class="secnum">3</span> Comment ça fonctionne</h2><p>Guidé par échographie, un médecin prélève un minuscule échantillon du placenta (les villosités choriales), par l'abdomen ou par le col. Les cellules de l'échantillon partagent l'ADN du bébé et peuvent donc être envoyées au test de laboratoire qui répond à la question — un caryotype ou une micropuce pour les chromosomes, ou un test d'un seul gène pour une affection précise connue dans la famille. Le PVC est l'étape de prélèvement; le diagnostic vient du test de laboratoire qui suit.</p><figure class="fig"><svg viewBox="0 0 720 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Step diagram showing how Chorionic villus sampling (CVS) goes from sample to result."><rect x="10" y="34" width="156" height="66" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="26" cy="50" r="11" fill="var(--brand)"/><text x="26" y="54" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">1</text><text x="88" y="72" text-anchor="middle" font-size="12.5" fill="var(--ink)">Guidage échographique</text><path d="M170 67 l12 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="184" y="34" width="156" height="66" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="200" cy="50" r="11" fill="var(--brand)"/><text x="200" y="54" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">2</text><text x="263" y="72" text-anchor="middle" font-size="12.5" fill="var(--ink)">Prélèvement du</text><text x="263" y="87" text-anchor="middle" font-size="12.5" fill="var(--ink)">placenta</text><path d="M344 67 l12 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="359" y="34" width="156" height="66" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="375" cy="50" r="11" fill="var(--brand)"/><text x="375" y="54" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">3</text><text x="437" y="72" text-anchor="middle" font-size="12.5" fill="var(--ink)">Envoyé au test de</text><text x="437" y="87" text-anchor="middle" font-size="12.5" fill="var(--ink)">labo</text><path d="M518 67 l12 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="534" y="34" width="156" height="66" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="550" cy="50" r="11" fill="var(--brand)"/><text x="550" y="54" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">4</text><text x="612" y="72" text-anchor="middle" font-size="12.5" fill="var(--ink)">Résultat interprété</text></svg><figcaption data-en="From sample to result, step by step." data-fr="De l'échantillon au résultat, étape par étape.">De l'échantillon au résultat, étape par étape.</figcaption></figure></section><section id="fr4"><h2 class="sec"><span class="secnum">4</span> Ce qu'il permet</h2><ul class="check"><li><i class="ti ti-check"></i> <div>Une réponse diagnostique plus tôt dans la grossesse que l'amniocentèse.<span class="tag finds">Trouve</span></div></li><li><i class="ti ti-check"></i> <div>Un test chromosomique et, au besoin, un test d'un seul gène.<span class="tag finds">Trouve</span></div></li><li><i class="ti ti-check"></i> <div>Des résultats clairs lorsqu'on recherche une affection précise.<span class="tag finds">Trouve</span></div></li></ul></section><section id="fr5"><h2 class="sec"><span class="secnum">5</span> À savoir</h2><ul class="check"><li><i class="ti ti-x"></i> <div>Il teste l'ADN placentaire, qui diffère très rarement de celui du bébé.<span class="tag misses">À savoir</span></div></li><li><i class="ti ti-x"></i> <div>Il ne répond qu'aux questions que le test de laboratoire est réglé pour examiner.<span class="tag misses">À savoir</span></div></li><li><i class="ti ti-x"></i> <div>Comme toute intervention, il comporte un petit risque que votre équipe vous expliquera.<span class="tag misses">À savoir</span></div></li></ul><figure class="fig"><svg viewBox="0 0 690 195" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two columns contrasting what Chorionic villus sampling (CVS) can find versus what it can miss."><rect x="10" y="30" width="320" height="150" rx="12" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><text x="30" y="56" font-size="14" font-weight="700" fill="var(--brand-dark)">Finds</text><path d="M28 78 l5 6 l10 -12" stroke="var(--brand-dark)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="50" y="82" font-size="12.5" fill="var(--ink-soft)">Une réponse diagnostique plus tôt</text><text x="50" y="97" font-size="12.5" fill="var(--ink-soft)">dans la grossesse que</text><path d="M28 120 l5 6 l10 -12" stroke="var(--brand-dark)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="50" y="124" font-size="12.5" fill="var(--ink-soft)">Un test chromosomique et, au</text><text x="50" y="139" font-size="12.5" fill="var(--ink-soft)">besoin, un test d'un seul gène.</text><path d="M28 162 l5 6 l10 -12" stroke="var(--brand-dark)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="50" y="166" font-size="12.5" fill="var(--ink-soft)">Des résultats clairs lorsqu'on</text><text x="50" y="181" font-size="12.5" fill="var(--ink-soft)">recherche une affection précise.</text><rect x="360" y="30" width="320" height="150" rx="12" fill="var(--amber-bg)" stroke="var(--amber-line)" stroke-width="1.5"/><text x="380" y="56" font-size="14" font-weight="700" fill="var(--amber)">Can miss</text><path d="M378 73 l11 11 M389 73 l-11 11" stroke="var(--amber)" stroke-width="2.5" stroke-linecap="round"/><text x="400" y="82" font-size="12.5" fill="var(--ink-soft)">Il teste l'ADN placentaire, qui</text><text x="400" y="97" font-size="12.5" fill="var(--ink-soft)">diffère très rarement de celui du</text><path d="M378 115 l11 11 M389 115 l-11 11" stroke="var(--amber)" stroke-width="2.5" stroke-linecap="round"/><text x="400" y="124" font-size="12.5" fill="var(--ink-soft)">Il ne répond qu'aux questions que</text><text x="400" y="139" font-size="12.5" fill="var(--ink-soft)">le test de laboratoire est réglé</text><path d="M378 157 l11 11 M389 157 l-11 11" stroke="var(--amber)" stroke-width="2.5" stroke-linecap="round"/><text x="400" y="166" font-size="12.5" fill="var(--ink-soft)">Comme toute intervention, il</text><text x="400" y="181" font-size="12.5" fill="var(--ink-soft)">comporte un petit risque que votre</text></svg><figcaption data-en="At a glance: what this test can find, and what it cannot." data-fr="En un coup d'œil : ce que ce test peut trouver, et ce qu'il ne peut pas.">En un coup d'œil : ce que ce test peut trouver, et ce qu'il ne peut pas.</figcaption></figure></section><section id="fr6"><h2 class="sec"><span class="secnum">6</span> à quoi s'attendre</h2><div class="patient"><div class="ptag"><i class="ti ti-clipboard-heart"></i> À quoi s'attendre</div><p>Le PVC est habituellement réalisé entre environ 11 et 14 semaines de grossesse, guidé par échographie. Votre équipe d'obstétrique vous expliquera comment l'échantillon est prélevé, les petits risques en jeu et comment vous préparer. Un conseil génétique au préalable vous aide à évaluer si une intervention diagnostique vous convient; c'est toujours votre choix.</p></div></section><section id="fr7"><h2 class="sec"><span class="secnum">7</span> Le sens des mots</h2><h3>Quelques termes que vous pourriez voir</h3><table><thead><tr><th>Terme</th><th>En langage simple</th></tr></thead><tbody><tr><td><strong>Gène</strong></td><td>Une « recette » dans votre ADN — les instructions pour une tâche.</td></tr><tr><td><strong>Variant</strong></td><td>Un changement dans l'orthographe d'un gène; une « faute de frappe ». Peut compter ou non.</td></tr><tr><td><strong>Chromosome</strong></td><td>Un paquet dans lequel votre ADN est organisé. Vous en avez 46.</td></tr><tr><td><strong>Séquençage</strong></td><td>Lire l'ADN lettre par lettre.</td></tr><tr><td><strong>Dépistage vs diagnostic</strong></td><td>Un dépistage donne une probabilité; un test diagnostique donne un oui-ou-non plus clair.</td></tr><tr><td><strong>VSI</strong></td><td>Un variant de signification incertaine : un effet pas encore connu. Non utilisé pour guider les soins.</td></tr></tbody></table><div class="rec"><i class="ti ti-message-circle"></i> Si un mot de votre rapport ne figure pas ici, demandez à votre équipe de génétique. Il n'y a pas de mauvaises questions, et le vocabulaire des laboratoires est souvent plus technique qu'il n'a besoin de l'être.</div></section><section id="fr8"><div class="info"><div class="ptag"><i class="ti ti-user-heart"></i> À retenir</div><p style="margin:6px 0 0">Ceci est de l'information générale et ne remplace pas une consultation. Le test qui vous convient, et ce que votre résultat signifie, se décident avec votre équipe de génétique.</p></div></section><div class="footer"><p>Cette page est un document d'information destiné aux patients, visant à soutenir, et non à remplacer, le conseil génétique individuel. Elle explique en termes généraux une catégorie de test génétique; les tests exacts offerts et leur interprétation dépendent de votre situation et du laboratoire utilisé. Préparé pour la Génétique médicale, Hôpital général juif, Montréal.</p></div></div>
+</div>
+<script>
+function setLang(l){
+  document.getElementById('lang-en').style.display=(l==='en')?'block':'none';
+  document.getElementById('lang-fr').style.display=(l==='fr')?'block':'none';
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.getElementById('btn-fr').classList.toggle('active',l==='fr');
+  document.documentElement.lang=l; window.scrollTo(0,0);
+}
+function togglePdfView(){
+  var on=document.body.classList.toggle('pdf-preview');
+  document.getElementById('btn-pdf').classList.toggle('active',on);
+  window.scrollTo(0,0);
+}
+setLang('en');
+</script>
+</body>
+</html>

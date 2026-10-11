@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATM Hereditary Cancer Surveillance Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+  :root{
+    --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+    --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+    --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+    --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+    --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+    --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+    --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+    --radius:14px; --radius-sm:9px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:18px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 22px 80px;}
+  .ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; line-height:1.2;}
+  a{color:var(--brand); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  /* Language toggle */
+  .langbar{
+    position:sticky; top:0; z-index:50; background:var(--paper);
+    border-bottom:1px solid var(--line); padding:10px 22px;
+    display:flex; gap:8px; justify-content:space-between; align-items:center;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .langbar-left{display:flex; gap:8px; align-items:center;}
+  .langbar-right{display:flex; gap:8px; align-items:center;}
+  .langbar button{
+    border:1px solid var(--brand-line); background:var(--paper); color:var(--brand-dark);
+    padding:7px 18px; border-radius:999px; cursor:pointer; font-size:14px; font-weight:600;
+    letter-spacing:.02em;
+  }
+  .langbar-right button.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+  .langbar .util-btn{border-color:var(--line); color:var(--ink-soft); padding:7px 14px;
+    display:inline-flex; align-items:center; gap:6px;}
+  .langbar .util-btn:hover{background:var(--cream); color:var(--brand-dark); border-color:var(--brand-line);}
+  .langbar .util-btn.active{background:var(--brand-bg); color:var(--brand-dark); border-color:var(--brand-line);}
+  @media(max-width:560px){
+    .langbar{flex-wrap:wrap; gap:8px;}
+    .langbar .util-btn{padding:7px 11px; font-size:13px;}
+  }
+
+  /* Masthead */
+  .masthead{padding:46px 0 26px; border-bottom:3px double var(--line);}
+  .eyebrow{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; text-transform:uppercase;
+    letter-spacing:.16em; font-size:12px; color:var(--brand-dark); font-weight:700;}
+  .masthead h1{font-size:38px; margin:12px 0 8px;}
+  .standfirst{font-size:20px; color:var(--ink-soft); margin:0 0 22px;}
+  .authpanel{
+    background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:16px 18px; font-size:15.5px; color:var(--ink-soft);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .authpanel strong{color:var(--ink);}
+  .meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .chip{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+    background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);
+    padding:5px 11px; border-radius:999px; font-weight:600;}
+  .legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:18px; font-size:13.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--ink-soft);}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .swatch{width:14px; height:14px; border-radius:4px; display:inline-block;}
+
+  /* TOC */
+  .toc{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 24px; margin:30px 0; }
+  .toc h2{font-size:15px; text-transform:uppercase; letter-spacing:.12em; margin:0 0 14px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--brand-dark);}
+  .toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:15.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .toc li{margin-bottom:8px; break-inside:avoid;}
+  @media(max-width:640px){.toc ol{columns:1;}}
+
+  /* Sections */
+  section{padding:30px 0; border-top:1px solid var(--line-soft);}
+  .secnum{display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px;
+    background:var(--brand); color:#fff; border-radius:9px; font-weight:700; font-size:17px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; margin-right:12px; vertical-align:middle;}
+  h2.sec{font-size:27px; margin:0 0 16px; display:flex; align-items:center;}
+  h3{font-size:20px; color:var(--brand-dark); margin:26px 0 8px;}
+
+  /* Patient panel */
+  .patient{background:var(--brand-bg); border:1px solid var(--brand-line);
+    border-radius:var(--radius); padding:18px 20px; margin:14px 0 20px;}
+  .patient .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px;
+    text-transform:uppercase; letter-spacing:.13em; color:var(--brand-dark); font-weight:700;
+    display:flex; align-items:center; gap:7px; margin-bottom:8px;}
+  .patient p{margin:8px 0; color:#1f3a4d;}
+
+  /* Gene/subtype pill header */
+  .genehead{display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin:24px 0 6px;}
+  .genepill{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+    background:var(--ink); color:#fff; padding:6px 14px; border-radius:8px; font-size:15px;}
+  .badge{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; font-weight:700;
+    padding:4px 11px; border-radius:999px;}
+  .badge.high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+  .badge.mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+  .badge.low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+  /* Checklist */
+  .check{list-style:none; padding:0; margin:14px 0;}
+  .check li{display:flex; gap:11px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+    align-items:flex-start;}
+  .check li i{font-size:20px; flex-shrink:0; margin-top:1px;}
+  .ti-check{color:var(--brand);} .ti-minus{color:var(--ink-faint);} .ti-x{color:var(--red);}
+  .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.06em; padding:2px 8px; border-radius:5px; margin-left:6px;
+    white-space:nowrap;}
+  .tag.routine{background:var(--brand-bg); color:var(--brand-dark);}
+  .tag.optional{background:var(--amber-bg); color:var(--amber);}
+  .tag.notrec{background:var(--line-soft); color:var(--ink-faint);}
+
+  /* Tables */
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:15.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  th,td{text-align:left; padding:11px 13px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{background:var(--cream); color:var(--brand-dark); font-size:13px; text-transform:uppercase;
+    letter-spacing:.05em;}
+  .pill{display:inline-block; padding:3px 10px; border-radius:999px; font-size:12.5px; font-weight:700;}
+  .pill.high{background:var(--red-bg); color:var(--red);}
+  .pill.mod{background:var(--amber-bg); color:var(--amber);}
+  .pill.low{background:var(--brand-bg); color:var(--brand-dark);}
+
+  /* Callouts */
+  .rec{background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:14px 18px; margin:16px 0;}
+  .info{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm);
+    padding:14px 18px; margin:16px 0;}
+  .info .ptag, .emerging .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px;
+    text-transform:uppercase; letter-spacing:.13em; font-weight:700; display:flex; align-items:center;
+    gap:7px; margin-bottom:6px;}
+  .info .ptag{color:var(--brand-dark);}
+  .emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm);
+    padding:14px 18px; margin:16px 0;}
+  .emerging .ptag{color:var(--purple);}
+
+  /* Summary cards */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin:18px 0;}
+  .card{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand);
+    border-radius:var(--radius-sm); padding:15px 17px; font-size:15px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .card h4{margin:0 0 7px; font-size:15px; color:var(--brand-dark);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .card.amber{border-top-color:var(--amber-line);}
+  .card.amber h4{color:var(--amber);}
+
+  /* References */
+  ol.refs{font-size:14.5px; color:var(--ink-soft); line-height:1.5;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; padding-left:22px;}
+  ol.refs li{margin-bottom:10px;}
+
+  .footer{margin-top:40px; padding-top:18px; border-top:3px double var(--line);
+    font-size:13.5px; color:var(--ink-faint); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+  .lang-fr{display:none;}
+
+  /* ============== ON-SCREEN PDF PREVIEW (mirrors print layout) ============== */
+  body.pdf-preview{background:#5b6b78;}
+  body.pdf-preview .wrap{
+    max-width:816px;            /* 8.5in at 96dpi */
+    background:#fff; margin:24px auto 60px;
+    padding:54px 57px;          /* ~ Letter margins */
+    box-shadow:0 6px 28px rgba(0,0,0,.28); border-radius:2px;
+  }
+  body.pdf-preview{font-size:14px; line-height:1.45;}
+  body.pdf-preview .toc{display:none;}
+  body.pdf-preview .masthead{padding:0 0 16px; margin-bottom:6px;}
+  body.pdf-preview .masthead h1{font-size:30px; margin:8px 0 6px;}
+  body.pdf-preview .standfirst{font-size:16px; margin-bottom:16px;}
+  body.pdf-preview section{padding:14px 0;}
+  body.pdf-preview h2.sec{font-size:20px; margin:0 0 9px;}
+  body.pdf-preview .secnum{width:28px; height:28px; font-size:15px; margin-right:10px;}
+  body.pdf-preview h3{font-size:15.5px; margin:14px 0 5px;}
+  body.pdf-preview .patient{margin:9px 0 13px; padding:12px 15px;}
+  body.pdf-preview .patient p{margin:6px 0;}
+  body.pdf-preview .check li{padding:7px 0;}
+  body.pdf-preview table{font-size:12.5px;}
+  body.pdf-preview .rec,
+  body.pdf-preview .info,
+  body.pdf-preview .emerging{font-size:13px; padding:11px 14px;}
+  body.pdf-preview .cards{grid-template-columns:1fr 1fr; gap:11px;}
+  body.pdf-preview .card{font-size:13px;}
+  body.pdf-preview ol.refs{font-size:12.5px;}
+  /* visual page-break guides matching the forced print breaks */
+  body.pdf-preview #en12,
+  body.pdf-preview #fr12,
+  body.pdf-preview #en13,
+  body.pdf-preview #fr13{
+    border-top:2px dashed var(--brand-line); margin-top:14px; padding-top:20px;
+    position:relative;
+  }
+  body.pdf-preview #en12::before,
+  body.pdf-preview #fr12::before,
+  body.pdf-preview #en13::before,
+  body.pdf-preview #fr13::before{
+    content:"\2702  new page in PDF"; position:absolute; top:-9px; right:0;
+    background:#fff; padding:0 8px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:10px; color:var(--brand-dark); letter-spacing:.04em;
+  }
+
+  /* ===================== PRINT / PDF ===================== */
+  @page{
+    size:Letter;
+    margin:16mm 15mm 15mm;
+  }
+  @media print{
+    :root{ --cream:#fff; }
+    html,body{background:#fff !important;}
+    body{
+      font-size:10.5pt; line-height:1.4; color:#15212b;
+      -webkit-print-color-adjust:exact; print-color-adjust:exact;
+    }
+    .wrap{max-width:100%; padding:0;}
+
+    /* Hide on-screen UI; print only the active language */
+    .langbar{display:none !important;}
+    .toc{display:none !important;}                 /* TOC not useful in a flat PDF */
+    .lang-fr[style*="block"]{}                      /* respect JS-set display */
+
+    a{color:#15212b !important; text-decoration:none;}
+
+    /* Masthead tightened, centred feel, no oversize gaps */
+    .masthead{padding:0 0 14px; margin-bottom:6px;}
+    .masthead h1{font-size:23pt; margin:8px 0 6px;}
+    .standfirst{font-size:12pt; margin-bottom:14px;}
+    .eyebrow{font-size:8.5pt;}
+    .authpanel{font-size:10pt; padding:10px 12px;}
+    .meta{margin-top:10px;}
+    .chip{font-size:8.5pt; padding:3px 8px;}
+    .legend{font-size:9pt; margin-top:12px; gap:12px;}
+
+    /* Section flow: avoid orphaned headers, keep blocks intact */
+    section{
+      padding:12px 0; border-top:1px solid var(--line-soft);
+      break-inside:auto;
+    }
+    h2.sec{
+      font-size:15pt; margin:0 0 8px;
+      break-after:avoid; page-break-after:avoid;
+    }
+    h3{
+      font-size:11.5pt; margin:12px 0 4px;
+      break-after:avoid; page-break-after:avoid;
+    }
+    .secnum{width:26px; height:26px; font-size:12pt; margin-right:9px;}
+
+    /* Keep cohesive units together */
+    .patient,.rec,.info,.emerging,.card,
+    .genehead,.check li,tr,thead,
+    .cards .card{
+      break-inside:avoid; page-break-inside:avoid;
+    }
+    .genehead{break-after:avoid; page-break-after:avoid;}
+    .patient{margin:8px 0 12px; padding:11px 14px;}
+    .patient p{margin:5px 0;}
+
+    /* Checklists tighter */
+    .check li{padding:6px 0;}
+    .check li i{font-size:13pt;}
+    .tag{font-size:7.5pt; padding:1px 6px;}
+
+    /* Tables print cleanly, headers repeat across page breaks */
+    table{font-size:9pt; margin:10px 0; break-inside:auto;}
+    thead{display:table-header-group;}
+    th,td{padding:6px 8px;}
+    .pill{font-size:8pt; padding:2px 7px;}
+
+    /* Callouts */
+    .rec,.info,.emerging{padding:9px 12px; margin:10px 0; font-size:9.5pt;}
+    .info .ptag,.emerging .ptag,.patient .ptag{font-size:8.5pt; margin-bottom:4px;}
+
+    /* Summary cards: 2-up grid that fits the page width */
+    .cards{
+      grid-template-columns:1fr 1fr; gap:9px; margin:10px 0;
+      break-inside:auto;
+    }
+    .card{padding:10px 12px; font-size:9.5pt;}
+    .card h4{font-size:10pt; margin-bottom:5px;}
+
+    /* References: avoid splitting a single citation across pages */
+    ol.refs{font-size:9pt;}
+    ol.refs li{margin-bottom:6px; break-inside:avoid; page-break-inside:avoid;}
+
+    /* Each major section can start fresh if it would otherwise be cramped;
+       use sparingly: force a fresh page before the summary and references */
+    #en12, #fr12, #en13, #fr13{ break-before:page; page-break-before:always; }
+
+    .footer{
+      margin-top:18px; padding-top:12px; font-size:8.5pt;
+      break-inside:avoid;
+    }
+
+    /* Repeating running footer with page numbers */
+    @page{
+      @bottom-center{
+        content:"ATM Hereditary Cancer Surveillance Protocol";
+        font-family:Helvetica,Arial,sans-serif; font-size:7.5pt; color:#6a7681;
+      }
+      @bottom-right{
+        content:"Page " counter(page) " of " counter(pages);
+        font-family:Helvetica,Arial,sans-serif; font-size:7.5pt; color:#6a7681;
+      }
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="langbar ui">
+  <div class="langbar-left">
+    <button id="btn-pdf" class="util-btn" onclick="togglePdfView()" title="Preview the print/PDF layout on screen"><i class="ti ti-file-type-pdf"></i> PDF view</button>
+    <button id="btn-print" class="util-btn" onclick="window.print()" title="Print or save as PDF"><i class="ti ti-printer"></i> Print / Save PDF</button>
+  </div>
+  <div class="langbar-right">
+    <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+    <button id="btn-fr" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ============================ ENGLISH ============================ -->
+<div class="lang-en" id="lang-en">
+
+  <header class="masthead">
+    <div class="eyebrow">Hereditary Cancer Surveillance Protocol</div>
+    <h1>ATM Pathogenic Variant Carriers</h1>
+    <p class="standfirst">A prevention and surveillance protocol for individuals who carry a germline pathogenic or likely pathogenic variant in the <em>ATM</em> gene.</p>
+    <div class="authpanel">
+      <strong>Dr. Andrew Shuen, MD PhD FRCPC DABMGG</strong><br>
+      Cancer Genetics, Cancer Prevention Centre, Jewish General Hospital (JGH), Montreal
+    </div>
+    <div class="meta">
+      <span class="chip">Gene: ATM</span>
+      <span class="chip">Inheritance: Autosomal dominant (cancer risk)</span>
+      <span class="chip">Penetrance: Moderate</span>
+      <span class="chip">Reviewed against NCCN v1.2025 &amp; ACMG 2025</span>
+    </div>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--brand-bg);border:1px solid var(--brand-line)"></span> Patient summary</span>
+      <span><span class="swatch" style="background:var(--red-bg);border:1px solid var(--red-line)"></span> High risk</span>
+      <span><span class="swatch" style="background:var(--amber-bg);border:1px solid var(--amber-line)"></span> Moderate risk</span>
+      <span><span class="swatch" style="background:var(--brand-bg);border:1px solid var(--brand-line)"></span> Low / standard</span>
+    </div>
+  </header>
+
+  <nav class="toc ui">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#en1">Understanding ATM</a></li>
+      <li><a href="#en2">Lifetime cancer risks</a></li>
+      <li><a href="#en3">Breast surveillance (women)</a></li>
+      <li><a href="#en4">Pancreatic surveillance</a></li>
+      <li><a href="#en5">Prostate surveillance (men)</a></li>
+      <li><a href="#en6">Other organs</a></li>
+      <li><a href="#en7">Risk-reducing surgery</a></li>
+      <li><a href="#en8">Radiation sensitivity</a></li>
+      <li><a href="#en9">Genetic counselling</a></li>
+      <li><a href="#en10">Lifestyle and nutrition</a></li>
+      <li><a href="#en11">Emerging and investigational</a></li>
+      <li><a href="#en12">Summary of recommendations</a></li>
+      <li><a href="#en13">References</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="en1">
+    <h2 class="sec"><span class="secnum">1</span> Understanding ATM</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>ATM is a gene that helps your cells repair damaged DNA. Everyone has two copies. You have one copy that does not work as well as it should. This is not a disease. It does not mean you will get cancer. It means your lifetime chance of a few specific cancers is higher than average, so we watch for those cancers more closely.</p>
+      <p>The cancers we pay most attention to are breast, pancreatic, and prostate. Your personal risk also depends on your family history. We use both your gene result and your family history to build your plan.</p>
+    </div>
+    <p>The <em>ATM</em> gene (Ataxia-Telangiectasia Mutated) encodes a serine/threonine kinase that is a master regulator of the cellular response to DNA double-strand breaks. Heterozygous germline pathogenic variants (GPVs) impair homologous recombination repair and confer a moderate (intermediate penetrance) increase in risk for several cancers.</p>
+    <p>Two copies of a pathogenic <em>ATM</em> variant cause ataxia-telangiectasia (A-T), a recessive neurodegenerative and immunodeficiency disorder. Carriers discussed in this protocol are heterozygotes, who do not have A-T but carry an elevated cancer risk that segregates in an autosomal dominant fashion.</p>
+    <p>Risk is variant-dependent. Most GPVs are truncating (nonsense or frameshift). The recurrent missense variant <strong>c.7271T&gt;G (p.Val2424Gly)</strong> is an exception: it behaves as a higher-penetrance allele for breast cancer, approaching BRCA2-level risk, and warrants distinct counselling. Family history remains a strong independent modifier of all risk estimates.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="en2">
+    <h2 class="sec"><span class="secnum">2</span> Lifetime cancer risks</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-chart-bar"></i> For patients</div>
+      <p>The table below shows the approximate lifetime chance of each cancer. These are population averages. Your own numbers can be higher or lower depending on your family history and, for breast cancer, which exact ATM change you carry.</p>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Cancer</th><th>Approx. lifetime risk</th><th>Level</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Female breast (most GPVs)</td><td>~20&ndash;30%</td><td><span class="pill mod">Moderate</span></td><td>~2&ndash;3&times; population risk</td></tr>
+        <tr><td>Female breast (c.7271T&gt;G)</td><td>up to ~50&ndash;60% by 80</td><td><span class="pill high">High</span></td><td>BRCA2-like penetrance</td></tr>
+        <tr><td>Pancreatic</td><td>~5&ndash;10%</td><td><span class="pill mod">Moderate</span></td><td>Population baseline ~1.5%</td></tr>
+        <tr><td>Prostate</td><td>Elevated (~2.6&times;)</td><td><span class="pill mod">Moderate</span></td><td>Absolute lifetime risk not precisely defined</td></tr>
+        <tr><td>Gastric</td><td>Modestly elevated</td><td><span class="pill low">Low&ndash;moderate</span></td><td>~3&times; in some cohorts; no screening consensus</td></tr>
+        <tr><td>Colorectal</td><td>Modestly elevated</td><td><span class="pill low">Low</span></td><td>~1.5&times;; population screening unless FH</td></tr>
+        <tr><td>Ovarian</td><td>Modestly elevated</td><td><span class="pill low">Low</span></td><td>~1.6&times;; no risk-reducing surgery recommended</td></tr>
+        <tr><td>Melanoma</td><td>Modestly elevated</td><td><span class="pill low">Low</span></td><td>~1.5&times;; standard skin care</td></tr>
+        <tr><td>Male breast</td><td>Slightly elevated</td><td><span class="pill low">Low</span></td><td>Symptom awareness only</td></tr>
+      </tbody>
+    </table>
+    <div class="info">
+      <div class="ptag"><i class="ti ti-info-circle"></i> Risk is a continuum</div>
+      <p>ATM is best understood as a moderate-penetrance gene where risk is a continuous variable. Family history and other modifiers shift an individual carrier up or down the range. Surveillance should be personalized, not applied as a fixed uniform plan.</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="en3">
+    <h2 class="sec"><span class="secnum">3</span> Breast surveillance (women)</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Women who carry an ATM change have a higher than average chance of breast cancer. The plan is added imaging starting at age 40: a yearly mammogram plus a yearly breast MRI. The goal is to find anything early, when it is most treatable. We do not usually recommend surgery to remove the breasts.</p>
+      <p>If you carry the specific c.7271T&gt;G change, your risk is higher and we may start MRI earlier and discuss more options with you.</p>
+    </div>
+    <div class="genehead">
+      <span class="genepill">ATM &mdash; most GPVs</span>
+      <span class="badge mod">Moderate breast risk</span>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-check"></i> <div><strong>Annual mammogram with tomosynthesis</strong>, beginning at age 40.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-check"></i> <div><strong>Annual contrast-enhanced breast MRI</strong>, beginning at age 40, ideally alternating at ~6-month intervals with mammography.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>Consider starting earlier than 40 if family history includes early-onset breast cancer (individualize, typically not before 30).<span class="tag optional">Optional</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>Clinical breast exam and breast awareness education.<span class="tag optional">Optional</span></div></li>
+    </ul>
+    <div class="genehead">
+      <span class="genepill">ATM &mdash; c.7271T&gt;G</span>
+      <span class="badge high">High breast risk</span>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-check"></i> <div>Manage closer to a high-penetrance allele: annual MRI and mammography, with earlier MRI start (consider age 30&ndash;35) based on family history.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>Risk-reducing mastectomy may be discussed as an option for this variant, unlike most ATM GPVs (shared decision, individualized).<span class="tag optional">Optional</span></div></li>
+    </ul>
+    <div class="rec"><strong>Clinical note.</strong> NCCN recommends annual mammogram with consideration of tomosynthesis and breast MRI with contrast starting at age 40 for ATM carriers, with individualization by family history. Tools such as Tyrer-Cuzick (with caution for moderate-penetrance genes) or carrier-specific models can support shared decisions on start age.</div>
+  </section>
+
+  <!-- 4 -->
+  <section id="en4">
+    <h2 class="sec"><span class="secnum">4</span> Pancreatic surveillance</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Pancreatic cancer is uncommon, but ATM carriers have a higher chance than average. Screening means a yearly scan of the pancreas, usually an MRI or an ultrasound done through a scope (endoscopic ultrasound), starting around age 50. This screening is newer and the evidence is still building, so we offer it at expert centres and discuss the pros and cons with you. Family history of pancreatic cancer makes the case for screening stronger.</p>
+    </div>
+    <div class="genehead">
+      <span class="genepill">ATM &mdash; pancreas</span>
+      <span class="badge mod">Moderate risk</span>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-check"></i> <div><strong>Annual pancreatic surveillance</strong> with alternating MRI/MRCP and endoscopic ultrasound (EUS), beginning at <strong>age 50</strong> (or 10 years before the earliest pancreatic cancer in the family, whichever is earlier).<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-check"></i> <div>Surveillance should occur at a <strong>centre with pancreatic expertise</strong>, ideally within a research or registry protocol (CAPS-type).<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>Strongest indication when there is a first- or second-degree relative with pancreatic cancer on the variant-carrying side.<span class="tag optional">Optional</span></div></li>
+    </ul>
+    <div class="info">
+      <div class="ptag"><i class="ti ti-alert-triangle"></i> Evidence calibration</div>
+      <p>Pancreatic surveillance recommendations are based largely on expert consensus, not on proven mortality benefit. NCCN v1.2025 supports considering screening for ATM carriers even without family history, while acknowledging low-quality evidence; some bodies (e.g. UK groups) recommend screening only within research studies. Counsel on false positives, incidental findings, and the possibility of unnecessary procedures.</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="en5">
+    <h2 class="sec"><span class="secnum">5</span> Prostate surveillance (men)</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Men who carry an ATM change have a higher chance of prostate cancer. We suggest a yearly PSA blood test starting at age 40. This is a simple test that helps catch prostate cancer early.</p>
+    </div>
+    <div class="genehead">
+      <span class="genepill">ATM &mdash; prostate</span>
+      <span class="badge mod">Moderate risk</span>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-check"></i> <div><strong>Annual PSA</strong>, beginning at <strong>age 40</strong>.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>Digital rectal exam to help interpret PSA findings.<span class="tag optional">Optional</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>Multiparametric prostate MRI as a follow-on for abnormal PSA (per urology).<span class="tag optional">Optional</span></div></li>
+    </ul>
+    <div class="rec"><strong>Clinical note.</strong> NCCN supports considering PSA screening from age 40 in ATM carriers. The absolute lifetime risk is not precisely quantified; counsel on the benefits and harms of PSA screening as for other elevated-risk men.</div>
+  </section>
+
+  <!-- 6 -->
+  <section id="en6">
+    <h2 class="sec"><span class="secnum">6</span> Other organs</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>ATM is linked to small increases in a few other cancers. For most of these, we do not add special screening unless your family history points to them. We follow the same screening the general public gets, such as routine colon cancer screening and skin checks.</p>
+    </div>
+    <h3>Colorectal</h3>
+    <ul class="check">
+      <li><i class="ti ti-minus"></i> <div>Population-based colorectal screening (e.g. colonoscopy or FIT per provincial program). Earlier or more frequent only if family history warrants.<span class="tag routine">Population standard</span></div></li>
+    </ul>
+    <h3>Gastric</h3>
+    <ul class="check">
+      <li><i class="ti ti-x"></i> <div>No routine gastric surveillance recommended in the absence of family history or other risk factors.<span class="tag notrec">Not recommended</span></div></li>
+    </ul>
+    <h3>Ovarian</h3>
+    <ul class="check">
+      <li><i class="ti ti-x"></i> <div>No effective screening; risk-reducing salpingo-oophorectomy not recommended for ATM. Symptom awareness only.<span class="tag notrec">Not recommended</span></div></li>
+    </ul>
+    <h3>Skin (melanoma)</h3>
+    <ul class="check">
+      <li><i class="ti ti-minus"></i> <div>Standard skin self-examination and sun protection; dermatology referral if other risk factors.<span class="tag optional">Optional</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 7 -->
+  <section id="en7">
+    <h2 class="sec"><span class="secnum">7</span> Risk-reducing surgery</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>For most people with an ATM change, we do not recommend surgery to prevent cancer. Careful screening is the main strategy. The one situation we may discuss surgery is the higher-risk c.7271T&gt;G change, and only as a personal choice after a full conversation.</p>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-x"></i> <div><strong>Risk-reducing mastectomy is generally not recommended</strong> for ATM carriers with typical (most) GPVs. Enhanced surveillance is the standard.<span class="tag notrec">Not recommended</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>For <strong>c.7271T&gt;G</strong>, risk-reducing mastectomy may be discussed given the BRCA2-like breast cancer risk, through shared decision-making.<span class="tag optional">Optional</span></div></li>
+      <li><i class="ti ti-x"></i> <div>Risk-reducing gynecologic surgery is not recommended for ATM.<span class="tag notrec">Not recommended</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 8 -->
+  <section id="en8">
+    <h2 class="sec"><span class="secnum">8</span> Radiation sensitivity</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Because ATM helps repair DNA, there has been a question of whether radiation, including from imaging or cancer treatment, is more harmful to carriers. For a single working copy of the gene (the situation in this protocol), the evidence does not show a clear added harm from standard imaging. Breast MRI uses no radiation, which is one reason it is part of the plan. If you ever need radiation therapy for a cancer, your team will weigh this carefully.</p>
+    </div>
+    <div class="rec"><strong>Clinical note.</strong> Marked radiosensitivity is a feature of biallelic A-T, not of heterozygous carriers. Evidence for clinically significant radiosensitivity in heterozygotes is limited and inconsistent. Diagnostic imaging, including screening mammography, should not be withheld on this basis. For therapeutic radiation in an affected carrier, individualized radiation-oncology assessment is reasonable. Preference for non-ionizing modalities (MRI, ultrasound) in surveillance is sensible where equivalent.</div>
+  </section>
+
+  <!-- 9 -->
+  <section id="en9">
+    <h2 class="sec"><span class="secnum">9</span> Genetic counselling</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Your close blood relatives (parents, siblings, children) each have a 50% chance of carrying the same ATM change. We can offer them testing, called cascade testing, so they can learn their own risk and start screening if needed. If you are planning a family, there are reproductive options we can discuss, including the small chance that two carriers could have a child with ataxia-telangiectasia.</p>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-check"></i> <div><strong>Cascade testing</strong> offered to first-degree relatives (50% prior probability); extend stepwise to second-degree relatives as variants are found.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-check"></i> <div>Construct and update a <strong>three-generation pedigree</strong>; identify the variant-carrying lineage to focus pancreatic and other risk assessment.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-check"></i> <div><strong>Reproductive counselling:</strong> if both partners carry ATM GPVs, 25% risk of a child with A-T. Offer carrier testing of partner, prenatal diagnosis, and preimplantation genetic testing (PGT-M).<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>Discuss insurance, privacy, and Canadian genetic non-discrimination protections.<span class="tag optional">Optional</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 10 -->
+  <section id="en10">
+    <h2 class="sec"><span class="secnum">10</span> Lifestyle and nutrition</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Healthy habits lower cancer risk for everyone, and they matter for you too. Not smoking is especially important because smoking raises pancreatic cancer risk. Keeping a healthy weight, staying active, limiting alcohol, and eating a balanced diet all help. None of this replaces your screening, but it stacks the odds in your favour.</p>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-check"></i> <div><strong>Smoking cessation</strong> &mdash; the single most important modifiable factor, particularly given pancreatic risk.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-check"></i> <div>Maintain healthy body weight; regular physical activity.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-check"></i> <div>Limit alcohol; emphasize a diet rich in vegetables, fruit, and fibre.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>Limit known occupational and environmental carcinogens where feasible.<span class="tag optional">Optional</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 11 -->
+  <section id="en11">
+    <h2 class="sec"><span class="secnum">11</span> Emerging and investigational</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Research is moving quickly. Some new ideas below are promising but not yet proven for prevention. We mention them so you know they exist. They are options to consider through clinical trials, not routine care.</p>
+    </div>
+    <div class="emerging">
+      <div class="ptag"><i class="ti ti-flask"></i> Trial-only / investigational</div>
+      <ul class="check" style="margin-top:6px">
+        <li><i class="ti ti-flask"></i> <div><strong>PARP inhibitors and ATR inhibitors:</strong> exploit the DNA-repair defect in ATM-deficient tumours; relevant to treatment of affected carriers, investigational for prevention.</div></li>
+        <li><i class="ti ti-flask"></i> <div><strong>Blood-based pancreatic detection</strong> (cell-free DNA, biomarker panels) under study to complement or replace imaging surveillance.</div></li>
+        <li><i class="ti ti-flask"></i> <div><strong>AI-enhanced and abbreviated MRI</strong> protocols to improve yield and reduce cost of breast and pancreatic surveillance.</div></li>
+        <li><i class="ti ti-flask"></i> <div><strong>Polygenic risk scores</strong> layered on ATM status to refine individual breast and prostate risk and personalize start ages.</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section id="en12">
+    <h2 class="sec"><span class="secnum">12</span> Summary of recommendations</h2>
+    <h3>Surveillance by organ</h3>
+    <div class="cards">
+      <div class="card"><h4>Breast (women)</h4>Annual mammogram + breast MRI from age 40. Earlier and consider mastectomy discussion for c.7271T&gt;G.</div>
+      <div class="card"><h4>Pancreas</h4>Annual MRI/MRCP + EUS from age 50 at an expert centre; strongest with family history.</div>
+      <div class="card"><h4>Prostate (men)</h4>Annual PSA from age 40.</div>
+      <div class="card amber"><h4>Colorectal</h4>Population screening unless family history dictates earlier.</div>
+      <div class="card amber"><h4>Gastric / Ovarian</h4>No routine surveillance; symptom awareness.</div>
+      <div class="card amber"><h4>Skin</h4>Standard skin checks and sun protection.</div>
+    </div>
+    <h3>Cross-cutting</h3>
+    <div class="cards">
+      <div class="card"><h4>Personalize</h4>Integrate family history; treat risk as continuous, not fixed.</div>
+      <div class="card"><h4>Cascade testing</h4>Offer to first-degree relatives; build a pedigree.</div>
+      <div class="card"><h4>Reproductive</h4>Partner testing, PGT-M, prenatal diagnosis where relevant.</div>
+      <div class="card"><h4>Lifestyle</h4>Smoking cessation first; weight, activity, alcohol, diet.</div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section id="en13">
+    <h2 class="sec"><span class="secnum">13</span> References</h2>
+    <ol class="refs">
+      <li>Maxwell KN, Stopfer JE, Hu C, et al. Management of individuals with heterozygous germline pathogenic variants in ATM: a clinical practice resource of the American College of Medical Genetics and Genomics (ACMG). Genet Med. 2025.</li>
+      <li>National Comprehensive Cancer Network. Genetic/Familial High-Risk Assessment: Breast, Ovarian, Pancreatic, and Prostate. NCCN Clinical Practice Guidelines in Oncology, Version 1.2025 (Sept 11, 2024).</li>
+      <li>Hall MJ, Bernhisel R, Hughes E, et al. Germline pathogenic variants in the ATM gene are associated with high and moderate risks for multiple cancers. Cancer Prev Res (Phila). 2021;14(4):433-440.</li>
+      <li>Goldgar DE, Healey S, Dowty JG, et al. Rare variants in the ATM gene and risk of breast cancer. Breast Cancer Res. 2011;13:R73.</li>
+      <li>Hu C, Hart SN, Gnanaolivu R, et al. A population-based study of genes previously implicated in breast cancer. N Engl J Med. 2021;384(5):440-451.</li>
+      <li>Hsu FC, Roberts NJ, Childs E, et al. Risk of pancreatic cancer among individuals with pathogenic variants in the ATM gene. JAMA Oncol. 2021;7(11):1664-1668.</li>
+      <li>Goggins M, Overbeek KA, Brand R, et al. Management of patients with increased risk for familial pancreatic cancer: updated recommendations from the International Cancer of the Pancreas Screening (CAPS) Consortium. Gut. 2020;69(1):7-17.</li>
+      <li>Daly MB, Pal T, Maxwell KN, et al. NCCN Guidelines Insights: Genetic/Familial High-Risk Assessment: Breast, Ovarian, and Pancreatic, Version 2.2024. J Natl Compr Canc Netw. 2023;21(10):1000-1010.</li>
+      <li>Southey MC, Goldgar DE, Winqvist R, et al. PALB2, CHEK2 and ATM rare variants and cancer risk: data from COGS. J Med Genet. 2016;53(12):800-811.</li>
+      <li>Stjepanovic N, Lubinski J, et al. Hereditary gastrointestinal cancers: ESMO Clinical Practice Guidelines. Ann Oncol. 2019;30(10):1558-1571.</li>
+    </ol>
+  </section>
+
+  <div class="footer">
+    <p>This protocol is intended to support, not replace, clinical judgment. Guidelines evolve; surveillance intervals, start ages, and management recommendations should be verified against the current versions of NCCN, ACMG, and relevant specialty-society guidance before application to an individual patient. Prepared for the Cancer Prevention Centre, Jewish General Hospital, Montreal.</p>
+  </div>
+
+</div>
+
+<!-- ============================ FRANÇAIS ============================ -->
+<div class="lang-fr" id="lang-fr">
+
+  <header class="masthead">
+    <div class="eyebrow">Protocole de surveillance du cancer héréditaire</div>
+    <h1>Porteurs d'un variant pathogène ATM</h1>
+    <p class="standfirst">Un protocole de prévention et de surveillance pour les personnes porteuses d'un variant germinal pathogène ou probablement pathogène du gène <em>ATM</em>.</p>
+    <div class="authpanel">
+      <strong>D<sup>r</sup> Andrew Shuen, MD PhD FRCPC DABMGG</strong><br>
+      Génétique du cancer, Centre de prévention du cancer, Hôpital général juif (HGJ), Montréal
+    </div>
+    <div class="meta">
+      <span class="chip">Gène : ATM</span>
+      <span class="chip">Transmission : autosomique dominante (risque de cancer)</span>
+      <span class="chip">Pénétrance : modérée</span>
+      <span class="chip">Révisé selon NCCN v1.2025 et ACMG 2025</span>
+    </div>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--brand-bg);border:1px solid var(--brand-line)"></span> Résumé pour le patient</span>
+      <span><span class="swatch" style="background:var(--red-bg);border:1px solid var(--red-line)"></span> Risque élevé</span>
+      <span><span class="swatch" style="background:var(--amber-bg);border:1px solid var(--amber-line)"></span> Risque modéré</span>
+      <span><span class="swatch" style="background:var(--brand-bg);border:1px solid var(--brand-line)"></span> Faible / standard</span>
+    </div>
+  </header>
+
+  <nav class="toc ui">
+    <h2>Sommaire</h2>
+    <ol>
+      <li><a href="#fr1">Comprendre ATM</a></li>
+      <li><a href="#fr2">Risques de cancer à vie</a></li>
+      <li><a href="#fr3">Surveillance mammaire (femmes)</a></li>
+      <li><a href="#fr4">Surveillance pancréatique</a></li>
+      <li><a href="#fr5">Surveillance prostatique (hommes)</a></li>
+      <li><a href="#fr6">Autres organes</a></li>
+      <li><a href="#fr7">Chirurgie de réduction du risque</a></li>
+      <li><a href="#fr8">Sensibilité aux radiations</a></li>
+      <li><a href="#fr9">Conseil génétique</a></li>
+      <li><a href="#fr10">Mode de vie et nutrition</a></li>
+      <li><a href="#fr11">Approches émergentes</a></li>
+      <li><a href="#fr12">Résumé des recommandations</a></li>
+      <li><a href="#fr13">Références</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="fr1">
+    <h2 class="sec"><span class="secnum">1</span> Comprendre ATM</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>ATM est un gène qui aide vos cellules à réparer l'ADN endommagé. Chaque personne en possède deux copies. L'une de vos copies fonctionne moins bien qu'elle ne le devrait. Ce n'est pas une maladie. Cela ne veut pas dire que vous aurez un cancer. Cela veut dire que votre risque, à vie, de quelques cancers précis est plus élevé que la moyenne. Nous surveillons donc ces cancers de plus près.</p>
+      <p>Les cancers qui retiennent le plus notre attention sont le cancer du sein, du pancréas et de la prostate. Votre risque personnel dépend aussi de vos antécédents familiaux. Nous utilisons à la fois votre résultat génétique et vos antécédents familiaux pour bâtir votre plan.</p>
+    </div>
+    <p>Le gène <em>ATM</em> (Ataxia-Telangiectasia Mutated) code une kinase sérine/thréonine qui est un régulateur central de la réponse cellulaire aux cassures double brin de l'ADN. Les variants germinaux pathogènes (VGP) hétérozygotes altèrent la réparation par recombinaison homologue et confèrent une augmentation modérée (pénétrance intermédiaire) du risque de plusieurs cancers.</p>
+    <p>Deux copies d'un variant pathogène d'<em>ATM</em> causent l'ataxie-télangiectasie (A-T), un trouble récessif neurodégénératif et d'immunodéficience. Les porteurs abordés dans ce protocole sont hétérozygotes : ils n'ont pas l'A-T, mais portent un risque accru de cancer transmis de façon autosomique dominante.</p>
+    <p>Le risque dépend du variant. La plupart des VGP sont tronquants (non-sens ou décalage du cadre de lecture). Le variant faux-sens récurrent <strong>c.7271T&gt;G (p.Val2424Gly)</strong> fait exception : il se comporte comme un allèle à pénétrance plus élevée pour le cancer du sein, approchant le niveau de risque de BRCA2, et justifie un conseil distinct. Les antécédents familiaux demeurent un modificateur indépendant important de toutes les estimations de risque.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="fr2">
+    <h2 class="sec"><span class="secnum">2</span> Risques de cancer à vie</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-chart-bar"></i> Pour les patients</div>
+      <p>Le tableau ci-dessous indique le risque approximatif, à vie, de chaque cancer. Ce sont des moyennes de population. Vos propres chiffres peuvent être plus élevés ou plus bas selon vos antécédents familiaux et, pour le cancer du sein, selon le variant ATM exact que vous portez.</p>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Cancer</th><th>Risque approx. à vie</th><th>Niveau</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sein, femme (plupart des VGP)</td><td>~20&ndash;30 %</td><td><span class="pill mod">Modéré</span></td><td>~2 à 3&times; le risque de la population</td></tr>
+        <tr><td>Sein, femme (c.7271T&gt;G)</td><td>jusqu'à ~50&ndash;60 % à 80 ans</td><td><span class="pill high">Élevé</span></td><td>Pénétrance proche de BRCA2</td></tr>
+        <tr><td>Pancréas</td><td>~5&ndash;10 %</td><td><span class="pill mod">Modéré</span></td><td>Risque de base ~1,5 %</td></tr>
+        <tr><td>Prostate</td><td>Élevé (~2,6&times;)</td><td><span class="pill mod">Modéré</span></td><td>Risque absolu à vie non précisément défini</td></tr>
+        <tr><td>Estomac</td><td>Modestement élevé</td><td><span class="pill low">Faible&ndash;modéré</span></td><td>~3&times; dans certaines cohortes; pas de consensus de dépistage</td></tr>
+        <tr><td>Colorectal</td><td>Modestement élevé</td><td><span class="pill low">Faible</span></td><td>~1,5&times;; dépistage populationnel sauf antécédents</td></tr>
+        <tr><td>Ovaire</td><td>Modestement élevé</td><td><span class="pill low">Faible</span></td><td>~1,6&times;; pas de chirurgie de réduction recommandée</td></tr>
+        <tr><td>Mélanome</td><td>Modestement élevé</td><td><span class="pill low">Faible</span></td><td>~1,5&times;; soins cutanés standards</td></tr>
+        <tr><td>Sein, homme</td><td>Légèrement élevé</td><td><span class="pill low">Faible</span></td><td>Vigilance des symptômes seulement</td></tr>
+      </tbody>
+    </table>
+    <div class="info">
+      <div class="ptag"><i class="ti ti-info-circle"></i> Le risque est un continuum</div>
+      <p>ATM se comprend mieux comme un gène à pénétrance modérée, où le risque est une variable continue. Les antécédents familiaux et d'autres modificateurs déplacent un porteur vers le haut ou le bas de l'intervalle. La surveillance doit être personnalisée et non appliquée comme un plan uniforme et fixe.</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="fr3">
+    <h2 class="sec"><span class="secnum">3</span> Surveillance mammaire (femmes)</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Les femmes porteuses d'un variant ATM ont un risque de cancer du sein plus élevé que la moyenne. Le plan ajoute de l'imagerie à partir de 40 ans : une mammographie annuelle plus une IRM mammaire annuelle. Le but est de détecter tôt, lorsque le traitement est le plus efficace. Nous ne recommandons habituellement pas de chirurgie pour retirer les seins.</p>
+      <p>Si vous portez le variant précis c.7271T&gt;G, votre risque est plus élevé. Nous pourrions commencer l'IRM plus tôt et discuter d'autres options avec vous.</p>
+    </div>
+    <div class="genehead">
+      <span class="genepill">ATM &mdash; plupart des VGP</span>
+      <span class="badge mod">Risque mammaire modéré</span>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-check"></i> <div><strong>Mammographie annuelle avec tomosynthèse</strong>, à partir de 40 ans.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-check"></i> <div><strong>IRM mammaire annuelle avec contraste</strong>, à partir de 40 ans, idéalement en alternance à ~6 mois avec la mammographie.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>Envisager un début avant 40 ans si les antécédents familiaux comprennent un cancer du sein précoce (individualiser, généralement pas avant 30 ans).<span class="tag optional">Optionnel</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>Examen clinique des seins et éducation à la vigilance mammaire.<span class="tag optional">Optionnel</span></div></li>
+    </ul>
+    <div class="genehead">
+      <span class="genepill">ATM &mdash; c.7271T&gt;G</span>
+      <span class="badge high">Risque mammaire élevé</span>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-check"></i> <div>Gérer comme un allèle à pénétrance élevée : IRM et mammographie annuelles, avec début de l'IRM plus tôt (envisager 30&ndash;35 ans) selon les antécédents familiaux.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>La mastectomie de réduction du risque peut être abordée comme option pour ce variant, contrairement à la plupart des VGP d'ATM (décision partagée, individualisée).<span class="tag optional">Optionnel</span></div></li>
+    </ul>
+    <div class="rec"><strong>Note clinique.</strong> Le NCCN recommande une mammographie annuelle avec considération de la tomosynthèse et de l'IRM mammaire avec contraste à partir de 40 ans pour les porteurs d'ATM, avec individualisation selon les antécédents familiaux. Des outils comme Tyrer-Cuzick (avec prudence pour les gènes à pénétrance modérée) ou des modèles propres aux porteurs peuvent appuyer la décision partagée sur l'âge de début.</div>
+  </section>
+
+  <!-- 4 -->
+  <section id="fr4">
+    <h2 class="sec"><span class="secnum">4</span> Surveillance pancréatique</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Le cancer du pancréas est rare, mais les porteurs d'ATM ont un risque plus élevé que la moyenne. Le dépistage consiste en un examen annuel du pancréas, habituellement une IRM ou une échographie faite par une sonde (échoendoscopie), à partir d'environ 50 ans. Ce dépistage est récent et les preuves s'accumulent encore. Nous l'offrons donc dans des centres spécialisés et discutons des avantages et inconvénients avec vous. Des antécédents familiaux de cancer du pancréas renforcent l'indication.</p>
+    </div>
+    <div class="genehead">
+      <span class="genepill">ATM &mdash; pancréas</span>
+      <span class="badge mod">Risque modéré</span>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-check"></i> <div><strong>Surveillance pancréatique annuelle</strong> en alternance IRM/CPRM et échoendoscopie (EUS), à partir de <strong>50 ans</strong> (ou 10 ans avant le cancer du pancréas le plus précoce dans la famille, selon ce qui survient en premier).<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-check"></i> <div>La surveillance doit se faire dans un <strong>centre ayant une expertise pancréatique</strong>, idéalement dans le cadre d'un protocole de recherche ou de registre (type CAPS).<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>Indication la plus forte en présence d'un parent au premier ou deuxième degré atteint d'un cancer du pancréas du côté porteur du variant.<span class="tag optional">Optionnel</span></div></li>
+    </ul>
+    <div class="info">
+      <div class="ptag"><i class="ti ti-alert-triangle"></i> Calibrage des données probantes</div>
+      <p>Les recommandations de surveillance pancréatique reposent largement sur un consensus d'experts et non sur un bénéfice de mortalité démontré. Le NCCN v1.2025 appuie la considération du dépistage chez les porteurs d'ATM même sans antécédents familiaux, tout en reconnaissant la faible qualité des données; certains organismes (p. ex. groupes britanniques) ne recommandent le dépistage que dans le cadre d'études de recherche. Informer sur les faux positifs, les trouvailles fortuites et la possibilité d'interventions inutiles.</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="fr5">
+    <h2 class="sec"><span class="secnum">5</span> Surveillance prostatique (hommes)</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Les hommes porteurs d'un variant ATM ont un risque plus élevé de cancer de la prostate. Nous suggérons un test sanguin APS annuel à partir de 40 ans. C'est un test simple qui aide à détecter tôt le cancer de la prostate.</p>
+    </div>
+    <div class="genehead">
+      <span class="genepill">ATM &mdash; prostate</span>
+      <span class="badge mod">Risque modéré</span>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-check"></i> <div><strong>APS annuel</strong>, à partir de <strong>40 ans</strong>.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>Toucher rectal pour aider à interpréter les résultats de l'APS.<span class="tag optional">Optionnel</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>IRM prostatique multiparamétrique en suivi d'un APS anormal (selon l'urologie).<span class="tag optional">Optionnel</span></div></li>
+    </ul>
+    <div class="rec"><strong>Note clinique.</strong> Le NCCN appuie la considération du dépistage par APS dès 40 ans chez les porteurs d'ATM. Le risque absolu à vie n'est pas précisément quantifié; informer sur les bénéfices et les inconvénients du dépistage par APS comme pour les autres hommes à risque accru.</div>
+  </section>
+
+  <!-- 6 -->
+  <section id="fr6">
+    <h2 class="sec"><span class="secnum">6</span> Autres organes</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>ATM est lié à de petites augmentations de quelques autres cancers. Pour la plupart, nous n'ajoutons pas de dépistage spécial sauf si vos antécédents familiaux le justifient. Nous suivons le même dépistage que la population générale, comme le dépistage de routine du cancer du côlon et les examens de la peau.</p>
+    </div>
+    <h3>Colorectal</h3>
+    <ul class="check">
+      <li><i class="ti ti-minus"></i> <div>Dépistage colorectal populationnel (p. ex. coloscopie ou RSOSi selon le programme provincial). Plus tôt ou plus fréquent seulement si les antécédents familiaux le justifient.<span class="tag routine">Standard populationnel</span></div></li>
+    </ul>
+    <h3>Estomac</h3>
+    <ul class="check">
+      <li><i class="ti ti-x"></i> <div>Aucune surveillance gastrique de routine en l'absence d'antécédents familiaux ou d'autres facteurs de risque.<span class="tag notrec">Non recommandé</span></div></li>
+    </ul>
+    <h3>Ovaire</h3>
+    <ul class="check">
+      <li><i class="ti ti-x"></i> <div>Aucun dépistage efficace; salpingo-ovariectomie de réduction du risque non recommandée pour ATM. Vigilance des symptômes seulement.<span class="tag notrec">Non recommandé</span></div></li>
+    </ul>
+    <h3>Peau (mélanome)</h3>
+    <ul class="check">
+      <li><i class="ti ti-minus"></i> <div>Auto-examen cutané standard et protection solaire; orientation en dermatologie si d'autres facteurs de risque.<span class="tag optional">Optionnel</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 7 -->
+  <section id="fr7">
+    <h2 class="sec"><span class="secnum">7</span> Chirurgie de réduction du risque</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Pour la plupart des personnes porteuses d'un variant ATM, nous ne recommandons pas de chirurgie pour prévenir le cancer. Une surveillance attentive est la principale stratégie. La seule situation où nous pouvons discuter de chirurgie est le variant c.7271T&gt;G à risque plus élevé, et seulement comme un choix personnel après une conversation complète.</p>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-x"></i> <div><strong>La mastectomie de réduction du risque n'est généralement pas recommandée</strong> pour les porteurs d'ATM avec les VGP typiques (la plupart). La surveillance renforcée est la norme.<span class="tag notrec">Non recommandé</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>Pour <strong>c.7271T&gt;G</strong>, la mastectomie de réduction du risque peut être abordée vu le risque de cancer du sein proche de BRCA2, par décision partagée.<span class="tag optional">Optionnel</span></div></li>
+      <li><i class="ti ti-x"></i> <div>La chirurgie gynécologique de réduction du risque n'est pas recommandée pour ATM.<span class="tag notrec">Non recommandé</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 8 -->
+  <section id="fr8">
+    <h2 class="sec"><span class="secnum">8</span> Sensibilité aux radiations</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Parce qu'ATM aide à réparer l'ADN, on s'est demandé si les radiations, y compris celles de l'imagerie ou des traitements, étaient plus nocives pour les porteurs. Pour une seule copie défaillante du gène (la situation de ce protocole), les données ne montrent pas de risque ajouté clair lié à l'imagerie standard. L'IRM mammaire n'utilise aucune radiation, ce qui est l'une des raisons de sa place dans le plan. Si vous deviez un jour recevoir une radiothérapie pour un cancer, votre équipe pèserait cela soigneusement.</p>
+    </div>
+    <div class="rec"><strong>Note clinique.</strong> Une radiosensibilité marquée est une caractéristique de l'A-T bialléliques, et non des porteurs hétérozygotes. Les données sur une radiosensibilité cliniquement significative chez les hétérozygotes sont limitées et incohérentes. L'imagerie diagnostique, y compris la mammographie de dépistage, ne devrait pas être refusée sur cette base. Pour une radiothérapie thérapeutique chez un porteur atteint, une évaluation individualisée en radio-oncologie est raisonnable. La préférence pour les modalités non ionisantes (IRM, échographie) en surveillance est judicieuse lorsque équivalente.</div>
+  </section>
+
+  <!-- 9 -->
+  <section id="fr9">
+    <h2 class="sec"><span class="secnum">9</span> Conseil génétique</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Vos proches parents par le sang (parents, frères et sœurs, enfants) ont chacun 50 % de chances de porter le même variant ATM. Nous pouvons leur offrir un test, appelé test en cascade, pour qu'ils connaissent leur propre risque et commencent une surveillance au besoin. Si vous planifiez une famille, il existe des options reproductives dont nous pouvons discuter, y compris la faible possibilité que deux porteurs aient un enfant atteint d'ataxie-télangiectasie.</p>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-check"></i> <div><strong>Test en cascade</strong> offert aux parents au premier degré (probabilité a priori de 50 %); étendre par étapes aux parents au deuxième degré à mesure que des variants sont trouvés.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-check"></i> <div>Construire et mettre à jour un <strong>arbre généalogique sur trois générations</strong>; identifier la lignée porteuse du variant pour cibler l'évaluation du risque pancréatique et autre.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-check"></i> <div><strong>Conseil reproductif :</strong> si les deux partenaires portent des VGP d'ATM, 25 % de risque d'un enfant atteint d'A-T. Offrir le test du partenaire, le diagnostic prénatal et le test génétique préimplantatoire (DPI-M).<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>Aborder l'assurance, la confidentialité et les protections canadiennes contre la discrimination génétique.<span class="tag optional">Optionnel</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 10 -->
+  <section id="fr10">
+    <h2 class="sec"><span class="secnum">10</span> Mode de vie et nutrition</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>De saines habitudes réduisent le risque de cancer pour tout le monde, et elles comptent aussi pour vous. Ne pas fumer est particulièrement important, car le tabac augmente le risque de cancer du pancréas. Maintenir un poids santé, rester actif, limiter l'alcool et avoir une alimentation équilibrée aident tous. Rien de cela ne remplace votre dépistage, mais cela met les chances de votre côté.</p>
+    </div>
+    <ul class="check">
+      <li><i class="ti ti-check"></i> <div><strong>Arrêt du tabac</strong> &mdash; le facteur modifiable le plus important, surtout vu le risque pancréatique.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-check"></i> <div>Maintenir un poids santé; activité physique régulière.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-check"></i> <div>Limiter l'alcool; privilégier une alimentation riche en légumes, fruits et fibres.<span class="tag routine">Routine</span></div></li>
+      <li><i class="ti ti-minus"></i> <div>Limiter les cancérogènes professionnels et environnementaux connus lorsque possible.<span class="tag optional">Optionnel</span></div></li>
+    </ul>
+  </section>
+
+  <!-- 11 -->
+  <section id="fr11">
+    <h2 class="sec"><span class="secnum">11</span> Approches émergentes et expérimentales</h2>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>La recherche avance vite. Certaines nouvelles idées ci-dessous sont prometteuses mais pas encore prouvées pour la prévention. Nous les mentionnons pour que vous sachiez qu'elles existent. Ce sont des options à envisager dans le cadre d'essais cliniques, et non des soins de routine.</p>
+    </div>
+    <div class="emerging">
+      <div class="ptag"><i class="ti ti-flask"></i> Essais seulement / expérimental</div>
+      <ul class="check" style="margin-top:6px">
+        <li><i class="ti ti-flask"></i> <div><strong>Inhibiteurs de PARP et d'ATR :</strong> exploitent le défaut de réparation de l'ADN des tumeurs déficientes en ATM; pertinents pour le traitement des porteurs atteints, expérimentaux pour la prévention.</div></li>
+        <li><i class="ti ti-flask"></i> <div><strong>Détection pancréatique sanguine</strong> (ADN libre circulant, panels de biomarqueurs) à l'étude pour compléter ou remplacer la surveillance par imagerie.</div></li>
+        <li><i class="ti ti-flask"></i> <div><strong>IRM abrégée et assistée par IA</strong> pour améliorer le rendement et réduire le coût de la surveillance mammaire et pancréatique.</div></li>
+        <li><i class="ti ti-flask"></i> <div><strong>Scores de risque polygénique</strong> superposés au statut ATM pour affiner le risque individuel de cancer du sein et de la prostate et personnaliser les âges de début.</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section id="fr12">
+    <h2 class="sec"><span class="secnum">12</span> Résumé des recommandations</h2>
+    <h3>Surveillance par organe</h3>
+    <div class="cards">
+      <div class="card"><h4>Sein (femmes)</h4>Mammographie + IRM mammaire annuelles dès 40 ans. Plus tôt et discussion de mastectomie pour c.7271T&gt;G.</div>
+      <div class="card"><h4>Pancréas</h4>IRM/CPRM + EUS annuelles dès 50 ans dans un centre expert; plus fort avec antécédents familiaux.</div>
+      <div class="card"><h4>Prostate (hommes)</h4>APS annuel dès 40 ans.</div>
+      <div class="card amber"><h4>Colorectal</h4>Dépistage populationnel sauf si les antécédents familiaux imposent un début plus précoce.</div>
+      <div class="card amber"><h4>Estomac / Ovaire</h4>Pas de surveillance de routine; vigilance des symptômes.</div>
+      <div class="card amber"><h4>Peau</h4>Examens cutanés standards et protection solaire.</div>
+    </div>
+    <h3>Transversal</h3>
+    <div class="cards">
+      <div class="card"><h4>Personnaliser</h4>Intégrer les antécédents familiaux; traiter le risque comme continu, non fixe.</div>
+      <div class="card"><h4>Test en cascade</h4>Offrir aux parents au premier degré; bâtir un arbre généalogique.</div>
+      <div class="card"><h4>Reproductif</h4>Test du partenaire, DPI-M, diagnostic prénatal au besoin.</div>
+      <div class="card"><h4>Mode de vie</h4>Arrêt du tabac d'abord; poids, activité, alcool, alimentation.</div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section id="fr13">
+    <h2 class="sec"><span class="secnum">13</span> Références</h2>
+    <ol class="refs">
+      <li>Maxwell KN, Stopfer JE, Hu C, et al. Management of individuals with heterozygous germline pathogenic variants in ATM: a clinical practice resource of the American College of Medical Genetics and Genomics (ACMG). Genet Med. 2025.</li>
+      <li>National Comprehensive Cancer Network. Genetic/Familial High-Risk Assessment: Breast, Ovarian, Pancreatic, and Prostate. NCCN Clinical Practice Guidelines in Oncology, Version 1.2025 (Sept 11, 2024).</li>
+      <li>Hall MJ, Bernhisel R, Hughes E, et al. Germline pathogenic variants in the ATM gene are associated with high and moderate risks for multiple cancers. Cancer Prev Res (Phila). 2021;14(4):433-440.</li>
+      <li>Goldgar DE, Healey S, Dowty JG, et al. Rare variants in the ATM gene and risk of breast cancer. Breast Cancer Res. 2011;13:R73.</li>
+      <li>Hu C, Hart SN, Gnanaolivu R, et al. A population-based study of genes previously implicated in breast cancer. N Engl J Med. 2021;384(5):440-451.</li>
+      <li>Hsu FC, Roberts NJ, Childs E, et al. Risk of pancreatic cancer among individuals with pathogenic variants in the ATM gene. JAMA Oncol. 2021;7(11):1664-1668.</li>
+      <li>Goggins M, Overbeek KA, Brand R, et al. Management of patients with increased risk for familial pancreatic cancer: updated recommendations from the International Cancer of the Pancreas Screening (CAPS) Consortium. Gut. 2020;69(1):7-17.</li>
+      <li>Daly MB, Pal T, Maxwell KN, et al. NCCN Guidelines Insights: Genetic/Familial High-Risk Assessment: Breast, Ovarian, and Pancreatic, Version 2.2024. J Natl Compr Canc Netw. 2023;21(10):1000-1010.</li>
+      <li>Southey MC, Goldgar DE, Winqvist R, et al. PALB2, CHEK2 and ATM rare variants and cancer risk: data from COGS. J Med Genet. 2016;53(12):800-811.</li>
+      <li>Stjepanovic N, Lubinski J, et al. Hereditary gastrointestinal cancers: ESMO Clinical Practice Guidelines. Ann Oncol. 2019;30(10):1558-1571.</li>
+    </ol>
+  </section>
+
+  <div class="footer">
+    <p>Ce protocole vise à soutenir, et non à remplacer, le jugement clinique. Les lignes directrices évoluent; les intervalles de surveillance, les âges de début et les recommandations de prise en charge doivent être vérifiés par rapport aux versions courantes des lignes directrices du NCCN, de l'ACMG et des sociétés spécialisées pertinentes avant application à un patient donné. Préparé pour le Centre de prévention du cancer, Hôpital général juif, Montréal.</p>
+  </div>
+
+</div>
+
+</div>
+
+<script>
+function setLang(l){
+  document.getElementById('lang-en').style.display = (l==='en')?'block':'none';
+  document.getElementById('lang-fr').style.display = (l==='fr')?'block':'none';
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  document.getElementById('btn-fr').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+  window.scrollTo(0,0);
+}
+function togglePdfView(){
+  var on = document.body.classList.toggle('pdf-preview');
+  document.getElementById('btn-pdf').classList.toggle('active', on);
+  window.scrollTo(0,0);
+}
+setLang('en');
+</script>
+
+</body>
+</html>

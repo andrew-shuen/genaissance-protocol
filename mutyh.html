@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUTYH-Associated Polyposis — Prevention and Surveillance Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:18px; line-height:1.62;
+}
+.wrap{max-width:920px; margin:0 auto; padding:28px 22px 80px;}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* language toggle */
+.langbar{
+  display:flex; gap:8px; justify-content:flex-end; margin-bottom:18px;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.langbar button{
+  cursor:pointer; border:1px solid var(--brand-line); background:var(--paper);
+  color:var(--brand-dark); font-size:14px; font-weight:600; letter-spacing:.02em;
+  padding:8px 16px; border-radius:var(--radius-sm); transition:all .15s;
+}
+.langbar button.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+
+/* masthead */
+.masthead{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:30px 30px 26px; box-shadow:0 1px 0 rgba(0,0,0,.02);}
+.eyebrow{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; text-transform:uppercase;
+  letter-spacing:.14em; font-size:12px; font-weight:700; color:var(--brand-dark);
+  display:flex; align-items:center; gap:7px;}
+h1{font-size:32px; line-height:1.18; margin:12px 0 8px; color:var(--ink); font-weight:700;}
+.standfirst{font-size:19px; color:var(--ink-soft); margin:0 0 20px;}
+.authorpanel{border-top:1px solid var(--line); padding-top:16px; margin-top:6px;}
+.authorpanel .who{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14.5px;
+  color:var(--ink-soft); line-height:1.5;}
+.authorpanel .who b{color:var(--ink);}
+.metachips{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.chip{font-size:12.5px; background:var(--cream); border:1px solid var(--line);
+  color:var(--ink-soft); padding:5px 11px; border-radius:999px; display:flex; align-items:center; gap:6px;}
+.legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:18px; padding-top:16px;
+  border-top:1px solid var(--line-soft); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13px; color:var(--ink-faint);}
+.legend span{display:flex; align-items:center; gap:7px;}
+.swatch{width:14px; height:14px; border-radius:4px; display:inline-block;}
+
+/* TOC */
+.toc{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:22px 26px; margin:22px 0; }
+.toc h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; text-transform:uppercase;
+  letter-spacing:.12em; color:var(--brand-dark); margin:0 0 14px;}
+.toc ol{margin:0; padding:0; list-style:none; columns:2; column-gap:34px;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14.5px;}
+.toc li{margin:0 0 9px; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none; display:flex; gap:9px;}
+.toc a:hover{color:var(--brand-dark);}
+.toc .n{color:var(--brand); font-weight:700; min-width:18px;}
+
+/* sections */
+section{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:28px 30px; margin:18px 0;}
+.sechead{display:flex; align-items:flex-start; gap:14px; margin:0 0 18px;}
+.secnum{flex:none; width:34px; height:34px; border-radius:9px; background:var(--brand);
+  color:#fff; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+  font-size:16px; display:flex; align-items:center; justify-content:center; margin-top:2px;}
+.sechead h2{margin:0; font-size:24px; line-height:1.22; color:var(--ink); font-weight:700;}
+h3{font-size:19px; margin:24px 0 10px; color:var(--brand-dark); font-weight:700;}
+h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; text-transform:uppercase;
+  letter-spacing:.06em; color:var(--ink-faint); margin:18px 0 8px;}
+p{margin:0 0 13px;}
+a{color:var(--brand);}
+ul,ol{margin:0 0 13px; padding-left:22px;}
+li{margin:0 0 7px;}
+small{color:var(--ink-faint);}
+
+/* patient panel */
+.patient{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm);
+  padding:18px 20px; margin:0 0 20px;}
+.patient .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.1em; color:var(--brand-dark); display:flex; align-items:center;
+  gap:7px; margin-bottom:9px;}
+.patient p{color:var(--brand-dark); margin:0 0 10px;}
+.patient p:last-child{margin-bottom:0;}
+
+/* gene header pill */
+.genehdr{display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:0 0 14px;
+  padding:12px 16px; background:var(--cream); border:1px solid var(--line); border-radius:var(--radius-sm);}
+.genehdr .gname{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:16px;
+  color:var(--ink); display:flex; align-items:center; gap:8px;}
+.riskbadge{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:700;
+  padding:4px 11px; border-radius:999px; text-transform:uppercase; letter-spacing:.04em;}
+.r-high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.r-mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.r-low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* risk pills inline */
+.pill{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:700;
+  padding:2px 9px; border-radius:999px; white-space:nowrap;}
+.pill.high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.pill.mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.pill.low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* tables */
+table{width:100%; border-collapse:collapse; margin:14px 0 18px; font-size:15px;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+th,td{text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top;}
+th{background:var(--cream); color:var(--brand-dark); font-size:12.5px; text-transform:uppercase;
+  letter-spacing:.05em;}
+tr:last-child td{border-bottom:none;}
+.tablewrap{overflow-x:auto;}
+
+/* checklist */
+.checklist{list-style:none; padding:0; margin:14px 0;}
+.checklist li{display:flex; gap:11px; align-items:flex-start; padding:9px 0;
+  border-bottom:1px solid var(--line-soft);}
+.checklist li:last-child{border-bottom:none;}
+.checklist .ico{flex:none; margin-top:2px; font-size:19px;}
+.checklist .ico.yes{color:var(--brand);}
+.checklist .ico.opt{color:var(--amber);}
+.checklist .ico.no{color:var(--ink-faint);}
+.checklist .ctxt{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:15px;}
+.checklist .ctxt b{color:var(--ink);}
+.tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.05em; padding:2px 7px; border-radius:5px; margin-left:6px;
+  vertical-align:middle;}
+.tag.routine{background:var(--brand-bg); color:var(--brand-dark);}
+.tag.optional{background:var(--amber-bg); color:var(--amber);}
+.tag.notrec{background:var(--line-soft); color:var(--ink-faint);}
+
+/* callout */
+.callout{border-left:4px solid var(--brand); background:var(--cream); border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  padding:14px 18px; margin:16px 0;}
+.callout .ctag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:700;
+  text-transform:uppercase; letter-spacing:.08em; color:var(--brand-dark); margin-bottom:6px; display:flex; gap:7px; align-items:center;}
+.callout p{margin:0;}
+
+/* info/calculator box */
+.infobox{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm);
+  padding:16px 18px; margin:16px 0;}
+.infobox .ititle{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:14px;
+  color:var(--brand-dark); display:flex; gap:8px; align-items:center; margin-bottom:8px;}
+.infobox p{color:var(--ink-soft); margin:0 0 8px;}
+.infobox p:last-child{margin:0;}
+
+/* emerging box (purple) */
+.emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm);
+  padding:16px 18px; margin:16px 0;}
+.emerging .etitle{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:13px;
+  color:var(--purple); display:flex; gap:8px; align-items:center; margin-bottom:8px; text-transform:uppercase; letter-spacing:.06em;}
+.emerging p{color:var(--ink-soft); margin:0 0 8px;}
+.emerging p:last-child{margin:0;}
+
+/* summary cards */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin:16px 0;}
+.card{border:1px solid var(--line); border-radius:var(--radius-sm); padding:16px 17px; background:var(--paper);
+  border-top:3px solid var(--brand);}
+.card h4{margin:0 0 9px; color:var(--brand-dark);}
+.card ul{margin:0; padding-left:18px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px;}
+.card li{margin:0 0 6px; color:var(--ink-soft);}
+
+/* references */
+.refs{counter-reset:ref;}
+.refs ol{padding-left:0; list-style:none;}
+.refs li{counter-increment:ref; padding-left:30px; position:relative; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13.5px; color:var(--ink-soft); margin:0 0 11px; line-height:1.5;}
+.refs li::before{content:counter(ref) "."; position:absolute; left:0; color:var(--brand); font-weight:700;}
+
+/* footer */
+.footer{margin-top:30px; padding-top:20px; border-top:3px double var(--line);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; color:var(--ink-faint); line-height:1.55;}
+.footer::before{content:""; display:block; border-top:1px solid var(--line); margin-bottom:14px;}
+
+.lang-fr{display:none;}
+
+@media (max-width:640px){
+  body{font-size:16.5px;}
+  .toc ol{columns:1;}
+  h1{font-size:26px;}
+  .sechead h2{font-size:20px;}
+  section{padding:22px 20px;}
+  .masthead{padding:24px 22px;}
+}
+
+@media print{
+  body{background:#fff; font-size:11.5pt;}
+  .langbar{display:none;}
+  .wrap{max-width:100%; padding:0;}
+  section,.masthead,.toc{border:1px solid #ccc; box-shadow:none; break-inside:avoid; page-break-inside:avoid;}
+  .patient,.callout,.infobox,.emerging,.card{break-inside:avoid;}
+  a{color:var(--ink); text-decoration:none;}
+  .sechead{break-after:avoid;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="langbar ui">
+  <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+  <button id="btn-fr" onclick="setLang('fr')">Français</button>
+</div>
+
+<!-- ============================ ENGLISH ============================ -->
+<div class="lang-en">
+
+  <div class="masthead">
+    <div class="eyebrow"><i class="ti ti-dna-2"></i> Hereditary Cancer Prevention · GENGIQC</div>
+    <h1>MUTYH-Associated Polyposis: Prevention and Surveillance Protocol</h1>
+    <p class="standfirst">A practical guide for patients and clinicians on cancer risk, screening, surgery, and prevention in people who carry MUTYH variants.</p>
+    <div class="authorpanel">
+      <div class="who">
+        <b>Dr. Andrew Shuen</b>, MD PhD FRCPC DABMGG — Cancer Genetics, Cancer Prevention Centre, Jewish General Hospital (JGH), Montreal<br>
+        <b>Dr. William Foulkes</b>, MBBS PhD FRCPC — Cancer Genetics, Cancer Prevention Centre, JGH, Montreal<br>
+        <b>Dr. Polymnia Galiatsatos</b>, MD CM FRCPC — Division of Gastroenterology, JGH, Montreal
+      </div>
+      <div class="metachips">
+        <span class="chip"><i class="ti ti-calendar"></i> Reviewed June 2026</span>
+        <span class="chip"><i class="ti ti-book"></i> Based on NCCN v1.2025 / v2.2024</span>
+        <span class="chip"><i class="ti ti-map-pin"></i> Canadian dosing context</span>
+        <span class="chip"><i class="ti ti-language"></i> English / Français</span>
+      </div>
+      <div class="legend">
+        <span><span class="swatch" style="background:var(--brand-bg);border:1px solid var(--brand-line)"></span> Patient summary</span>
+        <span><span class="swatch" style="background:var(--red-bg);border:1px solid var(--red-line)"></span> High risk</span>
+        <span><span class="swatch" style="background:var(--amber-bg);border:1px solid var(--amber-line)"></span> Moderate risk</span>
+        <span><span class="swatch" style="background:var(--brand-bg);border:1px solid var(--brand-line)"></span> Low / standard</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="toc ui">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#en-1"><span class="n">1</span> Understanding MUTYH-associated polyposis</a></li>
+      <li><a href="#en-2"><span class="n">2</span> Lifetime cancer risks by genotype</a></li>
+      <li><a href="#en-3"><span class="n">3</span> Surveillance: biallelic carriers (MAP)</a></li>
+      <li><a href="#en-4"><span class="n">4</span> Surveillance: monoallelic carriers</a></li>
+      <li><a href="#en-5"><span class="n">5</span> Risk-reducing surgery</a></li>
+      <li><a href="#en-6"><span class="n">6</span> Chemoprevention and medical prevention</a></li>
+      <li><a href="#en-7"><span class="n">7</span> Genetic counselling and family testing</a></li>
+      <li><a href="#en-8"><span class="n">8</span> Lifestyle and nutrition</a></li>
+      <li><a href="#en-9"><span class="n">9</span> Treatment of affected patients (immunotherapy)</a></li>
+      <li><a href="#en-10"><span class="n">10</span> Emerging and investigational prevention</a></li>
+      <li><a href="#en-11"><span class="n">11</span> Summary of recommendations</a></li>
+      <li><a href="#en-12"><span class="n">12</span> References</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <section id="en-1">
+    <div class="sechead"><div class="secnum">1</div><h2>Understanding MUTYH-associated polyposis</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>MUTYH is a gene that helps repair small errors in your DNA. We all carry two copies of it, one from each parent. When both copies have a harmful change, the repair system works less well and certain cancers become more likely. This condition is called MUTYH-associated polyposis, or MAP.</p>
+      <p>People with MAP often grow many small growths called polyps in the colon. Polyps are not cancer, but some can turn into cancer over time. The main concern is colon cancer. There is also a smaller increase in risk for cancer of the small bowel (duodenum) and a few other organs.</p>
+      <p>If you carry only one harmful copy, your risk is much lower and close to the general population. We explain that situation separately below.</p>
+    </div>
+    <p>MUTYH (formerly MYH) encodes a base-excision-repair glycosylase that removes adenine mispaired with 8-oxoguanine, a product of oxidative DNA damage. Loss of function produces a characteristic somatic mutational signature, with an excess of G:C&gt;T:A transversions, including in the <i>APC</i> and <i>KRAS</i> genes that drive colorectal tumorigenesis.</p>
+    <p>Inheritance is autosomal recessive. The clinical syndrome (MAP) requires <b>biallelic</b> pathogenic variants. The two most common variants in people of European ancestry, p.Tyr179Cys (Y179C) and p.Gly396Asp (G396D), account for the majority of pathogenic alleles in that population; founder and population-specific variants exist elsewhere and should be considered in non-European patients.</p>
+    <p>The phenotype is typically <b>attenuated</b>: most patients present in the fifth or sixth decade with 10 to a few hundred adenomas, often right-sided, with serrated and hyperplastic polyps also seen. Colorectal cancer can occur without overt polyposis. This overlaps clinically with attenuated familial adenomatous polyposis (AFAP), and surveillance is modelled on that condition.</p>
+    <p>Carrier status is common. Roughly 1 to 2 percent of the general population carries a single (monoallelic) MUTYH pathogenic variant. Biallelic genotypes are far rarer, on the order of 1 in 10,000 to 1 in 40,000.</p>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-info-circle"></i> Key distinction</div>
+      <p>Throughout this protocol, recommendations differ sharply by genotype. <b>Biallelic</b> carriers have MAP and need intensive GI surveillance. <b>Monoallelic</b> carriers have at most a modestly raised colorectal risk and in most cases follow family-history-based screening, not a polyposis protocol.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="en-2">
+    <div class="sechead"><div class="secnum">2</div><h2>Lifetime cancer risks by genotype</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>The numbers below are estimates from research studies. They describe groups of people, not any one person. Your own risk depends on your family history, your polyp findings, and how closely you follow surveillance. With good screening, the colon cancer risk can be lowered substantially.</p>
+    </div>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Cancer site</th><th>Biallelic (MAP)</th><th>Monoallelic</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Colorectal</td><td><span class="pill high">~43–63% by age 60; up to ~80–90% lifetime without surveillance</span></td><td><span class="pill low">Near population to mildly raised</span></td><td>Core driver of the syndrome. Risk markedly reduced by surveillance and polypectomy.</td></tr>
+        <tr><td>Duodenal / small bowel</td><td><span class="pill mod">~4% lifetime (≈4–9% reported)</span></td><td><span class="pill low">Not clearly raised</span></td><td>Lower than in classic FAP but the main extracolonic GI concern.</td></tr>
+        <tr><td>Ovarian</td><td><span class="pill mod">~6–14%; median onset ~51 y</span></td><td><span class="pill low">Not clearly raised</span></td><td>Evidence moderate; no validated screening test.</td></tr>
+        <tr><td>Bladder / urothelial</td><td><span class="pill mod">~8% (women) to ~25% (men) by age 70 in one cohort</span></td><td><span class="pill low">Possibly mildly raised</span></td><td>Wide confidence intervals; absolute risk uncertain.</td></tr>
+        <tr><td>Breast (female)</td><td><span class="pill mod">Possibly modestly raised (~11% in one cohort)</span></td><td><span class="pill low">Not clearly raised</span></td><td>Inconsistent across studies; not a basis for high-risk screening on its own.</td></tr>
+        <tr><td>Endometrial</td><td><span class="pill low">Inconsistent; small if any</span></td><td><span class="pill low">Not clearly raised</span></td><td>Some studies show no association.</td></tr>
+        <tr><td>Other (gastric, thyroid, skin, hepatobiliary)</td><td><span class="pill low">Case-level signals only</span></td><td><span class="pill low">Not established</span></td><td>Insufficient evidence for organ-specific surveillance.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><small>Ranges reflect heterogeneous cohorts and wide confidence intervals. Treat extracolonic figures as approximate. The colorectal figure assumes inadequate or no surveillance; effective surveillance changes the practical risk substantially.</small></p>
+  </section>
+
+  <!-- 3 -->
+  <section id="en-3">
+    <div class="sechead"><div class="secnum">3</div><h2>Surveillance: biallelic carriers (MAP)</h2></div>
+    <div class="genehdr">
+      <span class="gname"><i class="ti ti-dna"></i> Biallelic MUTYH</span>
+      <span class="riskbadge r-high">High colorectal risk</span>
+      <span class="riskbadge r-mod">Moderate extracolonic</span>
+    </div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>If you have two harmful MUTYH copies, regular colonoscopy is the single most important thing you can do. We remove polyps before they have a chance to become cancer. Most people can be managed for years with colonoscopy alone and never need surgery.</p>
+      <p>We also look at the upper part of your gut (stomach and the first part of the small bowel) on a separate camera test, because polyps can form there too. The schedule below is a starting point. We adjust it based on what we find at each test.</p>
+    </div>
+
+    <h3>Lower GI tract (colon and rectum)</h3>
+    <ul class="checklist">
+      <li><i class="ti ti-circle-check ico yes"></i><span class="ctxt"><b>Colonoscopy every 1 to 2 years, starting at age 25 to 30.</b><span class="tag routine">Routine</span> With complete polypectomy. Interval shortens if polyp burden is high.</span></li>
+      <li><i class="ti ti-circle-check ico yes"></i><span class="ctxt"><b>Chromoendoscopy or high-definition technique</b><span class="tag optional">Optional</span> May improve adenoma detection; reasonable where available.</span></li>
+      <li><i class="ti ti-circle-check ico yes"></i><span class="ctxt"><b>Colectomy referral if polyps cannot be controlled endoscopically</b><span class="tag routine">Routine</span> See Section 5. Polypectomy alone manages most patients with a small adenoma burden (&lt;20 adenomas, all &lt;1 cm, none with advanced histology).</span></li>
+    </ul>
+
+    <h3>Upper GI tract (stomach and duodenum)</h3>
+    <ul class="checklist">
+      <li><i class="ti ti-circle-check ico yes"></i><span class="ctxt"><b>Baseline upper endoscopy at age 30 to 35</b><span class="tag routine">Routine</span> Forward-viewing plus side-viewing duodenoscopy, including complete visualization of the ampulla of Vater.</span></li>
+      <li><i class="ti ti-circle-check ico yes"></i><span class="ctxt"><b>Repeat interval set by duodenal findings (Spigelman-type staging)</b><span class="tag routine">Routine</span> Ranges from every 3 to 4 years for low-burden disease to a few months for advanced duodenal polyposis.</span></li>
+      <li><i class="ti ti-circle-check ico opt"></i><span class="ctxt"><b>Endoscopic removal of duodenal/ampullary adenomas</b><span class="tag optional">Optional</span> If villous change, high-grade dysplasia, size &gt;1 cm, or symptoms.</span></li>
+      <li><i class="ti ti-circle-check ico opt"></i><span class="ctxt"><b>Test and treat <i>H. pylori</i> if found</b><span class="tag optional">Optional</span> Reasonable given gastric polyp/cancer signals; low harm.</span></li>
+    </ul>
+
+    <h3>Extracolonic, non-GI</h3>
+    <ul class="checklist">
+      <li><i class="ti ti-circle-dashed ico no"></i><span class="ctxt"><b>Routine ovarian, bladder, or breast screening beyond population care</b><span class="tag notrec">Not routinely recommended</span> No validated test reduces mortality; raised risks are real but modest and uncertain. Manage by symptoms and family history.</span></li>
+      <li><i class="ti ti-circle-dashed ico no"></i><span class="ctxt"><b>Thyroid ultrasound as a standing protocol</b><span class="tag notrec">Not routinely recommended</span> Investigate only abnormal findings; routine screening is expert-opinion at best.</span></li>
+      <li><i class="ti ti-circle-check ico opt"></i><span class="ctxt"><b>Urinalysis / urology referral</b><span class="tag optional">Optional</span> Consider in men, smokers, or those with a urothelial family history, recognizing limited evidence.</span></li>
+    </ul>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-alert-triangle"></i> Evidence note</div>
+      <p>Colonoscopy and upper endoscopy in MAP are guideline-supported and effective. Non-GI surveillance is not well supported by data; NCCN does not endorse intensified screening for these organs because of limited evidence. Decisions should be individualized and revisited as guidelines evolve.</p>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="en-4">
+    <div class="sechead"><div class="secnum">4</div><h2>Surveillance: monoallelic carriers</h2></div>
+    <div class="genehdr">
+      <span class="gname"><i class="ti ti-dna"></i> Monoallelic MUTYH</span>
+      <span class="riskbadge r-low">Low / near-population risk</span>
+    </div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Carrying one harmful MUTYH copy is common and, on its own, raises colon cancer risk only a little, if at all. You do not need a polyposis protocol. What matters most is your family history. If a close relative had colon cancer, we may start screening earlier or screen more often.</p>
+    </div>
+    <ul class="checklist">
+      <li><i class="ti ti-circle-check ico yes"></i><span class="ctxt"><b>No first-degree relative with colorectal cancer:</b> average-risk population screening<span class="tag routine">Routine</span> Follow standard colorectal screening for your jurisdiction.</span></li>
+      <li><i class="ti ti-circle-check ico opt"></i><span class="ctxt"><b>First-degree relative with colorectal cancer:</b> colonoscopy starting around age 40, repeated every 5 years<span class="tag optional">Per guideline</span> NCCN supports increased colonoscopy in this scenario.</span></li>
+      <li><i class="ti ti-circle-dashed ico no"></i><span class="ctxt"><b>Upper GI or extracolonic surveillance</b><span class="tag notrec">Not recommended</span> No evidence of benefit for monoallelic carriers.</span></li>
+    </ul>
+    <p><small>Cohort data (for example, the St Mark's monoallelic series) show a low adenoma rate and no observed colorectal cancers in carriers without a strong family history, supporting a conservative, family-history-led approach.</small></p>
+  </section>
+
+  <!-- 5 -->
+  <section id="en-5">
+    <div class="sechead"><div class="secnum">5</div><h2>Risk-reducing surgery</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Most people with MAP never need bowel surgery. We consider it only when there are too many polyps to remove safely with the camera, or if cancer is found or strongly suspected. If surgery is needed, we choose the operation that keeps as much normal function as possible, and you still need follow-up scopes afterward.</p>
+    </div>
+    <h4>Indications for colectomy</h4>
+    <ul>
+      <li><b>Absolute:</b> confirmed or strongly suspected colorectal cancer; significant symptoms such as obstruction or bleeding.</li>
+      <li><b>Relative:</b> polyp burden that can no longer be controlled by endoscopic polypectomy (large number, large size, or high-grade dysplasia).</li>
+    </ul>
+    <h4>Choice of procedure</h4>
+    <p>Because MAP is usually attenuated and often rectum-sparing, <b>subtotal colectomy with ileorectal anastomosis (IRA)</b> is frequently appropriate, preserving the rectum with continued endoscopic surveillance of the rectal remnant. <b>Proctocolectomy with ileal pouch–anal anastomosis (IPAA)</b> is reserved for significant rectal polyposis or rectal cancer. The decision is shared, weighing function, cancer risk, and patient preference.</p>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-gender-female"></i> Gynecologic and hormonal considerations</div>
+      <p>There is no established role for risk-reducing gynecologic surgery in MUTYH carriers. The ovarian risk is moderate and uncertain, with no validated screening. Decisions about salpingo-oophorectomy, if raised, should be driven by family history and individual factors, not by MUTYH status alone.</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="en-6">
+    <div class="sechead"><div class="secnum">6</div><h2>Chemoprevention and medical prevention</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>There is no proven pill that prevents cancer in MAP. Aspirin has been studied in related conditions and may have a role for some people, but the evidence in MUTYH specifically is limited. If we consider it, we weigh the possible benefit against the risk of stomach or bowel bleeding. Screening colonoscopy remains the proven prevention.</p>
+    </div>
+    <p>High-quality evidence for chemoprevention in MUTYH is lacking. Data are extrapolated from familial adenomatous polyposis and Lynch syndrome.</p>
+    <ul>
+      <li><b>Aspirin:</b> The CAPP2 trial showed reduced colorectal cancer with aspirin in Lynch syndrome, but MAP was not the study population. Any use in MAP is off-label and individualized. A reasonable Canadian starting consideration is low-dose aspirin (for example, 81 mg daily), with the dose and duration discussed case by case. This is not a guideline-mandated recommendation for MAP.</li>
+      <li><b>NSAIDs / COX-2 inhibitors (e.g., sulindac, celecoxib):</b> reduce adenoma burden in FAP but carry cardiovascular and GI bleeding risk and are not established for MAP. Reserve for selected cases with specialist input.</li>
+    </ul>
+    <div class="infobox">
+      <div class="ititle"><i class="ti ti-calculator"></i> Bleeding-risk assessment before aspirin</div>
+      <p>Before considering aspirin, weigh bleeding risk using clinical factors: age, prior GI bleeding or ulcer, concurrent anticoagulation or NSAIDs, <i>H. pylori</i> status, and uncontrolled hypertension. A formal tool such as an individualized bleeding/benefit calculation can support shared decision-making.</p>
+      <table>
+        <thead><tr><th>Tier</th><th>Profile</th><th>Approach</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill low">Lower</span></td><td>Younger, no GI bleeding history, no anticoagulant</td><td>Aspirin discussion reasonable if other factors favor it</td></tr>
+          <tr><td><span class="pill mod">Intermediate</span></td><td>One moderate risk factor</td><td>Mitigate (treat <i>H. pylori</i>, consider PPI), reassess</td></tr>
+          <tr><td><span class="pill high">Higher</span></td><td>Prior GI bleed, anticoagulation, or multiple factors</td><td>Generally avoid; rely on endoscopic prevention</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section id="en-7">
+    <div class="sechead"><div class="secnum">7</div><h2>Genetic counselling and family testing</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>MAP runs in families in a specific way. Because both gene copies must be affected, it usually appears in brothers and sisters rather than passing straight down from parent to child. We offer testing to your relatives so we know who needs screening and who does not. A genetic counsellor can walk your family through this.</p>
+    </div>
+    <h4>Inheritance and cascade testing</h4>
+    <p>MAP is autosomal recessive. Both parents of an affected person are obligate carriers (monoallelic). Full siblings have a 25 percent chance of being biallelic. Children of a biallelic patient are obligate carriers and are biallelic only if the other parent also carries a variant; carrier-frequency-adjusted testing of the partner clarifies offspring risk.</p>
+    <ul>
+      <li><b>Test full siblings</b> of a biallelic proband for both familial variants. This is the highest-yield cascade step.</li>
+      <li><b>Test the partner</b> of a biallelic patient to refine risk to children before testing the children.</li>
+      <li><b>Document a three-generation pedigree</b>, noting colorectal and extracolonic cancers and ages at diagnosis.</li>
+    </ul>
+    <h4>Reproductive options</h4>
+    <p>For couples where both partners carry MUTYH variants, reproductive options include prenatal diagnosis and preimplantation genetic testing (PGT-M). These are individual choices and benefit from genetic counselling and, where relevant, reproductive specialist referral.</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="en-8">
+    <div class="sechead"><div class="secnum">8</div><h2>Lifestyle and nutrition</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Healthy habits do not replace screening, but they help. Not smoking matters, since smoking raises bowel and bladder cancer risk. A diet with more fibre, less processed and red meat, limited alcohol, regular activity, and a healthy weight all support lower colorectal cancer risk in general.</p>
+    </div>
+    <p>No MUTYH-specific dietary intervention is proven to alter cancer risk. General colorectal cancer prevention advice applies and is reasonable to reinforce, with the caveat that the underlying genetic risk and surveillance remain the dominant factors.</p>
+    <ul>
+      <li><b>Tobacco cessation</b> is the highest-value lifestyle measure, given both colorectal and urothelial risk.</li>
+      <li><b>Limit alcohol;</b> favour dietary fibre, whole grains, and vegetables; limit processed and red meats.</li>
+      <li><b>Physical activity and weight management</b> align with general colorectal cancer risk reduction.</li>
+    </ul>
+  </section>
+
+  <!-- 9 -->
+  <section id="en-9">
+    <div class="sechead"><div class="secnum">9</div><h2>Treatment of affected patients (immunotherapy)</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>This section is for people with MAP who already have cancer. Some MUTYH-related tumours carry a very large number of DNA changes. Those tumours can respond well to a type of treatment called immunotherapy. If you are diagnosed with cancer, ask your oncologist whether your tumour's mutation features make immunotherapy an option.</p>
+    </div>
+    <p>MUTYH-deficient tumours are typically microsatellite stable but can carry a high tumour mutational burden (TMB) owing to the underlying repair defect. There are reports of strong responses to immune checkpoint inhibition in MUTYH-associated cancers, including a documented complete response in MAP-associated gastric cancer. TMB and mismatch-repair/MSI status should be assessed in affected patients to inform eligibility for checkpoint inhibitor therapy. This is treatment, not prevention, and falls to medical oncology.</p>
+  </section>
+
+  <!-- 10 -->
+  <section id="en-10">
+    <div class="sechead"><div class="secnum">10</div><h2>Emerging and investigational prevention</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> For patients</div>
+      <p>Research is ongoing. The ideas below are promising but not yet proven for routine care. We mention them so you know what is being studied. They should not change your current screening plan unless you join a trial.</p>
+    </div>
+    <div class="emerging">
+      <div class="etitle"><i class="ti ti-flask"></i> Trial-only / investigational</div>
+      <p><b>Chromoendoscopy and AI-assisted detection:</b> may improve adenoma detection rates; promising but not yet a standard requirement.</p>
+      <p><b>Aspirin and other chemoprevention in MUTYH specifically:</b> no dedicated trial has established benefit; current use is extrapolated.</p>
+      <p><b>TMB-directed prevention and vaccine concepts:</b> the high mutational load of MUTYH tumours is of research interest for neoantigen-based strategies; entirely investigational.</p>
+      <p><b>Refined extracolonic risk estimation:</b> larger cohort and registry studies are needed to define ovarian, bladder, and breast risks precisely enough to justify organ-specific screening.</p>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section id="en-11">
+    <div class="sechead"><div class="secnum">11</div><h2>Summary of recommendations</h2></div>
+    <h4>Screening by genotype</h4>
+    <div class="cardgrid">
+      <div class="card">
+        <h4>Biallelic (MAP)</h4>
+        <ul>
+          <li>Colonoscopy q1–2y from age 25–30 with polypectomy</li>
+          <li>Upper endoscopy + side-viewing duodenoscopy from age 30–35; interval by duodenal findings</li>
+          <li>Treat <i>H. pylori</i> if found</li>
+          <li>Colectomy when endoscopic control fails or cancer arises</li>
+          <li>No routine non-GI organ screening beyond population care</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Monoallelic</h4>
+        <ul>
+          <li>No FDR with CRC: average-risk population screening</li>
+          <li>FDR with CRC: colonoscopy from ~age 40, every 5 years</li>
+          <li>No upper GI or extracolonic surveillance</li>
+        </ul>
+      </div>
+    </div>
+    <h4>Cross-cutting</h4>
+    <div class="cardgrid">
+      <div class="card">
+        <h4>Counselling</h4>
+        <ul>
+          <li>Cascade testing of siblings (highest yield)</li>
+          <li>Test partner of biallelic patient before testing children</li>
+          <li>Offer PGT-M / prenatal options to carrier couples</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Prevention and lifestyle</h4>
+        <ul>
+          <li>Aspirin only after individualized bleeding-risk assessment; off-label</li>
+          <li>Tobacco cessation prioritized</li>
+          <li>Standard colorectal-protective diet and activity</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>If cancer occurs</h4>
+        <ul>
+          <li>Assess TMB and MMR/MSI status</li>
+          <li>Consider checkpoint immunotherapy via oncology</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section id="en-12" class="refs">
+    <div class="sechead"><div class="secnum">12</div><h2>References</h2></div>
+    <ol>
+      <li>NCCN Clinical Practice Guidelines in Oncology. Genetic/Familial High-Risk Assessment: Colorectal, Endometrial, and Gastric. Version 1.2025 (and Version 2.2024). National Comprehensive Cancer Network.</li>
+      <li>Nielsen M, Infante E, Brand R. MUTYH Polyposis. In: GeneReviews® [Internet]. Seattle (WA): University of Washington; 1993–2025 (updated 2021).</li>
+      <li>PDQ Cancer Genetics Editorial Board. Genetics of Colorectal Cancer (PDQ®): Health Professional Version. Bethesda (MD): National Cancer Institute; 2025.</li>
+      <li>Win AK, Dowty JG, Cleary SP, et al. Risk of extracolonic cancers for people with biallelic and monoallelic mutations in MUTYH. Int J Cancer. 2016;139(7):1557–1563.</li>
+      <li>Win AK, Cleary SP, Dowty JG, et al. Cancer risks for monoallelic MUTYH mutation carriers with a family history of colorectal cancer. Int J Cancer. 2011;129(9):2256–2262.</li>
+      <li>Vogt S, Jones N, Christian D, et al. Expanded extracolonic tumor spectrum in MUTYH-associated polyposis. Gastroenterology. 2009;137(6):1976–1985.</li>
+      <li>Nieuwenhuis MH, Vogt S, Jones N, et al. Evidence for accelerated colorectal adenoma–carcinoma progression in MUTYH-associated polyposis? Gut. 2012;61(5):734–738.</li>
+      <li>Patel R, McGinty P, Cuthill V, et al. Risk of colorectal adenomas and cancer in monoallelic carriers of MUTYH pathogenic variants: a single-centre experience. Int J Colorectal Dis. 2021;36(10):2199–2204.</li>
+      <li>Vasen HFA, Möslein G, Alonso A, et al. Guidelines for the clinical management of familial adenomatous polyposis (FAP). Gut. 2008;57(5):704–713.</li>
+      <li>Burn J, Sheth H, Elliott F, et al. Cancer prevention with aspirin in hereditary colorectal cancer (Lynch syndrome), 10-year follow-up of the CAPP2 trial. Lancet. 2020;395(10240):1855–1863.</li>
+      <li>Aelvoet AS, Bastiaansen BAJ, Fockens P, Dekker E. Management of familial adenomatous polyposis and MUTYH-associated polyposis; new insights. Best Pract Res Clin Gastroenterol. 2022;58–59:101793.</li>
+      <li>Hurley JJ, Thomas LE, Walton SJ, et al. The impact of chromoendoscopy for surveillance of the duodenum in patients with MUTYH-associated polyposis and FAP. Gastrointest Endosc. 2018;88(4):665–673.</li>
+    </ol>
+  </section>
+
+  <div class="footer ui">
+    <p>This protocol is intended to support, not replace, clinical judgment. It summarizes guidance current at the time of review (June 2026) and is based largely on NCCN and specialty-society guidance and key studies. Guidelines evolve, and several recommendations here (start ages, intervals, extracolonic and chemoprevention measures) rest on expert consensus or extrapolation rather than high-quality MUTYH-specific evidence. Verify all specifics against the current published guideline versions before applying them to an individual patient.</p>
+    <p>© GENGIQC (gengiqc.ca) · Cancer Prevention Centre, Jewish General Hospital, Montreal.</p>
+  </div>
+
+</div>
+
+<!-- ============================ FRANÇAIS ============================ -->
+<div class="lang-fr">
+
+  <div class="masthead">
+    <div class="eyebrow"><i class="ti ti-dna-2"></i> Prévention du cancer héréditaire · GENGIQC</div>
+    <h1>Polypose associée à MUTYH : protocole de prévention et de surveillance</h1>
+    <p class="standfirst">Un guide pratique pour les patients et les cliniciens sur le risque de cancer, le dépistage, la chirurgie et la prévention chez les personnes porteuses de variants MUTYH.</p>
+    <div class="authorpanel">
+      <div class="who">
+        <b>D<sup>r</sup> Andrew Shuen</b>, MD PhD FRCPC DABMGG — Génétique du cancer, Centre de prévention du cancer, Hôpital général juif (HGJ), Montréal<br>
+        <b>D<sup>r</sup> William Foulkes</b>, MBBS PhD FRCPC — Génétique du cancer, Centre de prévention du cancer, HGJ, Montréal<br>
+        <b>D<sup>re</sup> Polymnia Galiatsatos</b>, MD CM FRCPC — Division de gastroentérologie, HGJ, Montréal
+      </div>
+      <div class="metachips">
+        <span class="chip"><i class="ti ti-calendar"></i> Révisé en juin 2026</span>
+        <span class="chip"><i class="ti ti-book"></i> Basé sur NCCN v1.2025 / v2.2024</span>
+        <span class="chip"><i class="ti ti-map-pin"></i> Contexte posologique canadien</span>
+        <span class="chip"><i class="ti ti-language"></i> English / Français</span>
+      </div>
+      <div class="legend">
+        <span><span class="swatch" style="background:var(--brand-bg);border:1px solid var(--brand-line)"></span> Résumé pour le patient</span>
+        <span><span class="swatch" style="background:var(--red-bg);border:1px solid var(--red-line)"></span> Risque élevé</span>
+        <span><span class="swatch" style="background:var(--amber-bg);border:1px solid var(--amber-line)"></span> Risque modéré</span>
+        <span><span class="swatch" style="background:var(--brand-bg);border:1px solid var(--brand-line)"></span> Faible / standard</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="toc ui">
+    <h2>Sommaire</h2>
+    <ol>
+      <li><a href="#fr-1"><span class="n">1</span> Comprendre la polypose associée à MUTYH</a></li>
+      <li><a href="#fr-2"><span class="n">2</span> Risques de cancer à vie selon le génotype</a></li>
+      <li><a href="#fr-3"><span class="n">3</span> Surveillance : porteurs bialléliques (PAM)</a></li>
+      <li><a href="#fr-4"><span class="n">4</span> Surveillance : porteurs monoalléliques</a></li>
+      <li><a href="#fr-5"><span class="n">5</span> Chirurgie de réduction du risque</a></li>
+      <li><a href="#fr-6"><span class="n">6</span> Chimioprévention et prévention médicale</a></li>
+      <li><a href="#fr-7"><span class="n">7</span> Conseil génétique et tests familiaux</a></li>
+      <li><a href="#fr-8"><span class="n">8</span> Mode de vie et nutrition</a></li>
+      <li><a href="#fr-9"><span class="n">9</span> Traitement des patients atteints (immunothérapie)</a></li>
+      <li><a href="#fr-10"><span class="n">10</span> Prévention émergente et expérimentale</a></li>
+      <li><a href="#fr-11"><span class="n">11</span> Résumé des recommandations</a></li>
+      <li><a href="#fr-12"><span class="n">12</span> Références</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <section id="fr-1">
+    <div class="sechead"><div class="secnum">1</div><h2>Comprendre la polypose associée à MUTYH</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>MUTYH est un gène qui aide à réparer de petites erreurs dans votre ADN. Nous en avons tous deux copies, une de chaque parent. Quand les deux copies portent une altération nuisible, le système de réparation fonctionne moins bien et certains cancers deviennent plus probables. Cette condition s'appelle la polypose associée à MUTYH, ou PAM.</p>
+      <p>Les personnes atteintes de PAM développent souvent de nombreuses petites excroissances appelées polypes dans le côlon. Les polypes ne sont pas des cancers, mais certains peuvent le devenir avec le temps. La principale préoccupation est le cancer du côlon. Il y a aussi une légère hausse du risque de cancer de l'intestin grêle (duodénum) et de quelques autres organes.</p>
+      <p>Si vous ne portez qu'une seule copie nuisible, votre risque est beaucoup plus faible et proche de celui de la population générale. Nous expliquons cette situation séparément plus bas.</p>
+    </div>
+    <p>MUTYH (anciennement MYH) code une glycosylase de réparation par excision de base qui retire l'adénine mésappariée avec la 8-oxoguanine, un produit du dommage oxydatif de l'ADN. La perte de fonction produit une signature mutationnelle somatique caractéristique, avec un excès de transversions G:C&gt;T:A, notamment dans les gènes <i>APC</i> et <i>KRAS</i> qui pilotent la tumorigenèse colorectale.</p>
+    <p>La transmission est autosomique récessive. Le syndrome clinique (PAM) requiert des variants pathogènes <b>bialléliques</b>. Les deux variants les plus fréquents chez les personnes d'ascendance européenne, p.Tyr179Cys (Y179C) et p.Gly396Asp (G396D), représentent la majorité des allèles pathogènes dans cette population; des variants fondateurs ou propres à certaines populations existent ailleurs et doivent être considérés chez les patients non européens.</p>
+    <p>Le phénotype est typiquement <b>atténué</b> : la plupart des patients se présentent dans la cinquième ou la sixième décennie avec de 10 à quelques centaines d'adénomes, souvent du côté droit, avec aussi des polypes festonnés et hyperplasiques. Le cancer colorectal peut survenir sans polypose manifeste. Il y a chevauchement clinique avec la polypose adénomateuse familiale atténuée (PAFA), et la surveillance est calquée sur cette condition.</p>
+    <p>Le statut de porteur est fréquent. Environ 1 à 2 pour cent de la population générale porte un seul variant pathogène (monoallélique) de MUTYH. Les génotypes bialléliques sont beaucoup plus rares, de l'ordre de 1 sur 10 000 à 1 sur 40 000.</p>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-info-circle"></i> Distinction clé</div>
+      <p>Dans tout ce protocole, les recommandations diffèrent nettement selon le génotype. Les porteurs <b>bialléliques</b> ont la PAM et nécessitent une surveillance gastro-intestinale intensive. Les porteurs <b>monoalléliques</b> ont au plus un risque colorectal légèrement augmenté et, dans la plupart des cas, suivent un dépistage fondé sur les antécédents familiaux, et non un protocole de polypose.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="fr-2">
+    <div class="sechead"><div class="secnum">2</div><h2>Risques de cancer à vie selon le génotype</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Les chiffres ci-dessous sont des estimations tirées d'études. Ils décrivent des groupes de personnes, pas une personne en particulier. Votre propre risque dépend de vos antécédents familiaux, de vos polypes et de la rigueur de votre surveillance. Avec un bon dépistage, le risque de cancer du côlon peut être réduit de façon importante.</p>
+    </div>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Site du cancer</th><th>Biallélique (PAM)</th><th>Monoallélique</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Colorectal</td><td><span class="pill high">~43–63 % à 60 ans; jusqu'à ~80–90 % à vie sans surveillance</span></td><td><span class="pill low">Proche de la population à légèrement élevé</span></td><td>Moteur central du syndrome. Risque nettement réduit par la surveillance et la polypectomie.</td></tr>
+        <tr><td>Duodénal / intestin grêle</td><td><span class="pill mod">~4 % à vie (≈4–9 % rapportés)</span></td><td><span class="pill low">Non clairement élevé</span></td><td>Plus faible que dans la PAF classique, mais principale préoccupation GI extracolique.</td></tr>
+        <tr><td>Ovarien</td><td><span class="pill mod">~6–14 %; âge médian ~51 ans</span></td><td><span class="pill low">Non clairement élevé</span></td><td>Données modérées; aucun test de dépistage validé.</td></tr>
+        <tr><td>Vessie / urothélial</td><td><span class="pill mod">~8 % (femmes) à ~25 % (hommes) à 70 ans dans une cohorte</span></td><td><span class="pill low">Possiblement légèrement élevé</span></td><td>Intervalles de confiance larges; risque absolu incertain.</td></tr>
+        <tr><td>Sein (femme)</td><td><span class="pill mod">Possiblement modestement élevé (~11 % dans une cohorte)</span></td><td><span class="pill low">Non clairement élevé</span></td><td>Incohérent selon les études; ne justifie pas à lui seul un dépistage à haut risque.</td></tr>
+        <tr><td>Endomètre</td><td><span class="pill low">Incohérent; faible le cas échéant</span></td><td><span class="pill low">Non clairement élevé</span></td><td>Certaines études ne montrent aucune association.</td></tr>
+        <tr><td>Autres (estomac, thyroïde, peau, hépatobiliaire)</td><td><span class="pill low">Signaux de cas seulement</span></td><td><span class="pill low">Non établi</span></td><td>Données insuffisantes pour une surveillance par organe.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><small>Les fourchettes reflètent des cohortes hétérogènes et de larges intervalles de confiance. Considérez les chiffres extracoliques comme approximatifs. Le chiffre colorectal suppose une surveillance inadéquate ou absente; une surveillance efficace modifie le risque réel de façon importante.</small></p>
+  </section>
+
+  <!-- 3 -->
+  <section id="fr-3">
+    <div class="sechead"><div class="secnum">3</div><h2>Surveillance : porteurs bialléliques (PAM)</h2></div>
+    <div class="genehdr">
+      <span class="gname"><i class="ti ti-dna"></i> MUTYH biallélique</span>
+      <span class="riskbadge r-high">Risque colorectal élevé</span>
+      <span class="riskbadge r-mod">Extracolique modéré</span>
+    </div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Si vous avez deux copies nuisibles de MUTYH, la coloscopie régulière est la chose la plus importante que vous puissiez faire. Nous retirons les polypes avant qu'ils n'aient la chance de devenir des cancers. La plupart des gens peuvent être suivis pendant des années par coloscopie seule sans jamais avoir besoin de chirurgie.</p>
+      <p>Nous examinons aussi la partie haute de votre tube digestif (l'estomac et le début de l'intestin grêle) avec un autre examen par caméra, car des polypes peuvent aussi s'y former. L'horaire ci-dessous est un point de départ. Nous l'ajustons selon ce que nous trouvons à chaque examen.</p>
+    </div>
+
+    <h3>Tube digestif bas (côlon et rectum)</h3>
+    <ul class="checklist">
+      <li><i class="ti ti-circle-check ico yes"></i><span class="ctxt"><b>Coloscopie tous les 1 à 2 ans, à partir de 25 à 30 ans.</b><span class="tag routine">Routine</span> Avec polypectomie complète. L'intervalle se raccourcit si la charge de polypes est élevée.</span></li>
+      <li><i class="ti ti-circle-check ico yes"></i><span class="ctxt"><b>Chromoendoscopie ou technique haute définition</b><span class="tag optional">Optionnel</span> Peut améliorer la détection des adénomes; raisonnable lorsque disponible.</span></li>
+      <li><i class="ti ti-circle-check ico yes"></i><span class="ctxt"><b>Orientation vers la colectomie si les polypes ne peuvent être maîtrisés par endoscopie</b><span class="tag routine">Routine</span> Voir la section 5. La polypectomie seule suffit chez la plupart des patients à faible charge adénomateuse (&lt;20 adénomes, tous &lt;1 cm, aucun avec histologie avancée).</span></li>
+    </ul>
+
+    <h3>Tube digestif haut (estomac et duodénum)</h3>
+    <ul class="checklist">
+      <li><i class="ti ti-circle-check ico yes"></i><span class="ctxt"><b>Endoscopie haute de référence à 30 à 35 ans</b><span class="tag routine">Routine</span> Vision axiale plus duodénoscopie à vision latérale, incluant la visualisation complète de l'ampoule de Vater.</span></li>
+      <li><i class="ti ti-circle-check ico yes"></i><span class="ctxt"><b>Intervalle de répétition fixé selon les trouvailles duodénales (stadification de type Spigelman)</b><span class="tag routine">Routine</span> De tous les 3 à 4 ans pour une maladie à faible charge à quelques mois pour une polypose duodénale avancée.</span></li>
+      <li><i class="ti ti-circle-check ico opt"></i><span class="ctxt"><b>Retrait endoscopique des adénomes duodénaux/ampullaires</b><span class="tag optional">Optionnel</span> Si changement villeux, dysplasie de haut grade, taille &gt;1 cm ou symptômes.</span></li>
+      <li><i class="ti ti-circle-check ico opt"></i><span class="ctxt"><b>Rechercher et traiter <i>H. pylori</i> s'il est présent</b><span class="tag optional">Optionnel</span> Raisonnable vu les signaux de polypes/cancer gastrique; faible risque.</span></li>
+    </ul>
+
+    <h3>Extracolique, non gastro-intestinal</h3>
+    <ul class="checklist">
+      <li><i class="ti ti-circle-dashed ico no"></i><span class="ctxt"><b>Dépistage ovarien, vésical ou mammaire de routine au-delà des soins de population</b><span class="tag notrec">Non recommandé de routine</span> Aucun test validé ne réduit la mortalité; les risques accrus sont réels mais modestes et incertains. Gérer selon les symptômes et les antécédents familiaux.</span></li>
+      <li><i class="ti ti-circle-dashed ico no"></i><span class="ctxt"><b>Échographie thyroïdienne comme protocole permanent</b><span class="tag notrec">Non recommandé de routine</span> N'investiguer que les trouvailles anormales; le dépistage de routine relève au mieux de l'avis d'experts.</span></li>
+      <li><i class="ti ti-circle-check ico opt"></i><span class="ctxt"><b>Analyse d'urine / orientation en urologie</b><span class="tag optional">Optionnel</span> À considérer chez les hommes, les fumeurs ou en cas d'antécédents familiaux urothéliaux, en reconnaissant les données limitées.</span></li>
+    </ul>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-alert-triangle"></i> Note sur les données</div>
+      <p>La coloscopie et l'endoscopie haute dans la PAM sont appuyées par les lignes directrices et efficaces. La surveillance non gastro-intestinale est mal appuyée par les données; le NCCN n'endosse pas un dépistage intensifié de ces organes en raison de données limitées. Les décisions doivent être individualisées et réévaluées à mesure que les lignes directrices évoluent.</p>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="fr-4">
+    <div class="sechead"><div class="secnum">4</div><h2>Surveillance : porteurs monoalléliques</h2></div>
+    <div class="genehdr">
+      <span class="gname"><i class="ti ti-dna"></i> MUTYH monoallélique</span>
+      <span class="riskbadge r-low">Risque faible / proche population</span>
+    </div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Porter une seule copie nuisible de MUTYH est fréquent et, en soi, n'augmente le risque de cancer du côlon que faiblement, voire pas du tout. Vous n'avez pas besoin d'un protocole de polypose. Ce qui compte le plus, ce sont vos antécédents familiaux. Si un proche parent a eu un cancer du côlon, nous pourrions commencer le dépistage plus tôt ou plus souvent.</p>
+    </div>
+    <ul class="checklist">
+      <li><i class="ti ti-circle-check ico yes"></i><span class="ctxt"><b>Aucun parent au premier degré avec cancer colorectal :</b> dépistage de population à risque moyen<span class="tag routine">Routine</span> Suivre le dépistage colorectal standard de votre territoire.</span></li>
+      <li><i class="ti ti-circle-check ico opt"></i><span class="ctxt"><b>Parent au premier degré avec cancer colorectal :</b> coloscopie à partir d'environ 40 ans, tous les 5 ans<span class="tag optional">Selon ligne directrice</span> Le NCCN appuie une coloscopie accrue dans ce scénario.</span></li>
+      <li><i class="ti ti-circle-dashed ico no"></i><span class="ctxt"><b>Surveillance digestive haute ou extracolique</b><span class="tag notrec">Non recommandé</span> Aucune preuve de bénéfice chez les porteurs monoalléliques.</span></li>
+    </ul>
+    <p><small>Les données de cohorte (par exemple la série monoallélique de St Mark's) montrent un faible taux d'adénomes et aucun cancer colorectal observé chez les porteurs sans antécédents familiaux marqués, ce qui appuie une approche prudente fondée sur les antécédents familiaux.</small></p>
+  </section>
+
+  <!-- 5 -->
+  <section id="fr-5">
+    <div class="sechead"><div class="secnum">5</div><h2>Chirurgie de réduction du risque</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>La plupart des personnes atteintes de PAM n'ont jamais besoin de chirurgie intestinale. Nous l'envisageons seulement quand il y a trop de polypes pour les retirer en sécurité par caméra, ou si un cancer est trouvé ou fortement soupçonné. Si une chirurgie est nécessaire, nous choisissons l'opération qui préserve le plus de fonction normale possible, et un suivi par endoscopie reste nécessaire ensuite.</p>
+    </div>
+    <h4>Indications de la colectomie</h4>
+    <ul>
+      <li><b>Absolues :</b> cancer colorectal confirmé ou fortement soupçonné; symptômes significatifs comme une obstruction ou un saignement.</li>
+      <li><b>Relatives :</b> charge de polypes qui ne peut plus être maîtrisée par polypectomie endoscopique (nombre élevé, grande taille ou dysplasie de haut grade).</li>
+    </ul>
+    <h4>Choix de l'intervention</h4>
+    <p>Comme la PAM est habituellement atténuée et épargne souvent le rectum, la <b>colectomie subtotale avec anastomose iléo-rectale (AIR)</b> est fréquemment appropriée, préservant le rectum avec une surveillance endoscopique continue du moignon rectal. La <b>proctocolectomie avec anastomose iléo-anale avec réservoir (AIA)</b> est réservée à une polypose rectale importante ou à un cancer du rectum. La décision est partagée, en pesant la fonction, le risque de cancer et les préférences du patient.</p>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-gender-female"></i> Considérations gynécologiques et hormonales</div>
+      <p>Il n'y a pas de rôle établi pour une chirurgie gynécologique de réduction du risque chez les porteurs de MUTYH. Le risque ovarien est modéré et incertain, sans dépistage validé. Les décisions concernant la salpingo-ovariectomie, si elles sont soulevées, doivent être guidées par les antécédents familiaux et des facteurs individuels, et non par le statut MUTYH seul.</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="fr-6">
+    <div class="sechead"><div class="secnum">6</div><h2>Chimioprévention et prévention médicale</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Il n'existe pas de pilule prouvée pour prévenir le cancer dans la PAM. L'aspirine a été étudiée dans des conditions apparentées et peut avoir un rôle pour certaines personnes, mais les données propres à MUTYH sont limitées. Si nous l'envisageons, nous pesons le bénéfice possible contre le risque de saignement de l'estomac ou de l'intestin. La coloscopie de dépistage demeure la prévention prouvée.</p>
+    </div>
+    <p>Les données de haute qualité pour la chimioprévention dans MUTYH manquent. Elles sont extrapolées de la polypose adénomateuse familiale et du syndrome de Lynch.</p>
+    <ul>
+      <li><b>Aspirine :</b> l'essai CAPP2 a montré une réduction du cancer colorectal avec l'aspirine dans le syndrome de Lynch, mais la PAM n'était pas la population étudiée. Tout usage dans la PAM est hors indication et individualisé. Une considération de départ raisonnable au Canada est l'aspirine à faible dose (par exemple 81 mg par jour), la dose et la durée étant discutées au cas par cas. Ce n'est pas une recommandation imposée par les lignes directrices pour la PAM.</li>
+      <li><b>AINS / inhibiteurs de la COX-2 (p. ex. sulindac, célécoxib) :</b> réduisent la charge adénomateuse dans la PAF mais comportent un risque cardiovasculaire et de saignement GI et ne sont pas établis pour la PAM. À réserver à des cas sélectionnés avec avis spécialisé.</li>
+    </ul>
+    <div class="infobox">
+      <div class="ititle"><i class="ti ti-calculator"></i> Évaluation du risque de saignement avant l'aspirine</div>
+      <p>Avant d'envisager l'aspirine, pesez le risque de saignement à l'aide de facteurs cliniques : âge, antécédent de saignement GI ou d'ulcère, anticoagulation ou AINS concomitants, statut <i>H. pylori</i> et hypertension non maîtrisée. Un outil formel d'évaluation individualisée du rapport saignement/bénéfice peut soutenir la décision partagée.</p>
+      <table>
+        <thead><tr><th>Niveau</th><th>Profil</th><th>Approche</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill low">Plus faible</span></td><td>Plus jeune, sans antécédent de saignement GI, sans anticoagulant</td><td>Discussion sur l'aspirine raisonnable si d'autres facteurs la favorisent</td></tr>
+          <tr><td><span class="pill mod">Intermédiaire</span></td><td>Un facteur de risque modéré</td><td>Atténuer (traiter <i>H. pylori</i>, envisager un IPP), réévaluer</td></tr>
+          <tr><td><span class="pill high">Plus élevé</span></td><td>Saignement GI antérieur, anticoagulation ou facteurs multiples</td><td>Généralement éviter; s'appuyer sur la prévention endoscopique</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section id="fr-7">
+    <div class="sechead"><div class="secnum">7</div><h2>Conseil génétique et tests familiaux</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>La PAM se transmet dans les familles d'une façon particulière. Comme les deux copies du gène doivent être touchées, elle apparaît habituellement chez des frères et sœurs plutôt que de passer directement d'un parent à un enfant. Nous offrons le test à vos proches afin de savoir qui a besoin de dépistage et qui n'en a pas besoin. Un conseiller en génétique peut accompagner votre famille dans cette démarche.</p>
+    </div>
+    <h4>Transmission et test en cascade</h4>
+    <p>La PAM est autosomique récessive. Les deux parents d'une personne atteinte sont des porteurs obligatoires (monoalléliques). Les frères et sœurs germains ont 25 pour cent de chances d'être bialléliques. Les enfants d'un patient biallélique sont des porteurs obligatoires et ne sont bialléliques que si l'autre parent porte aussi un variant; un test du partenaire ajusté à la fréquence de porteurs clarifie le risque pour la descendance.</p>
+    <ul>
+      <li><b>Tester les frères et sœurs germains</b> d'un proband biallélique pour les deux variants familiaux. C'est l'étape de cascade au rendement le plus élevé.</li>
+      <li><b>Tester le partenaire</b> d'un patient biallélique pour préciser le risque des enfants avant de tester ceux-ci.</li>
+      <li><b>Documenter un arbre généalogique sur trois générations</b>, en notant les cancers colorectaux et extracoliques et les âges au diagnostic.</li>
+    </ul>
+    <h4>Options reproductives</h4>
+    <p>Pour les couples où les deux partenaires portent des variants MUTYH, les options reproductives incluent le diagnostic prénatal et le test génétique préimplantatoire (DPI-M). Ce sont des choix individuels qui bénéficient d'un conseil génétique et, le cas échéant, d'une orientation vers un spécialiste de la reproduction.</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="fr-8">
+    <div class="sechead"><div class="secnum">8</div><h2>Mode de vie et nutrition</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>De saines habitudes ne remplacent pas le dépistage, mais elles aident. Ne pas fumer est important, car le tabac augmente le risque de cancer de l'intestin et de la vessie. Une alimentation riche en fibres, pauvre en viandes transformées et rouges, une consommation d'alcool limitée, une activité régulière et un poids santé contribuent tous à réduire le risque de cancer colorectal en général.</p>
+    </div>
+    <p>Aucune intervention diététique propre à MUTYH n'a fait la preuve qu'elle modifie le risque de cancer. Les conseils généraux de prévention du cancer colorectal s'appliquent et il est raisonnable de les renforcer, en gardant à l'esprit que le risque génétique sous-jacent et la surveillance demeurent les facteurs dominants.</p>
+    <ul>
+      <li><b>L'arrêt du tabac</b> est la mesure de mode de vie à plus forte valeur, vu les risques colorectal et urothélial.</li>
+      <li><b>Limiter l'alcool;</b> privilégier les fibres alimentaires, les grains entiers et les légumes; limiter les viandes transformées et rouges.</li>
+      <li><b>L'activité physique et la gestion du poids</b> s'alignent sur la réduction générale du risque de cancer colorectal.</li>
+    </ul>
+  </section>
+
+  <!-- 9 -->
+  <section id="fr-9">
+    <div class="sechead"><div class="secnum">9</div><h2>Traitement des patients atteints (immunothérapie)</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>Cette section s'adresse aux personnes atteintes de PAM qui ont déjà un cancer. Certaines tumeurs liées à MUTYH portent un très grand nombre de modifications de l'ADN. Ces tumeurs peuvent bien répondre à un type de traitement appelé immunothérapie. Si on vous diagnostique un cancer, demandez à votre oncologue si les caractéristiques mutationnelles de votre tumeur font de l'immunothérapie une option.</p>
+    </div>
+    <p>Les tumeurs déficientes en MUTYH sont typiquement stables sur le plan des microsatellites, mais peuvent porter une charge mutationnelle tumorale (TMB) élevée en raison du défaut de réparation sous-jacent. Des réponses fortes à l'inhibition des points de contrôle immunitaires ont été rapportées dans les cancers associés à MUTYH, dont une réponse complète documentée dans un cancer gastrique associé à la PAM. La TMB et le statut de réparation des mésappariements/MSI devraient être évalués chez les patients atteints pour orienter l'admissibilité à une thérapie par inhibiteur de point de contrôle. Il s'agit de traitement, et non de prévention, et cela relève de l'oncologie médicale.</p>
+  </section>
+
+  <!-- 10 -->
+  <section id="fr-10">
+    <div class="sechead"><div class="secnum">10</div><h2>Prévention émergente et expérimentale</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div>
+      <p>La recherche se poursuit. Les idées ci-dessous sont prometteuses mais pas encore prouvées pour les soins courants. Nous les mentionnons pour que vous sachiez ce qui est à l'étude. Elles ne devraient pas modifier votre plan de dépistage actuel à moins que vous ne participiez à un essai.</p>
+    </div>
+    <div class="emerging">
+      <div class="etitle"><i class="ti ti-flask"></i> Essai seulement / expérimental</div>
+      <p><b>Chromoendoscopie et détection assistée par IA :</b> pourrait améliorer les taux de détection des adénomes; prometteur mais pas encore une exigence standard.</p>
+      <p><b>Aspirine et autre chimioprévention propres à MUTYH :</b> aucun essai dédié n'a établi de bénéfice; l'usage actuel est extrapolé.</p>
+      <p><b>Prévention dirigée par la TMB et concepts de vaccins :</b> la charge mutationnelle élevée des tumeurs MUTYH suscite un intérêt de recherche pour des stratégies fondées sur les néoantigènes; entièrement expérimental.</p>
+      <p><b>Estimation affinée du risque extracolique :</b> de plus grandes études de cohorte et de registre sont nécessaires pour définir les risques ovarien, vésical et mammaire avec assez de précision pour justifier un dépistage par organe.</p>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section id="fr-11">
+    <div class="sechead"><div class="secnum">11</div><h2>Résumé des recommandations</h2></div>
+    <h4>Dépistage selon le génotype</h4>
+    <div class="cardgrid">
+      <div class="card">
+        <h4>Biallélique (PAM)</h4>
+        <ul>
+          <li>Coloscopie q1–2 ans dès 25–30 ans avec polypectomie</li>
+          <li>Endoscopie haute + duodénoscopie à vision latérale dès 30–35 ans; intervalle selon les trouvailles duodénales</li>
+          <li>Traiter <i>H. pylori</i> s'il est présent</li>
+          <li>Colectomie quand la maîtrise endoscopique échoue ou qu'un cancer survient</li>
+          <li>Aucun dépistage d'organe non GI de routine au-delà des soins de population</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Monoallélique</h4>
+        <ul>
+          <li>Sans parent au 1<sup>er</sup> degré avec CCR : dépistage de population à risque moyen</li>
+          <li>Avec parent au 1<sup>er</sup> degré avec CCR : coloscopie dès ~40 ans, tous les 5 ans</li>
+          <li>Aucune surveillance digestive haute ou extracolique</li>
+        </ul>
+      </div>
+    </div>
+    <h4>Transversal</h4>
+    <div class="cardgrid">
+      <div class="card">
+        <h4>Conseil</h4>
+        <ul>
+          <li>Test en cascade des frères et sœurs (rendement le plus élevé)</li>
+          <li>Tester le partenaire d'un patient biallélique avant de tester les enfants</li>
+          <li>Offrir DPI-M / options prénatales aux couples porteurs</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Prévention et mode de vie</h4>
+        <ul>
+          <li>Aspirine seulement après évaluation individualisée du risque de saignement; hors indication</li>
+          <li>Arrêt du tabac priorisé</li>
+          <li>Régime et activité standards protecteurs du côlon</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>En cas de cancer</h4>
+        <ul>
+          <li>Évaluer la TMB et le statut MMR/MSI</li>
+          <li>Envisager l'immunothérapie par point de contrôle via l'oncologie</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section id="fr-12" class="refs">
+    <div class="sechead"><div class="secnum">12</div><h2>Références</h2></div>
+    <ol>
+      <li>NCCN Clinical Practice Guidelines in Oncology. Genetic/Familial High-Risk Assessment: Colorectal, Endometrial, and Gastric. Version 1.2025 (and Version 2.2024). National Comprehensive Cancer Network.</li>
+      <li>Nielsen M, Infante E, Brand R. MUTYH Polyposis. In: GeneReviews® [Internet]. Seattle (WA): University of Washington; 1993–2025 (updated 2021).</li>
+      <li>PDQ Cancer Genetics Editorial Board. Genetics of Colorectal Cancer (PDQ®): Health Professional Version. Bethesda (MD): National Cancer Institute; 2025.</li>
+      <li>Win AK, Dowty JG, Cleary SP, et al. Risk of extracolonic cancers for people with biallelic and monoallelic mutations in MUTYH. Int J Cancer. 2016;139(7):1557–1563.</li>
+      <li>Win AK, Cleary SP, Dowty JG, et al. Cancer risks for monoallelic MUTYH mutation carriers with a family history of colorectal cancer. Int J Cancer. 2011;129(9):2256–2262.</li>
+      <li>Vogt S, Jones N, Christian D, et al. Expanded extracolonic tumor spectrum in MUTYH-associated polyposis. Gastroenterology. 2009;137(6):1976–1985.</li>
+      <li>Nieuwenhuis MH, Vogt S, Jones N, et al. Evidence for accelerated colorectal adenoma–carcinoma progression in MUTYH-associated polyposis? Gut. 2012;61(5):734–738.</li>
+      <li>Patel R, McGinty P, Cuthill V, et al. Risk of colorectal adenomas and cancer in monoallelic carriers of MUTYH pathogenic variants: a single-centre experience. Int J Colorectal Dis. 2021;36(10):2199–2204.</li>
+      <li>Vasen HFA, Möslein G, Alonso A, et al. Guidelines for the clinical management of familial adenomatous polyposis (FAP). Gut. 2008;57(5):704–713.</li>
+      <li>Burn J, Sheth H, Elliott F, et al. Cancer prevention with aspirin in hereditary colorectal cancer (Lynch syndrome), 10-year follow-up of the CAPP2 trial. Lancet. 2020;395(10240):1855–1863.</li>
+      <li>Aelvoet AS, Bastiaansen BAJ, Fockens P, Dekker E. Management of familial adenomatous polyposis and MUTYH-associated polyposis; new insights. Best Pract Res Clin Gastroenterol. 2022;58–59:101793.</li>
+      <li>Hurley JJ, Thomas LE, Walton SJ, et al. The impact of chromoendoscopy for surveillance of the duodenum in patients with MUTYH-associated polyposis and FAP. Gastrointest Endosc. 2018;88(4):665–673.</li>
+    </ol>
+  </section>
+
+  <div class="footer ui">
+    <p>Ce protocole vise à soutenir, et non à remplacer, le jugement clinique. Il résume les orientations à jour au moment de la révision (juin 2026) et repose largement sur les lignes directrices du NCCN et de sociétés spécialisées ainsi que sur des études clés. Les lignes directrices évoluent, et plusieurs recommandations ici (âges de début, intervalles, mesures extracoliques et de chimioprévention) reposent sur un consensus d'experts ou une extrapolation plutôt que sur des données de haute qualité propres à MUTYH. Vérifiez tous les détails par rapport aux versions publiées en vigueur avant de les appliquer à un patient individuel.</p>
+    <p>© GENGIQC (gengiqc.ca) · Centre de prévention du cancer, Hôpital général juif, Montréal.</p>
+  </div>
+
+</div>
+
+<script>
+function setLang(l){
+  document.querySelector('.lang-en').style.display = (l==='en')?'block':'none';
+  document.querySelector('.lang-fr').style.display = (l==='fr')?'block':'none';
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  document.getElementById('btn-fr').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+}
+setLang('en');
+</script>
+
+</div>
+</body>
+</html>
