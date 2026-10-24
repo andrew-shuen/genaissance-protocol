@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hypertrophic Cardiomyopathy — Surveillance &amp; Management Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px; line-height:1.62;
+}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:9px 18px;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .util{display:flex; gap:8px; align-items:center;}
+.topbar .tabs{display:flex; gap:4px;}
+.btn{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13.5px; font-weight:600; cursor:pointer;
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft);
+  padding:7px 13px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;
+  transition:.15s;
+}
+.btn:hover{border-color:var(--brand-line); color:var(--brand-dark); background:var(--brand-bg);}
+.btn.active{background:var(--brand); border-color:var(--brand); color:#fff;}
+.btn i{font-size:16px;}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:860px; margin:0 auto; padding:0 22px 80px;}
+
+/* ---------- Masthead ---------- */
+.masthead{padding:38px 0 26px; border-bottom:2px solid var(--ink);}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:12.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--brand-dark);
+}
+h1.title{font-size:40px; line-height:1.1; margin:.28em 0 .12em; letter-spacing:-.01em;}
+.standfirst{font-size:19px; color:var(--ink-soft); margin:0 0 22px; max-width:62ch;}
+.authorpanel{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:15px 18px; display:flex; gap:14px; align-items:flex-start;
+}
+.authorpanel .who{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.authorpanel .name{font-weight:700; font-size:15px; color:var(--ink);}
+.authorpanel .role{font-size:13.5px; color:var(--ink-faint); line-height:1.5;}
+.authorpanel i{color:var(--brand); font-size:26px; margin-top:2px;}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:16px;}
+.chip{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:600;
+  background:var(--cream); border:1px solid var(--line); border-radius:999px;
+  padding:4px 11px; color:var(--ink-soft); display:inline-flex; gap:5px; align-items:center;
+}
+.chip i{font-size:14px; color:var(--brand);}
+.legend{
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; padding-top:15px;
+  border-top:1px solid var(--line-soft);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint);
+}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+.legend i{font-size:15px;}
+.i-routine{color:#1f7a34;} .i-optional{color:var(--amber);} .i-no{color:var(--red);}
+
+/* ---------- TOC ---------- */
+.toc{
+  margin:26px 0 8px; padding:18px 20px; background:var(--paper);
+  border:1px solid var(--line); border-radius:var(--radius);
+}
+.toc h2{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+  margin:0 0 12px;
+}
+.toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:14.5px;}
+.toc li{margin-bottom:6px; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none;}
+.toc a:hover{color:var(--brand-dark);}
+
+/* ---------- Sections ---------- */
+section{padding-top:34px;}
+.sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.sec-num{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+  font-size:15px; color:#fff; background:var(--brand);
+  min-width:30px; height:30px; border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+}
+h2.sec{font-size:25px; margin:0; letter-spacing:-.01em; line-height:1.2;}
+h3{font-size:18px; margin:24px 0 8px; color:var(--ink);}
+p{margin:0 0 14px;}
+
+/* ---------- Patient card ---------- */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line);
+  border-left:4px solid var(--brand); border-radius:var(--radius-sm);
+  padding:14px 17px; margin:14px 0 18px;
+}
+.patient .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--brand-dark);
+  display:flex; align-items:center; gap:6px; margin-bottom:6px;
+}
+.patient p{margin:0 0 8px;} .patient p:last-child{margin:0;}
+
+/* ---------- Subtype pill header ---------- */
+.subhead{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  margin:22px 0 6px; padding-bottom:8px; border-bottom:1px solid var(--line-soft);
+}
+.subhead h3{margin:0;}
+.pill{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  border-radius:999px; padding:3px 11px; letter-spacing:.02em;
+}
+.pill-red{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.pill-amber{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.pill-blue{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* ---------- Checklist ---------- */
+ul.check{list-style:none; padding:0; margin:12px 0 16px;}
+ul.check li{
+  display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+  align-items:flex-start;
+}
+ul.check li:last-child{border-bottom:none;}
+ul.check i{font-size:19px; flex:none; margin-top:1px;}
+.tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; border-radius:5px; padding:2px 7px;
+  margin-left:8px; white-space:nowrap; vertical-align:middle;
+}
+.tag-routine{background:#e6f4ea; color:#1f7a34;}
+.tag-optional{background:var(--amber-bg); color:var(--amber);}
+.tag-no{background:var(--red-bg); color:var(--red);}
+.ck-txt{flex:1;}
+.ck-txt .sub{display:block; font-size:14px; color:var(--ink-faint); margin-top:2px;}
+
+/* ---------- Callout ---------- */
+.callout{
+  border-left:4px solid var(--brand); background:var(--paper);
+  border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:13px 16px; margin:16px 0;
+}
+.callout.amber{border-left-color:var(--amber); background:var(--amber-bg); border-color:var(--amber-line);}
+.callout.red{border-left-color:var(--red); background:var(--red-bg); border-color:var(--red-line);}
+.callout .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:5px; display:flex; gap:6px; align-items:center;
+}
+.callout.amber .lbl{color:var(--amber);} .callout.red .lbl{color:var(--red);} .callout .lbl{color:var(--brand-dark);}
+.callout p:last-child{margin:0;}
+
+/* ---------- Info / emerging boxes ---------- */
+.infobox{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging .lbl,.infobox .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:6px; display:flex; gap:6px; align-items:center;
+}
+.emerging .lbl{color:var(--purple);} .infobox .lbl{color:var(--brand-dark);}
+.emerging p:last-child,.infobox p:last-child{margin:0;}
+
+/* ---------- Risk table ---------- */
+.tablewrap{overflow-x:auto; margin:16px 0;}
+table.risk{width:100%; border-collapse:collapse; font-size:15px; background:var(--paper); border-radius:var(--radius-sm); overflow:hidden;}
+table.risk th,table.risk td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--line);}
+table.risk th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); background:var(--cream);}
+table.risk tr:last-child td{border-bottom:none;}
+.dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:7px; vertical-align:middle;}
+.dot-red{background:var(--red);} .dot-amber{background:var(--amber-line);} .dot-blue{background:var(--brand);}
+
+/* ---------- Figures ---------- */
+figure.fig{margin:18px 0 20px; padding:0; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+figure.fig .svgwrap{padding:18px 16px 4px; background:linear-gradient(180deg,#fbfdff,#f4f9fc);}
+figure.fig svg{width:100%; height:auto; display:block;}
+figure.fig figcaption{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); padding:11px 16px 13px; border-top:1px solid var(--line-soft); line-height:1.5;}
+figure.fig img.photo{width:100%; height:auto; display:block; border-radius:0;}
+figure.fig .credit{font-size:11.5px; color:var(--ink-faint); margin-top:6px;}
+figure.fig .credit a{color:var(--brand-dark); text-decoration:none;}
+figure.fig figcaption b{color:var(--ink-soft); font-weight:700;}
+.svg-ink{fill:var(--ink);} .svg-soft{fill:var(--ink-soft);} .svg-faint{fill:var(--ink-faint);}
+.svg-lbl{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.svg-term{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;}
+
+/* ---------- Summary cards ---------- */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:16px 0;}
+.scard{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand); border-radius:var(--radius-sm); padding:14px 16px;}
+.scard h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; margin:0 0 8px; color:var(--brand-dark); display:flex; gap:7px; align-items:center;}
+.scard ul{margin:0; padding-left:18px; font-size:14.5px; color:var(--ink-soft);}
+.scard li{margin-bottom:5px;}
+
+/* ---------- References ---------- */
+ol.refs{font-size:14px; color:var(--ink-soft); padding-left:22px; line-height:1.55;}
+ol.refs li{margin-bottom:9px;}
+
+/* ---------- Footer ---------- */
+.footer{margin-top:46px; padding-top:18px; border-top:2px solid var(--ink); position:relative;}
+.footer:before{content:""; position:absolute; top:4px; left:0; right:0; height:1px; background:var(--ink);}
+.footer p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); margin:0 0 8px;}
+
+/* ---------- Language toggle ---------- */
+[data-lang]{display:none;}
+body.lang-en [data-lang="en"]{display:revert;}
+body.lang-fr [data-lang="fr"]{display:revert;}
+ul.check li[data-lang],table.risk tr[data-lang]{display:none;}
+body.lang-en ul.check li[data-lang="en"]{display:flex;}
+body.lang-fr ul.check li[data-lang="fr"]{display:flex;}
+body.lang-en table.risk tr[data-lang="en"]{display:table-row;}
+body.lang-fr table.risk tr[data-lang="fr"]{display:table-row;}
+
+/* ---------- PDF preview on screen ---------- */
+body.pdf-preview{background:#6a7681;}
+body.pdf-preview .topbar{position:static;}
+body.pdf-preview .toc{display:none;}
+body.pdf-preview .wrap{
+  background:#fff; max-width:8.5in; margin:24px auto; padding:0.7in 0.85in;
+  box-shadow:0 4px 24px rgba(0,0,0,.3); font-size:11.5pt; line-height:1.4;
+}
+body.pdf-preview h1.title{font-size:26pt;}
+body.pdf-preview h2.sec{font-size:16pt;}
+body.pdf-preview .standfirst{font-size:13pt;}
+body.pdf-preview section{page-break-inside:auto;}
+body.pdf-preview #sec-summary,body.pdf-preview #sec-refs{
+  border-top:2px dashed var(--brand); margin-top:30px; padding-top:24px; position:relative;
+}
+body.pdf-preview #sec-summary:before,body.pdf-preview #sec-refs:before{
+  content:"— — — page break — — —"; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+  background:#fff; padding:0 12px; font-family:"Helvetica Neue",sans-serif; font-size:9pt; color:var(--brand); letter-spacing:.08em;
+}
+
+/* ---------- Print ---------- */
+@media print{
+  .topbar,.toc{display:none;}
+  body{background:#fff; font-size:10.5pt;}
+  .wrap{max-width:100%; padding:0;}
+  #sec-summary,#sec-refs{page-break-before:always;}
+  .patient,.callout,.infobox,.emerging,.scard,table.risk{break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+@media(max-width:600px){
+  .toc ol{columns:1;} h1.title{font-size:31px;} .cardgrid{grid-template-columns:1fr;}
+}
+.legend span[data-lang]{display:none;}
+body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="fr"]{display:inline-flex;}
+</style>
+<link rel="stylesheet" href="site-banner.css">
+<script src="site-banner.js" defer></script>
+</head>
+<body class="lang-en">
+
+<!-- ======================= TOP BAR ======================= -->
+<div class="topbar ui">
+  <div class="util">
+    <button class="btn" id="pdfBtn" onclick="togglePdf()"><i class="ti ti-eye"></i><span data-lang="en">PDF view</span><span data-lang="fr">Aperçu PDF</span></button>
+    <button class="btn" onclick="window.print()"><i class="ti ti-printer"></i><span data-lang="en">Print / Save PDF</span><span data-lang="fr">Imprimer / PDF</span></button>
+  </div>
+  <div class="tabs">
+    <button class="btn active" id="enTab" onclick="setLang('en')">English</button>
+    <button class="btn" id="frTab" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ======================= MASTHEAD ======================= -->
+<header class="masthead">
+  <div class="eyebrow" data-lang="en">Cardiac Genetics · Clinical Protocol</div><div class="eyebrow" data-lang="fr">Génétique cardiaque · Protocole clinique</div>
+  <h1 class="title" data-lang="en">Hypertrophic Cardiomyopathy (HCM)</h1><h1 class="title" data-lang="fr">Cardiomyopathie hypertrophique (CMH)</h1>
+  <p class="standfirst" data-lang="en">A protocol for hypertrophic cardiomyopathy: sarcomere genetics, phenocopies, assessment, sudden death risk, treatment, activity, pregnancy, and family screening.</p><p class="standfirst" data-lang="fr">Protocole pour la cardiomyopathie hypertrophique : génétique sarcomérique, phénocopies, évaluation, risque de mort subite, traitement, activité, grossesse et dépistage familial.</p>
+
+  <div class="authorpanel"><i class="ti ti-stethoscope"></i><div class="who"><div class="name">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</div><div class="role" data-lang="en">Medical Genetics · Jewish General Hospital (JGH), Montreal</div><div class="role" data-lang="fr">Génétique médicale · Hôpital général juif (HGJ), Montréal</div></div></div>
+
+  <div class="chips ui">
+    <span class="chip"><i class="ti ti-dna"></i> <em>MYBPC3 · MYH7</em></span>
+    <span class="chip"><i class="ti ti-heartbeat"></i> AHA/ACC 2020 · ESC 2023</span>
+    <span class="chip"><i class="ti ti-calendar"></i> <span data-lang="en">Updated October 2026</span><span data-lang="fr">Mis à jour en octobre 2026</span></span>
+  </div>
+
+  <div class="legend ui">
+    <span data-lang="en"><i class="ti ti-circle-check i-routine"></i> Routine</span>
+    <span data-lang="fr"><i class="ti ti-circle-check i-routine"></i> De routine</span>
+    <span data-lang="en"><i class="ti ti-minus i-optional"></i> Optional / selective</span>
+    <span data-lang="fr"><i class="ti ti-minus i-optional"></i> Optionnel / sélectif</span>
+    <span data-lang="en"><i class="ti ti-x i-no"></i> Not recommended</span>
+    <span data-lang="fr"><i class="ti ti-x i-no"></i> Non recommandé</span>
+  </div>
+</header>
+
+<!-- ======================= TOC ======================= -->
+<nav class="toc ui">
+  <h2 data-lang="en">Contents</h2>
+  <h2 data-lang="fr">Sommaire</h2>
+  <ol>
+    <li><a href="#sec1" data-lang="en">Understanding HCM</a><a href="#sec1" data-lang="fr">Comprendre la CMH</a></li>
+    <li><a href="#sec2" data-lang="en">Assessment &amp; testing</a><a href="#sec2" data-lang="fr">Évaluation et test</a></li>
+    <li><a href="#sec3" data-lang="en">Treatment</a><a href="#sec3" data-lang="fr">Traitement</a></li>
+    <li><a href="#sec4" data-lang="en">Activity &amp; pregnancy</a><a href="#sec4" data-lang="fr">Activité et grossesse</a></li>
+    <li><a href="#sec5" data-lang="en">Family screening</a><a href="#sec5" data-lang="fr">Dépistage familial</a></li>
+    <li><a href="#sec-summary" data-lang="en">Summary of recommendations</a><a href="#sec-summary" data-lang="fr">Résumé des recommandations</a></li>
+    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+  </ol>
+</nav>
+
+<section id="sec1">
+  <div class="sec-head"><span class="sec-num">1</span><h2 class="sec" data-lang="en">Understanding HCM</h2><h2 class="sec" data-lang="fr">Comprendre la CMH</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Hypertrophic cardiomyopathy (HCM) is a condition where the heart muscle becomes thicker than normal, without another cause such as high blood pressure. It is often inherited. Many people have few or no symptoms and a normal life expectancy. Some have shortness of breath, chest pain, palpitations, or fainting, and a small number are at risk of dangerous heart rhythms. Effective treatments exist for each of these.</p><p data-lang="fr">La cardiomyopathie hypertrophique (CMH) est une maladie où le muscle cardiaque devient plus épais que la normale, sans autre cause comme l'hypertension. Elle est souvent héréditaire. Plusieurs personnes ont peu ou pas de symptômes et une espérance de vie normale. Certaines ont de l'essoufflement, des douleurs thoraciques, des palpitations ou des pertes de conscience, et un petit nombre est à risque de rythmes dangereux. Des traitements efficaces existent pour chacun de ces problèmes.</p>
+  </div>
+  <p data-lang="en">HCM is defined in adults by left ventricular wall thickness ≥15 mm in any segment not explained solely by loading conditions, or ≥13 mm in first-degree relatives of a patient or in genotype-positive individuals. Inheritance is mostly autosomal dominant with age-dependent, incomplete penetrance. Pathogenic variants in sarcomere genes — most often <em>MYBPC3</em> and <em>MYH7</em>, and less often <em>TNNT2</em>, <em>TNNI3</em>, <em>TPM1</em>, <em>MYL2</em>, <em>MYL3</em>, and <em>ACTC1</em> — are found in a substantial minority of probands, more often with a family history. Sarcomere-positive patients tend to have earlier onset and more adverse outcomes.</p><p data-lang="fr">Chez l'adulte, la CMH se définit par une épaisseur pariétale du ventricule gauche ≥ 15 mm dans un segment, non expliquée uniquement par les conditions de charge, ou ≥ 13 mm chez les apparentés au premier degré d'un patient ou chez les personnes génotype-positives. La transmission est surtout autosomique dominante, avec pénétrance incomplète dépendante de l'âge. Des variants pathogènes de gènes sarcomériques — le plus souvent <em>MYBPC3</em> et <em>MYH7</em>, moins souvent <em>TNNT2</em>, <em>TNNI3</em>, <em>TPM1</em>, <em>MYL2</em>, <em>MYL3</em> et <em>ACTC1</em> — sont trouvés chez une minorité importante des cas index, plus souvent en présence d'antécédents familiaux. Les patients sarcomère-positifs ont tendance à avoir un début plus précoce et une évolution plus défavorable.</p>
+  <div class="callout">
+    <div class="lbl"><i class="ti ti-info-circle"></i> <span data-lang="en">Phenocopies</span><span data-lang="fr">Phénocopies</span></div>
+    <p data-lang="en">Look for red flags of conditions that mimic HCM and have specific treatments: Fabry disease (<em>GLA</em>), transthyretin amyloidosis (<em>TTR</em>), Danon disease (<em>LAMP2</em>), <em>PRKAG2</em> syndrome, RASopathies such as <a href="noonan.html">Noonan syndrome</a> in children, and Friedreich ataxia. See also the <a href="cardiomyopathies.html">cardiomyopathies overview</a>.</p><p data-lang="fr">Rechercher les signaux d'alerte des maladies qui imitent la CMH et ont des traitements précis : maladie de Fabry (<em>GLA</em>), amylose à transthyrétine (<em>TTR</em>), maladie de Danon (<em>LAMP2</em>), syndrome <em>PRKAG2</em>, RASopathies comme le <a href="noonan.html">syndrome de Noonan</a> chez l'enfant, et ataxie de Friedreich. Voir aussi l'<a href="cardiomyopathies.html">aperçu des cardiomyopathies</a>.</p>
+  </div>
+</section>
+
+<section id="sec2">
+  <div class="sec-head"><span class="sec-num">2</span><h2 class="sec" data-lang="en">Assessment and genetic testing</h2><h2 class="sec" data-lang="fr">Évaluation et test génétique</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Tests include an ECG, a heart ultrasound, a heart MRI, and a heart monitor, and sometimes an exercise test. A genetic test is offered to confirm the cause and to help relatives.</p><p data-lang="fr">Les examens comprennent un ECG, une échographie cardiaque, une IRM cardiaque et un moniteur cardiaque, et parfois une épreuve d'effort. Un test génétique est offert pour confirmer la cause et aider les apparentés.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">ECG, echocardiography (including provoked LVOT gradient), cardiac MRI, and ambulatory ECG monitoring <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Genetic testing of the proband with a sarcomere-focused HCM panel plus key phenocopy genes <span class="tag tag-routine">Recommended</span><span class="sub">Avoid large panels of genes with limited evidence.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Sudden cardiac death risk assessment at diagnosis and every 1–2 years <span class="tag tag-routine">Recommended</span><span class="sub">ESC uses the HCM Risk-SCD calculator; the AHA/ACC guideline uses major risk markers (family history of SCD, unexplained syncope, massive LVH ≥30 mm, apical aneurysm, LVEF &lt;50%, extensive LGE, NSVT).</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">ECG, échocardiographie (y compris gradient provoqué de la CCVG), IRM cardiaque et monitorage ECG ambulatoire <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test génétique du cas index avec un panel de CMH centré sur le sarcomère et les principaux gènes de phénocopies <span class="tag tag-routine">Recommandé</span><span class="sub">Éviter les grands panels de gènes à preuves limitées.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Évaluation du risque de mort subite au diagnostic et aux 1 à 2 ans <span class="tag tag-routine">Recommandé</span><span class="sub">L'ESC utilise le calculateur HCM Risk-SCD; la ligne directrice AHA/ACC utilise des marqueurs de risque majeurs (antécédents familiaux de mort subite, syncope inexpliquée, HVG massive ≥ 30 mm, anévrisme apical, FEVG &lt; 50 %, RTG étendu, TVNS).</span></span></li>
+  </ul>
+</section>
+
+<section id="sec3">
+  <div class="sec-head"><span class="sec-num">3</span><h2 class="sec" data-lang="en">Treatment</h2><h2 class="sec" data-lang="fr">Traitement</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Medicines such as beta-blockers help symptoms. A newer type of medicine (a cardiac myosin inhibitor) can reduce obstruction in some people. When symptoms persist, a procedure can thin the thickened wall. People at higher risk of dangerous rhythms may be offered a defibrillator (ICD).</p><p data-lang="fr">Des médicaments comme les bêtabloquants aident à soulager les symptômes. Un type de médicament plus récent (un inhibiteur de la myosine cardiaque) peut réduire l'obstruction chez certaines personnes. Si les symptômes persistent, une intervention peut amincir la paroi épaissie. Les personnes à risque plus élevé de rythmes dangereux peuvent se voir offrir un défibrillateur (DCI).</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Beta-blocker or non-dihydropyridine calcium channel blocker for symptomatic obstructive HCM <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Cardiac myosin inhibitor (e.g. mavacamten) for persistent symptoms with obstruction <span class="tag tag-optional">Selective</span><span class="sub">Improved exercise capacity and symptoms in EXPLORER-HCM; requires echocardiographic LVEF monitoring; contraindicated in pregnancy.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Septal reduction therapy (myectomy or alcohol septal ablation) at experienced centres <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">ICD for secondary prevention; primary prevention by risk assessment and shared decision <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Anticoagulation for atrial fibrillation regardless of CHA₂DS₂-VASc score <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Vasodilators and high-dose diuretics in obstructive HCM <span class="tag tag-no">Avoid</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Bêtabloquant ou bloqueur calcique non dihydropyridinique pour la CMH obstructive symptomatique <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Inhibiteur de la myosine cardiaque (p. ex. mavacamten) pour symptômes persistants avec obstruction <span class="tag tag-optional">Sélectif</span><span class="sub">A amélioré la capacité d'effort et les symptômes dans EXPLORER-HCM; exige un suivi échocardiographique de la FEVG; contre-indiqué pendant la grossesse.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Réduction septale (myectomie ou alcoolisation septale) dans des centres expérimentés <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">DCI en prévention secondaire; en prévention primaire selon l'évaluation du risque et une décision partagée <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Anticoagulation en cas de fibrillation auriculaire, peu importe le score CHA₂DS₂-VASc <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">Vasodilatateurs et diurétiques à forte dose dans la CMH obstructive <span class="tag tag-no">À éviter</span></span></li>
+  </ul>
+</section>
+
+<section id="sec4">
+  <div class="sec-head"><span class="sec-num">4</span><h2 class="sec" data-lang="en">Activity and pregnancy</h2><h2 class="sec" data-lang="fr">Activité et grossesse</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Most people with HCM are encouraged to stay active. Decisions about competitive sport are made together with an expert. Most pregnancies go well with planning and monitoring.</p><p data-lang="fr">La plupart des personnes atteintes de CMH sont encouragées à rester actives. Les décisions concernant le sport de compétition sont prises avec un expert. La plupart des grossesses se déroulent bien avec planification et surveillance.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Mild-to-moderate recreational exercise encouraged <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Competitive sport after expert evaluation and shared decision-making <span class="tag tag-optional">Reasonable</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Preconception counselling; cardio-obstetric care; review medications (stop mavacamten) <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Exercice récréatif léger à modéré encouragé <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Sport de compétition après évaluation experte et décision partagée <span class="tag tag-optional">Raisonnable</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Conseil préconceptionnel; suivi en cardio-obstétrique; révision des médicaments (cesser le mavacamten) <span class="tag tag-routine">Recommandé</span></span></li>
+  </ul>
+</section>
+
+<section id="sec5">
+  <div class="sec-head"><span class="sec-num">5</span><h2 class="sec" data-lang="en">Family screening</h2><h2 class="sec" data-lang="fr">Dépistage familial</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Each first-degree relative has a 1 in 2 chance of carrying the gene change. Relatives are offered a genetic test if the family change is known, and heart checks (ECG and ultrasound) either way if no gene change is known. Because HCM can appear later, carriers and relatives in families without a known gene change need repeat checks.</p><p data-lang="fr">Chaque apparenté au premier degré a une chance sur deux de porter la modification. On offre aux apparentés un test génétique si la modification familiale est connue, et des examens cardiaques (ECG et échographie) si aucune modification n'est connue. Comme la CMH peut apparaître plus tard, les porteurs et les apparentés des familles sans modification connue ont besoin d'examens répétés.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Cascade genetic testing of first-degree relatives when a P/LP variant is known <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Clinical screening (ECG + echo) of first-degree relatives, starting in childhood <span class="tag tag-routine">Recommended</span><span class="sub">Typical intervals: every 1–2 years in children and adolescents, every 3–5 years in adults (AHA/ACC 2020); adjust to family history and findings.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Genotype-negative relatives (familial variant known) released from screening <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test génétique en cascade des apparentés au premier degré si un variant P/PP est connu <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Dépistage clinique (ECG + écho) des apparentés au premier degré, dès l'enfance <span class="tag tag-routine">Recommandé</span><span class="sub">Intervalles habituels : aux 1 à 2 ans chez les enfants et adolescents, aux 3 à 5 ans chez les adultes (AHA/ACC 2020); ajuster selon les antécédents et les trouvailles.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Apparentés génotype-négatifs (variant familial connu) libérés du dépistage <span class="tag tag-routine">Recommandé</span></span></li>
+  </ul>
+</section>
+
+<section id="sec-summary">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-list-check"></i></span><h2 class="sec" data-lang="en">Summary of recommendations</h2><h2 class="sec" data-lang="fr">Résumé des recommandations</h2></div>
+
+  <div class="cardgrid">
+    <div class="scard">
+      <h4><i class="ti ti-heart"></i> <span data-lang="en">Diagnosis</span><span data-lang="fr">Diagnostic</span></h4>
+      <ul>
+        <li data-lang="en">LVH ≥15 mm (≥13 mm in relatives)</li>
+        <li data-lang="en">Exclude phenocopies</li>
+        <li data-lang="en">Sarcomere panel</li>
+        <li data-lang="fr">HVG ≥ 15 mm (≥ 13 mm chez les apparentés)</li>
+        <li data-lang="fr">Exclure les phénocopies</li>
+        <li data-lang="fr">Panel sarcomérique</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-pill"></i> <span data-lang="en">Treatment</span><span data-lang="fr">Traitement</span></h4>
+      <ul>
+        <li data-lang="en">Beta-blocker/verapamil</li>
+        <li data-lang="en">Myosin inhibitor; septal reduction</li>
+        <li data-lang="en">SCD risk → ICD; anticoagulate AF</li>
+        <li data-lang="fr">Bêtabloquant/vérapamil</li>
+        <li data-lang="fr">Inhibiteur de myosine; réduction septale</li>
+        <li data-lang="fr">Risque de MS → DCI; anticoaguler la FA</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-users"></i> <span data-lang="en">Family</span><span data-lang="fr">Famille</span></h4>
+      <ul>
+        <li data-lang="en">Cascade testing</li>
+        <li data-lang="en">ECG + echo from childhood</li>
+        <li data-lang="en">Repeat 1–2 y (child), 3–5 y (adult)</li>
+        <li data-lang="fr">Dépistage en cascade</li>
+        <li data-lang="fr">ECG + écho dès l'enfance</li>
+        <li data-lang="fr">Répéter aux 1–2 ans (enfant), 3–5 ans (adulte)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sec-refs">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-book"></i></span><h2 class="sec" data-lang="en">References</h2><h2 class="sec" data-lang="fr">Références</h2></div>
+  <ol class="refs">
+    <li>Ommen SR, Mital S, Burke MA, et al. 2020 AHA/ACC Guideline for the Diagnosis and Treatment of Patients With Hypertrophic Cardiomyopathy. <em>Circulation</em>. 2020;142(25):e558–e631.</li>
+    <li>Arbelo E, Protonotarios A, Gimeno JR, et al. 2023 ESC Guidelines for the management of cardiomyopathies. <em>Eur Heart J</em>. 2023;44(37):3503–3626.</li>
+    <li>Hershberger RE, Givertz MM, Ho CY, et al. Genetic evaluation of cardiomyopathy: a clinical practice resource of the American College of Medical Genetics and Genomics (ACMG). <em>Genet Med</em>. 2018;20(9):899–909.</li>
+    <li>O'Mahony C, Jichi F, Pavlou M, et al. A novel clinical risk prediction model for sudden cardiac death in hypertrophic cardiomyopathy (HCM Risk-SCD). <em>Eur Heart J</em>. 2014;35(30):2010–2020.</li>
+    <li>Olivotto I, Oreziak A, Barriales-Villa R, et al. Mavacamten for treatment of symptomatic obstructive hypertrophic cardiomyopathy (EXPLORER-HCM): a randomised, double-blind, placebo-controlled, phase 3 trial. <em>Lancet</em>. 2020;396(10253):759–769.</li>
+  </ol>
+  <p data-lang="en" style="font-size:13px; color:var(--ink-faint);">Original diagrams are the work of the author (© 2026 Dr. Andrew Shuen).</p>
+  <p data-lang="fr" style="font-size:13px; color:var(--ink-faint);">Les schémas originaux sont l'œuvre de l'auteur (© 2026 Dr Andrew Shuen).</p>
+
+  <div class="footer">
+    <p data-lang="en"><strong>Disclaimer.</strong> This protocol supports but does not replace clinical judgment and individualized care. Guidelines evolve; verify all intervals, thresholds, doses, and recommendations against current society guidelines (ACC/AHA, ACMG, relevant specialty societies) before clinical use. Reference citations were drawn from current literature and should be confirmed against the primary sources.</p>
+    <p data-lang="fr"><strong>Avis.</strong> Ce protocole soutient mais ne remplace pas le jugement clinique et les soins individualisés. Les lignes directrices évoluent; vérifier tous les intervalles, seuils, doses et recommandations par rapport aux lignes directrices actuelles des sociétés savantes (ACC/AHA, ACMG, sociétés spécialisées pertinentes) avant tout usage clinique. Les références proviennent de la littérature actuelle et doivent être confirmées auprès des sources primaires.</p>
+    <p>© 2026 Dr. Andrew Shuen · Medical Genetics, Jewish General Hospital, Montreal · <span data-lang="en">For educational use.</span><span data-lang="fr">À usage éducatif.</span></p>
+  </div>
+</section>
+
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-en','lang-fr');
+  document.body.classList.add('lang-'+l);
+  document.getElementById('enTab').classList.toggle('active', l==='en');
+  document.getElementById('frTab').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+}
+function togglePdf(){
+  document.body.classList.toggle('pdf-preview');
+  document.getElementById('pdfBtn').classList.toggle('active');
+}
+</script>
+</body>
+</html>

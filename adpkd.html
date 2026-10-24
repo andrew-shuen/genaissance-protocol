@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polycystic Kidney Disease (ADPKD) — Surveillance &amp; Management Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px; line-height:1.62;
+}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:9px 18px;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .util{display:flex; gap:8px; align-items:center;}
+.topbar .tabs{display:flex; gap:4px;}
+.btn{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13.5px; font-weight:600; cursor:pointer;
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft);
+  padding:7px 13px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;
+  transition:.15s;
+}
+.btn:hover{border-color:var(--brand-line); color:var(--brand-dark); background:var(--brand-bg);}
+.btn.active{background:var(--brand); border-color:var(--brand); color:#fff;}
+.btn i{font-size:16px;}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:860px; margin:0 auto; padding:0 22px 80px;}
+
+/* ---------- Masthead ---------- */
+.masthead{padding:38px 0 26px; border-bottom:2px solid var(--ink);}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:12.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--brand-dark);
+}
+h1.title{font-size:40px; line-height:1.1; margin:.28em 0 .12em; letter-spacing:-.01em;}
+.standfirst{font-size:19px; color:var(--ink-soft); margin:0 0 22px; max-width:62ch;}
+.authorpanel{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:15px 18px; display:flex; gap:14px; align-items:flex-start;
+}
+.authorpanel .who{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.authorpanel .name{font-weight:700; font-size:15px; color:var(--ink);}
+.authorpanel .role{font-size:13.5px; color:var(--ink-faint); line-height:1.5;}
+.authorpanel i{color:var(--brand); font-size:26px; margin-top:2px;}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:16px;}
+.chip{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:600;
+  background:var(--cream); border:1px solid var(--line); border-radius:999px;
+  padding:4px 11px; color:var(--ink-soft); display:inline-flex; gap:5px; align-items:center;
+}
+.chip i{font-size:14px; color:var(--brand);}
+.legend{
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; padding-top:15px;
+  border-top:1px solid var(--line-soft);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint);
+}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+.legend i{font-size:15px;}
+.i-routine{color:#1f7a34;} .i-optional{color:var(--amber);} .i-no{color:var(--red);}
+
+/* ---------- TOC ---------- */
+.toc{
+  margin:26px 0 8px; padding:18px 20px; background:var(--paper);
+  border:1px solid var(--line); border-radius:var(--radius);
+}
+.toc h2{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+  margin:0 0 12px;
+}
+.toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:14.5px;}
+.toc li{margin-bottom:6px; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none;}
+.toc a:hover{color:var(--brand-dark);}
+
+/* ---------- Sections ---------- */
+section{padding-top:34px;}
+.sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.sec-num{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+  font-size:15px; color:#fff; background:var(--brand);
+  min-width:30px; height:30px; border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+}
+h2.sec{font-size:25px; margin:0; letter-spacing:-.01em; line-height:1.2;}
+h3{font-size:18px; margin:24px 0 8px; color:var(--ink);}
+p{margin:0 0 14px;}
+
+/* ---------- Patient card ---------- */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line);
+  border-left:4px solid var(--brand); border-radius:var(--radius-sm);
+  padding:14px 17px; margin:14px 0 18px;
+}
+.patient .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--brand-dark);
+  display:flex; align-items:center; gap:6px; margin-bottom:6px;
+}
+.patient p{margin:0 0 8px;} .patient p:last-child{margin:0;}
+
+/* ---------- Subtype pill header ---------- */
+.subhead{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  margin:22px 0 6px; padding-bottom:8px; border-bottom:1px solid var(--line-soft);
+}
+.subhead h3{margin:0;}
+.pill{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  border-radius:999px; padding:3px 11px; letter-spacing:.02em;
+}
+.pill-red{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.pill-amber{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.pill-blue{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* ---------- Checklist ---------- */
+ul.check{list-style:none; padding:0; margin:12px 0 16px;}
+ul.check li{
+  display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+  align-items:flex-start;
+}
+ul.check li:last-child{border-bottom:none;}
+ul.check i{font-size:19px; flex:none; margin-top:1px;}
+.tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; border-radius:5px; padding:2px 7px;
+  margin-left:8px; white-space:nowrap; vertical-align:middle;
+}
+.tag-routine{background:#e6f4ea; color:#1f7a34;}
+.tag-optional{background:var(--amber-bg); color:var(--amber);}
+.tag-no{background:var(--red-bg); color:var(--red);}
+.ck-txt{flex:1;}
+.ck-txt .sub{display:block; font-size:14px; color:var(--ink-faint); margin-top:2px;}
+
+/* ---------- Callout ---------- */
+.callout{
+  border-left:4px solid var(--brand); background:var(--paper);
+  border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:13px 16px; margin:16px 0;
+}
+.callout.amber{border-left-color:var(--amber); background:var(--amber-bg); border-color:var(--amber-line);}
+.callout.red{border-left-color:var(--red); background:var(--red-bg); border-color:var(--red-line);}
+.callout .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:5px; display:flex; gap:6px; align-items:center;
+}
+.callout.amber .lbl{color:var(--amber);} .callout.red .lbl{color:var(--red);} .callout .lbl{color:var(--brand-dark);}
+.callout p:last-child{margin:0;}
+
+/* ---------- Info / emerging boxes ---------- */
+.infobox{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging .lbl,.infobox .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:6px; display:flex; gap:6px; align-items:center;
+}
+.emerging .lbl{color:var(--purple);} .infobox .lbl{color:var(--brand-dark);}
+.emerging p:last-child,.infobox p:last-child{margin:0;}
+
+/* ---------- Risk table ---------- */
+.tablewrap{overflow-x:auto; margin:16px 0;}
+table.risk{width:100%; border-collapse:collapse; font-size:15px; background:var(--paper); border-radius:var(--radius-sm); overflow:hidden;}
+table.risk th,table.risk td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--line);}
+table.risk th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); background:var(--cream);}
+table.risk tr:last-child td{border-bottom:none;}
+.dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:7px; vertical-align:middle;}
+.dot-red{background:var(--red);} .dot-amber{background:var(--amber-line);} .dot-blue{background:var(--brand);}
+
+/* ---------- Figures ---------- */
+figure.fig{margin:18px 0 20px; padding:0; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+figure.fig .svgwrap{padding:18px 16px 4px; background:linear-gradient(180deg,#fbfdff,#f4f9fc);}
+figure.fig svg{width:100%; height:auto; display:block;}
+figure.fig figcaption{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); padding:11px 16px 13px; border-top:1px solid var(--line-soft); line-height:1.5;}
+figure.fig img.photo{width:100%; height:auto; display:block; border-radius:0;}
+figure.fig .credit{font-size:11.5px; color:var(--ink-faint); margin-top:6px;}
+figure.fig .credit a{color:var(--brand-dark); text-decoration:none;}
+figure.fig figcaption b{color:var(--ink-soft); font-weight:700;}
+.svg-ink{fill:var(--ink);} .svg-soft{fill:var(--ink-soft);} .svg-faint{fill:var(--ink-faint);}
+.svg-lbl{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.svg-term{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;}
+
+/* ---------- Summary cards ---------- */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:16px 0;}
+.scard{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand); border-radius:var(--radius-sm); padding:14px 16px;}
+.scard h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; margin:0 0 8px; color:var(--brand-dark); display:flex; gap:7px; align-items:center;}
+.scard ul{margin:0; padding-left:18px; font-size:14.5px; color:var(--ink-soft);}
+.scard li{margin-bottom:5px;}
+
+/* ---------- References ---------- */
+ol.refs{font-size:14px; color:var(--ink-soft); padding-left:22px; line-height:1.55;}
+ol.refs li{margin-bottom:9px;}
+
+/* ---------- Footer ---------- */
+.footer{margin-top:46px; padding-top:18px; border-top:2px solid var(--ink); position:relative;}
+.footer:before{content:""; position:absolute; top:4px; left:0; right:0; height:1px; background:var(--ink);}
+.footer p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); margin:0 0 8px;}
+
+/* ---------- Language toggle ---------- */
+[data-lang]{display:none;}
+body.lang-en [data-lang="en"]{display:revert;}
+body.lang-fr [data-lang="fr"]{display:revert;}
+ul.check li[data-lang],table.risk tr[data-lang]{display:none;}
+body.lang-en ul.check li[data-lang="en"]{display:flex;}
+body.lang-fr ul.check li[data-lang="fr"]{display:flex;}
+body.lang-en table.risk tr[data-lang="en"]{display:table-row;}
+body.lang-fr table.risk tr[data-lang="fr"]{display:table-row;}
+
+/* ---------- PDF preview on screen ---------- */
+body.pdf-preview{background:#6a7681;}
+body.pdf-preview .topbar{position:static;}
+body.pdf-preview .toc{display:none;}
+body.pdf-preview .wrap{
+  background:#fff; max-width:8.5in; margin:24px auto; padding:0.7in 0.85in;
+  box-shadow:0 4px 24px rgba(0,0,0,.3); font-size:11.5pt; line-height:1.4;
+}
+body.pdf-preview h1.title{font-size:26pt;}
+body.pdf-preview h2.sec{font-size:16pt;}
+body.pdf-preview .standfirst{font-size:13pt;}
+body.pdf-preview section{page-break-inside:auto;}
+body.pdf-preview #sec-summary,body.pdf-preview #sec-refs{
+  border-top:2px dashed var(--brand); margin-top:30px; padding-top:24px; position:relative;
+}
+body.pdf-preview #sec-summary:before,body.pdf-preview #sec-refs:before{
+  content:"— — — page break — — —"; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+  background:#fff; padding:0 12px; font-family:"Helvetica Neue",sans-serif; font-size:9pt; color:var(--brand); letter-spacing:.08em;
+}
+
+/* ---------- Print ---------- */
+@media print{
+  .topbar,.toc{display:none;}
+  body{background:#fff; font-size:10.5pt;}
+  .wrap{max-width:100%; padding:0;}
+  #sec-summary,#sec-refs{page-break-before:always;}
+  .patient,.callout,.infobox,.emerging,.scard,table.risk{break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+@media(max-width:600px){
+  .toc ol{columns:1;} h1.title{font-size:31px;} .cardgrid{grid-template-columns:1fr;}
+}
+.legend span[data-lang]{display:none;}
+body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="fr"]{display:inline-flex;}
+</style>
+<link rel="stylesheet" href="site-banner.css">
+<script src="site-banner.js" defer></script>
+</head>
+<body class="lang-en">
+
+<!-- ======================= TOP BAR ======================= -->
+<div class="topbar ui">
+  <div class="util">
+    <button class="btn" id="pdfBtn" onclick="togglePdf()"><i class="ti ti-eye"></i><span data-lang="en">PDF view</span><span data-lang="fr">Aperçu PDF</span></button>
+    <button class="btn" onclick="window.print()"><i class="ti ti-printer"></i><span data-lang="en">Print / Save PDF</span><span data-lang="fr">Imprimer / PDF</span></button>
+  </div>
+  <div class="tabs">
+    <button class="btn active" id="enTab" onclick="setLang('en')">English</button>
+    <button class="btn" id="frTab" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ======================= MASTHEAD ======================= -->
+<header class="masthead">
+  <div class="eyebrow" data-lang="en">Renal Genetics · Clinical Protocol</div><div class="eyebrow" data-lang="fr">Génétique rénale · Protocole clinique</div>
+  <h1 class="title" data-lang="en">Autosomal Dominant Polycystic Kidney Disease (ADPKD)</h1><h1 class="title" data-lang="fr">Polykystose rénale autosomique dominante (PKRAD)</h1>
+  <p class="standfirst" data-lang="en">A protocol for <em>PKD1</em>/<em>PKD2</em> polycystic kidney disease: diagnosis, genetic testing, kidney risk stratification and treatment, extrarenal features, family testing, and pregnancy.</p><p class="standfirst" data-lang="fr">Protocole pour la polykystose rénale liée à <em>PKD1</em>/<em>PKD2</em> : diagnostic, test génétique, stratification du risque rénal et traitement, atteintes extrarénales, dépistage familial et grossesse.</p>
+
+  <div class="authorpanel"><i class="ti ti-stethoscope"></i><div class="who"><div class="name">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</div><div class="role" data-lang="en">Medical Genetics · Jewish General Hospital (JGH), Montreal</div><div class="role" data-lang="fr">Génétique médicale · Hôpital général juif (HGJ), Montréal</div></div></div>
+
+  <div class="chips ui">
+    <span class="chip"><i class="ti ti-dna"></i> <em>PKD1 · PKD2</em></span>
+    <span class="chip"><i class="ti ti-clipboard-text"></i> <span data-lang="en">Mayo imaging class</span><span data-lang="fr">Classification Mayo</span></span>
+    <span class="chip"><i class="ti ti-calendar"></i> <span data-lang="en">Updated October 2026</span><span data-lang="fr">Mis à jour en octobre 2026</span></span>
+  </div>
+
+  <div class="legend ui">
+    <span data-lang="en"><i class="ti ti-circle-check i-routine"></i> Routine</span>
+    <span data-lang="fr"><i class="ti ti-circle-check i-routine"></i> De routine</span>
+    <span data-lang="en"><i class="ti ti-minus i-optional"></i> Optional / selective</span>
+    <span data-lang="fr"><i class="ti ti-minus i-optional"></i> Optionnel / sélectif</span>
+    <span data-lang="en"><i class="ti ti-x i-no"></i> Not recommended</span>
+    <span data-lang="fr"><i class="ti ti-x i-no"></i> Non recommandé</span>
+  </div>
+</header>
+
+<!-- ======================= TOC ======================= -->
+<nav class="toc ui">
+  <h2 data-lang="en">Contents</h2>
+  <h2 data-lang="fr">Sommaire</h2>
+  <ol>
+    <li><a href="#sec1" data-lang="en">Understanding ADPKD</a><a href="#sec1" data-lang="fr">Comprendre la PKRAD</a></li>
+    <li><a href="#sec2" data-lang="en">Genetic testing</a><a href="#sec2" data-lang="fr">Test génétique</a></li>
+    <li><a href="#sec3" data-lang="en">Kidney care</a><a href="#sec3" data-lang="fr">Soins rénaux</a></li>
+    <li><a href="#sec4" data-lang="en">Extrarenal features</a><a href="#sec4" data-lang="fr">Atteintes extrarénales</a></li>
+    <li><a href="#sec5" data-lang="en">Family &amp; pregnancy</a><a href="#sec5" data-lang="fr">Famille et grossesse</a></li>
+    <li><a href="#sec-summary" data-lang="en">Summary of recommendations</a><a href="#sec-summary" data-lang="fr">Résumé des recommandations</a></li>
+    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+  </ol>
+</nav>
+
+<section id="sec1">
+  <div class="sec-head"><span class="sec-num">1</span><h2 class="sec" data-lang="en">Understanding ADPKD</h2><h2 class="sec" data-lang="fr">Comprendre la PKRAD</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Autosomal dominant polycystic kidney disease (ADPKD) is an inherited condition in which many fluid-filled cysts grow in both kidneys over time. The kidneys get bigger and, in many people, slowly lose function, often reaching kidney failure in mid-to-late adulthood. Cysts can also form in the liver. Blood pressure control, healthy habits, and — for some people — a medicine that slows cyst growth can help protect the kidneys.</p><p data-lang="fr">La polykystose rénale autosomique dominante (PKRAD) est une maladie héréditaire où de nombreux kystes remplis de liquide grossissent dans les deux reins avec le temps. Les reins grossissent et, chez plusieurs personnes, perdent lentement leur fonction, atteignant souvent l'insuffisance rénale au milieu ou à la fin de l'âge adulte. Des kystes peuvent aussi se former dans le foie. Le contrôle de la pression artérielle, de saines habitudes et — pour certaines personnes — un médicament qui ralentit la croissance des kystes peuvent aider à protéger les reins.</p>
+  </div>
+  <p data-lang="en">ADPKD is the most common inherited kidney disease. Most cases are caused by pathogenic variants in <em>PKD1</em> or <em>PKD2</em>. <em>PKD1</em> truncating variants are associated with the most severe disease and earliest kidney failure; <em>PKD2</em> disease is generally milder, with kidney failure later on average. Several less common genes (e.g. <em>GANAB</em>, <em>DNAJB11</em>, <em>IFT140</em>, <em>ALG9</em>) cause atypical, usually milder cystic phenotypes. Extrarenal features include polycystic liver disease, intracranial aneurysms, and cardiac valve abnormalities.</p><p data-lang="fr">La PKRAD est la maladie rénale héréditaire la plus fréquente. La plupart des cas sont causés par des variants pathogènes de <em>PKD1</em> ou <em>PKD2</em>. Les variants tronquants de <em>PKD1</em> sont associés à la maladie la plus sévère et à l'insuffisance rénale la plus précoce; la maladie liée à <em>PKD2</em> est généralement plus légère, avec une insuffisance rénale plus tardive en moyenne. Plusieurs gènes moins fréquents (p. ex. <em>GANAB</em>, <em>DNAJB11</em>, <em>IFT140</em>, <em>ALG9</em>) causent des phénotypes kystiques atypiques, habituellement plus légers. Les atteintes extrarénales comprennent la polykystose hépatique, les anévrismes intracrâniens et des anomalies valvulaires cardiaques.</p>
+  <div class="callout">
+    <div class="lbl"><i class="ti ti-ruler-measure"></i> <span data-lang="en">Diagnosis</span><span data-lang="fr">Diagnostic</span></div>
+    <p data-lang="en">In people with a family history, age-specific ultrasound criteria (Pei et al. 2009) are used: for example, a total of three or more kidney cysts (unilateral or bilateral) at ages 15–39 is considered diagnostic. MRI is more sensitive. Genetic testing is especially useful when imaging is equivocal, the family history is negative, or a young relative is being considered as a living kidney donor.</p><p data-lang="fr">Chez les personnes avec antécédents familiaux, on utilise des critères échographiques selon l'âge (Pei et coll., 2009) : par exemple, un total de trois kystes rénaux ou plus (unilatéraux ou bilatéraux) entre 15 et 39 ans est considéré comme diagnostique. L'IRM est plus sensible. Le test génétique est particulièrement utile lorsque l'imagerie est équivoque, que les antécédents familiaux sont négatifs ou qu'un jeune apparenté est envisagé comme donneur vivant de rein.</p>
+  </div>
+</section>
+
+<section id="sec2">
+  <div class="sec-head"><span class="sec-num">2</span><h2 class="sec" data-lang="en">Genetic testing</h2><h2 class="sec" data-lang="fr">Test génétique</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Many people are diagnosed by imaging alone. A genetic test can help when the picture is unclear, can help predict how quickly the disease may progress, and is needed for some family planning options.</p><p data-lang="fr">Plusieurs personnes sont diagnostiquées par l'imagerie seulement. Un test génétique peut aider lorsque le tableau n'est pas clair, peut aider à prédire la vitesse d'évolution, et est nécessaire pour certaines options de planification familiale.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Genetic testing for atypical presentations, negative family history, very early onset, or discordant disease within a family <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Testing of potential living related kidney donors when imaging cannot exclude ADPKD <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Use a laboratory with validated methods for <em>PKD1</em>, given its segmental duplications/pseudogenes <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Testing to inform reproductive options (PGT-M, prenatal diagnosis) <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test génétique pour présentations atypiques, antécédents familiaux négatifs, début très précoce ou maladie discordante dans une famille <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test des donneurs vivants apparentés potentiels lorsque l'imagerie ne peut exclure la PKRAD <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Utiliser un laboratoire avec des méthodes validées pour <em>PKD1</em>, vu ses duplications segmentaires et pseudogènes <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Test pour éclairer les options reproductives (DPI-M, diagnostic prénatal) <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec3">
+  <div class="sec-head"><span class="sec-num">3</span><h2 class="sec" data-lang="en">Kidney care and risk stratification</h2><h2 class="sec" data-lang="fr">Soins rénaux et stratification du risque</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Your kidney function, blood pressure, and kidney size are followed over time. Kidney size measured by MRI or ultrasound helps predict who is likely to progress faster and might benefit from additional treatment.</p><p data-lang="fr">Votre fonction rénale, votre pression artérielle et la taille de vos reins sont suivies dans le temps. La taille des reins mesurée par IRM ou échographie aide à prédire qui risque d'évoluer plus vite et pourrait bénéficier d'un traitement additionnel.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Regular eGFR, urine albumin, and blood pressure monitoring <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Height-adjusted total kidney volume and Mayo imaging classification for prognosis <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Blood pressure control, with ACE inhibitor or ARB first-line <span class="tag tag-routine">Recommended</span><span class="sub">HALT-PKD showed that a lower BP target in younger patients with preserved function slowed kidney volume growth; individual targets should follow current guidance.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Tolvaptan for adults at risk of rapid progression <span class="tag tag-optional">Selective</span><span class="sub">Slowed kidney growth and eGFR decline in TEMPO 3:4. Requires liver enzyme monitoring; causes polyuria; access per provincial criteria.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Adequate water intake, moderate sodium, healthy weight, no smoking <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Regular NSAID use <span class="tag tag-no">Avoid</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Suivi régulier du DFGe, de l'albumine urinaire et de la pression artérielle <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Volume rénal total ajusté à la taille et classification d'imagerie de la Mayo pour le pronostic <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Contrôle de la pression artérielle, avec IECA ou ARA en première intention <span class="tag tag-routine">Recommandé</span><span class="sub">HALT-PKD a montré qu'une cible de pression plus basse chez les patients plus jeunes avec fonction préservée ralentissait la croissance du volume rénal; les cibles individuelles devraient suivre les recommandations actuelles.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Tolvaptan chez les adultes à risque d'évolution rapide <span class="tag tag-optional">Sélectif</span><span class="sub">A ralenti la croissance rénale et le déclin du DFGe dans TEMPO 3:4. Exige un suivi des enzymes hépatiques; cause une polyurie; accès selon les critères provinciaux.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Apport hydrique suffisant, sodium modéré, poids santé, non-tabagisme <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">Usage régulier d'AINS <span class="tag tag-no">À éviter</span></span></li>
+  </ul>
+</section>
+
+<section id="sec4">
+  <div class="sec-head"><span class="sec-num">4</span><h2 class="sec" data-lang="en">Extrarenal features</h2><h2 class="sec" data-lang="fr">Atteintes extrarénales</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Some people with ADPKD have bulges in brain arteries (aneurysms), which are more likely when a relative has had one. A scan of the brain arteries may be offered. Liver cysts are common, especially in women, and usually do not affect liver function.</p><p data-lang="fr">Certaines personnes atteintes de PKRAD ont des dilatations des artères du cerveau (anévrismes), plus probables si un proche en a eu. Un examen des artères cérébrales peut être offert. Les kystes hépatiques sont fréquents, surtout chez les femmes, et n'affectent habituellement pas la fonction du foie.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Screen for intracranial aneurysm (MRA without gadolinium) with family history of aneurysm or subarachnoid hemorrhage <span class="tag tag-routine">Recommended</span><span class="sub">Also considered for high-risk occupations, prior rupture, before major surgery, or patient preference.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Polycystic liver disease: avoid estrogen exposure where possible if severe; specialist care for symptomatic hepatomegaly <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Echocardiography if a murmur or symptoms are present <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Dépister l'anévrisme intracrânien (ARM sans gadolinium) en présence d'antécédents familiaux d'anévrisme ou d'hémorragie sous-arachnoïdienne <span class="tag tag-routine">Recommandé</span><span class="sub">Aussi envisagé pour les professions à haut risque, une rupture antérieure, avant une chirurgie majeure ou selon la préférence du patient.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Polykystose hépatique : éviter l'exposition aux œstrogènes si possible en cas de forme sévère; suivi spécialisé si hépatomégalie symptomatique <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Échocardiographie en présence d'un souffle ou de symptômes <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+  <div class="callout amber">
+    <div class="lbl"><i class="ti ti-alert-triangle"></i> <span data-lang="en">Seek care</span><span data-lang="fr">Consulter</span></div>
+    <p data-lang="en">A sudden, severe ("thunderclap") headache can signal a ruptured brain aneurysm. Call 911.</p><p data-lang="fr">Un mal de tête soudain et intense (« en coup de tonnerre ») peut signaler la rupture d'un anévrisme cérébral. Composez le 911.</p>
+  </div>
+</section>
+
+<section id="sec5">
+  <div class="sec-head"><span class="sec-num">5</span><h2 class="sec" data-lang="en">Family testing and pregnancy</h2><h2 class="sec" data-lang="fr">Dépistage familial et grossesse</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Each child of a person with ADPKD has a 1 in 2 chance of inheriting it. Adult relatives can choose screening by ultrasound or genetic testing. Testing children without symptoms is discussed case by case, though blood pressure checks in at-risk children are useful. Pregnancy is usually successful, but high blood pressure and preeclampsia are more common, so closer follow-up is recommended.</p><p data-lang="fr">Chaque enfant d'une personne atteinte de PKRAD a une chance sur deux d'en hériter. Les apparentés adultes peuvent choisir un dépistage par échographie ou un test génétique. Tester des enfants sans symptômes se discute au cas par cas, mais la mesure de la pression artérielle chez les enfants à risque est utile. La grossesse se déroule habituellement bien, mais l'hypertension et la prééclampsie sont plus fréquentes; un suivi plus étroit est donc recommandé.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Offer screening (imaging or targeted genetic testing) to at-risk adult relatives after counselling <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Blood pressure monitoring in at-risk children <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Pregnancy: stop ACE inhibitors/ARBs and tolvaptan before conception; monitor for hypertension and preeclampsia <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Reproductive options: PGT-M or prenatal diagnosis <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Offrir un dépistage (imagerie ou test génétique ciblé) aux apparentés adultes à risque après counselling <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Mesure de la pression artérielle chez les enfants à risque <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Grossesse : cesser IECA/ARA et tolvaptan avant la conception; surveiller l'hypertension et la prééclampsie <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Options reproductives : DPI-M ou diagnostic prénatal <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec-summary">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-list-check"></i></span><h2 class="sec" data-lang="en">Summary of recommendations</h2><h2 class="sec" data-lang="fr">Résumé des recommandations</h2></div>
+
+  <div class="cardgrid">
+    <div class="scard">
+      <h4><i class="ti ti-dna"></i> <span data-lang="en">Diagnosis</span><span data-lang="fr">Diagnostic</span></h4>
+      <ul>
+        <li data-lang="en">Age-specific ultrasound criteria; MRI</li>
+        <li data-lang="en">Genetic testing if atypical or for donors</li>
+        <li data-lang="en"><em>PKD1</em> needs specialised methods</li>
+        <li data-lang="fr">Critères échographiques selon l'âge; IRM</li>
+        <li data-lang="fr">Test génétique si atypique ou pour donneurs</li>
+        <li data-lang="fr"><em>PKD1</em> exige des méthodes spécialisées</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-heartbeat"></i> <span data-lang="en">Kidneys</span><span data-lang="fr">Reins</span></h4>
+      <ul>
+        <li data-lang="en">BP control, ACEi/ARB first</li>
+        <li data-lang="en">Mayo class for prognosis</li>
+        <li data-lang="en">Tolvaptan if rapid progression</li>
+        <li data-lang="fr">Contrôle de la PA, IECA/ARA d'abord</li>
+        <li data-lang="fr">Classe Mayo pour le pronostic</li>
+        <li data-lang="fr">Tolvaptan si évolution rapide</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-brain"></i> <span data-lang="en">Other</span><span data-lang="fr">Autres</span></h4>
+      <ul>
+        <li data-lang="en">MRA if family history of aneurysm</li>
+        <li data-lang="en">Liver cysts: specialist if severe</li>
+        <li data-lang="en">Closer pregnancy follow-up</li>
+        <li data-lang="fr">ARM si antécédents familiaux d'anévrisme</li>
+        <li data-lang="fr">Kystes hépatiques : spécialiste si sévères</li>
+        <li data-lang="fr">Suivi de grossesse plus étroit</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sec-refs">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-book"></i></span><h2 class="sec" data-lang="en">References</h2><h2 class="sec" data-lang="fr">Références</h2></div>
+  <ol class="refs">
+    <li>Pei Y, Obaji J, Dupuis A, et al. Unified criteria for ultrasonographic diagnosis of ADPKD. <em>J Am Soc Nephrol</em>. 2009;20(1):205–212.</li>
+    <li>Irazabal MV, Rangel LJ, Bergstralh EJ, et al. Imaging classification of autosomal dominant polycystic kidney disease: a simple model for selecting patients for clinical trials. <em>J Am Soc Nephrol</em>. 2015;26(1):160–172.</li>
+    <li>Torres VE, Chapman AB, Devuyst O, et al. Tolvaptan in patients with autosomal dominant polycystic kidney disease. <em>N Engl J Med</em>. 2012;367(25):2407–2418.</li>
+    <li>Schrier RW, Abebe KZ, Perrone RD, et al. Blood pressure in early autosomal dominant polycystic kidney disease. <em>N Engl J Med</em>. 2014;371(24):2255–2266.</li>
+    <li>Kidney Disease: Improving Global Outcomes (KDIGO) ADPKD Work Group. KDIGO 2025 Clinical Practice Guideline for the Evaluation, Management, and Treatment of Autosomal Dominant Polycystic Kidney Disease (ADPKD). <em>Kidney Int</em>. 2025.</li>
+  </ol>
+  <p data-lang="en" style="font-size:13px; color:var(--ink-faint);">Original diagrams are the work of the author (© 2026 Dr. Andrew Shuen).</p>
+  <p data-lang="fr" style="font-size:13px; color:var(--ink-faint);">Les schémas originaux sont l'œuvre de l'auteur (© 2026 Dr Andrew Shuen).</p>
+
+  <div class="footer">
+    <p data-lang="en"><strong>Disclaimer.</strong> This protocol supports but does not replace clinical judgment and individualized care. Guidelines evolve; verify all intervals, thresholds, doses, and recommendations against current society guidelines (ACC/AHA, ACMG, relevant specialty societies) before clinical use. Reference citations were drawn from current literature and should be confirmed against the primary sources.</p>
+    <p data-lang="fr"><strong>Avis.</strong> Ce protocole soutient mais ne remplace pas le jugement clinique et les soins individualisés. Les lignes directrices évoluent; vérifier tous les intervalles, seuils, doses et recommandations par rapport aux lignes directrices actuelles des sociétés savantes (ACC/AHA, ACMG, sociétés spécialisées pertinentes) avant tout usage clinique. Les références proviennent de la littérature actuelle et doivent être confirmées auprès des sources primaires.</p>
+    <p>© 2026 Dr. Andrew Shuen · Medical Genetics, Jewish General Hospital, Montreal · <span data-lang="en">For educational use.</span><span data-lang="fr">À usage éducatif.</span></p>
+  </div>
+</section>
+
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-en','lang-fr');
+  document.body.classList.add('lang-'+l);
+  document.getElementById('enTab').classList.toggle('active', l==='en');
+  document.getElementById('frTab').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+}
+function togglePdf(){
+  document.body.classList.toggle('pdf-preview');
+  document.getElementById('pdfBtn').classList.toggle('active');
+}
+</script>
+</body>
+</html>

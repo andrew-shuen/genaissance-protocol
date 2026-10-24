@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --teal:#0083d0;          /* GENGIQC signature bright blue */
+    --teal:#0083d0;          /* Genaissance signature bright blue */
     --teal-deep:#005a9e;     /* deeper corporate blue */
     --teal-ink:#0b3a63;      /* near-navy for text on light */
     --teal-wash:#e8f2fb;     /* pale blue surface */
@@ -510,6 +510,19 @@
   }
 
   /* ---- usage note ---- */
+  /* Genaissance: how to register */
+  .register{max-width:1080px;margin:22px auto 0;padding:0 24px}
+  .register .reg-box{background:#fff;border:1px solid #cfe3f3;border-top:4px solid var(--teal);border-radius:12px;padding:20px 22px 16px}
+  .register h2{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:1.3rem;margin:0 0 4px;color:var(--teal-ink)}
+  .register .reg-intro{margin:0 0 14px;color:#3c4f63;font-size:.95rem}
+  .register ol{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:reg}
+  .register li{counter-increment:reg;display:flex;gap:14px;align-items:flex-start;background:var(--teal-wash);border-radius:10px;padding:12px 14px;break-inside:avoid}
+  .register li::before{content:counter(reg);flex:none;width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif}
+  .register li strong{display:block;color:var(--teal-ink);margin-bottom:2px}
+  .register li p{margin:2px 0;font-size:.92rem;color:#2a3b4c;line-height:1.5}
+  .register a{color:var(--teal-deep);font-weight:600}
+  .register .reg-note{margin:12px 0 0;font-size:.86rem;color:#4a5d70}
+  @media print{.register .reg-box{border-color:#999;break-inside:avoid}.register li{background:#fff;border:1px solid #ccc}.register li::before{-webkit-print-color-adjust:exact;print-color-adjust:exact}.register a::after{content:" (" attr(href) ")";font-weight:400;font-size:9pt}}
   .usage{
     max-width:1080px;
     margin:18px auto 0;
@@ -683,6 +696,19 @@
 </g></svg>
   </div>
 </header>
+
+<section class="register" id="register" aria-labelledby="reg-title">
+  <div class="reg-box">
+    <h2 id="reg-title" data-en="How to register as a patient" data-fr="Comment vous inscrire comme patient">How to register as a patient</h2>
+    <p class="reg-intro" data-en="New patients referred to Genaissance: please complete these three steps." data-fr="Nouveaux patients orientés vers Genaissance : veuillez suivre ces trois étapes.">New patients referred to Genaissance: please complete these three steps.</p>
+    <ol>
+      <li><div><strong data-en="Register on PocketMD" data-fr="Inscrivez-vous sur PocketMD">Register on PocketMD</strong><p data-en="Create your patient account at <a href=&quot;https://app.pocketmd.ca&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>app.pocketmd.ca</a>, using an email address not already used by someone else on PocketMD. Enter your name exactly as it appears on your health card. A short <a href=&quot;https://tutorials.pocketmd.ca/demo/clyx47uex1jtlz9kdqgidmohu&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>tutorial</a> is available. Please do not book an appointment through PocketMD." data-fr="Créez votre compte patient sur <a href=&quot;https://app.pocketmd.ca&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>app.pocketmd.ca</a>, avec une adresse courriel qui n’a pas déjà été utilisée par quelqu’un d’autre sur PocketMD. Inscrivez votre nom exactement comme sur votre carte d’assurance maladie. Un court <a href=&quot;https://tutorials.pocketmd.ca/demo/clyx47uex1jtlz9kdqgidmohu&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>tutoriel</a> est offert (en anglais). Veuillez ne pas prendre rendez-vous dans PocketMD.">Create your patient account at <a href="https://app.pocketmd.ca" target="_blank" rel="noopener">app.pocketmd.ca</a>, using an email address not already used by someone else on PocketMD. Enter your name exactly as it appears on your health card. A short <a href="https://tutorials.pocketmd.ca/demo/clyx47uex1jtlz9kdqgidmohu" target="_blank" rel="noopener">tutorial</a> is available. Please do not book an appointment through PocketMD.</p></div></li>
+      <li><div><strong data-en="Complete the Genaissance intake form" data-fr="Remplissez le formulaire d’accueil Genaissance">Complete the Genaissance intake form</strong><p data-en="Complete the <a href=&quot;https://form.jotform.com/222565040061242&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Genaissance Adult Genetics intake form</a>. If your referral is for another reason, use the matching form instead: <a href=&quot;https://form.jotform.com/250184714787263&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>cancer genetics</a>, <a href=&quot;https://form.jotform.com/222787593244264&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>connective tissue disorder</a>, <a href=&quot;https://form.jotform.com/250596968310263&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>prenatal</a> or <a href=&quot;https://form.jotform.com/222555028211042&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>pediatric</a>. The clinic will confirm which form applies to you." data-fr="Remplissez le <a href=&quot;https://form.jotform.com/222565040061242&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>formulaire d’accueil Genaissance en génétique adulte</a> (en anglais). Si vous êtes orienté pour une autre raison, utilisez plutôt le formulaire correspondant : <a href=&quot;https://form.jotform.com/250184714787263&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>génétique du cancer</a>, <a href=&quot;https://form.jotform.com/222787593244264&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>maladie du tissu conjonctif</a>, <a href=&quot;https://form.jotform.com/250596968310263&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>prénatal</a> ou <a href=&quot;https://form.jotform.com/222555028211042&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>pédiatrie</a>. La clinique vous confirmera quel formulaire s’applique à vous.">Complete the <a href="https://form.jotform.com/222565040061242" target="_blank" rel="noopener">Genaissance Adult Genetics intake form</a>. If your referral is for another reason, use the matching form instead: <a href="https://form.jotform.com/250184714787263" target="_blank" rel="noopener">cancer genetics</a>, <a href="https://form.jotform.com/222787593244264" target="_blank" rel="noopener">connective tissue disorder</a>, <a href="https://form.jotform.com/250596968310263" target="_blank" rel="noopener">prenatal</a> or <a href="https://form.jotform.com/222555028211042" target="_blank" rel="noopener">pediatric</a>. The clinic will confirm which form applies to you.</p></div></li>
+      <li><div><strong data-en="Complete the PhenoTips family history form" data-fr="Remplissez le formulaire d’histoire familiale PhenoTips">Complete the PhenoTips family history form</strong><p data-en="Complete your family history (pedigree) in PhenoTips using the personal PhenoTips link sent to you by email. The link is unique to you; please do not share it." data-fr="Remplissez votre histoire familiale (arbre généalogique) dans PhenoTips à l’aide du lien PhenoTips personnel qui vous a été envoyé par courriel. Ce lien vous est propre; veuillez ne pas le partager.">Complete your family history (pedigree) in PhenoTips using the personal PhenoTips link sent to you by email. The link is unique to you; please do not share it.</p></div></li>
+    </ol>
+    <p class="reg-note" data-en="When all three steps are done, please let the clinic know by replying to your registration email. We will then send you an appointment booking link." data-fr="Lorsque les trois étapes sont terminées, veuillez en aviser la clinique en répondant à votre courriel d’inscription. Nous vous enverrons ensuite un lien pour prendre rendez-vous.">When all three steps are done, please let the clinic know by replying to your registration email. We will then send you an appointment booking link.</p>
+  </div>
+</section>
 
 <div class="usage">
   <p data-en="These are clinical reference and patient-education aids. They support, and do not replace, individual genetic counselling. Use the search box to find a gene or condition, or open a primer to learn the concepts." data-fr="Ce sont des aides de référence clinique et d'éducation des patients. Elles appuient, sans la remplacer, la consultation génétique individuelle. Utilisez la recherche pour trouver un gène ou une condition, ou ouvrez une introduction pour les notions de base.">These are clinical reference and patient-education aids. They support, and do not replace, individual genetic counselling. Use the search box to find a gene or condition, or open a primer to learn the concepts.</p>
@@ -2337,6 +2363,16 @@
           '</div>';
       }
     });
+</script>
+<script>/* Remember EN/FR language choice across pages (shared with site-banner.js) */
+(function(){var K='protocolLang';function st(l){try{localStorage.setItem(K,l);}catch(e){}}
+try{var q=(location.search.match(/[?&]lang=(en|fr)\b/i)||[])[1];if(q)st(q.toLowerCase());}catch(e){}
+var w=null;try{w=localStorage.getItem(K);}catch(e){}
+var en=document.getElementById('lang-en'),fr=document.getElementById('lang-fr');
+function ap(){var h=document.documentElement.lang;if(w==='fr'&&fr&&h!=='fr')fr.click();if(w==='en'&&en&&h==='fr')en.click();}
+ap();/* data.json loads async then calls setLang('en'); re-apply once it does */
+if(w){var mo=new MutationObserver(function(){mo.disconnect();ap();});mo.observe(document.documentElement,{attributes:true,attributeFilter:['lang']});setTimeout(function(){mo.disconnect();},10000);}
+if(en)en.addEventListener('click',function(){st('en');});if(fr)fr.addEventListener('click',function(){st('fr');});})();
 </script>
 </body>
 </html>

@@ -138,6 +138,8 @@
   .hidden{display:none}
   #load-error{display:none;max-width:60ch;margin:24px auto;padding:18px 22px;border:1px solid var(--line);border-left:4px solid var(--cancer);border-radius:10px;background:#fff;color:var(--ink)}
 </style>
+<link rel="stylesheet" href="site-banner.css">
+<script src="site-banner.js" defer></script>
 </head>
 <body>
 <header>
@@ -303,7 +305,7 @@
         } else {
           var formId = (q.forms && (q.forms[lang] || q.forms.en)) || '';
           href = 'https://form.jotform.com/' + formId;
-          var langMsg = (lang === 'fr') ? t(UI.formLangFr) : t(UI.formLangEn);
+          var langMsg = (lang === 'fr' && q.forms && q.forms.fr && q.forms.fr !== q.forms.en) ? t(UI.formLangFr) : t(UI.formLangEn);
           sub = '<span class="form-lang">' + escapeHtml(langMsg) + '</span>';
           btnLabel = t(UI.openForm);
         }

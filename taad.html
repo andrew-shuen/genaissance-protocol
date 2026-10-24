@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thoracic Aortic Aneurysm and Dissection (TAAD) — Surveillance &amp; Prevention Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px; line-height:1.62;
+}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:9px 18px;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .util{display:flex; gap:8px; align-items:center;}
+.topbar .tabs{display:flex; gap:4px;}
+.btn{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13.5px; font-weight:600; cursor:pointer;
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft);
+  padding:7px 13px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;
+  transition:.15s;
+}
+.btn:hover{border-color:var(--brand-line); color:var(--brand-dark); background:var(--brand-bg);}
+.btn.active{background:var(--brand); border-color:var(--brand); color:#fff;}
+.btn i{font-size:16px;}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:860px; margin:0 auto; padding:0 22px 80px;}
+
+/* ---------- Masthead ---------- */
+.masthead{padding:38px 0 26px; border-bottom:2px solid var(--ink);}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:12.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--brand-dark);
+}
+h1.title{font-size:40px; line-height:1.1; margin:.28em 0 .12em; letter-spacing:-.01em;}
+.standfirst{font-size:19px; color:var(--ink-soft); margin:0 0 22px; max-width:62ch;}
+.authorpanel{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:15px 18px; display:flex; gap:14px; align-items:flex-start;
+}
+.authorpanel .who{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.authorpanel .name{font-weight:700; font-size:15px; color:var(--ink);}
+.authorpanel .role{font-size:13.5px; color:var(--ink-faint); line-height:1.5;}
+.authorpanel i{color:var(--brand); font-size:26px; margin-top:2px;}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:16px;}
+.chip{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:600;
+  background:var(--cream); border:1px solid var(--line); border-radius:999px;
+  padding:4px 11px; color:var(--ink-soft); display:inline-flex; gap:5px; align-items:center;
+}
+.chip i{font-size:14px; color:var(--brand);}
+.legend{
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; padding-top:15px;
+  border-top:1px solid var(--line-soft);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint);
+}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+.legend i{font-size:15px;}
+.i-routine{color:#1f7a34;} .i-optional{color:var(--amber);} .i-no{color:var(--red);}
+
+/* ---------- TOC ---------- */
+.toc{
+  margin:26px 0 8px; padding:18px 20px; background:var(--paper);
+  border:1px solid var(--line); border-radius:var(--radius);
+}
+.toc h2{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+  margin:0 0 12px;
+}
+.toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:14.5px;}
+.toc li{margin-bottom:6px; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none;}
+.toc a:hover{color:var(--brand-dark);}
+
+/* ---------- Sections ---------- */
+section{padding-top:34px;}
+.sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.sec-num{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+  font-size:15px; color:#fff; background:var(--brand);
+  min-width:30px; height:30px; border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+}
+h2.sec{font-size:25px; margin:0; letter-spacing:-.01em; line-height:1.2;}
+h3{font-size:18px; margin:24px 0 8px; color:var(--ink);}
+p{margin:0 0 14px;}
+
+/* ---------- Patient card ---------- */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line);
+  border-left:4px solid var(--brand); border-radius:var(--radius-sm);
+  padding:14px 17px; margin:14px 0 18px;
+}
+.patient .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--brand-dark);
+  display:flex; align-items:center; gap:6px; margin-bottom:6px;
+}
+.patient p{margin:0 0 8px;} .patient p:last-child{margin:0;}
+
+/* ---------- Subtype pill header ---------- */
+.subhead{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  margin:22px 0 6px; padding-bottom:8px; border-bottom:1px solid var(--line-soft);
+}
+.subhead h3{margin:0;}
+.pill{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  border-radius:999px; padding:3px 11px; letter-spacing:.02em;
+}
+.pill-red{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.pill-amber{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.pill-blue{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* ---------- Checklist ---------- */
+ul.check{list-style:none; padding:0; margin:12px 0 16px;}
+ul.check li{
+  display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+  align-items:flex-start;
+}
+ul.check li:last-child{border-bottom:none;}
+ul.check i{font-size:19px; flex:none; margin-top:1px;}
+.tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; border-radius:5px; padding:2px 7px;
+  margin-left:8px; white-space:nowrap; vertical-align:middle;
+}
+.tag-routine{background:#e6f4ea; color:#1f7a34;}
+.tag-optional{background:var(--amber-bg); color:var(--amber);}
+.tag-no{background:var(--red-bg); color:var(--red);}
+.ck-txt{flex:1;}
+.ck-txt .sub{display:block; font-size:14px; color:var(--ink-faint); margin-top:2px;}
+
+/* ---------- Callout ---------- */
+.callout{
+  border-left:4px solid var(--brand); background:var(--paper);
+  border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:13px 16px; margin:16px 0;
+}
+.callout.amber{border-left-color:var(--amber); background:var(--amber-bg); border-color:var(--amber-line);}
+.callout.red{border-left-color:var(--red); background:var(--red-bg); border-color:var(--red-line);}
+.callout .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:5px; display:flex; gap:6px; align-items:center;
+}
+.callout.amber .lbl{color:var(--amber);} .callout.red .lbl{color:var(--red);} .callout .lbl{color:var(--brand-dark);}
+.callout p:last-child{margin:0;}
+
+/* ---------- Info / emerging boxes ---------- */
+.infobox{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging .lbl,.infobox .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:6px; display:flex; gap:6px; align-items:center;
+}
+.emerging .lbl{color:var(--purple);} .infobox .lbl{color:var(--brand-dark);}
+.emerging p:last-child,.infobox p:last-child{margin:0;}
+
+/* ---------- Risk table ---------- */
+.tablewrap{overflow-x:auto; margin:16px 0;}
+table.risk{width:100%; border-collapse:collapse; font-size:15px; background:var(--paper); border-radius:var(--radius-sm); overflow:hidden;}
+table.risk th,table.risk td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--line);}
+table.risk th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); background:var(--cream);}
+table.risk tr:last-child td{border-bottom:none;}
+.dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:7px; vertical-align:middle;}
+.dot-red{background:var(--red);} .dot-amber{background:var(--amber-line);} .dot-blue{background:var(--brand);}
+
+/* ---------- Figures ---------- */
+figure.fig{margin:18px 0 20px; padding:0; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+figure.fig .svgwrap{padding:18px 16px 4px; background:linear-gradient(180deg,#fbfdff,#f4f9fc);}
+figure.fig svg{width:100%; height:auto; display:block;}
+figure.fig figcaption{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); padding:11px 16px 13px; border-top:1px solid var(--line-soft); line-height:1.5;}
+figure.fig img.photo{width:100%; height:auto; display:block; border-radius:0;}
+figure.fig .credit{font-size:11.5px; color:var(--ink-faint); margin-top:6px;}
+figure.fig .credit a{color:var(--brand-dark); text-decoration:none;}
+figure.fig figcaption b{color:var(--ink-soft); font-weight:700;}
+.svg-ink{fill:var(--ink);} .svg-soft{fill:var(--ink-soft);} .svg-faint{fill:var(--ink-faint);}
+.svg-lbl{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.svg-term{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;}
+
+/* ---------- Summary cards ---------- */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:16px 0;}
+.scard{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand); border-radius:var(--radius-sm); padding:14px 16px;}
+.scard h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; margin:0 0 8px; color:var(--brand-dark); display:flex; gap:7px; align-items:center;}
+.scard ul{margin:0; padding-left:18px; font-size:14.5px; color:var(--ink-soft);}
+.scard li{margin-bottom:5px;}
+
+/* ---------- References ---------- */
+ol.refs{font-size:14px; color:var(--ink-soft); padding-left:22px; line-height:1.55;}
+ol.refs li{margin-bottom:9px;}
+
+/* ---------- Footer ---------- */
+.footer{margin-top:46px; padding-top:18px; border-top:2px solid var(--ink); position:relative;}
+.footer:before{content:""; position:absolute; top:4px; left:0; right:0; height:1px; background:var(--ink);}
+.footer p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); margin:0 0 8px;}
+
+/* ---------- Language toggle ---------- */
+[data-lang]{display:none;}
+body.lang-en [data-lang="en"]{display:revert;}
+body.lang-fr [data-lang="fr"]{display:revert;}
+ul.check li[data-lang],table.risk tr[data-lang]{display:none;}
+body.lang-en ul.check li[data-lang="en"]{display:flex;}
+body.lang-fr ul.check li[data-lang="fr"]{display:flex;}
+body.lang-en table.risk tr[data-lang="en"]{display:table-row;}
+body.lang-fr table.risk tr[data-lang="fr"]{display:table-row;}
+
+/* ---------- PDF preview on screen ---------- */
+body.pdf-preview{background:#6a7681;}
+body.pdf-preview .topbar{position:static;}
+body.pdf-preview .toc{display:none;}
+body.pdf-preview .wrap{
+  background:#fff; max-width:8.5in; margin:24px auto; padding:0.7in 0.85in;
+  box-shadow:0 4px 24px rgba(0,0,0,.3); font-size:11.5pt; line-height:1.4;
+}
+body.pdf-preview h1.title{font-size:26pt;}
+body.pdf-preview h2.sec{font-size:16pt;}
+body.pdf-preview .standfirst{font-size:13pt;}
+body.pdf-preview section{page-break-inside:auto;}
+body.pdf-preview #sec-summary,body.pdf-preview #sec-refs{
+  border-top:2px dashed var(--brand); margin-top:30px; padding-top:24px; position:relative;
+}
+body.pdf-preview #sec-summary:before,body.pdf-preview #sec-refs:before{
+  content:"— — — page break — — —"; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+  background:#fff; padding:0 12px; font-family:"Helvetica Neue",sans-serif; font-size:9pt; color:var(--brand); letter-spacing:.08em;
+}
+
+/* ---------- Print ---------- */
+@media print{
+  .topbar,.toc{display:none;}
+  body{background:#fff; font-size:10.5pt;}
+  .wrap{max-width:100%; padding:0;}
+  #sec-summary,#sec-refs{page-break-before:always;}
+  .patient,.callout,.infobox,.emerging,.scard,table.risk{break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+@media(max-width:600px){
+  .toc ol{columns:1;} h1.title{font-size:31px;} .cardgrid{grid-template-columns:1fr;}
+}
+.legend span[data-lang]{display:none;}
+body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="fr"]{display:inline-flex;}
+</style>
+<link rel="stylesheet" href="site-banner.css">
+<script src="site-banner.js" defer></script>
+</head>
+<body class="lang-en">
+
+<!-- ======================= TOP BAR ======================= -->
+<div class="topbar ui">
+  <div class="util">
+    <button class="btn" id="pdfBtn" onclick="togglePdf()"><i class="ti ti-eye"></i><span data-lang="en">PDF view</span><span data-lang="fr">Aperçu PDF</span></button>
+    <button class="btn" onclick="window.print()"><i class="ti ti-printer"></i><span data-lang="en">Print / Save PDF</span><span data-lang="fr">Imprimer / PDF</span></button>
+  </div>
+  <div class="tabs">
+    <button class="btn active" id="enTab" onclick="setLang('en')">English</button>
+    <button class="btn" id="frTab" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ======================= MASTHEAD ======================= -->
+<header class="masthead">
+  <div class="eyebrow" data-lang="en">Heritable Aortic Disease · Surveillance Protocol</div><div class="eyebrow" data-lang="fr">Maladie aortique héréditaire · Protocole de surveillance</div>
+  <h1 class="title" data-lang="en">Thoracic Aortic Aneurysm and Dissection (TAAD)</h1><h1 class="title" data-lang="fr">Anévrisme et dissection de l'aorte thoracique (TAAD)</h1>
+  <p class="standfirst" data-lang="en">A protocol for heritable and familial thoracic aortic aneurysm and dissection, covering who to test, imaging intervals, medical therapy, sporadic and gene-specific surgical thresholds, pregnancy, and screening of relatives.</p><p class="standfirst" data-lang="fr">Protocole pour l'anévrisme et la dissection de l'aorte thoracique héréditaires et familiaux, couvrant qui tester, les intervalles d'imagerie, le traitement médical, les seuils chirurgicaux sporadiques et propres au gène, la grossesse et le dépistage des apparentés.</p>
+
+  <div class="authorpanel"><i class="ti ti-stethoscope"></i><div class="who"><div class="name">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</div><div class="role" data-lang="en">Medical Genetics · Jewish General Hospital (JGH), Montreal</div><div class="role" data-lang="fr">Génétique médicale · Hôpital général juif (HGJ), Montréal</div></div></div>
+
+  <div class="chips ui">
+    <span class="chip"><i class="ti ti-dna"></i> <em>ACTA2 · MYH11 · MYLK · PRKG1 · LOX</em></span>
+    <span class="chip"><i class="ti ti-heartbeat"></i> 2022 ACC/AHA</span>
+    <span class="chip"><i class="ti ti-clipboard-text"></i> <span data-lang="en">ClinGen HTAD genes</span><span data-lang="fr">Gènes HTAD ClinGen</span></span>
+    <span class="chip"><i class="ti ti-calendar"></i> <span data-lang="en">Updated October 2026</span><span data-lang="fr">Mis à jour en octobre 2026</span></span>
+  </div>
+
+  <div class="legend ui">
+    <span data-lang="en"><i class="ti ti-circle-check i-routine"></i> Routine</span>
+    <span data-lang="fr"><i class="ti ti-circle-check i-routine"></i> De routine</span>
+    <span data-lang="en"><i class="ti ti-minus i-optional"></i> Optional / selective</span>
+    <span data-lang="fr"><i class="ti ti-minus i-optional"></i> Optionnel / sélectif</span>
+    <span data-lang="en"><i class="ti ti-x i-no"></i> Not recommended</span>
+    <span data-lang="fr"><i class="ti ti-x i-no"></i> Non recommandé</span>
+  </div>
+</header>
+
+<!-- ======================= TOC ======================= -->
+<nav class="toc ui">
+  <h2 data-lang="en">Contents</h2>
+  <h2 data-lang="fr">Sommaire</h2>
+  <ol>
+    <li><a href="#sec1" data-lang="en">Understanding TAAD</a><a href="#sec1" data-lang="fr">Comprendre le TAAD</a></li>
+    <li><a href="#sec2" data-lang="en">Gene-specific risks</a><a href="#sec2" data-lang="fr">Risques propres au gène</a></li>
+    <li><a href="#sec3" data-lang="en">Who to test</a><a href="#sec3" data-lang="fr">Qui tester</a></li>
+    <li><a href="#sec4" data-lang="en">Surveillance</a><a href="#sec4" data-lang="fr">Surveillance</a></li>
+    <li><a href="#sec5" data-lang="en">Medical management</a><a href="#sec5" data-lang="fr">Prise en charge médicale</a></li>
+    <li><a href="#sec6" data-lang="en">Surgical thresholds</a><a href="#sec6" data-lang="fr">Seuils chirurgicaux</a></li>
+    <li><a href="#sec7" data-lang="en">Pregnancy</a><a href="#sec7" data-lang="fr">Grossesse</a></li>
+    <li><a href="#sec8" data-lang="en">Activity &amp; lifestyle</a><a href="#sec8" data-lang="fr">Activité et mode de vie</a></li>
+    <li><a href="#sec9" data-lang="en">Genetic counselling</a><a href="#sec9" data-lang="fr">Conseil génétique</a></li>
+    <li><a href="#sec-summary" data-lang="en">Summary of recommendations</a><a href="#sec-summary" data-lang="fr">Résumé des recommandations</a></li>
+    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+  </ol>
+</nav>
+
+<section id="sec1">
+  <div class="sec-head"><span class="sec-num">1</span><h2 class="sec" data-lang="en">Understanding TAAD</h2><h2 class="sec" data-lang="fr">Comprendre l'anévrisme et la dissection de l'aorte thoracique</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">The aorta is the large artery that carries blood from the heart to the body. A thoracic aortic aneurysm is a widening of the part of the aorta inside the chest. If it becomes too large, the wall can tear (a dissection), which is a medical emergency. In some families this tendency is inherited, even without other body features. Finding the cause — and checking relatives — lets doctors watch the aorta and repair it before a tear happens.</p><p data-lang="fr">L'aorte est la grosse artère qui transporte le sang du cœur vers le reste du corps. Un anévrisme de l'aorte thoracique est un élargissement de la partie de l'aorte située dans le thorax. S'il devient trop gros, la paroi peut se déchirer (dissection), ce qui constitue une urgence médicale. Dans certaines familles, cette tendance est héréditaire, même sans autres signes physiques. Trouver la cause — et vérifier les apparentés — permet aux médecins de surveiller l'aorte et de la réparer avant qu'une déchirure survienne.</p>
+  </div>
+  <p data-lang="en">Thoracic aortic aneurysm and dissection (TAAD; also termed thoracic aortic disease, TAD) may be sporadic, associated with risk factors such as hypertension and bicuspid aortic valve, or heritable (HTAD). HTAD is subdivided into <strong>syndromic</strong> forms — <a href="marfan.html">Marfan syndrome</a> (<em>FBN1</em>), <a href="loeys-dietz.html">Loeys-Dietz syndrome</a> (<em>TGFBR1/2</em>, <em>SMAD3</em>, <em>TGFB2/3</em>), and vascular Ehlers-Danlos syndrome (<em>COL3A1</em>) — and <strong>non-syndromic</strong> familial TAAD, in which aortic disease occurs without prominent systemic features. Inheritance is predominantly autosomal dominant with reduced penetrance and variable age of onset. A substantial minority of people with TAAD have an affected first-degree relative.</p><p data-lang="fr">L'anévrisme et la dissection de l'aorte thoracique (TAAD, selon l'acronyme anglais; aussi appelés maladie aortique thoracique) peuvent être sporadiques, associés à des facteurs de risque comme l'hypertension et la valve aortique bicuspide, ou héréditaires (HTAD). Les formes héréditaires se divisent en formes <strong>syndromiques</strong> — <a href="marfan.html">syndrome de Marfan</a> (<em>FBN1</em>), <a href="loeys-dietz.html">syndrome de Loeys-Dietz</a> (<em>TGFBR1/2</em>, <em>SMAD3</em>, <em>TGFB2/3</em>) et syndrome d'Ehlers-Danlos vasculaire (<em>COL3A1</em>) — et en TAAD familial <strong>non syndromique</strong>, où l'atteinte aortique survient sans signes systémiques marqués. La transmission est surtout autosomique dominante, avec pénétrance réduite et âge de début variable. Une minorité importante des personnes atteintes ont un apparenté au premier degré atteint.</p>
+  <p data-lang="en">The ClinGen HTAD gene curation (Renard et al., 2018) classified 11 genes as having definitive or strong evidence for HTAD: <em>ACTA2</em>, <em>COL3A1</em>, <em>FBN1</em>, <em>MYH11</em>, <em>SMAD3</em>, <em>TGFB2</em>, <em>TGFBR1</em>, <em>TGFBR2</em>, <em>MYLK</em>, <em>LOX</em>, and <em>PRKG1</em>. Additional genes have moderate or emerging evidence. Even with comprehensive panels, most families with familial TAAD do not yet have an identified cause, so a negative test does not exclude heritable disease.</p><p data-lang="fr">La curation ClinGen des gènes de HTAD (Renard et coll., 2018) a classé 11 gènes comme ayant des preuves définitives ou solides : <em>ACTA2</em>, <em>COL3A1</em>, <em>FBN1</em>, <em>MYH11</em>, <em>SMAD3</em>, <em>TGFB2</em>, <em>TGFBR1</em>, <em>TGFBR2</em>, <em>MYLK</em>, <em>LOX</em> et <em>PRKG1</em>. D'autres gènes ont des preuves modérées ou émergentes. Même avec des panels complets, la plupart des familles atteintes de TAAD familial n'ont pas encore de cause identifiée; un test négatif n'exclut donc pas une maladie héréditaire.</p>
+  <figure class="fig">
+    <div class="svgwrap">
+      <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Segments of the thoracic aorta">
+        <text x="14" y="24" class="svg-term" font-size="14" fill="#15212b" data-lang="en">Segments of the thoracic aorta</text>
+        <text x="14" y="24" class="svg-term" font-size="14" fill="#15212b" data-lang="fr">Segments de l'aorte thoracique</text>
+        <path d="M200,270 L200,160 C200,70 380,70 380,150 L380,285" fill="none" stroke="#9cd0ef" stroke-width="34" stroke-linecap="round"/>
+        <path d="M200,270 L200,160 C200,70 380,70 380,150 L380,285" fill="none" stroke="#0083d0" stroke-width="2"/>
+        <ellipse cx="200" cy="245" rx="30" ry="22" fill="#e3f2fb" stroke="#005f9e" stroke-width="2"/>
+        <g font-size="12.5" fill="#3c4a55">
+          <line x1="232" y1="248" x2="470" y2="248" stroke="#5b6872" stroke-dasharray="3 3"/>
+          <text x="476" y="252" data-lang="en">Aortic root (sinuses of Valsalva)</text><text x="476" y="252" data-lang="fr">Racine aortique (sinus de Valsalva)</text>
+          <line x1="218" y1="185" x2="470" y2="185" stroke="#5b6872" stroke-dasharray="3 3"/>
+          <text x="476" y="189" data-lang="en">Ascending aorta</text><text x="476" y="189" data-lang="fr">Aorte ascendante</text>
+          <line x1="290" y1="88" x2="470" y2="88" stroke="#5b6872" stroke-dasharray="3 3"/>
+          <text x="476" y="92" data-lang="en">Aortic arch</text><text x="476" y="92" data-lang="fr">Crosse aortique</text>
+          <line x1="398" y1="230" x2="470" y2="215" stroke="#5b6872" stroke-dasharray="3 3"/>
+          <text x="476" y="219" data-lang="en">Descending thoracic aorta</text><text x="476" y="219" data-lang="fr">Aorte thoracique descendante</text>
+        </g>
+        <text x="80" y="292" font-size="12" fill="#5b6872" data-lang="en">Heart (left ventricle) below the root</text>
+        <text x="80" y="292" font-size="12" fill="#5b6872" data-lang="fr">Cœur (ventricule gauche) sous la racine</text>
+      </svg>
+    </div>
+    <figcaption>
+      <span data-lang="en"><b>Figure 1. Segments of the thoracic aorta.</b> Schematic. Heritable disease most often affects the root and ascending aorta, which are measured on echocardiography; the arch and descending aorta require CT or MR imaging.</span>
+      <span data-lang="fr"><b>Figure 1. Segments de l'aorte thoracique.</b> Schéma. La maladie héréditaire touche surtout la racine et l'aorte ascendante, mesurées à l'échocardiographie; la crosse et l'aorte descendante exigent une TDM ou une IRM.</span>
+    </figcaption>
+  </figure>
+</section>
+
+<section id="sec2">
+  <div class="sec-head"><span class="sec-num">2</span><h2 class="sec" data-lang="en">Key features and gene-specific risks</h2><h2 class="sec" data-lang="fr">Caractéristiques et risques propres au gène</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">An aneurysm usually causes no symptoms until it is very large or tears, which is why scans are used to find and follow it. Some gene changes come with other clues — for example skin, eye, or blood vessel changes elsewhere in the body — that help your team know what to watch for.</p><p data-lang="fr">Un anévrisme ne cause habituellement aucun symptôme jusqu'à ce qu'il soit très gros ou se déchire; c'est pourquoi on utilise l'imagerie pour le trouver et le suivre. Certaines modifications génétiques s'accompagnent d'autres indices — par exemple des changements de la peau, des yeux ou d'autres vaisseaux sanguins — qui aident votre équipe à savoir quoi surveiller.</p>
+  </div>
+  <div class="tablewrap">
+    <table class="risk">
+      <thead>
+        <tr data-lang="en"><th>Gene</th><th>Pattern</th><th>Associated features</th></tr>
+        <tr data-lang="fr"><th>Gène</th><th>Profil</th><th>Atteintes associées</th></tr>
+      </thead>
+      <tbody>
+        <tr data-lang="en"><td><em>ACTA2</em></td><td>Smooth-muscle contractile</td><td><span class="dot dot-red"></span>Livedo reticularis, iris flocculi, patent ductus arteriosus; early coronary and cerebrovascular disease (including moyamoya-like changes) with some variants</td></tr>
+        <tr data-lang="fr"><td><em>ACTA2</em></td><td>Contractile du muscle lisse</td><td><span class="dot dot-red"></span>Livedo reticularis, flocculi iriens, persistance du canal artériel; maladie coronarienne et cérébrovasculaire précoce (y compris des changements de type moyamoya) avec certains variants</td></tr>
+        <tr data-lang="en"><td><em>MYH11</em></td><td>Smooth-muscle contractile</td><td><span class="dot dot-amber"></span>Patent ductus arteriosus</td></tr>
+        <tr data-lang="fr"><td><em>MYH11</em></td><td>Contractile du muscle lisse</td><td><span class="dot dot-amber"></span>Persistance du canal artériel</td></tr>
+        <tr data-lang="en"><td><em>MYLK</em></td><td>Smooth-muscle contractile</td><td><span class="dot dot-red"></span>Dissection reported with little or no prior enlargement</td></tr>
+        <tr data-lang="fr"><td><em>MYLK</em></td><td>Contractile du muscle lisse</td><td><span class="dot dot-red"></span>Dissections rapportées avec peu ou pas d'élargissement préalable</td></tr>
+        <tr data-lang="en"><td><em>PRKG1</em></td><td>Smooth-muscle contractile</td><td><span class="dot dot-red"></span>Dissection at young age reported, sometimes at modest diameters</td></tr>
+        <tr data-lang="fr"><td><em>PRKG1</em></td><td>Contractile du muscle lisse</td><td><span class="dot dot-red"></span>Dissections rapportées à un jeune âge, parfois à des diamètres modestes</td></tr>
+        <tr data-lang="en"><td><em>LOX</em></td><td>Extracellular matrix</td><td><span class="dot dot-amber"></span>Aortic root/ascending aneurysm; some systemic connective tissue features</td></tr>
+        <tr data-lang="fr"><td><em>LOX</em></td><td>Matrice extracellulaire</td><td><span class="dot dot-amber"></span>Anévrisme de la racine ou de l'aorte ascendante; certains signes systémiques du tissu conjonctif</td></tr>
+        <tr data-lang="en"><td><em>FBN1</em>, <em>TGFBR1/2</em>, <em>SMAD3</em>, <em>TGFB2</em>, <em>COL3A1</em></td><td>Syndromic HTAD</td><td><span class="dot dot-amber"></span>See <a href="marfan.html">Marfan</a> and <a href="loeys-dietz.html">Loeys-Dietz</a> protocols; <em>COL3A1</em> requires a vascular EDS-specific approach</td></tr>
+        <tr data-lang="fr"><td><em>FBN1</em>, <em>TGFBR1/2</em>, <em>SMAD3</em>, <em>TGFB2</em>, <em>COL3A1</em></td><td>HTAD syndromique</td><td><span class="dot dot-amber"></span>Voir les protocoles <a href="marfan.html">Marfan</a> et <a href="loeys-dietz.html">Loeys-Dietz</a>; <em>COL3A1</em> exige une approche propre au SED vasculaire</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <div class="lbl"><i class="ti ti-info-circle"></i> <span data-lang="en">Key point</span><span data-lang="fr">Point clé</span></div>
+    <p data-lang="en">Gene identity changes management: it determines surgical thresholds, whether extra-aortic arteries need imaging, and which relatives need surveillance. Bicuspid aortic valve aortopathy is a related but distinct entity with its own guideline thresholds.</p><p data-lang="fr">L'identité du gène modifie la prise en charge : elle détermine les seuils chirurgicaux, la nécessité d'imager les artères hors de l'aorte et les apparentés qui ont besoin de surveillance. L'aortopathie associée à la valve aortique bicuspide est une entité apparentée mais distincte, avec ses propres seuils.</p>
+  </div>
+</section>
+
+<section id="sec3">
+  <div class="sec-head"><span class="sec-num">3</span><h2 class="sec" data-lang="en">Who should have genetic testing</h2><h2 class="sec" data-lang="fr">Qui devrait passer un test génétique</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Genetic testing is especially helpful if the aneurysm was found at a younger age, if other family members have aortic disease or sudden unexplained deaths, or if you have features of a connective tissue condition.</p><p data-lang="fr">Le test génétique est particulièrement utile si l'anévrisme a été découvert à un plus jeune âge, si d'autres membres de la famille ont une maladie de l'aorte ou des décès subits inexpliqués, ou si vous présentez des signes d'une maladie du tissu conjonctif.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Multigene HTAD panel for thoracic aortic aneurysm or dissection with risk factors for heritable disease <span class="tag tag-routine">Recommended</span><span class="sub">Risk factors per 2022 ACC/AHA include syndromic features, family history of thoracic aortic disease or unexplained sudden death, and onset at younger age (the guideline uses age &lt;60 years).</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test the affected family member first when possible <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Reanalysis of negative or VUS results over time <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Panel multigène de HTAD en présence d'un anévrisme ou d'une dissection de l'aorte thoracique avec facteurs de risque de maladie héréditaire <span class="tag tag-routine">Recommandé</span><span class="sub">Selon la ligne directrice 2022 ACC/AHA, les facteurs de risque comprennent des signes syndromiques, des antécédents familiaux de maladie aortique thoracique ou de mort subite inexpliquée, et un début à un âge plus jeune (la ligne directrice utilise &lt; 60 ans).</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Tester d'abord le membre de la famille atteint lorsque possible <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Réanalyse des résultats négatifs ou VSI au fil du temps <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec4">
+  <div class="sec-head"><span class="sec-num">4</span><h2 class="sec" data-lang="en">Surveillance and imaging</h2><h2 class="sec" data-lang="fr">Surveillance et imagerie</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">The aorta is measured with a heart ultrasound, and sometimes with a CT or MRI scan to see the whole chest aorta. Once the size and growth are known, scans are usually repeated every one to two years if small and stable, and more often as the size gets closer to the point where surgery is advised.</p><p data-lang="fr">L'aorte est mesurée par une échographie cardiaque, et parfois par une TDM ou une IRM pour voir toute l'aorte thoracique. Une fois la taille et la croissance connues, les examens sont habituellement répétés aux un à deux ans si l'aorte est petite et stable, et plus souvent à mesure qu'elle s'approche du seuil où une chirurgie est conseillée.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">TTE plus CT or MR imaging of the entire thoracic aorta at diagnosis <span class="tag tag-routine">Recommended</span><span class="sub">Confirms diameters and defines segments not visualised by echocardiography.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Repeat imaging at 6–12 months to establish growth rate <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Thereafter, interval guided by diameter, growth rate, and aetiology <span class="tag tag-routine">Routine</span><span class="sub">Typically every 1–2 years when small and stable; every 6–12 months as diameter approaches surgical threshold. HTAD generally warrants closer follow-up than sporadic disease.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Imaging beyond the thoracic aorta for genes with extra-aortic vascular disease <span class="tag tag-optional">Selective</span><span class="sub">E.g. <em>TGFBR1/2</em>, <em>SMAD3</em> (head-to-pelvis); cerebrovascular assessment for selected <em>ACTA2</em> variants.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">MRI preferred over CT for long-term serial imaging in young patients <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">ETT et TDM ou IRM de toute l'aorte thoracique au diagnostic <span class="tag tag-routine">Recommandé</span><span class="sub">Confirme les diamètres et précise les segments non visualisés à l'échocardiographie.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Imagerie répétée à 6–12 mois pour établir le taux de croissance <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Par la suite, intervalle guidé par le diamètre, le taux de croissance et l'étiologie <span class="tag tag-routine">De routine</span><span class="sub">Habituellement aux 1 à 2 ans si petite et stable; aux 6 à 12 mois lorsque le diamètre s'approche du seuil chirurgical. La HTAD justifie généralement un suivi plus étroit que la maladie sporadique.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Imagerie au-delà de l'aorte thoracique pour les gènes associés à une atteinte vasculaire extra-aortique <span class="tag tag-optional">Sélectif</span><span class="sub">P. ex. <em>TGFBR1/2</em>, <em>SMAD3</em> (tête au bassin); évaluation cérébrovasculaire pour certains variants <em>ACTA2</em>.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">IRM préférée à la TDM pour l'imagerie répétée à long terme chez les jeunes <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec5">
+  <div class="sec-head"><span class="sec-num">5</span><h2 class="sec" data-lang="en">Medical management</h2><h2 class="sec" data-lang="fr">Prise en charge médicale</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Controlling blood pressure lowers the stress on the aortic wall. Not smoking is also very important. Your doctor may prescribe medicines such as a beta-blocker or an angiotensin receptor blocker.</p><p data-lang="fr">Contrôler la pression artérielle réduit la contrainte sur la paroi de l'aorte. Ne pas fumer est aussi très important. Votre médecin pourrait prescrire des médicaments comme un bêtabloquant ou un antagoniste des récepteurs de l'angiotensine.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Blood pressure control to guideline targets <span class="tag tag-routine">Recommended</span><span class="sub">2022 ACC/AHA: treating hypertension to a target below 130/80 mmHg is reasonable in thoracic aortic aneurysm.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Beta-blocker and/or ARB, particularly in syndromic HTAD <span class="tag tag-routine">Reasonable</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Smoking cessation <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Avoid fluoroquinolones when an alternative antibiotic is available <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Stimulant drugs (e.g. cocaine, amphetamines) and anabolic steroids <span class="tag tag-no">Avoid</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Contrôle de la pression artérielle selon les cibles recommandées <span class="tag tag-routine">Recommandé</span><span class="sub">2022 ACC/AHA : traiter l'hypertension pour viser moins de 130/80 mmHg est raisonnable en présence d'un anévrisme de l'aorte thoracique.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Bêtabloquant et/ou ARA, surtout en HTAD syndromique <span class="tag tag-routine">Raisonnable</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Arrêt tabagique <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Éviter les fluoroquinolones lorsqu'un autre antibiotique est disponible <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">Drogues stimulantes (p. ex. cocaïne, amphétamines) et stéroïdes anabolisants <span class="tag tag-no">À éviter</span></span></li>
+  </ul>
+</section>
+
+<section id="sec6">
+  <div class="sec-head"><span class="sec-num">6</span><h2 class="sec" data-lang="en">Surgical thresholds</h2><h2 class="sec" data-lang="fr">Seuils chirurgicaux</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">The aim is to replace the widened part of the aorta before it can tear. The size at which surgery is advised depends on the cause: it is lower in many inherited forms than in people without a genetic cause. Your team will also consider how fast it is growing, your family history, and your body size.</p><p data-lang="fr">Le but est de remplacer la partie élargie de l'aorte avant qu'elle puisse se déchirer. La taille à laquelle la chirurgie est conseillée dépend de la cause : elle est plus basse dans plusieurs formes héréditaires que chez les personnes sans cause génétique. Votre équipe tient aussi compte de la vitesse de croissance, de vos antécédents familiaux et de votre taille corporelle.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Sporadic aneurysm of the root or ascending aorta: surgery at ≥5.5 cm <span class="tag tag-routine">Recommended</span><span class="sub">Surgery at ≥5.0 cm is reasonable in selected low-risk patients operated on by an experienced multidisciplinary aortic team.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Rapid growth: ≥0.5 cm in 1 year, or ≥0.3 cm/year in 2 consecutive years <span class="tag tag-routine">Recommended</span><span class="sub">Confirm growth with consistent imaging technique before acting.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Heritable TAAD: apply gene-specific thresholds from the 2022 ACC/AHA guideline <span class="tag tag-routine">Recommended</span><span class="sub">For many HTAD genes the threshold is lower than for sporadic disease (commonly in the 4.5–5.0 cm range), and lower still with high-risk features. Verify current values in the guideline tables.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Familial TAAD without identified variant: consider family history of dissection diameters <span class="tag tag-optional">Reasonable</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Concomitant ascending aortic replacement at ≥4.5 cm when undergoing aortic valve surgery <span class="tag tag-routine">Reasonable</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Anévrisme sporadique de la racine ou de l'aorte ascendante : chirurgie à ≥ 5,5 cm <span class="tag tag-routine">Recommandé</span><span class="sub">La chirurgie à ≥ 5,0 cm est raisonnable chez des patients sélectionnés à faible risque, opérés par une équipe aortique multidisciplinaire expérimentée.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Croissance rapide : ≥ 0,5 cm en 1 an, ou ≥ 0,3 cm/an pendant 2 années consécutives <span class="tag tag-routine">Recommandé</span><span class="sub">Confirmer la croissance avec une technique d'imagerie constante avant d'agir.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">TAAD héréditaire : appliquer les seuils propres au gène de la ligne directrice 2022 ACC/AHA <span class="tag tag-routine">Recommandé</span><span class="sub">Pour plusieurs gènes de HTAD, le seuil est plus bas que pour la maladie sporadique (souvent de l'ordre de 4,5 à 5,0 cm), et encore plus bas en présence de facteurs à haut risque. Vérifier les valeurs actuelles dans les tableaux de la ligne directrice.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">TAAD familial sans variant identifié : tenir compte des diamètres de dissection dans la famille <span class="tag tag-optional">Raisonnable</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Remplacement concomitant de l'aorte ascendante à ≥ 4,5 cm lors d'une chirurgie valvulaire aortique <span class="tag tag-routine">Raisonnable</span></span></li>
+  </ul>
+  <div class="callout amber">
+    <div class="lbl"><i class="ti ti-ruler-measure"></i> <span data-lang="en">Indexing to body size</span><span data-lang="fr">Indexation à la taille corporelle</span></div>
+    <p data-lang="en">For very short or very tall individuals, guidelines support using indexed measures (for example, aortic cross-sectional area to height ratio) alongside absolute diameter. Decisions should be made with an experienced aortic team.</p><p data-lang="fr">Chez les personnes très petites ou très grandes, les lignes directrices appuient l'utilisation de mesures indexées (par exemple, le rapport surface de section aortique / taille) en plus du diamètre absolu. Les décisions devraient être prises avec une équipe aortique expérimentée.</p>
+  </div>
+</section>
+
+<section id="sec7">
+  <div class="sec-head"><span class="sec-num">7</span><h2 class="sec" data-lang="en">Pregnancy</h2><h2 class="sec" data-lang="fr">Grossesse</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Pregnancy increases strain on the aorta, especially in the last months and just after delivery. If you have an aortic aneurysm or a genetic cause, plan pregnancy with your cardiology and genetics teams, ideally before conceiving.</p><p data-lang="fr">La grossesse augmente la contrainte sur l'aorte, surtout dans les derniers mois et juste après l'accouchement. Si vous avez un anévrisme de l'aorte ou une cause génétique, planifiez la grossesse avec vos équipes de cardiologie et de génétique, idéalement avant la conception.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Preconception assessment with aortic imaging and genetic counselling <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Stop ARBs/ACE inhibitors before conception; continue beta-blocker as indicated <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Serial imaging through pregnancy and postpartum; delivery planned in a centre with cardio-obstetrics and cardiac surgery <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Consider prophylactic repair before pregnancy when near threshold <span class="tag tag-optional">Reasonable</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Évaluation préconceptionnelle avec imagerie aortique et conseil génétique <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Cesser ARA/IECA avant la conception; poursuivre le bêtabloquant selon l'indication <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Imagerie répétée pendant la grossesse et en post-partum; accouchement planifié dans un centre avec cardio-obstétrique et chirurgie cardiaque <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Envisager une réparation prophylactique avant la grossesse si près du seuil <span class="tag tag-optional">Raisonnable</span></span></li>
+  </ul>
+</section>
+
+<section id="sec8">
+  <div class="sec-head"><span class="sec-num">8</span><h2 class="sec" data-lang="en">Activity and lifestyle</h2><h2 class="sec" data-lang="fr">Activité et mode de vie</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Regular moderate exercise is encouraged. Avoid very heavy lifting and straining while holding your breath. Know the warning signs of a dissection and seek help immediately if they occur.</p><p data-lang="fr">L'exercice modéré régulier est encouragé. Évitez de soulever des charges très lourdes et de forcer en retenant votre souffle. Connaissez les signes d'alerte d'une dissection et consultez immédiatement s'ils surviennent.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Regular low-to-moderate intensity aerobic activity <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Heavy isometric lifting and Valsalva-type straining <span class="tag tag-no">Avoid</span><span class="sub">Recommendations are individualised by diameter, gene, and prior surgery.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Activité aérobique régulière d'intensité faible à modérée <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">Levée isométrique lourde et efforts de type Valsalva <span class="tag tag-no">À éviter</span><span class="sub">Les recommandations sont individualisées selon le diamètre, le gène et les chirurgies antérieures.</span></span></li>
+  </ul>
+  <div class="callout amber">
+    <div class="lbl"><i class="ti ti-alert-triangle"></i> <span data-lang="en">Seek emergency care</span><span data-lang="fr">Consulter d'urgence</span></div>
+    <p data-lang="en">Sudden, severe chest, back, or abdominal pain (often described as tearing), fainting, or stroke-like symptoms require a 911 call. Tell the team about your aortic diagnosis.</p><p data-lang="fr">Une douleur soudaine et intense à la poitrine, au dos ou à l'abdomen (souvent décrite comme une déchirure), une perte de conscience ou des symptômes d'AVC exigent un appel au 911. Informez l'équipe de votre diagnostic aortique.</p>
+  </div>
+</section>
+
+<section id="sec9">
+  <div class="sec-head"><span class="sec-num">9</span><h2 class="sec" data-lang="en">Genetic counselling and cascade testing</h2><h2 class="sec" data-lang="fr">Conseil génétique et dépistage en cascade</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Because these conditions are usually inherited in a dominant way, close relatives may share the risk. If a gene change is found, relatives can be tested for it. If no gene change is found, close relatives are usually offered an aortic scan instead.</p><p data-lang="fr">Comme ces maladies se transmettent habituellement de façon dominante, les proches parents peuvent partager le risque. Si une modification génétique est trouvée, les apparentés peuvent être testés pour celle-ci. Si aucune modification n'est trouvée, on offre habituellement plutôt aux proches une imagerie de l'aorte.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Pathogenic/likely pathogenic variant: cascade testing of at-risk relatives <span class="tag tag-routine">Recommended</span><span class="sub">Relatives who test negative for the familial variant can usually be released from aortic surveillance.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">No variant identified (or VUS): aortic imaging of first-degree relatives <span class="tag tag-routine">Recommended</span><span class="sub">2022 ACC/AHA recommends aortic imaging of first-degree relatives of patients with thoracic aortic disease when heritable disease is suspected; interval of repeat screening is individualised.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Autopsy and molecular testing after sudden death suspected to be aortic <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Reproductive options: prenatal diagnosis or PGT-M once a familial variant is known <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Variant pathogène ou probablement pathogène : dépistage en cascade des apparentés à risque <span class="tag tag-routine">Recommandé</span><span class="sub">Les apparentés dont le test est négatif pour le variant familial peuvent habituellement cesser la surveillance aortique.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Aucun variant identifié (ou VSI) : imagerie aortique des apparentés au premier degré <span class="tag tag-routine">Recommandé</span><span class="sub">La ligne directrice 2022 ACC/AHA recommande l'imagerie aortique des apparentés au premier degré des patients atteints de maladie aortique thoracique lorsqu'une cause héréditaire est soupçonnée; l'intervalle de dépistage répété est individualisé.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Autopsie et test moléculaire après une mort subite soupçonnée d'origine aortique <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Options reproductives : diagnostic prénatal ou DPI-M une fois le variant familial connu <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec-summary">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-list-check"></i></span><h2 class="sec" data-lang="en">Summary of recommendations</h2><h2 class="sec" data-lang="fr">Résumé des recommandations</h2></div>
+
+  <div class="cardgrid">
+    <div class="scard">
+      <h4><i class="ti ti-dna"></i> <span data-lang="en">Genetics</span><span data-lang="fr">Génétique</span></h4>
+      <ul>
+        <li data-lang="en">HTAD panel when risk factors present</li>
+        <li data-lang="en">Gene result guides thresholds</li>
+        <li data-lang="en">Cascade testing or imaging of relatives</li>
+        <li data-lang="fr">Panel de HTAD si facteurs de risque</li>
+        <li data-lang="fr">Le résultat génétique oriente les seuils</li>
+        <li data-lang="fr">Dépistage en cascade ou imagerie des apparentés</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-heartbeat"></i> <span data-lang="en">Imaging</span><span data-lang="fr">Imagerie</span></h4>
+      <ul>
+        <li data-lang="en">TTE + CT/MRI at diagnosis</li>
+        <li data-lang="en">Repeat at 6–12 months</li>
+        <li data-lang="en">Then by diameter, growth, and cause</li>
+        <li data-lang="fr">ETT + TDM/IRM au diagnostic</li>
+        <li data-lang="fr">Répéter à 6–12 mois</li>
+        <li data-lang="fr">Puis selon diamètre, croissance et cause</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-scissors"></i> <span data-lang="en">Surgery</span><span data-lang="fr">Chirurgie</span></h4>
+      <ul>
+        <li data-lang="en">Sporadic: ≥5.5 cm (≥5.0 cm selected)</li>
+        <li data-lang="en">Growth ≥0.5 cm/yr</li>
+        <li data-lang="en">HTAD: gene-specific, often lower</li>
+        <li data-lang="fr">Sporadique : ≥ 5,5 cm (≥ 5,0 cm cas choisis)</li>
+        <li data-lang="fr">Croissance ≥ 0,5 cm/an</li>
+        <li data-lang="fr">HTAD : propre au gène, souvent plus bas</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-pill"></i> <span data-lang="en">Medical &amp; lifestyle</span><span data-lang="fr">Médical et mode de vie</span></h4>
+      <ul>
+        <li data-lang="en">BP &lt;130/80 mmHg</li>
+        <li data-lang="en">No smoking or stimulants</li>
+        <li data-lang="en">Moderate exercise; avoid heavy straining</li>
+        <li data-lang="fr">PA &lt; 130/80 mmHg</li>
+        <li data-lang="fr">Ni tabac ni stimulants</li>
+        <li data-lang="fr">Exercice modéré; éviter les efforts intenses</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sec-refs">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-book"></i></span><h2 class="sec" data-lang="en">References</h2><h2 class="sec" data-lang="fr">Références</h2></div>
+  <ol class="refs">
+    <li>Isselbacher EM, Preventza O, Hamilton Black J, et al. 2022 ACC/AHA Guideline for the Diagnosis and Management of Aortic Disease: A Report of the American Heart Association/American College of Cardiology Joint Committee on Clinical Practice Guidelines. <em>Circulation</em>. 2022;146(24):e334–e482.</li>
+    <li>Renard M, Francis C, Ghosh R, et al. Clinical validity of genes for heritable thoracic aortic aneurysm and dissection. <em>J Am Coll Cardiol</em>. 2018;72(6):605–615.</li>
+    <li>Albornoz G, Coady MA, Roberts M, et al. Familial thoracic aortic aneurysms and dissections—incidence, modes of inheritance, and phenotypic patterns. <em>Ann Thorac Surg</em>. 2006;82(4):1400–1405.</li>
+    <li>Milewicz DM, Regalado E. Heritable Thoracic Aortic Disease Overview. In: Adam MP, et al., eds. <em>GeneReviews®</em>. Seattle (WA): University of Washington, Seattle.</li>
+    <li>MacCarrick G, Black JH 3rd, Bowdin S, et al. Loeys-Dietz syndrome: a primer for diagnosis and management. <em>Genet Med</em>. 2014;16(8):576–587.</li>
+    <li>Regitz-Zagrosek V, Roos-Hesselink JW, Bauersachs J, et al. 2018 ESC Guidelines for the management of cardiovascular diseases during pregnancy. <em>Eur Heart J</em>. 2018;39(34):3165–3241.</li>
+  </ol>
+  <p data-lang="en" style="font-size:13px; color:var(--ink-faint);">Original diagrams are the work of the author (© 2026 Dr. Andrew Shuen).</p>
+  <p data-lang="fr" style="font-size:13px; color:var(--ink-faint);">Les schémas originaux sont l'œuvre de l'auteur (© 2026 Dr Andrew Shuen).</p>
+
+  <div class="footer">
+    <p data-lang="en"><strong>Disclaimer.</strong> This protocol supports but does not replace clinical judgment and individualized care. Guidelines evolve; verify all intervals, thresholds, doses, and recommendations against current society guidelines (ACC/AHA, ACMG, relevant specialty societies) before clinical use. Reference citations were drawn from current literature and should be confirmed against the primary sources.</p>
+    <p data-lang="fr"><strong>Avis.</strong> Ce protocole soutient mais ne remplace pas le jugement clinique et les soins individualisés. Les lignes directrices évoluent; vérifier tous les intervalles, seuils, doses et recommandations par rapport aux lignes directrices actuelles des sociétés savantes (ACC/AHA, ACMG, sociétés spécialisées pertinentes) avant tout usage clinique. Les références proviennent de la littérature actuelle et doivent être confirmées auprès des sources primaires.</p>
+    <p>© 2026 Dr. Andrew Shuen · Medical Genetics, Jewish General Hospital, Montreal · <span data-lang="en">For educational use.</span><span data-lang="fr">À usage éducatif.</span></p>
+  </div>
+</section>
+
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-en','lang-fr');
+  document.body.classList.add('lang-'+l);
+  document.getElementById('enTab').classList.toggle('active', l==='en');
+  document.getElementById('frTab').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+}
+function togglePdf(){
+  document.body.classList.toggle('pdf-preview');
+  document.getElementById('pdfBtn').classList.toggle('active');
+}
+</script>
+</body>
+</html>

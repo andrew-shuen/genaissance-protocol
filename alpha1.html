@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpha-1 Antitrypsin Deficiency — Testing &amp; Management Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px; line-height:1.62;
+}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:9px 18px;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .util{display:flex; gap:8px; align-items:center;}
+.topbar .tabs{display:flex; gap:4px;}
+.btn{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13.5px; font-weight:600; cursor:pointer;
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft);
+  padding:7px 13px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;
+  transition:.15s;
+}
+.btn:hover{border-color:var(--brand-line); color:var(--brand-dark); background:var(--brand-bg);}
+.btn.active{background:var(--brand); border-color:var(--brand); color:#fff;}
+.btn i{font-size:16px;}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:860px; margin:0 auto; padding:0 22px 80px;}
+
+/* ---------- Masthead ---------- */
+.masthead{padding:38px 0 26px; border-bottom:2px solid var(--ink);}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:12.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--brand-dark);
+}
+h1.title{font-size:40px; line-height:1.1; margin:.28em 0 .12em; letter-spacing:-.01em;}
+.standfirst{font-size:19px; color:var(--ink-soft); margin:0 0 22px; max-width:62ch;}
+.authorpanel{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:15px 18px; display:flex; gap:14px; align-items:flex-start;
+}
+.authorpanel .who{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.authorpanel .name{font-weight:700; font-size:15px; color:var(--ink);}
+.authorpanel .role{font-size:13.5px; color:var(--ink-faint); line-height:1.5;}
+.authorpanel i{color:var(--brand); font-size:26px; margin-top:2px;}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:16px;}
+.chip{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:600;
+  background:var(--cream); border:1px solid var(--line); border-radius:999px;
+  padding:4px 11px; color:var(--ink-soft); display:inline-flex; gap:5px; align-items:center;
+}
+.chip i{font-size:14px; color:var(--brand);}
+.legend{
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; padding-top:15px;
+  border-top:1px solid var(--line-soft);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint);
+}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+.legend i{font-size:15px;}
+.i-routine{color:#1f7a34;} .i-optional{color:var(--amber);} .i-no{color:var(--red);}
+
+/* ---------- TOC ---------- */
+.toc{
+  margin:26px 0 8px; padding:18px 20px; background:var(--paper);
+  border:1px solid var(--line); border-radius:var(--radius);
+}
+.toc h2{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+  margin:0 0 12px;
+}
+.toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:14.5px;}
+.toc li{margin-bottom:6px; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none;}
+.toc a:hover{color:var(--brand-dark);}
+
+/* ---------- Sections ---------- */
+section{padding-top:34px;}
+.sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.sec-num{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+  font-size:15px; color:#fff; background:var(--brand);
+  min-width:30px; height:30px; border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+}
+h2.sec{font-size:25px; margin:0; letter-spacing:-.01em; line-height:1.2;}
+h3{font-size:18px; margin:24px 0 8px; color:var(--ink);}
+p{margin:0 0 14px;}
+
+/* ---------- Patient card ---------- */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line);
+  border-left:4px solid var(--brand); border-radius:var(--radius-sm);
+  padding:14px 17px; margin:14px 0 18px;
+}
+.patient .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--brand-dark);
+  display:flex; align-items:center; gap:6px; margin-bottom:6px;
+}
+.patient p{margin:0 0 8px;} .patient p:last-child{margin:0;}
+
+/* ---------- Subtype pill header ---------- */
+.subhead{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  margin:22px 0 6px; padding-bottom:8px; border-bottom:1px solid var(--line-soft);
+}
+.subhead h3{margin:0;}
+.pill{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  border-radius:999px; padding:3px 11px; letter-spacing:.02em;
+}
+.pill-red{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.pill-amber{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.pill-blue{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* ---------- Checklist ---------- */
+ul.check{list-style:none; padding:0; margin:12px 0 16px;}
+ul.check li{
+  display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+  align-items:flex-start;
+}
+ul.check li:last-child{border-bottom:none;}
+ul.check i{font-size:19px; flex:none; margin-top:1px;}
+.tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; border-radius:5px; padding:2px 7px;
+  margin-left:8px; white-space:nowrap; vertical-align:middle;
+}
+.tag-routine{background:#e6f4ea; color:#1f7a34;}
+.tag-optional{background:var(--amber-bg); color:var(--amber);}
+.tag-no{background:var(--red-bg); color:var(--red);}
+.ck-txt{flex:1;}
+.ck-txt .sub{display:block; font-size:14px; color:var(--ink-faint); margin-top:2px;}
+
+/* ---------- Callout ---------- */
+.callout{
+  border-left:4px solid var(--brand); background:var(--paper);
+  border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:13px 16px; margin:16px 0;
+}
+.callout.amber{border-left-color:var(--amber); background:var(--amber-bg); border-color:var(--amber-line);}
+.callout.red{border-left-color:var(--red); background:var(--red-bg); border-color:var(--red-line);}
+.callout .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:5px; display:flex; gap:6px; align-items:center;
+}
+.callout.amber .lbl{color:var(--amber);} .callout.red .lbl{color:var(--red);} .callout .lbl{color:var(--brand-dark);}
+.callout p:last-child{margin:0;}
+
+/* ---------- Info / emerging boxes ---------- */
+.infobox{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging .lbl,.infobox .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:6px; display:flex; gap:6px; align-items:center;
+}
+.emerging .lbl{color:var(--purple);} .infobox .lbl{color:var(--brand-dark);}
+.emerging p:last-child,.infobox p:last-child{margin:0;}
+
+/* ---------- Risk table ---------- */
+.tablewrap{overflow-x:auto; margin:16px 0;}
+table.risk{width:100%; border-collapse:collapse; font-size:15px; background:var(--paper); border-radius:var(--radius-sm); overflow:hidden;}
+table.risk th,table.risk td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--line);}
+table.risk th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); background:var(--cream);}
+table.risk tr:last-child td{border-bottom:none;}
+.dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:7px; vertical-align:middle;}
+.dot-red{background:var(--red);} .dot-amber{background:var(--amber-line);} .dot-blue{background:var(--brand);}
+
+/* ---------- Figures ---------- */
+figure.fig{margin:18px 0 20px; padding:0; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+figure.fig .svgwrap{padding:18px 16px 4px; background:linear-gradient(180deg,#fbfdff,#f4f9fc);}
+figure.fig svg{width:100%; height:auto; display:block;}
+figure.fig figcaption{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); padding:11px 16px 13px; border-top:1px solid var(--line-soft); line-height:1.5;}
+figure.fig img.photo{width:100%; height:auto; display:block; border-radius:0;}
+figure.fig .credit{font-size:11.5px; color:var(--ink-faint); margin-top:6px;}
+figure.fig .credit a{color:var(--brand-dark); text-decoration:none;}
+figure.fig figcaption b{color:var(--ink-soft); font-weight:700;}
+.svg-ink{fill:var(--ink);} .svg-soft{fill:var(--ink-soft);} .svg-faint{fill:var(--ink-faint);}
+.svg-lbl{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.svg-term{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;}
+
+/* ---------- Summary cards ---------- */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:16px 0;}
+.scard{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand); border-radius:var(--radius-sm); padding:14px 16px;}
+.scard h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; margin:0 0 8px; color:var(--brand-dark); display:flex; gap:7px; align-items:center;}
+.scard ul{margin:0; padding-left:18px; font-size:14.5px; color:var(--ink-soft);}
+.scard li{margin-bottom:5px;}
+
+/* ---------- References ---------- */
+ol.refs{font-size:14px; color:var(--ink-soft); padding-left:22px; line-height:1.55;}
+ol.refs li{margin-bottom:9px;}
+
+/* ---------- Footer ---------- */
+.footer{margin-top:46px; padding-top:18px; border-top:2px solid var(--ink); position:relative;}
+.footer:before{content:""; position:absolute; top:4px; left:0; right:0; height:1px; background:var(--ink);}
+.footer p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); margin:0 0 8px;}
+
+/* ---------- Language toggle ---------- */
+[data-lang]{display:none;}
+body.lang-en [data-lang="en"]{display:revert;}
+body.lang-fr [data-lang="fr"]{display:revert;}
+ul.check li[data-lang],table.risk tr[data-lang]{display:none;}
+body.lang-en ul.check li[data-lang="en"]{display:flex;}
+body.lang-fr ul.check li[data-lang="fr"]{display:flex;}
+body.lang-en table.risk tr[data-lang="en"]{display:table-row;}
+body.lang-fr table.risk tr[data-lang="fr"]{display:table-row;}
+
+/* ---------- PDF preview on screen ---------- */
+body.pdf-preview{background:#6a7681;}
+body.pdf-preview .topbar{position:static;}
+body.pdf-preview .toc{display:none;}
+body.pdf-preview .wrap{
+  background:#fff; max-width:8.5in; margin:24px auto; padding:0.7in 0.85in;
+  box-shadow:0 4px 24px rgba(0,0,0,.3); font-size:11.5pt; line-height:1.4;
+}
+body.pdf-preview h1.title{font-size:26pt;}
+body.pdf-preview h2.sec{font-size:16pt;}
+body.pdf-preview .standfirst{font-size:13pt;}
+body.pdf-preview section{page-break-inside:auto;}
+body.pdf-preview #sec-summary,body.pdf-preview #sec-refs{
+  border-top:2px dashed var(--brand); margin-top:30px; padding-top:24px; position:relative;
+}
+body.pdf-preview #sec-summary:before,body.pdf-preview #sec-refs:before{
+  content:"— — — page break — — —"; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+  background:#fff; padding:0 12px; font-family:"Helvetica Neue",sans-serif; font-size:9pt; color:var(--brand); letter-spacing:.08em;
+}
+
+/* ---------- Print ---------- */
+@media print{
+  .topbar,.toc{display:none;}
+  body{background:#fff; font-size:10.5pt;}
+  .wrap{max-width:100%; padding:0;}
+  #sec-summary,#sec-refs{page-break-before:always;}
+  .patient,.callout,.infobox,.emerging,.scard,table.risk{break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+@media(max-width:600px){
+  .toc ol{columns:1;} h1.title{font-size:31px;} .cardgrid{grid-template-columns:1fr;}
+}
+.legend span[data-lang]{display:none;}
+body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="fr"]{display:inline-flex;}
+</style>
+<link rel="stylesheet" href="site-banner.css">
+<script src="site-banner.js" defer></script>
+</head>
+<body class="lang-en">
+
+<!-- ======================= TOP BAR ======================= -->
+<div class="topbar ui">
+  <div class="util">
+    <button class="btn" id="pdfBtn" onclick="togglePdf()"><i class="ti ti-eye"></i><span data-lang="en">PDF view</span><span data-lang="fr">Aperçu PDF</span></button>
+    <button class="btn" onclick="window.print()"><i class="ti ti-printer"></i><span data-lang="en">Print / Save PDF</span><span data-lang="fr">Imprimer / PDF</span></button>
+  </div>
+  <div class="tabs">
+    <button class="btn active" id="enTab" onclick="setLang('en')">English</button>
+    <button class="btn" id="frTab" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ======================= MASTHEAD ======================= -->
+<header class="masthead">
+  <div class="eyebrow" data-lang="en">Adult Genetics · Clinical Protocol</div><div class="eyebrow" data-lang="fr">Génétique de l'adulte · Protocole clinique</div>
+  <h1 class="title" data-lang="en">Alpha-1 Antitrypsin Deficiency</h1><h1 class="title" data-lang="fr">Déficit en alpha-1 antitrypsine</h1>
+  <p class="standfirst" data-lang="en">A protocol for <em>SERPINA1</em>-related alpha-1 antitrypsin deficiency: genotypes and risk, who to test, lung and liver care, augmentation therapy, and family testing.</p><p class="standfirst" data-lang="fr">Protocole pour le déficit en alpha-1 antitrypsine lié à <em>SERPINA1</em> : génotypes et risques, qui tester, soins pulmonaires et hépatiques, thérapie d'augmentation et dépistage familial.</p>
+
+  <div class="authorpanel"><i class="ti ti-stethoscope"></i><div class="who"><div class="name">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</div><div class="role" data-lang="en">Medical Genetics · Jewish General Hospital (JGH), Montreal</div><div class="role" data-lang="fr">Génétique médicale · Hôpital général juif (HGJ), Montréal</div></div></div>
+
+  <div class="chips ui">
+    <span class="chip"><i class="ti ti-dna"></i> <em>SERPINA1</em></span>
+    <span class="chip"><i class="ti ti-lungs"></i> <span data-lang="en">Lung and liver</span><span data-lang="fr">Poumon et foie</span></span>
+    <span class="chip"><i class="ti ti-clipboard-text"></i> CTS 2012 · ATS/ERS</span>
+    <span class="chip"><i class="ti ti-calendar"></i> <span data-lang="en">Updated October 2026</span><span data-lang="fr">Mis à jour en octobre 2026</span></span>
+  </div>
+
+  <div class="legend ui">
+    <span data-lang="en"><i class="ti ti-circle-check i-routine"></i> Routine</span>
+    <span data-lang="fr"><i class="ti ti-circle-check i-routine"></i> De routine</span>
+    <span data-lang="en"><i class="ti ti-minus i-optional"></i> Optional / selective</span>
+    <span data-lang="fr"><i class="ti ti-minus i-optional"></i> Optionnel / sélectif</span>
+    <span data-lang="en"><i class="ti ti-x i-no"></i> Not recommended</span>
+    <span data-lang="fr"><i class="ti ti-x i-no"></i> Non recommandé</span>
+  </div>
+</header>
+
+<!-- ======================= TOC ======================= -->
+<nav class="toc ui">
+  <h2 data-lang="en">Contents</h2>
+  <h2 data-lang="fr">Sommaire</h2>
+  <ol>
+    <li><a href="#sec1" data-lang="en">Understanding AATD</a><a href="#sec1" data-lang="fr">Comprendre le DAAT</a></li>
+    <li><a href="#sec2" data-lang="en">Who to test</a><a href="#sec2" data-lang="fr">Qui tester</a></li>
+    <li><a href="#sec3" data-lang="en">Lung care</a><a href="#sec3" data-lang="fr">Soins pulmonaires</a></li>
+    <li><a href="#sec4" data-lang="en">Liver care</a><a href="#sec4" data-lang="fr">Soins hépatiques</a></li>
+    <li><a href="#sec5" data-lang="en">Family testing</a><a href="#sec5" data-lang="fr">Dépistage familial</a></li>
+    <li><a href="#sec-summary" data-lang="en">Summary of recommendations</a><a href="#sec-summary" data-lang="fr">Résumé des recommandations</a></li>
+    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+  </ol>
+</nav>
+
+<section id="sec1">
+  <div class="sec-head"><span class="sec-num">1</span><h2 class="sec" data-lang="en">Understanding alpha-1 antitrypsin deficiency</h2><h2 class="sec" data-lang="fr">Comprendre le déficit en alpha-1 antitrypsine</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Alpha-1 antitrypsin (AAT) is a protein made in the liver that protects the lungs from damage. In alpha-1 antitrypsin deficiency, a change in the <em>SERPINA1</em> gene means less protein reaches the lungs, and in some types the abnormal protein gets stuck in the liver. This can lead to emphysema at a younger age than usual — especially in people who smoke — and sometimes to liver disease. Not smoking is the single most important step.</p><p data-lang="fr">L'alpha-1 antitrypsine (AAT) est une protéine fabriquée par le foie qui protège les poumons. Dans le déficit en alpha-1 antitrypsine, une modification du gène <em>SERPINA1</em> fait en sorte que moins de protéine atteint les poumons et, dans certains types, la protéine anormale reste coincée dans le foie. Cela peut entraîner un emphysème à un âge plus jeune que d'habitude — surtout chez les fumeurs — et parfois une maladie du foie. Ne pas fumer est la mesure la plus importante.</p>
+  </div>
+  <p data-lang="en">Alpha-1 antitrypsin deficiency (AATD) is an autosomal codominant condition caused by variants in <em>SERPINA1</em>. The normal allele is M; the most clinically important deficiency alleles are Z (p.Glu342Lys) and S (p.Glu264Val). The Z protein misfolds and polymerises within hepatocytes (a toxic gain of function causing liver disease) and is poorly secreted (loss of function causing low serum levels and unopposed neutrophil elastase activity in the lung). Rare null alleles produce no protein and cause lung but not liver disease.</p><p data-lang="fr">Le déficit en alpha-1 antitrypsine (DAAT) est une maladie autosomique codominante causée par des variants de <em>SERPINA1</em>. L'allèle normal est M; les allèles de déficit les plus importants cliniquement sont Z (p.Glu342Lys) et S (p.Glu264Val). La protéine Z se replie mal et polymérise dans les hépatocytes (gain de fonction toxique causant l'atteinte hépatique) et est mal sécrétée (perte de fonction causant des taux sériques bas et une activité non contrebalancée de l'élastase neutrophile dans le poumon). Les rares allèles nuls ne produisent aucune protéine et causent une atteinte pulmonaire sans atteinte hépatique.</p>
+  <div class="tablewrap">
+    <table class="risk">
+      <thead>
+        <tr data-lang="en"><th>Genotype</th><th>Serum AAT</th><th>Clinical risk</th></tr>
+        <tr data-lang="fr"><th>Génotype</th><th>AAT sérique</th><th>Risque clinique</th></tr>
+      </thead>
+      <tbody>
+        <tr data-lang="en"><td>PI*ZZ</td><td>Severely reduced</td><td><span class="dot dot-red"></span>High risk of early emphysema (greatly increased by smoking) and liver disease</td></tr>
+        <tr data-lang="fr"><td>PI*ZZ</td><td>Très diminuée</td><td><span class="dot dot-red"></span>Risque élevé d'emphysème précoce (fortement accru par le tabagisme) et d'atteinte hépatique</td></tr>
+        <tr data-lang="en"><td>PI*SZ</td><td>Moderately reduced</td><td><span class="dot dot-amber"></span>Increased lung risk, mainly in smokers; some liver risk</td></tr>
+        <tr data-lang="fr"><td>PI*SZ</td><td>Modérément diminuée</td><td><span class="dot dot-amber"></span>Risque pulmonaire accru, surtout chez les fumeurs; certain risque hépatique</td></tr>
+        <tr data-lang="en"><td>PI*MZ</td><td>Mildly reduced</td><td><span class="dot dot-blue"></span>Small increase in lung risk in smokers; modifier of other liver disease</td></tr>
+        <tr data-lang="fr"><td>PI*MZ</td><td>Légèrement diminuée</td><td><span class="dot dot-blue"></span>Légère hausse du risque pulmonaire chez les fumeurs; modificateur d'autres maladies hépatiques</td></tr>
+        <tr data-lang="en"><td>Null / null</td><td>Absent</td><td><span class="dot dot-red"></span>Severe lung risk; no liver accumulation</td></tr>
+        <tr data-lang="fr"><td>Nul / nul</td><td>Absente</td><td><span class="dot dot-red"></span>Risque pulmonaire sévère; pas d'accumulation hépatique</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="sec2">
+  <div class="sec-head"><span class="sec-num">2</span><h2 class="sec" data-lang="en">Who to test and how</h2><h2 class="sec" data-lang="fr">Qui tester et comment</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Testing is a simple blood test that measures the AAT level and identifies the gene type. It is recommended for everyone with COPD or emphysema, and for people with unexplained liver disease, among others.</p><p data-lang="fr">Le test est une simple prise de sang qui mesure le taux d'AAT et identifie le type génétique. Il est recommandé pour toute personne atteinte de MPOC ou d'emphysème, et pour les personnes ayant une maladie du foie inexpliquée, entre autres.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test all adults with COPD, emphysema, or fixed-airflow asthma <span class="tag tag-routine">Recommended</span><span class="sub">Per ATS/ERS (2003) and Canadian Thoracic Society (2012) guidance; CTS emphasises early-onset COPD and COPD in non- or light smokers.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test people with unexplained liver disease, including neonatal cholestasis <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Test people with necrotising panniculitis or c-ANCA vasculitis, and unexplained bronchiectasis <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Serum AAT level plus phenotyping (isoelectric focusing) and/or genotyping <span class="tag tag-routine">Recommended</span><span class="sub">AAT is an acute-phase reactant; a normal level during inflammation can mask deficiency, so pair levels with genotype or phenotype.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Tester tous les adultes atteints de MPOC, d'emphysème ou d'asthme avec obstruction fixe <span class="tag tag-routine">Recommandé</span><span class="sub">Selon l'ATS/ERS (2003) et la Société canadienne de thoracologie (2012); la SCT insiste sur la MPOC précoce et la MPOC chez les non-fumeurs ou petits fumeurs.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Tester les personnes avec une maladie hépatique inexpliquée, y compris la cholestase néonatale <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Tester les personnes avec panniculite nécrosante ou vascularite à c-ANCA, et bronchiectasies inexpliquées <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Taux sérique d'AAT avec phénotypage (focalisation isoélectrique) et/ou génotypage <span class="tag tag-routine">Recommandé</span><span class="sub">L'AAT est une protéine de phase aiguë; un taux normal pendant une inflammation peut masquer un déficit, d'où l'intérêt de jumeler le taux au génotype ou au phénotype.</span></span></li>
+  </ul>
+</section>
+
+<section id="sec3">
+  <div class="sec-head"><span class="sec-num">3</span><h2 class="sec" data-lang="en">Lung care</h2><h2 class="sec" data-lang="fr">Soins pulmonaires</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Your lungs will be checked with breathing tests. Not smoking, avoiding dust and fumes, staying active, and keeping vaccinations up to date all help protect your lungs. Some people with severe deficiency and lung damage may benefit from weekly infusions of the missing protein.</p><p data-lang="fr">Vos poumons seront évalués par des tests respiratoires. Ne pas fumer, éviter la poussière et les fumées, rester actif et garder vos vaccins à jour aident tous à protéger vos poumons. Certaines personnes avec un déficit sévère et une atteinte pulmonaire peuvent bénéficier de perfusions hebdomadaires de la protéine manquante.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Smoking cessation and avoidance of second-hand smoke and occupational dust/fumes <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Baseline and periodic spirometry with full pulmonary function testing; CT as indicated <span class="tag tag-routine">Routine</span><span class="sub">Interval commonly yearly in severe deficiency; individualised.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Standard COPD care: bronchodilators, pulmonary rehabilitation, vaccinations <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Intravenous augmentation therapy in non-smokers with severe deficiency and emphysema <span class="tag tag-optional">Selective</span><span class="sub">CTS 2012 suggests considering augmentation in non-smoking or ex-smoking patients with COPD due to emphysema and documented severe AATD, with FEV1 in the 25–80% predicted range. The RAPID trial showed slower CT lung density decline.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Lung transplant referral for advanced disease <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Arrêt tabagique et évitement de la fumée secondaire et des poussières/fumées professionnelles <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Spirométrie de référence et périodique avec épreuves fonctionnelles complètes; TDM au besoin <span class="tag tag-routine">De routine</span><span class="sub">Intervalle souvent annuel en cas de déficit sévère; individualisé.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Soins usuels de la MPOC : bronchodilatateurs, réadaptation pulmonaire, vaccins <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Thérapie d'augmentation intraveineuse chez les non-fumeurs avec déficit sévère et emphysème <span class="tag tag-optional">Sélectif</span><span class="sub">La SCT 2012 suggère d'envisager l'augmentation chez les patients non-fumeurs ou ex-fumeurs atteints de MPOC due à l'emphysème et de DAAT sévère documenté, avec un VEMS entre 25 et 80 % de la valeur prédite. L'essai RAPID a montré un déclin plus lent de la densité pulmonaire à la TDM.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Orientation vers la transplantation pulmonaire en maladie avancée <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec4">
+  <div class="sec-head"><span class="sec-num">4</span><h2 class="sec" data-lang="en">Liver care</h2><h2 class="sec" data-lang="fr">Soins hépatiques</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Some people, especially those with the ZZ type, can develop liver scarring over time. Regular blood tests and sometimes a liver scan help find this early. Limiting alcohol and keeping a healthy weight protect the liver.</p><p data-lang="fr">Certaines personnes, surtout celles de type ZZ, peuvent développer une cicatrisation du foie avec le temps. Des analyses sanguines régulières et parfois une échographie ou une élastographie du foie aident à la détecter tôt. Limiter l'alcool et maintenir un poids santé protègent le foie.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Periodic liver tests and assessment for fibrosis (e.g. elastography) in PI*ZZ <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">HCC surveillance if cirrhosis <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Augmentation therapy for liver disease <span class="tag tag-no">Not recommended</span><span class="sub">It does not address hepatocyte accumulation; liver transplantation is the definitive treatment for end-stage disease. Agents that reduce Z protein production are in clinical trials.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Limit alcohol; manage weight and metabolic risk; hepatitis A and B vaccination <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Bilans hépatiques périodiques et évaluation de la fibrose (p. ex. élastographie) chez les PI*ZZ <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Surveillance du CHC en présence de cirrhose <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">Thérapie d'augmentation pour l'atteinte hépatique <span class="tag tag-no">Non recommandé</span><span class="sub">Elle ne corrige pas l'accumulation hépatocytaire; la transplantation hépatique est le traitement définitif de la maladie terminale. Des agents réduisant la production de protéine Z sont à l'essai.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Limiter l'alcool; gérer le poids et le risque métabolique; vaccination contre les hépatites A et B <span class="tag tag-routine">Recommandé</span></span></li>
+  </ul>
+</section>
+
+<section id="sec5">
+  <div class="sec-head"><span class="sec-num">5</span><h2 class="sec" data-lang="en">Family testing</h2><h2 class="sec" data-lang="fr">Dépistage familial</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Brothers and sisters of a person with ZZ have a 1 in 4 chance of also having ZZ. Parents, children, and partners can also be tested to understand risks for the family and for future children.</p><p data-lang="fr">Les frères et sœurs d'une personne de type ZZ ont une chance sur quatre d'être aussi ZZ. Les parents, les enfants et les conjoints peuvent aussi être testés pour comprendre les risques pour la famille et les futurs enfants.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Offer testing to siblings and other first-degree relatives of people with severe deficiency <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Partner testing to estimate risk for children <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Counsel that most people with deficiency who never smoke have better lung outcomes <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Offrir le test à la fratrie et aux autres apparentés au premier degré des personnes avec déficit sévère <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Test du conjoint pour estimer le risque pour les enfants <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Expliquer que la plupart des personnes avec déficit qui n'ont jamais fumé ont de meilleurs résultats pulmonaires <span class="tag tag-routine">Recommandé</span></span></li>
+  </ul>
+</section>
+
+<section id="sec-summary">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-list-check"></i></span><h2 class="sec" data-lang="en">Summary of recommendations</h2><h2 class="sec" data-lang="fr">Résumé des recommandations</h2></div>
+
+  <div class="cardgrid">
+    <div class="scard">
+      <h4><i class="ti ti-dna"></i> <span data-lang="en">Testing</span><span data-lang="fr">Tests</span></h4>
+      <ul>
+        <li data-lang="en">All adults with COPD</li>
+        <li data-lang="en">Unexplained liver disease</li>
+        <li data-lang="en">Level + genotype/phenotype</li>
+        <li data-lang="fr">Tous les adultes atteints de MPOC</li>
+        <li data-lang="fr">Maladie hépatique inexpliquée</li>
+        <li data-lang="fr">Taux + génotype/phénotype</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-lungs"></i> <span data-lang="en">Lungs</span><span data-lang="fr">Poumons</span></h4>
+      <ul>
+        <li data-lang="en">No smoking</li>
+        <li data-lang="en">Periodic lung function</li>
+        <li data-lang="en">Augmentation for selected ZZ</li>
+        <li data-lang="fr">Pas de tabac</li>
+        <li data-lang="fr">Fonction pulmonaire périodique</li>
+        <li data-lang="fr">Augmentation pour certains ZZ</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-users"></i> <span data-lang="en">Liver &amp; family</span><span data-lang="fr">Foie et famille</span></h4>
+      <ul>
+        <li data-lang="en">Fibrosis assessment in ZZ</li>
+        <li data-lang="en">HCC surveillance if cirrhosis</li>
+        <li data-lang="en">Test siblings</li>
+        <li data-lang="fr">Évaluation de la fibrose chez les ZZ</li>
+        <li data-lang="fr">Surveillance du CHC si cirrhose</li>
+        <li data-lang="fr">Tester la fratrie</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sec-refs">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-book"></i></span><h2 class="sec" data-lang="en">References</h2><h2 class="sec" data-lang="fr">Références</h2></div>
+  <ol class="refs">
+    <li>American Thoracic Society; European Respiratory Society. American Thoracic Society/European Respiratory Society statement: standards for the diagnosis and management of individuals with alpha-1 antitrypsin deficiency. <em>Am J Respir Crit Care Med</em>. 2003;168(7):818–900.</li>
+    <li>Marciniuk DD, Hernandez P, Balter M, et al. Alpha-1 antitrypsin deficiency targeted testing and augmentation therapy: a Canadian Thoracic Society clinical practice guideline. <em>Can Respir J</em>. 2012;19(2):109–116.</li>
+    <li>Chapman KR, Burdon JGW, Piitulainen E, et al. Intravenous augmentation treatment and lung density in severe α1 antitrypsin deficiency (RAPID): a randomised, double-blind, placebo-controlled trial. <em>Lancet</em>. 2015;386(9991):360–368.</li>
+    <li>Strnad P, McElvaney NG, Lomas DA. Alpha<sub>1</sub>-antitrypsin deficiency. <em>N Engl J Med</em>. 2020;382(15):1443–1455.</li>
+  </ol>
+  <p data-lang="en" style="font-size:13px; color:var(--ink-faint);">Original diagrams are the work of the author (© 2026 Dr. Andrew Shuen).</p>
+  <p data-lang="fr" style="font-size:13px; color:var(--ink-faint);">Les schémas originaux sont l'œuvre de l'auteur (© 2026 Dr Andrew Shuen).</p>
+
+  <div class="footer">
+    <p data-lang="en"><strong>Disclaimer.</strong> This protocol supports but does not replace clinical judgment and individualized care. Guidelines evolve; verify all intervals, thresholds, doses, and recommendations against current society guidelines (ACC/AHA, ACMG, relevant specialty societies) before clinical use. Reference citations were drawn from current literature and should be confirmed against the primary sources.</p>
+    <p data-lang="fr"><strong>Avis.</strong> Ce protocole soutient mais ne remplace pas le jugement clinique et les soins individualisés. Les lignes directrices évoluent; vérifier tous les intervalles, seuils, doses et recommandations par rapport aux lignes directrices actuelles des sociétés savantes (ACC/AHA, ACMG, sociétés spécialisées pertinentes) avant tout usage clinique. Les références proviennent de la littérature actuelle et doivent être confirmées auprès des sources primaires.</p>
+    <p>© 2026 Dr. Andrew Shuen · Medical Genetics, Jewish General Hospital, Montreal · <span data-lang="en">For educational use.</span><span data-lang="fr">À usage éducatif.</span></p>
+  </div>
+</section>
+
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-en','lang-fr');
+  document.body.classList.add('lang-'+l);
+  document.getElementById('enTab').classList.toggle('active', l==='en');
+  document.getElementById('frTab').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+}
+function togglePdf(){
+  document.body.classList.toggle('pdf-preview');
+  document.getElementById('pdfBtn').classList.toggle('active');
+}
+</script>
+</body>
+</html>

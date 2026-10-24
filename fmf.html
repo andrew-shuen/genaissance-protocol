@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Familial Mediterranean Fever — Diagnosis &amp; Management Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px; line-height:1.62;
+}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:9px 18px;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .util{display:flex; gap:8px; align-items:center;}
+.topbar .tabs{display:flex; gap:4px;}
+.btn{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13.5px; font-weight:600; cursor:pointer;
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft);
+  padding:7px 13px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;
+  transition:.15s;
+}
+.btn:hover{border-color:var(--brand-line); color:var(--brand-dark); background:var(--brand-bg);}
+.btn.active{background:var(--brand); border-color:var(--brand); color:#fff;}
+.btn i{font-size:16px;}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:860px; margin:0 auto; padding:0 22px 80px;}
+
+/* ---------- Masthead ---------- */
+.masthead{padding:38px 0 26px; border-bottom:2px solid var(--ink);}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:12.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--brand-dark);
+}
+h1.title{font-size:40px; line-height:1.1; margin:.28em 0 .12em; letter-spacing:-.01em;}
+.standfirst{font-size:19px; color:var(--ink-soft); margin:0 0 22px; max-width:62ch;}
+.authorpanel{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:15px 18px; display:flex; gap:14px; align-items:flex-start;
+}
+.authorpanel .who{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.authorpanel .name{font-weight:700; font-size:15px; color:var(--ink);}
+.authorpanel .role{font-size:13.5px; color:var(--ink-faint); line-height:1.5;}
+.authorpanel i{color:var(--brand); font-size:26px; margin-top:2px;}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:16px;}
+.chip{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:600;
+  background:var(--cream); border:1px solid var(--line); border-radius:999px;
+  padding:4px 11px; color:var(--ink-soft); display:inline-flex; gap:5px; align-items:center;
+}
+.chip i{font-size:14px; color:var(--brand);}
+.legend{
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; padding-top:15px;
+  border-top:1px solid var(--line-soft);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint);
+}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+.legend i{font-size:15px;}
+.i-routine{color:#1f7a34;} .i-optional{color:var(--amber);} .i-no{color:var(--red);}
+
+/* ---------- TOC ---------- */
+.toc{
+  margin:26px 0 8px; padding:18px 20px; background:var(--paper);
+  border:1px solid var(--line); border-radius:var(--radius);
+}
+.toc h2{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+  margin:0 0 12px;
+}
+.toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:14.5px;}
+.toc li{margin-bottom:6px; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none;}
+.toc a:hover{color:var(--brand-dark);}
+
+/* ---------- Sections ---------- */
+section{padding-top:34px;}
+.sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.sec-num{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+  font-size:15px; color:#fff; background:var(--brand);
+  min-width:30px; height:30px; border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+}
+h2.sec{font-size:25px; margin:0; letter-spacing:-.01em; line-height:1.2;}
+h3{font-size:18px; margin:24px 0 8px; color:var(--ink);}
+p{margin:0 0 14px;}
+
+/* ---------- Patient card ---------- */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line);
+  border-left:4px solid var(--brand); border-radius:var(--radius-sm);
+  padding:14px 17px; margin:14px 0 18px;
+}
+.patient .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--brand-dark);
+  display:flex; align-items:center; gap:6px; margin-bottom:6px;
+}
+.patient p{margin:0 0 8px;} .patient p:last-child{margin:0;}
+
+/* ---------- Subtype pill header ---------- */
+.subhead{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  margin:22px 0 6px; padding-bottom:8px; border-bottom:1px solid var(--line-soft);
+}
+.subhead h3{margin:0;}
+.pill{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  border-radius:999px; padding:3px 11px; letter-spacing:.02em;
+}
+.pill-red{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.pill-amber{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.pill-blue{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* ---------- Checklist ---------- */
+ul.check{list-style:none; padding:0; margin:12px 0 16px;}
+ul.check li{
+  display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+  align-items:flex-start;
+}
+ul.check li:last-child{border-bottom:none;}
+ul.check i{font-size:19px; flex:none; margin-top:1px;}
+.tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; border-radius:5px; padding:2px 7px;
+  margin-left:8px; white-space:nowrap; vertical-align:middle;
+}
+.tag-routine{background:#e6f4ea; color:#1f7a34;}
+.tag-optional{background:var(--amber-bg); color:var(--amber);}
+.tag-no{background:var(--red-bg); color:var(--red);}
+.ck-txt{flex:1;}
+.ck-txt .sub{display:block; font-size:14px; color:var(--ink-faint); margin-top:2px;}
+
+/* ---------- Callout ---------- */
+.callout{
+  border-left:4px solid var(--brand); background:var(--paper);
+  border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:13px 16px; margin:16px 0;
+}
+.callout.amber{border-left-color:var(--amber); background:var(--amber-bg); border-color:var(--amber-line);}
+.callout.red{border-left-color:var(--red); background:var(--red-bg); border-color:var(--red-line);}
+.callout .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:5px; display:flex; gap:6px; align-items:center;
+}
+.callout.amber .lbl{color:var(--amber);} .callout.red .lbl{color:var(--red);} .callout .lbl{color:var(--brand-dark);}
+.callout p:last-child{margin:0;}
+
+/* ---------- Info / emerging boxes ---------- */
+.infobox{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging .lbl,.infobox .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:6px; display:flex; gap:6px; align-items:center;
+}
+.emerging .lbl{color:var(--purple);} .infobox .lbl{color:var(--brand-dark);}
+.emerging p:last-child,.infobox p:last-child{margin:0;}
+
+/* ---------- Risk table ---------- */
+.tablewrap{overflow-x:auto; margin:16px 0;}
+table.risk{width:100%; border-collapse:collapse; font-size:15px; background:var(--paper); border-radius:var(--radius-sm); overflow:hidden;}
+table.risk th,table.risk td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--line);}
+table.risk th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); background:var(--cream);}
+table.risk tr:last-child td{border-bottom:none;}
+.dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:7px; vertical-align:middle;}
+.dot-red{background:var(--red);} .dot-amber{background:var(--amber-line);} .dot-blue{background:var(--brand);}
+
+/* ---------- Figures ---------- */
+figure.fig{margin:18px 0 20px; padding:0; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+figure.fig .svgwrap{padding:18px 16px 4px; background:linear-gradient(180deg,#fbfdff,#f4f9fc);}
+figure.fig svg{width:100%; height:auto; display:block;}
+figure.fig figcaption{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); padding:11px 16px 13px; border-top:1px solid var(--line-soft); line-height:1.5;}
+figure.fig img.photo{width:100%; height:auto; display:block; border-radius:0;}
+figure.fig .credit{font-size:11.5px; color:var(--ink-faint); margin-top:6px;}
+figure.fig .credit a{color:var(--brand-dark); text-decoration:none;}
+figure.fig figcaption b{color:var(--ink-soft); font-weight:700;}
+.svg-ink{fill:var(--ink);} .svg-soft{fill:var(--ink-soft);} .svg-faint{fill:var(--ink-faint);}
+.svg-lbl{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.svg-term{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;}
+
+/* ---------- Summary cards ---------- */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:16px 0;}
+.scard{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand); border-radius:var(--radius-sm); padding:14px 16px;}
+.scard h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; margin:0 0 8px; color:var(--brand-dark); display:flex; gap:7px; align-items:center;}
+.scard ul{margin:0; padding-left:18px; font-size:14.5px; color:var(--ink-soft);}
+.scard li{margin-bottom:5px;}
+
+/* ---------- References ---------- */
+ol.refs{font-size:14px; color:var(--ink-soft); padding-left:22px; line-height:1.55;}
+ol.refs li{margin-bottom:9px;}
+
+/* ---------- Footer ---------- */
+.footer{margin-top:46px; padding-top:18px; border-top:2px solid var(--ink); position:relative;}
+.footer:before{content:""; position:absolute; top:4px; left:0; right:0; height:1px; background:var(--ink);}
+.footer p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); margin:0 0 8px;}
+
+/* ---------- Language toggle ---------- */
+[data-lang]{display:none;}
+body.lang-en [data-lang="en"]{display:revert;}
+body.lang-fr [data-lang="fr"]{display:revert;}
+ul.check li[data-lang],table.risk tr[data-lang]{display:none;}
+body.lang-en ul.check li[data-lang="en"]{display:flex;}
+body.lang-fr ul.check li[data-lang="fr"]{display:flex;}
+body.lang-en table.risk tr[data-lang="en"]{display:table-row;}
+body.lang-fr table.risk tr[data-lang="fr"]{display:table-row;}
+
+/* ---------- PDF preview on screen ---------- */
+body.pdf-preview{background:#6a7681;}
+body.pdf-preview .topbar{position:static;}
+body.pdf-preview .toc{display:none;}
+body.pdf-preview .wrap{
+  background:#fff; max-width:8.5in; margin:24px auto; padding:0.7in 0.85in;
+  box-shadow:0 4px 24px rgba(0,0,0,.3); font-size:11.5pt; line-height:1.4;
+}
+body.pdf-preview h1.title{font-size:26pt;}
+body.pdf-preview h2.sec{font-size:16pt;}
+body.pdf-preview .standfirst{font-size:13pt;}
+body.pdf-preview section{page-break-inside:auto;}
+body.pdf-preview #sec-summary,body.pdf-preview #sec-refs{
+  border-top:2px dashed var(--brand); margin-top:30px; padding-top:24px; position:relative;
+}
+body.pdf-preview #sec-summary:before,body.pdf-preview #sec-refs:before{
+  content:"— — — page break — — —"; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+  background:#fff; padding:0 12px; font-family:"Helvetica Neue",sans-serif; font-size:9pt; color:var(--brand); letter-spacing:.08em;
+}
+
+/* ---------- Print ---------- */
+@media print{
+  .topbar,.toc{display:none;}
+  body{background:#fff; font-size:10.5pt;}
+  .wrap{max-width:100%; padding:0;}
+  #sec-summary,#sec-refs{page-break-before:always;}
+  .patient,.callout,.infobox,.emerging,.scard,table.risk{break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+@media(max-width:600px){
+  .toc ol{columns:1;} h1.title{font-size:31px;} .cardgrid{grid-template-columns:1fr;}
+}
+.legend span[data-lang]{display:none;}
+body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="fr"]{display:inline-flex;}
+</style>
+<link rel="stylesheet" href="site-banner.css">
+<script src="site-banner.js" defer></script>
+</head>
+<body class="lang-en">
+
+<!-- ======================= TOP BAR ======================= -->
+<div class="topbar ui">
+  <div class="util">
+    <button class="btn" id="pdfBtn" onclick="togglePdf()"><i class="ti ti-eye"></i><span data-lang="en">PDF view</span><span data-lang="fr">Aperçu PDF</span></button>
+    <button class="btn" onclick="window.print()"><i class="ti ti-printer"></i><span data-lang="en">Print / Save PDF</span><span data-lang="fr">Imprimer / PDF</span></button>
+  </div>
+  <div class="tabs">
+    <button class="btn active" id="enTab" onclick="setLang('en')">English</button>
+    <button class="btn" id="frTab" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ======================= MASTHEAD ======================= -->
+<header class="masthead">
+  <div class="eyebrow" data-lang="en">Autoinflammatory Genetics · Clinical Protocol</div><div class="eyebrow" data-lang="fr">Génétique auto-inflammatoire · Protocole clinique</div>
+  <h1 class="title" data-lang="en">Familial Mediterranean Fever</h1><h1 class="title" data-lang="fr">Fièvre méditerranéenne familiale</h1>
+  <p class="standfirst" data-lang="en">A protocol for <em>MEFV</em>-related familial Mediterranean fever: clinical features, interpreting genetic results, colchicine and second-line therapy, amyloidosis prevention, and family counselling.</p><p class="standfirst" data-lang="fr">Protocole pour la fièvre méditerranéenne familiale liée à <em>MEFV</em> : manifestations, interprétation des résultats génétiques, colchicine et traitements de deuxième ligne, prévention de l'amylose et conseil familial.</p>
+
+  <div class="authorpanel"><i class="ti ti-stethoscope"></i><div class="who"><div class="name">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</div><div class="role" data-lang="en">Medical Genetics · Jewish General Hospital (JGH), Montreal</div><div class="role" data-lang="fr">Génétique médicale · Hôpital général juif (HGJ), Montréal</div></div></div>
+
+  <div class="chips ui">
+    <span class="chip"><i class="ti ti-dna"></i> <em>MEFV</em></span>
+    <span class="chip"><i class="ti ti-flame"></i> <span data-lang="en">Autoinflammatory</span><span data-lang="fr">Auto-inflammatoire</span></span>
+    <span class="chip"><i class="ti ti-clipboard-text"></i> EULAR 2016</span>
+    <span class="chip"><i class="ti ti-calendar"></i> <span data-lang="en">Updated October 2026</span><span data-lang="fr">Mis à jour en octobre 2026</span></span>
+  </div>
+
+  <div class="legend ui">
+    <span data-lang="en"><i class="ti ti-circle-check i-routine"></i> Routine</span>
+    <span data-lang="fr"><i class="ti ti-circle-check i-routine"></i> De routine</span>
+    <span data-lang="en"><i class="ti ti-minus i-optional"></i> Optional / selective</span>
+    <span data-lang="fr"><i class="ti ti-minus i-optional"></i> Optionnel / sélectif</span>
+    <span data-lang="en"><i class="ti ti-x i-no"></i> Not recommended</span>
+    <span data-lang="fr"><i class="ti ti-x i-no"></i> Non recommandé</span>
+  </div>
+</header>
+
+<!-- ======================= TOC ======================= -->
+<nav class="toc ui">
+  <h2 data-lang="en">Contents</h2>
+  <h2 data-lang="fr">Sommaire</h2>
+  <ol>
+    <li><a href="#sec1" data-lang="en">Understanding FMF</a><a href="#sec1" data-lang="fr">Comprendre la FMF</a></li>
+    <li><a href="#sec2" data-lang="en">Features</a><a href="#sec2" data-lang="fr">Manifestations</a></li>
+    <li><a href="#sec3" data-lang="en">Testing</a><a href="#sec3" data-lang="fr">Tests</a></li>
+    <li><a href="#sec4" data-lang="en">Treatment</a><a href="#sec4" data-lang="fr">Traitement</a></li>
+    <li><a href="#sec5" data-lang="en">Family counselling</a><a href="#sec5" data-lang="fr">Conseil familial</a></li>
+    <li><a href="#sec-summary" data-lang="en">Summary of recommendations</a><a href="#sec-summary" data-lang="fr">Résumé des recommandations</a></li>
+    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+  </ol>
+</nav>
+
+<section id="sec1">
+  <div class="sec-head"><span class="sec-num">1</span><h2 class="sec" data-lang="en">Understanding FMF</h2><h2 class="sec" data-lang="fr">Comprendre la FMF</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Familial Mediterranean fever (FMF) is an inherited inflammatory condition. People have repeated attacks of fever with pain in the belly, chest, or joints, usually lasting one to three days, and feel well between attacks. It is most common in families of Armenian, Turkish, Arab, and Sephardic or North African Jewish ancestry, but can occur in anyone. A daily medicine called colchicine prevents attacks in most people and protects against a serious long-term complication called amyloidosis.</p><p data-lang="fr">La fièvre méditerranéenne familiale (FMF) est une maladie inflammatoire héréditaire. Les personnes atteintes ont des crises répétées de fièvre avec douleur au ventre, à la poitrine ou aux articulations, durant habituellement un à trois jours, et se sentent bien entre les crises. Elle est plus fréquente dans les familles d'ascendance arménienne, turque, arabe et juive séfarade ou nord-africaine, mais peut toucher n'importe qui. Un médicament quotidien, la colchicine, prévient les crises chez la plupart des gens et protège contre une complication grave à long terme, l'amylose.</p>
+  </div>
+  <p data-lang="en">FMF is an autoinflammatory disease caused by pathogenic variants in <em>MEFV</em>, encoding pyrin, leading to inappropriate inflammasome activation and IL-1β release. It is classically autosomal recessive, but a proportion of patients with a typical phenotype carry only one identifiable variant, and some heterozygotes for high-penetrance variants (e.g. p.Met694Val) are symptomatic. Variant penetrance differs greatly: exon 10 variants such as p.Met694Val, p.Met680Ile, and p.Val726Ala are well established, whereas p.Glu148Gln is common in the general population and of uncertain or low pathogenicity on its own.</p><p data-lang="fr">La FMF est une maladie auto-inflammatoire causée par des variants pathogènes de <em>MEFV</em>, qui code la pyrine, entraînant une activation inappropriée de l'inflammasome et une libération d'IL-1β. Elle est classiquement autosomique récessive, mais une partie des patients au phénotype typique ne portent qu'un seul variant identifiable, et certains hétérozygotes pour des variants à forte pénétrance (p. ex. p.Met694Val) sont symptomatiques. La pénétrance varie beaucoup : les variants de l'exon 10 comme p.Met694Val, p.Met680Ile et p.Val726Ala sont bien établis, tandis que p.Glu148Gln est fréquent dans la population générale et de pathogénicité incertaine ou faible à lui seul.</p>
+  <div class="callout">
+    <div class="lbl"><i class="ti ti-info-circle"></i> <span data-lang="en">Clinical diagnosis first</span><span data-lang="fr">Diagnostic clinique d'abord</span></div>
+    <p data-lang="en">FMF remains a clinical diagnosis supported by genetics. Typical attacks with response to colchicine can justify treatment even when genetic testing finds one or no variant. Evidence-based genetic diagnosis recommendations (Giancane et al. 2015) and the Eurofever/PRINTO classification criteria (Gattorno et al. 2019) help integrate genotype and phenotype.</p><p data-lang="fr">La FMF demeure un diagnostic clinique appuyé par la génétique. Des crises typiques répondant à la colchicine peuvent justifier un traitement même si le test génétique ne trouve qu'un variant ou aucun. Les recommandations fondées sur les preuves pour le diagnostic génétique (Giancane et coll., 2015) et les critères de classification Eurofever/PRINTO (Gattorno et coll., 2019) aident à intégrer génotype et phénotype.</p>
+  </div>
+</section>
+
+<section id="sec2">
+  <div class="sec-head"><span class="sec-num">2</span><h2 class="sec" data-lang="en">Features and complications</h2><h2 class="sec" data-lang="fr">Manifestations et complications</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Attacks can include fever, belly pain (sometimes mistaken for appendicitis), chest pain, joint swelling, or a red rash on the lower legs. The most important long-term risk is amyloidosis, where an inflammatory protein builds up in the kidneys and other organs. Taking colchicine every day greatly lowers this risk.</p><p data-lang="fr">Les crises peuvent comprendre fièvre, douleur abdominale (parfois confondue avec une appendicite), douleur thoracique, enflure articulaire ou éruption rouge sur le bas des jambes. Le risque à long terme le plus important est l'amylose, où une protéine inflammatoire s'accumule dans les reins et d'autres organes. Prendre la colchicine chaque jour réduit grandement ce risque.</p>
+  </div>
+  <div class="tablewrap">
+    <table class="risk">
+      <thead>
+        <tr data-lang="en"><th>Feature</th><th>Description</th><th>Relevance</th></tr>
+        <tr data-lang="fr"><th>Manifestation</th><th>Description</th><th>Importance</th></tr>
+      </thead>
+      <tbody>
+        <tr data-lang="en"><td>Fever</td><td>Recurrent episodes, typically 12–72 hours</td><td><span class="dot dot-amber"></span>Hallmark</td></tr>
+        <tr data-lang="fr"><td>Fièvre</td><td>Épisodes récurrents, habituellement de 12 à 72 heures</td><td><span class="dot dot-amber"></span>Signe caractéristique</td></tr>
+        <tr data-lang="en"><td>Serositis</td><td>Peritonitis, pleuritis, less often pericarditis</td><td><span class="dot dot-amber"></span>Can mimic acute abdomen</td></tr>
+        <tr data-lang="fr"><td>Sérite</td><td>Péritonite, pleurésie, moins souvent péricardite</td><td><span class="dot dot-amber"></span>Peut imiter un abdomen aigu</td></tr>
+        <tr data-lang="en"><td>Arthritis / skin</td><td>Monoarthritis of large joints; erysipelas-like erythema</td><td><span class="dot dot-blue"></span>Common</td></tr>
+        <tr data-lang="fr"><td>Arthrite / peau</td><td>Monoarthrite des grosses articulations; érythème pseudo-érysipélateux</td><td><span class="dot dot-blue"></span>Fréquent</td></tr>
+        <tr data-lang="en"><td>AA amyloidosis</td><td>Proteinuria progressing to kidney failure</td><td><span class="dot dot-red"></span>Main cause of serious morbidity; preventable</td></tr>
+        <tr data-lang="fr"><td>Amylose AA</td><td>Protéinurie évoluant vers l'insuffisance rénale</td><td><span class="dot dot-red"></span>Principale cause de morbidité grave; évitable</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="sec3">
+  <div class="sec-head"><span class="sec-num">3</span><h2 class="sec" data-lang="en">Testing</h2><h2 class="sec" data-lang="fr">Tests</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">A genetic test of the <em>MEFV</em> gene supports the diagnosis. Results need careful interpretation, because some gene changes are mild or common in healthy people.</p><p data-lang="fr">Un test génétique du gène <em>MEFV</em> appuie le diagnostic. Les résultats demandent une interprétation soignée, car certaines modifications sont légères ou fréquentes chez des personnes en santé.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt"><em>MEFV</em> sequencing (full gene or at minimum exon 10 and common variants) in suspected FMF <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Measure CRP and/or serum amyloid A during and between attacks <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Urinalysis for proteinuria at diagnosis and periodically <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Autoinflammatory gene panel if atypical features or no response to colchicine <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Starting treatment on the basis of p.Glu148Gln alone in an asymptomatic person <span class="tag tag-no">Not recommended</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Séquençage de <em>MEFV</em> (gène entier ou au minimum l'exon 10 et les variants fréquents) en cas de FMF soupçonnée <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Mesurer la CRP et/ou l'amyloïde A sérique pendant et entre les crises <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Analyse d'urine pour protéinurie au diagnostic et périodiquement <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Panel de gènes auto-inflammatoires si présentation atypique ou absence de réponse à la colchicine <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">Commencer un traitement sur la seule base de p.Glu148Gln chez une personne asymptomatique <span class="tag tag-no">Non recommandé</span></span></li>
+  </ul>
+</section>
+
+<section id="sec4">
+  <div class="sec-head"><span class="sec-num">4</span><h2 class="sec" data-lang="en">Treatment and monitoring</h2><h2 class="sec" data-lang="fr">Traitement et suivi</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Colchicine is taken every day, for life, even between attacks. Common side effects are loose stools or stomach upset, which often improve with dose changes. If colchicine does not work well enough, other medicines that block inflammation (IL-1 blockers) can be added.</p><p data-lang="fr">La colchicine se prend chaque jour, à vie, même entre les crises. Les effets secondaires fréquents sont des selles molles ou des maux d'estomac, qui s'améliorent souvent avec un ajustement de dose. Si la colchicine ne fonctionne pas assez bien, d'autres médicaments qui bloquent l'inflammation (inhibiteurs de l'IL-1) peuvent être ajoutés.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Lifelong daily colchicine as soon as the clinical diagnosis is made <span class="tag tag-routine">Recommended</span><span class="sub">EULAR 2016: titrate to control attacks and subclinical inflammation; adjust for kidney and liver function and drug interactions (e.g. strong CYP3A4/P-gp inhibitors).</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Monitor attacks, CRP/SAA, and urinalysis every ~6 months; check adherence first if control is poor <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">IL-1 inhibitors (anakinra, canakinumab) for colchicine-resistant or intolerant patients <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Nephrology referral for persistent proteinuria or suspected amyloidosis <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Continue colchicine during conception, pregnancy, and breastfeeding <span class="tag tag-routine">Recommended</span><span class="sub">EULAR recommends continuing; routine amniocentesis solely because of colchicine is not required.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Colchicine quotidienne à vie dès que le diagnostic clinique est posé <span class="tag tag-routine">Recommandé</span><span class="sub">EULAR 2016 : titrer pour contrôler les crises et l'inflammation infraclinique; ajuster selon la fonction rénale et hépatique et les interactions (p. ex. inhibiteurs puissants du CYP3A4/P-gp).</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Suivre les crises, la CRP/SAA et l'analyse d'urine aux ~6 mois; vérifier d'abord l'observance si le contrôle est faible <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Inhibiteurs de l'IL-1 (anakinra, canakinumab) en cas de résistance ou d'intolérance à la colchicine <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Orientation en néphrologie si protéinurie persistante ou amylose soupçonnée <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Poursuivre la colchicine pendant la conception, la grossesse et l'allaitement <span class="tag tag-routine">Recommandé</span><span class="sub">L'EULAR recommande de poursuivre; une amniocentèse systématique en raison de la seule colchicine n'est pas nécessaire.</span></span></li>
+  </ul>
+</section>
+
+<section id="sec5">
+  <div class="sec-head"><span class="sec-num">5</span><h2 class="sec" data-lang="en">Family counselling</h2><h2 class="sec" data-lang="fr">Conseil familial</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">In most families FMF is recessive: when both parents carry a gene change, each child has a 1 in 4 chance of having FMF. Brothers and sisters with symptoms should be assessed. Because the condition is common in some communities, a partner may also be a carrier.</p><p data-lang="fr">Dans la plupart des familles, la FMF est récessive : lorsque les deux parents portent une modification, chaque enfant a une chance sur quatre d'avoir la FMF. Les frères et sœurs symptomatiques devraient être évalués. Comme la maladie est fréquente dans certaines communautés, un conjoint peut aussi être porteur.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Evaluate symptomatic siblings and relatives clinically, with targeted genetic testing <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Partner carrier testing for reproductive planning, especially in high-prevalence ancestries <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Testing of asymptomatic children is generally driven by symptoms rather than genotype <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Évaluer cliniquement les frères, sœurs et apparentés symptomatiques, avec test génétique ciblé <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Test de porteur du conjoint pour la planification reproductive, surtout dans les ascendances à forte prévalence <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Le test d'enfants asymptomatiques est généralement guidé par les symptômes plutôt que par le génotype <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec-summary">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-list-check"></i></span><h2 class="sec" data-lang="en">Summary of recommendations</h2><h2 class="sec" data-lang="fr">Résumé des recommandations</h2></div>
+
+  <div class="cardgrid">
+    <div class="scard">
+      <h4><i class="ti ti-dna"></i> <span data-lang="en">Diagnosis</span><span data-lang="fr">Diagnostic</span></h4>
+      <ul>
+        <li data-lang="en">Clinical diagnosis + <em>MEFV</em> testing</li>
+        <li data-lang="en">Interpret variants by penetrance</li>
+        <li data-lang="en">CRP/SAA and urinalysis</li>
+        <li data-lang="fr">Diagnostic clinique + test <em>MEFV</em></li>
+        <li data-lang="fr">Interpréter les variants selon la pénétrance</li>
+        <li data-lang="fr">CRP/SAA et analyse d'urine</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-pill"></i> <span data-lang="en">Treatment</span><span data-lang="fr">Traitement</span></h4>
+      <ul>
+        <li data-lang="en">Lifelong daily colchicine</li>
+        <li data-lang="en">IL-1 blockers if resistant</li>
+        <li data-lang="en">Continue in pregnancy</li>
+        <li data-lang="fr">Colchicine quotidienne à vie</li>
+        <li data-lang="fr">Inhibiteurs de l'IL-1 si résistance</li>
+        <li data-lang="fr">Poursuivre pendant la grossesse</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-users"></i> <span data-lang="en">Family</span><span data-lang="fr">Famille</span></h4>
+      <ul>
+        <li data-lang="en">Usually recessive (1 in 4)</li>
+        <li data-lang="en">Assess symptomatic siblings</li>
+        <li data-lang="en">Partner testing if planning</li>
+        <li data-lang="fr">Habituellement récessive (1 sur 4)</li>
+        <li data-lang="fr">Évaluer la fratrie symptomatique</li>
+        <li data-lang="fr">Test du conjoint si projet parental</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sec-refs">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-book"></i></span><h2 class="sec" data-lang="en">References</h2><h2 class="sec" data-lang="fr">Références</h2></div>
+  <ol class="refs">
+    <li>Ozen S, Demirkaya E, Erer B, et al. EULAR recommendations for the management of familial Mediterranean fever. <em>Ann Rheum Dis</em>. 2016;75(4):644–651.</li>
+    <li>Giancane G, Ter Haar NM, Wulffraat N, et al. Evidence-based recommendations for genetic diagnosis of familial Mediterranean fever. <em>Ann Rheum Dis</em>. 2015;74(4):635–641.</li>
+    <li>Gattorno M, Hofer M, Federici S, et al. Classification criteria for autoinflammatory recurrent fevers. <em>Ann Rheum Dis</em>. 2019;78(8):1025–1032.</li>
+    <li>Ben-Chetrit E, Levy M. Familial Mediterranean fever. <em>Lancet</em>. 1998;351(9103):659–664.</li>
+  </ol>
+  <p data-lang="en" style="font-size:13px; color:var(--ink-faint);">Original diagrams are the work of the author (© 2026 Dr. Andrew Shuen).</p>
+  <p data-lang="fr" style="font-size:13px; color:var(--ink-faint);">Les schémas originaux sont l'œuvre de l'auteur (© 2026 Dr Andrew Shuen).</p>
+
+  <div class="footer">
+    <p data-lang="en"><strong>Disclaimer.</strong> This protocol supports but does not replace clinical judgment and individualized care. Guidelines evolve; verify all intervals, thresholds, doses, and recommendations against current society guidelines (ACC/AHA, ACMG, relevant specialty societies) before clinical use. Reference citations were drawn from current literature and should be confirmed against the primary sources.</p>
+    <p data-lang="fr"><strong>Avis.</strong> Ce protocole soutient mais ne remplace pas le jugement clinique et les soins individualisés. Les lignes directrices évoluent; vérifier tous les intervalles, seuils, doses et recommandations par rapport aux lignes directrices actuelles des sociétés savantes (ACC/AHA, ACMG, sociétés spécialisées pertinentes) avant tout usage clinique. Les références proviennent de la littérature actuelle et doivent être confirmées auprès des sources primaires.</p>
+    <p>© 2026 Dr. Andrew Shuen · Medical Genetics, Jewish General Hospital, Montreal · <span data-lang="en">For educational use.</span><span data-lang="fr">À usage éducatif.</span></p>
+  </div>
+</section>
+
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-en','lang-fr');
+  document.body.classList.add('lang-'+l);
+  document.getElementById('enTab').classList.toggle('active', l==='en');
+  document.getElementById('frTab').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+}
+function togglePdf(){
+  document.body.classList.toggle('pdf-preview');
+  document.getElementById('pdfBtn').classList.toggle('active');
+}
+</script>
+</body>
+</html>

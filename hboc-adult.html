@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inherited Cancer Risk — When to Consider Cancer Genetics</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px; line-height:1.62;
+}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:9px 18px;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .util{display:flex; gap:8px; align-items:center;}
+.topbar .tabs{display:flex; gap:4px;}
+.btn{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13.5px; font-weight:600; cursor:pointer;
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft);
+  padding:7px 13px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;
+  transition:.15s;
+}
+.btn:hover{border-color:var(--brand-line); color:var(--brand-dark); background:var(--brand-bg);}
+.btn.active{background:var(--brand); border-color:var(--brand); color:#fff;}
+.btn i{font-size:16px;}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:860px; margin:0 auto; padding:0 22px 80px;}
+
+/* ---------- Masthead ---------- */
+.masthead{padding:38px 0 26px; border-bottom:2px solid var(--ink);}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:12.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--brand-dark);
+}
+h1.title{font-size:40px; line-height:1.1; margin:.28em 0 .12em; letter-spacing:-.01em;}
+.standfirst{font-size:19px; color:var(--ink-soft); margin:0 0 22px; max-width:62ch;}
+.authorpanel{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:15px 18px; display:flex; gap:14px; align-items:flex-start;
+}
+.authorpanel .who{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.authorpanel .name{font-weight:700; font-size:15px; color:var(--ink);}
+.authorpanel .role{font-size:13.5px; color:var(--ink-faint); line-height:1.5;}
+.authorpanel i{color:var(--brand); font-size:26px; margin-top:2px;}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:16px;}
+.chip{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:600;
+  background:var(--cream); border:1px solid var(--line); border-radius:999px;
+  padding:4px 11px; color:var(--ink-soft); display:inline-flex; gap:5px; align-items:center;
+}
+.chip i{font-size:14px; color:var(--brand);}
+.legend{
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; padding-top:15px;
+  border-top:1px solid var(--line-soft);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint);
+}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+.legend i{font-size:15px;}
+.i-routine{color:#1f7a34;} .i-optional{color:var(--amber);} .i-no{color:var(--red);}
+
+/* ---------- TOC ---------- */
+.toc{
+  margin:26px 0 8px; padding:18px 20px; background:var(--paper);
+  border:1px solid var(--line); border-radius:var(--radius);
+}
+.toc h2{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+  margin:0 0 12px;
+}
+.toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:14.5px;}
+.toc li{margin-bottom:6px; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none;}
+.toc a:hover{color:var(--brand-dark);}
+
+/* ---------- Sections ---------- */
+section{padding-top:34px;}
+.sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.sec-num{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+  font-size:15px; color:#fff; background:var(--brand);
+  min-width:30px; height:30px; border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+}
+h2.sec{font-size:25px; margin:0; letter-spacing:-.01em; line-height:1.2;}
+h3{font-size:18px; margin:24px 0 8px; color:var(--ink);}
+p{margin:0 0 14px;}
+
+/* ---------- Patient card ---------- */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line);
+  border-left:4px solid var(--brand); border-radius:var(--radius-sm);
+  padding:14px 17px; margin:14px 0 18px;
+}
+.patient .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--brand-dark);
+  display:flex; align-items:center; gap:6px; margin-bottom:6px;
+}
+.patient p{margin:0 0 8px;} .patient p:last-child{margin:0;}
+
+/* ---------- Subtype pill header ---------- */
+.subhead{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  margin:22px 0 6px; padding-bottom:8px; border-bottom:1px solid var(--line-soft);
+}
+.subhead h3{margin:0;}
+.pill{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  border-radius:999px; padding:3px 11px; letter-spacing:.02em;
+}
+.pill-red{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.pill-amber{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.pill-blue{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* ---------- Checklist ---------- */
+ul.check{list-style:none; padding:0; margin:12px 0 16px;}
+ul.check li{
+  display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+  align-items:flex-start;
+}
+ul.check li:last-child{border-bottom:none;}
+ul.check i{font-size:19px; flex:none; margin-top:1px;}
+.tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; border-radius:5px; padding:2px 7px;
+  margin-left:8px; white-space:nowrap; vertical-align:middle;
+}
+.tag-routine{background:#e6f4ea; color:#1f7a34;}
+.tag-optional{background:var(--amber-bg); color:var(--amber);}
+.tag-no{background:var(--red-bg); color:var(--red);}
+.ck-txt{flex:1;}
+.ck-txt .sub{display:block; font-size:14px; color:var(--ink-faint); margin-top:2px;}
+
+/* ---------- Callout ---------- */
+.callout{
+  border-left:4px solid var(--brand); background:var(--paper);
+  border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:13px 16px; margin:16px 0;
+}
+.callout.amber{border-left-color:var(--amber); background:var(--amber-bg); border-color:var(--amber-line);}
+.callout.red{border-left-color:var(--red); background:var(--red-bg); border-color:var(--red-line);}
+.callout .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:5px; display:flex; gap:6px; align-items:center;
+}
+.callout.amber .lbl{color:var(--amber);} .callout.red .lbl{color:var(--red);} .callout .lbl{color:var(--brand-dark);}
+.callout p:last-child{margin:0;}
+
+/* ---------- Info / emerging boxes ---------- */
+.infobox{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging .lbl,.infobox .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:6px; display:flex; gap:6px; align-items:center;
+}
+.emerging .lbl{color:var(--purple);} .infobox .lbl{color:var(--brand-dark);}
+.emerging p:last-child,.infobox p:last-child{margin:0;}
+
+/* ---------- Risk table ---------- */
+.tablewrap{overflow-x:auto; margin:16px 0;}
+table.risk{width:100%; border-collapse:collapse; font-size:15px; background:var(--paper); border-radius:var(--radius-sm); overflow:hidden;}
+table.risk th,table.risk td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--line);}
+table.risk th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); background:var(--cream);}
+table.risk tr:last-child td{border-bottom:none;}
+.dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:7px; vertical-align:middle;}
+.dot-red{background:var(--red);} .dot-amber{background:var(--amber-line);} .dot-blue{background:var(--brand);}
+
+/* ---------- Figures ---------- */
+figure.fig{margin:18px 0 20px; padding:0; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+figure.fig .svgwrap{padding:18px 16px 4px; background:linear-gradient(180deg,#fbfdff,#f4f9fc);}
+figure.fig svg{width:100%; height:auto; display:block;}
+figure.fig figcaption{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); padding:11px 16px 13px; border-top:1px solid var(--line-soft); line-height:1.5;}
+figure.fig img.photo{width:100%; height:auto; display:block; border-radius:0;}
+figure.fig .credit{font-size:11.5px; color:var(--ink-faint); margin-top:6px;}
+figure.fig .credit a{color:var(--brand-dark); text-decoration:none;}
+figure.fig figcaption b{color:var(--ink-soft); font-weight:700;}
+.svg-ink{fill:var(--ink);} .svg-soft{fill:var(--ink-soft);} .svg-faint{fill:var(--ink-faint);}
+.svg-lbl{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.svg-term{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;}
+
+/* ---------- Summary cards ---------- */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:16px 0;}
+.scard{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand); border-radius:var(--radius-sm); padding:14px 16px;}
+.scard h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; margin:0 0 8px; color:var(--brand-dark); display:flex; gap:7px; align-items:center;}
+.scard ul{margin:0; padding-left:18px; font-size:14.5px; color:var(--ink-soft);}
+.scard li{margin-bottom:5px;}
+
+/* ---------- References ---------- */
+ol.refs{font-size:14px; color:var(--ink-soft); padding-left:22px; line-height:1.55;}
+ol.refs li{margin-bottom:9px;}
+
+/* ---------- Footer ---------- */
+.footer{margin-top:46px; padding-top:18px; border-top:2px solid var(--ink); position:relative;}
+.footer:before{content:""; position:absolute; top:4px; left:0; right:0; height:1px; background:var(--ink);}
+.footer p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); margin:0 0 8px;}
+
+/* ---------- Language toggle ---------- */
+[data-lang]{display:none;}
+body.lang-en [data-lang="en"]{display:revert;}
+body.lang-fr [data-lang="fr"]{display:revert;}
+ul.check li[data-lang],table.risk tr[data-lang]{display:none;}
+body.lang-en ul.check li[data-lang="en"]{display:flex;}
+body.lang-fr ul.check li[data-lang="fr"]{display:flex;}
+body.lang-en table.risk tr[data-lang="en"]{display:table-row;}
+body.lang-fr table.risk tr[data-lang="fr"]{display:table-row;}
+
+/* ---------- PDF preview on screen ---------- */
+body.pdf-preview{background:#6a7681;}
+body.pdf-preview .topbar{position:static;}
+body.pdf-preview .toc{display:none;}
+body.pdf-preview .wrap{
+  background:#fff; max-width:8.5in; margin:24px auto; padding:0.7in 0.85in;
+  box-shadow:0 4px 24px rgba(0,0,0,.3); font-size:11.5pt; line-height:1.4;
+}
+body.pdf-preview h1.title{font-size:26pt;}
+body.pdf-preview h2.sec{font-size:16pt;}
+body.pdf-preview .standfirst{font-size:13pt;}
+body.pdf-preview section{page-break-inside:auto;}
+body.pdf-preview #sec-summary,body.pdf-preview #sec-refs{
+  border-top:2px dashed var(--brand); margin-top:30px; padding-top:24px; position:relative;
+}
+body.pdf-preview #sec-summary:before,body.pdf-preview #sec-refs:before{
+  content:"— — — page break — — —"; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+  background:#fff; padding:0 12px; font-family:"Helvetica Neue",sans-serif; font-size:9pt; color:var(--brand); letter-spacing:.08em;
+}
+
+/* ---------- Print ---------- */
+@media print{
+  .topbar,.toc{display:none;}
+  body{background:#fff; font-size:10.5pt;}
+  .wrap{max-width:100%; padding:0;}
+  #sec-summary,#sec-refs{page-break-before:always;}
+  .patient,.callout,.infobox,.emerging,.scard,table.risk{break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+@media(max-width:600px){
+  .toc ol{columns:1;} h1.title{font-size:31px;} .cardgrid{grid-template-columns:1fr;}
+}
+.legend span[data-lang]{display:none;}
+body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="fr"]{display:inline-flex;}
+</style>
+<link rel="stylesheet" href="site-banner.css">
+<script src="site-banner.js" defer></script>
+</head>
+<body class="lang-en">
+
+<!-- ======================= TOP BAR ======================= -->
+<div class="topbar ui">
+  <div class="util">
+    <button class="btn" id="pdfBtn" onclick="togglePdf()"><i class="ti ti-eye"></i><span data-lang="en">PDF view</span><span data-lang="fr">Aperçu PDF</span></button>
+    <button class="btn" onclick="window.print()"><i class="ti ti-printer"></i><span data-lang="en">Print / Save PDF</span><span data-lang="fr">Imprimer / PDF</span></button>
+  </div>
+  <div class="tabs">
+    <button class="btn active" id="enTab" onclick="setLang('en')">English</button>
+    <button class="btn" id="frTab" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ======================= MASTHEAD ======================= -->
+<header class="masthead">
+  <div class="eyebrow" data-lang="en">Cancer Genetics · Referral Guide</div><div class="eyebrow" data-lang="fr">Génétique du cancer · Guide d'orientation</div>
+  <h1 class="title" data-lang="en">Inherited Cancer Risk</h1><h1 class="title" data-lang="fr">Risque héréditaire de cancer</h1>
+  <p class="standfirst" data-lang="en">An adult guide to when to consider a cancer genetics referral, how testing works, what results mean, and how to share them with family, with links to the gene-specific protocols.</p><p class="standfirst" data-lang="fr">Guide adulte sur le moment d'envisager une consultation en génétique du cancer, le déroulement du test, la signification des résultats et leur partage avec la famille, avec des liens vers les protocoles propres aux gènes.</p>
+
+  <div class="authorpanel"><i class="ti ti-stethoscope"></i><div class="who"><div class="name">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</div><div class="role" data-lang="en">Medical Genetics · Jewish General Hospital (JGH), Montreal</div><div class="role" data-lang="fr">Génétique médicale · Hôpital général juif (HGJ), Montréal</div></div></div>
+
+  <div class="chips ui">
+    <span class="chip"><i class="ti ti-dna"></i> <em>BRCA1 · BRCA2 · PALB2</em> …</span>
+    <span class="chip"><i class="ti ti-ribbon-health"></i> <span data-lang="en">When to consider cancer genetics</span><span data-lang="fr">Quand envisager la génétique du cancer</span></span>
+    <span class="chip"><i class="ti ti-calendar"></i> <span data-lang="en">Updated October 2026</span><span data-lang="fr">Mis à jour en octobre 2026</span></span>
+  </div>
+
+  <div class="legend ui">
+    <span data-lang="en"><i class="ti ti-circle-check i-routine"></i> Routine</span>
+    <span data-lang="fr"><i class="ti ti-circle-check i-routine"></i> De routine</span>
+    <span data-lang="en"><i class="ti ti-minus i-optional"></i> Optional / selective</span>
+    <span data-lang="fr"><i class="ti ti-minus i-optional"></i> Optionnel / sélectif</span>
+    <span data-lang="en"><i class="ti ti-x i-no"></i> Not recommended</span>
+    <span data-lang="fr"><i class="ti ti-x i-no"></i> Non recommandé</span>
+  </div>
+</header>
+
+<!-- ======================= TOC ======================= -->
+<nav class="toc ui">
+  <h2 data-lang="en">Contents</h2>
+  <h2 data-lang="fr">Sommaire</h2>
+  <ol>
+    <li><a href="#sec1" data-lang="en">Why it matters</a><a href="#sec1" data-lang="fr">Pourquoi c'est important</a></li>
+    <li><a href="#sec2" data-lang="en">When to refer</a><a href="#sec2" data-lang="fr">Quand orienter</a></li>
+    <li><a href="#sec3" data-lang="en">How testing works</a><a href="#sec3" data-lang="fr">Déroulement du test</a></li>
+    <li><a href="#sec4" data-lang="en">Understanding results</a><a href="#sec4" data-lang="fr">Comprendre les résultats</a></li>
+    <li><a href="#sec5" data-lang="en">Family communication</a><a href="#sec5" data-lang="fr">Communication familiale</a></li>
+    <li><a href="#sec-summary" data-lang="en">Summary of recommendations</a><a href="#sec-summary" data-lang="fr">Résumé des recommandations</a></li>
+    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+  </ol>
+</nav>
+
+<section id="sec1">
+  <div class="sec-head"><span class="sec-num">1</span><h2 class="sec" data-lang="en">Why inherited cancer risk matters</h2><h2 class="sec" data-lang="fr">Pourquoi le risque héréditaire de cancer compte</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Most cancers are not inherited. But in some families, a gene change passed from parent to child greatly raises the chance of certain cancers. Knowing about it can lead to earlier screening, preventive options, and sometimes different cancer treatments. It also lets relatives find out whether they share the risk. This page explains when it is worth asking about a cancer genetics referral.</p><p data-lang="fr">La plupart des cancers ne sont pas héréditaires. Mais dans certaines familles, une modification génétique transmise du parent à l'enfant augmente fortement la probabilité de certains cancers. Le savoir peut mener à un dépistage plus précoce, à des options préventives et parfois à des traitements différents. Cela permet aussi aux apparentés de savoir s'ils partagent le risque. Cette page explique quand il vaut la peine de demander une consultation en génétique du cancer.</p>
+  </div>
+  <p data-lang="en">About 5–10% of cancers overall are attributed to high-penetrance germline variants, with higher proportions for some tumour types (e.g. epithelial ovarian, pancreatic, and metastatic prostate cancer). Hereditary breast and ovarian cancer is most often due to <a href="brca1.html"><em>BRCA1</em></a> and <a href="brca2.html"><em>BRCA2</em></a>, with <a href="palb2.html"><em>PALB2</em></a>, <a href="chek2.html"><em>CHEK2</em></a>, <a href="atm.html"><em>ATM</em></a>, <a href="rad51c.html"><em>RAD51C</em></a>, <a href="rad51d.html"><em>RAD51D</em></a>, <a href="brip1.html"><em>BRIP1</em></a>, <a href="bard1.html"><em>BARD1</em></a>, and the rarer syndromic genes <a href="tp53.html"><em>TP53</em></a>, <a href="pten.html"><em>PTEN</em></a>, <a href="cdh1.html"><em>CDH1</em></a>, and <a href="stk11.html"><em>STK11</em></a>. Lynch syndrome (<a href="lynch.html">overview</a>) causes colorectal, endometrial, and other cancers.</p><p data-lang="fr">Environ 5 à 10 % des cancers sont attribués à des variants germinaux à forte pénétrance, avec des proportions plus élevées pour certains types tumoraux (p. ex. cancer épithélial de l'ovaire, cancer du pancréas et cancer de la prostate métastatique). Le cancer héréditaire du sein et de l'ovaire est le plus souvent dû à <a href="brca1.html"><em>BRCA1</em></a> et <a href="brca2.html"><em>BRCA2</em></a>, avec <a href="palb2.html"><em>PALB2</em></a>, <a href="chek2.html"><em>CHEK2</em></a>, <a href="atm.html"><em>ATM</em></a>, <a href="rad51c.html"><em>RAD51C</em></a>, <a href="rad51d.html"><em>RAD51D</em></a>, <a href="brip1.html"><em>BRIP1</em></a>, <a href="bard1.html"><em>BARD1</em></a>, et les gènes syndromiques plus rares <a href="tp53.html"><em>TP53</em></a>, <a href="pten.html"><em>PTEN</em></a>, <a href="cdh1.html"><em>CDH1</em></a> et <a href="stk11.html"><em>STK11</em></a>. Le syndrome de Lynch (<a href="lynch.html">aperçu</a>) cause des cancers colorectaux, de l'endomètre et d'autres.</p>
+</section>
+
+<section id="sec2">
+  <div class="sec-head"><span class="sec-num">2</span><h2 class="sec" data-lang="en">When to consider a referral</h2><h2 class="sec" data-lang="fr">Quand envisager une consultation</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Ask your doctor about cancer genetics if you or a close relative had one of the situations below. Exact criteria vary by province and program; your team will check what applies to you.</p><p data-lang="fr">Parlez de génétique du cancer à votre médecin si vous ou un proche avez vécu l'une des situations ci-dessous. Les critères exacts varient selon la province et le programme; votre équipe vérifiera ce qui s'applique à vous.</p>
+  </div>
+  <div class="tablewrap">
+    <table class="risk">
+      <thead>
+        <tr data-lang="en"><th>Personal or family history</th><th>Examples</th></tr>
+        <tr data-lang="fr"><th>Antécédents personnels ou familiaux</th><th>Exemples</th></tr>
+      </thead>
+      <tbody>
+        <tr data-lang="en"><td>Young-onset cancer</td><td><span class="dot dot-red"></span>Breast cancer at a young age (commonly ≤45–50); colorectal or endometrial cancer before 50</td></tr>
+        <tr data-lang="fr"><td>Cancer à un jeune âge</td><td><span class="dot dot-red"></span>Cancer du sein jeune (souvent ≤ 45–50 ans); cancer colorectal ou de l'endomètre avant 50 ans</td></tr>
+        <tr data-lang="en"><td>Cancers that warrant testing at any age</td><td><span class="dot dot-red"></span>Epithelial ovarian, fallopian tube, or peritoneal cancer; pancreatic cancer; metastatic or high-risk prostate cancer; male breast cancer</td></tr>
+        <tr data-lang="fr"><td>Cancers justifiant un test à tout âge</td><td><span class="dot dot-red"></span>Cancer épithélial de l'ovaire, de la trompe ou du péritoine; cancer du pancréas; cancer de la prostate métastatique ou à haut risque; cancer du sein chez l'homme</td></tr>
+        <tr data-lang="en"><td>Tumour features</td><td><span class="dot dot-amber"></span>Triple-negative breast cancer (commonly ≤60); mismatch-repair-deficient tumours; a germline-relevant variant found on tumour testing</td></tr>
+        <tr data-lang="fr"><td>Caractéristiques tumorales</td><td><span class="dot dot-amber"></span>Cancer du sein triple négatif (souvent ≤ 60 ans); tumeurs déficientes en réparation des mésappariements; variant d'importance germinale trouvé sur un test tumoral</td></tr>
+        <tr data-lang="en"><td>Multiple cancers</td><td><span class="dot dot-amber"></span>Two primary cancers in one person; several relatives on the same side with related cancers</td></tr>
+        <tr data-lang="fr"><td>Cancers multiples</td><td><span class="dot dot-amber"></span>Deux cancers primitifs chez une personne; plusieurs apparentés du même côté avec des cancers apparentés</td></tr>
+        <tr data-lang="en"><td>Ancestry and known variants</td><td><span class="dot dot-blue"></span>Ashkenazi Jewish ancestry with relevant cancer history (or per program criteria); a known pathogenic variant in the family</td></tr>
+        <tr data-lang="fr"><td>Ascendance et variants connus</td><td><span class="dot dot-blue"></span>Ascendance juive ashkénaze avec antécédents pertinents (ou selon les critères du programme); variant pathogène connu dans la famille</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <div class="lbl"><i class="ti ti-info-circle"></i> <span data-lang="en">Treatment-focused testing</span><span data-lang="fr">Test orienté vers le traitement</span></div>
+    <p data-lang="en">Germline results can change cancer treatment (for example PARP inhibitor eligibility, surgical choices). ASCO recommends germline testing for all patients with epithelial ovarian cancer (Konstantinopoulos et al. 2020). Many centres offer oncology-led ("mainstream") testing with genetics follow-up for positive results.</p><p data-lang="fr">Les résultats germinaux peuvent changer le traitement du cancer (par exemple l'admissibilité aux inhibiteurs de PARP, les choix chirurgicaux). L'ASCO recommande un test germinal pour toutes les patientes atteintes d'un cancer épithélial de l'ovaire (Konstantinopoulos et coll., 2020). Plusieurs centres offrent un test intégré en oncologie avec suivi en génétique pour les résultats positifs.</p>
+  </div>
+</section>
+
+<section id="sec3">
+  <div class="sec-head"><span class="sec-num">3</span><h2 class="sec" data-lang="en">How testing works</h2><h2 class="sec" data-lang="fr">Comment se déroule le test</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Testing is usually a blood or saliva sample analysed with a panel of genes. Ideally, the first person tested is the relative who had cancer. Before testing, you will talk about what the results could mean for you and your family, and about privacy and insurance.</p><p data-lang="fr">Le test se fait habituellement sur un échantillon de sang ou de salive analysé avec un panel de gènes. Idéalement, la première personne testée est l'apparenté qui a eu le cancer. Avant le test, vous discuterez de ce que les résultats pourraient signifier pour vous et votre famille, ainsi que de la confidentialité et de l'assurance.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test an affected relative first when possible <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Multigene panel tailored to the personal and family history <span class="tag tag-routine">Recommended</span><span class="sub">Panels improve yield but increase VUS rates; see <a href="gene-panel.html">gene panels</a>.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Targeted testing for a known familial variant <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Founder variant testing in specific ancestries, followed by a panel if indicated <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Population-based testing outside criteria <span class="tag tag-optional">Selective</span><span class="sub">Under study; offered only in specific programs.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Tester d'abord un apparenté atteint lorsque possible <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Panel multigène adapté aux antécédents personnels et familiaux <span class="tag tag-routine">Recommandé</span><span class="sub">Les panels améliorent le rendement mais augmentent le taux de VSI; voir <a href="gene-panel.html">panels de gènes</a>.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test ciblé d'un variant familial connu <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Test des variants fondateurs selon l'ascendance, suivi d'un panel au besoin <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Test populationnel hors critères <span class="tag tag-optional">Sélectif</span><span class="sub">À l'étude; offert seulement dans certains programmes.</span></span></li>
+  </ul>
+</section>
+
+<section id="sec4">
+  <div class="sec-head"><span class="sec-num">4</span><h2 class="sec" data-lang="en">Understanding results</h2><h2 class="sec" data-lang="fr">Comprendre les résultats</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">There are three main results. <strong>Positive</strong>: a gene change that raises cancer risk was found; your team will discuss screening, prevention, and family testing. <strong>Negative</strong>: no gene change was found; your screening is then based on your family history. <strong>Uncertain (VUS)</strong>: a change whose meaning is unknown; it should not be used to make medical decisions and is often reclassified as benign later.</p><p data-lang="fr">Il y a trois résultats principaux. <strong>Positif</strong> : une modification augmentant le risque de cancer a été trouvée; votre équipe discutera du dépistage, de la prévention et du test familial. <strong>Négatif</strong> : aucune modification n'a été trouvée; votre dépistage repose alors sur vos antécédents familiaux. <strong>Incertain (VSI)</strong> : une modification dont la signification est inconnue; elle ne devrait pas servir à prendre des décisions médicales et est souvent reclassée bénigne plus tard.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Positive: gene-specific management per the relevant protocol page and cascade testing <span class="tag tag-routine">Recommended</span><span class="sub">Cancer risks differ substantially by gene (Kuchenbaecker et al. 2017; Breast Cancer Association Consortium 2021; Hu et al. 2021).</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Uninformative negative: manage on family history; consider re-testing or re-analysis as knowledge grows <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">True negative (familial variant not inherited): usually population-level screening <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Risk-reducing surgery or testing of relatives based on a VUS <span class="tag tag-no">Not recommended</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Positif : prise en charge propre au gène selon la page de protocole pertinente et dépistage en cascade <span class="tag tag-routine">Recommandé</span><span class="sub">Les risques de cancer diffèrent beaucoup selon le gène (Kuchenbaecker et coll., 2017; Breast Cancer Association Consortium, 2021; Hu et coll., 2021).</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Négatif non informatif : prise en charge selon les antécédents familiaux; envisager un nouveau test ou une réanalyse avec l'évolution des connaissances <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Vrai négatif (variant familial non hérité) : habituellement dépistage populationnel <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">Chirurgie de réduction du risque ou test des apparentés sur la base d'un VSI <span class="tag tag-no">Non recommandé</span></span></li>
+  </ul>
+</section>
+
+<section id="sec5">
+  <div class="sec-head"><span class="sec-num">5</span><h2 class="sec" data-lang="en">Family communication</h2><h2 class="sec" data-lang="fr">Communication familiale</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">If a gene change is found, relatives on that side of the family may have a 1 in 2 chance of carrying it. Your team can give you a letter to share with them. Testing is their choice, and men can carry and pass on these gene changes too.</p><p data-lang="fr">Si une modification est trouvée, les apparentés de ce côté de la famille peuvent avoir une chance sur deux de la porter. Votre équipe peut vous remettre une lettre à leur partager. Le test est leur choix, et les hommes peuvent aussi porter et transmettre ces modifications.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Family letter and cascade testing for adult at-risk relatives <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Testing minors only for childhood-onset syndromes (e.g. <em>TP53</em>) <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Reproductive options (PGT-M, prenatal diagnosis) for carriers who wish <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Lettre familiale et dépistage en cascade pour les apparentés adultes à risque <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Tester les mineurs seulement pour les syndromes à début pédiatrique (p. ex. <em>TP53</em>) <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Options reproductives (DPI-M, diagnostic prénatal) pour les porteurs qui le souhaitent <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec-summary">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-list-check"></i></span><h2 class="sec" data-lang="en">Summary of recommendations</h2><h2 class="sec" data-lang="fr">Résumé des recommandations</h2></div>
+
+  <div class="cardgrid">
+    <div class="scard">
+      <h4><i class="ti ti-zoom-question"></i> <span data-lang="en">Who to refer</span><span data-lang="fr">Qui orienter</span></h4>
+      <ul>
+        <li data-lang="en">Young-onset or multiple cancers</li>
+        <li data-lang="en">Ovarian, pancreatic, metastatic prostate, male breast</li>
+        <li data-lang="en">Known familial variant</li>
+        <li data-lang="fr">Cancers jeunes ou multiples</li>
+        <li data-lang="fr">Ovaire, pancréas, prostate métastatique, sein chez l'homme</li>
+        <li data-lang="fr">Variant familial connu</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-dna"></i> <span data-lang="en">Testing</span><span data-lang="fr">Tests</span></h4>
+      <ul>
+        <li data-lang="en">Affected relative first</li>
+        <li data-lang="en">Tailored multigene panel</li>
+        <li data-lang="en">Treatment-focused testing</li>
+        <li data-lang="fr">Apparenté atteint d'abord</li>
+        <li data-lang="fr">Panel multigène adapté</li>
+        <li data-lang="fr">Test orienté vers le traitement</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-users"></i> <span data-lang="en">Results &amp; family</span><span data-lang="fr">Résultats et famille</span></h4>
+      <ul>
+        <li data-lang="en">Gene-specific management</li>
+        <li data-lang="en">Do not act on VUS</li>
+        <li data-lang="en">Cascade testing</li>
+        <li data-lang="fr">Prise en charge propre au gène</li>
+        <li data-lang="fr">Ne pas agir sur un VSI</li>
+        <li data-lang="fr">Dépistage en cascade</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sec-refs">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-book"></i></span><h2 class="sec" data-lang="en">References</h2><h2 class="sec" data-lang="fr">Références</h2></div>
+  <ol class="refs">
+    <li>National Comprehensive Cancer Network. NCCN Clinical Practice Guidelines in Oncology: Genetic/Familial High-Risk Assessment: Breast, Ovarian, Pancreatic, and Prostate. Current version.</li>
+    <li>Owens DK, Davidson KW, Krist AH, et al. Risk assessment, genetic counseling, and genetic testing for BRCA-related cancer: US Preventive Services Task Force recommendation statement. <em>JAMA</em>. 2019;322(7):652–665.</li>
+    <li>Konstantinopoulos PA, Norquist B, Lacchetti C, et al. Germline and somatic tumor testing in epithelial ovarian cancer: ASCO guideline. <em>J Clin Oncol</em>. 2020;38(11):1222–1245.</li>
+    <li>Kuchenbaecker KB, Hopper JL, Barnes DR, et al. Risks of breast, ovarian, and contralateral breast cancer for <em>BRCA1</em> and <em>BRCA2</em> mutation carriers. <em>JAMA</em>. 2017;317(23):2402–2416.</li>
+    <li>Breast Cancer Association Consortium; Dorling L, Carvalho S, Allen J, et al. Breast cancer risk genes — association analysis in more than 113,000 women. <em>N Engl J Med</em>. 2021;384(5):428–439.</li>
+    <li>Hu C, Hart SN, Gnanaolivu R, et al. A population-based study of genes previously implicated in breast cancer. <em>N Engl J Med</em>. 2021;384(5):440–451.</li>
+  </ol>
+  <p data-lang="en" style="font-size:13px; color:var(--ink-faint);">Original diagrams are the work of the author (© 2026 Dr. Andrew Shuen).</p>
+  <p data-lang="fr" style="font-size:13px; color:var(--ink-faint);">Les schémas originaux sont l'œuvre de l'auteur (© 2026 Dr Andrew Shuen).</p>
+
+  <div class="footer">
+    <p data-lang="en"><strong>Disclaimer.</strong> This protocol supports but does not replace clinical judgment and individualized care. Guidelines evolve; verify all intervals, thresholds, doses, and recommendations against current society guidelines (ACC/AHA, ACMG, relevant specialty societies) before clinical use. Reference citations were drawn from current literature and should be confirmed against the primary sources.</p>
+    <p data-lang="fr"><strong>Avis.</strong> Ce protocole soutient mais ne remplace pas le jugement clinique et les soins individualisés. Les lignes directrices évoluent; vérifier tous les intervalles, seuils, doses et recommandations par rapport aux lignes directrices actuelles des sociétés savantes (ACC/AHA, ACMG, sociétés spécialisées pertinentes) avant tout usage clinique. Les références proviennent de la littérature actuelle et doivent être confirmées auprès des sources primaires.</p>
+    <p>© 2026 Dr. Andrew Shuen · Medical Genetics, Jewish General Hospital, Montreal · <span data-lang="en">For educational use.</span><span data-lang="fr">À usage éducatif.</span></p>
+  </div>
+</section>
+
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-en','lang-fr');
+  document.body.classList.add('lang-'+l);
+  document.getElementById('enTab').classList.toggle('active', l==='en');
+  document.getElementById('frTab').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+}
+function togglePdf(){
+  document.body.classList.toggle('pdf-preview');
+  document.getElementById('pdfBtn').classList.toggle('active');
+}
+</script>
+</body>
+</html>

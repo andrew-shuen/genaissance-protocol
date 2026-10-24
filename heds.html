@@ -184,7 +184,18 @@
     a{color:var(--ink); text-decoration:none;}
     .patient,.infobox{background:#f4f9fc !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
   }
+  /* clinical photo figures */
+  .figgrid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin:14px 0 18px;}
+  .figgrid figure{margin:0; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-sm); padding:8px; break-inside:avoid; page-break-inside:avoid;}
+  .figgrid img{display:block; width:100%; height:auto; max-height:320px; object-fit:contain; background:#f4f6f8; border-radius:6px;}
+  .figgrid figcaption{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:13px; line-height:1.4; margin-top:6px; color:var(--ink);}
+  .figgrid .attr{display:block; font-size:11px; color:var(--ink-faint); margin-top:3px;}
+  .figgrid .attr a{color:var(--brand-dark);}
+  @media (max-width:560px){.figgrid{grid-template-columns:1fr;}}
+  @media print{.figgrid{grid-template-columns:repeat(2,1fr); gap:8px;} .figgrid img{max-height:180px;} .figgrid .attr a{color:var(--ink-faint);} .cmp-tbl table{font-size:9pt;} .cmp-tbl tr{break-inside:avoid;}}
 </style>
+<link rel="stylesheet" href="site-banner.css">
+<script src="site-banner.js" defer></script>
 </head>
 <body>
 
@@ -271,6 +282,74 @@
     </div>
     <p>A revision to the diagnostic criteria is anticipated, with the Ehlers–Danlos Society's international hEDS/HSD Criteria Review Study expected to report. Anticipated changes include broader joint assessment beyond the Beighton score and more formal incorporation of systemic comorbidities such as dysautonomia and GI dysfunction, which may also shift where the hEDS/HSD boundary sits. Until published, the 2017 criteria remain the standard.</p>
 
+    <div class="infobox">
+      <div class="itag"><i class="ti ti-list-check"></i>Per GeneReviews: 2017 hEDS diagnostic criteria</div>
+      <p>The summary above paraphrases these criteria. GeneReviews (Hakim, updated 22 Feb 2024) gives them in full. All three criteria are required, in an adult who has reached biological maturity:</p>
+      <p><strong>Criterion 1: Generalized joint hypermobility (Beighton score)</strong></p>
+      <ul>
+        <li>≥5/9 for adolescents who have reached biological maturity and adults aged ≤50; ≥4/9 for those aged &gt;50.</li>
+        <li>One point each (left and right): fifth finger MCP passive dorsiflexion &gt;90°; thumb to flexor forearm; elbow hyperextension &gt;10°; knee hyperextension &gt;10°; plus one point for palms flat on the floor with knees straight.</li>
+        <li>With acquired loss of joint mobility, a score one point below the cutoff counts if ≥2 of 5 answers on the five-point questionnaire (5PQ) are positive: hands flat on the floor now or ever; thumb to forearm now or ever; contortions or splits as a child; shoulder or kneecap dislocated more than once as a child or teenager; considers self “double-jointed”. If the score is ≥2 points below the cutoff, assess other joints (shoulders, hips, ankles, toes) beyond the Beighton score.</li>
+      </ul>
+      <p><strong>Criterion 2: At least two of Features A, B, C</strong></p>
+      <ul>
+        <li><strong>Feature A</strong>: ≥5 of 12 systemic features. These are:
+          <ul>
+            <li>unusually soft or velvety skin</li>
+            <li>mild skin hyperextensibility</li>
+            <li>unexplained striae</li>
+            <li>bilateral piezogenic heel papules</li>
+            <li>recurrent or multiple abdominal hernias</li>
+            <li>atrophic scarring at ≥2 sites</li>
+            <li>pelvic floor, rectal or uterine prolapse with no predisposing cause (in children, men or nulliparous women)</li>
+            <li>dental crowding <em>and</em> high or narrow palate</li>
+            <li>arachnodactyly (bilateral wrist or thumb sign)</li>
+            <li>arm span to height ratio ≥1.05</li>
+            <li>mitral valve prolapse</li>
+            <li>aortic root dilatation (Z &gt;+2)</li>
+          </ul>
+        </li>
+        <li><strong>Feature B</strong>: ≥1 first-degree relative who independently meets current hEDS criteria.</li>
+        <li><strong>Feature C</strong>: ≥1 musculoskeletal complication. These are: pain in ≥2 limbs, daily for ≥3 months; chronic widespread pain for ≥3 months; or recurrent atraumatic dislocations (≥3 in one joint, or ≥2 in two different joints at different times) or medically confirmed atraumatic instability at ≥2 sites.</li>
+      </ul>
+      <div class="figgrid">
+        <figure><img src="images/heds/skin-hyperextensibility.jpg" alt="Skin hyperextensibility" loading="lazy" width="600"><figcaption>Skin hyperextensibility: skin stretched on the forearm in a person with EDS. In hEDS this is mild; marked stretch suggests classical EDS.<span class="attr">Photo: Piotr Dołżonek, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Ehlers-Danlos_syndrome4.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>
+        <figure><img src="images/heds/piezogenic-papules.jpg" alt="Piezogenic heel papules" loading="lazy" width="600"><figcaption>Piezogenic papules: fat herniations on the heel, best seen on standing, in a person with hEDS.<span class="attr">Photo: Audrey Effenberger, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Piezogenic_papules.jpg" target="_blank" rel="noopener">Wikimedia Commons</a> (resized)</span></figcaption></figure>
+        <figure><img src="images/heds/atrophic-scar.jpg" alt="Atrophic scar in EDS" loading="lazy" width="600"><figcaption>Atrophic scarring: wide, thin, atrophic scar. Wide papyraceous scars point more toward classical EDS; hEDS scars are usually milder.<span class="attr">Photo: B. Amichai &amp; A. Zalewska (ISRN Dermatol 2012), <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Atrophic_scar_of_Ehlers_Danlos_syndrome.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>
+        <figure><img src="images/heds/high-palate-marfan.jpg" alt="High palate and dental crowding" loading="lazy" width="600"><figcaption>Dental crowding and high palate: occlusal views of (A) upper and (B) lower jaw, here in Marfan syndrome. The criterion requires both findings.<span class="attr">Photo: Staufenbiel I, et al. BMC Oral Health 2013;13:59 (<a href="https://doi.org/10.1186/1472-6831-13-59" target="_blank" rel="noopener">source</a>), <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a> (resized)</span></figcaption></figure>
+        <figure><img src="images/heds/wrist-sign-marfan.jpg" alt="Positive wrist sign" loading="lazy" width="600"><figcaption>Arachnodactyly: positive Walker–Murdoch wrist sign (thumb and fifth finger overlap around the opposite wrist), here in Marfan syndrome. The criterion requires a bilateral wrist or thumb sign.<span class="attr">Photo: Staufenbiel I, et al. BMC Oral Health 2013;13:59 (<a href="https://doi.org/10.1186/1472-6831-13-59" target="_blank" rel="noopener">source</a>), <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a> (resized)</span></figcaption></figure>
+      </div>
+      <p><strong>Criterion 3: All of the following</strong></p>
+      <ul>
+        <li>No unusual skin, ocular, periodontal, vascular or visceral tissue fragility and no skeletal dysplasia (these suggest another EDS type).</li>
+        <li>Exclusion of other causes of hypermobility, based on history, examination and/or molecular testing: neuromuscular disorders, other heritable connective tissue disorders, skeletal dysplasias.</li>
+        <li>Rheumatologic disorders such as OA, SLE and RA can coexist with hEDS. The Feature C findings must be due to hEDS rather than to the co-occurring disorder.</li>
+      </ul>
+      <p style="font-size:13px;">Source: Hakim A. Hypermobile Ehlers-Danlos Syndrome. In: Adam MP, et al., eds. <em>GeneReviews®</em>. Seattle (WA): University of Washington; 2004 (updated 22 Feb 2024). <a href="https://www.ncbi.nlm.nih.gov/books/NBK1279/" target="_blank" rel="noopener">NBK1279</a>. Criteria from Malfait et al. 2017.</p>
+    </div>
+
+    <div class="subhead"><h3>How hEDS differs from classical EDS and vascular EDS</h3><span class="riskpill low">Differential diagnosis</span></div>
+    <p>Criterion 3 of the hEDS criteria asks the clinician to exclude other EDS types. The two most often considered are classical and vascular EDS. Both have a known molecular cause, so a suspected case should go to genetic testing rather than a clinical hEDS label. The table summarizes typical features; individual presentations vary and overlap.</p>
+    <div class="tbl-wrap cmp-tbl">
+      <table>
+        <thead><tr><th>Feature</th><th>Hypermobile (hEDS)</th><th>Classical (cEDS)</th><th>Vascular (vEDS)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Gene (inheritance)</strong></td><td><em>Unknown</em> (autosomal dominant pattern)</td><td><em>COL5A1</em> or <em>COL5A2</em>; rarely <em>COL1A1</em> (autosomal dominant)</td><td><em>COL3A1</em>; rarely <em>COL1A1</em> (autosomal dominant)</td></tr>
+          <tr><td><strong>Genetic test</strong></td><td>None available; clinical diagnosis using the 2017 criteria</td><td>Yes; molecular confirmation recommended</td><td>Yes; molecular confirmation recommended</td></tr>
+          <tr><td><strong>Skin</strong></td><td>Soft or velvety; at most mildly hyperextensible; scars usually mild</td><td>Markedly hyperextensible; wide atrophic (papyraceous) scars; molluscoid pseudotumours, subcutaneous spheroids; easy bruising</td><td>Thin, translucent skin with visible veins; extensive, easy bruising; not markedly hyperextensible</td></tr>
+          <tr><td><strong>Joints</strong></td><td>Generalized hypermobility (defining feature); subluxations, dislocations</td><td>Generalized hypermobility, often with complications</td><td>Hypermobility mostly in small joints (hands, feet)</td></tr>
+          <tr><td><strong>Main risks</strong></td><td>Chronic pain, fatigue, dysautonomia, functional GI symptoms; life expectancy generally not affected</td><td>Poor wound healing, wound dehiscence, hernias; mild aortic root dilation possible</td><td>Arterial dissection or rupture, bowel (often sigmoid) perforation, uterine rupture; pregnancy is high risk; reduced life expectancy</td></tr>
+          <tr><td><strong>Face</strong></td><td>No characteristic features</td><td>Not distinctive; epicanthal folds or scars on forehead or chin may be seen</td><td>May show thin lips and nose, prominent eyes, small chin, lobeless ears; often subtle or absent</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><div class="ctag"><i class="ti ti-alert-triangle"></i>When to suspect vascular EDS and refer for testing</div>Consider vEDS, and referral to genetics for <em>COL3A1</em> testing, with any of: arterial dissection, aneurysm or rupture at a young age (especially under 40) without an obvious cause; spontaneous sigmoid colon perforation; uterine rupture or severe vascular or obstetric complications in pregnancy; spontaneous pneumothorax with other suggestive signs; carotid–cavernous sinus fistula; thin translucent skin with extensive bruising; or a family history of sudden unexplained death from arterial or bowel rupture. Do not wait for typical facial features, which are often absent. Marked skin hyperextensibility with wide atrophic scars should prompt testing for classical EDS. Treat these as reasons for referral, not as a diagnosis.</div>
+    <p style="font-size:13px;">Sources: Hakim A. Hypermobile EDS. <em>GeneReviews®</em> (updated 2024), <a href="https://www.ncbi.nlm.nih.gov/books/NBK1279/" target="_blank" rel="noopener">NBK1279</a>. Bowen JM, et al. Classic EDS. <em>GeneReviews®</em>, <a href="https://www.ncbi.nlm.nih.gov/books/NBK1244/" target="_blank" rel="noopener">NBK1244</a>. Byers PH. Vascular EDS. <em>GeneReviews®</em>, <a href="https://www.ncbi.nlm.nih.gov/books/NBK1494/" target="_blank" rel="noopener">NBK1494</a>. Malfait F, et al. The 2017 international classification of the Ehlers–Danlos syndromes. <em>Am J Med Genet C Semin Med Genet</em>. 2017;175(1):8–26. <a href="https://doi.org/10.1002/ajmg.c.31552" target="_blank" rel="noopener">doi:10.1002/ajmg.c.31552</a>.</p>
+
+    <div class="subhead"><h3>The HEDGE study: what it has found so far</h3><span class="riskpill low">Research, not a test</span></div>
+    <p>HEDGE (Hypermobile Ehlers–Danlos Genetic Evaluation) is the Ehlers–Danlos Society’s study, launched in 2018 and run with the Broad Institute, the University of Illinois, Indiana University and the Hypermobility Biology Network. It used whole-genome sequencing on about 1,000 people with hEDS (confirmed by the 2017 criteria) and 45 with HSD from 86 countries. Each participant was compared with five ancestry-matched controls from the U.S. <em>All of Us</em> program. According to the Society’s 2025 update, fewer than 1% of participants had variants pointing to another connective tissue disorder (such as classical EDS, Marfan or Loeys–Dietz syndrome), which supports the clinical use of the 2017 criteria. No single gene explained hEDS or HSD. <em>MTHFR</em> showed no association. Rare <em>TNXB</em> variants were 3–5 times more common but still present in only about 1% of participants. <em>KLK15</em> variants were not more common than in controls. That last point qualifies a separate peer-reviewed family study from the Norris lab at MUSC (Gensemer et al., <em>iScience</em> 2025), which found a <em>KLK15</em> p.Gly226Asp variant segregating in two hEDS families and produced hEDS-like tendon and heart-valve changes in a knock-in mouse. Together, these results suggest <em>KLK15</em> may matter in some families but is not a common cause. The HEDGE results so far come from a society update and conference abstracts (ASHG 2024), with related findings in a medRxiv preprint (GWAS meta-analysis). None of them is fully peer-reviewed, and none provides a clinical genetic test for hEDS.</p>
+    <p style="font-size:13px;">Sources: The Ehlers–Danlos Society, <a href="https://www.ehlers-danlos.com/the-hedge-study/" target="_blank" rel="noopener">The HEDGE Study, 2025 update</a>. Gensemer C, et al. KLK15 alters connective tissues in hypermobile Ehlers-Danlos syndrome. <em>iScience</em>. 2025;28(9):113343. <a href="https://doi.org/10.1016/j.isci.2025.113343" target="_blank" rel="noopener">doi:10.1016/j.isci.2025.113343</a>.</p>
+
     <div class="subhead"><h3>The genetics of hEDS and HSD</h3><span class="riskpill low">Active research area</span></div>
     <div class="patient">
       <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
@@ -334,6 +413,47 @@
     </div>
   </section>
 
+  <!-- CCI -->
+  <section id="en-cci">
+    <div class="sec-head"><span class="sec-num"><i class="ti ti-bone"></i></span><h2>Cervical instability (craniocervical and atlantoaxial)</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
+      <p>The ligaments that hold the skull on the top of the spine, and the first two neck bones together, can be lax in EDS. In a small number of people this allows too much movement at the top of the neck, called craniocervical instability (CCI) or atlantoaxial instability (AAI). It can cause headaches at the back of the head, neck pain, dizziness and other symptoms that are often worse when upright or when moving the neck.</p>
+      <p>Most neck pain and headache in hEDS is not caused by instability. Diagnosing CCI is difficult and experts still disagree on how best to do it. Treatment starts with careful physiotherapy and protecting the neck. Surgery is considered only for a small number of people after specialist assessment.</p>
+    </div>
+    <p><strong>What it is.</strong> Ligamentous laxity at the atlanto-occipital and atlantoaxial joints can cause instability at the craniocervical junction. It is described in all forms of EDS and may coexist with Chiari malformation type I or basilar invagination. Motor delay, headache and quadriparesis have been attributed to it.<sup>1</sup> The 2017 classification does not include CCI among the hEDS criteria.<sup>2</sup></p>
+    <p><strong>Symptoms reported.</strong> Occipital or suboccipital headache (often positional, worse upright or with neck movement), neck pain, dizziness, tinnitus, visual disturbance, paresthesias or numbness, "brain fog", dysphagia, syncope or presyncope, and dysautonomia.<sup>3,4</sup> These symptoms are non-specific and overlap with migraine, POTS and other common features of hEDS.</p>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-alert-triangle"></i>Red flags: urgent assessment</div>
+      Seek urgent medical care for new or progressive limb weakness, change in gait or balance, new bowel or bladder dysfunction, drop attacks, difficulty swallowing or breathing, or signs of myelopathy (clumsy hands, spasticity, brisk reflexes). These suggest compression of the brainstem or spinal cord.
+    </div>
+    <div class="clinical-note">Workup</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Workup</span>A careful history and neurological examination come first; focal or reproducible deficits (weakness, ataxia, spasticity, bulbar signs) raise suspicion.<sup>3</sup></span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Workup</span>Static supine imaging can miss instability. Dynamic or positional imaging, such as flexion–extension MRI, upright MRI, or motion CT, is used where available.<sup>3,4</sup></span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Workup</span>Several measurements have been proposed, including the clivo-axial angle, the Grabb–Oakes measurement and the basion–dens interval. Consensus on diagnostic thresholds is limited, so no single measurement should be used alone.<sup>3,4</sup></span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Workup</span>Refer to a neurosurgeon or spine specialist experienced with connective tissue disorders when symptoms and examination are concordant.</span></li>
+    </ul>
+    <div class="clinical-note">Management</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Recommended</span>Conservative care first: physiotherapy focused on deep neck stabilization and posture, with pacing of activities that provoke symptoms.</span></li>
+      <li><i class="ti ti-circle-x"></i><span><span class="ck-label notrec">Avoid</span>High-velocity neck manipulation (for example chiropractic manipulation). Prior cervical manipulation is listed among historical features in patients referred for CCI.<sup>3</sup></span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>A collar for short periods during flares may help some people; prolonged use can weaken neck muscles. Some surgical centres use a time-limited collar trial as part of assessment.<sup>3</sup></span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Protect the neck during anesthesia, intubation and dental work: gentle airway management and neutral neck positioning. Cases of CCI after neck hyperextension during procedures have been reported.<sup>4</sup></span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Selected cases</span>Surgical stabilization (occipitocervical or atlantoaxial fusion) is considered only with clear imaging evidence of instability and concordant symptoms, after specialist assessment. Evidence comes mainly from retrospective case series.<sup>3</sup></span></li>
+    </ul>
+    <div class="emerging">
+      <div class="etag"><i class="ti ti-flask-2"></i>Evidence is limited and debated</div>
+      <p>The diagnosis and management of CCI in EDS remain controversial. There are no validated diagnostic criteria or clinical practice guidelines, and published data are mostly case series from specialist surgical centres. Expert groups have called for consensus criteria based on stronger evidence.<sup>1,3</sup></p>
+    </div>
+    <ol class="refs ui">
+      <li>Henderson FC Sr, Austin C, Benzel E, et al. Neurological and spinal manifestations of the Ehlers–Danlos syndromes. <em>Am J Med Genet C Semin Med Genet.</em> 2017;175(1):195–211. <a href="https://doi.org/10.1002/ajmg.c.31549" target="_blank" rel="noopener">doi:10.1002/ajmg.c.31549</a></li>
+      <li>Malfait F, Francomano C, Byers P, et al. The 2017 international classification of the Ehlers–Danlos syndromes. <em>Am J Med Genet C Semin Med Genet.</em> 2017;175(1):8–26. <a href="https://doi.org/10.1002/ajmg.c.31552" target="_blank" rel="noopener">doi:10.1002/ajmg.c.31552</a></li>
+      <li>Bloom AR, Biggins JB, Brodbelt A, et al. Surgical screening protocol for craniocervical instability secondary to Ehlers–Danlos syndrome and other connective tissue disorders: analysis of a 347 patient case series. <em>Neurosurg Rev.</em> 2026;49:270. <a href="https://doi.org/10.1007/s10143-026-04195-z" target="_blank" rel="noopener">doi:10.1007/s10143-026-04195-z</a></li>
+      <li>Lee C, Sutherland S, Chopra P. Craniocervical instability after inadvertent neck hyperextension in Ehlers–Danlos syndrome: a retrospective case series. <em>BMC Neurol.</em> 2026;26:291. <a href="https://doi.org/10.1186/s12883-026-04801-z" target="_blank" rel="noopener">doi:10.1186/s12883-026-04801-z</a></li>
+    </ol>
+  </section>
+
   <!-- 4 -->
   <section id="en-4">
     <div class="sec-head"><span class="sec-num">4</span><h2>Pain management</h2></div>
@@ -363,6 +483,37 @@
     </div>
   </section>
 
+  <!-- red light therapy -->
+  <section id="en-rlt">
+    <div class="sec-head"><span class="sec-num"><i class="ti ti-bulb"></i></span><h2>Red light therapy (photobiomodulation)</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>For you</div>
+      <p>Red light therapy, also called photobiomodulation, shines low-power red or near-infrared light on the skin. It does not heat or burn tissue. The light is absorbed by the energy-producing parts of cells (mitochondria), and lab and animal studies show it can calm inflammation. Some people use it for sore joints, fatigue, or sleep. It is a low-risk add-on worth trying if you are curious, but it has not been tested specifically in hEDS.</p>
+    </div>
+    <p><strong>Proposed mechanism.</strong> Red and near-infrared light is absorbed mainly by cytochrome c oxidase in mitochondria, increasing ATP, nitric oxide, and brief, signalling-level reactive oxygen species. In inflamed or oxidatively stressed tissue this is followed by lower inflammatory markers (prostaglandins, reactive nitrogen species, M1 macrophage markers). The dose response is biphasic: too little does nothing and too much can be inhibitory.<sup>1</sup></p>
+    <div class="emerging">
+      <div class="etag"><i class="ti ti-flask-2"></i>Evidence summary — adjunct only</div>
+      <p><strong>Inflammation and joint pain.</strong> Anti-inflammatory effects are among the most reproducible findings in cell and animal work.<sup>1</sup> In people, a systematic review of 11 RCTs (565 patients) in chronic joint disorders found clinically meaningful pain reduction when adequate doses were applied to the joint capsule, though the trials were heterogeneous.<sup>2</sup></p>
+      <p><strong>Fatigue and widespread pain.</strong> No trials in ME/CFS were found. In fibromyalgia, a meta-analysis of 9 small RCTs (325 patients) found improvements in pain, tender points, fatigue, and stiffness versus sham laser, but no added benefit over a structured exercise program alone.<sup>3</sup></p>
+      <p><strong>Sleep.</strong> A small study of 20 elite female athletes found that 30 minutes of whole-body red light nightly for 14 days improved sleep quality scores and melatonin levels.<sup>4</sup> A 2026 meta-analysis of 5 RCTs (240 participants) found a modest improvement in sleep quality with wide confidence intervals.<sup>5</sup></p>
+      <p><strong>hEDS/HSD.</strong> There are no clinical trials of photobiomodulation in hEDS or HSD. Any benefit is extrapolated from joint-pain, fibromyalgia, and sleep studies.</p>
+    </div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Consider as a low-risk adjunct for joint pain, fatigue, or sleep, alongside physiotherapy and standard care, not instead of it.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Sleep tip: use red light in the evening instead of bright or blue light, as part of a wind-down routine. More practical sleep advice on <a href="https://andrewshuen.substack.com/" target="_blank" rel="noopener">Dr. Shuen's Substack</a>.</span></li>
+<li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>If you want a home device: SaunaSpace red and near-infrared light products, via Dr. Shuen's <a href="https://sauna.space/DRSHUEN" target="_blank" rel="noopener">referral link</a> (Dr. Shuen may receive a referral benefit).</span></li>
+      <li><i class="ti ti-circle-x"></i><span><span class="ck-label notrec">Caution</span>Protect your eyes: do not look into the light, and wear the supplied goggles with high-power panels or near-infrared devices.</span></li>
+      <li><i class="ti ti-circle-x"></i><span><span class="ck-label notrec">Caution</span>Check with your clinician first if you take photosensitising medicines (for example some antibiotics such as doxycycline, isotretinoin, amiodarone, or St John's wort), have a photosensitive condition, or have a cancer or suspicious lesion in the treated area.</span></li>
+    </ul>
+    <ol class="refs ui">
+      <li>Hamblin MR. Mechanisms and applications of the anti-inflammatory effects of photobiomodulation. <em>AIMS Biophys.</em> 2017;4(3):337–361. <a href="https://pubmed.ncbi.nlm.nih.gov/28748217/" target="_blank" rel="noopener">PMID 28748217</a></li>
+      <li>Bjordal JM, Couppé C, Chow RT, Tunér J, Ljunggren EA. A systematic review of low level laser therapy with location-specific doses for pain from chronic joint disorders. <em>Aust J Physiother.</em> 2003;49(2):107–116. <a href="https://pubmed.ncbi.nlm.nih.gov/12775206/" target="_blank" rel="noopener">PMID 12775206</a></li>
+      <li>Yeh SW, Hong CH, Shih MC, et al. Low-level laser therapy for fibromyalgia: a systematic review and meta-analysis. <em>Pain Physician.</em> 2019;22(3):241–254. <a href="https://pubmed.ncbi.nlm.nih.gov/31151332/" target="_blank" rel="noopener">PMID 31151332</a></li>
+      <li>Zhao J, Tian Y, Nie J, Xu J, Liu D. Red light and the sleep quality and endurance performance of Chinese female basketball players. <em>J Athl Train.</em> 2012;47(6):673–678. <a href="https://pubmed.ncbi.nlm.nih.gov/23182016/" target="_blank" rel="noopener">PMID 23182016</a></li>
+      <li>Vital de Azevedo WM, de Souza K, Defante ML, et al. Photobiomodulation and sleep quality: systematic review and meta-analysis. <em>Lasers Med Sci.</em> 2026;41(1):122. <a href="https://pubmed.ncbi.nlm.nih.gov/42322437/" target="_blank" rel="noopener">PMID 42322437</a></li>
+    </ol>
+  </section>
+
   <!-- 5 -->
   <section id="en-5">
     <div class="sec-head"><span class="sec-num">5</span><h2>Bone health and osteoporosis</h2></div>
@@ -372,8 +523,10 @@
     </div>
     <ul class="checklist ui">
       <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Optimize vitamin D and dietary calcium; supplement to correct documented deficiency.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Vitamin K2 (MK-7) 500 mcg daily alongside vitamin D, to support bone health. <strong>What it does:</strong> K2 activates osteocalcin, a protein that helps lock calcium into the bone matrix, and matrix Gla protein, which helps keep calcium out of arteries and soft tissue. Vitamin D increases calcium absorption; K2 helps direct that calcium to bone. Trial results for fracture prevention are mixed, so it is an add-on, not a replacement for exercise, vitamin D and calcium. <strong>Food sources:</strong> natto (fermented soybeans) is by far the richest source of K2; smaller amounts are found in hard and aged cheeses, egg yolks and other fermented foods. Avoid if taking warfarin or another vitamin K antagonist unless your prescriber approves.</span></li>
       <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Routine</span>Encourage regular low-impact weight-bearing activity within joint-protective limits.</span></li>
       <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>DXA bone densitometry where risk factors are present: low activity, prior fragility fracture, corticosteroid exposure, or other osteoporosis risks. There is no hEDS-specific screening schedule; individualize. Repeat interval guided by baseline result and standard osteoporosis guidance.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>REMS (Radiofrequency Echographic Multi-Spectrometry) as an alternative option alongside DXA: a radiation-free, ultrasound-based measurement of bone mineral density at the hip and spine, approved by Health Canada and available in Ontario through <a href="https://www.osteosound.ca/" target="_blank" rel="noopener">Osteosound</a> (<a href="https://www.osteosound.ca/remsontheroad" target="_blank" rel="noopener">locations</a>, <a href="https://osteoceomobile1.clinicsense.com/" target="_blank" rel="noopener">booking</a>). Share the report with your clinician; DXA remains the standard reference test.</span></li>
       <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Pharmacologic osteoporosis therapy per standard guidelines if DXA and fracture-risk assessment warrant.</span></li>
     </ul>
     <p>The evidence linking hEDS to reduced bone mineral density is observational and likely multifactorial (connective tissue effects on bone matrix, deconditioning, reduced loading). Treat bone health as you would in any patient with elevated risk factors, with a lower threshold for baseline DXA given the activity limitations hEDS imposes.</p>
@@ -433,8 +586,20 @@
     <div class="clinical-note">Mast cell activation</div>
     <ul class="checklist ui">
       <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Consider MCAS in patients with the POTS+hEDS cluster who have flushing, urticaria, allergic-type or GI symptoms. A trial of H1/H2 antihistamines is low-risk and can be diagnostic-therapeutic.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Ketotifen is an option when antihistamines alone are not enough. It is both a mast cell stabilizer and an H1 antihistamine, and its use in MCAS is off-label. In Canada, oral ketotifen (Zaditen) has limited availability and may need to be compounded. Common side effects are drowsiness and weight gain. It should be started and adjusted only by the patient's own physician. <span style="font-size:13px;">Sources: Molderings GJ, et al. <em>J Hematol Oncol.</em> 2011;4:10 (<a href="https://doi.org/10.1186/1756-8722-4-10" target="_blank" rel="noopener">doi</a>); Molderings GJ, et al. <em>Naunyn Schmiedebergs Arch Pharmacol.</em> 2016;389(7):671–694 (<a href="https://doi.org/10.1007/s00210-016-1247-1" target="_blank" rel="noopener">doi</a>).</span></span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Aspirin blocks production of prostaglandin D2 and can reduce flushing.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Montelukast and zafirlukast block the effects of leukotriene C4 (LTC4), and zileuton blocks LTC4 production, so these can reduce wheezing and abdominal cramping.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Corticosteroids are helpful for edema, hives and wheezing but should only be used as a last resort.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Omalizumab (which blocks binding of IgE to its receptors) has been reported to reduce mast cell reactivity and sensitivity to activation, which can reduce anaphylactic episodes.</span></li>
       <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optional</span>Formal MCAS workup (serum tryptase, mediator testing) where symptoms are significant; refer to allergy/immunology. Diagnostic criteria remain debated.</span></li>
     </ul>
+    <div class="clinical-note">Mast cell activation: diagnosis and workup</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Workup</span><strong>Consensus criteria.</strong> All three are needed: (1) typical, recurrent (episodic) symptoms of systemic mast cell activation involving at least 2 organ systems; (2) laboratory evidence of mast cell mediator release; (3) response of symptoms to mast-cell-directed therapy (H1/H2 blockers, mast cell stabilizers, or drugs that block mediator production or effects).</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Workup</span><strong>Serum tryptase.</strong> Draw an acute level within about 1–4 hours after the onset of a symptomatic episode, and compare it with the person's baseline, measured at least 24–48 hours after all symptoms have fully resolved. A rise to more than baseline + 20% + 2 ng/mL supports the diagnosis (e.g. baseline 5 ng/mL: an acute level above 8 ng/mL).</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Workup</span><strong>Urine mediators.</strong> When tryptase is unavailable or inconclusive, 24-hour urine tests can help: histamine metabolites (N-methylhistamine), the prostaglandin D2 metabolite 11β-prostaglandin F2α, and the leukotriene metabolite leukotriene E4. Collect during or shortly after an episode and compare with a baseline. These markers are less specific for mast cell activation than tryptase.</span></li>
+    </ul>
+    <p style="font-size:13px;">Sources: Valent P, et al. <em>Int Arch Allergy Immunol.</em> 2012;157(3):215–225 (<a href="https://doi.org/10.1159/000328760" target="_blank" rel="noopener">doi</a>); Valent P, et al. <em>J Allergy Clin Immunol Pract.</em> 2019;7(4):1125–1133.e1 (<a href="https://doi.org/10.1016/j.jaip.2019.01.006" target="_blank" rel="noopener">doi</a>).</p>
     <div class="infobox">
       <div class="itag"><i class="ti ti-link"></i>The "trifecta"</div>
       <p>hEDS, POTS, and MCAS co-occur far more than chance. In patients with both POTS and hEDS, reported MCAS prevalence is substantially higher than in hEDS without POTS. The proposed shared mechanism involves connective tissue, autonomic, and mast cell interplay. Practically: when one is present, screen for the other two.</p>
@@ -605,6 +770,18 @@
     </div>
   </section>
 
+  <!-- patient resources -->
+  <section id="en-resources">
+    <div class="sec-head"><span class="sec-num"><i class="ti ti-heart-handshake"></i></span><h2>Clinics &amp; resources for patients</h2></div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-map-pin"></i><span><strong>MEND-CO Physiotherapy</strong> (Toronto, ON; in person and virtual): a multidisciplinary team of Registered Physiotherapists and Dietitians focused on Hypermobility Spectrum Disorders and Ehlers-Danlos syndromes; no confirmed diagnosis needed. <a href="https://www.mend-cophysiotherapy.ca/" target="_blank" rel="noopener">Website</a> · <a href="https://mendcophysiotherapy.noterro.com/" target="_blank" rel="noopener">Book online (in person or telehealth)</a> · Founder: <a href="https://www.linkedin.com/in/laura-lopez-hernandez-b312b43b1/" target="_blank" rel="noopener">Laura Lopez Hernandez</a></span></li>
+      <li><i class="ti ti-map-pin"></i><span><strong>GoodHope Ehlers-Danlos Syndrome Clinic</strong>, Toronto General Hospital (UHN): multidisciplinary program that diagnoses and supports EDS and G-HSD; Ontario residents, referral by a primary care clinician. <a href="https://www.edsgoodhope.ca/" target="_blank" rel="noopener">edsgoodhope.ca</a> · <a href="https://www.edsgoodhope.ca/for-patients-families" target="_blank" rel="noopener">For patients &amp; families</a></span></li>
+      <li><i class="ti ti-map-pin"></i><span><strong>RQMO (Regroupement québécois des maladies orphelines)</strong>: Québec rare-disease network with a French-language page on EDS and hypermobility, care pathways, and Québec resources. <a href="https://rqmo.org/les-syndromes-dehlers-danlos-et-hypermobilite/" target="_blank" rel="noopener">EDS &amp; hypermobility page</a></span></li>
+      <li><i class="ti ti-map-pin"></i><span><strong>EDS Canada Foundation</strong>: Canadian charity for people with EDS/HSD and chronic pain, offering support services, virtual drop-ins, and education. <a href="https://edscanada.org/" target="_blank" rel="noopener">edscanada.org</a></span></li>
+      <li><i class="ti ti-map-pin"></i><span><strong>The Ehlers-Danlos Society</strong>: international patient and research organization with education, support groups, and a healthcare professionals directory. <a href="https://www.ehlers-danlos.com/" target="_blank" rel="noopener">ehlers-danlos.com</a> · <a href="https://www.ehlers-danlos.com/healthcare-professionals-directory/" target="_blank" rel="noopener">Find a professional</a></span></li>
+    </ul>
+  </section>
+
   <!-- 14 -->
   <section id="en-14">
     <div class="sec-head"><span class="sec-num">14</span><h2>References</h2></div>
@@ -623,6 +800,8 @@
       <li>The Ehlers–Danlos Society. hEDS/HSD Criteria Review Study (international consensus, in progress). Accessed 2026.</li>
       <li>Norris Q, Laukaitis C, Subramanian DN, et al. Complex genetics and regulatory drivers of hypermobile Ehlers–Danlos syndrome: insights from a genome-wide association study meta-analysis. <em>medRxiv</em> (preprint). 2025. doi:10.1101/2025.09.19.25336146.</li>
       <li>The Ehlers–Danlos Society. The HEDGE Study (Hypermobile EDS Genetic Evaluation): ASHG abstracts 2024; first publications from 2025.</li>
+      <li>Hakim A. Hypermobile Ehlers-Danlos Syndrome. In: Adam MP, et al., eds. <em>GeneReviews®</em>. University of Washington, Seattle; 2004, updated 22 Feb 2024. <a href="https://www.ncbi.nlm.nih.gov/books/NBK1279/" target="_blank" rel="noopener">NBK1279</a>.</li>
+      <li>Gensemer C, Petrucci T, Beck T, et al. KLK15 alters connective tissues in hypermobile Ehlers-Danlos syndrome. <em>iScience.</em> 2025;28(9):113343. <a href="https://doi.org/10.1016/j.isci.2025.113343" target="_blank" rel="noopener">doi:10.1016/j.isci.2025.113343</a>.</li>
       <li>Forghani I, See J, et al. Hypermobile Ehlers–Danlos syndrome: diagnostic challenges and the role of genetic testing. <em>Genes (Basel).</em> 2025;16(5):530.</li>
     </ol>
   </section>
@@ -710,6 +889,74 @@
     </div>
     <p>Une révision des critères diagnostiques est attendue, l'étude internationale de révision des critères SEDh/TSH de la Ehlers–Danlos Society devant publier ses résultats. Les changements anticipés comprennent une évaluation articulaire plus large que le score de Beighton et une intégration plus formelle des comorbidités systémiques comme la dysautonomie et la dysfonction digestive, ce qui pourrait aussi déplacer la frontière entre le SEDh et le TSH. Jusqu'à publication, les critères 2017 demeurent la norme.</p>
 
+    <div class="infobox">
+      <div class="itag"><i class="ti ti-list-check"></i>Selon GeneReviews : critères diagnostiques 2017 du SEDh</div>
+      <p>Le résumé ci-dessus paraphrase ces critères. GeneReviews (Hakim, mis à jour le 22 février 2024) les présente en entier. Les trois critères sont requis chez un adulte ayant atteint la maturité biologique :</p>
+      <p><strong>Critère 1 : hypermobilité articulaire généralisée (score de Beighton)</strong></p>
+      <ul>
+        <li>≥5/9 chez les adolescents ayant atteint la maturité biologique et les adultes de 50 ans ou moins; ≥4/9 après 50 ans.</li>
+        <li>Un point chacun (gauche et droite) : dorsiflexion passive de la MCP du 5<sup>e</sup> doigt &gt;90°; pouce sur la face fléchisseuse de l'avant-bras; hyperextension du coude &gt;10°; hyperextension du genou &gt;10°; plus un point pour les paumes à plat au sol, genoux tendus.</li>
+        <li>En cas de perte acquise de mobilité articulaire, un score inférieur d'un point au seuil suffit si au moins 2 des 5 réponses au questionnaire en cinq points (5PQ) sont positives : mains à plat au sol (maintenant ou autrefois); pouce sur l'avant-bras (maintenant ou autrefois); contorsions ou grand écart dans l'enfance; luxation de l'épaule ou de la rotule plus d'une fois dans l'enfance ou l'adolescence; se dit « désarticulé ». Si le score est inférieur au seuil d'au moins 2 points, évaluer d'autres articulations (épaules, hanches, chevilles, orteils) au-delà du score de Beighton.</li>
+      </ul>
+      <p><strong>Critère 2 : au moins deux des caractéristiques A, B, C</strong></p>
+      <ul>
+        <li><strong>Caractéristique A</strong> : ≥5 des 12 signes systémiques suivants :
+          <ul>
+            <li>peau inhabituellement douce ou veloutée</li>
+            <li>légère hyperextensibilité cutanée</li>
+            <li>vergetures inexpliquées</li>
+            <li>papules piézogéniques bilatérales du talon</li>
+            <li>hernies abdominales récidivantes ou multiples</li>
+            <li>cicatrices atrophiques à ≥2 sites</li>
+            <li>prolapsus pelvien, rectal ou utérin sans cause prédisposante (chez l'enfant, l'homme ou la femme nullipare)</li>
+            <li>chevauchement dentaire <em>et</em> palais haut ou étroit</li>
+            <li>arachnodactylie (signe du poignet ou du pouce bilatéral)</li>
+            <li>rapport envergure/taille ≥1,05</li>
+            <li>prolapsus de la valve mitrale</li>
+            <li>dilatation de la racine aortique (score Z &gt;+2)</li>
+          </ul>
+        </li>
+        <li><strong>Caractéristique B</strong> : au moins un parent au premier degré qui satisfait indépendamment aux critères actuels du SEDh.</li>
+        <li><strong>Caractéristique C</strong> : au moins une complication musculosquelettique parmi les suivantes : douleur dans au moins 2 membres, quotidienne depuis ≥3 mois; douleur chronique diffuse depuis ≥3 mois; luxations atraumatiques récidivantes (≥3 dans une même articulation, ou ≥2 dans deux articulations différentes à des moments distincts) ou instabilité atraumatique confirmée médicalement à ≥2 sites.</li>
+      </ul>
+      <div class="figgrid">
+        <figure><img src="images/heds/skin-hyperextensibility.jpg" alt="Hyperextensibilité cutanée" loading="lazy" width="600"><figcaption>Hyperextensibilité cutanée : peau étirée de l'avant-bras chez une personne atteinte de SED. Dans le SEDh, elle est légère; un étirement marqué évoque un SED classique.<span class="attr">Photo: Piotr Dołżonek, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Ehlers-Danlos_syndrome4.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>
+        <figure><img src="images/heds/piezogenic-papules.jpg" alt="Papules piézogéniques du talon" loading="lazy" width="600"><figcaption>Papules piézogéniques : hernies graisseuses du talon, mieux visibles en position debout, chez une personne atteinte de SEDh.<span class="attr">Photo: Audrey Effenberger, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Piezogenic_papules.jpg" target="_blank" rel="noopener">Wikimedia Commons</a> (resized)</span></figcaption></figure>
+        <figure><img src="images/heds/atrophic-scar.jpg" alt="Cicatrice atrophique dans le SED" loading="lazy" width="600"><figcaption>Cicatrices atrophiques : cicatrice large, mince et atrophique. Des cicatrices larges et papyracées orientent plutôt vers le SED classique; dans le SEDh, elles sont habituellement plus discrètes.<span class="attr">Photo: B. Amichai &amp; A. Zalewska (ISRN Dermatol 2012), <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Atrophic_scar_of_Ehlers_Danlos_syndrome.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></span></figcaption></figure>
+        <figure><img src="images/heds/high-palate-marfan.jpg" alt="Palais haut et chevauchement dentaire" loading="lazy" width="600"><figcaption>Chevauchement dentaire et palais haut : vues occlusales (A) du maxillaire et (B) de la mandibule, ici dans le syndrome de Marfan. Le critère exige les deux signes.<span class="attr">Photo: Staufenbiel I, et al. BMC Oral Health 2013;13:59 (<a href="https://doi.org/10.1186/1472-6831-13-59" target="_blank" rel="noopener">source</a>), <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a> (resized)</span></figcaption></figure>
+        <figure><img src="images/heds/wrist-sign-marfan.jpg" alt="Signe du poignet positif" loading="lazy" width="600"><figcaption>Arachnodactylie : signe du poignet de Walker–Murdoch positif (le pouce et l'auriculaire se chevauchent autour du poignet opposé), ici dans le syndrome de Marfan. Le critère exige un signe du poignet ou du pouce bilatéral.<span class="attr">Photo: Staufenbiel I, et al. BMC Oral Health 2013;13:59 (<a href="https://doi.org/10.1186/1472-6831-13-59" target="_blank" rel="noopener">source</a>), <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a> (resized)</span></figcaption></figure>
+      </div>
+      <p><strong>Critère 3 : toutes les conditions suivantes</strong></p>
+      <ul>
+        <li>Absence de fragilité tissulaire inhabituelle (cutanée, oculaire, parodontale, vasculaire ou viscérale) et absence de dysplasie squelettique (ces signes évoquent un autre type de SED).</li>
+        <li>Exclusion des autres causes d'hypermobilité, selon l'anamnèse, l'examen et/ou les tests moléculaires : troubles neuromusculaires, autres troubles héréditaires du tissu conjonctif, dysplasies squelettiques.</li>
+        <li>Les maladies rhumatologiques comme l'arthrose, le lupus et la polyarthrite rhumatoïde peuvent coexister avec le SEDh. Les signes de la caractéristique C doivent alors être attribuables au SEDh plutôt qu'à la maladie concomitante.</li>
+      </ul>
+      <p style="font-size:13px;">Source : Hakim A. Hypermobile Ehlers-Danlos Syndrome. Dans : Adam MP, et al., éd. <em>GeneReviews®</em>. Seattle (WA) : University of Washington; 2004 (mis à jour le 22 février 2024). <a href="https://www.ncbi.nlm.nih.gov/books/NBK1279/" target="_blank" rel="noopener">NBK1279</a>. Critères tirés de Malfait et al. 2017.</p>
+    </div>
+
+    <div class="subhead"><h3>En quoi le SEDh diffère du SED classique et du SED vasculaire</h3><span class="riskpill low">Diagnostic différentiel</span></div>
+    <p>Le critère 3 du SEDh demande d'exclure les autres types de SED. Les deux le plus souvent envisagés sont le SED classique et le SED vasculaire. Les deux ont une cause moléculaire connue : un cas suspect doit donc être orienté vers un test génétique plutôt que recevoir un diagnostic clinique de SEDh. Le tableau résume les signes typiques; les présentations varient et se chevauchent.</p>
+    <div class="tbl-wrap cmp-tbl">
+      <table>
+        <thead><tr><th>Caractéristique</th><th>Hypermobile (SEDh)</th><th>Classique (SEDc)</th><th>Vasculaire (SEDv)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Gène (transmission)</strong></td><td><em>Inconnu</em> (transmission de type autosomique dominant)</td><td><em>COL5A1</em> ou <em>COL5A2</em>; rarement <em>COL1A1</em> (autosomique dominant)</td><td><em>COL3A1</em>; rarement <em>COL1A1</em> (autosomique dominant)</td></tr>
+          <tr><td><strong>Test génétique</strong></td><td>Aucun disponible; diagnostic clinique selon les critères de 2017</td><td>Oui; confirmation moléculaire recommandée</td><td>Oui; confirmation moléculaire recommandée</td></tr>
+          <tr><td><strong>Peau</strong></td><td>Douce ou veloutée; au plus légèrement hyperextensible; cicatrices habituellement discrètes</td><td>Nettement hyperextensible; cicatrices atrophiques larges (papyracées); pseudotumeurs molluscoïdes, sphéroïdes sous-cutanés; ecchymoses faciles</td><td>Peau mince et translucide, veines visibles; ecchymoses étendues et faciles; peu hyperextensible</td></tr>
+          <tr><td><strong>Articulations</strong></td><td>Hypermobilité généralisée (signe définissant); subluxations, luxations</td><td>Hypermobilité généralisée, souvent compliquée</td><td>Hypermobilité surtout des petites articulations (mains, pieds)</td></tr>
+          <tr><td><strong>Risques principaux</strong></td><td>Douleur chronique, fatigue, dysautonomie, symptômes digestifs fonctionnels; espérance de vie généralement non touchée</td><td>Mauvaise cicatrisation, déhiscence des plaies, hernies; légère dilatation de la racine aortique possible</td><td>Dissection ou rupture artérielle, perforation intestinale (souvent sigmoïde), rupture utérine; grossesse à haut risque; espérance de vie réduite</td></tr>
+          <tr><td><strong>Visage</strong></td><td>Aucun trait caractéristique</td><td>Non distinctif; replis épicanthiques ou cicatrices du front ou du menton possibles</td><td>Lèvres et nez fins, yeux proéminents, petit menton, lobes d'oreille absents possibles; souvent discrets ou absents</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><div class="ctag"><i class="ti ti-alert-triangle"></i>Quand soupçonner un SED vasculaire et orienter vers un test</div>Envisager un SEDv, et une orientation en génétique pour un test <em>COL3A1</em>, devant l'un des éléments suivants : dissection, anévrisme ou rupture artérielle à un jeune âge (surtout avant 40 ans) sans cause évidente; perforation spontanée du côlon sigmoïde; rupture utérine ou complications vasculaires ou obstétricales graves pendant la grossesse; pneumothorax spontané avec d'autres signes évocateurs; fistule carotido-caverneuse; peau mince et translucide avec ecchymoses étendues; ou antécédents familiaux de mort subite inexpliquée par rupture artérielle ou intestinale. Ne pas attendre les traits faciaux typiques, souvent absents. Une hyperextensibilité cutanée marquée avec des cicatrices atrophiques larges doit faire rechercher un SED classique. Ces éléments justifient une orientation, pas un diagnostic.</div>
+    <p style="font-size:13px;">Sources : Hakim A. Hypermobile EDS. <em>GeneReviews®</em> (mis à jour en 2024), <a href="https://www.ncbi.nlm.nih.gov/books/NBK1279/" target="_blank" rel="noopener">NBK1279</a>. Bowen JM, et al. Classic EDS. <em>GeneReviews®</em>, <a href="https://www.ncbi.nlm.nih.gov/books/NBK1244/" target="_blank" rel="noopener">NBK1244</a>. Byers PH. Vascular EDS. <em>GeneReviews®</em>, <a href="https://www.ncbi.nlm.nih.gov/books/NBK1494/" target="_blank" rel="noopener">NBK1494</a>. Malfait F, et al. The 2017 international classification of the Ehlers–Danlos syndromes. <em>Am J Med Genet C Semin Med Genet</em>. 2017;175(1):8–26. <a href="https://doi.org/10.1002/ajmg.c.31552" target="_blank" rel="noopener">doi:10.1002/ajmg.c.31552</a>.</p>
+
+    <div class="subhead"><h3>L'étude HEDGE : ce qu'elle a trouvé jusqu'ici</h3><span class="riskpill low">Recherche, pas un test</span></div>
+    <p>HEDGE (Hypermobile Ehlers–Danlos Genetic Evaluation) est l'étude de la Ehlers–Danlos Society, lancée en 2018 et menée avec le Broad Institute, l'Université de l'Illinois, l'Université de l'Indiana et le Hypermobility Biology Network. Elle a séquencé le génome complet d'environ 1 000 personnes atteintes du SEDh (confirmé selon les critères 2017) et de 45 personnes atteintes du TSH, provenant de 86 pays. Chaque participant a été comparé à cinq témoins d'ascendance appariée tirés du programme américain <em>All of Us</em>. Selon la mise à jour 2025 de la Société, moins de 1 % des participants portaient des variants évoquant un autre trouble du tissu conjonctif (comme le SED classique, le syndrome de Marfan ou de Loeys–Dietz), ce qui appuie l'utilisation clinique des critères 2017. Aucun gène unique n'expliquait le SEDh ni le TSH. <em>MTHFR</em> ne montrait aucune association. Les variants rares de <em>TNXB</em> étaient 3 à 5 fois plus fréquents, mais présents chez environ 1 % seulement des participants. Les variants de <em>KLK15</em> n'étaient pas plus fréquents que chez les témoins. Ce dernier point nuance une étude familiale distincte du laboratoire Norris (MUSC), révisée par les pairs (Gensemer et al., <em>iScience</em> 2025). Celle-ci avait trouvé un variant <em>KLK15</em> p.Gly226Asp ségrégeant dans deux familles atteintes du SEDh et reproduit des atteintes des tendons et des valves cardiaques semblables au SEDh chez une souris knock-in. Ensemble, ces résultats suggèrent que <em>KLK15</em> pourrait jouer un rôle dans certaines familles, sans être une cause fréquente. Les résultats de HEDGE proviennent jusqu'ici d'une mise à jour de la Société et de résumés de congrès (ASHG 2024), avec des résultats connexes dans une prépublication medRxiv (méta-analyse GWAS). Aucun n'est encore entièrement révisé par les pairs, et aucun ne fournit de test génétique clinique pour le SEDh.</p>
+    <p style="font-size:13px;">Sources : The Ehlers–Danlos Society, <a href="https://www.ehlers-danlos.com/the-hedge-study/" target="_blank" rel="noopener">The HEDGE Study, mise à jour 2025</a>. Gensemer C, et al. KLK15 alters connective tissues in hypermobile Ehlers-Danlos syndrome. <em>iScience</em>. 2025;28(9):113343. <a href="https://doi.org/10.1016/j.isci.2025.113343" target="_blank" rel="noopener">doi:10.1016/j.isci.2025.113343</a>.</p>
+
     <div class="subhead"><h3>La génétique du SEDh et du TSH</h3><span class="riskpill low">Domaine de recherche actif</span></div>
     <div class="patient">
       <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
@@ -773,6 +1020,47 @@
     </div>
   </section>
 
+  <!-- CCI -->
+  <section id="fr-cci">
+    <div class="sec-head"><span class="sec-num"><i class="ti ti-bone"></i></span><h2>Instabilité cervicale (craniocervicale et atlanto-axiale)</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
+      <p>Les ligaments qui maintiennent le crâne sur le haut de la colonne, et les deux premières vertèbres du cou entre elles, peuvent être lâches dans le SED. Chez un petit nombre de personnes, cela permet trop de mouvement en haut du cou : on parle d'instabilité craniocervicale (ICC) ou d'instabilité atlanto-axiale (IAA). Elle peut causer des maux de tête à l'arrière de la tête, des douleurs au cou, des étourdissements et d'autres symptômes, souvent pires en position debout ou lors des mouvements du cou.</p>
+      <p>La plupart des douleurs au cou et des maux de tête dans le SEDh ne sont pas dus à une instabilité. Le diagnostic d'ICC est difficile et les experts ne s'entendent pas encore sur la meilleure façon de le poser. Le traitement commence par une physiothérapie prudente et la protection du cou. La chirurgie n'est envisagée que chez un petit nombre de personnes, après une évaluation spécialisée.</p>
+    </div>
+    <p><strong>Définition.</strong> La laxité ligamentaire des articulations atlanto-occipitale et atlanto-axiale peut entraîner une instabilité de la jonction craniocervicale. Elle est décrite dans toutes les formes de SED et peut coexister avec une malformation de Chiari de type I ou une impression basilaire. Un retard moteur, des céphalées et une quadriparésie y ont été attribués.<sup>1</sup> La classification de 2017 n'inclut pas l'ICC parmi les critères du SEDh.<sup>2</sup></p>
+    <p><strong>Symptômes rapportés.</strong> Céphalée occipitale ou sous-occipitale (souvent positionnelle, pire debout ou lors des mouvements du cou), douleur cervicale, étourdissements, acouphènes, troubles visuels, paresthésies ou engourdissements, « brouillard cérébral », dysphagie, syncope ou présyncope et dysautonomie.<sup>3,4</sup> Ces symptômes ne sont pas spécifiques et chevauchent la migraine, le SThPO et d'autres manifestations fréquentes du SEDh.</p>
+    <div class="callout">
+      <div class="ctag"><i class="ti ti-alert-triangle"></i>Signaux d'alarme : évaluation urgente</div>
+      Consulter d'urgence en cas de faiblesse nouvelle ou progressive d'un membre, de changement de la marche ou de l'équilibre, de nouveau trouble intestinal ou vésical, de chutes brusques (« drop attacks »), de difficulté à avaler ou à respirer, ou de signes de myélopathie (mains malhabiles, spasticité, réflexes vifs). Ces signes évoquent une compression du tronc cérébral ou de la moelle épinière.
+    </div>
+    <div class="clinical-note">Bilan</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Bilan</span>Une anamnèse et un examen neurologique soigneux viennent en premier; des déficits focaux ou reproductibles (faiblesse, ataxie, spasticité, signes bulbaires) augmentent la suspicion.<sup>3</sup></span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Bilan</span>L'imagerie statique en décubitus peut manquer une instabilité. L'imagerie dynamique ou positionnelle, comme l'IRM en flexion–extension, l'IRM debout ou la TDM dynamique, est utilisée lorsqu'elle est disponible.<sup>3,4</sup></span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Bilan</span>Plusieurs mesures ont été proposées, dont l'angle clivo-axial, la mesure de Grabb–Oakes et l'intervalle basion–dent. Le consensus sur les seuils diagnostiques est limité; aucune mesure ne devrait être utilisée seule.<sup>3,4</sup></span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Bilan</span>Orienter vers un neurochirurgien ou un spécialiste du rachis expérimenté avec les maladies du tissu conjonctif lorsque les symptômes et l'examen concordent.</span></li>
+    </ul>
+    <div class="clinical-note">Prise en charge</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Recommandé</span>Traitement conservateur d'abord : physiothérapie axée sur la stabilisation cervicale profonde et la posture, avec gestion des activités qui provoquent les symptômes.</span></li>
+      <li><i class="ti ti-circle-x"></i><span><span class="ck-label notrec">À éviter</span>Les manipulations cervicales à haute vélocité (par exemple les manipulations chiropratiques). Une manipulation cervicale antérieure figure parmi les éléments d'anamnèse chez les patients orientés pour une ICC.<sup>3</sup></span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Un collier pour de courtes périodes lors des poussées peut aider certaines personnes; un usage prolongé peut affaiblir les muscles du cou. Certains centres chirurgicaux utilisent un essai de collier limité dans le temps dans le cadre de l'évaluation.<sup>3</sup></span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Protéger le cou lors d'une anesthésie, d'une intubation ou de soins dentaires : prise en charge douce des voies aériennes et position neutre du cou. Des cas d'ICC après une hyperextension du cou lors d'interventions ont été rapportés.<sup>4</sup></span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Cas choisis</span>La stabilisation chirurgicale (arthrodèse occipito-cervicale ou atlanto-axiale) n'est envisagée qu'en présence d'une preuve d'instabilité claire à l'imagerie et de symptômes concordants, après évaluation spécialisée. Les données proviennent surtout de séries de cas rétrospectives.<sup>3</sup></span></li>
+    </ul>
+    <div class="emerging">
+      <div class="etag"><i class="ti ti-flask-2"></i>Données limitées et débattues</div>
+      <p>Le diagnostic et la prise en charge de l'ICC dans le SED demeurent controversés. Il n'existe ni critères diagnostiques validés ni lignes directrices de pratique clinique, et les données publiées sont surtout des séries de cas de centres chirurgicaux spécialisés. Des groupes d'experts ont demandé des critères consensuels fondés sur des données plus solides.<sup>1,3</sup></p>
+    </div>
+    <ol class="refs ui">
+      <li>Henderson FC Sr, Austin C, Benzel E, et al. Neurological and spinal manifestations of the Ehlers–Danlos syndromes. <em>Am J Med Genet C Semin Med Genet.</em> 2017;175(1):195–211. <a href="https://doi.org/10.1002/ajmg.c.31549" target="_blank" rel="noopener">doi:10.1002/ajmg.c.31549</a></li>
+      <li>Malfait F, Francomano C, Byers P, et al. The 2017 international classification of the Ehlers–Danlos syndromes. <em>Am J Med Genet C Semin Med Genet.</em> 2017;175(1):8–26. <a href="https://doi.org/10.1002/ajmg.c.31552" target="_blank" rel="noopener">doi:10.1002/ajmg.c.31552</a></li>
+      <li>Bloom AR, Biggins JB, Brodbelt A, et al. Surgical screening protocol for craniocervical instability secondary to Ehlers–Danlos syndrome and other connective tissue disorders: analysis of a 347 patient case series. <em>Neurosurg Rev.</em> 2026;49:270. <a href="https://doi.org/10.1007/s10143-026-04195-z" target="_blank" rel="noopener">doi:10.1007/s10143-026-04195-z</a></li>
+      <li>Lee C, Sutherland S, Chopra P. Craniocervical instability after inadvertent neck hyperextension in Ehlers–Danlos syndrome: a retrospective case series. <em>BMC Neurol.</em> 2026;26:291. <a href="https://doi.org/10.1186/s12883-026-04801-z" target="_blank" rel="noopener">doi:10.1186/s12883-026-04801-z</a></li>
+    </ol>
+  </section>
+
   <!-- 4 -->
   <section id="fr-4">
     <div class="sec-head"><span class="sec-num">4</span><h2>Prise en charge de la douleur</h2></div>
@@ -802,6 +1090,37 @@
     </div>
   </section>
 
+  <!-- red light therapy -->
+  <section id="fr-rlt">
+    <div class="sec-head"><span class="sec-num"><i class="ti ti-bulb"></i></span><h2>Luminothérapie rouge (photobiomodulation)</h2></div>
+    <div class="patient">
+      <div class="ptag"><i class="ti ti-user-heart"></i>Pour vous</div>
+      <p>La luminothérapie rouge, aussi appelée photobiomodulation, consiste à exposer la peau à une lumière rouge ou proche infrarouge de faible puissance. Elle ne chauffe pas et ne brûle pas les tissus. La lumière est absorbée par les « centrales énergétiques » des cellules (les mitochondries), et des études en laboratoire et chez l'animal montrent qu'elle peut calmer l'inflammation. Certaines personnes l'utilisent pour les douleurs articulaires, la fatigue ou le sommeil. C'est un appoint à faible risque qui peut valoir la peine d'être essayé, mais il n'a pas été étudié spécifiquement dans le SEDh.</p>
+    </div>
+    <p><strong>Mécanisme proposé.</strong> La lumière rouge et proche infrarouge est surtout absorbée par la cytochrome c oxydase des mitochondries, ce qui augmente l'ATP, l'oxyde nitrique et une brève production de dérivés réactifs de l'oxygène servant de signal. Dans les tissus enflammés ou soumis à un stress oxydatif, on observe ensuite une baisse des marqueurs inflammatoires (prostaglandines, dérivés réactifs de l'azote, marqueurs des macrophages M1). La réponse à la dose est biphasique : trop peu n'a pas d'effet et trop peut être inhibiteur.<sup>1</sup></p>
+    <div class="emerging">
+      <div class="etag"><i class="ti ti-flask-2"></i>Résumé des données — appoint seulement</div>
+      <p><strong>Inflammation et douleur articulaire.</strong> L'effet anti-inflammatoire est l'un des résultats les plus reproductibles en laboratoire et chez l'animal.<sup>1</sup> Chez l'humain, une revue systématique de 11 ECR (565 patients) portant sur des troubles articulaires chroniques a montré une réduction de la douleur cliniquement significative lorsque des doses adéquates étaient appliquées sur la capsule articulaire, bien que les essais soient hétérogènes.<sup>2</sup></p>
+      <p><strong>Fatigue et douleur diffuse.</strong> Aucun essai dans l'EM/SFC n'a été trouvé. Dans la fibromyalgie, une méta-analyse de 9 petits ECR (325 patients) a montré une amélioration de la douleur, des points sensibles, de la fatigue et de la raideur par rapport au laser placebo, mais aucun bénéfice supplémentaire par rapport à un programme d'exercice structuré seul.<sup>3</sup></p>
+      <p><strong>Sommeil.</strong> Une petite étude chez 20 athlètes féminines d'élite a montré que 30 minutes de lumière rouge sur tout le corps chaque soir pendant 14 jours amélioraient les scores de qualité du sommeil et le taux de mélatonine.<sup>4</sup> Une méta-analyse de 2026 portant sur 5 ECR (240 participants) a trouvé une amélioration modeste de la qualité du sommeil, avec de larges intervalles de confiance.<sup>5</sup></p>
+      <p><strong>SEDh/TSH.</strong> Il n'existe aucun essai clinique de photobiomodulation dans le SEDh ou le TSH. Tout bénéfice est extrapolé à partir d'études sur la douleur articulaire, la fibromyalgie et le sommeil.</p>
+    </div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>À envisager comme appoint à faible risque pour la douleur articulaire, la fatigue ou le sommeil, en complément de la physiothérapie et des soins standard, jamais à leur place.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Conseil sommeil : le soir, privilégiez la lumière rouge plutôt qu'une lumière vive ou bleue, dans le cadre d'une routine de détente. D'autres conseils pratiques sur le sommeil sur <a href="https://andrewshuen.substack.com/" target="_blank" rel="noopener">le Substack du Dr Shuen</a>.</span></li>
+<li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Pour un appareil à domicile : produits de lumière rouge et proche infrarouge SaunaSpace, via le <a href="https://sauna.space/DRSHUEN" target="_blank" rel="noopener">lien de référence</a> du Dr Shuen (le Dr Shuen peut recevoir un avantage de référence).</span></li>
+      <li><i class="ti ti-circle-x"></i><span><span class="ck-label notrec">Prudence</span>Protégez vos yeux : ne regardez pas directement la lumière et portez les lunettes fournies avec les panneaux de forte puissance ou les appareils proche infrarouge.</span></li>
+      <li><i class="ti ti-circle-x"></i><span><span class="ck-label notrec">Prudence</span>Consultez d'abord votre clinicien si vous prenez des médicaments photosensibilisants (par exemple certains antibiotiques comme la doxycycline, l'isotrétinoïne, l'amiodarone ou le millepertuis), avez une affection photosensible, ou un cancer ou une lésion suspecte dans la zone traitée.</span></li>
+    </ul>
+    <ol class="refs ui">
+      <li>Hamblin MR. Mechanisms and applications of the anti-inflammatory effects of photobiomodulation. <em>AIMS Biophys.</em> 2017;4(3):337–361. <a href="https://pubmed.ncbi.nlm.nih.gov/28748217/" target="_blank" rel="noopener">PMID 28748217</a></li>
+      <li>Bjordal JM, Couppé C, Chow RT, Tunér J, Ljunggren EA. A systematic review of low level laser therapy with location-specific doses for pain from chronic joint disorders. <em>Aust J Physiother.</em> 2003;49(2):107–116. <a href="https://pubmed.ncbi.nlm.nih.gov/12775206/" target="_blank" rel="noopener">PMID 12775206</a></li>
+      <li>Yeh SW, Hong CH, Shih MC, et al. Low-level laser therapy for fibromyalgia: a systematic review and meta-analysis. <em>Pain Physician.</em> 2019;22(3):241–254. <a href="https://pubmed.ncbi.nlm.nih.gov/31151332/" target="_blank" rel="noopener">PMID 31151332</a></li>
+      <li>Zhao J, Tian Y, Nie J, Xu J, Liu D. Red light and the sleep quality and endurance performance of Chinese female basketball players. <em>J Athl Train.</em> 2012;47(6):673–678. <a href="https://pubmed.ncbi.nlm.nih.gov/23182016/" target="_blank" rel="noopener">PMID 23182016</a></li>
+      <li>Vital de Azevedo WM, de Souza K, Defante ML, et al. Photobiomodulation and sleep quality: systematic review and meta-analysis. <em>Lasers Med Sci.</em> 2026;41(1):122. <a href="https://pubmed.ncbi.nlm.nih.gov/42322437/" target="_blank" rel="noopener">PMID 42322437</a></li>
+    </ol>
+  </section>
+
   <!-- 5 -->
   <section id="fr-5">
     <div class="sec-head"><span class="sec-num">5</span><h2>Santé osseuse et ostéoporose</h2></div>
@@ -811,8 +1130,10 @@
     </div>
     <ul class="checklist ui">
       <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Optimiser la vitamine D et le calcium alimentaire; supplémenter pour corriger une carence documentée.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Vitamine K2 (MK-7) 500 mcg par jour, avec la vitamine D, pour soutenir la santé osseuse. <strong>Son rôle :</strong> la K2 active l'ostéocalcine, une protéine qui aide à fixer le calcium dans la matrice osseuse, et la protéine Gla matricielle, qui aide à empêcher le calcium de se déposer dans les artères et les tissus mous. La vitamine D augmente l'absorption du calcium; la K2 aide à diriger ce calcium vers l'os. Les résultats des essais sur la prévention des fractures sont mitigés : c'est donc un complément, et non un substitut à l'exercice, à la vitamine D et au calcium. <strong>Sources alimentaires :</strong> le natto (soja fermenté) est de loin la source la plus riche en K2; on en trouve de plus petites quantités dans les fromages à pâte dure et affinés, le jaune d'œuf et d'autres aliments fermentés. À éviter sous warfarine ou autre antagoniste de la vitamine K, sauf avis du prescripteur.</span></li>
       <li><i class="ti ti-circle-check"></i><span><span class="ck-label routine">Standard</span>Encourager une activité régulière en mise en charge à faible impact, dans les limites de protection articulaire.</span></li>
       <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Ostéodensitométrie (DXA) en présence de facteurs de risque : faible activité, fracture de fragilité antérieure, exposition aux corticostéroïdes ou autres risques d'ostéoporose. Il n'existe pas de calendrier de dépistage propre au SEDh; individualiser. Intervalle de répétition guidé par le résultat de base et les recommandations standard sur l'ostéoporose.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>REMS (spectrométrie multispectrale échographique par radiofréquence) comme autre option à côté de la DXA : mesure de la densité minérale osseuse à la hanche et à la colonne, sans radiation et basée sur l'échographie, approuvée par Santé Canada et offerte en Ontario par <a href="https://www.osteosound.ca/" target="_blank" rel="noopener">Osteosound</a> (<a href="https://www.osteosound.ca/remsontheroad" target="_blank" rel="noopener">emplacements</a>, <a href="https://osteoceomobile1.clinicsense.com/" target="_blank" rel="noopener">réservation</a>). Partagez le rapport avec votre clinicien; la DXA demeure l'examen de référence standard.</span></li>
       <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Traitement pharmacologique de l'ostéoporose selon les recommandations standard si la DXA et l'évaluation du risque de fracture le justifient.</span></li>
     </ul>
     <p>Les données reliant le SEDh à une densité minérale osseuse réduite sont observationnelles et probablement multifactorielles (effets du tissu conjonctif sur la matrice osseuse, déconditionnement, réduction de la mise en charge). Traitez la santé osseuse comme chez tout patient à facteurs de risque élevés, avec un seuil plus bas pour une DXA de base vu les limitations d'activité qu'impose le SEDh.</p>
@@ -872,8 +1193,20 @@
     <div class="clinical-note">Activation mastocytaire</div>
     <ul class="checklist ui">
       <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Envisager le SAMa chez les patients du groupe SThPO+SEDh présentant bouffées, urticaire, symptômes allergiques ou digestifs. Un essai d'antihistaminiques H1/H2 est à faible risque et peut être diagnostique-thérapeutique.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Le kétotifène est une option lorsque les antihistaminiques seuls ne suffisent pas. Il est à la fois stabilisateur des mastocytes et antihistaminique H1; son usage dans le SAMa est hors indication. Au Canada, le kétotifène oral (Zaditen) est peu disponible et peut devoir être préparé en pharmacie (magistral). Les effets indésirables fréquents sont la somnolence et la prise de poids. Il doit être prescrit et ajusté uniquement par le médecin traitant. <span style="font-size:13px;">Sources : Molderings GJ, et al. <em>J Hematol Oncol.</em> 2011;4:10 (<a href="https://doi.org/10.1186/1756-8722-4-10" target="_blank" rel="noopener">doi</a>); Molderings GJ, et al. <em>Naunyn Schmiedebergs Arch Pharmacol.</em> 2016;389(7):671–694 (<a href="https://doi.org/10.1007/s00210-016-1247-1" target="_blank" rel="noopener">doi</a>).</span></span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>L'aspirine bloque la production de prostaglandine D2 et peut réduire les bouffées vasomotrices.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Le montélukast et le zafirlukast bloquent les effets du leucotriène C4 (LTC4), et le zileuton bloque la production de LTC4; ils peuvent ainsi réduire la respiration sifflante et les crampes abdominales.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Les corticostéroïdes sont utiles contre l'œdème, l'urticaire et la respiration sifflante, mais ne devraient être utilisés qu'en dernier recours.</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>L'omalizumab (qui bloque la liaison des IgE à leurs récepteurs) réduirait, selon les données rapportées, la réactivité des mastocytes et leur sensibilité à l'activation, ce qui peut diminuer les épisodes anaphylactiques.</span></li>
       <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Optionnel</span>Bilan formel du SAMa (tryptase sérique, dosage des médiateurs) lorsque les symptômes sont importants; orienter en allergie/immunologie. Les critères diagnostiques restent débattus.</span></li>
     </ul>
+    <div class="clinical-note">Activation mastocytaire : diagnostic et bilan</div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Bilan</span><strong>Critères consensuels.</strong> Les trois sont requis : (1) symptômes typiques et récurrents (épisodiques) d'activation mastocytaire systémique touchant au moins 2 systèmes d'organes; (2) preuve biologique de libération de médiateurs mastocytaires; (3) réponse des symptômes à un traitement ciblant les mastocytes (antihistaminiques H1/H2, stabilisateurs des mastocytes, ou médicaments qui bloquent la production ou les effets des médiateurs).</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Bilan</span><strong>Tryptase sérique.</strong> Prélever un dosage aigu environ 1 à 4 heures après le début d'un épisode symptomatique et le comparer à la valeur de base de la personne, mesurée au moins 24 à 48 heures après la résolution complète des symptômes. Une hausse au-delà de la valeur de base + 20 % + 2 ng/mL appuie le diagnostic (p. ex. valeur de base de 5 ng/mL : valeur aiguë supérieure à 8 ng/mL).</span></li>
+      <li><i class="ti ti-circle-dashed"></i><span><span class="ck-label optional">Bilan</span><strong>Médiateurs urinaires.</strong> Lorsque la tryptase n'est pas disponible ou n'est pas concluante, les dosages urinaires de 24 heures peuvent aider : métabolites de l'histamine (N-méthylhistamine), métabolite de la prostaglandine D2 (11β-prostaglandine F2α) et métabolite des leucotriènes (leucotriène E4). Prélever pendant un épisode ou peu après et comparer à une valeur de base. Ces marqueurs sont moins spécifiques de l'activation mastocytaire que la tryptase.</span></li>
+    </ul>
+    <p style="font-size:13px;">Sources : Valent P, et al. <em>Int Arch Allergy Immunol.</em> 2012;157(3):215–225 (<a href="https://doi.org/10.1159/000328760" target="_blank" rel="noopener">doi</a>); Valent P, et al. <em>J Allergy Clin Immunol Pract.</em> 2019;7(4):1125–1133.e1 (<a href="https://doi.org/10.1016/j.jaip.2019.01.006" target="_blank" rel="noopener">doi</a>).</p>
     <div class="infobox">
       <div class="itag"><i class="ti ti-link"></i>Le « trio »</div>
       <p>Le SEDh, le SThPO et le SAMa coexistent bien plus que par hasard. Chez les patients ayant à la fois un SThPO et un SEDh, la prévalence rapportée du SAMa est nettement plus élevée que dans le SEDh sans SThPO. Le mécanisme commun proposé fait intervenir le tissu conjonctif, le système autonome et les mastocytes. En pratique : quand l'un est présent, dépistez les deux autres.</p>
@@ -1044,6 +1377,18 @@
     </div>
   </section>
 
+  <!-- patient resources -->
+  <section id="fr-resources">
+    <div class="sec-head"><span class="sec-num"><i class="ti ti-heart-handshake"></i></span><h2>Cliniques et ressources pour les patients</h2></div>
+    <ul class="checklist ui">
+      <li><i class="ti ti-map-pin"></i><span><strong>MEND-CO Physiotherapy</strong> (Toronto, ON; en personne et en virtuel) : équipe multidisciplinaire de physiothérapeutes et de diététistes agréés axée sur les troubles du spectre de l'hypermobilité et les syndromes d'Ehlers-Danlos; aucun diagnostic confirmé requis. <a href="https://www.mend-cophysiotherapy.ca/" target="_blank" rel="noopener">Site web</a> · <a href="https://mendcophysiotherapy.noterro.com/" target="_blank" rel="noopener">Réservation en ligne (en personne ou télésanté)</a> · Fondatrice : <a href="https://www.linkedin.com/in/laura-lopez-hernandez-b312b43b1/" target="_blank" rel="noopener">Laura Lopez Hernandez</a></span></li>
+      <li><i class="ti ti-map-pin"></i><span><strong>Clinique GoodHope du syndrome d'Ehlers-Danlos</strong>, Hôpital général de Toronto (UHN) : programme multidisciplinaire qui diagnostique et accompagne le SED et le TSH généralisé; résidents de l'Ontario, sur recommandation d'un clinicien de première ligne. <a href="https://www.edsgoodhope.ca/" target="_blank" rel="noopener">edsgoodhope.ca</a> · <a href="https://www.edsgoodhope.ca/for-patients-families" target="_blank" rel="noopener">Patients et familles</a></span></li>
+      <li><i class="ti ti-map-pin"></i><span><strong>RQMO (Regroupement québécois des maladies orphelines)</strong> : réseau québécois des maladies rares avec une page en français sur le SED et l'hypermobilité, les parcours de soins et les ressources au Québec. <a href="https://rqmo.org/les-syndromes-dehlers-danlos-et-hypermobilite/" target="_blank" rel="noopener">Page SED et hypermobilité</a></span></li>
+      <li><i class="ti ti-map-pin"></i><span><strong>Fondation EDS Canada</strong> : organisme de bienfaisance canadien pour les personnes atteintes de SED/TSH et de douleur chronique (services de soutien, rencontres virtuelles, éducation). <a href="https://edscanada.org/" target="_blank" rel="noopener">edscanada.org</a></span></li>
+      <li><i class="ti ti-map-pin"></i><span><strong>La Société Ehlers-Danlos</strong> : organisation internationale de patients et de recherche offrant information, groupes de soutien et répertoire de professionnels de la santé. <a href="https://www.ehlers-danlos.com/fr/" target="_blank" rel="noopener">ehlers-danlos.com/fr</a> · <a href="https://www.ehlers-danlos.com/healthcare-professionals-directory/" target="_blank" rel="noopener">Trouver un professionnel</a></span></li>
+    </ul>
+  </section>
+
   <!-- 14 -->
   <section id="fr-14">
     <div class="sec-head"><span class="sec-num">14</span><h2>Références</h2></div>
@@ -1062,6 +1407,8 @@
       <li>The Ehlers–Danlos Society. hEDS/HSD Criteria Review Study (international consensus, in progress). Accessed 2026.</li>
       <li>Norris Q, Laukaitis C, Subramanian DN, et al. Complex genetics and regulatory drivers of hypermobile Ehlers–Danlos syndrome: insights from a genome-wide association study meta-analysis. <em>medRxiv</em> (preprint). 2025. doi:10.1101/2025.09.19.25336146.</li>
       <li>The Ehlers–Danlos Society. The HEDGE Study (Hypermobile EDS Genetic Evaluation): ASHG abstracts 2024; first publications from 2025.</li>
+      <li>Hakim A. Hypermobile Ehlers-Danlos Syndrome. In: Adam MP, et al., eds. <em>GeneReviews®</em>. University of Washington, Seattle; 2004, updated 22 Feb 2024. <a href="https://www.ncbi.nlm.nih.gov/books/NBK1279/" target="_blank" rel="noopener">NBK1279</a>.</li>
+      <li>Gensemer C, Petrucci T, Beck T, et al. KLK15 alters connective tissues in hypermobile Ehlers-Danlos syndrome. <em>iScience.</em> 2025;28(9):113343. <a href="https://doi.org/10.1016/j.isci.2025.113343" target="_blank" rel="noopener">doi:10.1016/j.isci.2025.113343</a>.</li>
       <li>Forghani I, See J, et al. Hypermobile Ehlers–Danlos syndrome: diagnostic challenges and the role of genetic testing. <em>Genes (Basel).</em> 2025;16(5):530.</li>
     </ol>
   </section>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loeys-Dietz Syndrome — Surveillance &amp; Prevention Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px; line-height:1.62;
+}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:9px 18px;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .util{display:flex; gap:8px; align-items:center;}
+.topbar .tabs{display:flex; gap:4px;}
+.btn{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13.5px; font-weight:600; cursor:pointer;
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft);
+  padding:7px 13px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;
+  transition:.15s;
+}
+.btn:hover{border-color:var(--brand-line); color:var(--brand-dark); background:var(--brand-bg);}
+.btn.active{background:var(--brand); border-color:var(--brand); color:#fff;}
+.btn i{font-size:16px;}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:860px; margin:0 auto; padding:0 22px 80px;}
+
+/* ---------- Masthead ---------- */
+.masthead{padding:38px 0 26px; border-bottom:2px solid var(--ink);}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:12.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--brand-dark);
+}
+h1.title{font-size:40px; line-height:1.1; margin:.28em 0 .12em; letter-spacing:-.01em;}
+.standfirst{font-size:19px; color:var(--ink-soft); margin:0 0 22px; max-width:62ch;}
+.authorpanel{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:15px 18px; display:flex; gap:14px; align-items:flex-start;
+}
+.authorpanel .who{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.authorpanel .name{font-weight:700; font-size:15px; color:var(--ink);}
+.authorpanel .role{font-size:13.5px; color:var(--ink-faint); line-height:1.5;}
+.authorpanel i{color:var(--brand); font-size:26px; margin-top:2px;}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:16px;}
+.chip{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:600;
+  background:var(--cream); border:1px solid var(--line); border-radius:999px;
+  padding:4px 11px; color:var(--ink-soft); display:inline-flex; gap:5px; align-items:center;
+}
+.chip i{font-size:14px; color:var(--brand);}
+.legend{
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; padding-top:15px;
+  border-top:1px solid var(--line-soft);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint);
+}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+.legend i{font-size:15px;}
+.i-routine{color:#1f7a34;} .i-optional{color:var(--amber);} .i-no{color:var(--red);}
+
+/* ---------- TOC ---------- */
+.toc{
+  margin:26px 0 8px; padding:18px 20px; background:var(--paper);
+  border:1px solid var(--line); border-radius:var(--radius);
+}
+.toc h2{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+  margin:0 0 12px;
+}
+.toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:14.5px;}
+.toc li{margin-bottom:6px; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none;}
+.toc a:hover{color:var(--brand-dark);}
+
+/* ---------- Sections ---------- */
+section{padding-top:34px;}
+.sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.sec-num{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+  font-size:15px; color:#fff; background:var(--brand);
+  min-width:30px; height:30px; border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+}
+h2.sec{font-size:25px; margin:0; letter-spacing:-.01em; line-height:1.2;}
+h3{font-size:18px; margin:24px 0 8px; color:var(--ink);}
+p{margin:0 0 14px;}
+
+/* ---------- Patient card ---------- */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line);
+  border-left:4px solid var(--brand); border-radius:var(--radius-sm);
+  padding:14px 17px; margin:14px 0 18px;
+}
+.patient .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--brand-dark);
+  display:flex; align-items:center; gap:6px; margin-bottom:6px;
+}
+.patient p{margin:0 0 8px;} .patient p:last-child{margin:0;}
+
+/* ---------- Subtype pill header ---------- */
+.subhead{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  margin:22px 0 6px; padding-bottom:8px; border-bottom:1px solid var(--line-soft);
+}
+.subhead h3{margin:0;}
+.pill{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  border-radius:999px; padding:3px 11px; letter-spacing:.02em;
+}
+.pill-red{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.pill-amber{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.pill-blue{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* ---------- Checklist ---------- */
+ul.check{list-style:none; padding:0; margin:12px 0 16px;}
+ul.check li{
+  display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+  align-items:flex-start;
+}
+ul.check li:last-child{border-bottom:none;}
+ul.check i{font-size:19px; flex:none; margin-top:1px;}
+.tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; border-radius:5px; padding:2px 7px;
+  margin-left:8px; white-space:nowrap; vertical-align:middle;
+}
+.tag-routine{background:#e6f4ea; color:#1f7a34;}
+.tag-optional{background:var(--amber-bg); color:var(--amber);}
+.tag-no{background:var(--red-bg); color:var(--red);}
+.ck-txt{flex:1;}
+.ck-txt .sub{display:block; font-size:14px; color:var(--ink-faint); margin-top:2px;}
+
+/* ---------- Callout ---------- */
+.callout{
+  border-left:4px solid var(--brand); background:var(--paper);
+  border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:13px 16px; margin:16px 0;
+}
+.callout.amber{border-left-color:var(--amber); background:var(--amber-bg); border-color:var(--amber-line);}
+.callout.red{border-left-color:var(--red); background:var(--red-bg); border-color:var(--red-line);}
+.callout .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:5px; display:flex; gap:6px; align-items:center;
+}
+.callout.amber .lbl{color:var(--amber);} .callout.red .lbl{color:var(--red);} .callout .lbl{color:var(--brand-dark);}
+.callout p:last-child{margin:0;}
+
+/* ---------- Info / emerging boxes ---------- */
+.infobox{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging .lbl,.infobox .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:6px; display:flex; gap:6px; align-items:center;
+}
+.emerging .lbl{color:var(--purple);} .infobox .lbl{color:var(--brand-dark);}
+.emerging p:last-child,.infobox p:last-child{margin:0;}
+
+/* ---------- Risk table ---------- */
+.tablewrap{overflow-x:auto; margin:16px 0;}
+table.risk{width:100%; border-collapse:collapse; font-size:15px; background:var(--paper); border-radius:var(--radius-sm); overflow:hidden;}
+table.risk th,table.risk td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--line);}
+table.risk th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); background:var(--cream);}
+table.risk tr:last-child td{border-bottom:none;}
+.dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:7px; vertical-align:middle;}
+.dot-red{background:var(--red);} .dot-amber{background:var(--amber-line);} .dot-blue{background:var(--brand);}
+
+/* ---------- Figures ---------- */
+figure.fig{margin:18px 0 20px; padding:0; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+figure.fig .svgwrap{padding:18px 16px 4px; background:linear-gradient(180deg,#fbfdff,#f4f9fc);}
+figure.fig svg{width:100%; height:auto; display:block;}
+figure.fig figcaption{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); padding:11px 16px 13px; border-top:1px solid var(--line-soft); line-height:1.5;}
+figure.fig img.photo{width:100%; height:auto; display:block; border-radius:0;}
+figure.fig .credit{font-size:11.5px; color:var(--ink-faint); margin-top:6px;}
+figure.fig .credit a{color:var(--brand-dark); text-decoration:none;}
+figure.fig figcaption b{color:var(--ink-soft); font-weight:700;}
+.svg-ink{fill:var(--ink);} .svg-soft{fill:var(--ink-soft);} .svg-faint{fill:var(--ink-faint);}
+.svg-lbl{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.svg-term{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;}
+
+/* ---------- Summary cards ---------- */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:16px 0;}
+.scard{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand); border-radius:var(--radius-sm); padding:14px 16px;}
+.scard h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; margin:0 0 8px; color:var(--brand-dark); display:flex; gap:7px; align-items:center;}
+.scard ul{margin:0; padding-left:18px; font-size:14.5px; color:var(--ink-soft);}
+.scard li{margin-bottom:5px;}
+
+/* ---------- References ---------- */
+ol.refs{font-size:14px; color:var(--ink-soft); padding-left:22px; line-height:1.55;}
+ol.refs li{margin-bottom:9px;}
+
+/* ---------- Footer ---------- */
+.footer{margin-top:46px; padding-top:18px; border-top:2px solid var(--ink); position:relative;}
+.footer:before{content:""; position:absolute; top:4px; left:0; right:0; height:1px; background:var(--ink);}
+.footer p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); margin:0 0 8px;}
+
+/* ---------- Language toggle ---------- */
+[data-lang]{display:none;}
+body.lang-en [data-lang="en"]{display:revert;}
+body.lang-fr [data-lang="fr"]{display:revert;}
+ul.check li[data-lang],table.risk tr[data-lang]{display:none;}
+body.lang-en ul.check li[data-lang="en"]{display:flex;}
+body.lang-fr ul.check li[data-lang="fr"]{display:flex;}
+body.lang-en table.risk tr[data-lang="en"]{display:table-row;}
+body.lang-fr table.risk tr[data-lang="fr"]{display:table-row;}
+
+/* ---------- PDF preview on screen ---------- */
+body.pdf-preview{background:#6a7681;}
+body.pdf-preview .topbar{position:static;}
+body.pdf-preview .toc{display:none;}
+body.pdf-preview .wrap{
+  background:#fff; max-width:8.5in; margin:24px auto; padding:0.7in 0.85in;
+  box-shadow:0 4px 24px rgba(0,0,0,.3); font-size:11.5pt; line-height:1.4;
+}
+body.pdf-preview h1.title{font-size:26pt;}
+body.pdf-preview h2.sec{font-size:16pt;}
+body.pdf-preview .standfirst{font-size:13pt;}
+body.pdf-preview section{page-break-inside:auto;}
+body.pdf-preview #sec-summary,body.pdf-preview #sec-refs{
+  border-top:2px dashed var(--brand); margin-top:30px; padding-top:24px; position:relative;
+}
+body.pdf-preview #sec-summary:before,body.pdf-preview #sec-refs:before{
+  content:"— — — page break — — —"; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+  background:#fff; padding:0 12px; font-family:"Helvetica Neue",sans-serif; font-size:9pt; color:var(--brand); letter-spacing:.08em;
+}
+
+/* ---------- Print ---------- */
+@media print{
+  .topbar,.toc{display:none;}
+  body{background:#fff; font-size:10.5pt;}
+  .wrap{max-width:100%; padding:0;}
+  #sec-summary,#sec-refs{page-break-before:always;}
+  .patient,.callout,.infobox,.emerging,.scard,table.risk{break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+@media(max-width:600px){
+  .toc ol{columns:1;} h1.title{font-size:31px;} .cardgrid{grid-template-columns:1fr;}
+}
+.legend span[data-lang]{display:none;}
+body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="fr"]{display:inline-flex;}
+</style>
+<link rel="stylesheet" href="site-banner.css">
+<script src="site-banner.js" defer></script>
+</head>
+<body class="lang-en">
+
+<!-- ======================= TOP BAR ======================= -->
+<div class="topbar ui">
+  <div class="util">
+    <button class="btn" id="pdfBtn" onclick="togglePdf()"><i class="ti ti-eye"></i><span data-lang="en">PDF view</span><span data-lang="fr">Aperçu PDF</span></button>
+    <button class="btn" onclick="window.print()"><i class="ti ti-printer"></i><span data-lang="en">Print / Save PDF</span><span data-lang="fr">Imprimer / PDF</span></button>
+  </div>
+  <div class="tabs">
+    <button class="btn active" id="enTab" onclick="setLang('en')">English</button>
+    <button class="btn" id="frTab" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ======================= MASTHEAD ======================= -->
+<header class="masthead">
+  <div class="eyebrow" data-lang="en">Hereditary Connective Tissue Disease · Surveillance Protocol</div><div class="eyebrow" data-lang="fr">Maladie héréditaire du tissu conjonctif · Protocole de surveillance</div>
+  <h1 class="title" data-lang="en">Loeys-Dietz Syndrome</h1><h1 class="title" data-lang="fr">Syndrome de Loeys-Dietz</h1>
+  <p class="standfirst" data-lang="en">A surveillance and prevention protocol for Loeys-Dietz syndrome, a TGF-β pathway disorder with arterial tortuosity and aneurysms, covering whole-arterial-tree imaging, medical therapy, gene-specific surgical thresholds, pregnancy, and family testing.</p><p class="standfirst" data-lang="fr">Protocole de surveillance et de prévention du syndrome de Loeys-Dietz, une maladie de la voie TGF-β avec tortuosité artérielle et anévrismes, couvrant l'imagerie de tout l'arbre artériel, le traitement médical, les seuils chirurgicaux propres au gène, la grossesse et le dépistage familial.</p>
+
+  <div class="authorpanel"><i class="ti ti-stethoscope"></i><div class="who"><div class="name">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</div><div class="role" data-lang="en">Medical Genetics · Jewish General Hospital (JGH), Montreal</div><div class="role" data-lang="fr">Génétique médicale · Hôpital général juif (HGJ), Montréal</div></div></div>
+
+  <div class="chips ui">
+    <span class="chip"><i class="ti ti-dna"></i> <em>TGFBR1/2 · SMAD3 · TGFB2/3</em></span>
+    <span class="chip"><i class="ti ti-heartbeat"></i> 2022 ACC/AHA</span>
+    <span class="chip"><i class="ti ti-arrows-shuffle"></i> <span data-lang="en">Arterial tortuosity</span><span data-lang="fr">Tortuosité artérielle</span></span>
+    <span class="chip"><i class="ti ti-calendar"></i> <span data-lang="en">Updated October 2026</span><span data-lang="fr">Mis à jour en octobre 2026</span></span>
+  </div>
+
+  <div class="legend ui">
+    <span data-lang="en"><i class="ti ti-circle-check i-routine"></i> Routine</span>
+    <span data-lang="fr"><i class="ti ti-circle-check i-routine"></i> De routine</span>
+    <span data-lang="en"><i class="ti ti-minus i-optional"></i> Optional / selective</span>
+    <span data-lang="fr"><i class="ti ti-minus i-optional"></i> Optionnel / sélectif</span>
+    <span data-lang="en"><i class="ti ti-x i-no"></i> Not recommended</span>
+    <span data-lang="fr"><i class="ti ti-x i-no"></i> Non recommandé</span>
+  </div>
+</header>
+
+<!-- ======================= TOC ======================= -->
+<nav class="toc ui">
+  <h2 data-lang="en">Contents</h2>
+  <h2 data-lang="fr">Sommaire</h2>
+  <ol>
+    <li><a href="#sec1" data-lang="en">Understanding LDS</a><a href="#sec1" data-lang="fr">Comprendre le SLD</a></li>
+    <li><a href="#sec2" data-lang="en">Features &amp; risks</a><a href="#sec2" data-lang="fr">Caractéristiques et risques</a></li>
+    <li><a href="#sec3" data-lang="en">Vascular surveillance</a><a href="#sec3" data-lang="fr">Surveillance vasculaire</a></li>
+    <li><a href="#sec4" data-lang="en">Medical management</a><a href="#sec4" data-lang="fr">Prise en charge médicale</a></li>
+    <li><a href="#sec5" data-lang="en">Surgical thresholds</a><a href="#sec5" data-lang="fr">Seuils chirurgicaux</a></li>
+    <li><a href="#sec6" data-lang="en">Pregnancy</a><a href="#sec6" data-lang="fr">Grossesse</a></li>
+    <li><a href="#sec7" data-lang="en">Activity &amp; lifestyle</a><a href="#sec7" data-lang="fr">Activité et mode de vie</a></li>
+    <li><a href="#sec8" data-lang="en">Genetic counselling</a><a href="#sec8" data-lang="fr">Conseil génétique</a></li>
+    <li><a href="#sec-summary" data-lang="en">Summary of recommendations</a><a href="#sec-summary" data-lang="fr">Résumé des recommandations</a></li>
+    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+  </ol>
+</nav>
+
+<section id="sec1">
+  <div class="sec-head"><span class="sec-num">1</span><h2 class="sec" data-lang="en">Understanding Loeys-Dietz syndrome</h2><h2 class="sec" data-lang="fr">Comprendre le syndrome de Loeys-Dietz</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Loeys-Dietz syndrome (LDS) is an inherited condition of the connective tissue, the "scaffolding" that gives blood vessels, skin, and joints their strength. It is caused by a change in one of several genes that control a signalling pathway called TGF-beta. The main health concern is the arteries: the aorta (the body's main artery) and other arteries can widen (aneurysm) or tear (dissection), sometimes at smaller sizes than in related conditions. Many people also have twisting arteries, joint or skin features, or allergies. With regular imaging, blood pressure control, and well-timed surgery, outcomes have improved greatly.</p><p data-lang="fr">Le syndrome de Loeys-Dietz (SLD) est une maladie héréditaire du tissu conjonctif, l'« échafaudage » qui donne leur solidité aux vaisseaux sanguins, à la peau et aux articulations. Il est causé par une modification dans l'un de plusieurs gènes qui contrôlent une voie de signalisation appelée TGF-bêta. La principale préoccupation concerne les artères : l'aorte (l'artère principale du corps) et d'autres artères peuvent s'élargir (anévrisme) ou se déchirer (dissection), parfois à des tailles plus petites que dans des maladies apparentées. Plusieurs personnes ont aussi des artères sinueuses, des atteintes des articulations ou de la peau, ou des allergies. Avec une imagerie régulière, un bon contrôle de la pression artérielle et une chirurgie au bon moment, le pronostic s'est grandement amélioré.</p>
+  </div>
+  <p data-lang="en">Loeys-Dietz syndrome is an autosomal dominant heritable thoracic aortic disease (HTAD) caused by pathogenic variants in genes of the TGF-β signalling pathway: <em>TGFBR1</em> (LDS1), <em>TGFBR2</em> (LDS2), <em>SMAD3</em> (LDS3, originally described as aneurysm–osteoarthritis syndrome), <em>TGFB2</em> (LDS4), and <em>TGFB3</em> (LDS5); <em>SMAD2</em> has also been reported. Paradoxically, loss-of-function variants are associated with increased TGF-β signalling in the aortic wall. A substantial proportion of probands have a <em>de novo</em> variant; each child of an affected person has a 50% chance of inheriting the variant. Penetrance is high for vascular disease, but expressivity varies widely, even within families.</p><p data-lang="fr">Le syndrome de Loeys-Dietz est une maladie aortique thoracique héréditaire (HTAD, selon l'acronyme anglais) à transmission autosomique dominante, causée par des variants pathogènes de gènes de la voie de signalisation du TGF-β : <em>TGFBR1</em> (SLD1), <em>TGFBR2</em> (SLD2), <em>SMAD3</em> (SLD3, décrit à l'origine comme syndrome anévrisme–arthrose), <em>TGFB2</em> (SLD4) et <em>TGFB3</em> (SLD5); <em>SMAD2</em> a aussi été rapporté. De façon paradoxale, les variants perte de fonction sont associés à une signalisation TGF-β accrue dans la paroi aortique. Une proportion importante des cas index présentent un variant <em>de novo</em>; chaque enfant d'une personne atteinte a 50 % de risque d'hériter du variant. La pénétrance de l'atteinte vasculaire est élevée, mais l'expressivité varie beaucoup, même au sein d'une famille.</p>
+  <p data-lang="en">The classic triad is arterial tortuosity and aneurysms, hypertelorism, and bifid uvula or cleft palate, but many individuals — particularly with <em>SMAD3</em>, <em>TGFB2</em>, or <em>TGFB3</em> variants — have subtle or absent craniofacial features. Diagnosis therefore rests on molecular testing, typically with a multigene HTAD panel that also covers <em>FBN1</em> (<a href="marfan.html">Marfan syndrome</a>), <em>COL3A1</em> (vascular Ehlers-Danlos syndrome), and the non-syndromic HTAD genes (see <a href="taad.html">TAAD</a>).</p><p data-lang="fr">La triade classique associe tortuosité artérielle et anévrismes, hypertélorisme, et luette bifide ou fente palatine, mais plusieurs personnes — surtout avec des variants <em>SMAD3</em>, <em>TGFB2</em> ou <em>TGFB3</em> — ont des traits craniofaciaux subtils ou absents. Le diagnostic repose donc sur le test moléculaire, habituellement un panel multigène de HTAD couvrant aussi <em>FBN1</em> (<a href="marfan.html">syndrome de Marfan</a>), <em>COL3A1</em> (syndrome d'Ehlers-Danlos vasculaire) et les gènes de HTAD non syndromiques (voir <a href="taad.html">TAAD</a>).</p>
+  <div class="tablewrap">
+    <table class="risk">
+      <thead>
+        <tr data-lang="en"><th>Gene</th><th>Type</th><th>Clinical notes</th></tr>
+        <tr data-lang="fr"><th>Gène</th><th>Type</th><th>Notes cliniques</th></tr>
+      </thead>
+      <tbody>
+        <tr data-lang="en"><td><em>TGFBR1</em></td><td>LDS1</td><td><span class="dot dot-red"></span>Aortic and arterial disease often aggressive; craniofacial features frequent</td></tr>
+        <tr data-lang="fr"><td><em>TGFBR1</em></td><td>SLD1</td><td><span class="dot dot-red"></span>Atteinte aortique et artérielle souvent agressive; traits craniofaciaux fréquents</td></tr>
+        <tr data-lang="en"><td><em>TGFBR2</em></td><td>LDS2</td><td><span class="dot dot-red"></span>Similar to LDS1; dissection reported at relatively small aortic diameters</td></tr>
+        <tr data-lang="fr"><td><em>TGFBR2</em></td><td>SLD2</td><td><span class="dot dot-red"></span>Semblable au SLD1; dissections rapportées à des diamètres aortiques relativement petits</td></tr>
+        <tr data-lang="en"><td><em>SMAD3</em></td><td>LDS3</td><td><span class="dot dot-amber"></span>Early-onset osteoarthritis; aneurysms of aorta and other arteries</td></tr>
+        <tr data-lang="fr"><td><em>SMAD3</em></td><td>SLD3</td><td><span class="dot dot-amber"></span>Arthrose précoce; anévrismes de l'aorte et d'autres artères</td></tr>
+        <tr data-lang="en"><td><em>TGFB2</em></td><td>LDS4</td><td><span class="dot dot-amber"></span>Often milder, later-onset aortic disease; variable systemic features</td></tr>
+        <tr data-lang="fr"><td><em>TGFB2</em></td><td>SLD4</td><td><span class="dot dot-amber"></span>Atteinte aortique souvent plus légère et plus tardive; traits systémiques variables</td></tr>
+        <tr data-lang="en"><td><em>TGFB3</em></td><td>LDS5</td><td><span class="dot dot-blue"></span>Phenotype still being defined; aortic risk appears lower on average but dissection occurs</td></tr>
+        <tr data-lang="fr"><td><em>TGFB3</em></td><td>SLD5</td><td><span class="dot dot-blue"></span>Phénotype encore en définition; risque aortique en moyenne plus faible, mais des dissections surviennent</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <figure class="fig">
+    <div class="svgwrap">
+      <svg viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Straight versus tortuous artery">
+        <text x="14" y="24" class="svg-term" font-size="14" fill="#15212b" data-lang="en">Arterial tortuosity: a clue to Loeys-Dietz syndrome</text>
+        <text x="14" y="24" class="svg-term" font-size="14" fill="#15212b" data-lang="fr">Tortuosité artérielle : un indice du syndrome de Loeys-Dietz</text>
+        <g transform="translate(40,50)">
+          <text x="130" y="10" text-anchor="middle" font-size="12.5" fill="#1f7a34" data-lang="en">Typical artery</text>
+          <text x="130" y="10" text-anchor="middle" font-size="12.5" fill="#1f7a34" data-lang="fr">Artère typique</text>
+          <path d="M130,25 L130,160" stroke="#9cd0ef" stroke-width="22" fill="none" stroke-linecap="round"/>
+          <path d="M130,25 L130,160" stroke="#0083d0" stroke-width="2" fill="none"/>
+        </g>
+        <g transform="translate(360,50)">
+          <text x="150" y="10" text-anchor="middle" font-size="12.5" fill="#b42318" data-lang="en">Tortuous artery (e.g. neck vessels)</text>
+          <text x="150" y="10" text-anchor="middle" font-size="12.5" fill="#b42318" data-lang="fr">Artère tortueuse (p. ex. vaisseaux du cou)</text>
+          <path d="M150,25 C90,45 210,65 150,85 C90,105 210,125 150,145 C120,155 150,160 150,165" stroke="#f4c7c3" stroke-width="22" fill="none" stroke-linecap="round"/>
+          <path d="M150,25 C90,45 210,65 150,85 C90,105 210,125 150,145 C120,155 150,160 150,165" stroke="#b42318" stroke-width="2" fill="none"/>
+        </g>
+        <text x="14" y="218" font-size="12" fill="#5b6872" data-lang="en">Schematic only. Tortuosity is seen on CT or MR angiography and prompts imaging of the whole arterial tree.</text>
+        <text x="14" y="218" font-size="12" fill="#5b6872" data-lang="fr">Schéma seulement. La tortuosité se voit à l'angio-TDM ou à l'angio-IRM et justifie l'imagerie de tout l'arbre artériel.</text>
+      </svg>
+    </div>
+    <figcaption>
+      <span data-lang="en"><b>Figure 1. Arterial tortuosity.</b> Twisting of medium-sized arteries, most often in the head and neck, is a hallmark of Loeys-Dietz syndrome and helps distinguish it from Marfan syndrome. Aneurysms can arise anywhere along the arterial tree, which is why head-to-pelvis imaging is part of surveillance.</span>
+      <span data-lang="fr"><b>Figure 1. Tortuosité artérielle.</b> Le trajet sinueux des artères de moyen calibre, surtout à la tête et au cou, est une caractéristique du syndrome de Loeys-Dietz et aide à le distinguer du syndrome de Marfan. Des anévrismes peuvent survenir partout dans l'arbre artériel, d'où l'imagerie de la tête au bassin dans la surveillance.</span>
+    </figcaption>
+  </figure>
+</section>
+
+<section id="sec2">
+  <div class="sec-head"><span class="sec-num">2</span><h2 class="sec" data-lang="en">Key features and risks</h2><h2 class="sec" data-lang="fr">Caractéristiques et risques principaux</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">The most serious risk is a tear in the aorta or another artery. This is why scans are so important, even if you feel well. Other features can include easy bruising, soft or thin skin, joint looseness or early arthritis, flat feet, curvature of the spine, and allergies, asthma, or food-related gut inflammation. Not everyone has all of these.</p><p data-lang="fr">Le risque le plus grave est une déchirure de l'aorte ou d'une autre artère. C'est pourquoi les examens d'imagerie sont si importants, même si vous vous sentez bien. D'autres atteintes possibles : ecchymoses faciles, peau mince ou douce, articulations lâches ou arthrose précoce, pieds plats, courbure de la colonne, ainsi qu'allergies, asthme ou inflammation digestive liée à l'alimentation. Ce ne sont pas toutes les personnes qui ont toutes ces atteintes.</p>
+  </div>
+  <div class="tablewrap">
+    <table class="risk">
+      <thead>
+        <tr data-lang="en"><th>System</th><th>Key manifestations</th><th>Relevance</th></tr>
+        <tr data-lang="fr"><th>Système</th><th>Manifestations clés</th><th>Importance</th></tr>
+      </thead>
+      <tbody>
+        <tr data-lang="en"><td>Aorta</td><td>Aortic root aneurysm; dissection, sometimes at smaller diameters than in Marfan syndrome</td><td><span class="dot dot-red"></span>Leading cause of morbidity and mortality</td></tr>
+        <tr data-lang="fr"><td>Aorte</td><td>Anévrisme de la racine aortique; dissection, parfois à des diamètres plus petits que dans le syndrome de Marfan</td><td><span class="dot dot-red"></span>Principale cause de morbidité et de mortalité</td></tr>
+        <tr data-lang="en"><td>Other arteries</td><td>Tortuosity (especially head and neck); aneurysms of branch, visceral, and intracranial arteries</td><td><span class="dot dot-red"></span>Requires head-to-pelvis imaging</td></tr>
+        <tr data-lang="fr"><td>Autres artères</td><td>Tortuosité (surtout tête et cou); anévrismes des branches, des artères viscérales et intracrâniennes</td><td><span class="dot dot-red"></span>Exige une imagerie de la tête au bassin</td></tr>
+        <tr data-lang="en"><td>Heart</td><td>Mitral valve prolapse; bicuspid aortic valve; patent ductus arteriosus; atrial septal defect</td><td><span class="dot dot-amber"></span>Echocardiographic follow-up</td></tr>
+        <tr data-lang="fr"><td>Cœur</td><td>Prolapsus valvulaire mitral; valve aortique bicuspide; persistance du canal artériel; communication interauriculaire</td><td><span class="dot dot-amber"></span>Suivi échocardiographique</td></tr>
+        <tr data-lang="en"><td>Craniofacial</td><td>Hypertelorism; bifid uvula or cleft palate; craniosynostosis; blue sclerae</td><td><span class="dot dot-amber"></span>Diagnostic clue; may need surgical care</td></tr>
+        <tr data-lang="fr"><td>Craniofacial</td><td>Hypertélorisme; luette bifide ou fente palatine; craniosynostose; sclérotiques bleutées</td><td><span class="dot dot-amber"></span>Indice diagnostique; soins chirurgicaux possibles</td></tr>
+        <tr data-lang="en"><td>Skeletal</td><td>Scoliosis; pectus; joint laxity; club foot; cervical spine instability; early osteoarthritis (<em>SMAD3</em>)</td><td><span class="dot dot-amber"></span>Orthopaedic follow-up; cervical spine imaging before procedures</td></tr>
+        <tr data-lang="fr"><td>Squelette</td><td>Scoliose; pectus; laxité articulaire; pied bot; instabilité cervicale; arthrose précoce (<em>SMAD3</em>)</td><td><span class="dot dot-amber"></span>Suivi orthopédique; imagerie cervicale avant interventions</td></tr>
+        <tr data-lang="en"><td>Skin</td><td>Translucent, velvety skin; easy bruising; dystrophic scars</td><td><span class="dot dot-blue"></span>Low morbidity</td></tr>
+        <tr data-lang="fr"><td>Peau</td><td>Peau translucide et veloutée; ecchymoses faciles; cicatrices dystrophiques</td><td><span class="dot dot-blue"></span>Faible morbidité</td></tr>
+        <tr data-lang="en"><td>Immune / GI</td><td>Allergy, asthma, eosinophilic gastrointestinal disease</td><td><span class="dot dot-blue"></span>Often under-recognised; refer as needed</td></tr>
+        <tr data-lang="fr"><td>Immunitaire / digestif</td><td>Allergies, asthme, maladie gastro-intestinale à éosinophiles</td><td><span class="dot dot-blue"></span>Souvent sous-reconnu; orienter au besoin</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <div class="lbl"><i class="ti ti-info-circle"></i> <span data-lang="en">Key point</span><span data-lang="fr">Point clé</span></div>
+    <p data-lang="en">Compared with Marfan syndrome, Loeys-Dietz syndrome (especially <em>TGFBR1/2</em>) more often involves arteries beyond the aortic root and may dissect at smaller diameters. Surveillance must cover the whole arterial tree, and surgical thresholds are generally lower and gene-specific.</p><p data-lang="fr">Comparativement au syndrome de Marfan, le syndrome de Loeys-Dietz (surtout <em>TGFBR1/2</em>) touche plus souvent les artères au-delà de la racine aortique et peut se disséquer à de plus petits diamètres. La surveillance doit couvrir tout l'arbre artériel, et les seuils chirurgicaux sont généralement plus bas et propres au gène.</p>
+  </div>
+</section>
+
+<section id="sec3">
+  <div class="sec-head"><span class="sec-num">3</span><h2 class="sec" data-lang="en">Vascular surveillance</h2><h2 class="sec" data-lang="fr">Surveillance vasculaire</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">You will have a heart ultrasound (echocardiogram) at diagnosis and again about six months later, so your team can see whether the aorta is changing. You will also have an MRI or CT scan of the arteries from the head down to the pelvis. After that, scans are repeated regularly — how often depends on your gene, your measurements, and your history.</p><p data-lang="fr">Vous passerez une échographie cardiaque (échocardiogramme) au diagnostic, puis environ six mois plus tard, afin que votre équipe voie si l'aorte change. Vous aurez aussi une IRM ou une TDM des artères, de la tête jusqu'au bassin. Par la suite, les examens sont répétés régulièrement — la fréquence dépend de votre gène, de vos mesures et de vos antécédents.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">TTE at diagnosis and repeated at about 6 months to establish growth rate <span class="tag tag-routine">Routine</span><span class="sub">Measure the aortic root and ascending aorta with consistent technique (2022 ACC/AHA conventions).</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Baseline head-to-pelvis imaging (MRA or CTA) at diagnosis <span class="tag tag-routine">Recommended</span><span class="sub">Assesses tortuosity and aneurysms of branch, visceral, and cerebral arteries.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Ongoing TTE at least annually; more often with growth or diameters approaching threshold <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Periodic head-to-pelvis MRA/CTA, interval individualised (commonly every 1–2 years) <span class="tag tag-routine">Routine</span><span class="sub">Interval depends on gene, findings, and prior surgery; MRA preferred over CTA where possible to limit lifetime radiation.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Cervical spine flexion–extension radiographs before general anaesthesia or contact activities <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">ETT au diagnostic, répétée après environ 6 mois pour établir le taux de croissance <span class="tag tag-routine">De routine</span><span class="sub">Mesurer la racine aortique et l'aorte ascendante avec une technique constante (conventions 2022 ACC/AHA).</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Imagerie de référence de la tête au bassin (ARM ou angio-TDM) au diagnostic <span class="tag tag-routine">Recommandé</span><span class="sub">Évalue la tortuosité et les anévrismes des branches et des artères viscérales et cérébrales.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">ETT au moins annuelle; plus fréquente si croissance ou diamètres près du seuil <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">ARM/angio-TDM périodique de la tête au bassin, intervalle individualisé (souvent aux 1 à 2 ans) <span class="tag tag-routine">De routine</span><span class="sub">L'intervalle dépend du gène, des trouvailles et des chirurgies antérieures; l'ARM est préférée à l'angio-TDM lorsque possible pour limiter l'irradiation cumulative.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Radiographies cervicales en flexion–extension avant une anesthésie générale ou des activités de contact <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+  <div class="callout amber">
+    <div class="lbl"><i class="ti ti-ruler-measure"></i> <span data-lang="en">Measurement accuracy matters</span><span data-lang="fr">La précision des mesures compte</span></div>
+    <p data-lang="en">Because surgical decisions may be triggered at diameters of 4.0–4.5 cm or by growth rates of a few millimetres per year, compare like with like (same modality, same convention) and confirm threshold-crossing values with a second study before acting.</p><p data-lang="fr">Comme les décisions chirurgicales peuvent survenir à des diamètres de 4,0 à 4,5 cm ou selon des taux de croissance de quelques millimètres par année, comparer des examens comparables (même modalité, même convention) et confirmer toute valeur franchissant un seuil par un second examen avant d'agir.</p>
+  </div>
+</section>
+
+<section id="sec4">
+  <div class="sec-head"><span class="sec-num">4</span><h2 class="sec" data-lang="en">Medical management</h2><h2 class="sec" data-lang="fr">Prise en charge médicale</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Medicines that lower blood pressure and reduce stress on the artery wall are usually recommended. Keeping your blood pressure well controlled is one of the most important things you can do. Tell every doctor and pharmacist that you have Loeys-Dietz syndrome.</p><p data-lang="fr">Des médicaments qui abaissent la pression artérielle et réduisent la contrainte sur la paroi artérielle sont habituellement recommandés. Bien contrôler votre pression artérielle est l'une des choses les plus importantes que vous puissiez faire. Informez chaque médecin et pharmacien que vous avez un syndrome de Loeys-Dietz.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Beta-blocker and/or angiotensin receptor blocker (ARB), titrated to tolerance <span class="tag tag-routine">Reasonable</span><span class="sub">Evidence is largely extrapolated from Marfan syndrome trials; LDS-specific trial data are limited.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Strict blood pressure control <span class="tag tag-routine">Recommended</span><span class="sub">Targets individualised; the 2022 ACC/AHA guideline supports treating to guideline-directed targets in aortic disease.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Avoid fluoroquinolones when an alternative antibiotic is available <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Stimulants and vasoconstrictors (e.g. decongestants, triptans) without specialist discussion <span class="tag tag-no">Avoid</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Allergy, gastroenterology, and orthopaedic referral according to manifestations <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Bêtabloquant et/ou antagoniste des récepteurs de l'angiotensine (ARA), titré selon la tolérance <span class="tag tag-routine">Raisonnable</span><span class="sub">Les données sont surtout extrapolées des essais sur le syndrome de Marfan; les données propres au SLD sont limitées.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Contrôle strict de la pression artérielle <span class="tag tag-routine">Recommandé</span><span class="sub">Cibles individualisées; la ligne directrice 2022 ACC/AHA appuie le traitement selon les cibles recommandées dans la maladie aortique.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Éviter les fluoroquinolones lorsqu'un autre antibiotique est disponible <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">Stimulants et vasoconstricteurs (p. ex. décongestionnants, triptans) sans discussion avec un spécialiste <span class="tag tag-no">À éviter</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Orientation en allergie, gastroentérologie et orthopédie selon les atteintes <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec5">
+  <div class="sec-head"><span class="sec-num">5</span><h2 class="sec" data-lang="en">Surgical thresholds</h2><h2 class="sec" data-lang="fr">Seuils chirurgicaux</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Surgery to replace the widened part of the aorta is done before it can tear. In Loeys-Dietz syndrome, this is often recommended at a smaller size than in other conditions, and the exact timing depends on your gene and personal and family history. Surgery at an experienced aortic centre gives the best results.</p><p data-lang="fr">La chirurgie visant à remplacer la portion élargie de l'aorte est faite avant qu'elle puisse se déchirer. Dans le syndrome de Loeys-Dietz, elle est souvent recommandée à une taille plus petite que dans d'autres maladies, et le moment exact dépend de votre gène et de vos antécédents personnels et familiaux. La chirurgie dans un centre aortique expérimenté donne les meilleurs résultats.</p>
+  </div>
+  <p data-lang="en">The 2022 ACC/AHA guideline provides gene-specific thresholds for prophylactic aortic root and ascending aortic replacement in LDS. In broad terms, surgery is considered at lower diameters for <em>TGFBR1</em> and <em>TGFBR2</em> (in the range of 4.0–4.5 cm, with the lower end reserved for high-risk features), and at higher diameters for <em>TGFB2</em> and <em>TGFB3</em>. Consult the guideline table directly for the current gene-specific values; this summary is not a substitute.</p><p data-lang="fr">La ligne directrice 2022 ACC/AHA fournit des seuils propres au gène pour le remplacement prophylactique de la racine aortique et de l'aorte ascendante dans le SLD. De façon générale, la chirurgie est envisagée à des diamètres plus bas pour <em>TGFBR1</em> et <em>TGFBR2</em> (de l'ordre de 4,0 à 4,5 cm, la limite inférieure étant réservée aux facteurs à haut risque) et à des diamètres plus élevés pour <em>TGFB2</em> et <em>TGFB3</em>. Consulter directement le tableau de la ligne directrice pour les valeurs actuelles propres au gène; ce résumé ne s'y substitue pas.</p>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Refer early to an experienced multidisciplinary aortic team <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Apply gene-specific diameter thresholds from the 2022 ACC/AHA guideline <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Lower the threshold for high-risk features <span class="tag tag-optional">Reasonable</span><span class="sub">Examples: family history of dissection at small diameter, rapid growth, marked arterial tortuosity, severe systemic features, female sex or small body size, planned pregnancy.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Valve-sparing root replacement where anatomy allows <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Evaluate branch and visceral aneurysms with vascular surgery or interventional radiology <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Orienter tôt vers une équipe aortique multidisciplinaire expérimentée <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Appliquer les seuils de diamètre propres au gène de la ligne directrice 2022 ACC/AHA <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Abaisser le seuil en présence de facteurs à haut risque <span class="tag tag-optional">Raisonnable</span><span class="sub">Exemples : antécédents familiaux de dissection à petit diamètre, croissance rapide, tortuosité artérielle marquée, atteinte systémique sévère, sexe féminin ou petite taille corporelle, grossesse planifiée.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Remplacement de la racine avec préservation valvulaire lorsque l'anatomie le permet <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Évaluer les anévrismes des branches et viscéraux avec la chirurgie vasculaire ou la radiologie d'intervention <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec6">
+  <div class="sec-head"><span class="sec-num">6</span><h2 class="sec" data-lang="en">Pregnancy</h2><h2 class="sec" data-lang="fr">Grossesse</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Pregnancy puts extra strain on the aorta. If you are thinking about pregnancy, please talk to your genetics and cardiology teams first. Many people with Loeys-Dietz syndrome have safe pregnancies with careful planning, close monitoring, and delivery at a hospital with the right specialists.</p><p data-lang="fr">La grossesse impose un effort supplémentaire à l'aorte. Si vous envisagez une grossesse, parlez-en d'abord à vos équipes de génétique et de cardiologie. Plusieurs personnes atteintes du syndrome de Loeys-Dietz mènent une grossesse sans danger grâce à une planification soignée, une surveillance étroite et un accouchement dans un hôpital disposant des bons spécialistes.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Preconception counselling with aortic imaging and review of medications <span class="tag tag-routine">Recommended</span><span class="sub">ARBs and ACE inhibitors are contraindicated in pregnancy; beta-blockers are usually continued.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Consider prophylactic aortic surgery before pregnancy when near threshold <span class="tag tag-optional">Reasonable</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Serial echocardiography during pregnancy and postpartum; care in a high-risk obstetric centre with cardio-obstetrics <span class="tag tag-routine">Recommended</span><span class="sub">Dissection risk extends into the postpartum period. Mode and timing of delivery are individualised.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Discuss reproductive options: prenatal diagnosis or PGT-M <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Conseil préconceptionnel avec imagerie aortique et révision des médicaments <span class="tag tag-routine">Recommandé</span><span class="sub">Les ARA et les IECA sont contre-indiqués pendant la grossesse; les bêtabloquants sont habituellement poursuivis.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Envisager une chirurgie aortique prophylactique avant la grossesse si près du seuil <span class="tag tag-optional">Raisonnable</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Échocardiographies répétées pendant la grossesse et le post-partum; suivi dans un centre d'obstétrique à risque élevé avec cardio-obstétrique <span class="tag tag-routine">Recommandé</span><span class="sub">Le risque de dissection se prolonge en post-partum. Le mode et le moment de l'accouchement sont individualisés.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Discuter des options reproductives : diagnostic prénatal ou DPI-M <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec7">
+  <div class="sec-head"><span class="sec-num">7</span><h2 class="sec" data-lang="en">Activity and lifestyle</h2><h2 class="sec" data-lang="fr">Activité et mode de vie</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Staying active is good for you. Moderate activities like walking, cycling, and swimming are usually encouraged. Very heavy lifting, straining, contact sports, and competitive sports are generally avoided. Your team can help you choose activities that are safe for you.</p><p data-lang="fr">Rester actif est bon pour la santé. Les activités modérées comme la marche, le vélo et la natation sont habituellement encouragées. Les charges très lourdes, les efforts avec blocage de la respiration, les sports de contact et les sports de compétition sont généralement évités. Votre équipe peut vous aider à choisir des activités sécuritaires.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Regular low-to-moderate intensity aerobic activity <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Contact or collision sports; maximal isometric effort and heavy weightlifting <span class="tag tag-no">Avoid</span><span class="sub">Cervical spine instability adds to the risk of contact activities.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">No smoking; manage blood pressure; carry a medical alert card <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Activité aérobique régulière d'intensité faible à modérée <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">Sports de contact ou de collision; efforts isométriques maximaux et haltérophilie lourde <span class="tag tag-no">À éviter</span><span class="sub">L'instabilité cervicale ajoute au risque des activités de contact.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Ne pas fumer; contrôler la pression; porter une carte d'alerte médicale <span class="tag tag-routine">Recommandé</span></span></li>
+  </ul>
+  <div class="callout amber">
+    <div class="lbl"><i class="ti ti-alert-triangle"></i> <span data-lang="en">Seek emergency care</span><span data-lang="fr">Consulter d'urgence</span></div>
+    <p data-lang="en">Sudden severe chest, back, abdominal, or neck pain, fainting, or new neurological symptoms may signal an arterial dissection. Call 911 and tell the team you have Loeys-Dietz syndrome.</p><p data-lang="fr">Une douleur soudaine et intense à la poitrine, au dos, à l'abdomen ou au cou, une perte de conscience ou de nouveaux symptômes neurologiques peuvent signaler une dissection artérielle. Composez le 911 et dites à l'équipe que vous avez un syndrome de Loeys-Dietz.</p>
+  </div>
+</section>
+
+<section id="sec8">
+  <div class="sec-head"><span class="sec-num">8</span><h2 class="sec" data-lang="en">Genetic counselling and cascade testing</h2><h2 class="sec" data-lang="fr">Conseil génétique et dépistage en cascade</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Because LDS is inherited in a dominant way, each of your children has a 1 in 2 chance of inheriting the gene change. Your parents, brothers, sisters, and children can be offered a genetic test for your specific gene change. Those who test negative usually do not need the special scans.</p><p data-lang="fr">Comme le SLD se transmet de façon dominante, chacun de vos enfants a une chance sur deux d'hériter de la modification génétique. Vos parents, frères, sœurs et enfants peuvent se voir offrir un test pour votre modification génétique précise. Ceux dont le test est négatif n'ont habituellement pas besoin des examens spéciaux.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Multigene HTAD panel in anyone with suspected LDS <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Targeted variant testing for at-risk first-degree relatives (cascade testing), including children <span class="tag tag-routine">Recommended</span><span class="sub">Testing in childhood is appropriate because surveillance begins in childhood.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Aortic imaging of first-degree relatives when no variant is identified or a VUS is found <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Consider parental mosaicism when the variant appears de novo <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Panel multigène de HTAD chez toute personne soupçonnée de SLD <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test du variant ciblé chez les apparentés au premier degré à risque (dépistage en cascade), y compris les enfants <span class="tag tag-routine">Recommandé</span><span class="sub">Le test dans l'enfance est approprié puisque la surveillance commence dans l'enfance.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Imagerie aortique des apparentés au premier degré si aucun variant n'est trouvé ou si un VSI est trouvé <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Envisager une mosaïque parentale lorsque le variant semble de novo <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec-summary">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-list-check"></i></span><h2 class="sec" data-lang="en">Summary of recommendations</h2><h2 class="sec" data-lang="fr">Résumé des recommandations</h2></div>
+
+  <div class="cardgrid">
+    <div class="scard">
+      <h4><i class="ti ti-heartbeat"></i> <span data-lang="en">Aorta and arteries</span><span data-lang="fr">Aorte et artères</span></h4>
+      <ul>
+        <li data-lang="en">TTE at diagnosis and ~6 months, then at least yearly</li>
+        <li data-lang="en">Baseline and periodic head-to-pelvis MRA/CTA</li>
+        <li data-lang="en">Gene-specific surgical thresholds (2022 ACC/AHA)</li>
+        <li data-lang="fr">ETT au diagnostic et vers 6 mois, puis au moins annuelle</li>
+        <li data-lang="fr">ARM/angio-TDM de référence et périodique de la tête au bassin</li>
+        <li data-lang="fr">Seuils chirurgicaux propres au gène (2022 ACC/AHA)</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-pill"></i> <span data-lang="en">Medical</span><span data-lang="fr">Médical</span></h4>
+      <ul>
+        <li data-lang="en">Beta-blocker and/or ARB</li>
+        <li data-lang="en">Tight blood pressure control</li>
+        <li data-lang="en">Avoid fluoroquinolones and stimulants when possible</li>
+        <li data-lang="fr">Bêtabloquant et/ou ARA</li>
+        <li data-lang="fr">Contrôle strict de la pression</li>
+        <li data-lang="fr">Éviter fluoroquinolones et stimulants si possible</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-baby-carriage"></i> <span data-lang="en">Pregnancy</span><span data-lang="fr">Grossesse</span></h4>
+      <ul>
+        <li data-lang="en">Preconception counselling</li>
+        <li data-lang="en">Stop ARB/ACEi before conception</li>
+        <li data-lang="en">High-risk centre with serial imaging</li>
+        <li data-lang="fr">Conseil préconceptionnel</li>
+        <li data-lang="fr">Cesser ARA/IECA avant la conception</li>
+        <li data-lang="fr">Centre à risque élevé avec imagerie répétée</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-users"></i> <span data-lang="en">Family</span><span data-lang="fr">Famille</span></h4>
+      <ul>
+        <li data-lang="en">HTAD panel in proband</li>
+        <li data-lang="en">Cascade testing of relatives</li>
+        <li data-lang="en">Imaging if no variant found</li>
+        <li data-lang="fr">Panel de HTAD chez le cas index</li>
+        <li data-lang="fr">Dépistage en cascade des apparentés</li>
+        <li data-lang="fr">Imagerie si aucun variant trouvé</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sec-refs">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-book"></i></span><h2 class="sec" data-lang="en">References</h2><h2 class="sec" data-lang="fr">Références</h2></div>
+  <ol class="refs">
+    <li>Isselbacher EM, Preventza O, Hamilton Black J, et al. 2022 ACC/AHA Guideline for the Diagnosis and Management of Aortic Disease: A Report of the American Heart Association/American College of Cardiology Joint Committee on Clinical Practice Guidelines. <em>Circulation</em>. 2022;146(24):e334–e482.</li>
+    <li>MacCarrick G, Black JH 3rd, Bowdin S, et al. Loeys-Dietz syndrome: a primer for diagnosis and management. <em>Genet Med</em>. 2014;16(8):576–587.</li>
+    <li>Loeys BL, Chen J, Neptune ER, et al. A syndrome of altered cardiovascular, craniofacial, neurocognitive and skeletal development caused by mutations in <em>TGFBR1</em> or <em>TGFBR2</em>. <em>Nat Genet</em>. 2005;37(3):275–281.</li>
+    <li>Loeys BL, Schwarze U, Holm T, et al. Aneurysm syndromes caused by mutations in the TGF-β receptor. <em>N Engl J Med</em>. 2006;355(8):788–798.</li>
+    <li>Loeys BL, Dietz HC. Loeys-Dietz Syndrome. In: Adam MP, et al., eds. <em>GeneReviews®</em>. Seattle (WA): University of Washington, Seattle.</li>
+    <li>Renard M, Francis C, Ghosh R, et al. Clinical validity of genes for heritable thoracic aortic aneurysm and dissection. <em>J Am Coll Cardiol</em>. 2018;72(6):605–615.</li>
+    <li>Regitz-Zagrosek V, Roos-Hesselink JW, Bauersachs J, et al. 2018 ESC Guidelines for the management of cardiovascular diseases during pregnancy. <em>Eur Heart J</em>. 2018;39(34):3165–3241.</li>
+  </ol>
+  <p data-lang="en" style="font-size:13px; color:var(--ink-faint);">Original diagrams are the work of the author (© 2026 Dr. Andrew Shuen).</p>
+  <p data-lang="fr" style="font-size:13px; color:var(--ink-faint);">Les schémas originaux sont l'œuvre de l'auteur (© 2026 Dr Andrew Shuen).</p>
+
+  <div class="footer">
+    <p data-lang="en"><strong>Disclaimer.</strong> This protocol supports but does not replace clinical judgment and individualized care. Guidelines evolve; verify all intervals, thresholds, doses, and recommendations against current society guidelines (ACC/AHA, ACMG, relevant specialty societies) before clinical use. Reference citations were drawn from current literature and should be confirmed against the primary sources.</p>
+    <p data-lang="fr"><strong>Avis.</strong> Ce protocole soutient mais ne remplace pas le jugement clinique et les soins individualisés. Les lignes directrices évoluent; vérifier tous les intervalles, seuils, doses et recommandations par rapport aux lignes directrices actuelles des sociétés savantes (ACC/AHA, ACMG, sociétés spécialisées pertinentes) avant tout usage clinique. Les références proviennent de la littérature actuelle et doivent être confirmées auprès des sources primaires.</p>
+    <p>© 2026 Dr. Andrew Shuen · Medical Genetics, Jewish General Hospital, Montreal · <span data-lang="en">For educational use.</span><span data-lang="fr">À usage éducatif.</span></p>
+  </div>
+</section>
+
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-en','lang-fr');
+  document.body.classList.add('lang-'+l);
+  document.getElementById('enTab').classList.toggle('active', l==='en');
+  document.getElementById('frTab').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+}
+function togglePdf(){
+  document.body.classList.toggle('pdf-preview');
+  document.getElementById('pdfBtn').classList.toggle('active');
+}
+</script>
+</body>
+</html>

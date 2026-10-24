@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huntington Disease — Testing &amp; Care Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px; line-height:1.62;
+}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:9px 18px;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .util{display:flex; gap:8px; align-items:center;}
+.topbar .tabs{display:flex; gap:4px;}
+.btn{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13.5px; font-weight:600; cursor:pointer;
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft);
+  padding:7px 13px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;
+  transition:.15s;
+}
+.btn:hover{border-color:var(--brand-line); color:var(--brand-dark); background:var(--brand-bg);}
+.btn.active{background:var(--brand); border-color:var(--brand); color:#fff;}
+.btn i{font-size:16px;}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:860px; margin:0 auto; padding:0 22px 80px;}
+
+/* ---------- Masthead ---------- */
+.masthead{padding:38px 0 26px; border-bottom:2px solid var(--ink);}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:12.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--brand-dark);
+}
+h1.title{font-size:40px; line-height:1.1; margin:.28em 0 .12em; letter-spacing:-.01em;}
+.standfirst{font-size:19px; color:var(--ink-soft); margin:0 0 22px; max-width:62ch;}
+.authorpanel{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:15px 18px; display:flex; gap:14px; align-items:flex-start;
+}
+.authorpanel .who{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.authorpanel .name{font-weight:700; font-size:15px; color:var(--ink);}
+.authorpanel .role{font-size:13.5px; color:var(--ink-faint); line-height:1.5;}
+.authorpanel i{color:var(--brand); font-size:26px; margin-top:2px;}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:16px;}
+.chip{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:600;
+  background:var(--cream); border:1px solid var(--line); border-radius:999px;
+  padding:4px 11px; color:var(--ink-soft); display:inline-flex; gap:5px; align-items:center;
+}
+.chip i{font-size:14px; color:var(--brand);}
+.legend{
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; padding-top:15px;
+  border-top:1px solid var(--line-soft);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint);
+}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+.legend i{font-size:15px;}
+.i-routine{color:#1f7a34;} .i-optional{color:var(--amber);} .i-no{color:var(--red);}
+
+/* ---------- TOC ---------- */
+.toc{
+  margin:26px 0 8px; padding:18px 20px; background:var(--paper);
+  border:1px solid var(--line); border-radius:var(--radius);
+}
+.toc h2{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+  margin:0 0 12px;
+}
+.toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:14.5px;}
+.toc li{margin-bottom:6px; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none;}
+.toc a:hover{color:var(--brand-dark);}
+
+/* ---------- Sections ---------- */
+section{padding-top:34px;}
+.sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.sec-num{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+  font-size:15px; color:#fff; background:var(--brand);
+  min-width:30px; height:30px; border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+}
+h2.sec{font-size:25px; margin:0; letter-spacing:-.01em; line-height:1.2;}
+h3{font-size:18px; margin:24px 0 8px; color:var(--ink);}
+p{margin:0 0 14px;}
+
+/* ---------- Patient card ---------- */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line);
+  border-left:4px solid var(--brand); border-radius:var(--radius-sm);
+  padding:14px 17px; margin:14px 0 18px;
+}
+.patient .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--brand-dark);
+  display:flex; align-items:center; gap:6px; margin-bottom:6px;
+}
+.patient p{margin:0 0 8px;} .patient p:last-child{margin:0;}
+
+/* ---------- Subtype pill header ---------- */
+.subhead{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  margin:22px 0 6px; padding-bottom:8px; border-bottom:1px solid var(--line-soft);
+}
+.subhead h3{margin:0;}
+.pill{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  border-radius:999px; padding:3px 11px; letter-spacing:.02em;
+}
+.pill-red{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.pill-amber{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.pill-blue{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* ---------- Checklist ---------- */
+ul.check{list-style:none; padding:0; margin:12px 0 16px;}
+ul.check li{
+  display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+  align-items:flex-start;
+}
+ul.check li:last-child{border-bottom:none;}
+ul.check i{font-size:19px; flex:none; margin-top:1px;}
+.tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; border-radius:5px; padding:2px 7px;
+  margin-left:8px; white-space:nowrap; vertical-align:middle;
+}
+.tag-routine{background:#e6f4ea; color:#1f7a34;}
+.tag-optional{background:var(--amber-bg); color:var(--amber);}
+.tag-no{background:var(--red-bg); color:var(--red);}
+.ck-txt{flex:1;}
+.ck-txt .sub{display:block; font-size:14px; color:var(--ink-faint); margin-top:2px;}
+
+/* ---------- Callout ---------- */
+.callout{
+  border-left:4px solid var(--brand); background:var(--paper);
+  border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:13px 16px; margin:16px 0;
+}
+.callout.amber{border-left-color:var(--amber); background:var(--amber-bg); border-color:var(--amber-line);}
+.callout.red{border-left-color:var(--red); background:var(--red-bg); border-color:var(--red-line);}
+.callout .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:5px; display:flex; gap:6px; align-items:center;
+}
+.callout.amber .lbl{color:var(--amber);} .callout.red .lbl{color:var(--red);} .callout .lbl{color:var(--brand-dark);}
+.callout p:last-child{margin:0;}
+
+/* ---------- Info / emerging boxes ---------- */
+.infobox{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging .lbl,.infobox .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:6px; display:flex; gap:6px; align-items:center;
+}
+.emerging .lbl{color:var(--purple);} .infobox .lbl{color:var(--brand-dark);}
+.emerging p:last-child,.infobox p:last-child{margin:0;}
+
+/* ---------- Risk table ---------- */
+.tablewrap{overflow-x:auto; margin:16px 0;}
+table.risk{width:100%; border-collapse:collapse; font-size:15px; background:var(--paper); border-radius:var(--radius-sm); overflow:hidden;}
+table.risk th,table.risk td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--line);}
+table.risk th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); background:var(--cream);}
+table.risk tr:last-child td{border-bottom:none;}
+.dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:7px; vertical-align:middle;}
+.dot-red{background:var(--red);} .dot-amber{background:var(--amber-line);} .dot-blue{background:var(--brand);}
+
+/* ---------- Figures ---------- */
+figure.fig{margin:18px 0 20px; padding:0; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+figure.fig .svgwrap{padding:18px 16px 4px; background:linear-gradient(180deg,#fbfdff,#f4f9fc);}
+figure.fig svg{width:100%; height:auto; display:block;}
+figure.fig figcaption{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); padding:11px 16px 13px; border-top:1px solid var(--line-soft); line-height:1.5;}
+figure.fig img.photo{width:100%; height:auto; display:block; border-radius:0;}
+figure.fig .credit{font-size:11.5px; color:var(--ink-faint); margin-top:6px;}
+figure.fig .credit a{color:var(--brand-dark); text-decoration:none;}
+figure.fig figcaption b{color:var(--ink-soft); font-weight:700;}
+.svg-ink{fill:var(--ink);} .svg-soft{fill:var(--ink-soft);} .svg-faint{fill:var(--ink-faint);}
+.svg-lbl{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.svg-term{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;}
+
+/* ---------- Summary cards ---------- */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:16px 0;}
+.scard{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand); border-radius:var(--radius-sm); padding:14px 16px;}
+.scard h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; margin:0 0 8px; color:var(--brand-dark); display:flex; gap:7px; align-items:center;}
+.scard ul{margin:0; padding-left:18px; font-size:14.5px; color:var(--ink-soft);}
+.scard li{margin-bottom:5px;}
+
+/* ---------- References ---------- */
+ol.refs{font-size:14px; color:var(--ink-soft); padding-left:22px; line-height:1.55;}
+ol.refs li{margin-bottom:9px;}
+
+/* ---------- Footer ---------- */
+.footer{margin-top:46px; padding-top:18px; border-top:2px solid var(--ink); position:relative;}
+.footer:before{content:""; position:absolute; top:4px; left:0; right:0; height:1px; background:var(--ink);}
+.footer p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); margin:0 0 8px;}
+
+/* ---------- Language toggle ---------- */
+[data-lang]{display:none;}
+body.lang-en [data-lang="en"]{display:revert;}
+body.lang-fr [data-lang="fr"]{display:revert;}
+ul.check li[data-lang],table.risk tr[data-lang]{display:none;}
+body.lang-en ul.check li[data-lang="en"]{display:flex;}
+body.lang-fr ul.check li[data-lang="fr"]{display:flex;}
+body.lang-en table.risk tr[data-lang="en"]{display:table-row;}
+body.lang-fr table.risk tr[data-lang="fr"]{display:table-row;}
+
+/* ---------- PDF preview on screen ---------- */
+body.pdf-preview{background:#6a7681;}
+body.pdf-preview .topbar{position:static;}
+body.pdf-preview .toc{display:none;}
+body.pdf-preview .wrap{
+  background:#fff; max-width:8.5in; margin:24px auto; padding:0.7in 0.85in;
+  box-shadow:0 4px 24px rgba(0,0,0,.3); font-size:11.5pt; line-height:1.4;
+}
+body.pdf-preview h1.title{font-size:26pt;}
+body.pdf-preview h2.sec{font-size:16pt;}
+body.pdf-preview .standfirst{font-size:13pt;}
+body.pdf-preview section{page-break-inside:auto;}
+body.pdf-preview #sec-summary,body.pdf-preview #sec-refs{
+  border-top:2px dashed var(--brand); margin-top:30px; padding-top:24px; position:relative;
+}
+body.pdf-preview #sec-summary:before,body.pdf-preview #sec-refs:before{
+  content:"— — — page break — — —"; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+  background:#fff; padding:0 12px; font-family:"Helvetica Neue",sans-serif; font-size:9pt; color:var(--brand); letter-spacing:.08em;
+}
+
+/* ---------- Print ---------- */
+@media print{
+  .topbar,.toc{display:none;}
+  body{background:#fff; font-size:10.5pt;}
+  .wrap{max-width:100%; padding:0;}
+  #sec-summary,#sec-refs{page-break-before:always;}
+  .patient,.callout,.infobox,.emerging,.scard,table.risk{break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+@media(max-width:600px){
+  .toc ol{columns:1;} h1.title{font-size:31px;} .cardgrid{grid-template-columns:1fr;}
+}
+.legend span[data-lang]{display:none;}
+body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="fr"]{display:inline-flex;}
+</style>
+<link rel="stylesheet" href="site-banner.css">
+<script src="site-banner.js" defer></script>
+</head>
+<body class="lang-en">
+
+<!-- ======================= TOP BAR ======================= -->
+<div class="topbar ui">
+  <div class="util">
+    <button class="btn" id="pdfBtn" onclick="togglePdf()"><i class="ti ti-eye"></i><span data-lang="en">PDF view</span><span data-lang="fr">Aperçu PDF</span></button>
+    <button class="btn" onclick="window.print()"><i class="ti ti-printer"></i><span data-lang="en">Print / Save PDF</span><span data-lang="fr">Imprimer / PDF</span></button>
+  </div>
+  <div class="tabs">
+    <button class="btn active" id="enTab" onclick="setLang('en')">English</button>
+    <button class="btn" id="frTab" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ======================= MASTHEAD ======================= -->
+<header class="masthead">
+  <div class="eyebrow" data-lang="en">Adult-Onset Neurogenetics · Clinical Protocol</div><div class="eyebrow" data-lang="fr">Neurogénétique de l'adulte · Protocole clinique</div>
+  <h1 class="title" data-lang="en">Huntington Disease</h1><h1 class="title" data-lang="fr">Maladie de Huntington</h1>
+  <p class="standfirst" data-lang="en">A protocol for <em>HTT</em> repeat expansion disease: repeat ranges, diagnostic and predictive testing, multidisciplinary care, family planning, and support for relatives.</p><p class="standfirst" data-lang="fr">Protocole pour la maladie liée à l'expansion de répétitions <em>HTT</em> : plages de répétitions, tests diagnostiques et prédictifs, soins multidisciplinaires, planification familiale et soutien aux apparentés.</p>
+
+  <div class="authorpanel"><i class="ti ti-stethoscope"></i><div class="who"><div class="name">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</div><div class="role" data-lang="en">Medical Genetics · Jewish General Hospital (JGH), Montreal</div><div class="role" data-lang="fr">Génétique médicale · Hôpital général juif (HGJ), Montréal</div></div></div>
+
+  <div class="chips ui">
+    <span class="chip"><i class="ti ti-dna"></i> <em>HTT</em> CAG</span>
+    <span class="chip"><i class="ti ti-brain"></i> <span data-lang="en">Adult-onset</span><span data-lang="fr">Début à l'âge adulte</span></span>
+    <span class="chip"><i class="ti ti-clipboard-text"></i> <span data-lang="en">Predictive testing protocol</span><span data-lang="fr">Protocole de test prédictif</span></span>
+    <span class="chip"><i class="ti ti-calendar"></i> <span data-lang="en">Updated October 2026</span><span data-lang="fr">Mis à jour en octobre 2026</span></span>
+  </div>
+
+  <div class="legend ui">
+    <span data-lang="en"><i class="ti ti-circle-check i-routine"></i> Routine</span>
+    <span data-lang="fr"><i class="ti ti-circle-check i-routine"></i> De routine</span>
+    <span data-lang="en"><i class="ti ti-minus i-optional"></i> Optional / selective</span>
+    <span data-lang="fr"><i class="ti ti-minus i-optional"></i> Optionnel / sélectif</span>
+    <span data-lang="en"><i class="ti ti-x i-no"></i> Not recommended</span>
+    <span data-lang="fr"><i class="ti ti-x i-no"></i> Non recommandé</span>
+  </div>
+</header>
+
+<!-- ======================= TOC ======================= -->
+<nav class="toc ui">
+  <h2 data-lang="en">Contents</h2>
+  <h2 data-lang="fr">Sommaire</h2>
+  <ol>
+    <li><a href="#sec1" data-lang="en">Understanding HD</a><a href="#sec1" data-lang="fr">Comprendre la MH</a></li>
+    <li><a href="#sec2" data-lang="en">Who to test</a><a href="#sec2" data-lang="fr">Qui tester</a></li>
+    <li><a href="#sec3" data-lang="en">Clinical care</a><a href="#sec3" data-lang="fr">Soins cliniques</a></li>
+    <li><a href="#sec4" data-lang="en">Family planning</a><a href="#sec4" data-lang="fr">Planification familiale</a></li>
+    <li><a href="#sec5" data-lang="en">Genetic counselling</a><a href="#sec5" data-lang="fr">Conseil génétique</a></li>
+    <li><a href="#sec-summary" data-lang="en">Summary of recommendations</a><a href="#sec-summary" data-lang="fr">Résumé des recommandations</a></li>
+    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+  </ol>
+</nav>
+
+<section id="sec1">
+  <div class="sec-head"><span class="sec-num">1</span><h2 class="sec" data-lang="en">Understanding Huntington disease</h2><h2 class="sec" data-lang="fr">Comprendre la maladie de Huntington</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Huntington disease (HD) is an inherited brain condition that usually begins in adulthood. It slowly affects movement, thinking, and mood. It is caused by a section of the <em>HTT</em> gene that is repeated too many times. Each child of a person with HD has a 1 in 2 chance of inheriting it. There is not yet a treatment that slows the disease, but many symptoms can be treated, and support makes a real difference. Choosing whether to have a predictive test is a personal decision, made with time and counselling.</p><p data-lang="fr">La maladie de Huntington (MH) est une maladie héréditaire du cerveau qui commence habituellement à l'âge adulte. Elle touche lentement les mouvements, la pensée et l'humeur. Elle est causée par une section du gène <em>HTT</em> répétée trop de fois. Chaque enfant d'une personne atteinte a une chance sur deux d'en hériter. Il n'existe pas encore de traitement qui ralentit la maladie, mais plusieurs symptômes se traitent, et le soutien fait une réelle différence. Choisir de passer ou non un test prédictif est une décision personnelle, prise avec du temps et du counselling.</p>
+  </div>
+  <p data-lang="en">HD is an autosomal dominant neurodegenerative disorder caused by expansion of a CAG trinucleotide repeat in exon 1 of <em>HTT</em>. Mean onset is in mid-adulthood, with motor (chorea, dystonia, incoordination), cognitive (executive dysfunction progressing to dementia), and psychiatric (depression, irritability, apathy, psychosis) features. Longer repeats correlate with earlier onset, although repeat length explains only part of the variability and cannot predict age of onset precisely for an individual. Large expansions (often &gt;60 repeats) are associated with juvenile-onset HD.</p><p data-lang="fr">La MH est une maladie neurodégénérative autosomique dominante causée par l'expansion d'une répétition trinucléotidique CAG dans l'exon 1 de <em>HTT</em>. Le début moyen survient au milieu de l'âge adulte, avec des atteintes motrices (chorée, dystonie, incoordination), cognitives (dysfonction exécutive évoluant vers la démence) et psychiatriques (dépression, irritabilité, apathie, psychose). Les répétitions plus longues sont associées à un début plus précoce, mais la longueur n'explique qu'une partie de la variabilité et ne permet pas de prédire précisément l'âge de début pour une personne. Les grandes expansions (souvent &gt; 60 répétitions) sont associées à la forme juvénile.</p>
+  <figure class="fig">
+    <div class="svgwrap">
+      <svg viewBox="0 0 720 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HTT CAG repeat ranges">
+        <text x="14" y="24" class="svg-term" font-size="14" fill="#15212b" data-lang="en">HTT CAG repeat ranges (ACMG laboratory standards)</text>
+        <text x="14" y="24" class="svg-term" font-size="14" fill="#15212b" data-lang="fr">Plages de répétitions CAG de HTT (normes de laboratoire ACMG)</text>
+        <rect x="20" y="50" width="150" height="46" rx="8" fill="#e6f4ea" stroke="#1f7a34" stroke-width="1.6"/>
+        <text x="95.0" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#15212b">≤26</text>
+        <text x="95.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="en">Normal</text><text x="95.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="fr">Normal</text>
+        <rect x="176" y="50" width="170" height="46" rx="8" fill="#e3f2fb" stroke="#0083d0" stroke-width="1.6"/>
+        <text x="261.0" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#15212b">27–35</text>
+        <text x="261.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="en">Intermediate</text><text x="261.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="fr">Intermédiaire</text>
+        <rect x="352" y="50" width="170" height="46" rx="8" fill="#fff4e0" stroke="#b26a00" stroke-width="1.6"/>
+        <text x="437.0" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#15212b">36–39</text>
+        <text x="437.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="en">Reduced penetrance</text><text x="437.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="fr">Pénétrance réduite</text>
+        <rect x="528" y="50" width="170" height="46" rx="8" fill="#fde8e6" stroke="#b42318" stroke-width="1.6"/>
+        <text x="613.0" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#15212b">≥40</text>
+        <text x="613.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="en">Full penetrance</text><text x="613.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="fr">Pénétrance complète</text>
+      </svg>
+    </div>
+    <figcaption>
+      <span data-lang="en"><b>Figure 1.</b> Repeat ranges used in clinical reporting. Intermediate alleles do not cause HD but may expand into the disease range when passed on, mainly through the father. Reduced-penetrance alleles may or may not cause symptoms within a lifetime.</span>
+      <span data-lang="fr"><b>Figure 1.</b> Plages de répétitions utilisées dans les rapports cliniques. Les allèles intermédiaires ne causent pas la MH mais peuvent s'étendre dans la zone pathologique lors de la transmission, surtout par le père. Les allèles à pénétrance réduite peuvent ou non causer des symptômes au cours d'une vie.</span>
+    </figcaption>
+  </figure>
+  <div class="callout">
+    <div class="lbl"><i class="ti ti-info-circle"></i> <span data-lang="en">Anticipation</span><span data-lang="fr">Anticipation</span></div>
+    <p data-lang="en">Repeats can lengthen between generations, especially in paternal transmission, which can lead to earlier onset in children than in the parent. This is relevant when counselling relatives of a person with an intermediate or reduced-penetrance allele.</p><p data-lang="fr">Les répétitions peuvent s'allonger d'une génération à l'autre, surtout lors de la transmission paternelle, ce qui peut entraîner un début plus précoce chez les enfants que chez le parent. Cela importe dans le counselling des apparentés d'une personne porteuse d'un allèle intermédiaire ou à pénétrance réduite.</p>
+  </div>
+</section>
+
+<section id="sec2">
+  <div class="sec-head"><span class="sec-num">2</span><h2 class="sec" data-lang="en">Who to test and how</h2><h2 class="sec" data-lang="fr">Qui tester et comment</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">There are two different situations. A <strong>diagnostic test</strong> is for someone who already has symptoms that might be HD. A <strong>predictive test</strong> is for someone without symptoms who has a family history and wants to know whether they inherited the gene change. Predictive testing follows a careful counselling process over more than one visit.</p><p data-lang="fr">Il existe deux situations différentes. Un <strong>test diagnostique</strong> s'adresse à une personne qui a déjà des symptômes pouvant évoquer la MH. Un <strong>test prédictif</strong> s'adresse à une personne sans symptômes, avec des antécédents familiaux, qui veut savoir si elle a hérité de la modification génétique. Le test prédictif suit un processus de counselling soigneux sur plus d'une visite.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Diagnostic testing in a symptomatic person with compatible features, with consent and pre-test discussion <span class="tag tag-routine">Recommended</span><span class="sub">A positive result has implications for relatives; offer genetic counselling to the patient and family.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Predictive testing of adults at risk according to international protocol <span class="tag tag-routine">Recommended</span><span class="sub">Typically pre-test counselling, neurological and psychological assessment as indicated, a reflection period, in-person disclosure with a support person, and planned follow-up (MacLeod et al. 2013).</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Predictive testing of asymptomatic minors <span class="tag tag-no">Not recommended</span><span class="sub">Deferred to preserve the child's future autonomy, as there is no medical benefit in childhood.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Screen for depression and suicidality before and after predictive results <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test diagnostique chez une personne symptomatique avec des signes compatibles, avec consentement et discussion préalable <span class="tag tag-routine">Recommandé</span><span class="sub">Un résultat positif a des implications pour les apparentés; offrir le conseil génétique au patient et à la famille.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test prédictif des adultes à risque selon le protocole international <span class="tag tag-routine">Recommandé</span><span class="sub">Habituellement : counselling prétest, évaluation neurologique et psychologique au besoin, période de réflexion, divulgation en personne avec une personne de soutien, et suivi planifié (MacLeod et coll., 2013).</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">Test prédictif de mineurs asymptomatiques <span class="tag tag-no">Non recommandé</span><span class="sub">Reporté pour préserver l'autonomie future de l'enfant, en l'absence de bénéfice médical dans l'enfance.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Dépister la dépression et le risque suicidaire avant et après un résultat prédictif <span class="tag tag-routine">Recommandé</span></span></li>
+  </ul>
+  <div class="callout">
+    <div class="lbl"><i class="ti ti-shield-check"></i> <span data-lang="en">Discrimination protection</span><span data-lang="fr">Protection contre la discrimination</span></div>
+    <p data-lang="en">In Canada, the federal <em>Genetic Non-Discrimination Act</em> (2017) restricts requiring genetic test results as a condition of providing goods, services, or contracts, including insurance. People may still wish to consider insurance timing; refer to current legal guidance.</p><p data-lang="fr">Au Canada, la <em>Loi sur la non-discrimination génétique</em> fédérale (2017) interdit d'exiger des résultats de tests génétiques comme condition pour fournir des biens, des services ou des contrats, y compris l'assurance. Les personnes peuvent tout de même vouloir réfléchir au moment de l'assurance; consulter les avis juridiques à jour.</p>
+  </div>
+</section>
+
+<section id="sec3">
+  <div class="sec-head"><span class="sec-num">3</span><h2 class="sec" data-lang="en">Clinical care and surveillance</h2><h2 class="sec" data-lang="fr">Soins cliniques et suivi</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Care is best given by a team that may include a neurologist, psychiatrist, genetic counsellor, physiotherapist, occupational therapist, speech-language pathologist, dietitian, and social worker. Regular visits help catch changes early and adjust treatment and support.</p><p data-lang="fr">Les soins sont mieux assurés par une équipe pouvant inclure neurologue, psychiatre, conseiller en génétique, physiothérapeute, ergothérapeute, orthophoniste, nutritionniste et travailleur social. Des visites régulières aident à repérer tôt les changements et à ajuster le traitement et le soutien.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Multidisciplinary HD clinic follow-up, commonly every 6–12 months <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Screen mood, irritability, apathy, and suicide risk at every visit <span class="tag tag-routine">Recommended</span><span class="sub">Suicide risk is elevated in HD, including around diagnosis and early symptoms.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Treat bothersome chorea (e.g. VMAT2 inhibitors such as tetrabenazine or deutetrabenazine, or antipsychotics) <span class="tag tag-optional">Selective</span><span class="sub">VMAT2 inhibitors can worsen depression; monitor mood.</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Swallowing, nutrition, and weight monitoring; speech and physiotherapy for falls <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Early advance care planning, driving assessment, and financial/legal planning <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Offer information on clinical trials and research registries <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Suivi en clinique multidisciplinaire de la MH, souvent aux 6 à 12 mois <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Dépister l'humeur, l'irritabilité, l'apathie et le risque suicidaire à chaque visite <span class="tag tag-routine">Recommandé</span><span class="sub">Le risque suicidaire est accru dans la MH, notamment autour du diagnostic et des premiers symptômes.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Traiter une chorée gênante (p. ex. inhibiteurs du VMAT2 comme la tétrabénazine ou la deutétrabénazine, ou antipsychotiques) <span class="tag tag-optional">Sélectif</span><span class="sub">Les inhibiteurs du VMAT2 peuvent aggraver la dépression; surveiller l'humeur.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Suivi de la déglutition, de la nutrition et du poids; orthophonie et physiothérapie pour les chutes <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Planification précoce des soins, évaluation de la conduite et planification financière et juridique <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Offrir de l'information sur les essais cliniques et les registres de recherche <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec4">
+  <div class="sec-head"><span class="sec-num">4</span><h2 class="sec" data-lang="en">Family planning</h2><h2 class="sec" data-lang="fr">Planification familiale</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">If you have HD or are at risk, there are options for having children without passing it on. These include testing a pregnancy, or IVF with testing of embryos before transfer. Some options can be used even if you prefer not to learn your own result.</p><p data-lang="fr">Si vous êtes atteint de la MH ou à risque, il existe des options pour avoir des enfants sans la transmettre. Elles comprennent le test d'une grossesse ou la FIV avec analyse des embryons avant le transfert. Certaines options sont possibles même si vous préférez ne pas connaître votre propre résultat.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Prenatal diagnosis by CVS or amniocentesis <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">PGT-M with IVF, including non-disclosure or exclusion approaches for at-risk people who do not want to know their own status <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Donor gametes or adoption <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Diagnostic prénatal par PVC ou amniocentèse <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">DPI-M avec FIV, y compris des approches de non-divulgation ou d'exclusion pour les personnes à risque qui ne veulent pas connaître leur statut <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Gamètes de donneur ou adoption <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec5">
+  <div class="sec-head"><span class="sec-num">5</span><h2 class="sec" data-lang="en">Genetic counselling and relatives</h2><h2 class="sec" data-lang="fr">Conseil génétique et apparentés</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">A diagnosis of HD affects the whole family. Your genetics team can help you think about how and when to share information with relatives, and can provide letters to help. Relatives can choose for themselves whether and when to be tested.</p><p data-lang="fr">Un diagnostic de MH touche toute la famille. Votre équipe de génétique peut vous aider à réfléchir à la façon et au moment de partager l'information avec vos proches, et peut fournir des lettres pour vous aider. Les apparentés choisissent eux-mêmes s'ils veulent être testés, et quand.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Family letter and offer of counselling to at-risk relatives <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Counsel on the possibility of revealing a parent's status (e.g. a grandchild tested before an at-risk parent) <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Intermediate allele found: counsel on low but real risk of expansion in offspring <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Lettre familiale et offre de counselling aux apparentés à risque <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Discuter de la possibilité de révéler le statut d'un parent (p. ex. un petit-enfant testé avant son parent à risque) <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Allèle intermédiaire trouvé : discuter du risque faible mais réel d'expansion chez les enfants <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec-summary">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-list-check"></i></span><h2 class="sec" data-lang="en">Summary of recommendations</h2><h2 class="sec" data-lang="fr">Résumé des recommandations</h2></div>
+
+  <div class="cardgrid">
+    <div class="scard">
+      <h4><i class="ti ti-dna"></i> <span data-lang="en">Testing</span><span data-lang="fr">Tests</span></h4>
+      <ul>
+        <li data-lang="en">Diagnostic vs predictive testing are distinct</li>
+        <li data-lang="en">Predictive testing per international protocol</li>
+        <li data-lang="en">No predictive testing of minors</li>
+        <li data-lang="fr">Test diagnostique et prédictif sont distincts</li>
+        <li data-lang="fr">Test prédictif selon le protocole international</li>
+        <li data-lang="fr">Pas de test prédictif chez les mineurs</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-brain"></i> <span data-lang="en">Care</span><span data-lang="fr">Soins</span></h4>
+      <ul>
+        <li data-lang="en">Multidisciplinary clinic</li>
+        <li data-lang="en">Screen mood and suicide risk</li>
+        <li data-lang="en">Symptomatic chorea treatment</li>
+        <li data-lang="fr">Clinique multidisciplinaire</li>
+        <li data-lang="fr">Dépister humeur et risque suicidaire</li>
+        <li data-lang="fr">Traitement symptomatique de la chorée</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-users"></i> <span data-lang="en">Family</span><span data-lang="fr">Famille</span></h4>
+      <ul>
+        <li data-lang="en">50% risk to each child</li>
+        <li data-lang="en">Prenatal testing or PGT-M</li>
+        <li data-lang="en">Support for disclosure to relatives</li>
+        <li data-lang="fr">Risque de 50 % pour chaque enfant</li>
+        <li data-lang="fr">Test prénatal ou DPI-M</li>
+        <li data-lang="fr">Soutien pour informer les apparentés</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sec-refs">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-book"></i></span><h2 class="sec" data-lang="en">References</h2><h2 class="sec" data-lang="fr">Références</h2></div>
+  <ol class="refs">
+    <li>MacLeod R, Tibben A, Frontali M, et al. Recommendations for the predictive genetic test in Huntington's disease. <em>Clin Genet</em>. 2013;83(3):221–231.</li>
+    <li>Bean L, Bayrak-Toydemir P. American College of Medical Genetics and Genomics Standards and Guidelines for Clinical Genetics Laboratories, 2014 edition: technical standards and guidelines for Huntington disease. <em>Genet Med</em>. 2014;16(12).</li>
+    <li>Bates GP, Dorsey R, Gusella JF, et al. Huntington disease. <em>Nat Rev Dis Primers</em>. 2015;1:15005.</li>
+    <li>Walker FO. Huntington's disease. <em>Lancet</em>. 2007;369(9557):218–228.</li>
+    <li>Caron NS, Wright GEB, Hayden MR. Huntington Disease. In: Adam MP, et al., eds. <em>GeneReviews®</em>. Seattle (WA): University of Washington, Seattle.</li>
+  </ol>
+  <p data-lang="en" style="font-size:13px; color:var(--ink-faint);">Original diagrams are the work of the author (© 2026 Dr. Andrew Shuen).</p>
+  <p data-lang="fr" style="font-size:13px; color:var(--ink-faint);">Les schémas originaux sont l'œuvre de l'auteur (© 2026 Dr Andrew Shuen).</p>
+
+  <div class="footer">
+    <p data-lang="en"><strong>Disclaimer.</strong> This protocol supports but does not replace clinical judgment and individualized care. Guidelines evolve; verify all intervals, thresholds, doses, and recommendations against current society guidelines (ACC/AHA, ACMG, relevant specialty societies) before clinical use. Reference citations were drawn from current literature and should be confirmed against the primary sources.</p>
+    <p data-lang="fr"><strong>Avis.</strong> Ce protocole soutient mais ne remplace pas le jugement clinique et les soins individualisés. Les lignes directrices évoluent; vérifier tous les intervalles, seuils, doses et recommandations par rapport aux lignes directrices actuelles des sociétés savantes (ACC/AHA, ACMG, sociétés spécialisées pertinentes) avant tout usage clinique. Les références proviennent de la littérature actuelle et doivent être confirmées auprès des sources primaires.</p>
+    <p>© 2026 Dr. Andrew Shuen · Medical Genetics, Jewish General Hospital, Montreal · <span data-lang="en">For educational use.</span><span data-lang="fr">À usage éducatif.</span></p>
+  </div>
+</section>
+
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-en','lang-fr');
+  document.body.classList.add('lang-'+l);
+  document.getElementById('enTab').classList.toggle('active', l==='en');
+  document.getElementById('frTab').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+}
+function togglePdf(){
+  document.body.classList.toggle('pdf-preview');
+  document.getElementById('pdfBtn').classList.toggle('active');
+}
+</script>
+</body>
+</html>

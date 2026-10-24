@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aneuploidy — Patient guide</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+  :root{
+    --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+    --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+    --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+    --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+    --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+    --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+    --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+    --radius:14px; --radius-sm:9px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:18px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 22px 80px;}
+  .ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; line-height:1.2;}
+  a{color:var(--brand); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  /* Language toggle */
+  .langbar{
+    position:sticky; top:0; z-index:50; background:var(--paper);
+    border-bottom:1px solid var(--line); padding:10px 22px;
+    display:flex; gap:8px; justify-content:space-between; align-items:center;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .langbar-left{display:flex; gap:8px; align-items:center;}
+  .langbar-right{display:flex; gap:8px; align-items:center;}
+  .langbar button{
+    border:1px solid var(--brand-line); background:var(--paper); color:var(--brand-dark);
+    padding:7px 18px; border-radius:999px; cursor:pointer; font-size:14px; font-weight:600;
+    letter-spacing:.02em;
+  }
+  .langbar-right button.active{background:var(--brand); color:#fff; border-color:var(--brand);}
+  .langbar .util-btn{border-color:var(--line); color:var(--ink-soft); padding:7px 14px;
+    display:inline-flex; align-items:center; gap:6px;}
+  .langbar .util-btn:hover{background:var(--cream); color:var(--brand-dark); border-color:var(--brand-line);}
+  .langbar .util-btn.active{background:var(--brand-bg); color:var(--brand-dark); border-color:var(--brand-line);}
+  @media(max-width:560px){
+    .langbar{flex-wrap:wrap; gap:8px;}
+    .langbar .util-btn{padding:7px 11px; font-size:13px;}
+  }
+
+  /* Masthead */
+  .masthead{padding:46px 0 26px; border-bottom:3px double var(--line);}
+  .eyebrow{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; text-transform:uppercase;
+    letter-spacing:.16em; font-size:12px; color:var(--brand-dark); font-weight:700;}
+  .masthead h1{font-size:38px; margin:12px 0 8px;}
+  .standfirst{font-size:20px; color:var(--ink-soft); margin:0 0 22px;}
+  .authpanel{
+    background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:16px 18px; font-size:15.5px; color:var(--ink-soft);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .authpanel strong{color:var(--ink);}
+  .meta{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .chip{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+    background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);
+    padding:5px 11px; border-radius:999px; font-weight:600;}
+  .legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:18px; font-size:13.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--ink-soft);}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .swatch{width:14px; height:14px; border-radius:4px; display:inline-block;}
+
+  /* TOC */
+  .toc{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 24px; margin:30px 0; }
+  .toc h2{font-size:15px; text-transform:uppercase; letter-spacing:.12em; margin:0 0 14px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--brand-dark);}
+  .toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:15.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .toc li{margin-bottom:8px; break-inside:avoid;}
+  @media(max-width:640px){.toc ol{columns:1;}}
+
+  /* Sections */
+  section{padding:30px 0; border-top:1px solid var(--line-soft);}
+  .secnum{display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px;
+    background:var(--brand); color:#fff; border-radius:9px; font-weight:700; font-size:17px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; margin-right:12px; vertical-align:middle;}
+  h2.sec{font-size:27px; margin:0 0 16px; display:flex; align-items:center;}
+  h3{font-size:20px; color:var(--brand-dark); margin:26px 0 8px;}
+
+  /* Patient panel */
+  .patient{background:var(--brand-bg); border:1px solid var(--brand-line);
+    border-radius:var(--radius); padding:18px 20px; margin:14px 0 20px;}
+  .patient .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px;
+    text-transform:uppercase; letter-spacing:.13em; color:var(--brand-dark); font-weight:700;
+    display:flex; align-items:center; gap:7px; margin-bottom:8px;}
+  .patient p{margin:8px 0; color:#1f3a4d;}
+
+  /* Gene/subtype pill header */
+  .genehead{display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin:24px 0 6px;}
+  .genepill{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+    background:var(--ink); color:#fff; padding:6px 14px; border-radius:8px; font-size:15px;}
+  .badge{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; font-weight:700;
+    padding:4px 11px; border-radius:999px;}
+  .badge.high{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+  .badge.mod{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+  .badge.low{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+  /* Checklist */
+  .check{list-style:none; padding:0; margin:14px 0;}
+  .check li{display:flex; gap:11px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+    align-items:flex-start;}
+  .check li i{font-size:20px; flex-shrink:0; margin-top:1px;}
+  .ti-check{color:var(--brand);} .ti-minus{color:var(--ink-faint);} .ti-x{color:var(--red);}
+  .tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.06em; padding:2px 8px; border-radius:5px; margin-left:6px;
+    white-space:nowrap;}
+  .tag.routine{background:var(--brand-bg); color:var(--brand-dark);}
+  .tag.optional{background:var(--amber-bg); color:var(--amber);}
+  .tag.notrec{background:var(--line-soft); color:var(--ink-faint);}
+
+  /* Tables */
+  table{width:100%; border-collapse:collapse; margin:18px 0; font-size:15.5px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  th,td{text-align:left; padding:11px 13px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{background:var(--cream); color:var(--brand-dark); font-size:13px; text-transform:uppercase;
+    letter-spacing:.05em;}
+  .pill{display:inline-block; padding:3px 10px; border-radius:999px; font-size:12.5px; font-weight:700;}
+  .pill.high{background:var(--red-bg); color:var(--red);}
+  .pill.mod{background:var(--amber-bg); color:var(--amber);}
+  .pill.low{background:var(--brand-bg); color:var(--brand-dark);}
+
+  /* Callouts */
+  .rec{background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brand);
+    border-radius:var(--radius-sm); padding:14px 18px; margin:16px 0;}
+  .info{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm);
+    padding:14px 18px; margin:16px 0;}
+  .info .ptag, .emerging .ptag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px;
+    text-transform:uppercase; letter-spacing:.13em; font-weight:700; display:flex; align-items:center;
+    gap:7px; margin-bottom:6px;}
+  .info .ptag{color:var(--brand-dark);}
+  .emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm);
+    padding:14px 18px; margin:16px 0;}
+  .emerging .ptag{color:var(--purple);}
+
+  /* Summary cards */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin:18px 0;}
+  .card{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand);
+    border-radius:var(--radius-sm); padding:15px 17px; font-size:15px;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .card h4{margin:0 0 7px; font-size:15px; color:var(--brand-dark);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .card.amber{border-top-color:var(--amber-line);}
+  .card.amber h4{color:var(--amber);}
+
+  /* References */
+  ol.refs{font-size:14.5px; color:var(--ink-soft); line-height:1.5;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; padding-left:22px;}
+  ol.refs li{margin-bottom:10px;}
+
+  .footer{margin-top:40px; padding-top:18px; border-top:3px double var(--line);
+    font-size:13.5px; color:var(--ink-faint); font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+  .lang-fr{display:none;}
+
+  /* ============== ON-SCREEN PDF PREVIEW (mirrors print layout) ============== */
+  body.pdf-preview{background:#5b6b78;}
+  body.pdf-preview .wrap{
+    max-width:816px;            /* 8.5in at 96dpi */
+    background:#fff; margin:24px auto 60px;
+    padding:54px 57px;          /* ~ Letter margins */
+    box-shadow:0 6px 28px rgba(0,0,0,.28); border-radius:2px;
+  }
+  body.pdf-preview{font-size:14px; line-height:1.45;}
+  body.pdf-preview .toc{display:none;}
+  body.pdf-preview .masthead{padding:0 0 16px; margin-bottom:6px;}
+  body.pdf-preview .masthead h1{font-size:30px; margin:8px 0 6px;}
+  body.pdf-preview .standfirst{font-size:16px; margin-bottom:16px;}
+  body.pdf-preview section{padding:14px 0;}
+  body.pdf-preview h2.sec{font-size:20px; margin:0 0 9px;}
+  body.pdf-preview .secnum{width:28px; height:28px; font-size:15px; margin-right:10px;}
+  body.pdf-preview h3{font-size:15.5px; margin:14px 0 5px;}
+  body.pdf-preview .patient{margin:9px 0 13px; padding:12px 15px;}
+  body.pdf-preview .patient p{margin:6px 0;}
+  body.pdf-preview .check li{padding:7px 0;}
+  body.pdf-preview table{font-size:12.5px;}
+  body.pdf-preview .rec,
+  body.pdf-preview .info,
+  body.pdf-preview .emerging{font-size:13px; padding:11px 14px;}
+  body.pdf-preview .cards{grid-template-columns:1fr 1fr; gap:11px;}
+  body.pdf-preview .card{font-size:13px;}
+  body.pdf-preview ol.refs{font-size:12.5px;}
+  /* visual page-break guides matching the forced print breaks */
+  body.pdf-preview #en7,
+  body.pdf-preview #fr7{
+    border-top:2px dashed var(--brand-line); margin-top:14px; padding-top:20px;
+    position:relative;
+  }
+  body.pdf-preview #en7::before,
+  body.pdf-preview #fr7::before{
+    content:"\2702  new page in PDF"; position:absolute; top:-9px; right:0;
+    background:#fff; padding:0 8px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:10px; color:var(--brand-dark); letter-spacing:.04em;
+  }
+
+  /* ===================== PRINT / PDF ===================== */
+  @page{
+    size:Letter;
+    margin:16mm 15mm 15mm;
+  }
+  @media print{
+    :root{ --cream:#fff; }
+    html,body{background:#fff !important;}
+    body{
+      font-size:10.5pt; line-height:1.4; color:#15212b;
+      -webkit-print-color-adjust:exact; print-color-adjust:exact;
+    }
+    .wrap{max-width:100%; padding:0;}
+
+    /* Hide on-screen UI; print only the active language */
+    .langbar{display:none !important;}
+    .toc{display:none !important;}                 /* TOC not useful in a flat PDF */
+    .lang-fr[style*="block"]{}                      /* respect JS-set display */
+
+    a{color:#15212b !important; text-decoration:none;}
+
+    /* Masthead tightened, centred feel, no oversize gaps */
+    .masthead{padding:0 0 14px; margin-bottom:6px;}
+    .masthead h1{font-size:23pt; margin:8px 0 6px;}
+    .standfirst{font-size:12pt; margin-bottom:14px;}
+    .eyebrow{font-size:8.5pt;}
+    .authpanel{font-size:10pt; padding:10px 12px;}
+    .meta{margin-top:10px;}
+    .chip{font-size:8.5pt; padding:3px 8px;}
+    .legend{font-size:9pt; margin-top:12px; gap:12px;}
+
+    /* Section flow: avoid orphaned headers, keep blocks intact */
+    section{
+      padding:12px 0; border-top:1px solid var(--line-soft);
+      break-inside:auto;
+    }
+    h2.sec{
+      font-size:15pt; margin:0 0 8px;
+      break-after:avoid; page-break-after:avoid;
+    }
+    h3{
+      font-size:11.5pt; margin:12px 0 4px;
+      break-after:avoid; page-break-after:avoid;
+    }
+    .secnum{width:26px; height:26px; font-size:12pt; margin-right:9px;}
+
+    /* Keep cohesive units together */
+    .patient,.rec,.info,.emerging,.card,
+    .genehead,.check li,tr,thead,
+    .cards .card{
+      break-inside:avoid; page-break-inside:avoid;
+    }
+    .genehead{break-after:avoid; page-break-after:avoid;}
+    .patient{margin:8px 0 12px; padding:11px 14px;}
+    .patient p{margin:5px 0;}
+
+    /* Checklists tighter */
+    .check li{padding:6px 0;}
+    .check li i{font-size:13pt;}
+    .tag{font-size:7.5pt; padding:1px 6px;}
+
+    /* Tables print cleanly, headers repeat across page breaks */
+    table{font-size:9pt; margin:10px 0; break-inside:auto;}
+    thead{display:table-header-group;}
+    th,td{padding:6px 8px;}
+    .pill{font-size:8pt; padding:2px 7px;}
+
+    /* Callouts */
+    .rec,.info,.emerging{padding:9px 12px; margin:10px 0; font-size:9.5pt;}
+    .info .ptag,.emerging .ptag,.patient .ptag{font-size:8.5pt; margin-bottom:4px;}
+
+    /* Summary cards: 2-up grid that fits the page width */
+    .cards{
+      grid-template-columns:1fr 1fr; gap:9px; margin:10px 0;
+      break-inside:auto;
+    }
+    .card{padding:10px 12px; font-size:9.5pt;}
+    .card h4{font-size:10pt; margin-bottom:5px;}
+
+    /* References: avoid splitting a single citation across pages */
+    ol.refs{font-size:9pt;}
+    ol.refs li{margin-bottom:6px; break-inside:avoid; page-break-inside:avoid;}
+
+    /* Each major section can start fresh if it would otherwise be cramped;
+       use sparingly: force a fresh page before the summary and references */
+    #en7, #fr7{ break-before:page; page-break-before:always; }
+
+    .footer{
+      margin-top:18px; padding-top:12px; font-size:8.5pt;
+      break-inside:avoid;
+    }
+
+    /* Repeating running footer with page numbers */
+    @page{
+      @bottom-center{
+        content:"Karyotype";
+        font-family:Helvetica,Arial,sans-serif; font-size:7.5pt; color:#6a7681;
+      }
+      @bottom-right{
+        content:"Page " counter(page) " of " counter(pages);
+        font-family:Helvetica,Arial,sans-serif; font-size:7.5pt; color:#6a7681;
+      }
+    }
+  }
+
+  /* ---- figures (ported from primer, ATM palette) ---- */
+  .fig{margin:18px 0 6px; border:1px solid var(--line); border-radius:var(--radius);
+    background:#fbfdfe; padding:18px 16px 12px;}
+  .fig svg{width:100%; height:auto; display:block;}
+  .fig figcaption{margin-top:10px; font-size:13px; color:var(--ink-faint); line-height:1.45;
+    text-align:center; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .fig-key{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--brand-dark); font-weight:700;}
+  .fig text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  @media print{
+    .fig{break-inside:avoid; page-break-inside:avoid; padding:10px 12px; margin:10px 0 4px;}
+    .fig figcaption{font-size:8.5pt;}
+  }
+
+  /* author panel (shared with protocol pages) */
+  .authorpanel{
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:15px 18px; display:flex; gap:14px; align-items:flex-start;
+  }
+  .authorpanel .who{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+  .authorpanel .name{font-weight:700; font-size:15px; color:var(--ink);}
+  .authorpanel .role{font-size:13.5px; color:var(--ink-faint); line-height:1.5;}
+  .authorpanel i{color:var(--brand); font-size:26px; margin-top:2px;}
+  .authorpanel{margin-top:18px;}
+  #lang-en [data-lang="fr"], #lang-fr [data-lang="en"]{display:none;}
+</style>
+<link rel="stylesheet" href="site-banner.css">
+<script src="site-banner.js" defer></script>
+</head>
+<body>
+<div class="langbar ui">
+  <div class="langbar-left">
+    <button id="btn-pdf" class="util-btn" onclick="togglePdfView()" title="Preview the print/PDF layout on screen"><i class="ti ti-file-type-pdf"></i> PDF view</button>
+    <button id="btn-print" class="util-btn" onclick="window.print()" title="Print or save as PDF"><i class="ti ti-printer"></i> Print / Save PDF</button>
+    <a class="util-btn" href="index.html" title="Back to all protocols" style="text-decoration:none"><i class="ti ti-arrow-left"></i> All protocols</a>
+  </div>
+  <div class="langbar-right">
+    <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+    <button id="btn-fr" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+<div class="wrap">
+<div class="lang-en" id="lang-en"><header class="masthead"><div class="eyebrow">Patient Education · Genetics Concepts</div><h1>Aneuploidy</h1><p class="standfirst">Having an extra or missing chromosome: how it happens, which conditions it causes, how it is detected, and what it means for future pregnancies.</p><div class="authorpanel"><i class="ti ti-stethoscope"></i><div class="who"><div class="name">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</div><div class="role" data-lang="en">Medical Genetics · Jewish General Hospital (JGH), Montreal</div><div class="role" data-lang="fr">Génétique médicale · Hôpital général juif (HGJ), Montréal</div></div></div><div class="meta"><span class="chip">Genetics concept</span><span class="chip">Whole chromosomes</span><span class="chip">Pregnancy &amp; development</span><span class="chip"><i class="ti ti-calendar"></i> Updated October 2026</span></div></header><nav class="toc ui"><h2>Contents</h2><ol><li><a href="#en1">What it is</a></li><li><a href="#en2">How it happens</a></li><li><a href="#en3">Conditions it causes</a></li><li><a href="#en4">How it is detected</a></li><li><a href="#en5">Future pregnancies</a></li><li><a href="#en6">Sorting out the words</a></li><li><a href="#en7">References</a></li><li><a href="#en8">Remember</a></li></ol></nav><section id="en1"><h2 class="sec"><span class="secnum">1</span> What it is</h2><div class="patient"><div class="ptag"><i class="ti ti-user-heart"></i> For patients</div><p>Most people have 46 chromosomes, arranged in 23 pairs. Aneuploidy means having a chromosome number that is not a full, even set — usually one extra chromosome (<strong>trisomy</strong>, three copies) or one missing (<strong>monosomy</strong>, one copy). Because each chromosome carries hundreds to thousands of genes, an extra or missing one changes the "dose" of many genes at once.</p></div><figure class="fig"><svg viewBox="0 0 690 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Disomy, trisomy and monosomy"><text x="20" y="26" font-size="13" font-weight="700" fill="var(--brand-dark)">One chromosome type, three situations</text><rect x="100" y="50" width="14" height="56" rx="4" fill="#dfeaf0" stroke="var(--ink-soft)" stroke-width="1"/><rect x="120" y="50" width="14" height="56" rx="4" fill="#dfeaf0" stroke="var(--ink-soft)" stroke-width="1"/><text x="117.0" y="126" text-anchor="middle" font-size="12" fill="var(--ink-faint)" font-weight="700">Typical: 2 copies</text><rect x="310" y="50" width="14" height="56" rx="4" fill="#dfeaf0" stroke="var(--ink-soft)" stroke-width="1"/><rect x="330" y="50" width="14" height="56" rx="4" fill="#dfeaf0" stroke="var(--ink-soft)" stroke-width="1"/><rect x="350" y="50" width="14" height="56" rx="4" fill="var(--red-bg)" stroke="var(--red)" stroke-width="1.8"/><text x="337.0" y="126" text-anchor="middle" font-size="12" fill="var(--red)" font-weight="700">Trisomy: 3 copies</text><rect x="540" y="50" width="14" height="56" rx="4" fill="#dfeaf0" stroke="var(--ink-soft)" stroke-width="1"/><text x="547.0" y="126" text-anchor="middle" font-size="12" fill="var(--amber)" font-weight="700">Monosomy: 1 copy</text></svg><figcaption data-en="Typical pairs, a trisomy (three copies), and a monosomy (one copy)." data-fr="Paires typiques, une trisomie (trois copies) et une monosomie (une copie).">Typical pairs, a trisomy (three copies), and a monosomy (one copy).</figcaption></figure></section><section id="en2"><h2 class="sec"><span class="secnum">2</span> How it happens</h2><p>Aneuploidy usually happens by chance when an egg or sperm is formed. Normally each pair separates so that every egg or sperm gets one copy. Sometimes a pair does not separate properly (called <strong>nondisjunction</strong>), and an egg or sperm ends up with two copies or none. It is not caused by anything a parent did or did not do.</p><figure class="fig"><svg viewBox="0 0 720 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nondisjunction steps"><text x="10" y="24" font-size="13" font-weight="700" fill="var(--brand-dark)">How an extra chromosome can arise (nondisjunction in an egg or sperm)</text><rect x="10" y="40" width="160" height="64" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="26" cy="56" r="11" fill="var(--brand)"/><text x="26" y="60" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">1</text><text x="96" y="80" text-anchor="middle" font-size="12" fill="var(--ink)">Cell with a pair</text><path d="M173 72 l12 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="188" y="40" width="160" height="64" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="204" cy="56" r="11" fill="var(--brand)"/><text x="204" y="60" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">2</text><text x="274" y="80" text-anchor="middle" font-size="12" fill="var(--ink)">Pair fails to separate</text><path d="M351 72 l12 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="366" y="40" width="160" height="64" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="382" cy="56" r="11" fill="var(--brand)"/><text x="382" y="60" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">3</text><text x="452" y="80" text-anchor="middle" font-size="12" fill="var(--ink)">Egg/sperm with 2 copies</text><path d="M529 72 l12 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="544" y="40" width="160" height="64" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="560" cy="56" r="11" fill="var(--brand)"/><text x="560" y="60" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">4</text><text x="630" y="80" text-anchor="middle" font-size="12" fill="var(--ink)">+ partner's 1 copy = 3</text></svg><figcaption data-en="Nondisjunction during egg or sperm formation is the most common cause of trisomy." data-fr="La non-disjonction pendant la formation des ovules ou des spermatozoïdes est la cause la plus fréquente de trisomie.">Nondisjunction during egg or sperm formation is the most common cause of trisomy.</figcaption></figure><p>The chance of aneuploidy in a pregnancy rises with the age of the egg, which is why it becomes more common with increasing maternal age. Aneuploidy is also one of the most common reasons for early miscarriage.</p><div class="info"><div class="ptag"><i class="ti ti-stethoscope"></i> For clinicians</div><p style="margin:6px 0 0">Most autosomal trisomies arise from maternal meiotic errors, predominantly in meiosis I, with a strong maternal age effect; mechanisms include age-related deterioration of cohesion and altered recombination (Hassold &amp; Hunt 2001; Nagaoka et al. 2012). Paternal origin is more frequent for some sex chromosome aneuploidies (e.g. a substantial proportion of 47,XXY; 45,X usually reflects loss of a paternal sex chromosome).</p><p style="margin:6px 0 0">Post-zygotic (mitotic) errors produce <strong>mosaicism</strong>, which may be confined to the placenta. Chromosomally abnormal conceptions account for roughly half of first-trimester pregnancy losses.</p></div></section><section id="en3"><h2 class="sec"><span class="secnum">3</span> Conditions it causes</h2><p>Most aneuploidies are not compatible with a continuing pregnancy. Those seen in liveborn babies include:</p><table><thead><tr><th>Karyotype</th><th>Condition</th><th>Notes</th></tr></thead><tbody><tr><td>47,+21</td><td>Trisomy 21 (Down syndrome)</td><td>The most common liveborn autosomal trisomy; intellectual disability of variable degree, heart defects in some.</td></tr><tr><td>47,+18</td><td>Trisomy 18 (Edwards syndrome)</td><td>Multiple malformations; most affected pregnancies do not reach term.</td></tr><tr><td>47,+13</td><td>Trisomy 13 (Patau syndrome)</td><td>Multiple malformations; most affected pregnancies do not reach term.</td></tr><tr><td>45,X</td><td>Turner syndrome</td><td>Short stature, ovarian insufficiency, heart and kidney differences; many 45,X pregnancies miscarry.</td></tr><tr><td>47,XXY</td><td>Klinefelter syndrome</td><td>Often recognised in adolescence or with infertility.</td></tr><tr><td>47,XXX / 47,XYY</td><td>Trisomy X / XYY</td><td>Often mild or unrecognised; may include learning differences.</td></tr></tbody></table><div class="info"><div class="ptag"><i class="ti ti-stethoscope"></i> For clinicians</div><p style="margin:6px 0 0">A minority of Down syndrome results from a Robertsonian translocation involving chromosome 21 rather than free trisomy; this distinction changes recurrence risk and makes parental karyotyping important. Mosaic aneuploidy generally produces milder or more variable phenotypes, and the level in blood may not reflect other tissues.</p></div></section><section id="en4"><h2 class="sec"><span class="secnum">4</span> How it is detected</h2><p>In pregnancy, <a href="nipt.html">NIPT</a> (a blood test) screens for the common aneuploidies; it gives a likelihood, not a diagnosis. A screen-positive result is confirmed by a diagnostic test on <a href="cvs.html">CVS</a> or <a href="amniocentesis.html">amniocentesis</a>, often starting with rapid <a href="qf-pcr.html">QF-PCR</a> followed by <a href="karyotype.html">karyotype</a> or <a href="microarray.html">microarray</a>. After birth, karyotype confirms the diagnosis and shows whether a translocation is involved. In IVF, embryos can be tested by <a href="pgt-a.html">PGT-A</a>.</p><ul class="check"><li><i class="ti ti-check"></i> <div>Karyotype shows the number of chromosomes and whether an extra chromosome is free or attached to another (translocation).<span class="tag finds">Finds</span></div></li><li><i class="ti ti-check"></i> <div>QF-PCR gives a rapid answer for chromosomes 13, 18, 21, X and Y.<span class="tag finds">Finds</span></div></li><li><i class="ti ti-x"></i> <div>NIPT is a screening test: false positives occur, in part because the DNA tested comes mostly from the placenta.<span class="tag misses">Good to know</span></div></li><li><i class="ti ti-x"></i> <div>Low-level mosaicism can be missed or may need testing of more cells or another tissue.<span class="tag misses">Good to know</span></div></li></ul></section><section id="en5"><h2 class="sec"><span class="secnum">5</span> Future pregnancies</h2><div class="patient"><div class="ptag"><i class="ti ti-user-heart"></i> For patients</div><p>After a pregnancy or child with a free (non-inherited) trisomy, the chance of it happening again is generally low, though slightly higher than the age-related chance alone. If a translocation is found, the parents' chromosomes are checked, because a parent who carries a balanced translocation may have a higher chance of it happening again. Your genetics team can give you a personal estimate and discuss testing options for a future pregnancy.</p></div><div class="info"><div class="ptag"><i class="ti ti-stethoscope"></i> For clinicians</div><p style="margin:6px 0 0">For free trisomy 21, recurrence is commonly quoted at about 1% or the maternal age-related risk, whichever is higher; small residual risks reflect gonadal mosaicism and individual predisposition. Recurrence after translocation trisomy depends on the parental rearrangement (see <a href="balanced-translocations.html">balanced translocations</a>). Prenatal diagnosis or PGT can be offered.</p></div><div class="rec"><i class="ti ti-message-circle"></i> A chromosome difference in a pregnancy or child is never anyone's fault. Support, accurate information, and time to decide are all part of good genetic care.</div></section><section id="en6"><h2 class="sec"><span class="secnum">6</span> Sorting out the words</h2><table><thead><tr><th>Term</th><th>In plain words</th></tr></thead><tbody><tr><td><strong>Aneuploidy</strong></td><td>An extra or missing chromosome.</td></tr><tr><td><strong>Trisomy / monosomy</strong></td><td>Three copies / one copy of a chromosome instead of two.</td></tr><tr><td><strong>Nondisjunction</strong></td><td>When a chromosome pair fails to separate as an egg or sperm forms.</td></tr><tr><td><strong>Mosaicism</strong></td><td>When only some cells have the chromosome difference.</td></tr><tr><td><strong>Screening vs diagnostic</strong></td><td>A screen gives a likelihood; a diagnostic test gives a clearer yes or no.</td></tr></tbody></table></section><section id="en7"><h2 class="sec"><span class="secnum">7</span> References</h2><ol><li>Hassold T, Hunt P. To err (meiotically) is human: the genesis of human aneuploidy. <em>Nat Rev Genet</em>. 2001;2(4):280–291.</li><li>Nagaoka SI, Hassold TJ, Hunt PA. Human aneuploidy: mechanisms and new insights into an age-old problem. <em>Nat Rev Genet</em>. 2012;13(7):493–504.</li><li>McKinlay Gardner RJ, Amor DJ. <em>Gardner and Sutherland's Chromosome Abnormalities and Genetic Counseling</em>. 5th ed. Oxford University Press; 2018.</li><li>McGowan-Jordan J, Hastings RJ, Moore S, eds. <em>ISCN 2020: An International System for Human Cytogenomic Nomenclature</em>. Basel: Karger; 2020.</li></ol></section><section id="en8"><div class="info"><div class="ptag"><i class="ti ti-user-heart"></i> Remember</div><p style="margin:6px 0 0">This is general information and does not replace a consultation. What a result means for you and your family is best worked out with your genetics team.</p></div></section><div class="footer"><p>This page is a patient information resource intended to support, not replace, individual genetic counselling. It explains a genetics concept in general terms; the testing offered and its interpretation depend on your situation and the laboratory used. Prepared for Medical Genetics, Jewish General Hospital, Montreal.</p><p><strong>Disclaimer.</strong> Clinician sections support but do not replace clinical judgment and individualized care. Guidelines and classification standards evolve; verify against current society guidance (ACMG/ClinGen, SOGC, CCMG) and primary sources before clinical use.</p><p>© 2026 Dr. Andrew Shuen · Medical Genetics, Jewish General Hospital, Montreal</p></div></div>
+<div class="lang-fr" id="lang-fr"><header class="masthead"><div class="eyebrow">Information aux patients · Notions de génétique</div><h1>Aneuploïdie</h1><p class="standfirst">Un chromosome en trop ou en moins : comment cela se produit, quelles conditions en découlent, comment on le détecte et ce que cela signifie pour les grossesses futures.</p><div class="authorpanel"><i class="ti ti-stethoscope"></i><div class="who"><div class="name">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</div><div class="role" data-lang="en">Medical Genetics · Jewish General Hospital (JGH), Montreal</div><div class="role" data-lang="fr">Génétique médicale · Hôpital général juif (HGJ), Montréal</div></div></div><div class="meta"><span class="chip">Notion de génétique</span><span class="chip">Chromosomes entiers</span><span class="chip">Grossesse et développement</span><span class="chip"><i class="ti ti-calendar"></i> Mis à jour en octobre 2026</span></div></header><nav class="toc ui"><h2>Sommaire</h2><ol><li><a href="#fr1">Ce que c'est</a></li><li><a href="#fr2">Comment cela se produit</a></li><li><a href="#fr3">Conditions qui en découlent</a></li><li><a href="#fr4">Comment on la détecte</a></li><li><a href="#fr5">Grossesses futures</a></li><li><a href="#fr6">Le sens des mots</a></li><li><a href="#fr7">Références</a></li><li><a href="#fr8">À retenir</a></li></ol></nav><section id="fr1"><h2 class="sec"><span class="secnum">1</span> Ce que c'est</h2><div class="patient"><div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div><p>La plupart des gens ont 46 chromosomes, répartis en 23 paires. L'aneuploïdie signifie avoir un nombre de chromosomes qui ne forme pas un ensemble complet et pair — habituellement un chromosome en trop (<strong>trisomie</strong>, trois copies) ou un en moins (<strong>monosomie</strong>, une copie). Comme chaque chromosome porte des centaines à des milliers de gènes, un chromosome en trop ou manquant modifie la « dose » de nombreux gènes à la fois.</p></div><figure class="fig"><svg viewBox="0 0 690 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Disomy, trisomy and monosomy"><text x="20" y="26" font-size="13" font-weight="700" fill="var(--brand-dark)">Un type de chromosome, trois situations</text><rect x="100" y="50" width="14" height="56" rx="4" fill="#dfeaf0" stroke="var(--ink-soft)" stroke-width="1"/><rect x="120" y="50" width="14" height="56" rx="4" fill="#dfeaf0" stroke="var(--ink-soft)" stroke-width="1"/><text x="117.0" y="126" text-anchor="middle" font-size="12" fill="var(--ink-faint)" font-weight="700">Typique : 2 copies</text><rect x="310" y="50" width="14" height="56" rx="4" fill="#dfeaf0" stroke="var(--ink-soft)" stroke-width="1"/><rect x="330" y="50" width="14" height="56" rx="4" fill="#dfeaf0" stroke="var(--ink-soft)" stroke-width="1"/><rect x="350" y="50" width="14" height="56" rx="4" fill="var(--red-bg)" stroke="var(--red)" stroke-width="1.8"/><text x="337.0" y="126" text-anchor="middle" font-size="12" fill="var(--red)" font-weight="700">Trisomie : 3 copies</text><rect x="540" y="50" width="14" height="56" rx="4" fill="#dfeaf0" stroke="var(--ink-soft)" stroke-width="1"/><text x="547.0" y="126" text-anchor="middle" font-size="12" fill="var(--amber)" font-weight="700">Monosomie : 1 copie</text></svg><figcaption data-en="Typical pairs, a trisomy (three copies), and a monosomy (one copy)." data-fr="Paires typiques, une trisomie (trois copies) et une monosomie (une copie).">Paires typiques, une trisomie (trois copies) et une monosomie (une copie).</figcaption></figure></section><section id="fr2"><h2 class="sec"><span class="secnum">2</span> Comment cela se produit</h2><p>L'aneuploïdie survient habituellement par hasard lors de la formation d'un ovule ou d'un spermatozoïde. Normalement, chaque paire se sépare pour que chaque ovule ou spermatozoïde reçoive une copie. Parfois, une paire ne se sépare pas correctement (on parle de <strong>non-disjonction</strong>), et un ovule ou un spermatozoïde se retrouve avec deux copies ou aucune. Ce n'est causé par rien de ce qu'un parent a fait ou n'a pas fait.</p><figure class="fig"><svg viewBox="0 0 720 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nondisjunction steps"><text x="10" y="24" font-size="13" font-weight="700" fill="var(--brand-dark)">Comment un chromosome en trop peut survenir (non-disjonction dans un ovule ou un spermatozoïde)</text><rect x="10" y="40" width="160" height="64" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="26" cy="56" r="11" fill="var(--brand)"/><text x="26" y="60" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">1</text><text x="96" y="80" text-anchor="middle" font-size="12" fill="var(--ink)">Cellule avec une paire</text><path d="M173 72 l12 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="188" y="40" width="160" height="64" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="204" cy="56" r="11" fill="var(--brand)"/><text x="204" y="60" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">2</text><text x="274" y="80" text-anchor="middle" font-size="12" fill="var(--ink)">La paire ne se sépare pas</text><path d="M351 72 l12 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="366" y="40" width="160" height="64" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="382" cy="56" r="11" fill="var(--brand)"/><text x="382" y="60" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">3</text><text x="452" y="80" text-anchor="middle" font-size="12" fill="var(--ink)">Ovule/spermatozoïde à 2 copies</text><path d="M529 72 l12 0 m-7 -5 l7 5 l-7 5" stroke="var(--brand)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="544" y="40" width="160" height="64" rx="10" fill="var(--brand-bg)" stroke="var(--brand-line)" stroke-width="1.5"/><circle cx="560" cy="56" r="11" fill="var(--brand)"/><text x="560" y="60" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">4</text><text x="630" y="80" text-anchor="middle" font-size="12" fill="var(--ink)">+ 1 copie du partenaire = 3</text></svg><figcaption data-en="Nondisjunction during egg or sperm formation is the most common cause of trisomy." data-fr="La non-disjonction pendant la formation des ovules ou des spermatozoïdes est la cause la plus fréquente de trisomie.">La non-disjonction pendant la formation des ovules ou des spermatozoïdes est la cause la plus fréquente de trisomie.</figcaption></figure><p>La probabilité d'aneuploïdie dans une grossesse augmente avec l'âge de l'ovule; c'est pourquoi elle devient plus fréquente avec l'âge maternel. L'aneuploïdie est aussi l'une des causes les plus fréquentes de fausse couche précoce.</p><div class="info"><div class="ptag"><i class="ti ti-stethoscope"></i> Pour les cliniciens</div><p style="margin:6px 0 0">La plupart des trisomies autosomiques proviennent d'erreurs méiotiques maternelles, surtout en méiose I, avec un fort effet de l'âge maternel; les mécanismes comprennent la détérioration liée à l'âge de la cohésion et une recombinaison altérée (Hassold et Hunt 2001; Nagaoka et coll. 2012). L'origine paternelle est plus fréquente pour certaines aneuploïdies des chromosomes sexuels (p. ex. une proportion importante des 47,XXY; le 45,X reflète habituellement la perte d'un chromosome sexuel paternel).</p><p style="margin:6px 0 0">Les erreurs post-zygotiques (mitotiques) produisent un <strong>mosaïcisme</strong>, qui peut être confiné au placenta. Les conceptions chromosomiquement anormales représentent environ la moitié des pertes de grossesse du premier trimestre.</p></div></section><section id="fr3"><h2 class="sec"><span class="secnum">3</span> Conditions qui en découlent</h2><p>La plupart des aneuploïdies ne sont pas compatibles avec la poursuite d'une grossesse. Celles qu'on observe chez les bébés nés vivants comprennent :</p><table><thead><tr><th>Caryotype</th><th>Condition</th><th>Notes</th></tr></thead><tbody><tr><td>47,+21</td><td>Trisomie 21 (syndrome de Down)</td><td>La trisomie autosomique la plus fréquente chez les naissances vivantes; déficience intellectuelle de degré variable, cardiopathie chez certains.</td></tr><tr><td>47,+18</td><td>Trisomie 18 (syndrome d'Edwards)</td><td>Malformations multiples; la plupart des grossesses atteintes n'arrivent pas à terme.</td></tr><tr><td>47,+13</td><td>Trisomie 13 (syndrome de Patau)</td><td>Malformations multiples; la plupart des grossesses atteintes n'arrivent pas à terme.</td></tr><tr><td>45,X</td><td>Syndrome de Turner</td><td>Petite taille, insuffisance ovarienne, différences cardiaques et rénales; plusieurs grossesses 45,X se terminent par une fausse couche.</td></tr><tr><td>47,XXY</td><td>Syndrome de Klinefelter</td><td>Souvent reconnu à l'adolescence ou lors d'un bilan d'infertilité.</td></tr><tr><td>47,XXX / 47,XYY</td><td>Trisomie X / XYY</td><td>Souvent léger ou non reconnu; peut inclure des différences d'apprentissage.</td></tr></tbody></table><div class="info"><div class="ptag"><i class="ti ti-stethoscope"></i> Pour les cliniciens</div><p style="margin:6px 0 0">Une minorité des cas de syndrome de Down résultent d'une translocation robertsonienne impliquant le chromosome 21 plutôt que d'une trisomie libre; cette distinction modifie le risque de récurrence et rend le caryotype parental important. L'aneuploïdie en mosaïque produit généralement des phénotypes plus légers ou plus variables, et le niveau dans le sang peut ne pas refléter celui des autres tissus.</p></div></section><section id="fr4"><h2 class="sec"><span class="secnum">4</span> Comment on la détecte</h2><p>Pendant la grossesse, le <a href="nipt.html">DPNI</a> (une prise de sang) dépiste les aneuploïdies fréquentes; il donne une probabilité, pas un diagnostic. Un résultat positif est confirmé par un test diagnostique sur <a href="cvs.html">PVC</a> ou <a href="amniocentesis.html">amniocentèse</a>, souvent en commençant par une <a href="qf-pcr.html">QF-PCR</a> rapide suivie d'un <a href="karyotype.html">caryotype</a> ou d'une <a href="microarray.html">micropuce</a>. Après la naissance, le caryotype confirme le diagnostic et montre si une translocation est en cause. En FIV, les embryons peuvent être analysés par <a href="pgt-a.html">DPI-A</a>.</p><ul class="check"><li><i class="ti ti-check"></i> <div>Le caryotype montre le nombre de chromosomes et si un chromosome en trop est libre ou attaché à un autre (translocation).<span class="tag finds">À retenir</span></div></li><li><i class="ti ti-check"></i> <div>La QF-PCR donne une réponse rapide pour les chromosomes 13, 18, 21, X et Y.<span class="tag finds">À retenir</span></div></li><li><i class="ti ti-x"></i> <div>Le DPNI est un test de dépistage : des faux positifs surviennent, en partie parce que l'ADN analysé provient surtout du placenta.<span class="tag misses">À savoir</span></div></li><li><i class="ti ti-x"></i> <div>Le mosaïcisme de faible niveau peut passer inaperçu ou nécessiter l'analyse de plus de cellules ou d'un autre tissu.<span class="tag misses">À savoir</span></div></li></ul></section><section id="fr5"><h2 class="sec"><span class="secnum">5</span> Grossesses futures</h2><div class="patient"><div class="ptag"><i class="ti ti-user-heart"></i> Pour les patients</div><p>Après une grossesse ou un enfant avec une trisomie libre (non héritée), le risque de récurrence est généralement faible, quoique légèrement plus élevé que le seul risque lié à l'âge. Si une translocation est trouvée, les chromosomes des parents sont vérifiés, car un parent porteur d'une translocation équilibrée peut avoir un risque de récurrence plus élevé. Votre équipe de génétique peut vous donner une estimation personnalisée et discuter des options de test pour une future grossesse.</p></div><div class="info"><div class="ptag"><i class="ti ti-stethoscope"></i> Pour les cliniciens</div><p style="margin:6px 0 0">Pour la trisomie 21 libre, le risque de récurrence est souvent cité à environ 1 % ou au risque lié à l'âge maternel, selon le plus élevé; les petits risques résiduels reflètent le mosaïcisme gonadique et une prédisposition individuelle. La récurrence après une trisomie par translocation dépend du remaniement parental (voir <a href="balanced-translocations.html">translocations équilibrées</a>). Le diagnostic prénatal ou le DPI peuvent être offerts.</p></div><div class="rec"><i class="ti ti-message-circle"></i> Une différence chromosomique dans une grossesse ou chez un enfant n'est jamais la faute de quiconque. Le soutien, une information exacte et le temps de décider font tous partie de bons soins en génétique.</div></section><section id="fr6"><h2 class="sec"><span class="secnum">6</span> Le sens des mots</h2><table><thead><tr><th>Terme</th><th>En langage simple</th></tr></thead><tbody><tr><td><strong>Aneuploïdie</strong></td><td>Un chromosome en trop ou en moins.</td></tr><tr><td><strong>Trisomie / monosomie</strong></td><td>Trois copies / une copie d'un chromosome au lieu de deux.</td></tr><tr><td><strong>Non-disjonction</strong></td><td>Lorsqu'une paire de chromosomes ne se sépare pas lors de la formation d'un ovule ou d'un spermatozoïde.</td></tr><tr><td><strong>Mosaïcisme</strong></td><td>Lorsque seulement certaines cellules ont la différence chromosomique.</td></tr><tr><td><strong>Dépistage vs diagnostic</strong></td><td>Un dépistage donne une probabilité; un test diagnostique donne un oui ou non plus clair.</td></tr></tbody></table></section><section id="fr7"><h2 class="sec"><span class="secnum">7</span> Références</h2><ol><li>Hassold T, Hunt P. To err (meiotically) is human: the genesis of human aneuploidy. <em>Nat Rev Genet</em>. 2001;2(4):280–291.</li><li>Nagaoka SI, Hassold TJ, Hunt PA. Human aneuploidy: mechanisms and new insights into an age-old problem. <em>Nat Rev Genet</em>. 2012;13(7):493–504.</li><li>McKinlay Gardner RJ, Amor DJ. <em>Gardner and Sutherland's Chromosome Abnormalities and Genetic Counseling</em>. 5th ed. Oxford University Press; 2018.</li><li>McGowan-Jordan J, Hastings RJ, Moore S, eds. <em>ISCN 2020: An International System for Human Cytogenomic Nomenclature</em>. Basel: Karger; 2020.</li></ol></section><section id="fr8"><div class="info"><div class="ptag"><i class="ti ti-user-heart"></i> À retenir</div><p style="margin:6px 0 0">Ceci est de l'information générale et ne remplace pas une consultation. Ce qu'un résultat signifie pour vous et votre famille se précise le mieux avec votre équipe de génétique.</p></div></section><div class="footer"><p>Cette page est un document d'information destiné aux patients, visant à soutenir, et non à remplacer, le conseil génétique individuel. Elle explique en termes généraux une notion de génétique; les tests offerts et leur interprétation dépendent de votre situation et du laboratoire utilisé. Préparé pour la Génétique médicale, Hôpital général juif, Montréal.</p><p><strong>Avis.</strong> Les sections destinées aux cliniciens soutiennent mais ne remplacent pas le jugement clinique et les soins individualisés. Les lignes directrices et normes de classification évoluent; vérifier auprès des recommandations actuelles des sociétés savantes (ACMG/ClinGen, SOGC, CCMG) et des sources primaires avant tout usage clinique.</p><p>© 2026 Dr. Andrew Shuen · Génétique médicale, Hôpital général juif, Montréal</p></div></div>
+</div>
+<script>
+function setLang(l){
+  document.getElementById('lang-en').style.display=(l==='en')?'block':'none';
+  document.getElementById('lang-fr').style.display=(l==='fr')?'block':'none';
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.getElementById('btn-fr').classList.toggle('active',l==='fr');
+  document.documentElement.lang=l; window.scrollTo(0,0);
+}
+function togglePdfView(){
+  var on=document.body.classList.toggle('pdf-preview');
+  document.getElementById('btn-pdf').classList.toggle('active',on);
+  window.scrollTo(0,0);
+}
+setLang('en');
+</script>
+</body>
+</html>

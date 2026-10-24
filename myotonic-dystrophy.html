@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Myotonic Dystrophy — Surveillance &amp; Care Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px; line-height:1.62;
+}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:9px 18px;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .util{display:flex; gap:8px; align-items:center;}
+.topbar .tabs{display:flex; gap:4px;}
+.btn{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13.5px; font-weight:600; cursor:pointer;
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft);
+  padding:7px 13px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;
+  transition:.15s;
+}
+.btn:hover{border-color:var(--brand-line); color:var(--brand-dark); background:var(--brand-bg);}
+.btn.active{background:var(--brand); border-color:var(--brand); color:#fff;}
+.btn i{font-size:16px;}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:860px; margin:0 auto; padding:0 22px 80px;}
+
+/* ---------- Masthead ---------- */
+.masthead{padding:38px 0 26px; border-bottom:2px solid var(--ink);}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:12.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--brand-dark);
+}
+h1.title{font-size:40px; line-height:1.1; margin:.28em 0 .12em; letter-spacing:-.01em;}
+.standfirst{font-size:19px; color:var(--ink-soft); margin:0 0 22px; max-width:62ch;}
+.authorpanel{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:15px 18px; display:flex; gap:14px; align-items:flex-start;
+}
+.authorpanel .who{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.authorpanel .name{font-weight:700; font-size:15px; color:var(--ink);}
+.authorpanel .role{font-size:13.5px; color:var(--ink-faint); line-height:1.5;}
+.authorpanel i{color:var(--brand); font-size:26px; margin-top:2px;}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:16px;}
+.chip{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:600;
+  background:var(--cream); border:1px solid var(--line); border-radius:999px;
+  padding:4px 11px; color:var(--ink-soft); display:inline-flex; gap:5px; align-items:center;
+}
+.chip i{font-size:14px; color:var(--brand);}
+.legend{
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; padding-top:15px;
+  border-top:1px solid var(--line-soft);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint);
+}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+.legend i{font-size:15px;}
+.i-routine{color:#1f7a34;} .i-optional{color:var(--amber);} .i-no{color:var(--red);}
+
+/* ---------- TOC ---------- */
+.toc{
+  margin:26px 0 8px; padding:18px 20px; background:var(--paper);
+  border:1px solid var(--line); border-radius:var(--radius);
+}
+.toc h2{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+  margin:0 0 12px;
+}
+.toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:14.5px;}
+.toc li{margin-bottom:6px; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none;}
+.toc a:hover{color:var(--brand-dark);}
+
+/* ---------- Sections ---------- */
+section{padding-top:34px;}
+.sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.sec-num{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+  font-size:15px; color:#fff; background:var(--brand);
+  min-width:30px; height:30px; border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+}
+h2.sec{font-size:25px; margin:0; letter-spacing:-.01em; line-height:1.2;}
+h3{font-size:18px; margin:24px 0 8px; color:var(--ink);}
+p{margin:0 0 14px;}
+
+/* ---------- Patient card ---------- */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line);
+  border-left:4px solid var(--brand); border-radius:var(--radius-sm);
+  padding:14px 17px; margin:14px 0 18px;
+}
+.patient .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--brand-dark);
+  display:flex; align-items:center; gap:6px; margin-bottom:6px;
+}
+.patient p{margin:0 0 8px;} .patient p:last-child{margin:0;}
+
+/* ---------- Subtype pill header ---------- */
+.subhead{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  margin:22px 0 6px; padding-bottom:8px; border-bottom:1px solid var(--line-soft);
+}
+.subhead h3{margin:0;}
+.pill{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  border-radius:999px; padding:3px 11px; letter-spacing:.02em;
+}
+.pill-red{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.pill-amber{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.pill-blue{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* ---------- Checklist ---------- */
+ul.check{list-style:none; padding:0; margin:12px 0 16px;}
+ul.check li{
+  display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+  align-items:flex-start;
+}
+ul.check li:last-child{border-bottom:none;}
+ul.check i{font-size:19px; flex:none; margin-top:1px;}
+.tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; border-radius:5px; padding:2px 7px;
+  margin-left:8px; white-space:nowrap; vertical-align:middle;
+}
+.tag-routine{background:#e6f4ea; color:#1f7a34;}
+.tag-optional{background:var(--amber-bg); color:var(--amber);}
+.tag-no{background:var(--red-bg); color:var(--red);}
+.ck-txt{flex:1;}
+.ck-txt .sub{display:block; font-size:14px; color:var(--ink-faint); margin-top:2px;}
+
+/* ---------- Callout ---------- */
+.callout{
+  border-left:4px solid var(--brand); background:var(--paper);
+  border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:13px 16px; margin:16px 0;
+}
+.callout.amber{border-left-color:var(--amber); background:var(--amber-bg); border-color:var(--amber-line);}
+.callout.red{border-left-color:var(--red); background:var(--red-bg); border-color:var(--red-line);}
+.callout .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:5px; display:flex; gap:6px; align-items:center;
+}
+.callout.amber .lbl{color:var(--amber);} .callout.red .lbl{color:var(--red);} .callout .lbl{color:var(--brand-dark);}
+.callout p:last-child{margin:0;}
+
+/* ---------- Info / emerging boxes ---------- */
+.infobox{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging .lbl,.infobox .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:6px; display:flex; gap:6px; align-items:center;
+}
+.emerging .lbl{color:var(--purple);} .infobox .lbl{color:var(--brand-dark);}
+.emerging p:last-child,.infobox p:last-child{margin:0;}
+
+/* ---------- Risk table ---------- */
+.tablewrap{overflow-x:auto; margin:16px 0;}
+table.risk{width:100%; border-collapse:collapse; font-size:15px; background:var(--paper); border-radius:var(--radius-sm); overflow:hidden;}
+table.risk th,table.risk td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--line);}
+table.risk th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); background:var(--cream);}
+table.risk tr:last-child td{border-bottom:none;}
+.dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:7px; vertical-align:middle;}
+.dot-red{background:var(--red);} .dot-amber{background:var(--amber-line);} .dot-blue{background:var(--brand);}
+
+/* ---------- Figures ---------- */
+figure.fig{margin:18px 0 20px; padding:0; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+figure.fig .svgwrap{padding:18px 16px 4px; background:linear-gradient(180deg,#fbfdff,#f4f9fc);}
+figure.fig svg{width:100%; height:auto; display:block;}
+figure.fig figcaption{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); padding:11px 16px 13px; border-top:1px solid var(--line-soft); line-height:1.5;}
+figure.fig img.photo{width:100%; height:auto; display:block; border-radius:0;}
+figure.fig .credit{font-size:11.5px; color:var(--ink-faint); margin-top:6px;}
+figure.fig .credit a{color:var(--brand-dark); text-decoration:none;}
+figure.fig figcaption b{color:var(--ink-soft); font-weight:700;}
+.svg-ink{fill:var(--ink);} .svg-soft{fill:var(--ink-soft);} .svg-faint{fill:var(--ink-faint);}
+.svg-lbl{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.svg-term{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;}
+
+/* ---------- Summary cards ---------- */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:16px 0;}
+.scard{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand); border-radius:var(--radius-sm); padding:14px 16px;}
+.scard h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; margin:0 0 8px; color:var(--brand-dark); display:flex; gap:7px; align-items:center;}
+.scard ul{margin:0; padding-left:18px; font-size:14.5px; color:var(--ink-soft);}
+.scard li{margin-bottom:5px;}
+
+/* ---------- References ---------- */
+ol.refs{font-size:14px; color:var(--ink-soft); padding-left:22px; line-height:1.55;}
+ol.refs li{margin-bottom:9px;}
+
+/* ---------- Footer ---------- */
+.footer{margin-top:46px; padding-top:18px; border-top:2px solid var(--ink); position:relative;}
+.footer:before{content:""; position:absolute; top:4px; left:0; right:0; height:1px; background:var(--ink);}
+.footer p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); margin:0 0 8px;}
+
+/* ---------- Language toggle ---------- */
+[data-lang]{display:none;}
+body.lang-en [data-lang="en"]{display:revert;}
+body.lang-fr [data-lang="fr"]{display:revert;}
+ul.check li[data-lang],table.risk tr[data-lang]{display:none;}
+body.lang-en ul.check li[data-lang="en"]{display:flex;}
+body.lang-fr ul.check li[data-lang="fr"]{display:flex;}
+body.lang-en table.risk tr[data-lang="en"]{display:table-row;}
+body.lang-fr table.risk tr[data-lang="fr"]{display:table-row;}
+
+/* ---------- PDF preview on screen ---------- */
+body.pdf-preview{background:#6a7681;}
+body.pdf-preview .topbar{position:static;}
+body.pdf-preview .toc{display:none;}
+body.pdf-preview .wrap{
+  background:#fff; max-width:8.5in; margin:24px auto; padding:0.7in 0.85in;
+  box-shadow:0 4px 24px rgba(0,0,0,.3); font-size:11.5pt; line-height:1.4;
+}
+body.pdf-preview h1.title{font-size:26pt;}
+body.pdf-preview h2.sec{font-size:16pt;}
+body.pdf-preview .standfirst{font-size:13pt;}
+body.pdf-preview section{page-break-inside:auto;}
+body.pdf-preview #sec-summary,body.pdf-preview #sec-refs{
+  border-top:2px dashed var(--brand); margin-top:30px; padding-top:24px; position:relative;
+}
+body.pdf-preview #sec-summary:before,body.pdf-preview #sec-refs:before{
+  content:"— — — page break — — —"; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+  background:#fff; padding:0 12px; font-family:"Helvetica Neue",sans-serif; font-size:9pt; color:var(--brand); letter-spacing:.08em;
+}
+
+/* ---------- Print ---------- */
+@media print{
+  .topbar,.toc{display:none;}
+  body{background:#fff; font-size:10.5pt;}
+  .wrap{max-width:100%; padding:0;}
+  #sec-summary,#sec-refs{page-break-before:always;}
+  .patient,.callout,.infobox,.emerging,.scard,table.risk{break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+@media(max-width:600px){
+  .toc ol{columns:1;} h1.title{font-size:31px;} .cardgrid{grid-template-columns:1fr;}
+}
+.legend span[data-lang]{display:none;}
+body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="fr"]{display:inline-flex;}
+</style>
+<link rel="stylesheet" href="site-banner.css">
+<script src="site-banner.js" defer></script>
+</head>
+<body class="lang-en">
+
+<!-- ======================= TOP BAR ======================= -->
+<div class="topbar ui">
+  <div class="util">
+    <button class="btn" id="pdfBtn" onclick="togglePdf()"><i class="ti ti-eye"></i><span data-lang="en">PDF view</span><span data-lang="fr">Aperçu PDF</span></button>
+    <button class="btn" onclick="window.print()"><i class="ti ti-printer"></i><span data-lang="en">Print / Save PDF</span><span data-lang="fr">Imprimer / PDF</span></button>
+  </div>
+  <div class="tabs">
+    <button class="btn active" id="enTab" onclick="setLang('en')">English</button>
+    <button class="btn" id="frTab" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ======================= MASTHEAD ======================= -->
+<header class="masthead">
+  <div class="eyebrow" data-lang="en">Neuromuscular Genetics · Surveillance Protocol</div><div class="eyebrow" data-lang="fr">Génétique neuromusculaire · Protocole de surveillance</div>
+  <h1 class="title" data-lang="en">Myotonic Dystrophy</h1><h1 class="title" data-lang="fr">Dystrophie myotonique</h1>
+  <p class="standfirst" data-lang="en">A protocol for myotonic dystrophy types 1 and 2: repeat testing, cardiac surveillance, anaesthesia and multisystem care, pregnancy, and family testing.</p><p class="standfirst" data-lang="fr">Protocole pour la dystrophie myotonique de types 1 et 2 : test des répétitions, surveillance cardiaque, anesthésie et soins multisystémiques, grossesse et dépistage familial.</p>
+
+  <div class="authorpanel"><i class="ti ti-stethoscope"></i><div class="who"><div class="name">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</div><div class="role" data-lang="en">Medical Genetics · Jewish General Hospital (JGH), Montreal</div><div class="role" data-lang="fr">Génétique médicale · Hôpital général juif (HGJ), Montréal</div></div></div>
+
+  <div class="chips ui">
+    <span class="chip"><i class="ti ti-dna"></i> <em>DMPK</em> CTG · <em>CNBP</em> CCTG</span>
+    <span class="chip"><i class="ti ti-heartbeat"></i> <span data-lang="en">Cardiac conduction</span><span data-lang="fr">Conduction cardiaque</span></span>
+    <span class="chip"><i class="ti ti-calendar"></i> <span data-lang="en">Updated October 2026</span><span data-lang="fr">Mis à jour en octobre 2026</span></span>
+  </div>
+
+  <div class="legend ui">
+    <span data-lang="en"><i class="ti ti-circle-check i-routine"></i> Routine</span>
+    <span data-lang="fr"><i class="ti ti-circle-check i-routine"></i> De routine</span>
+    <span data-lang="en"><i class="ti ti-minus i-optional"></i> Optional / selective</span>
+    <span data-lang="fr"><i class="ti ti-minus i-optional"></i> Optionnel / sélectif</span>
+    <span data-lang="en"><i class="ti ti-x i-no"></i> Not recommended</span>
+    <span data-lang="fr"><i class="ti ti-x i-no"></i> Non recommandé</span>
+  </div>
+</header>
+
+<!-- ======================= TOC ======================= -->
+<nav class="toc ui">
+  <h2 data-lang="en">Contents</h2>
+  <h2 data-lang="fr">Sommaire</h2>
+  <ol>
+    <li><a href="#sec1" data-lang="en">Understanding DM</a><a href="#sec1" data-lang="fr">Comprendre la DM</a></li>
+    <li><a href="#sec2" data-lang="en">Diagnosis</a><a href="#sec2" data-lang="fr">Diagnostic</a></li>
+    <li><a href="#sec3" data-lang="en">Cardiac surveillance</a><a href="#sec3" data-lang="fr">Surveillance cardiaque</a></li>
+    <li><a href="#sec4" data-lang="en">Multisystem care</a><a href="#sec4" data-lang="fr">Soins multisystémiques</a></li>
+    <li><a href="#sec5" data-lang="en">Pregnancy &amp; family</a><a href="#sec5" data-lang="fr">Grossesse et famille</a></li>
+    <li><a href="#sec-summary" data-lang="en">Summary of recommendations</a><a href="#sec-summary" data-lang="fr">Résumé des recommandations</a></li>
+    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+  </ol>
+</nav>
+
+<section id="sec1">
+  <div class="sec-head"><span class="sec-num">1</span><h2 class="sec" data-lang="en">Understanding myotonic dystrophy</h2><h2 class="sec" data-lang="fr">Comprendre la dystrophie myotonique</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Myotonic dystrophy is an inherited condition that causes muscle weakness and myotonia (difficulty relaxing a muscle, such as letting go after a handshake). It affects many parts of the body, including the heart's electrical system, the eyes (early cataracts), breathing, hormones, digestion, and sleep. There are two types. Type 1 (DM1) is more common in Québec, especially in the Saguenay–Lac-Saint-Jean region. Regular check-ups, especially of the heart, can prevent serious problems.</p><p data-lang="fr">La dystrophie myotonique est une maladie héréditaire qui cause une faiblesse musculaire et une myotonie (difficulté à relâcher un muscle, par exemple après une poignée de main). Elle touche plusieurs parties du corps, dont le système électrique du cœur, les yeux (cataractes précoces), la respiration, les hormones, la digestion et le sommeil. Il en existe deux types. Le type 1 (DM1) est plus fréquent au Québec, surtout dans la région du Saguenay–Lac-Saint-Jean. Des suivis réguliers, surtout du cœur, peuvent prévenir des problèmes graves.</p>
+  </div>
+  <p data-lang="en">DM1 is caused by an expanded CTG repeat in the 3′ untranslated region of <em>DMPK</em>; DM2 by an expanded CCTG repeat in intron 1 of <em>CNBP</em>. Both are autosomal dominant, and toxic RNA gain of function leads to missplicing of many transcripts. DM1 shows marked anticipation; congenital DM1 arises almost exclusively from maternal transmission of large expansions. DM2 is generally milder, with proximal weakness and pain, and does not have a congenital form.</p><p data-lang="fr">La DM1 est causée par une expansion de la répétition CTG dans la région 3′ non traduite de <em>DMPK</em>; la DM2, par une expansion de la répétition CCTG dans l'intron 1 de <em>CNBP</em>. Les deux sont autosomiques dominantes, et un gain de fonction toxique de l'ARN entraîne un épissage anormal de nombreux transcrits. La DM1 présente une anticipation marquée; la DM1 congénitale provient presque exclusivement d'une transmission maternelle de grandes expansions. La DM2 est généralement plus légère, avec faiblesse proximale et douleur, et n'a pas de forme congénitale.</p>
+  <figure class="fig">
+    <div class="svgwrap">
+      <svg viewBox="0 0 720 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DMPK repeat ranges">
+        <text x="14" y="24" class="svg-term" font-size="14" fill="#15212b" data-lang="en">DMPK CTG repeat ranges (DM1)</text>
+        <text x="14" y="24" class="svg-term" font-size="14" fill="#15212b" data-lang="fr">Plages de répétitions CTG de DMPK (DM1)</text>
+        <rect x="20" y="50" width="150" height="46" rx="8" fill="#e6f4ea" stroke="#1f7a34" stroke-width="1.6"/>
+        <text x="95.0" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#15212b">5–34</text>
+        <text x="95.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="en">Normal</text><text x="95.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="fr">Normal</text>
+        <rect x="176" y="50" width="150" height="46" rx="8" fill="#e3f2fb" stroke="#0083d0" stroke-width="1.6"/>
+        <text x="251.0" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#15212b">35–49</text>
+        <text x="251.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="en">Premutation</text><text x="251.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="fr">Prémutation</text>
+        <rect x="332" y="50" width="180" height="46" rx="8" fill="#fff4e0" stroke="#b26a00" stroke-width="1.6"/>
+        <text x="422.0" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#15212b">~50–150</text>
+        <text x="422.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="en">Mild / late onset</text><text x="422.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="fr">Léger / tardif</text>
+        <rect x="518" y="50" width="170" height="46" rx="8" fill="#fde8e6" stroke="#b42318" stroke-width="1.6"/>
+        <text x="603.0" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#15212b">&gt;100 … &gt;1000</text>
+        <text x="603.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="en">Classic → congenital</text><text x="603.0" y="118" text-anchor="middle" font-size="12" fill="#3c4a55" data-lang="fr">Classique → congénital</text>
+      </svg>
+    </div>
+    <figcaption>
+      <span data-lang="en"><b>Figure 1.</b> Approximate ranges from best-practice guidelines; phenotype categories overlap and repeat size in blood correlates only loosely with severity because of somatic instability.</span>
+      <span data-lang="fr"><b>Figure 1.</b> Plages approximatives selon les lignes directrices de bonnes pratiques; les catégories de phénotype se chevauchent et la taille dans le sang n'est que faiblement corrélée à la sévérité en raison de l'instabilité somatique.</span>
+    </figcaption>
+  </figure>
+</section>
+
+<section id="sec2">
+  <div class="sec-head"><span class="sec-num">2</span><h2 class="sec" data-lang="en">Diagnosis</h2><h2 class="sec" data-lang="fr">Diagnostic</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">A blood test that measures the size of the repeated section confirms the diagnosis. Testing for type 2 is a separate test.</p><p data-lang="fr">Une prise de sang qui mesure la taille de la section répétée confirme le diagnostic. Le test pour le type 2 est un test distinct.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Repeat-specific testing (PCR plus repeat-primed PCR and/or Southern blot) for <em>DMPK</em>, and <em>CNBP</em> if DM1 negative and DM2 suspected <span class="tag tag-routine">Recommended</span><span class="sub">Standard sequencing panels do not detect these expansions.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Consider DM in early cataracts, unexplained conduction disease, or hypotonic newborn with maternal history <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Predictive testing of at-risk adults with counselling; avoid in asymptomatic minors except where medically indicated <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test propre aux répétitions (PCR plus PCR à amorce répétée et/ou Southern blot) pour <em>DMPK</em>, et <em>CNBP</em> si DM1 négatif et DM2 soupçonnée <span class="tag tag-routine">Recommandé</span><span class="sub">Les panels de séquençage standard ne détectent pas ces expansions.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Envisager une DM en présence de cataractes précoces, d'une maladie de conduction inexpliquée ou d'un nouveau-né hypotonique avec histoire maternelle <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test prédictif des adultes à risque avec counselling; éviter chez les mineurs asymptomatiques sauf indication médicale <span class="tag tag-routine">Recommandé</span></span></li>
+  </ul>
+</section>
+
+<section id="sec3">
+  <div class="sec-head"><span class="sec-num">3</span><h2 class="sec" data-lang="en">Cardiac surveillance</h2><h2 class="sec" data-lang="fr">Surveillance cardiaque</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">The heart's electrical system can slow down or develop dangerous rhythms, even without symptoms. An ECG at least once a year is important. Report fainting, palpitations, or shortness of breath right away. Some people need a pacemaker or defibrillator.</p><p data-lang="fr">Le système électrique du cœur peut ralentir ou développer des rythmes dangereux, même sans symptômes. Un ECG au moins une fois par année est important. Signalez immédiatement toute perte de conscience, palpitation ou essoufflement. Certaines personnes ont besoin d'un stimulateur cardiaque ou d'un défibrillateur.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">ECG at diagnosis and at least annually <span class="tag tag-routine">Routine</span><span class="sub">Severe ECG abnormalities (e.g. PR ≥240 ms, QRS ≥120 ms, second- or third-degree AV block) and atrial arrhythmia predict sudden death (Groh et al. 2008).</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Cardiology referral; Holter and echocardiography or cardiac MRI per consensus <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Electrophysiology study, pacemaker, or ICD in selected patients <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">ECG au diagnostic et au moins annuellement <span class="tag tag-routine">De routine</span><span class="sub">Des anomalies ECG sévères (p. ex. PR ≥ 240 ms, QRS ≥ 120 ms, bloc AV du 2e ou 3e degré) et l'arythmie auriculaire prédisent la mort subite (Groh et coll., 2008).</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Orientation en cardiologie; Holter et échocardiographie ou IRM cardiaque selon le consensus <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Étude électrophysiologique, stimulateur ou DCI chez certains patients <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec4">
+  <div class="sec-head"><span class="sec-num">4</span><h2 class="sec" data-lang="en">Multisystem care</h2><h2 class="sec" data-lang="fr">Soins multisystémiques</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">A team approach helps manage the many effects of myotonic dystrophy. Before any surgery or sedation, tell the team you have myotonic dystrophy, because anaesthesia carries extra risks.</p><p data-lang="fr">Une approche d'équipe aide à gérer les nombreux effets de la dystrophie myotonique. Avant toute chirurgie ou sédation, informez l'équipe que vous avez une dystrophie myotonique, car l'anesthésie comporte des risques supplémentaires.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Anaesthesia alert: increased sensitivity to sedatives and opioids; avoid succinylcholine; postoperative respiratory monitoring <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Pulmonary function testing; assess for hypoventilation and sleep-disordered breathing; NIV when indicated <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Annual ophthalmology for cataract <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Endocrine screening: glucose/HbA1c, thyroid, testosterone as indicated <span class="tag tag-routine">Routine</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Address daytime sleepiness, GI dysmotility, dysphagia, cognition, and fatigue <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Mexiletine for disabling myotonia, after cardiac evaluation <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Physiotherapy, occupational therapy, orthoses; moderate aerobic exercise <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Alerte anesthésie : sensibilité accrue aux sédatifs et opioïdes; éviter la succinylcholine; surveillance respiratoire postopératoire <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Épreuves fonctionnelles respiratoires; évaluer l'hypoventilation et les troubles respiratoires du sommeil; VNI au besoin <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Ophtalmologie annuelle pour la cataracte <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Dépistage endocrinien : glycémie/HbA1c, thyroïde, testostérone au besoin <span class="tag tag-routine">De routine</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Prendre en charge la somnolence diurne, la dysmotilité digestive, la dysphagie, la cognition et la fatigue <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Mexilétine pour une myotonie invalidante, après évaluation cardiaque <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Physiothérapie, ergothérapie, orthèses; exercice aérobique modéré <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec5">
+  <div class="sec-head"><span class="sec-num">5</span><h2 class="sec" data-lang="en">Pregnancy and family</h2><h2 class="sec" data-lang="fr">Grossesse et famille</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Each child of a person with myotonic dystrophy has a 1 in 2 chance of inheriting it. In DM1, the repeat often gets longer when passed on, and a mother with DM1 can have a baby with the severe congenital form. Pregnancy in a woman with DM1 needs specialised care. Prenatal testing and IVF with embryo testing are available.</p><p data-lang="fr">Chaque enfant d'une personne atteinte de dystrophie myotonique a une chance sur deux d'en hériter. Dans la DM1, la répétition s'allonge souvent lors de la transmission, et une mère atteinte de DM1 peut avoir un bébé atteint de la forme congénitale sévère. La grossesse chez une femme atteinte de DM1 demande des soins spécialisés. Le test prénatal et la FIV avec analyse des embryons sont offerts.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">High-risk obstetric care for women with DM1 (risk of polyhydramnios, preterm labour, prolonged labour, postpartum hemorrhage) <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Neonatal team available at delivery when the fetus may have congenital DM1 <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Cascade testing of relatives with counselling <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Prenatal diagnosis or PGT-M <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Suivi obstétrical à risque élevé pour les femmes atteintes de DM1 (risque d'hydramnios, de travail prématuré, de travail prolongé, d'hémorragie post-partum) <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Équipe néonatale disponible à l'accouchement si le fœtus peut être atteint de DM1 congénitale <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Dépistage en cascade des apparentés avec counselling <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Diagnostic prénatal ou DPI-M <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec-summary">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-list-check"></i></span><h2 class="sec" data-lang="en">Summary of recommendations</h2><h2 class="sec" data-lang="fr">Résumé des recommandations</h2></div>
+
+  <div class="cardgrid">
+    <div class="scard">
+      <h4><i class="ti ti-heartbeat"></i> <span data-lang="en">Heart</span><span data-lang="fr">Cœur</span></h4>
+      <ul>
+        <li data-lang="en">ECG at least yearly</li>
+        <li data-lang="en">Cardiology, Holter, imaging</li>
+        <li data-lang="en">Pacemaker/ICD when indicated</li>
+        <li data-lang="fr">ECG au moins annuel</li>
+        <li data-lang="fr">Cardiologie, Holter, imagerie</li>
+        <li data-lang="fr">Stimulateur/DCI au besoin</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-stethoscope"></i> <span data-lang="en">Other systems</span><span data-lang="fr">Autres systèmes</span></h4>
+      <ul>
+        <li data-lang="en">Anaesthesia alert</li>
+        <li data-lang="en">Lungs, eyes, endocrine yearly</li>
+        <li data-lang="en">Mexiletine after cardiac review</li>
+        <li data-lang="fr">Alerte anesthésie</li>
+        <li data-lang="fr">Poumons, yeux, endocrinien annuels</li>
+        <li data-lang="fr">Mexilétine après évaluation cardiaque</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-users"></i> <span data-lang="en">Family</span><span data-lang="fr">Famille</span></h4>
+      <ul>
+        <li data-lang="en">50% risk; anticipation in DM1</li>
+        <li data-lang="en">Congenital DM1 via mother</li>
+        <li data-lang="en">PGT-M or prenatal testing</li>
+        <li data-lang="fr">Risque de 50 %; anticipation dans la DM1</li>
+        <li data-lang="fr">DM1 congénitale par la mère</li>
+        <li data-lang="fr">DPI-M ou test prénatal</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sec-refs">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-book"></i></span><h2 class="sec" data-lang="en">References</h2><h2 class="sec" data-lang="fr">Références</h2></div>
+  <ol class="refs">
+    <li>Ashizawa T, Gagnon C, Groh WJ, et al. Consensus-based care recommendations for adults with myotonic dystrophy type 1. <em>Neurol Clin Pract</em>. 2018;8(6):507–520.</li>
+    <li>Schoser B, Montagnese F, Bassez G, et al. Consensus-based care recommendations for adults with myotonic dystrophy type 2. <em>Neurol Clin Pract</em>. 2019;9(4):343–353.</li>
+    <li>Groh WJ, Groh MR, Saha C, et al. Electrocardiographic abnormalities and sudden death in myotonic dystrophy type 1. <em>N Engl J Med</em>. 2008;358(25):2688–2697.</li>
+    <li>Kamsteeg EJ, Kress W, Catalli C, et al. Best practice guidelines and recommendations on the molecular diagnosis of myotonic dystrophy types 1 and 2. <em>Eur J Hum Genet</em>. 2012;20(12):1203–1208.</li>
+  </ol>
+  <p data-lang="en" style="font-size:13px; color:var(--ink-faint);">Original diagrams are the work of the author (© 2026 Dr. Andrew Shuen).</p>
+  <p data-lang="fr" style="font-size:13px; color:var(--ink-faint);">Les schémas originaux sont l'œuvre de l'auteur (© 2026 Dr Andrew Shuen).</p>
+
+  <div class="footer">
+    <p data-lang="en"><strong>Disclaimer.</strong> This protocol supports but does not replace clinical judgment and individualized care. Guidelines evolve; verify all intervals, thresholds, doses, and recommendations against current society guidelines (ACC/AHA, ACMG, relevant specialty societies) before clinical use. Reference citations were drawn from current literature and should be confirmed against the primary sources.</p>
+    <p data-lang="fr"><strong>Avis.</strong> Ce protocole soutient mais ne remplace pas le jugement clinique et les soins individualisés. Les lignes directrices évoluent; vérifier tous les intervalles, seuils, doses et recommandations par rapport aux lignes directrices actuelles des sociétés savantes (ACC/AHA, ACMG, sociétés spécialisées pertinentes) avant tout usage clinique. Les références proviennent de la littérature actuelle et doivent être confirmées auprès des sources primaires.</p>
+    <p>© 2026 Dr. Andrew Shuen · Medical Genetics, Jewish General Hospital, Montreal · <span data-lang="en">For educational use.</span><span data-lang="fr">À usage éducatif.</span></p>
+  </div>
+</section>
+
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-en','lang-fr');
+  document.body.classList.add('lang-'+l);
+  document.getElementById('enTab').classList.toggle('active', l==='en');
+  document.getElementById('frTab').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+}
+function togglePdf(){
+  document.body.classList.toggle('pdf-preview');
+  document.getElementById('pdfBtn').classList.toggle('active');
+}
+</script>
+</body>
+</html>

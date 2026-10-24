@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Long QT Syndrome — Diagnosis &amp; Management Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px; line-height:1.62;
+}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:9px 18px;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .util{display:flex; gap:8px; align-items:center;}
+.topbar .tabs{display:flex; gap:4px;}
+.btn{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13.5px; font-weight:600; cursor:pointer;
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft);
+  padding:7px 13px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;
+  transition:.15s;
+}
+.btn:hover{border-color:var(--brand-line); color:var(--brand-dark); background:var(--brand-bg);}
+.btn.active{background:var(--brand); border-color:var(--brand); color:#fff;}
+.btn i{font-size:16px;}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:860px; margin:0 auto; padding:0 22px 80px;}
+
+/* ---------- Masthead ---------- */
+.masthead{padding:38px 0 26px; border-bottom:2px solid var(--ink);}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:12.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--brand-dark);
+}
+h1.title{font-size:40px; line-height:1.1; margin:.28em 0 .12em; letter-spacing:-.01em;}
+.standfirst{font-size:19px; color:var(--ink-soft); margin:0 0 22px; max-width:62ch;}
+.authorpanel{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:15px 18px; display:flex; gap:14px; align-items:flex-start;
+}
+.authorpanel .who{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.authorpanel .name{font-weight:700; font-size:15px; color:var(--ink);}
+.authorpanel .role{font-size:13.5px; color:var(--ink-faint); line-height:1.5;}
+.authorpanel i{color:var(--brand); font-size:26px; margin-top:2px;}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:16px;}
+.chip{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:600;
+  background:var(--cream); border:1px solid var(--line); border-radius:999px;
+  padding:4px 11px; color:var(--ink-soft); display:inline-flex; gap:5px; align-items:center;
+}
+.chip i{font-size:14px; color:var(--brand);}
+.legend{
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; padding-top:15px;
+  border-top:1px solid var(--line-soft);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint);
+}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+.legend i{font-size:15px;}
+.i-routine{color:#1f7a34;} .i-optional{color:var(--amber);} .i-no{color:var(--red);}
+
+/* ---------- TOC ---------- */
+.toc{
+  margin:26px 0 8px; padding:18px 20px; background:var(--paper);
+  border:1px solid var(--line); border-radius:var(--radius);
+}
+.toc h2{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+  margin:0 0 12px;
+}
+.toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:14.5px;}
+.toc li{margin-bottom:6px; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none;}
+.toc a:hover{color:var(--brand-dark);}
+
+/* ---------- Sections ---------- */
+section{padding-top:34px;}
+.sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.sec-num{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+  font-size:15px; color:#fff; background:var(--brand);
+  min-width:30px; height:30px; border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+}
+h2.sec{font-size:25px; margin:0; letter-spacing:-.01em; line-height:1.2;}
+h3{font-size:18px; margin:24px 0 8px; color:var(--ink);}
+p{margin:0 0 14px;}
+
+/* ---------- Patient card ---------- */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line);
+  border-left:4px solid var(--brand); border-radius:var(--radius-sm);
+  padding:14px 17px; margin:14px 0 18px;
+}
+.patient .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--brand-dark);
+  display:flex; align-items:center; gap:6px; margin-bottom:6px;
+}
+.patient p{margin:0 0 8px;} .patient p:last-child{margin:0;}
+
+/* ---------- Subtype pill header ---------- */
+.subhead{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  margin:22px 0 6px; padding-bottom:8px; border-bottom:1px solid var(--line-soft);
+}
+.subhead h3{margin:0;}
+.pill{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  border-radius:999px; padding:3px 11px; letter-spacing:.02em;
+}
+.pill-red{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.pill-amber{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.pill-blue{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* ---------- Checklist ---------- */
+ul.check{list-style:none; padding:0; margin:12px 0 16px;}
+ul.check li{
+  display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+  align-items:flex-start;
+}
+ul.check li:last-child{border-bottom:none;}
+ul.check i{font-size:19px; flex:none; margin-top:1px;}
+.tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; border-radius:5px; padding:2px 7px;
+  margin-left:8px; white-space:nowrap; vertical-align:middle;
+}
+.tag-routine{background:#e6f4ea; color:#1f7a34;}
+.tag-optional{background:var(--amber-bg); color:var(--amber);}
+.tag-no{background:var(--red-bg); color:var(--red);}
+.ck-txt{flex:1;}
+.ck-txt .sub{display:block; font-size:14px; color:var(--ink-faint); margin-top:2px;}
+
+/* ---------- Callout ---------- */
+.callout{
+  border-left:4px solid var(--brand); background:var(--paper);
+  border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:13px 16px; margin:16px 0;
+}
+.callout.amber{border-left-color:var(--amber); background:var(--amber-bg); border-color:var(--amber-line);}
+.callout.red{border-left-color:var(--red); background:var(--red-bg); border-color:var(--red-line);}
+.callout .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:5px; display:flex; gap:6px; align-items:center;
+}
+.callout.amber .lbl{color:var(--amber);} .callout.red .lbl{color:var(--red);} .callout .lbl{color:var(--brand-dark);}
+.callout p:last-child{margin:0;}
+
+/* ---------- Info / emerging boxes ---------- */
+.infobox{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging .lbl,.infobox .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:6px; display:flex; gap:6px; align-items:center;
+}
+.emerging .lbl{color:var(--purple);} .infobox .lbl{color:var(--brand-dark);}
+.emerging p:last-child,.infobox p:last-child{margin:0;}
+
+/* ---------- Risk table ---------- */
+.tablewrap{overflow-x:auto; margin:16px 0;}
+table.risk{width:100%; border-collapse:collapse; font-size:15px; background:var(--paper); border-radius:var(--radius-sm); overflow:hidden;}
+table.risk th,table.risk td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--line);}
+table.risk th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); background:var(--cream);}
+table.risk tr:last-child td{border-bottom:none;}
+.dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:7px; vertical-align:middle;}
+.dot-red{background:var(--red);} .dot-amber{background:var(--amber-line);} .dot-blue{background:var(--brand);}
+
+/* ---------- Figures ---------- */
+figure.fig{margin:18px 0 20px; padding:0; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+figure.fig .svgwrap{padding:18px 16px 4px; background:linear-gradient(180deg,#fbfdff,#f4f9fc);}
+figure.fig svg{width:100%; height:auto; display:block;}
+figure.fig figcaption{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); padding:11px 16px 13px; border-top:1px solid var(--line-soft); line-height:1.5;}
+figure.fig img.photo{width:100%; height:auto; display:block; border-radius:0;}
+figure.fig .credit{font-size:11.5px; color:var(--ink-faint); margin-top:6px;}
+figure.fig .credit a{color:var(--brand-dark); text-decoration:none;}
+figure.fig figcaption b{color:var(--ink-soft); font-weight:700;}
+.svg-ink{fill:var(--ink);} .svg-soft{fill:var(--ink-soft);} .svg-faint{fill:var(--ink-faint);}
+.svg-lbl{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.svg-term{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;}
+
+/* ---------- Summary cards ---------- */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:16px 0;}
+.scard{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand); border-radius:var(--radius-sm); padding:14px 16px;}
+.scard h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; margin:0 0 8px; color:var(--brand-dark); display:flex; gap:7px; align-items:center;}
+.scard ul{margin:0; padding-left:18px; font-size:14.5px; color:var(--ink-soft);}
+.scard li{margin-bottom:5px;}
+
+/* ---------- References ---------- */
+ol.refs{font-size:14px; color:var(--ink-soft); padding-left:22px; line-height:1.55;}
+ol.refs li{margin-bottom:9px;}
+
+/* ---------- Footer ---------- */
+.footer{margin-top:46px; padding-top:18px; border-top:2px solid var(--ink); position:relative;}
+.footer:before{content:""; position:absolute; top:4px; left:0; right:0; height:1px; background:var(--ink);}
+.footer p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); margin:0 0 8px;}
+
+/* ---------- Language toggle ---------- */
+[data-lang]{display:none;}
+body.lang-en [data-lang="en"]{display:revert;}
+body.lang-fr [data-lang="fr"]{display:revert;}
+ul.check li[data-lang],table.risk tr[data-lang]{display:none;}
+body.lang-en ul.check li[data-lang="en"]{display:flex;}
+body.lang-fr ul.check li[data-lang="fr"]{display:flex;}
+body.lang-en table.risk tr[data-lang="en"]{display:table-row;}
+body.lang-fr table.risk tr[data-lang="fr"]{display:table-row;}
+
+/* ---------- PDF preview on screen ---------- */
+body.pdf-preview{background:#6a7681;}
+body.pdf-preview .topbar{position:static;}
+body.pdf-preview .toc{display:none;}
+body.pdf-preview .wrap{
+  background:#fff; max-width:8.5in; margin:24px auto; padding:0.7in 0.85in;
+  box-shadow:0 4px 24px rgba(0,0,0,.3); font-size:11.5pt; line-height:1.4;
+}
+body.pdf-preview h1.title{font-size:26pt;}
+body.pdf-preview h2.sec{font-size:16pt;}
+body.pdf-preview .standfirst{font-size:13pt;}
+body.pdf-preview section{page-break-inside:auto;}
+body.pdf-preview #sec-summary,body.pdf-preview #sec-refs{
+  border-top:2px dashed var(--brand); margin-top:30px; padding-top:24px; position:relative;
+}
+body.pdf-preview #sec-summary:before,body.pdf-preview #sec-refs:before{
+  content:"— — — page break — — —"; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+  background:#fff; padding:0 12px; font-family:"Helvetica Neue",sans-serif; font-size:9pt; color:var(--brand); letter-spacing:.08em;
+}
+
+/* ---------- Print ---------- */
+@media print{
+  .topbar,.toc{display:none;}
+  body{background:#fff; font-size:10.5pt;}
+  .wrap{max-width:100%; padding:0;}
+  #sec-summary,#sec-refs{page-break-before:always;}
+  .patient,.callout,.infobox,.emerging,.scard,table.risk{break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+@media(max-width:600px){
+  .toc ol{columns:1;} h1.title{font-size:31px;} .cardgrid{grid-template-columns:1fr;}
+}
+.legend span[data-lang]{display:none;}
+body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="fr"]{display:inline-flex;}
+</style>
+<link rel="stylesheet" href="site-banner.css">
+<script src="site-banner.js" defer></script>
+</head>
+<body class="lang-en">
+
+<!-- ======================= TOP BAR ======================= -->
+<div class="topbar ui">
+  <div class="util">
+    <button class="btn" id="pdfBtn" onclick="togglePdf()"><i class="ti ti-eye"></i><span data-lang="en">PDF view</span><span data-lang="fr">Aperçu PDF</span></button>
+    <button class="btn" onclick="window.print()"><i class="ti ti-printer"></i><span data-lang="en">Print / Save PDF</span><span data-lang="fr">Imprimer / PDF</span></button>
+  </div>
+  <div class="tabs">
+    <button class="btn active" id="enTab" onclick="setLang('en')">English</button>
+    <button class="btn" id="frTab" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ======================= MASTHEAD ======================= -->
+<header class="masthead">
+  <div class="eyebrow" data-lang="en">Cardiac Genetics · Clinical Protocol</div><div class="eyebrow" data-lang="fr">Génétique cardiaque · Protocole clinique</div>
+  <h1 class="title" data-lang="en">Long QT Syndrome</h1><h1 class="title" data-lang="fr">Syndrome du QT long</h1>
+  <p class="standfirst" data-lang="en">A protocol for congenital long QT syndrome: genotypes and triggers, diagnosis, genetic testing, treatment, lifestyle and pregnancy, and family screening.</p><p class="standfirst" data-lang="fr">Protocole pour le syndrome du QT long congénital : génotypes et déclencheurs, diagnostic, test génétique, traitement, mode de vie et grossesse, et dépistage familial.</p>
+
+  <div class="authorpanel"><i class="ti ti-stethoscope"></i><div class="who"><div class="name">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</div><div class="role" data-lang="en">Medical Genetics · Jewish General Hospital (JGH), Montreal</div><div class="role" data-lang="fr">Génétique médicale · Hôpital général juif (HGJ), Montréal</div></div></div>
+
+  <div class="chips ui">
+    <span class="chip"><i class="ti ti-dna"></i> <em>KCNQ1 · KCNH2 · SCN5A</em></span>
+    <span class="chip"><i class="ti ti-heartbeat"></i> ESC 2022</span>
+    <span class="chip"><i class="ti ti-calendar"></i> <span data-lang="en">Updated October 2026</span><span data-lang="fr">Mis à jour en octobre 2026</span></span>
+  </div>
+
+  <div class="legend ui">
+    <span data-lang="en"><i class="ti ti-circle-check i-routine"></i> Routine</span>
+    <span data-lang="fr"><i class="ti ti-circle-check i-routine"></i> De routine</span>
+    <span data-lang="en"><i class="ti ti-minus i-optional"></i> Optional / selective</span>
+    <span data-lang="fr"><i class="ti ti-minus i-optional"></i> Optionnel / sélectif</span>
+    <span data-lang="en"><i class="ti ti-x i-no"></i> Not recommended</span>
+    <span data-lang="fr"><i class="ti ti-x i-no"></i> Non recommandé</span>
+  </div>
+</header>
+
+<!-- ======================= TOC ======================= -->
+<nav class="toc ui">
+  <h2 data-lang="en">Contents</h2>
+  <h2 data-lang="fr">Sommaire</h2>
+  <ol>
+    <li><a href="#sec1" data-lang="en">Understanding LQTS</a><a href="#sec1" data-lang="fr">Comprendre le SQTL</a></li>
+    <li><a href="#sec2" data-lang="en">Diagnosis &amp; testing</a><a href="#sec2" data-lang="fr">Diagnostic et test</a></li>
+    <li><a href="#sec3" data-lang="en">Treatment</a><a href="#sec3" data-lang="fr">Traitement</a></li>
+    <li><a href="#sec4" data-lang="en">Lifestyle, sport &amp; pregnancy</a><a href="#sec4" data-lang="fr">Mode de vie, sport et grossesse</a></li>
+    <li><a href="#sec5" data-lang="en">Family screening</a><a href="#sec5" data-lang="fr">Dépistage familial</a></li>
+    <li><a href="#sec-summary" data-lang="en">Summary of recommendations</a><a href="#sec-summary" data-lang="fr">Résumé des recommandations</a></li>
+    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+  </ol>
+</nav>
+
+<section id="sec1">
+  <div class="sec-head"><span class="sec-num">1</span><h2 class="sec" data-lang="en">Understanding long QT syndrome</h2><h2 class="sec" data-lang="fr">Comprendre le syndrome du QT long</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Long QT syndrome (LQTS) is an inherited condition of the heart's electrical system. After each heartbeat, the heart takes slightly longer than usual to "recharge," which shows up on an ECG as a long QT interval. This can occasionally trigger a dangerous fast heart rhythm, causing fainting, seizure-like episodes, or sudden cardiac arrest. Most people do very well with medicine, avoiding certain drugs, and simple precautions.</p><p data-lang="fr">Le syndrome du QT long (SQTL) est une maladie héréditaire du système électrique du cœur. Après chaque battement, le cœur prend un peu plus de temps que d'habitude à se « recharger », ce qui apparaît à l'ECG comme un intervalle QT long. Cela peut parfois déclencher un rythme rapide dangereux, causant des pertes de conscience, des épisodes ressemblant à des convulsions ou un arrêt cardiaque soudain. La plupart des gens vont très bien avec un médicament, en évitant certains médicaments et en prenant des précautions simples.</p>
+  </div>
+  <p data-lang="en">Congenital LQTS is most often autosomal dominant. The three major genes — <em>KCNQ1</em> (LQT1), <em>KCNH2</em> (LQT2), and <em>SCN5A</em> (LQT3) — account for the large majority of genotype-positive cases; an international ClinGen-based reappraisal (Adler et al. 2020) found that most other reported genes have limited or disputed evidence for typical LQTS, with <em>CALM1–3</em> and <em>TRDN</em> recognised for atypical or recessive forms. Biallelic <em>KCNQ1</em> variants cause Jervell and Lange-Nielsen syndrome (with sensorineural deafness). Penetrance is incomplete: some carriers have a normal QTc yet remain at some risk.</p><p data-lang="fr">Le SQTL congénital est le plus souvent autosomique dominant. Les trois gènes principaux — <em>KCNQ1</em> (LQT1), <em>KCNH2</em> (LQT2) et <em>SCN5A</em> (LQT3) — représentent la grande majorité des cas génotype-positifs; une réévaluation internationale fondée sur ClinGen (Adler et coll., 2020) a conclu que la plupart des autres gènes rapportés ont des preuves limitées ou contestées pour le SQTL typique, <em>CALM1–3</em> et <em>TRDN</em> étant reconnus pour des formes atypiques ou récessives. Les variants bialléliques de <em>KCNQ1</em> causent le syndrome de Jervell et Lange-Nielsen (avec surdité neurosensorielle). La pénétrance est incomplète : certains porteurs ont un QTc normal tout en demeurant à un certain risque.</p>
+  <div class="tablewrap">
+    <table class="risk">
+      <thead>
+        <tr data-lang="en"><th>Type</th><th>Gene</th><th>Typical triggers</th><th>Specific notes</th></tr>
+        <tr data-lang="fr"><th>Type</th><th>Gène</th><th>Déclencheurs typiques</th><th>Notes particulières</th></tr>
+      </thead>
+      <tbody>
+        <tr data-lang="en"><td>LQT1</td><td><em>KCNQ1</em></td><td>Exercise, especially swimming</td><td><span class="dot dot-amber"></span>Responds well to beta-blockers</td></tr>
+        <tr data-lang="fr"><td>LQT1</td><td><em>KCNQ1</em></td><td>Effort, surtout la natation</td><td><span class="dot dot-amber"></span>Bonne réponse aux bêtabloquants</td></tr>
+        <tr data-lang="en"><td>LQT2</td><td><em>KCNH2</em></td><td>Sudden noise (alarm clock), emotion; postpartum period</td><td><span class="dot dot-amber"></span>Keep potassium normal</td></tr>
+        <tr data-lang="fr"><td>LQT2</td><td><em>KCNH2</em></td><td>Bruit soudain (réveille-matin), émotion; post-partum</td><td><span class="dot dot-amber"></span>Maintenir un potassium normal</td></tr>
+        <tr data-lang="en"><td>LQT3</td><td><em>SCN5A</em></td><td>Rest or sleep</td><td><span class="dot dot-red"></span>Mexiletine may shorten QTc</td></tr>
+        <tr data-lang="fr"><td>LQT3</td><td><em>SCN5A</em></td><td>Repos ou sommeil</td><td><span class="dot dot-red"></span>La mexilétine peut raccourcir le QTc</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="sec2">
+  <div class="sec-head"><span class="sec-num">2</span><h2 class="sec" data-lang="en">Diagnosis and genetic testing</h2><h2 class="sec" data-lang="fr">Diagnostic et test génétique</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">An ECG is the main test, sometimes with a stress test or a heart monitor. A genetic test can confirm the type, which guides treatment, and lets relatives be tested.</p><p data-lang="fr">L'ECG est le principal test, parfois avec une épreuve d'effort ou un moniteur cardiaque. Un test génétique peut confirmer le type, ce qui oriente le traitement, et permet de tester les apparentés.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Diagnose with QTc ≥480 ms on repeated ECGs, or a Schwartz score above 3, or a pathogenic variant <span class="tag tag-routine">Recommended</span><span class="sub">Per the 2022 ESC ventricular arrhythmia guideline; lower QTc values (e.g. ≥460 ms) with unexplained syncope can also support the diagnosis. Exclude acquired causes.</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Exercise testing, Holter, and QTc response to standing to support the diagnosis <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Genetic testing (<em>KCNQ1</em>, <em>KCNH2</em>, <em>SCN5A</em> ± <em>CALM1–3</em>, <em>TRDN</em>) in clinically diagnosed LQTS <span class="tag tag-routine">Recommended</span><span class="sub">Avoid broad panels of weak-evidence genes, which raise VUS rates (Wilde et al. 2022).</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Genetic testing in an asymptomatic person with a borderline QTc and no family history <span class="tag tag-no">Not recommended</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Diagnostiquer si QTc ≥ 480 ms sur des ECG répétés, ou score de Schwartz supérieur à 3, ou variant pathogène <span class="tag tag-routine">Recommandé</span><span class="sub">Selon la ligne directrice ESC 2022 sur les arythmies ventriculaires; des valeurs plus basses (p. ex. ≥ 460 ms) avec syncope inexpliquée peuvent aussi appuyer le diagnostic. Exclure les causes acquises.</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Épreuve d'effort, Holter et réponse du QTc à l'orthostatisme pour appuyer le diagnostic <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test génétique (<em>KCNQ1</em>, <em>KCNH2</em>, <em>SCN5A</em> ± <em>CALM1–3</em>, <em>TRDN</em>) en cas de SQTL clinique <span class="tag tag-routine">Recommandé</span><span class="sub">Éviter les panels larges de gènes à faibles preuves, qui augmentent le taux de VSI (Wilde et coll., 2022).</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">Test génétique chez une personne asymptomatique avec QTc limite et sans antécédents familiaux <span class="tag tag-no">Non recommandé</span></span></li>
+  </ul>
+</section>
+
+<section id="sec3">
+  <div class="sec-head"><span class="sec-num">3</span><h2 class="sec" data-lang="en">Treatment</h2><h2 class="sec" data-lang="fr">Traitement</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Most people take a beta-blocker every day. It is important not to miss doses. Some medicines can make the QT longer, so check with your pharmacist or the CredibleMeds list before starting any new medicine. A few people need a defibrillator (ICD) or a procedure on the nerves of the heart.</p><p data-lang="fr">La plupart des gens prennent un bêtabloquant chaque jour. Il est important de ne pas oublier de doses. Certains médicaments peuvent allonger le QT; vérifiez auprès de votre pharmacien ou de la liste CredibleMeds avant de commencer tout nouveau médicament. Quelques personnes ont besoin d'un défibrillateur (DCI) ou d'une intervention sur les nerfs du cœur.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Beta-blocker (nadolol or propranolol preferred) in clinically diagnosed LQTS <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Beta-blocker in genotype-positive carriers with normal QTc <span class="tag tag-optional">Reasonable</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Avoid QT-prolonging drugs (CredibleMeds) and correct hypokalemia/hypomagnesemia (e.g. during vomiting or diarrhea) <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">ICD after cardiac arrest; consider for recurrent syncope or arrhythmia on beta-blocker <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Left cardiac sympathetic denervation when beta-blockers are not tolerated or not effective <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Mexiletine in LQT3 with documented QTc shortening <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Bêtabloquant (nadolol ou propranolol de préférence) en cas de SQTL clinique <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Bêtabloquant chez les porteurs génotype-positifs avec QTc normal <span class="tag tag-optional">Raisonnable</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Éviter les médicaments allongeant le QT (CredibleMeds) et corriger l'hypokaliémie/hypomagnésémie (p. ex. vomissements ou diarrhée) <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">DCI après un arrêt cardiaque; envisager en cas de syncope ou d'arythmie récidivante sous bêtabloquant <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Dénervation sympathique cardiaque gauche si les bêtabloquants sont mal tolérés ou inefficaces <span class="tag tag-optional">Sélectif</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Mexilétine dans le LQT3 avec raccourcissement documenté du QTc <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+  <div class="callout amber">
+    <div class="lbl"><i class="ti ti-alert-triangle"></i> <span data-lang="en">Seek emergency care</span><span data-lang="fr">Consulter d'urgence</span></div>
+    <p data-lang="en">Fainting during exercise, with a sudden loud noise, or while sleeping should be evaluated urgently. Family members can learn CPR, and an AED at home or at sports venues may be considered.</p><p data-lang="fr">Une perte de conscience pendant un effort, lors d'un bruit soudain ou pendant le sommeil doit être évaluée d'urgence. Les membres de la famille peuvent apprendre la RCR, et un DEA à domicile ou sur les lieux sportifs peut être envisagé.</p>
+  </div>
+</section>
+
+<section id="sec4">
+  <div class="sec-head"><span class="sec-num">4</span><h2 class="sec" data-lang="en">Lifestyle, sport and pregnancy</h2><h2 class="sec" data-lang="fr">Mode de vie, sport et grossesse</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Many people with LQTS can stay active, including in some sports, after a discussion with their cardiologist. People with LQT1 should take care with swimming. People with LQT2 may reduce sudden loud alarms. Pregnancy is generally safe, but the months after delivery carry a higher risk, especially in LQT2, so beta-blockers are usually continued.</p><p data-lang="fr">Plusieurs personnes atteintes du SQTL peuvent rester actives, y compris dans certains sports, après une discussion avec leur cardiologue. Les personnes avec un LQT1 doivent être prudentes en natation. Les personnes avec un LQT2 peuvent réduire les alarmes bruyantes soudaines. La grossesse est généralement sécuritaire, mais les mois suivant l'accouchement comportent un risque plus élevé, surtout dans le LQT2; les bêtabloquants sont donc habituellement poursuivis.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Shared decision-making about sports participation with an expert <span class="tag tag-optional">Reasonable</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Continue beta-blockers through pregnancy and postpartum <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Reproductive options (prenatal diagnosis, PGT-M) <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Décision partagée sur la participation sportive avec un expert <span class="tag tag-optional">Raisonnable</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Poursuivre les bêtabloquants pendant la grossesse et le post-partum <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Options reproductives (diagnostic prénatal, DPI-M) <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec5">
+  <div class="sec-head"><span class="sec-num">5</span><h2 class="sec" data-lang="en">Family screening</h2><h2 class="sec" data-lang="fr">Dépistage familial</h2></div>
+
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Each first-degree relative has a 1 in 2 chance of carrying the gene change. Relatives should have an ECG, and genetic testing if the family change is known — including children.</p><p data-lang="fr">Chaque apparenté au premier degré a une chance sur deux de porter la modification. Les apparentés devraient passer un ECG, et un test génétique si la modification familiale est connue — y compris les enfants.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">ECG and cascade genetic testing of first-degree relatives, including children <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Relatives without the familial variant can usually be discharged from follow-up <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">ECG et test génétique en cascade des apparentés au premier degré, y compris les enfants <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Les apparentés sans le variant familial peuvent habituellement cesser le suivi <span class="tag tag-routine">Recommandé</span></span></li>
+  </ul>
+</section>
+
+<section id="sec-summary">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-list-check"></i></span><h2 class="sec" data-lang="en">Summary of recommendations</h2><h2 class="sec" data-lang="fr">Résumé des recommandations</h2></div>
+
+  <div class="cardgrid">
+    <div class="scard">
+      <h4><i class="ti ti-activity-heartbeat"></i> <span data-lang="en">Diagnosis</span><span data-lang="fr">Diagnostic</span></h4>
+      <ul>
+        <li data-lang="en">QTc ≥480 ms, Schwartz &gt;3, or P/LP variant</li>
+        <li data-lang="en">Test <em>KCNQ1/KCNH2/SCN5A</em></li>
+        <li data-lang="en">Avoid broad weak-evidence panels</li>
+        <li data-lang="fr">QTc ≥ 480 ms, Schwartz &gt; 3 ou variant P/PP</li>
+        <li data-lang="fr">Tester <em>KCNQ1/KCNH2/SCN5A</em></li>
+        <li data-lang="fr">Éviter les panels larges peu probants</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-pill"></i> <span data-lang="en">Treatment</span><span data-lang="fr">Traitement</span></h4>
+      <ul>
+        <li data-lang="en">Nadolol or propranolol</li>
+        <li data-lang="en">Avoid QT-prolonging drugs</li>
+        <li data-lang="en">ICD/LCSD for high risk</li>
+        <li data-lang="fr">Nadolol ou propranolol</li>
+        <li data-lang="fr">Éviter les médicaments allongeant le QT</li>
+        <li data-lang="fr">DCI/DSCG si risque élevé</li>
+      </ul>
+    </div>
+    <div class="scard">
+      <h4><i class="ti ti-users"></i> <span data-lang="en">Family</span><span data-lang="fr">Famille</span></h4>
+      <ul>
+        <li data-lang="en">ECG + cascade testing</li>
+        <li data-lang="en">Beta-blockers in pregnancy</li>
+        <li data-lang="en">Genotype-specific triggers</li>
+        <li data-lang="fr">ECG + test en cascade</li>
+        <li data-lang="fr">Bêtabloquants pendant la grossesse</li>
+        <li data-lang="fr">Déclencheurs selon le génotype</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sec-refs">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-book"></i></span><h2 class="sec" data-lang="en">References</h2><h2 class="sec" data-lang="fr">Références</h2></div>
+  <ol class="refs">
+    <li>Zeppenfeld K, Tfelt-Hansen J, de Riva M, et al. 2022 ESC Guidelines for the management of patients with ventricular arrhythmias and the prevention of sudden cardiac death. <em>Eur Heart J</em>. 2022;43(40):3997–4126.</li>
+    <li>Priori SG, Wilde AA, Horie M, et al. HRS/EHRA/APHRS expert consensus statement on the diagnosis and management of patients with inherited primary arrhythmia syndromes. <em>Heart Rhythm</em>. 2013;10(12):1932–1963.</li>
+    <li>Wilde AAM, Semsarian C, Márquez MF, et al. European Heart Rhythm Association (EHRA)/Heart Rhythm Society (HRS)/Asia Pacific Heart Rhythm Society (APHRS)/Latin American Heart Rhythm Society (LAHRS) Expert Consensus Statement on the state of genetic testing for cardiac diseases. <em>Europace</em>. 2022;24(8):1307–1367.</li>
+    <li>Adler A, Novelli V, Amin AS, et al. An international, multicentered, evidence-based reappraisal of genes reported to cause congenital long QT syndrome. <em>Circulation</em>. 2020;141(6):418–428.</li>
+  </ol>
+  <p data-lang="en" style="font-size:13px; color:var(--ink-faint);">Original diagrams are the work of the author (© 2026 Dr. Andrew Shuen).</p>
+  <p data-lang="fr" style="font-size:13px; color:var(--ink-faint);">Les schémas originaux sont l'œuvre de l'auteur (© 2026 Dr Andrew Shuen).</p>
+
+  <div class="footer">
+    <p data-lang="en"><strong>Disclaimer.</strong> This protocol supports but does not replace clinical judgment and individualized care. Guidelines evolve; verify all intervals, thresholds, doses, and recommendations against current society guidelines (ACC/AHA, ACMG, relevant specialty societies) before clinical use. Reference citations were drawn from current literature and should be confirmed against the primary sources.</p>
+    <p data-lang="fr"><strong>Avis.</strong> Ce protocole soutient mais ne remplace pas le jugement clinique et les soins individualisés. Les lignes directrices évoluent; vérifier tous les intervalles, seuils, doses et recommandations par rapport aux lignes directrices actuelles des sociétés savantes (ACC/AHA, ACMG, sociétés spécialisées pertinentes) avant tout usage clinique. Les références proviennent de la littérature actuelle et doivent être confirmées auprès des sources primaires.</p>
+    <p>© 2026 Dr. Andrew Shuen · Medical Genetics, Jewish General Hospital, Montreal · <span data-lang="en">For educational use.</span><span data-lang="fr">À usage éducatif.</span></p>
+  </div>
+</section>
+
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-en','lang-fr');
+  document.body.classList.add('lang-'+l);
+  document.getElementById('enTab').classList.toggle('active', l==='en');
+  document.getElementById('frTab').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+}
+function togglePdf(){
+  document.body.classList.toggle('pdf-preview');
+  document.getElementById('pdfBtn').classList.toggle('active');
+}
+</script>
+</body>
+</html>
