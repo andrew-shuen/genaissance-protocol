@@ -471,16 +471,30 @@
       "questionnaires": [
         {
           "who": {
-            "en": "Please complete this questionnaire",
-            "fr": "Veuillez remplir ce questionnaire"
+            "en": "Connective tissue – adult (18+)",
+            "fr": "Tissu conjonctif – adulte (18 ans et plus)"
           },
           "note": {
-            "en": "It asks about your joint, skin, heart, and eye history, and your family history.",
-            "fr": "Il porte sur vos antécédents articulaires, cutanés, cardiaques et oculaires, ainsi que vos antécédents familiaux."
+            "en": "For patients 18 and older, completed by the patient. It asks about your joint, skin, heart, and eye history, and your family history.",
+            "fr": "Pour les patients de 18 ans et plus, à remplir par le patient. Il porte sur vos antécédents articulaires, cutanés, cardiaques et oculaires, ainsi que vos antécédents familiaux."
           },
           "forms": {
-            "en": "222787593244264",
-            "fr": "222787593244264"
+            "en": "262934613028053",
+            "fr": "262934613028053"
+          }
+        },
+        {
+          "who": {
+            "en": "Connective tissue – pediatric (under 18)",
+            "fr": "Tissu conjonctif – pédiatrique (moins de 18 ans)"
+          },
+          "note": {
+            "en": "For patients under 18, completed by a parent or guardian. It asks about the child's birth, development, joint, skin, heart, and eye history, and family history.",
+            "fr": "Pour les patients de moins de 18 ans, à remplir par un parent ou tuteur. Il porte sur la naissance, le développement et les antécédents articulaires, cutanés, cardiaques et oculaires de l'enfant, ainsi que les antécédents familiaux."
+          },
+          "forms": {
+            "en": "262934823517059",
+            "fr": "262934823517059"
           }
         },
         {
