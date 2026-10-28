@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vascular Ehlers-Danlos Syndrome (vEDS) — Clinical Protocol</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.7.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --ink:#15212b; --ink-soft:#3c4a55; --ink-faint:#6a7681;
+  --line:#dde6ec; --line-soft:#eef3f6; --paper:#ffffff; --cream:#f4f9fc;
+  --brand:#0083d0; --brand-dark:#005f9e; --brand-bg:#e3f2fb; --brand-line:#9cd0ef;
+  --accent:#0083d0; --accent-bg:#e3f2fb; --accent-line:#9cd0ef;
+  --amber:#9a5b00; --amber-bg:#fdf0db; --amber-line:#f0a93a;
+  --red:#b3271e; --red-bg:#fcebe9; --red-line:#f0a097;
+  --purple:#3c3489; --purple-bg:#eeedfe; --purple-line:#b3aef0;
+  --radius:14px; --radius-sm:9px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  font-size:17px; line-height:1.62;
+}
+.ui{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:9px 18px;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .util{display:flex; gap:8px; align-items:center;}
+.topbar .tabs{display:flex; gap:4px;}
+.btn{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:13.5px; font-weight:600; cursor:pointer;
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft);
+  padding:7px 13px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;
+  transition:.15s;
+}
+.btn:hover{border-color:var(--brand-line); color:var(--brand-dark); background:var(--brand-bg);}
+.btn.active{background:var(--brand); border-color:var(--brand); color:#fff;}
+.btn i{font-size:16px;}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:860px; margin:0 auto; padding:0 22px 80px;}
+
+/* ---------- Masthead ---------- */
+.masthead{padding:38px 0 26px; border-bottom:2px solid var(--ink);}
+.eyebrow{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:12.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--brand-dark);
+}
+h1.title{font-size:40px; line-height:1.1; margin:.28em 0 .12em; letter-spacing:-.01em;}
+.standfirst{font-size:19px; color:var(--ink-soft); margin:0 0 22px; max-width:62ch;}
+.authorpanel{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:15px 18px; display:flex; gap:14px; align-items:flex-start;
+}
+.authorpanel .who{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.authorpanel .name{font-weight:700; font-size:15px; color:var(--ink);}
+.authorpanel .role{font-size:13.5px; color:var(--ink-faint); line-height:1.5;}
+.authorpanel i{color:var(--brand); font-size:26px; margin-top:2px;}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:16px;}
+.chip{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12px; font-weight:600;
+  background:var(--cream); border:1px solid var(--line); border-radius:999px;
+  padding:4px 11px; color:var(--ink-soft); display:inline-flex; gap:5px; align-items:center;
+}
+.chip i{font-size:14px; color:var(--brand);}
+.legend{
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:18px; padding-top:15px;
+  border-top:1px solid var(--line-soft);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint);
+}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+.legend i{font-size:15px;}
+.i-routine{color:#1f7a34;} .i-optional{color:var(--amber);} .i-no{color:var(--red);}
+
+/* ---------- TOC ---------- */
+.toc{
+  margin:26px 0 8px; padding:18px 20px; background:var(--paper);
+  border:1px solid var(--line); border-radius:var(--radius);
+}
+.toc h2{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint);
+  margin:0 0 12px;
+}
+.toc ol{columns:2; column-gap:34px; margin:0; padding-left:20px; font-size:14.5px;}
+.toc li{margin-bottom:6px; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none;}
+.toc a:hover{color:var(--brand-dark);}
+
+/* ---------- Sections ---------- */
+section{padding-top:34px;}
+.sec-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.sec-num{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;
+  font-size:15px; color:#fff; background:var(--brand);
+  min-width:30px; height:30px; border-radius:8px;
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+}
+h2.sec{font-size:25px; margin:0; letter-spacing:-.01em; line-height:1.2;}
+h3{font-size:18px; margin:24px 0 8px; color:var(--ink);}
+p{margin:0 0 14px;}
+
+/* ---------- Patient card ---------- */
+.patient{
+  background:var(--brand-bg); border:1px solid var(--brand-line);
+  border-left:4px solid var(--brand); border-radius:var(--radius-sm);
+  padding:14px 17px; margin:14px 0 18px;
+}
+.patient .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--brand-dark);
+  display:flex; align-items:center; gap:6px; margin-bottom:6px;
+}
+.patient p{margin:0 0 8px;} .patient p:last-child{margin:0;}
+
+/* ---------- Subtype pill header ---------- */
+.subhead{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  margin:22px 0 6px; padding-bottom:8px; border-bottom:1px solid var(--line-soft);
+}
+.subhead h3{margin:0;}
+.pill{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  border-radius:999px; padding:3px 11px; letter-spacing:.02em;
+}
+.pill-red{background:var(--red-bg); color:var(--red); border:1px solid var(--red-line);}
+.pill-amber{background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-line);}
+.pill-blue{background:var(--brand-bg); color:var(--brand-dark); border:1px solid var(--brand-line);}
+
+/* ---------- Checklist ---------- */
+ul.check{list-style:none; padding:0; margin:12px 0 16px;}
+ul.check li{
+  display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--line-soft);
+  align-items:flex-start;
+}
+ul.check li:last-child{border-bottom:none;}
+ul.check i{font-size:19px; flex:none; margin-top:1px;}
+.tag{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; border-radius:5px; padding:2px 7px;
+  margin-left:8px; white-space:nowrap; vertical-align:middle;
+}
+.tag-routine{background:#e6f4ea; color:#1f7a34;}
+.tag-optional{background:var(--amber-bg); color:var(--amber);}
+.tag-no{background:var(--red-bg); color:var(--red);}
+.ck-txt{flex:1;}
+.ck-txt .sub{display:block; font-size:14px; color:var(--ink-faint); margin-top:2px;}
+
+/* ---------- Callout ---------- */
+.callout{
+  border-left:4px solid var(--brand); background:var(--paper);
+  border:1px solid var(--line); border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm); padding:13px 16px; margin:16px 0;
+}
+.callout.amber{border-left-color:var(--amber); background:var(--amber-bg); border-color:var(--amber-line);}
+.callout.red{border-left-color:var(--red); background:var(--red-bg); border-color:var(--red-line);}
+.callout .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:5px; display:flex; gap:6px; align-items:center;
+}
+.callout.amber .lbl{color:var(--amber);} .callout.red .lbl{color:var(--red);} .callout .lbl{color:var(--brand-dark);}
+.callout p:last-child{margin:0;}
+
+/* ---------- Info / emerging boxes ---------- */
+.infobox{background:var(--brand-bg); border:1px solid var(--brand-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging{background:var(--purple-bg); border:1px solid var(--purple-line); border-radius:var(--radius-sm); padding:14px 17px; margin:16px 0;}
+.emerging .lbl,.infobox .lbl{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:11.5px; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase; margin-bottom:6px; display:flex; gap:6px; align-items:center;
+}
+.emerging .lbl{color:var(--purple);} .infobox .lbl{color:var(--brand-dark);}
+.emerging p:last-child,.infobox p:last-child{margin:0;}
+
+/* ---------- Risk table ---------- */
+.tablewrap{overflow-x:auto; margin:16px 0;}
+table.risk{width:100%; border-collapse:collapse; font-size:15px; background:var(--paper); border-radius:var(--radius-sm); overflow:hidden;}
+table.risk th,table.risk td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--line);}
+table.risk th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); background:var(--cream);}
+table.risk tr:last-child td{border-bottom:none;}
+.dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:7px; vertical-align:middle;}
+.dot-red{background:var(--red);} .dot-amber{background:var(--amber-line);} .dot-blue{background:var(--brand);}
+
+/* ---------- Figures ---------- */
+figure.fig{margin:18px 0 20px; padding:0; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;}
+figure.fig .svgwrap{padding:18px 16px 4px; background:linear-gradient(180deg,#fbfdff,#f4f9fc);}
+figure.fig svg{width:100%; height:auto; display:block;}
+figure.fig figcaption{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); padding:11px 16px 13px; border-top:1px solid var(--line-soft); line-height:1.5;}
+figure.fig img.photo{width:100%; height:auto; display:block; border-radius:0;}
+figure.fig .credit{font-size:11.5px; color:var(--ink-faint); margin-top:6px;}
+figure.fig .credit a{color:var(--brand-dark); text-decoration:none;}
+figure.fig figcaption b{color:var(--ink-soft); font-weight:700;}
+.svg-ink{fill:var(--ink);} .svg-soft{fill:var(--ink-soft);} .svg-faint{fill:var(--ink-faint);}
+.svg-lbl{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.svg-term{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700;}
+
+/* ---------- Summary cards ---------- */
+.cardgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:16px 0;}
+.scard{background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brand); border-radius:var(--radius-sm); padding:14px 16px;}
+.scard h4{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; margin:0 0 8px; color:var(--brand-dark); display:flex; gap:7px; align-items:center;}
+.scard ul{margin:0; padding-left:18px; font-size:14.5px; color:var(--ink-soft);}
+.scard li{margin-bottom:5px;}
+
+/* ---------- References ---------- */
+ol.refs{font-size:14px; color:var(--ink-soft); padding-left:22px; line-height:1.55;}
+ol.refs li{margin-bottom:9px;}
+
+/* ---------- Footer ---------- */
+.footer{margin-top:46px; padding-top:18px; border-top:2px solid var(--ink); position:relative;}
+.footer:before{content:""; position:absolute; top:4px; left:0; right:0; height:1px; background:var(--ink);}
+.footer p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--ink-faint); margin:0 0 8px;}
+
+/* ---------- Language toggle ---------- */
+[data-lang]{display:none;}
+body.lang-en [data-lang="en"]{display:revert;}
+body.lang-fr [data-lang="fr"]{display:revert;}
+ul.check li[data-lang],table.risk tr[data-lang]{display:none;}
+body.lang-en ul.check li[data-lang="en"]{display:flex;}
+body.lang-fr ul.check li[data-lang="fr"]{display:flex;}
+body.lang-en table.risk tr[data-lang="en"]{display:table-row;}
+body.lang-fr table.risk tr[data-lang="fr"]{display:table-row;}
+
+/* ---------- PDF preview on screen ---------- */
+body.pdf-preview{background:#6a7681;}
+body.pdf-preview .topbar{position:static;}
+body.pdf-preview .toc{display:none;}
+body.pdf-preview .wrap{
+  background:#fff; max-width:8.5in; margin:24px auto; padding:0.7in 0.85in;
+  box-shadow:0 4px 24px rgba(0,0,0,.3); font-size:11.5pt; line-height:1.4;
+}
+body.pdf-preview h1.title{font-size:26pt;}
+body.pdf-preview h2.sec{font-size:16pt;}
+body.pdf-preview .standfirst{font-size:13pt;}
+body.pdf-preview section{page-break-inside:auto;}
+body.pdf-preview #sec-summary,body.pdf-preview #sec-refs{
+  border-top:2px dashed var(--brand); margin-top:30px; padding-top:24px; position:relative;
+}
+body.pdf-preview #sec-summary:before,body.pdf-preview #sec-refs:before{
+  content:"— — — page break — — —"; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+  background:#fff; padding:0 12px; font-family:"Helvetica Neue",sans-serif; font-size:9pt; color:var(--brand); letter-spacing:.08em;
+}
+
+/* ---------- Print ---------- */
+@media print{
+  .topbar,.toc{display:none;}
+  body{background:#fff; font-size:10.5pt;}
+  .wrap{max-width:100%; padding:0;}
+  #sec-summary,#sec-refs{page-break-before:always;}
+  .patient,.callout,.infobox,.emerging,.scard,table.risk{break-inside:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+@media(max-width:600px){
+  .toc ol{columns:1;} h1.title{font-size:31px;} .cardgrid{grid-template-columns:1fr;}
+}
+.legend span[data-lang]{display:none;}
+body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="fr"]{display:inline-flex;}
+</style>
+<link rel="stylesheet" href="site-banner.css">
+<script src="site-banner.js" defer></script>
+</head>
+<body class="lang-en">
+
+<!-- ======================= TOP BAR ======================= -->
+<div class="topbar ui">
+  <div class="util">
+    <button class="btn" id="pdfBtn" onclick="togglePdf()"><i class="ti ti-eye"></i><span data-lang="en">PDF view</span><span data-lang="fr">Aperçu PDF</span></button>
+    <button class="btn" onclick="window.print()"><i class="ti ti-printer"></i><span data-lang="en">Print / Save PDF</span><span data-lang="fr">Imprimer / PDF</span></button>
+  </div>
+  <div class="tabs">
+    <button class="btn active" id="enTab" onclick="setLang('en')">English</button>
+    <button class="btn" id="frTab" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ======================= MASTHEAD ======================= -->
+<header class="masthead">
+  <div class="eyebrow" data-lang="en">Hereditary Connective Tissue Disease · Clinical Protocol</div><div class="eyebrow" data-lang="fr">Maladie héréditaire du tissu conjonctif · Protocole clinique</div>
+  <h1 class="title" data-lang="en">Vascular Ehlers-Danlos Syndrome (vEDS)</h1><h1 class="title" data-lang="fr">Syndrome d’Ehlers-Danlos vasculaire (SEDv)</h1>
+  <p class="standfirst" data-lang="en">A clinical protocol for vascular EDS due to <em>COL3A1</em> variants, covering the 2017 criteria, when to test, arterial and pregnancy risk, surveillance, emergency planning and family testing.</p><p class="standfirst" data-lang="fr">Protocole clinique du SED vasculaire lié à des variants <em>COL3A1</em>, couvrant les critères de 2017, les indications de test, les risques artériels et obstétricaux, la surveillance, la planification des urgences et le dépistage familial.</p>
+
+  <div class="authorpanel"><i class="ti ti-stethoscope"></i><div class="who"><div class="name">Dr. Andrew Shuen, MD PhD FRCPC DABMGG</div><div class="role" data-lang="en">Medical Genetics · Genaissance</div><div class="role" data-lang="fr">Génétique médicale · Genaissance</div></div></div>
+
+  <div class="chips ui">
+    <span class="chip"><i class="ti ti-dna"></i> <em>COL3A1</em></span>
+    <span class="chip"><i class="ti ti-clipboard-check"></i> <span data-lang="en">2017 EDS criteria</span><span data-lang="fr">Critères SED 2017</span></span>
+    <span class="chip"><i class="ti ti-heartbeat"></i> <span data-lang="en">Arterial fragility</span><span data-lang="fr">Fragilité artérielle</span></span>
+    <span class="chip"><i class="ti ti-calendar"></i> <span data-lang="en">Updated October 2026</span><span data-lang="fr">Mis à jour en octobre 2026</span></span>
+  </div>
+
+  <div class="legend ui">
+    <span data-lang="en"><i class="ti ti-circle-check i-routine"></i> Recommended</span>
+    <span data-lang="fr"><i class="ti ti-circle-check i-routine"></i> Recommandé</span>
+    <span data-lang="en"><i class="ti ti-minus i-optional"></i> Optional / selective</span>
+    <span data-lang="fr"><i class="ti ti-minus i-optional"></i> Optionnel / sélectif</span>
+    <span data-lang="en"><i class="ti ti-x i-no"></i> Avoid</span>
+    <span data-lang="fr"><i class="ti ti-x i-no"></i> À éviter</span>
+  </div>
+</header>
+
+<nav class="toc ui">
+  <h2 data-lang="en">Contents</h2>
+  <h2 data-lang="fr">Sommaire</h2>
+  <ol>
+    <li><a href="#sec1" data-lang="en">Understanding the condition</a><a href="#sec1" data-lang="fr">Comprendre la maladie</a></li>
+    <li><a href="#sec2" data-lang="en">Clinical features and 2017 criteria</a><a href="#sec2" data-lang="fr">Caractéristiques et critères 2017</a></li>
+    <li><a href="#sec3" data-lang="en">Genetics and inheritance</a><a href="#sec3" data-lang="fr">Génétique et transmission</a></li>
+    <li><a href="#sec4" data-lang="en">Testing</a><a href="#sec4" data-lang="fr">Tests</a></li>
+    <li><a href="#sec5" data-lang="en">Management and surveillance</a><a href="#sec5" data-lang="fr">Prise en charge et surveillance</a></li>
+    <li><a href="#sec6" data-lang="en">Genetic counselling</a><a href="#sec6" data-lang="fr">Conseil génétique</a></li>
+    <li><a href="#sec-res" data-lang="en">Patient resources</a><a href="#sec-res" data-lang="fr">Ressources pour les patients</a></li>
+    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+  </ol>
+</nav>
+
+<section id="sec1">
+  <div class="sec-head"><span class="sec-num">1</span><h2 class="sec" data-lang="en">Understanding vascular EDS</h2><h2 class="sec" data-lang="fr">Comprendre le SED vasculaire</h2></div>
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Vascular Ehlers-Danlos syndrome (vEDS) is a rare inherited condition caused by a change in the <em>COL3A1</em> gene, which makes type III collagen. This collagen gives strength to arteries, the bowel and the uterus. In vEDS these tissues are fragile and can tear, sometimes without warning. Skin is often thin, with visible veins, and bruising is easy. Knowing the diagnosis matters: it guides emergency care, surgery, pregnancy planning and family testing.</p><p data-lang="fr">Le syndrome d’Ehlers-Danlos vasculaire (SEDv) est une maladie héréditaire rare causée par une modification du gène <em>COL3A1</em>, qui produit le collagène de type III. Ce collagène donne leur solidité aux artères, à l’intestin et à l’utérus. Dans le SEDv, ces tissus sont fragiles et peuvent se rompre, parfois sans avertissement. La peau est souvent mince, avec des veines visibles, et les ecchymoses sont faciles. Connaître le diagnostic est important : il guide les soins d’urgence, la chirurgie, la planification d’une grossesse et le dépistage familial.</p>
+  </div>
+<p data-lang="en">Vascular EDS is an autosomal dominant disorder caused by heterozygous pathogenic variants in <em>COL3A1</em>. It carries the highest risk of morbidity and early mortality among the EDS types, from arterial dissection or rupture, intestinal (especially sigmoid colon) perforation and uterine rupture in pregnancy. Glycine substitutions in the triple helix and splice-site variants are generally associated with a more severe course than null (haploinsufficiency) variants. Many probands present only after a first complication, and about half have a <em>de novo</em> variant (Byers 2017; GeneReviews).</p><p data-lang="fr">Le SED vasculaire est une maladie autosomique dominante causée par des variants pathogènes hétérozygotes de <em>COL3A1</em>. C’est le type de SED associé au risque le plus élevé de morbidité et de mortalité précoce, par dissection ou rupture artérielle, perforation intestinale (surtout du côlon sigmoïde) et rupture utérine pendant la grossesse. Les substitutions de glycine dans la triple hélice et les variants d’épissage sont généralement associés à une évolution plus sévère que les variants nuls (haplo-insuffisance). Plusieurs cas index ne sont reconnus qu’après une première complication, et environ la moitié présente un variant <em>de novo</em> (Byers 2017; GeneReviews).</p>
+</section>
+
+<section id="sec2">
+  <div class="sec-head"><span class="sec-num">2</span><h2 class="sec" data-lang="en">Clinical features and 2017 criteria</h2><h2 class="sec" data-lang="fr">Caractéristiques cliniques et critères de 2017</h2></div>
+  <div class="tablewrap">
+    <table class="risk">
+      <thead>
+        <tr data-lang="en"><th>2017 criteria (Malfait 2017)</th><th>Features</th></tr>
+        <tr data-lang="fr"><th>Critères de 2017 (Malfait 2017)</th><th>Caractéristiques</th></tr>
+      </thead>
+      <tbody>
+        <tr data-lang="en"><td><strong>Major</strong></td><td>Family history of vEDS with a documented causative <em>COL3A1</em> variant; arterial rupture at a young age; spontaneous sigmoid colon perforation without diverticular disease or other bowel pathology; uterine rupture in the third trimester without previous caesarean section or severe peripartum perineal tears; carotid–cavernous sinus fistula without trauma</td></tr>
+        <tr data-lang="fr"><td><strong>Majeurs</strong></td><td>Antécédent familial de SEDv avec variant <em>COL3A1</em> causal documenté; rupture artérielle à un jeune âge; perforation spontanée du côlon sigmoïde sans diverticulose ni autre pathologie intestinale; rupture utérine au troisième trimestre sans césarienne antérieure ni déchirure périnéale sévère; fistule carotido-caverneuse sans traumatisme</td></tr>
+        <tr data-lang="en"><td><strong>Minor</strong></td><td>Bruising unrelated to trauma or in unusual sites; thin, translucent skin with increased venous visibility; characteristic facial appearance; spontaneous pneumothorax; acrogeria; talipes equinovarus; congenital hip dislocation; hypermobility of small joints; tendon and muscle rupture; keratoconus; gingival recession and fragility; early-onset varicose veins</td></tr>
+        <tr data-lang="fr"><td><strong>Mineurs</strong></td><td>Ecchymoses sans traumatisme ou à des sites inhabituels; peau mince et translucide avec veines visibles; faciès caractéristique; pneumothorax spontané; acrogérie; pied bot varus équin; luxation congénitale de la hanche; hypermobilité des petites articulations; rupture tendineuse et musculaire; kératocône; récession et fragilité gingivales; varices précoces</td></tr>
+        <tr data-lang="en"><td><strong>When to test</strong></td><td>A family history of vEDS, arterial rupture or dissection in a person under 40, unexplained sigmoid colon rupture, or spontaneous pneumothorax with other features of vEDS should prompt <em>COL3A1</em> testing. The diagnosis requires a pathogenic <em>COL3A1</em> variant.</td></tr>
+        <tr data-lang="fr"><td><strong>Quand tester</strong></td><td>Un antécédent familial de SEDv, une rupture ou dissection artérielle avant 40 ans, une rupture inexpliquée du côlon sigmoïde ou un pneumothorax spontané avec d’autres signes de SEDv doivent mener à un test de <em>COL3A1</em>. Le diagnostic exige un variant pathogène de <em>COL3A1</em>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout"><span data-lang="en"><strong>Facial features.</strong> Some people have a characteristic face: thin nose and lips, prominent eyes, small chin, lobeless ears and hollow cheeks. These are often subtle and absent in many, so a normal face does not exclude vEDS. No openly licensed photo could be included here.</span><span data-lang="fr"><strong>Traits du visage.</strong> Certaines personnes ont un faciès caractéristique : nez et lèvres minces, yeux proéminents, petit menton, oreilles sans lobule et joues creuses. Ces traits sont souvent subtils et absents chez plusieurs; un visage normal n’exclut donc pas le SEDv. Aucune photo sous licence ouverte n’a pu être incluse ici.</span></div>
+  <figure class="fig">
+    <img class="photo" style="max-width:640px;margin:0 auto;" src="images/eds/veds-skin.jpg" alt="Thin translucent skin with visible veins in vascular EDS" loading="lazy">
+    <figcaption>
+      <span data-lang="en"><b>Thin, translucent skin.</b> Anterior chest wall of a woman with molecularly confirmed vascular EDS: the skin is thin and the subcutaneous veins are visible through it (Kashizaki 2013).</span><span data-lang="fr"><b>Peau mince et translucide.</b> Paroi thoracique antérieure d’une femme atteinte d’un SED vasculaire confirmé par test moléculaire : la peau est mince et les veines sous-cutanées sont visibles (Kashizaki 2013).</span>
+      <div class="credit"><span data-lang="en">Photo: Kashizaki F, Hatamochi A, Kamiya K, Yoshizu A, Okamoto H. <em>J Med Case Rep</em> 2013;7:35 (<a href="https://doi.org/10.1186/1752-1947-7-35" target="_blank" rel="noopener">source</a>), <a href="https://creativecommons.org/licenses/by/2.5/" target="_blank" rel="noopener">CC BY 2.5</a>, via <a href="https://commons.wikimedia.org/wiki/File:PMC3567970_1752-1947-7-35-1_(cropped).png" target="_blank" rel="noopener">Wikimedia Commons</a> (cropped).</span><span data-lang="fr">Photo : Kashizaki F, Hatamochi A, Kamiya K, Yoshizu A, Okamoto H. <em>J Med Case Rep</em> 2013;7:35 (<a href="https://doi.org/10.1186/1752-1947-7-35" target="_blank" rel="noopener">source</a>), <a href="https://creativecommons.org/licenses/by/2.5/deed.fr" target="_blank" rel="noopener">CC BY 2.5</a>, via <a href="https://commons.wikimedia.org/wiki/File:PMC3567970_1752-1947-7-35-1_(cropped).png" target="_blank" rel="noopener">Wikimedia Commons</a> (recadrée).</span></div>
+    </figcaption>
+  </figure>
+</section>
+
+<section id="sec3">
+  <div class="sec-head"><span class="sec-num">3</span><h2 class="sec" data-lang="en">Genetics and inheritance</h2><h2 class="sec" data-lang="fr">Génétique et transmission</h2></div>
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">vEDS is passed on in a dominant way: each child of a person with vEDS has a 1 in 2 chance of inheriting the gene change. About half of people with vEDS are the first in their family.</p><p data-lang="fr">Le SEDv se transmet de façon dominante : chaque enfant d’une personne atteinte a une chance sur deux d’hériter de la modification génétique. Environ la moitié des personnes atteintes sont les premières de leur famille.</p>
+  </div>
+<p data-lang="en">Variant type informs prognosis: glycine substitutions and splice-site/exon-skipping variants act in a dominant-negative way, whereas null variants causing haploinsufficiency tend to have later onset and fewer complications. Biallelic <em>COL3A1</em> variants are rare. Interpret variants with an expert laboratory; a VUS should not be used to make or exclude the diagnosis.</p><p data-lang="fr">Le type de variant éclaire le pronostic : les substitutions de glycine et les variants d’épissage/saut d’exon agissent de façon dominante négative, alors que les variants nuls (haplo-insuffisance) ont tendance à se manifester plus tard avec moins de complications. Les variants <em>COL3A1</em> biallèliques sont rares. Interpréter les variants avec un laboratoire expert; un VSI ne doit pas servir à poser ni à exclure le diagnostic.</p>
+</section>
+
+<section id="sec4">
+  <div class="sec-head"><span class="sec-num">4</span><h2 class="sec" data-lang="en">Testing</h2><h2 class="sec" data-lang="fr">Tests</h2></div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt"><em>COL3A1</em> sequencing with deletion/duplication analysis, usually within an HTAD / connective tissue panel <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Targeted testing of at-risk relatives, including children, once the familial variant is known <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Fibroblast collagen studies (skin biopsy) if molecular results are inconclusive <span class="tag tag-optional">Selective</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Séquençage de <em>COL3A1</em> avec analyse des délétions/duplications, habituellement dans un panel HTAD / tissu conjonctif <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Test ciblé des apparentés à risque, y compris les enfants, une fois le variant familial connu <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Études du collagène sur fibroblastes (biopsie cutanée) si les résultats moléculaires sont non concluants <span class="tag tag-optional">Sélectif</span></span></li>
+  </ul>
+</section>
+
+<section id="sec5">
+  <div class="sec-head"><span class="sec-num">5</span><h2 class="sec" data-lang="en">Management and surveillance</h2><h2 class="sec" data-lang="fr">Prise en charge et surveillance</h2></div>
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">Care focuses on lowering the strain on arteries, planning ahead for emergencies, and avoiding procedures that could injure fragile tissues. Carry a medical alert card or bracelet and an emergency letter. Sudden severe pain in the chest, abdomen, back or head needs emergency assessment.</p><p data-lang="fr">Les soins visent à réduire la contrainte sur les artères, à planifier les urgences et à éviter les interventions qui pourraient blesser des tissus fragiles. Ayez sur vous une carte ou un bracelet d’alerte médicale et une lettre d’urgence. Une douleur soudaine et intense à la poitrine, à l’abdomen, au dos ou à la tête exige une évaluation d’urgence.</p>
+  </div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Coordinated care in a centre experienced with vEDS (genetics, vascular surgery, cardiology) <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Blood pressure control; celiprolol has been associated with fewer arterial events in a randomized trial (Ong 2010); availability varies by country, and other beta-blockers or ARBs are used where it is not available <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Periodic non-invasive arterial imaging (duplex ultrasound, MRA or CTA); interval individualized <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Medical alert identification and an emergency care letter <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Pregnancy: preconception counselling about the risk of arterial and uterine rupture; care in a high-risk obstetric centre <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Elective invasive arterial procedures (diagnostic angiography, arterial lines) unless essential; colonoscopy only when clearly indicated <span class="tag tag-no">Avoid</span></span></li>
+    <li data-lang="en"><i class="ti ti-x i-no"></i><span class="ck-txt">Contact sports, heavy lifting and isometric exercise <span class="tag tag-no">Avoid</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Soins coordonnés dans un centre expérimenté en SEDv (génétique, chirurgie vasculaire, cardiologie) <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Contrôle de la pression artérielle; le céliprolol a été associé à moins d’événements artériels dans un essai randomisé (Ong 2010); sa disponibilité varie selon le pays, et d’autres bêtabloquants ou ARA sont utilisés lorsqu’il n’est pas offert <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Imagerie artérielle non invasive périodique (échographie Doppler, ARM ou angio-TDM); intervalle individualisé <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Identification d’alerte médicale et lettre de soins d’urgence <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Grossesse : conseil préconceptionnel sur le risque de rupture artérielle et utérine; suivi dans un centre d’obstétrique à risque élevé <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">Interventions artérielles invasives non urgentes (angiographie diagnostique, cathéters artériels) sauf si essentielles; coloscopie seulement si clairement indiquée <span class="tag tag-no">À éviter</span></span></li>
+    <li data-lang="fr"><i class="ti ti-x i-no"></i><span class="ck-txt">Sports de contact, levée de charges lourdes et exercices isométriques <span class="tag tag-no">À éviter</span></span></li>
+  </ul>
+</section>
+
+<section id="sec6">
+  <div class="sec-head"><span class="sec-num">6</span><h2 class="sec" data-lang="en">Genetic counselling</h2><h2 class="sec" data-lang="fr">Conseil génétique</h2></div>
+  <ul class="check">
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Counsel on autosomal dominant inheritance, the 50% transmission risk and variant-type prognosis; consider parental mosaicism <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Offer cascade testing to relatives, including children, because the diagnosis changes emergency and surgical care <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="en"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Discuss reproductive options, including prenatal diagnosis and PGT-M, non-directively <span class="tag tag-routine">Recommended</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Expliquer la transmission autosomique dominante, le risque de 50 % et le pronostic selon le type de variant; envisager une mosaïque parentale <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Offrir le dépistage en cascade aux apparentés, y compris aux enfants, car le diagnostic modifie les soins d’urgence et chirurgicaux <span class="tag tag-routine">Recommandé</span></span></li>
+    <li data-lang="fr"><i class="ti ti-circle-check i-routine"></i><span class="ck-txt">Présenter les options reproductives, dont le diagnostic prénatal et le DPI-M, de façon non directive <span class="tag tag-routine">Recommandé</span></span></li>
+  </ul>
+</section>
+
+<section id="sec-res">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-heart-handshake"></i></span><h2 class="sec" data-lang="en">Patient resources</h2><h2 class="sec" data-lang="fr">Ressources pour les patients</h2></div>
+  <div class="patient">
+    <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
+    <p data-lang="en">These organizations offer reliable information and support. Your genetics team can also connect you with local specialists.</p><p data-lang="fr">Ces organismes offrent de l’information fiable et du soutien. Votre équipe de génétique peut aussi vous orienter vers des spécialistes près de chez vous.</p>
+  </div>
+  <ul data-lang="en"><li><a href="https://www.ehlers-danlos.com/veds/" target="_blank" rel="noopener">The Ehlers-Danlos Society</a>: information, support and a directory of EDS-aware professionals.</li><li><a href="https://medlineplus.gov/genetics/condition/ehlers-danlos-syndrome/" target="_blank" rel="noopener">MedlinePlus Genetics: Ehlers-Danlos syndrome</a>: plain-language overview of all EDS types (in English).</li></ul><ul data-lang="fr"><li><a href="https://www.ehlers-danlos.com/veds/" target="_blank" rel="noopener">The Ehlers-Danlos Society</a> : information, soutien et répertoire de professionnels connaissant les SED.</li><li><a href="https://medlineplus.gov/genetics/condition/ehlers-danlos-syndrome/" target="_blank" rel="noopener">MedlinePlus Genetics: Ehlers-Danlos syndrome</a> : survol en langage simple de tous les types de SED (en anglais).</li></ul>
+<p data-lang="en">Related protocols: <a href="heds.html">hEDS / HSD</a> · <a href="ceds.html">Classical EDS</a> · <a href="veds.html">Vascular EDS</a> · <a href="keds.html">Kyphoscoliotic EDS</a>.</p><p data-lang="fr">Protocoles apparentés : <a href="heds.html">SEDh / TSH</a> · <a href="ceds.html">SED classique</a> · <a href="veds.html">SED vasculaire</a> · <a href="keds.html">SED cyphoscoliotique</a>.</p>
+</section>
+
+<section id="sec-refs">
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-book"></i></span><h2 class="sec" data-lang="en">References</h2><h2 class="sec" data-lang="fr">Références</h2></div>
+  <ol class="refs">
+    <li>Malfait F, Francomano C, Byers P, et al. The 2017 international classification of the Ehlers–Danlos syndromes. <em>Am J Med Genet C Semin Med Genet</em>. 2017;175(1):8–26. <a href="https://doi.org/10.1002/ajmg.c.31552" target="_blank" rel="noopener">doi:10.1002/ajmg.c.31552</a>.</li>
+    <li>Byers PH, Belmont J, Black J, et al. Diagnosis, natural history, and management in vascular Ehlers–Danlos syndrome. <em>Am J Med Genet C Semin Med Genet</em>. 2017;175(1):40–47. <a href="https://doi.org/10.1002/ajmg.c.31553" target="_blank" rel="noopener">doi:10.1002/ajmg.c.31553</a>.</li>
+    <li>Byers PH. Vascular Ehlers-Danlos Syndrome. In: Adam MP, et al., eds. <em>GeneReviews®</em>. Seattle (WA): University of Washington, Seattle; 1999 [updated 2025 Apr 10]. <a href="https://www.ncbi.nlm.nih.gov/books/NBK1494/" target="_blank" rel="noopener">NBK1494</a>.</li>
+    <li>Ong KT, Perdu J, De Backer J, et al. Effect of celiprolol on prevention of cardiovascular events in vascular Ehlers-Danlos syndrome: a prospective randomised, open, blinded-endpoints trial. <em>Lancet</em>. 2010;376(9751):1476–1484.</li>
+    <li>Kashizaki F, Hatamochi A, Kamiya K, Yoshizu A, Okamoto H. Vascular-type Ehlers-Danlos syndrome caused by a hitherto unknown genetic mutation: a case report. <em>J Med Case Rep</em>. 2013;7:35.</li>
+  </ol>
+
+  <div class="footer">
+    <p data-lang="en"><strong>Disclaimer.</strong> This protocol supports but does not replace clinical judgment and individualized care. Guidelines evolve; verify recommendations against GeneReviews, the 2017 international EDS classification and current specialty guidance before clinical use.</p>
+    <p data-lang="fr"><strong>Avis.</strong> Ce protocole soutient mais ne remplace pas le jugement clinique et les soins individualisés. Les lignes directrices évoluent; vérifier les recommandations auprès de GeneReviews, de la classification internationale des SED de 2017 et des recommandations spécialisées actuelles avant tout usage clinique.</p>
+    <p>© 2026 Dr. Andrew Shuen · Genaissance · <span data-lang="en">For educational use.</span><span data-lang="fr">À usage éducatif.</span></p>
+  </div>
+</section>
+
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-en','lang-fr');
+  document.body.classList.add('lang-'+l);
+  document.getElementById('enTab').classList.toggle('active', l==='en');
+  document.getElementById('frTab').classList.toggle('active', l==='fr');
+  document.documentElement.lang = l;
+}
+function togglePdf(){
+  document.body.classList.toggle('pdf-preview');
+  document.getElementById('pdfBtn').classList.toggle('active');
+}
+</script>
+</body>
+</html>

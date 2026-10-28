@@ -398,6 +398,33 @@
     },
     {
       "group": "connective",
+      "file": "ceds.html",
+      "title": "cEDS",
+      "desc": {
+        "en": "Classical EDS: COL5A1/COL5A2, skin and scars",
+        "fr": "SED classique : COL5A1/COL5A2, peau et cicatrices"
+      }
+    },
+    {
+      "group": "connective",
+      "file": "veds.html",
+      "title": "vEDS",
+      "desc": {
+        "en": "Vascular EDS: COL3A1, arterial fragility",
+        "fr": "SED vasculaire : COL3A1, fragilité artérielle"
+      }
+    },
+    {
+      "group": "connective",
+      "file": "keds.html",
+      "title": "kEDS",
+      "desc": {
+        "en": "Kyphoscoliotic EDS: PLOD1/FKBP14",
+        "fr": "SED cyphoscoliotique : PLOD1/FKBP14"
+      }
+    },
+    {
+      "group": "connective",
       "file": "marfan.html",
       "title": {
         "en": "Marfan syndrome",
