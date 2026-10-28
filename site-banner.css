@@ -31,7 +31,6 @@
 }
 @media (prefers-reduced-motion:no-preference){.sb-helix .sb-nodes{animation:sbPulse 3.2s ease-in-out infinite alternate}}
 @keyframes sbPulse{from{opacity:.6}to{opacity:1}}
-@media print{.sb-banner{display:none!important}}
 body.pdf-preview .sb-banner{display:none}
 /* Print / Save-as-PDF floating button */
 .sb-print{position:fixed;right:18px;bottom:18px;z-index:70;display:inline-flex;align-items:center;gap:6px;
@@ -41,7 +40,7 @@ body.pdf-preview .sb-banner{display:none}
 .sb-print [data-sb-lang]{display:none}
 .sb-print.sb-en [data-sb-lang="en"],.sb-print.sb-fr [data-sb-lang="fr"]{display:inline}
 @media print{
-  .sb-print,.sb-banner,.topbar,.toolbar,.langbar,.lang-toggle,.langtabs,.langtab,.lang-btn,.langbtn,
+  .sb-print,.topbar,.toolbar,.langbar,.lang-toggle,.langtabs,.langtab,.lang-btn,.langbtn,
   button[onclick*="setLang"],button[onclick*="showLang"]{display:none!important}
   [style*="sticky"],.sticky{position:static!important}
   h1,h2,h3,h4{break-after:avoid;page-break-after:avoid}
@@ -52,3 +51,42 @@ body.pdf-preview .sb-banner{display:none}
 /* Genaissance branding */
 .sb-logo{flex:none;height:22px;width:auto;margin-left:auto;display:block}
 @media (max-width:560px){.sb-logo{height:16px}}
+
+/* ---- Standard toolbar (shared by every card; injected by site-banner.js) ---- */
+.sb-hide{display:none!important}
+.sb-tools{background:#fff;border-bottom:1px solid #dbe6ee;font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;position:relative;z-index:55}
+.sb-tools-inner{max-width:1080px;margin:0 auto;padding:8px 20px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;box-sizing:border-box}
+.sb-tl,.sb-tr{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.sb-tools .sb-btn{all:unset;box-sizing:border-box;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 13px;border-radius:999px;
+  border:1px solid #c9dbe7;background:#fff;color:#0b3d5c;font:600 13px/1 'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer;white-space:nowrap;text-decoration:none!important}
+.sb-tools .sb-btn:hover{background:#eef6fb;border-color:#9cc3dc}
+.sb-tools .sb-btn:focus-visible{outline:3px solid #35e0ff;outline-offset:2px}
+.sb-tools .sb-btn.active,.sb-tools .sb-btn[aria-pressed="true"],.sb-tools .sb-btn-print{background:#0b3d5c;color:#fff;border-color:#0b3d5c}
+.sb-tools .sb-btn-print:hover{background:#125a85}
+.sb-tools .sb-btn.active:hover{background:#125a85}
+.sb-tools .sb-btn i{font-size:15px}
+.sb-tools [data-sb-lang]{display:none}
+.sb-tools.sb-en [data-sb-lang="en"],.sb-tools.sb-fr [data-sb-lang="fr"]{display:inline}
+@media (max-width:640px){
+  .sb-tools-inner{padding:6px 12px;gap:6px}
+  .sb-tools .sb-btn{height:30px;padding:0 10px;font-size:12px}
+}
+body.pdf-preview .sb-tools{display:none}
+@media print{
+  .sb-tools,.sb-hide{display:none!important}
+  .sb-banner{display:block!important;background:none!important;color:#000!important;border-bottom:1px solid #999;margin-bottom:8px}
+  .sb-banner::before,.sb-helix,.sb-home{display:none!important}
+  .sb-inner{padding:0 0 6px;min-height:0}
+  .sb-title{color:#000!important;font-size:11pt}
+  .sb-eyebrow{color:#333!important}.sb-eyebrow::before{display:none}
+  .sb-banner .sb-logo{height:16px!important;width:auto!important;max-width:none!important}
+  img{max-width:100%!important;height:auto!important}
+  figure,figcaption,.fig,.figgrid figure,.patient,.infobox,.note,.info,.callout,.charm-study,.scard,.tablewrap,table,tr,.clinical-note{break-inside:avoid;page-break-inside:avoid}
+  a[href]{color:inherit}
+}
+.sb-tools .sb-seg{display:inline-flex;align-items:center}
+.sb-tools .sb-seg .seg{display:inline-flex;border:1px solid #c9dbe7;border-radius:999px;overflow:hidden;height:32px;box-sizing:border-box}
+.sb-tools .sb-seg .seg[hidden]{display:none}
+.sb-tools .sb-seg .seg a,.sb-tools .sb-seg .seg span{display:inline-flex;align-items:center;padding:0 13px;font:600 13px/1 'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#0b3d5c;text-decoration:none;background:#fff}
+.sb-tools .sb-seg .seg .seg-active{background:#0b3d5c;color:#fff}
+@media (max-width:640px){.sb-tools .sb-seg .seg{height:30px}.sb-tools .sb-seg .seg a,.sb-tools .sb-seg .seg span{padding:0 10px;font-size:12px}}
