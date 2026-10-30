@@ -744,6 +744,37 @@
     },
     {
       "group": "cancer",
+      "file": "nf2.html",
+      "title": "NF2",
+      "desc": {
+        "en": "NF2-related schwannomatosis",
+        "fr": "Schwannomatose liée à NF2"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "men1.html",
+      "title": "MEN1",
+      "desc": {
+        "en": "Multiple endocrine neoplasia type 1",
+        "fr": "Néoplasie endocrinienne multiple de type 1"
+      },
+      "subheadBefore": {
+        "en": "Hereditary endocrine and nervous-system tumours",
+        "fr": "Tumeurs endocriniennes et du système nerveux héréditaires"
+      }
+    },
+    {
+      "group": "cancer",
+      "file": "vhl.html",
+      "title": "VHL",
+      "desc": {
+        "en": "Von Hippel-Lindau disease",
+        "fr": "Maladie de von Hippel-Lindau"
+      }
+    },
+    {
+      "group": "cancer",
       "file": "hoxb13.html",
       "title": "HOXB13",
       "desc": {
