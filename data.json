@@ -87,6 +87,17 @@
         "en": "Conditions presenting in infancy or childhood that warrant genetics assessment and tailored surveillance.",
         "fr": "Conditions se manifestant durant la petite enfance ou l'enfance qui justifient une évaluation génétique et une surveillance adaptée."
       }
+    },
+    {
+      "key": "rare",
+      "label": {
+        "en": "Rare conditions with Canadian sponsored testing",
+        "fr": "Maladies rares avec tests commandités au Canada"
+      },
+      "blurb": {
+        "en": "Plain-language cards on rare genetic conditions for which a sponsored (no-cost) genetic testing program is open to Canadian patients. Each card lists the program; always confirm eligibility on the current requisition.",
+        "fr": "Des fiches en langage clair sur des maladies génétiques rares pour lesquelles un programme de test génétique commandité (sans frais) est offert aux patients canadiens. Chaque fiche indique le programme; confirmez toujours l’admissibilité sur la réquisition en vigueur."
+      }
     }
   ],
   "protocols": [
@@ -1436,6 +1447,186 @@
       "desc": {
         "en": "Detecting variants present only in some tissues",
         "fr": "Détection de variants présents seulement dans certains tissus"
+      }
+    },
+    {
+      "group": "rare",
+      "file": "pompe.html",
+      "title": {
+        "en": "Pompe Disease (GAA)",
+        "fr": "Maladie de Pompe (GAA)"
+      },
+      "desc": {
+        "en": "Cause, features, diagnosis, treatment and sponsored testing",
+        "fr": "Cause, signes, diagnostic, traitement et tests commandités"
+      }
+    },
+    {
+      "group": "rare",
+      "file": "fabry.html",
+      "title": {
+        "en": "Fabry Disease (GLA)",
+        "fr": "Maladie de Fabry (GLA)"
+      },
+      "desc": {
+        "en": "Cause, features, diagnosis, treatment and sponsored testing",
+        "fr": "Cause, signes, diagnostic, traitement et tests commandités"
+      }
+    },
+    {
+      "group": "rare",
+      "file": "gaucher.html",
+      "title": {
+        "en": "Gaucher Disease (GBA1)",
+        "fr": "Maladie de Gaucher (GBA1)"
+      },
+      "desc": {
+        "en": "Cause, features, diagnosis, treatment and sponsored testing",
+        "fr": "Cause, signes, diagnostic, traitement et tests commandités"
+      }
+    },
+    {
+      "group": "rare",
+      "file": "asmd.html",
+      "title": {
+        "en": "Acid Sphingomyelinase Deficiency (ASMD, SMPD1)",
+        "fr": "Déficit en sphingomyélinase acide (DSMA, SMPD1)"
+      },
+      "desc": {
+        "en": "Cause, features, diagnosis, treatment and sponsored testing",
+        "fr": "Cause, signes, diagnostic, traitement et tests commandités"
+      }
+    },
+    {
+      "group": "rare",
+      "file": "mps1.html",
+      "title": {
+        "en": "Mucopolysaccharidosis Type I (MPS I, IDUA)",
+        "fr": "Mucopolysaccharidose de type I (MPS I, IDUA)"
+      },
+      "desc": {
+        "en": "Cause, features, diagnosis, treatment and sponsored testing",
+        "fr": "Cause, signes, diagnostic, traitement et tests commandités"
+      }
+    },
+    {
+      "group": "rare",
+      "file": "lysosomal-storage.html",
+      "title": {
+        "en": "Lysosomal Storage Diseases (overview)",
+        "fr": "Maladies lysosomales (survol)"
+      },
+      "desc": {
+        "en": "Cause, features, diagnosis, treatment and sponsored testing",
+        "fr": "Cause, signes, diagnostic, traitement et tests commandités"
+      }
+    },
+    {
+      "group": "rare",
+      "file": "dmd.html",
+      "title": {
+        "en": "Duchenne and Becker Muscular Dystrophy (DMD)",
+        "fr": "Dystrophie musculaire de Duchenne et de Becker (DMD)"
+      },
+      "desc": {
+        "en": "Cause, features, diagnosis, treatment and sponsored testing",
+        "fr": "Cause, signes, diagnostic, traitement et tests commandités"
+      }
+    },
+    {
+      "group": "rare",
+      "file": "hattr.html",
+      "title": {
+        "en": "Hereditary Transthyretin Amyloidosis (hATTR, TTR)",
+        "fr": "Amylose héréditaire à transthyrétine (ATTRh, TTR)"
+      },
+      "desc": {
+        "en": "Cause, features, diagnosis, treatment and sponsored testing",
+        "fr": "Cause, signes, diagnostic, traitement et tests commandités"
+      }
+    },
+    {
+      "group": "rare",
+      "file": "ahp.html",
+      "title": {
+        "en": "Acute Hepatic Porphyrias (HMBS, CPOX, PPOX, ALAD)",
+        "fr": "Porphyries hépatiques aiguës (HMBS, CPOX, PPOX, ALAD)"
+      },
+      "desc": {
+        "en": "Cause, features, diagnosis, treatment and sponsored testing",
+        "fr": "Cause, signes, diagnostic, traitement et tests commandités"
+      }
+    },
+    {
+      "group": "rare",
+      "file": "hypoparathyroidism.html",
+      "title": {
+        "en": "Genetic Hypoparathyroidism and Hypocalcemia",
+        "fr": "Hypoparathyroïdie et hypocalcémie génétiques"
+      },
+      "desc": {
+        "en": "Cause, features, diagnosis, treatment and sponsored testing",
+        "fr": "Cause, signes, diagnostic, traitement et tests commandités"
+      }
+    },
+    {
+      "group": "rare",
+      "file": "fcs.html",
+      "title": {
+        "en": "Familial Chylomicronemia Syndrome (FCS, LPL)",
+        "fr": "Syndrome de chylomicronémie familiale (SCF, LPL)"
+      },
+      "desc": {
+        "en": "Cause, features, diagnosis, treatment and sponsored testing",
+        "fr": "Cause, signes, diagnostic, traitement et tests commandités"
+      }
+    },
+    {
+      "group": "rare",
+      "file": "lc-faod.html",
+      "title": {
+        "en": "Long-Chain Fatty Acid Oxidation Disorders (LC-FAOD)",
+        "fr": "Troubles de l’oxydation des acides gras à longue chaîne (TOAG-LC)"
+      },
+      "desc": {
+        "en": "Cause, features, diagnosis, treatment and sponsored testing",
+        "fr": "Cause, signes, diagnostic, traitement et tests commandités"
+      }
+    },
+    {
+      "group": "rare",
+      "file": "xlh.html",
+      "title": {
+        "en": "X-Linked Hypophosphatemia (XLH, PHEX) and Genetic Hypophosphatemia",
+        "fr": "Hypophosphatémie liée à l’X (XLH, PHEX) et hypophosphatémies génétiques"
+      },
+      "desc": {
+        "en": "Cause, features, diagnosis, treatment and sponsored testing",
+        "fr": "Cause, signes, diagnostic, traitement et tests commandités"
+      }
+    },
+    {
+      "group": "rare",
+      "file": "apds.html",
+      "title": {
+        "en": "Activated PI3K Delta Syndrome (APDS, PIK3CD, PIK3R1)",
+        "fr": "Syndrome PI3K delta activé (APDS, PIK3CD, PIK3R1)"
+      },
+      "desc": {
+        "en": "Cause, features, diagnosis, treatment and sponsored testing",
+        "fr": "Cause, signes, diagnostic, traitement et tests commandités"
+      }
+    },
+    {
+      "group": "rare",
+      "file": "pfic.html",
+      "title": {
+        "en": "Progressive Familial Intrahepatic Cholestasis (PFIC) and Inherited Cholestasis",
+        "fr": "Cholestase intrahépatique familiale progressive (CIFP) et cholestases héréditaires"
+      },
+      "desc": {
+        "en": "Cause, features, diagnosis, treatment and sponsored testing",
+        "fr": "Cause, signes, diagnostic, traitement et tests commandités"
       }
     }
   ]
