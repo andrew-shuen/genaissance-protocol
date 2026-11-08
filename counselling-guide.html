@@ -118,13 +118,9 @@
   .cta .cta-text strong{display:block;font-size:.98rem;color:var(--teal-ink);margin-bottom:2px}
   .cta .cta-text span{display:block;font-size:.86rem;color:var(--muted);line-height:1.45}
   .cta .cta-text .form-lang{font-size:.78rem;margin-top:5px;color:var(--teal)}
-  .cta .cta-text .form-lang.ext{color:var(--adult)}
   .cta.consent-cta{background:#fbf4e9;border-color:#e6d3b3}
   .cta.consent-cta .open-form{background:var(--adult)}
   .cta.consent-cta .open-form:hover{background:#7e552e}
-  .cta.ext-cta{background:#f4eef6;border-color:#dcc9e4}
-  .cta.ext-cta .open-form{background:var(--prenatal)}
-  .cta.ext-cta .open-form:hover{background:#5f4488}
   .open-form{
     text-decoration:none;background:var(--teal);color:#fff;font-weight:600;font-size:.92rem;
     padding:11px 20px;border-radius:9px;white-space:nowrap;transition:background .12s;
@@ -186,8 +182,7 @@
     openForm: { en: 'Open questionnaire', fr: 'Ouvrir le questionnaire' },
     openConsent: { en: 'Open consent form', fr: 'Ouvrir le formulaire de consentement' },
     formLangEn:{ en: 'Opens the English form in a new tab.', fr: 'Ouvre le formulaire anglais dans un nouvel onglet.' },
-    formLangFr:{ en: 'Opens the French form in a new tab.', fr: 'Ouvre le formulaire français dans un nouvel onglet.' },
-    opensExternal:{ en: 'Opens on the Invitae website in a new tab.', fr: 'S\u2019ouvre sur le site web d\u2019Invitae dans un nouvel onglet.' }
+    formLangFr:{ en: 'Opens the French form in a new tab.', fr: 'Ouvre le formulaire français dans un nouvel onglet.' }
   };
 
   function t(val){
@@ -297,11 +292,6 @@
           sub = '<span class="form-lang">' + escapeHtml(cMsg) + '</span>';
           btnLabel = t(UI.openConsent);
           extraClass = ' consent-cta';
-        } else if(q.external){
-          href = q.external;
-          sub = '<span class="form-lang ext">' + escapeHtml(t(UI.opensExternal)) + '</span>';
-          btnLabel = t(UI.openForm);
-          extraClass = ' ext-cta';
         } else {
           var formId = (q.forms && (q.forms[lang] || q.forms.en)) || '';
           href = 'https://form.jotform.com/' + formId;
