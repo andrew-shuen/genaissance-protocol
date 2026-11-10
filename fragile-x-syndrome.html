@@ -266,6 +266,19 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
 </style>
 <link rel="stylesheet" href="site-banner.css">
 <script src="site-banner.js" defer></script>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body class="lang-en">
 
@@ -316,7 +329,7 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
     <li><a href="#sec2" data-lang="en">Care &amp; follow-up</a><a href="#sec2" data-lang="fr">Soins et suivi</a></li>
     <li><a href="#sec3" data-lang="en">The family</a><a href="#sec3" data-lang="fr">La famille</a></li>
     <li><a href="#sec-summary" data-lang="en">Summary</a><a href="#sec-summary" data-lang="fr">Résumé</a></li>
-    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+    <li><a href="#sec-clinics" data-lang="en">Clinics &amp; resources for patients</a><a href="#sec-clinics" data-lang="fr">Cliniques et ressources pour les patients</a></li><li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
   </ol>
 </nav>
 
@@ -404,6 +417,11 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
       </ul>
     </div>
   </div>
+</section>
+
+<section id="sec-clinics">
+<div class="sec-head"><span class="sec-num"><i class="ti ti-heart-handshake"></i></span><h2 class="sec" data-lang="en">Clinics &amp; resources for patients</h2><h2 class="sec" data-lang="fr">Cliniques et ressources pour les patients</h2></div>
+<ul class="checklist ui"><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>Fragile X Canada</strong> (Scarborough, ON; national): National charity for the Fragile X community, including the syndrome and related premutation conditions. <a href="https://www.fragilexcanada.ca/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>National Fragile X Foundation</strong> (International): Education and support across the Fragile X spectrum. <a href="https://fragilex.org/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (United States; for patients): Plain-language overview of fragile X syndrome. <a href="https://medlineplus.gov/genetics/condition/fragile-x-syndrome/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>Fragile X Canada</strong> (Scarborough (Ontario); échelle nationale) : Organisme national pour la communauté de l’X fragile, dont le syndrome et les conditions liées à la prémutation. Le site est en anglais. <a href="https://www.fragilexcanada.ca/" target="_blank" rel="noopener">Site</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>National Fragile X Foundation</strong> (International) : Éducation et soutien pour l’ensemble du spectre de l’X fragile. Le site est en anglais. <a href="https://fragilex.org/" target="_blank" rel="noopener">Site</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (États-Unis; pour les patients) : Survol en langage simple : le syndrome de l’X fragile. Le site est en anglais. <a href="https://medlineplus.gov/genetics/condition/fragile-x-syndrome/" target="_blank" rel="noopener">Site</a></span></li></ul>
 </section>
 
 <section id="sec-refs">

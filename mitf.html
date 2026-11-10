@@ -198,6 +198,19 @@
 </style>
 <link rel="stylesheet" href="site-banner.css">
 <script src="site-banner.js" defer></script>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body>
 
@@ -247,7 +260,7 @@
       <li><a href="#en-8">Treatment notes for affected patients</a></li>
       <li><a href="#en-9">Emerging and investigational areas</a></li>
       <li><a href="#en-10">Summary of recommendations</a></li>
-      <li><a href="#en-11">References</a></li>
+      <li><a href="#clinics-en">Clinics &amp; resources for patients</a></li><li><a href="#en-11">References</a></li>
     </ol>
   </nav>
 
@@ -487,7 +500,12 @@
   </section>
 
   <!-- 11 -->
-  <section id="en-11">
+    <section id="clinics-en">
+  <div class="sec-head"><span class="num"><i class="ti ti-heart-handshake"></i></span><h2 class="sec-title">Clinics &amp; resources for patients</h2></div>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span><strong>Melanoma Canada</strong> (Canada): Support, education, and advocacy for people in Canada with melanoma and skin cancer. <a href="https://melanomacanada.ca/" target="_blank" rel="noopener">Website</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (United States; for patients): Plain-language overview of melanoma. <a href="https://medlineplus.gov/genetics/condition/melanoma/" target="_blank" rel="noopener">Website</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (United States; for patients): Plain-language page on the MITF gene. <a href="https://medlineplus.gov/genetics/gene/mitf/" target="_blank" rel="noopener">MITF</a></span></li></ul>
+  </section>
+
+<section id="en-11">
     <div class="sec-head"><span class="num">11</span><h2 class="sec-title">References</h2></div>
     <ol class="refs">
       <li>Yokoyama S, Woods SL, Boyle GM, et al. A novel recurrent mutation in MITF predisposes to familial and sporadic melanoma. <i>Nature.</i> 2011;480:99-103.</li>
@@ -549,7 +567,7 @@
       <li><a href="#fr-8">Notes de traitement pour les patients atteints</a></li>
       <li><a href="#fr-9">Domaines émergents et expérimentaux</a></li>
       <li><a href="#fr-10">Résumé des recommandations</a></li>
-      <li><a href="#fr-11">Références</a></li>
+      <li><a href="#clinics-fr">Cliniques et ressources pour les patients</a></li><li><a href="#fr-11">Références</a></li>
     </ol>
   </nav>
 
@@ -789,7 +807,12 @@
   </section>
 
   <!-- 11 -->
-  <section id="fr-11">
+    <section id="clinics-fr">
+  <div class="sec-head"><span class="num"><i class="ti ti-heart-handshake"></i></span><h2 class="sec-title">Cliniques et ressources pour les patients</h2></div>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span><strong>Melanoma Canada</strong> (Canada) : Soutien, éducation et défense des intérêts des personnes au Canada vivant avec un mélanome ou un cancer de la peau. <a href="https://melanomacanada.ca/" target="_blank" rel="noopener">Site</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (États-Unis; pour les patients) : Survol en langage simple : le mélanome. Le site est en anglais. <a href="https://medlineplus.gov/genetics/condition/melanoma/" target="_blank" rel="noopener">Site</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (États-Unis; pour les patients) : Page en langage simple sur le gène MITF. Le site est en anglais. <a href="https://medlineplus.gov/genetics/gene/mitf/" target="_blank" rel="noopener">MITF</a></span></li></ul>
+  </section>
+
+<section id="fr-11">
     <div class="sec-head"><span class="num">11</span><h2 class="sec-title">Références</h2></div>
     <ol class="refs">
       <li>Yokoyama S, Woods SL, Boyle GM, et al. A novel recurrent mutation in MITF predisposes to familial and sporadic melanoma. <i>Nature.</i> 2011;480:99-103.</li>

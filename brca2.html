@@ -236,6 +236,19 @@ body.show-fr .lang-fr{display:block;}
 <style>
 @media print{}
 </style>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body class="show-en">
 
@@ -293,7 +306,7 @@ body.show-fr .lang-fr{display:block;}
       <li><span class="n">11</span><a href="#en-lifestyle">Lifestyle &amp; nutrition</a></li>
       <li><span class="n">12</span><a href="#en-emerging">Emerging &amp; investigational</a></li>
       <li><span class="n">13</span><a href="#en-summary">Summary of recommendations</a></li>
-      <li><span class="n">14</span><a href="#en-refs">References</a></li>
+      <li><a href="#clinics-en">Clinics &amp; resources for patients</a></li><li><span class="n">14</span><a href="#en-refs">References</a></li>
     </ol>
   </nav>
 
@@ -472,10 +485,7 @@ body.show-fr .lang-fr{display:block;}
       <div class="tag ui"><i class="ti ti-calculator"></i> Risk modelling</div>
       <p>Use a validated model (BOADICEA / CanRisk) incorporating pedigree, hormonal, and where available polygenic data to generate an individualized estimate rather than quoting a single population figure.</p>
     </div>
-    <div class="infobox ui" data-added="brca2027">
-      <div class="tag ui"><i class="ti ti-users"></i> Patient resource: BRCA 2027</div>
-      <p>The <a href="https://brcasymposium.ca/en" target="_blank" rel="noopener">11th International Symposium on Hereditary Breast and Ovarian Cancer (BRCA 2027)</a> takes place in Montréal on May 17–20, 2027. It includes a one-day public conference for gene carriers, at-risk individuals and their families on Tuesday, May 18, 2027 (in person or live-streamed), covering cancer risks, surveillance and risk-reduction options, sexuality and intimacy, and coping.</p>
-    </div>
+    
     <div class="infobox ui" data-added="fanconi">
       <div class="tag ui"><i class="ti ti-dna-2"></i> Fanconi anemia: when both partners carry a BRCA2 variant</div>
       <p>Having one BRCA2 variant does not cause Fanconi anemia. If you and your partner both carry a harmful variant in BRCA2, each pregnancy has a 1 in 4 (25%) chance that the child inherits both variants and has Fanconi anemia (type D1). Testing your partner for BRCA2 can clarify this, and we offer genetic counselling to go through the results and the reproductive options.</p>
@@ -595,7 +605,12 @@ body.show-fr .lang-fr{display:block;}
   </section>
 
   <!-- 14 -->
-  <section id="en-refs">
+    <section id="clinics-en">
+  <div class="shead"><div class="snum ui"><i class="ti ti-heart-handshake"></i></div><h2>Clinics &amp; resources for patients</h2></div>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span><strong>BRCA 2027 public conference</strong> (Montréal, 17–20 May 2027): a one-day public program on 18 May 2027 for gene carriers, people at risk, and families, in person or live-streamed, on cancer risks, surveillance, risk reduction, sexuality and intimacy, and coping. <a href="https://brcasymposium.ca/en" target="_blank" rel="noopener">brcasymposium.ca</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>FORCE (Facing Hereditary Cancer Empowered)</strong> (International): Patient organization for hereditary breast, ovarian, and related cancers, including BRCA and moderate-risk genes. <a href="https://www.facingourrisk.org/" target="_blank" rel="noopener">Website</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Ovarian Cancer Canada</strong> (Canada): National support and information for people affected by ovarian cancer, including inherited risk. <a href="https://ovariancanada.org/" target="_blank" rel="noopener">Website</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Canadian Cancer Society</strong> (Canada): Patient information on breast cancer risks, including inherited risk. <a href="https://cancer.ca/en/cancer-information/cancer-types/breast/risks" target="_blank" rel="noopener">Breast cancer risks</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Ontario.ca: breast cancer screening and prevention</strong> (Ontario): Provincial public page on breast screening and prevention. High-risk program details should be confirmed on the current page. <a href="https://www.ontario.ca/page/breast-cancer-testing-and-prevention" target="_blank" rel="noopener">Website</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (United States; for patients): Plain-language page on the BRCA2 gene. <a href="https://medlineplus.gov/genetics/gene/brca2/" target="_blank" rel="noopener">BRCA2</a></span></li></ul>
+  </section>
+
+<section id="en-refs">
     <div class="shead"><div class="snum ui">14</div><h2>References</h2></div>
     <ol class="refs ui">
       <li>Daly MB, Pal T, AlHilli Z, et al. Genetic/Familial High-Risk Assessment: Breast, Ovarian, Pancreatic, and Prostate. NCCN Clinical Practice Guidelines in Oncology, Version 2.2026. J Natl Compr Canc Netw. 2026.</li>
@@ -664,7 +679,7 @@ body.show-fr .lang-fr{display:block;}
       <li><span class="n">11</span><a href="#fr-lifestyle">Mode de vie et nutrition</a></li>
       <li><span class="n">12</span><a href="#fr-emerging">Pistes émergentes et expérimentales</a></li>
       <li><span class="n">13</span><a href="#fr-summary">Résumé des recommandations</a></li>
-      <li><span class="n">14</span><a href="#fr-refs">Références</a></li>
+      <li><a href="#clinics-fr">Cliniques et ressources pour les patients</a></li><li><span class="n">14</span><a href="#fr-refs">Références</a></li>
     </ol>
   </nav>
 
@@ -843,10 +858,7 @@ body.show-fr .lang-fr{display:block;}
       <div class="tag ui"><i class="ti ti-calculator"></i> Modélisation du risque</div>
       <p>Utilisez un modèle validé (BOADICEA / CanRisk) intégrant l'arbre généalogique, les facteurs hormonaux et, lorsque disponibles, les données polygéniques, pour produire une estimation individualisée plutôt que de citer un seul chiffre populationnel.</p>
     </div>
-    <div class="infobox ui" data-added="brca2027">
-      <div class="tag ui"><i class="ti ti-users"></i> Ressource pour les patients : BRCA 2027</div>
-      <p>Le <a href="https://brcasymposium.ca/fr" target="_blank" rel="noopener">11e Symposium international sur le cancer héréditaire du sein et de l’ovaire (BRCA 2027)</a> a lieu à Montréal du 17 au 20 mai 2027. Il comprend une conférence publique d’une journée pour les personnes porteuses, les personnes à risque et leurs familles, le mardi 18 mai 2027 (en personne ou en webdiffusion), sur les risques de cancer, la surveillance et les options de réduction du risque, la sexualité et l’intimité, et l’adaptation psychologique.</p>
-    </div>
+    
     <div class="infobox ui" data-added="fanconi">
       <div class="tag ui"><i class="ti ti-dna-2"></i> Anémie de Fanconi : lorsque les deux partenaires portent un variant BRCA2</div>
       <p>Avoir un seul variant BRCA2 ne cause pas l’anémie de Fanconi. Si vous et votre partenaire portez tous les deux un variant nocif de BRCA2, chaque grossesse comporte une chance sur 4 (25 %) que l’enfant hérite des deux variants et présente l’anémie de Fanconi (type D1). Un test de BRCA2 chez votre partenaire peut clarifier ce risque, et nous offrons un conseil génétique pour discuter des résultats et des options reproductives.</p>
@@ -966,7 +978,12 @@ body.show-fr .lang-fr{display:block;}
   </section>
 
   <!-- 14 -->
-  <section id="fr-refs">
+    <section id="clinics-fr">
+  <div class="shead"><div class="snum ui"><i class="ti ti-heart-handshake"></i></div><h2>Cliniques et ressources pour les patients</h2></div>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span><strong>Conférence publique BRCA 2027</strong> (Montréal, 17 au 20 mai 2027) : journée publique le 18 mai 2027 pour les personnes porteuses, les personnes à risque et les familles, en personne ou en webdiffusion, sur les risques de cancer, la surveillance, la réduction du risque, la sexualité et l’intimité, et l’adaptation. <a href="https://brcasymposium.ca/fr" target="_blank" rel="noopener">brcasymposium.ca/fr</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>FORCE (Facing Hereditary Cancer Empowered)</strong> (International) : Organisme de patients pour les cancers héréditaires du sein, de l’ovaire et les gènes de risque associé, dont BRCA et les gènes de risque modéré. Le site est en anglais. <a href="https://www.facingourrisk.org/" target="_blank" rel="noopener">Site</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Cancer de l’ovaire Canada</strong> (Canada) : Soutien et information à l’échelle du Canada pour les personnes touchées par le cancer de l’ovaire, y compris le risque héréditaire. <a href="https://ovariancanada.org/" target="_blank" rel="noopener">Site</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Société canadienne du cancer</strong> (Canada) : Information pour le public sur les risques de cancer du sein, y compris le risque héréditaire. <a href="https://cancer.ca/fr/cancer-information/cancer-types/breast/risks" target="_blank" rel="noopener">Risques de cancer du sein</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Ontario.ca : dépistage et prévention du cancer du sein</strong> (Ontario) : Page publique provinciale sur le dépistage et la prévention du cancer du sein. Les détails du programme à haut risque sont à confirmer sur la page actuelle. Le site est en anglais. <a href="https://www.ontario.ca/page/breast-cancer-testing-and-prevention" target="_blank" rel="noopener">Site</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (États-Unis; pour les patients) : Page en langage simple sur le gène BRCA2. Le site est en anglais. <a href="https://medlineplus.gov/genetics/gene/brca2/" target="_blank" rel="noopener">BRCA2</a></span></li></ul>
+  </section>
+
+<section id="fr-refs">
     <div class="shead"><div class="snum ui">14</div><h2>Références</h2></div>
     <ol class="refs ui">
       <li>Daly MB, Pal T, AlHilli Z, et al. Genetic/Familial High-Risk Assessment: Breast, Ovarian, Pancreatic, and Prostate. NCCN Clinical Practice Guidelines in Oncology, Version 2.2026. J Natl Compr Canc Netw. 2026.</li>

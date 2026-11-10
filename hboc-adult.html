@@ -266,6 +266,19 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
 </style>
 <link rel="stylesheet" href="site-banner.css">
 <script src="site-banner.js" defer></script>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body class="lang-en">
 
@@ -318,7 +331,7 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
     <li><a href="#sec4" data-lang="en">Understanding results</a><a href="#sec4" data-lang="fr">Comprendre les résultats</a></li>
     <li><a href="#sec5" data-lang="en">Family communication</a><a href="#sec5" data-lang="fr">Communication familiale</a></li>
     <li><a href="#sec-summary" data-lang="en">Summary of recommendations</a><a href="#sec-summary" data-lang="fr">Résumé des recommandations</a></li>
-    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+    <li><a href="#sec-clinics" data-lang="en">Clinics &amp; resources for patients</a><a href="#sec-clinics" data-lang="fr">Cliniques et ressources pour les patients</a></li><li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
   </ol>
 </nav>
 
@@ -424,8 +437,6 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
     <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Tester les mineurs seulement pour les syndromes à début pédiatrique (p. ex. <em>TP53</em>) <span class="tag tag-optional">Sélectif</span></span></li>
     <li data-lang="fr"><i class="ti ti-minus i-optional"></i><span class="ck-txt">Options reproductives (DPI-M, diagnostic prénatal) pour les porteurs qui le souhaitent <span class="tag tag-optional">Sélectif</span></span></li>
   </ul>
-<div class="callout" data-lang="en" data-added="brca2027"><strong>Patient resource: BRCA 2027.</strong> The <a href="https://brcasymposium.ca/en" target="_blank" rel="noopener">11th International Symposium on Hereditary Breast and Ovarian Cancer (BRCA 2027)</a> takes place in Montréal on May 17–20, 2027. It includes a one-day public conference for gene carriers, at-risk individuals and their families on Tuesday, May 18, 2027 (in person or live-streamed), covering cancer risks, surveillance and risk-reduction options, sexuality and intimacy, and coping.</div>
-<div class="callout" data-lang="fr" data-added="brca2027"><strong>Ressource pour les patients : BRCA 2027.</strong> Le <a href="https://brcasymposium.ca/fr" target="_blank" rel="noopener">11e Symposium international sur le cancer héréditaire du sein et de l’ovaire (BRCA 2027)</a> a lieu à Montréal du 17 au 20 mai 2027. Il comprend une conférence publique d’une journée pour les personnes porteuses, les personnes à risque et leurs familles, le mardi 18 mai 2027 (en personne ou en webdiffusion), sur les risques de cancer, la surveillance et les options de réduction du risque, la sexualité et l’intimité, et l’adaptation psychologique.</div>
 </section>
 
 <section id="sec-summary">
@@ -466,6 +477,11 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
       </ul>
     </div>
   </div>
+</section>
+
+<section id="sec-clinics">
+<div class="sec-head"><span class="sec-num"><i class="ti ti-heart-handshake"></i></span><h2 class="sec" data-lang="en">Clinics &amp; resources for patients</h2><h2 class="sec" data-lang="fr">Cliniques et ressources pour les patients</h2></div>
+<ul class="checklist ui"><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>BRCA 2027 public conference</strong> (Montréal, 17–20 May 2027): a one-day public program on 18 May 2027 for gene carriers, people at risk, and families, in person or live-streamed, on cancer risks, surveillance, risk reduction, sexuality and intimacy, and coping. <a href="https://brcasymposium.ca/en" target="_blank" rel="noopener">brcasymposium.ca</a></span></li><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>FORCE (Facing Hereditary Cancer Empowered)</strong> (International): Patient organization for hereditary breast, ovarian, and related cancers, including BRCA and moderate-risk genes. <a href="https://www.facingourrisk.org/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>Ovarian Cancer Canada</strong> (Canada): National support and information for people affected by ovarian cancer, including inherited risk. <a href="https://ovariancanada.org/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>Canadian Cancer Society</strong> (Canada): Patient information on breast cancer risks, including inherited risk. <a href="https://cancer.ca/en/cancer-information/cancer-types/breast/risks" target="_blank" rel="noopener">Breast cancer risks</a></span></li><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>Ontario.ca: breast cancer screening and prevention</strong> (Ontario): Provincial public page on breast screening and prevention. High-risk program details should be confirmed on the current page. <a href="https://www.ontario.ca/page/breast-cancer-testing-and-prevention" target="_blank" rel="noopener">Website</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>Conférence publique BRCA 2027</strong> (Montréal, 17 au 20 mai 2027) : journée publique le 18 mai 2027 pour les personnes porteuses, les personnes à risque et les familles, en personne ou en webdiffusion, sur les risques de cancer, la surveillance, la réduction du risque, la sexualité et l’intimité, et l’adaptation. <a href="https://brcasymposium.ca/fr" target="_blank" rel="noopener">brcasymposium.ca/fr</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>FORCE (Facing Hereditary Cancer Empowered)</strong> (International) : Organisme de patients pour les cancers héréditaires du sein, de l’ovaire et les gènes de risque associé, dont BRCA et les gènes de risque modéré. Le site est en anglais. <a href="https://www.facingourrisk.org/" target="_blank" rel="noopener">Site</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>Cancer de l’ovaire Canada</strong> (Canada) : Soutien et information à l’échelle du Canada pour les personnes touchées par le cancer de l’ovaire, y compris le risque héréditaire. <a href="https://ovariancanada.org/" target="_blank" rel="noopener">Site</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>Société canadienne du cancer</strong> (Canada) : Information pour le public sur les risques de cancer du sein, y compris le risque héréditaire. <a href="https://cancer.ca/fr/cancer-information/cancer-types/breast/risks" target="_blank" rel="noopener">Risques de cancer du sein</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>Ontario.ca : dépistage et prévention du cancer du sein</strong> (Ontario) : Page publique provinciale sur le dépistage et la prévention du cancer du sein. Les détails du programme à haut risque sont à confirmer sur la page actuelle. Le site est en anglais. <a href="https://www.ontario.ca/page/breast-cancer-testing-and-prevention" target="_blank" rel="noopener">Site</a></span></li></ul>
 </section>
 
 <section id="sec-refs">

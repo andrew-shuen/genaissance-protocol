@@ -266,6 +266,19 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
 </style>
 <link rel="stylesheet" href="site-banner.css">
 <script src="site-banner.js" defer></script>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body class="lang-en">
 
@@ -317,7 +330,7 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
     <li><a href="#sec3" data-lang="en">Genetic testing</a><a href="#sec3" data-lang="fr">Test génétique</a></li>
     <li><a href="#sec4" data-lang="en">Precautions</a><a href="#sec4" data-lang="fr">Précautions</a></li>
     <li><a href="#sec-summary" data-lang="en">Summary of recommendations</a><a href="#sec-summary" data-lang="fr">Résumé des recommandations</a></li>
-    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+    <li><a href="#sec-clinics" data-lang="en">Clinics &amp; resources for patients</a><a href="#sec-clinics" data-lang="fr">Cliniques et ressources pour les patients</a></li><li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
   </ol>
 </nav>
 
@@ -449,6 +462,11 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
       </ul>
     </div>
   </div>
+</section>
+
+<section id="sec-clinics">
+<div class="sec-head"><span class="sec-num"><i class="ti ti-heart-handshake"></i></span><h2 class="sec" data-lang="en">Clinics &amp; resources for patients</h2><h2 class="sec" data-lang="fr">Cliniques et ressources pour les patients</h2></div>
+<ul class="checklist ui"><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>Canadian SADS Foundation</strong> (Ottawa; national): Canadian charity for inherited arrhythmia conditions that can cause sudden death in young people. <a href="https://sads.ca/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>Foundation for Inherited Arrhythmias</strong> (International): Formerly the SADS Foundation. Education and family support for inherited arrhythmia conditions. <a href="https://www.fiacardiac.org/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>Heart &amp; Stroke</strong> (Canada): National charity with plain-language information on heart disease, stroke, and inherited heart conditions. <a href="https://www.heartandstroke.ca/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>Fondation SADS Canada</strong> (Ottawa; échelle nationale) : Organisme canadien pour les arythmies héréditaires qui peuvent causer une mort subite chez des personnes jeunes. <a href="https://sads.ca/" target="_blank" rel="noopener">Site</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>Foundation for Inherited Arrhythmias</strong> (International) : Anciennement la SADS Foundation. Éducation et soutien aux familles pour les arythmies héréditaires. Le site est en anglais. <a href="https://www.fiacardiac.org/" target="_blank" rel="noopener">Site</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>Cœur + AVC</strong> (Canada) : Organisme national : information en langage clair sur les maladies du cœur, l’AVC et les maladies cardiaques héréditaires. <a href="https://www.coeuretavc.ca/" target="_blank" rel="noopener">Site</a></span></li></ul>
 </section>
 
 <section id="sec-refs">

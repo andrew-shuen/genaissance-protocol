@@ -321,6 +321,19 @@
 <style>
 @media print{}
 </style>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body>
 
@@ -377,7 +390,7 @@
       <li><a href="#en10">Lifestyle and nutrition</a></li>
       <li><a href="#en11">Emerging and investigational</a></li>
       <li><a href="#en12">Summary of recommendations</a></li>
-      <li><a href="#en13">References</a></li>
+      <li><a href="#clinics-en">Clinics &amp; resources for patients</a></li><li><a href="#en13">References</a></li>
     </ol>
   </nav>
 
@@ -557,7 +570,7 @@
       <li><i class="ti ti-check"></i> <div><strong>Reproductive counselling:</strong> if both partners carry ATM GPVs, 25% risk of a child with A-T. Offer carrier testing of partner, prenatal diagnosis, and preimplantation genetic testing (PGT-M).<span class="tag routine">Routine</span></div></li>
       <li><i class="ti ti-minus"></i> <div>Discuss insurance, privacy, and Canadian genetic non-discrimination protections.<span class="tag optional">Optional</span></div></li>
     </ul>
-  <div class="info" data-added="brca2027"><strong>Patient resource: BRCA 2027.</strong> The <a href="https://brcasymposium.ca/en" target="_blank" rel="noopener">11th International Symposium on Hereditary Breast and Ovarian Cancer (BRCA 2027)</a> takes place in Montréal on May 17–20, 2027. It includes a one-day public conference for gene carriers, at-risk individuals and their families on Tuesday, May 18, 2027 (in person or live-streamed), covering cancer risks, surveillance and risk-reduction options, sexuality and intimacy, and coping.</div>
+  
 </section>
 
   <!-- 10 -->
@@ -615,7 +628,12 @@
   </section>
 
   <!-- 13 -->
-  <section id="en13">
+    <section id="clinics-en">
+  <h2 class="sec"><span class="secnum"><i class="ti ti-heart-handshake"></i></span> Clinics &amp; resources for patients</h2>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span><strong>BRCA 2027 public conference</strong> (Montréal, 17–20 May 2027): a one-day public program on 18 May 2027 for gene carriers, people at risk, and families, in person or live-streamed, on cancer risks, surveillance, risk reduction, sexuality and intimacy, and coping. <a href="https://brcasymposium.ca/en" target="_blank" rel="noopener">brcasymposium.ca</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>FORCE (Facing Hereditary Cancer Empowered)</strong> (International): Patient organization for hereditary breast, ovarian, and related cancers, including BRCA and moderate-risk genes. <a href="https://www.facingourrisk.org/" target="_blank" rel="noopener">Website</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Canadian Cancer Society</strong> (Canada): Patient information on breast cancer risks, including inherited risk. <a href="https://cancer.ca/en/cancer-information/cancer-types/breast/risks" target="_blank" rel="noopener">Breast cancer risks</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Ontario.ca: breast cancer screening and prevention</strong> (Ontario): Provincial public page on breast screening and prevention. High-risk program details should be confirmed on the current page. <a href="https://www.ontario.ca/page/breast-cancer-testing-and-prevention" target="_blank" rel="noopener">Website</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (United States; for patients): Plain-language overview of breast cancer. <a href="https://medlineplus.gov/genetics/condition/breast-cancer/" target="_blank" rel="noopener">Website</a></span></li></ul>
+  </section>
+
+<section id="en13">
     <h2 class="sec"><span class="secnum">13</span> References</h2>
     <ol class="refs">
       <li>Maxwell KN, Stopfer JE, Hu C, et al. Management of individuals with heterozygous germline pathogenic variants in ATM: a clinical practice resource of the American College of Medical Genetics and Genomics (ACMG). Genet Med. 2025.</li>
@@ -677,7 +695,7 @@
       <li><a href="#fr10">Mode de vie et nutrition</a></li>
       <li><a href="#fr11">Approches émergentes</a></li>
       <li><a href="#fr12">Résumé des recommandations</a></li>
-      <li><a href="#fr13">Références</a></li>
+      <li><a href="#clinics-fr">Cliniques et ressources pour les patients</a></li><li><a href="#fr13">Références</a></li>
     </ol>
   </nav>
 
@@ -857,7 +875,7 @@
       <li><i class="ti ti-check"></i> <div><strong>Conseil reproductif :</strong> si les deux partenaires portent des VGP d'ATM, 25 % de risque d'un enfant atteint d'A-T. Offrir le test du partenaire, le diagnostic prénatal et le test génétique préimplantatoire (DPI-M).<span class="tag routine">Routine</span></div></li>
       <li><i class="ti ti-minus"></i> <div>Aborder l'assurance, la confidentialité et les protections canadiennes contre la discrimination génétique.<span class="tag optional">Optionnel</span></div></li>
     </ul>
-  <div class="info" data-added="brca2027"><strong>Ressource pour les patients : BRCA 2027.</strong> Le <a href="https://brcasymposium.ca/fr" target="_blank" rel="noopener">11e Symposium international sur le cancer héréditaire du sein et de l’ovaire (BRCA 2027)</a> a lieu à Montréal du 17 au 20 mai 2027. Il comprend une conférence publique d’une journée pour les personnes porteuses, les personnes à risque et leurs familles, le mardi 18 mai 2027 (en personne ou en webdiffusion), sur les risques de cancer, la surveillance et les options de réduction du risque, la sexualité et l’intimité, et l’adaptation psychologique.</div>
+  
 </section>
 
   <!-- 10 -->
@@ -915,7 +933,12 @@
   </section>
 
   <!-- 13 -->
-  <section id="fr13">
+    <section id="clinics-fr">
+  <h2 class="sec"><span class="secnum"><i class="ti ti-heart-handshake"></i></span> Cliniques et ressources pour les patients</h2>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span><strong>Conférence publique BRCA 2027</strong> (Montréal, 17 au 20 mai 2027) : journée publique le 18 mai 2027 pour les personnes porteuses, les personnes à risque et les familles, en personne ou en webdiffusion, sur les risques de cancer, la surveillance, la réduction du risque, la sexualité et l’intimité, et l’adaptation. <a href="https://brcasymposium.ca/fr" target="_blank" rel="noopener">brcasymposium.ca/fr</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>FORCE (Facing Hereditary Cancer Empowered)</strong> (International) : Organisme de patients pour les cancers héréditaires du sein, de l’ovaire et les gènes de risque associé, dont BRCA et les gènes de risque modéré. Le site est en anglais. <a href="https://www.facingourrisk.org/" target="_blank" rel="noopener">Site</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Société canadienne du cancer</strong> (Canada) : Information pour le public sur les risques de cancer du sein, y compris le risque héréditaire. <a href="https://cancer.ca/fr/cancer-information/cancer-types/breast/risks" target="_blank" rel="noopener">Risques de cancer du sein</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Ontario.ca : dépistage et prévention du cancer du sein</strong> (Ontario) : Page publique provinciale sur le dépistage et la prévention du cancer du sein. Les détails du programme à haut risque sont à confirmer sur la page actuelle. Le site est en anglais. <a href="https://www.ontario.ca/page/breast-cancer-testing-and-prevention" target="_blank" rel="noopener">Site</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (États-Unis; pour les patients) : Survol en langage simple : le cancer du sein. Le site est en anglais. <a href="https://medlineplus.gov/genetics/condition/breast-cancer/" target="_blank" rel="noopener">Site</a></span></li></ul>
+  </section>
+
+<section id="fr13">
     <h2 class="sec"><span class="secnum">13</span> Références</h2>
     <ol class="refs">
       <li>Maxwell KN, Stopfer JE, Hu C, et al. Management of individuals with heterozygous germline pathogenic variants in ATM: a clinical practice resource of the American College of Medical Genetics and Genomics (ACMG). Genet Med. 2025.</li>

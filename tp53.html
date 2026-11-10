@@ -232,6 +232,19 @@ tr:last-child td{border-bottom:none;}
 <style>
 @media print{}
 </style>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body>
 
@@ -284,7 +297,7 @@ tr:last-child td{border-bottom:none;}
       <li><a href="#en-9"><span class="n">9</span> Lifestyle and nutrition</a></li>
       <li><a href="#en-10"><span class="n">10</span> Emerging and investigational</a></li>
       <li><a href="#en-11"><span class="n">11</span> Summary of recommendations</a></li>
-      <li><a href="#en-12"><span class="n">12</span> References</a></li>
+      <li><a href="#clinics-en">Clinics &amp; resources for patients</a></li><li><a href="#en-12"><span class="n">12</span> References</a></li>
     </ol>
   </nav>
 
@@ -499,7 +512,7 @@ tr:last-child td{border-bottom:none;}
 
     <h3>Variants of uncertain significance</h3>
     <p>A <em>TP53</em> VUS is not a basis for the full LFS protocol. Manage on personal and family history, use ClinGen TP53 expert-panel and ACMG specifications for interpretation, and re-evaluate as classification evolves.</p>
-  <div class="callout info" data-added="brca2027"><strong>Patient resource: BRCA 2027.</strong> The <a href="https://brcasymposium.ca/en" target="_blank" rel="noopener">11th International Symposium on Hereditary Breast and Ovarian Cancer (BRCA 2027)</a> takes place in Montréal on May 17–20, 2027. It includes a one-day public conference for gene carriers, at-risk individuals and their families on Tuesday, May 18, 2027 (in person or live-streamed), covering cancer risks, surveillance and risk-reduction options, sexuality and intimacy, and coping.</div>
+  
 </section>
 
   <!-- 9 -->
@@ -558,7 +571,12 @@ tr:last-child td{border-bottom:none;}
   </section>
 
   <!-- 12 -->
-  <section id="en-12">
+    <section id="clinics-en">
+  <div class="shead"><div class="snum ui"><i class="ti ti-heart-handshake"></i></div><h2>Clinics &amp; resources for patients</h2></div>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span><strong>BRCA 2027 public conference</strong> (Montréal, 17–20 May 2027): a one-day public program on 18 May 2027 for gene carriers, people at risk, and families, in person or live-streamed, on cancer risks, surveillance, risk reduction, sexuality and intimacy, and coping. <a href="https://brcasymposium.ca/en" target="_blank" rel="noopener">brcasymposium.ca</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Li-Fraumeni Syndrome Association</strong> (International): Support and plain-language information for families with Li-Fraumeni syndrome (TP53). <a href="https://www.lfsassociation.org/" target="_blank" rel="noopener">Website</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (United States; for patients): Plain-language overview of Li-Fraumeni syndrome. <a href="https://medlineplus.gov/genetics/condition/li-fraumeni-syndrome/" target="_blank" rel="noopener">Website</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Canadian Cancer Society</strong> (Canada): Information and support for people with cancer and their families. <a href="https://cancer.ca/en/" target="_blank" rel="noopener">Website</a></span></li></ul>
+  </section>
+
+<section id="en-12">
     <div class="shead"><div class="snum ui">12</div><h2>References</h2></div>
     <ol class="refs">
       <li>Schneider K, Zelley K, Nichols KE, et al. Li-Fraumeni Syndrome. GeneReviews® [Internet]. Seattle: University of Washington; 1999 Jan 19 [updated 2025 May 1].</li>
@@ -626,7 +644,7 @@ tr:last-child td{border-bottom:none;}
       <li><a href="#fr-9"><span class="n">9</span> Mode de vie et nutrition</a></li>
       <li><a href="#fr-10"><span class="n">10</span> Pistes émergentes et expérimentales</a></li>
       <li><a href="#fr-11"><span class="n">11</span> Résumé des recommandations</a></li>
-      <li><a href="#fr-12"><span class="n">12</span> Références</a></li>
+      <li><a href="#clinics-fr">Cliniques et ressources pour les patients</a></li><li><a href="#fr-12"><span class="n">12</span> Références</a></li>
     </ol>
   </nav>
 
@@ -841,7 +859,7 @@ tr:last-child td{border-bottom:none;}
 
     <h3>Variants de signification incertaine</h3>
     <p>Un VSI de <em>TP53</em> ne justifie pas le protocole complet du SLF. Prendre en charge selon les antécédents personnels et familiaux, utiliser les spécifications du panel d'experts ClinGen TP53 et de l'ACMG, et réévaluer à mesure que la classification évolue.</p>
-  <div class="callout info" data-added="brca2027"><strong>Ressource pour les patients : BRCA 2027.</strong> Le <a href="https://brcasymposium.ca/fr" target="_blank" rel="noopener">11e Symposium international sur le cancer héréditaire du sein et de l’ovaire (BRCA 2027)</a> a lieu à Montréal du 17 au 20 mai 2027. Il comprend une conférence publique d’une journée pour les personnes porteuses, les personnes à risque et leurs familles, le mardi 18 mai 2027 (en personne ou en webdiffusion), sur les risques de cancer, la surveillance et les options de réduction du risque, la sexualité et l’intimité, et l’adaptation psychologique.</div>
+  
 </section>
 
   <!-- 9 -->
@@ -900,7 +918,12 @@ tr:last-child td{border-bottom:none;}
   </section>
 
   <!-- 12 -->
-  <section id="fr-12">
+    <section id="clinics-fr">
+  <div class="shead"><div class="snum ui"><i class="ti ti-heart-handshake"></i></div><h2>Cliniques et ressources pour les patients</h2></div>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span><strong>Conférence publique BRCA 2027</strong> (Montréal, 17 au 20 mai 2027) : journée publique le 18 mai 2027 pour les personnes porteuses, les personnes à risque et les familles, en personne ou en webdiffusion, sur les risques de cancer, la surveillance, la réduction du risque, la sexualité et l’intimité, et l’adaptation. <a href="https://brcasymposium.ca/fr" target="_blank" rel="noopener">brcasymposium.ca/fr</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Li-Fraumeni Syndrome Association</strong> (International) : Soutien et information en langage clair pour les familles touchées par le syndrome de Li-Fraumeni (TP53). Le site est en anglais. <a href="https://www.lfsassociation.org/" target="_blank" rel="noopener">Site</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (États-Unis; pour les patients) : Survol en langage simple : le syndrome de Li-Fraumeni. Le site est en anglais. <a href="https://medlineplus.gov/genetics/condition/li-fraumeni-syndrome/" target="_blank" rel="noopener">Site</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Société canadienne du cancer</strong> (Canada) : Information et soutien pour les personnes atteintes de cancer et leurs proches. <a href="https://cancer.ca/fr/" target="_blank" rel="noopener">Site</a></span></li></ul>
+  </section>
+
+<section id="fr-12">
     <div class="shead"><div class="snum ui">12</div><h2>Références</h2></div>
     <ol class="refs">
       <li>Schneider K, Zelley K, Nichols KE, et al. Li-Fraumeni Syndrome. GeneReviews® [Internet]. Seattle: University of Washington; 1999 Jan 19 [updated 2025 May 1].</li>

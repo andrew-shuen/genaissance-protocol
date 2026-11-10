@@ -266,6 +266,19 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
 </style>
 <link rel="stylesheet" href="site-banner.css">
 <script src="site-banner.js" defer></script>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body class="lang-en">
 
@@ -318,7 +331,7 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
     <li><a href="#sec4" data-lang="en">Testing</a><a href="#sec4" data-lang="fr">Tests</a></li>
     <li><a href="#sec5" data-lang="en">Management and surveillance</a><a href="#sec5" data-lang="fr">Prise en charge et surveillance</a></li>
     <li><a href="#sec6" data-lang="en">Genetic counselling</a><a href="#sec6" data-lang="fr">Conseil génétique</a></li>
-    <li><a href="#sec-res" data-lang="en">Patient resources</a><a href="#sec-res" data-lang="fr">Ressources pour les patients</a></li>
+    <li><a href="#sec-res" data-lang="en">Clinics &amp; resources for patients</a><a href="#sec-res" data-lang="fr">Cliniques et ressources pour les patients</a></li>
     <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
   </ol>
 </nav>
@@ -422,12 +435,12 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
 </section>
 
 <section id="sec-res">
-  <div class="sec-head"><span class="sec-num"><i class="ti ti-heart-handshake"></i></span><h2 class="sec" data-lang="en">Patient resources</h2><h2 class="sec" data-lang="fr">Ressources pour les patients</h2></div>
+  <div class="sec-head"><span class="sec-num"><i class="ti ti-heart-handshake"></i></span><h2 class="sec" data-lang="en">Clinics &amp; resources for patients</h2><h2 class="sec" data-lang="fr">Cliniques et ressources pour les patients</h2></div>
   <div class="patient">
     <div class="lbl"><i class="ti ti-user-heart"></i> <span data-lang="en">For you</span><span data-lang="fr">Pour vous</span></div>
     <p data-lang="en">These organizations offer reliable information and support. Your genetics team can also connect you with local specialists.</p><p data-lang="fr">Ces organismes offrent de l’information fiable et du soutien. Votre équipe de génétique peut aussi vous orienter vers des spécialistes près de chez vous.</p>
   </div>
-  <ul data-lang="en"><li><a href="https://www.ehlers-danlos.com/veds/" target="_blank" rel="noopener">The Ehlers-Danlos Society</a>: information, support and a directory of EDS-aware professionals.</li><li><a href="https://medlineplus.gov/genetics/condition/ehlers-danlos-syndrome/" target="_blank" rel="noopener">MedlinePlus Genetics: Ehlers-Danlos syndrome</a>: plain-language overview of all EDS types (in English).</li><li><a href="https://www.gtaspine.com/" target="_blank" rel="noopener">GTA Spine</a> (600 Burnhamthorpe Rd W, Mississauga, ON): physiotherapy and chiropractic clinic offering physiotherapy, chiropractic care, massage therapy, acupuncture, custom orthotics, focused shockwave therapy, and athletic training. A Genaissance referral partner.</li></ul><ul data-lang="fr"><li><a href="https://www.ehlers-danlos.com/veds/" target="_blank" rel="noopener">The Ehlers-Danlos Society</a> : information, soutien et répertoire de professionnels connaissant les SED.</li><li><a href="https://medlineplus.gov/genetics/condition/ehlers-danlos-syndrome/" target="_blank" rel="noopener">MedlinePlus Genetics: Ehlers-Danlos syndrome</a> : survol en langage simple de tous les types de SED (en anglais).</li><li><a href="https://www.gtaspine.com/" target="_blank" rel="noopener">GTA Spine</a> (600 Burnhamthorpe Rd W, Mississauga, ON) : physiothérapie et chiropratique (physiothérapie, soins chiropratiques, massothérapie, acupuncture, orthèses sur mesure, thérapie par ondes de choc focalisées et entraînement sportif). Partenaire de référence de Genaissance.</li></ul>
+  <ul class="checklist ui"><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>The Ehlers-Danlos Society</strong>: information, support and a directory of EDS-aware professionals. <a href="https://www.ehlers-danlos.com/veds/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics: Ehlers-Danlos syndrome</strong>: plain-language overview of all EDS types (in English). <a href="https://medlineplus.gov/genetics/condition/ehlers-danlos-syndrome/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>GTA Spine</strong> (600 Burnhamthorpe Rd W, Mississauga, ON): physiotherapy and chiropractic clinic offering physiotherapy, chiropractic care, massage therapy, acupuncture, custom orthotics, focused shockwave therapy, and athletic training. A Genaissance referral partner. <a href="https://www.gtaspine.com/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>EDS Canada Foundation</strong> (Canada): Canadian charity for people with Ehlers-Danlos syndromes, hypermobility spectrum disorders, and chronic pain. <a href="https://edscanada.org/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>GADA Canada</strong> (Canada; office in Mississauga, ON): Genetic Aortic Disorders Association Canada, formerly the Canadian Marfan Association. Education and support for Marfan syndrome and other genetic aortic disorders. <a href="https://www.gadacanada.ca/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>The Ehlers-Danlos Society</strong> : information, soutien et répertoire de professionnels connaissant les SED. <a href="https://www.ehlers-danlos.com/veds/" target="_blank" rel="noopener">Site</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics: Ehlers-Danlos syndrome</strong> : survol en langage simple de tous les types de SED (en anglais). <a href="https://medlineplus.gov/genetics/condition/ehlers-danlos-syndrome/" target="_blank" rel="noopener">Site</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>GTA Spine</strong> (600 Burnhamthorpe Rd W, Mississauga, ON) : physiothérapie et chiropratique (physiothérapie, soins chiropratiques, massothérapie, acupuncture, orthèses sur mesure, thérapie par ondes de choc focalisées et entraînement sportif). Partenaire de référence de Genaissance. <a href="https://www.gtaspine.com/" target="_blank" rel="noopener">Site</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>EDS Canada Foundation</strong> (Canada) : Organisme canadien pour les personnes vivant avec un syndrome d’Ehlers-Danlos, un trouble du spectre de l’hypermobilité ou une douleur chronique. Le site est en anglais. <a href="https://edscanada.org/" target="_blank" rel="noopener">Site</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>GADA Canada</strong> (Canada; bureau à Mississauga (Ontario)) : Association canadienne des maladies aortiques génétiques, anciennement l’Association canadienne du syndrome de Marfan. Éducation et soutien pour le syndrome de Marfan et d’autres maladies aortiques génétiques. Le site est en anglais. <a href="https://www.gadacanada.ca/" target="_blank" rel="noopener">Site</a></span></li></ul>
 <p data-lang="en">Related protocols: <a href="heds.html">hEDS / HSD</a> · <a href="ceds.html">Classical EDS</a> · <a href="veds.html">Vascular EDS</a> · <a href="keds.html">Kyphoscoliotic EDS</a>.</p><p data-lang="fr">Protocoles apparentés : <a href="heds.html">SEDh / TSH</a> · <a href="ceds.html">SED classique</a> · <a href="veds.html">SED vasculaire</a> · <a href="keds.html">SED cyphoscoliotique</a>.</p>
 </section>
 
