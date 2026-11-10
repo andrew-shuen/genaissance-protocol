@@ -219,6 +219,19 @@ a{color:var(--brand-dark);}
 </style>
 <link rel="stylesheet" href="site-banner.css">
 <script src="site-banner.js" defer></script>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body>
 
@@ -264,7 +277,7 @@ a{color:var(--brand-dark);}
       <li><a href="#en8">Lifestyle and nutrition</a></li>
       <li><a href="#en9">Emerging Lp(a)-lowering therapies</a></li>
       <li><a href="#en10">Summary of recommendations</a></li>
-      <li><a href="#en11">References</a></li>
+      <li><a href="#clinics-en">Clinics &amp; resources for patients</a></li><li><a href="#en11">References</a></li>
     </ol>
   </nav>
 
@@ -459,7 +472,12 @@ a{color:var(--brand-dark);}
   </section>
 
   <!-- 11 -->
-  <section id="en11">
+    <section id="clinics-en">
+  <div class="sechead"><div class="secnum"><i class="ti ti-heart-handshake"></i></div><h2>Clinics &amp; resources for patients</h2></div>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span><strong>Family Heart Foundation</strong> (International): Patient organization for familial hypercholesterolemia, high Lp(a), and related inherited cholesterol conditions. <a href="https://familyheart.org/" target="_blank" rel="noopener">Website</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Heart &amp; Stroke</strong> (Canada): National charity with plain-language information on heart disease, stroke, and inherited heart conditions. <a href="https://www.heartandstroke.ca/" target="_blank" rel="noopener">Website</a></span></li></ul>
+  </section>
+
+<section id="en11">
     <div class="sechead"><div class="secnum">11</div><h2>References</h2></div>
     <ol class="refs">
       <li>Blumenthal RS, Morris PB, Gaudino M, et al. 2026 ACC/AHA/AACVPR/ABC/ACPM/ADA/AGS/APhA/ASPC/NLA/PCNA Guideline on the Management of Dyslipidemia. <em>J Am Coll Cardiol</em>. 2026. doi:10.1016/j.jacc.2025.11.016.</li>
@@ -520,7 +538,7 @@ a{color:var(--brand-dark);}
       <li><a href="#fr8">Mode de vie et nutrition</a></li>
       <li><a href="#fr9">Traitements émergents abaissant la Lp(a)</a></li>
       <li><a href="#fr10">Résumé des recommandations</a></li>
-      <li><a href="#fr11">Références</a></li>
+      <li><a href="#clinics-fr">Cliniques et ressources pour les patients</a></li><li><a href="#fr11">Références</a></li>
     </ol>
   </nav>
 
@@ -715,7 +733,12 @@ a{color:var(--brand-dark);}
   </section>
 
   <!-- 11 -->
-  <section id="fr11">
+    <section id="clinics-fr">
+  <div class="sechead"><div class="secnum"><i class="ti ti-heart-handshake"></i></div><h2>Cliniques et ressources pour les patients</h2></div>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span><strong>Family Heart Foundation</strong> (International) : Organisme de patients pour l’hypercholestérolémie familiale, le Lp(a) élevé et les troubles héréditaires du cholestérol apparentés. Le site est en anglais. <a href="https://familyheart.org/" target="_blank" rel="noopener">Site</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Cœur + AVC</strong> (Canada) : Organisme national : information en langage clair sur les maladies du cœur, l’AVC et les maladies cardiaques héréditaires. <a href="https://www.coeuretavc.ca/" target="_blank" rel="noopener">Site</a></span></li></ul>
+  </section>
+
+<section id="fr11">
     <div class="sechead"><div class="secnum">11</div><h2>Références</h2></div>
     <ol class="refs">
       <li>Blumenthal RS, Morris PB, Gaudino M, et al. 2026 ACC/AHA/AACVPR/ABC/ACPM/ADA/AGS/APhA/ASPC/NLA/PCNA Guideline on the Management of Dyslipidemia. <em>J Am Coll Cardiol</em>. 2026. doi:10.1016/j.jacc.2025.11.016.</li>

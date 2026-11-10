@@ -163,6 +163,19 @@ body.show-fr .fr{display:block;}
 </style>
 <link rel="stylesheet" href="site-banner.css">
 <script src="site-banner.js" defer></script>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -213,7 +226,7 @@ body.show-fr .fr{display:block;}
     <li><a href="#en-12"><span class="n">12</span> Lifestyle and nutrition</a></li>
     <li><a href="#en-13"><span class="n">13</span> Emerging and investigational</a></li>
     <li><a href="#en-14"><span class="n">14</span> Summary of recommendations</a></li>
-    <li><a href="#en-15"><span class="n">15</span> References</a></li>
+    <li><a href="#clinics-en">Clinics &amp; resources for patients</a></li><li><a href="#en-15"><span class="n">15</span> References</a></li>
   </ol>
 </nav>
 
@@ -423,7 +436,6 @@ body.show-fr .fr{display:block;}
     <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Document the specific variant and its classification; re-contact if reclassified <span class="tag tag-routine">Routine</span></span></li>
   </ul>
   <p>PHTS is autosomal dominant; offspring of an affected individual have a 50% risk of inheriting the variant. Most cases are inherited, but de novo variants occur, and constitutional mosaicism has been reported in overgrowth phenotypes. Cascade testing identifies at-risk relatives for surveillance and spares non-carriers unnecessary screening. Reproductive options include prenatal diagnosis and PGT-M. Maintain documentation of the precise variant to support future reclassification and family testing.</p>
-<div class="callout info" data-added="brca2027"><strong>Patient resource: BRCA 2027.</strong> The <a href="https://brcasymposium.ca/en" target="_blank" rel="noopener">11th International Symposium on Hereditary Breast and Ovarian Cancer (BRCA 2027)</a> takes place in Montréal on May 17–20, 2027. It includes a one-day public conference for gene carriers, at-risk individuals and their families on Tuesday, May 18, 2027 (in person or live-streamed), covering cancer risks, surveillance and risk-reduction options, sexuality and intimacy, and coping.</div>
 </section>
 
 <!-- 12 Lifestyle -->
@@ -525,6 +537,11 @@ body.show-fr .fr{display:block;}
 </section>
 
 <!-- 15 References -->
+<section id="clinics-en">
+<div class="sechead"><span class="secnum ui"><i class="ti ti-heart-handshake"></i></span><h2>Clinics &amp; resources for patients</h2></div>
+<ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span><strong>BRCA 2027 public conference</strong> (Montréal, 17–20 May 2027): a one-day public program on 18 May 2027 for gene carriers, people at risk, and families, in person or live-streamed, on cancer risks, surveillance, risk reduction, sexuality and intimacy, and coping. <a href="https://brcasymposium.ca/en" target="_blank" rel="noopener">brcasymposium.ca</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>PTEN Foundation</strong> (International): Patient organization for PTEN hamartoma tumour syndrome, including Cowden syndrome. <a href="https://ptenfoundation.org/" target="_blank" rel="noopener">Website</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (United States; for patients): Plain-language overview of Cowden syndrome (PTEN hamartoma tumour syndrome). <a href="https://medlineplus.gov/genetics/condition/cowden-syndrome/" target="_blank" rel="noopener">Website</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Canadian Cancer Society</strong> (Canada): Information and support for people with cancer and their families. <a href="https://cancer.ca/en/" target="_blank" rel="noopener">Website</a></span></li></ul>
+</section>
+
 <section id="en-15">
   <div class="sechead"><span class="secnum ui">15</span><h2>References</h2></div>
   <ol class="refs">
@@ -590,7 +607,7 @@ body.show-fr .fr{display:block;}
     <li><a href="#fr-12"><span class="n">12</span> Mode de vie et nutrition</a></li>
     <li><a href="#fr-13"><span class="n">13</span> Données émergentes</a></li>
     <li><a href="#fr-14"><span class="n">14</span> Résumé des recommandations</a></li>
-    <li><a href="#fr-15"><span class="n">15</span> Références</a></li>
+    <li><a href="#clinics-fr">Cliniques et ressources pour les patients</a></li><li><a href="#fr-15"><span class="n">15</span> Références</a></li>
   </ol>
 </nav>
 
@@ -800,7 +817,6 @@ body.show-fr .fr{display:block;}
     <li><i class="ti ti-circle-check ico ico-do"></i><span class="txt">Documenter le variant précis et sa classification ; recontacter en cas de reclassification <span class="tag tag-routine">Systématique</span></span></li>
   </ul>
   <p>Le PHTS est autosomique dominant ; les enfants d'une personne atteinte ont un risque de 50 % d'hériter du variant. La plupart des cas sont héréditaires, mais des variants de novo surviennent, et une mosaïque constitutionnelle a été rapportée dans les phénotypes de surcroissance. Le test en cascade repère les apparentés à risque pour la surveillance et évite un dépistage inutile aux non-porteurs. Les options de procréation incluent le diagnostic prénatal et le DPI-M. Maintenez la documentation du variant précis pour soutenir une reclassification future et le test familial.</p>
-<div class="callout info" data-added="brca2027"><strong>Ressource pour les patients : BRCA 2027.</strong> Le <a href="https://brcasymposium.ca/fr" target="_blank" rel="noopener">11e Symposium international sur le cancer héréditaire du sein et de l’ovaire (BRCA 2027)</a> a lieu à Montréal du 17 au 20 mai 2027. Il comprend une conférence publique d’une journée pour les personnes porteuses, les personnes à risque et leurs familles, le mardi 18 mai 2027 (en personne ou en webdiffusion), sur les risques de cancer, la surveillance et les options de réduction du risque, la sexualité et l’intimité, et l’adaptation psychologique.</div>
 </section>
 
 <!-- 12 -->
@@ -902,6 +918,11 @@ body.show-fr .fr{display:block;}
 </section>
 
 <!-- 15 -->
+<section id="clinics-fr">
+<div class="sechead"><span class="secnum ui"><i class="ti ti-heart-handshake"></i></span><h2>Cliniques et ressources pour les patients</h2></div>
+<ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span><strong>Conférence publique BRCA 2027</strong> (Montréal, 17 au 20 mai 2027) : journée publique le 18 mai 2027 pour les personnes porteuses, les personnes à risque et les familles, en personne ou en webdiffusion, sur les risques de cancer, la surveillance, la réduction du risque, la sexualité et l’intimité, et l’adaptation. <a href="https://brcasymposium.ca/fr" target="_blank" rel="noopener">brcasymposium.ca/fr</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>PTEN Foundation</strong> (International) : Organisme de patients pour le syndrome de tumeur hamartomateuse liée à PTEN, dont le syndrome de Cowden. Le site est en anglais. <a href="https://ptenfoundation.org/" target="_blank" rel="noopener">Site</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (États-Unis; pour les patients) : Survol en langage simple : le syndrome de Cowden (syndrome de tumeur hamartomateuse PTEN). Le site est en anglais. <a href="https://medlineplus.gov/genetics/condition/cowden-syndrome/" target="_blank" rel="noopener">Site</a></span></li><li><i class="ti ti-map-pin"></i><span><strong>Société canadienne du cancer</strong> (Canada) : Information et soutien pour les personnes atteintes de cancer et leurs proches. <a href="https://cancer.ca/fr/" target="_blank" rel="noopener">Site</a></span></li></ul>
+</section>
+
 <section id="fr-15">
   <div class="sechead"><span class="secnum ui">15</span><h2>Références</h2></div>
   <ol class="refs">

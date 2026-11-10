@@ -266,6 +266,19 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
 </style>
 <link rel="stylesheet" href="site-banner.css">
 <script src="site-banner.js" defer></script>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body class="lang-en">
 
@@ -318,7 +331,7 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
     <li><a href="#sec4" data-lang="en">Multisystem care</a><a href="#sec4" data-lang="fr">Soins multisystémiques</a></li>
     <li><a href="#sec5" data-lang="en">Pregnancy &amp; family</a><a href="#sec5" data-lang="fr">Grossesse et famille</a></li>
     <li><a href="#sec-summary" data-lang="en">Summary of recommendations</a><a href="#sec-summary" data-lang="fr">Résumé des recommandations</a></li>
-    <li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
+    <li><a href="#sec-clinics" data-lang="en">Clinics &amp; resources for patients</a><a href="#sec-clinics" data-lang="fr">Cliniques et ressources pour les patients</a></li><li><a href="#sec-refs" data-lang="en">References</a><a href="#sec-refs" data-lang="fr">Références</a></li>
   </ol>
 </nav>
 
@@ -476,6 +489,11 @@ body.lang-en .legend span[data-lang="en"], body.lang-fr .legend span[data-lang="
       </ul>
     </div>
   </div>
+</section>
+
+<section id="sec-clinics">
+<div class="sec-head"><span class="sec-num"><i class="ti ti-heart-handshake"></i></span><h2 class="sec" data-lang="en">Clinics &amp; resources for patients</h2><h2 class="sec" data-lang="fr">Cliniques et ressources pour les patients</h2></div>
+<ul class="checklist ui"><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>Myotonic Dystrophy Foundation</strong> (International): Patient organization for myotonic dystrophy. <a href="https://myotonic.org/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>Muscular Dystrophy Canada</strong> (Canada): Support and equipment programs for people in Canada with neuromuscular conditions. <a href="https://muscle.ca/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="en"><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (United States; for patients): Plain-language overview of myotonic dystrophy. <a href="https://medlineplus.gov/genetics/condition/myotonic-dystrophy/" target="_blank" rel="noopener">Website</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>Myotonic Dystrophy Foundation</strong> (International) : Organisme de patients pour la dystrophie myotonique. Le site est en anglais. <a href="https://myotonic.org/" target="_blank" rel="noopener">Site</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>Dystrophie musculaire Canada</strong> (Canada) : Soutien et programmes d’équipement pour les personnes au Canada vivant avec une maladie neuromusculaire. <a href="https://muscle.ca/" target="_blank" rel="noopener">Site</a></span></li><li data-lang="fr"><i class="ti ti-map-pin"></i><span><strong>MedlinePlus Genetics</strong> (États-Unis; pour les patients) : Survol en langage simple : la dystrophie myotonique. Le site est en anglais. <a href="https://medlineplus.gov/genetics/condition/myotonic-dystrophy/" target="_blank" rel="noopener">Site</a></span></li></ul>
 </section>
 
 <section id="sec-refs">
