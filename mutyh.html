@@ -209,6 +209,19 @@ tr:last-child td{border-bottom:none;}
 </style>
 <link rel="stylesheet" href="site-banner.css">
 <script src="site-banner.js" defer></script>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -524,7 +537,12 @@ tr:last-child td{border-bottom:none;}
   </section>
 
   <!-- 12 -->
-  <section id="en-12" class="refs">
+    <section id="clinics-en">
+  <div class="sechead"><div class="secnum"><i class="ti ti-heart-handshake"></i></div><h2>Clinics &amp; resources for patients</h2></div>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span>Your genetics team can connect you with local clinics and support resources.</span></li></ul>
+  </section>
+
+<section id="en-12" class="refs">
     <div class="sechead"><div class="secnum">12</div><h2>References</h2></div>
     <ol>
       <li>NCCN Clinical Practice Guidelines in Oncology. Genetic/Familial High-Risk Assessment: Colorectal, Endometrial, and Gastric. Version 1.2025 (and Version 2.2024). National Comprehensive Cancer Network.</li>
@@ -855,7 +873,12 @@ tr:last-child td{border-bottom:none;}
   </section>
 
   <!-- 12 -->
-  <section id="fr-12" class="refs">
+    <section id="clinics-fr">
+  <div class="sechead"><div class="secnum"><i class="ti ti-heart-handshake"></i></div><h2>Cliniques et ressources pour les patients</h2></div>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span>Votre équipe de génétique peut vous orienter vers des cliniques et des ressources de soutien près de chez vous.</span></li></ul>
+  </section>
+
+<section id="fr-12" class="refs">
     <div class="sechead"><div class="secnum">12</div><h2>Références</h2></div>
     <ol>
       <li>NCCN Clinical Practice Guidelines in Oncology. Genetic/Familial High-Risk Assessment: Colorectal, Endometrial, and Gastric. Version 1.2025 (and Version 2.2024). National Comprehensive Cancer Network.</li>

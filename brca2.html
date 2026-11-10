@@ -236,6 +236,19 @@ body.show-fr .lang-fr{display:block;}
 <style>
 @media print{}
 </style>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body class="show-en">
 
@@ -472,10 +485,7 @@ body.show-fr .lang-fr{display:block;}
       <div class="tag ui"><i class="ti ti-calculator"></i> Risk modelling</div>
       <p>Use a validated model (BOADICEA / CanRisk) incorporating pedigree, hormonal, and where available polygenic data to generate an individualized estimate rather than quoting a single population figure.</p>
     </div>
-    <div class="infobox ui" data-added="brca2027">
-      <div class="tag ui"><i class="ti ti-users"></i> Patient resource: BRCA 2027</div>
-      <p>The <a href="https://brcasymposium.ca/en" target="_blank" rel="noopener">11th International Symposium on Hereditary Breast and Ovarian Cancer (BRCA 2027)</a> takes place in Montréal on May 17–20, 2027. It includes a one-day public conference for gene carriers, at-risk individuals and their families on Tuesday, May 18, 2027 (in person or live-streamed), covering cancer risks, surveillance and risk-reduction options, sexuality and intimacy, and coping.</p>
-    </div>
+    
     <div class="infobox ui" data-added="fanconi">
       <div class="tag ui"><i class="ti ti-dna-2"></i> Fanconi anemia: when both partners carry a BRCA2 variant</div>
       <p>Having one BRCA2 variant does not cause Fanconi anemia. If you and your partner both carry a harmful variant in BRCA2, each pregnancy has a 1 in 4 (25%) chance that the child inherits both variants and has Fanconi anemia (type D1). Testing your partner for BRCA2 can clarify this, and we offer genetic counselling to go through the results and the reproductive options.</p>
@@ -595,7 +605,12 @@ body.show-fr .lang-fr{display:block;}
   </section>
 
   <!-- 14 -->
-  <section id="en-refs">
+    <section id="clinics-en">
+  <div class="shead"><div class="snum ui"><i class="ti ti-heart-handshake"></i></div><h2>Clinics &amp; resources for patients</h2></div>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span>Patient resource: BRCA 2027 The <a href="https://brcasymposium.ca/en" target="_blank" rel="noopener">11th International Symposium on Hereditary Breast and Ovarian Cancer (BRCA 2027)</a> takes place in Montréal on May 17–20, 2027. It includes a one-day public conference for gene carriers, at-risk individuals and their families on Tuesday, May 18, 2027 (in person or live-streamed), covering cancer risks, surveillance and risk-reduction options, sexuality and intimacy, and coping.</span></li></ul>
+  </section>
+
+<section id="en-refs">
     <div class="shead"><div class="snum ui">14</div><h2>References</h2></div>
     <ol class="refs ui">
       <li>Daly MB, Pal T, AlHilli Z, et al. Genetic/Familial High-Risk Assessment: Breast, Ovarian, Pancreatic, and Prostate. NCCN Clinical Practice Guidelines in Oncology, Version 2.2026. J Natl Compr Canc Netw. 2026.</li>
@@ -843,10 +858,7 @@ body.show-fr .lang-fr{display:block;}
       <div class="tag ui"><i class="ti ti-calculator"></i> Modélisation du risque</div>
       <p>Utilisez un modèle validé (BOADICEA / CanRisk) intégrant l'arbre généalogique, les facteurs hormonaux et, lorsque disponibles, les données polygéniques, pour produire une estimation individualisée plutôt que de citer un seul chiffre populationnel.</p>
     </div>
-    <div class="infobox ui" data-added="brca2027">
-      <div class="tag ui"><i class="ti ti-users"></i> Ressource pour les patients : BRCA 2027</div>
-      <p>Le <a href="https://brcasymposium.ca/fr" target="_blank" rel="noopener">11e Symposium international sur le cancer héréditaire du sein et de l’ovaire (BRCA 2027)</a> a lieu à Montréal du 17 au 20 mai 2027. Il comprend une conférence publique d’une journée pour les personnes porteuses, les personnes à risque et leurs familles, le mardi 18 mai 2027 (en personne ou en webdiffusion), sur les risques de cancer, la surveillance et les options de réduction du risque, la sexualité et l’intimité, et l’adaptation psychologique.</p>
-    </div>
+    
     <div class="infobox ui" data-added="fanconi">
       <div class="tag ui"><i class="ti ti-dna-2"></i> Anémie de Fanconi : lorsque les deux partenaires portent un variant BRCA2</div>
       <p>Avoir un seul variant BRCA2 ne cause pas l’anémie de Fanconi. Si vous et votre partenaire portez tous les deux un variant nocif de BRCA2, chaque grossesse comporte une chance sur 4 (25 %) que l’enfant hérite des deux variants et présente l’anémie de Fanconi (type D1). Un test de BRCA2 chez votre partenaire peut clarifier ce risque, et nous offrons un conseil génétique pour discuter des résultats et des options reproductives.</p>
@@ -966,7 +978,12 @@ body.show-fr .lang-fr{display:block;}
   </section>
 
   <!-- 14 -->
-  <section id="fr-refs">
+    <section id="clinics-fr">
+  <div class="shead"><div class="snum ui"><i class="ti ti-heart-handshake"></i></div><h2>Cliniques et ressources pour les patients</h2></div>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span>Ressource pour les patients : BRCA 2027 Le <a href="https://brcasymposium.ca/fr" target="_blank" rel="noopener">11e Symposium international sur le cancer héréditaire du sein et de l’ovaire (BRCA 2027)</a> a lieu à Montréal du 17 au 20 mai 2027. Il comprend une conférence publique d’une journée pour les personnes porteuses, les personnes à risque et leurs familles, le mardi 18 mai 2027 (en personne ou en webdiffusion), sur les risques de cancer, la surveillance et les options de réduction du risque, la sexualité et l’intimité, et l’adaptation psychologique.</span></li></ul>
+  </section>
+
+<section id="fr-refs">
     <div class="shead"><div class="snum ui">14</div><h2>Références</h2></div>
     <ol class="refs ui">
       <li>Daly MB, Pal T, AlHilli Z, et al. Genetic/Familial High-Risk Assessment: Breast, Ovarian, Pancreatic, and Prostate. NCCN Clinical Practice Guidelines in Oncology, Version 2.2026. J Natl Compr Canc Netw. 2026.</li>

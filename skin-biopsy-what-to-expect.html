@@ -185,6 +185,19 @@ body{
 </style>
 <link rel="stylesheet" href="site-banner.css">
 <script src="site-banner.js" defer></script>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body>
 <div class="card">
@@ -268,7 +281,12 @@ body{
       </div>
     </div>
 
-    <div class="foot">
+        <section id="clinics-en">
+    <h2><i class="ti ti-heart-handshake"></i> Clinics &amp; resources for patients</h2>
+    <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span>Your genetics team can connect you with local clinics and support resources.</span></li></ul>
+    </section>
+
+<div class="foot">
       <strong>Dr. Andrew Shuen, MD PhD FRCPC DABMGG</strong> — Genaissance · <a href="mailto:info@genaissance.ca">info@genaissance.ca</a>. For urgent after-hours concerns, go to the nearest Emergency Department.
     </div>
   </div>
@@ -347,7 +365,12 @@ body{
       </div>
     </div>
 
-    <div class="foot">
+        <section id="clinics-fr">
+    <h2><i class="ti ti-heart-handshake"></i> Cliniques et ressources pour les patients</h2>
+    <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span>Votre équipe de génétique peut vous orienter vers des cliniques et des ressources de soutien près de chez vous.</span></li></ul>
+    </section>
+
+<div class="foot">
       <strong>Dr Andrew Shuen, MD PhD FRCPC DABMGG</strong> — Genaissance · <a href="mailto:info@genaissance.ca">info@genaissance.ca</a>. Pour toute urgence en dehors des heures d'ouverture, rendez-vous à l'urgence la plus proche.
     </div>
   </div>
