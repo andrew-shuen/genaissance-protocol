@@ -198,6 +198,19 @@
 </style>
 <link rel="stylesheet" href="site-banner.css">
 <script src="site-banner.js" defer></script>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body>
 
@@ -487,7 +500,12 @@
   </section>
 
   <!-- 11 -->
-  <section id="en-11">
+    <section id="clinics-en">
+  <div class="sec-head"><span class="num"><i class="ti ti-heart-handshake"></i></span><h2 class="sec-title">Clinics &amp; resources for patients</h2></div>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span>Your genetics team can connect you with local clinics and support resources.</span></li></ul>
+  </section>
+
+<section id="en-11">
     <div class="sec-head"><span class="num">11</span><h2 class="sec-title">References</h2></div>
     <ol class="refs">
       <li>Yokoyama S, Woods SL, Boyle GM, et al. A novel recurrent mutation in MITF predisposes to familial and sporadic melanoma. <i>Nature.</i> 2011;480:99-103.</li>
@@ -789,7 +807,12 @@
   </section>
 
   <!-- 11 -->
-  <section id="fr-11">
+    <section id="clinics-fr">
+  <div class="sec-head"><span class="num"><i class="ti ti-heart-handshake"></i></span><h2 class="sec-title">Cliniques et ressources pour les patients</h2></div>
+  <ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span>Votre équipe de génétique peut vous orienter vers des cliniques et des ressources de soutien près de chez vous.</span></li></ul>
+  </section>
+
+<section id="fr-11">
     <div class="sec-head"><span class="num">11</span><h2 class="sec-title">Références</h2></div>
     <ol class="refs">
       <li>Yokoyama S, Woods SL, Boyle GM, et al. A novel recurrent mutation in MITF predisposes to familial and sporadic melanoma. <i>Nature.</i> 2011;480:99-103.</li>

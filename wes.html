@@ -334,6 +334,19 @@
 </style>
 <link rel="stylesheet" href="site-banner.css">
 <script src="site-banner.js" defer></script>
+<style id="clinics-list-style">
+ul.checklist.ui{list-style:none;margin:14px 0 18px;padding:0;display:block;}
+ul.checklist.ui>li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line-soft,#eef3f6);}
+ul.checklist.ui>li:last-child{border-bottom:none;}
+ul.checklist.ui>li>i{flex:none;margin-top:3px;font-size:18px;}
+ul.checklist.ui>li[data-lang]{display:none;}
+body.lang-en ul.checklist.ui>li[data-lang="en"],
+body.en ul.checklist.ui>li[data-lang="en"],
+body.show-en ul.checklist.ui>li[data-lang="en"]{display:flex;}
+body.lang-fr ul.checklist.ui>li[data-lang="fr"],
+body.fr ul.checklist.ui>li[data-lang="fr"],
+body.show-fr ul.checklist.ui>li[data-lang="fr"]{display:flex;}
+</style>
 </head>
 <body>
 <div class="langbar ui">
@@ -527,6 +540,11 @@
 <div class="analogy"><i class="ti ti-book"></i> Think of WES as skimming every recipe in a vast cookbook for a single misspelled word — broad enough to check thousands of recipes at once, but only the recipes, not the notes in the margins.</div>
 </section>
 
+<section id="clinics-en">
+<h2 class="sec"><span class="secnum"><i class="ti ti-heart-handshake"></i></span> Clinics &amp; resources for patients</h2>
+<ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span>Your genetics team can connect you with local clinics and support resources.</span></li></ul>
+</section>
+
 <div class="footer"><p>This page is patient-education material intended to support, not replace, individual counselling. It explains a category of genetic test in general terms; the genes examined and the interpretation of any result depend on your situation and the laboratory used. Prepared for Medical Genetics · Genaissance.</p></div></div>
 <div class="lang-fr" id="lang-fr"><header class="masthead"><div class="eyebrow">Information aux patients · Tests génétiques</div><h1>Séquençage de l'exome entier (WES)</h1><p class="standfirst">Un test de laboratoire qui lit les lettres de la quasi-totalité de vos gènes en une seule fois — la petite partie de votre ADN qui contient les instructions pour fabriquer les protéines. Il examine des milliers de gènes en un seul test afin de repérer un changement pouvant expliquer un problème de santé.</p><div class="authpanel"><strong>Dr Andrew Shuen, MD PhD FRCPC DABMGG</strong><br>Génétique médicale · Genaissance</div><div class="meta"><span class="chip">Test moléculaire</span><span class="chip">À partir de sang ou de salive</span><span class="chip">Lit la partie codante de l'ADN</span><span class="chip">Des milliers de gènes à la fois</span></div></header><nav class="toc ui"><h2>Sommaire</h2><ol><li><a href="#fr1">Ce que c'est</a></li><li><a href="#fr2">Ce qu'il examine</a></li><li><a href="#fr3">Comment ça fonctionne</a></li><li><a href="#fr4">Ce qu'il trouve</a></li><li><a href="#fr5">Ce qu'il peut manquer</a></li><li><a href="#fr6">Bon à savoir</a></li><li><a href="#fr7">Le sens des mots</a></li><li><a href="#fr8">À retenir</a></li></ol></nav>
 
@@ -683,6 +701,11 @@
 
 <section id="fr8"><h2 class="sec"><span class="secnum">8</span> À retenir</h2><div class="info"><div class="ptag"><i class="ti ti-user-heart"></i> À retenir</div><p style="margin:6px 0 0">Ceci est de l'information générale et ne remplace pas une consultation. Le séquençage de l'exome entier lit la partie codante de votre ADN dans de nombreux gènes; ce que signifie tout résultat dépend de votre situation et s'interprète avec votre équipe de génétique.</p></div>
 <div class="analogy"><i class="ti ti-book"></i> Voyez le WES comme un survol de chaque recette d'un immense livre de cuisine à la recherche d'un seul mot mal orthographié — assez large pour vérifier des milliers de recettes d'un coup, mais seulement les recettes, pas les notes dans la marge.</div>
+</section>
+
+<section id="clinics-fr">
+<h2 class="sec"><span class="secnum"><i class="ti ti-heart-handshake"></i></span> Cliniques et ressources pour les patients</h2>
+<ul class="checklist ui"><li><i class="ti ti-map-pin"></i><span>Votre équipe de génétique peut vous orienter vers des cliniques et des ressources de soutien près de chez vous.</span></li></ul>
 </section>
 
 <div class="footer"><p>Cette page est un document d'information destiné aux patients, visant à soutenir, et non à remplacer, le conseil individuel. Elle explique en termes généraux une catégorie de test génétique; les gènes examinés et l'interprétation de tout résultat dépendent de votre situation et du laboratoire utilisé. Préparé pour la Génétique médicale · Genaissance.</p></div></div>
