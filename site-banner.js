@@ -74,7 +74,7 @@
         topLink(ORIGIN+'/about','About','\u00c0 propos')+
         '<div class="gn-drop">'+topLink(ORIGIN+'/services','Services','Services')+caretBtn('Services menu')+subMenu(SERVICES)+'</div>'+
         '<div class="gn-drop gn-here"><button type="button" class="gn-top gn-pro" aria-expanded="false" aria-haspopup="true" aria-current="true">'+
-          t('Protocols','Protocoles')+'<span class="gn-caret" aria-hidden="true"></span></button>'+
+          t('Resources','Ressources')+'<span class="gn-caret" aria-hidden="true"></span></button>'+
           '<div class="gn-menu">'+
             '<a href="https://andrew-shuen.github.io/genaissance-protocol/" aria-current="page">'+t('Genetic conditions','Maladies g\u00e9n\u00e9tiques')+'</a>'+
             '<a href="https://andrew-shuen.github.io/longevity-wellness-guide/">'+t('Wellness','Mieux-\u00eatre')+'</a>'+
