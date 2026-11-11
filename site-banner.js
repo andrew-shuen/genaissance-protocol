@@ -2,6 +2,11 @@
 (function(){
   var ORIGIN='https://www.genaissance.ca';
   var LOGO='https://www.genaissance.ca/uploads/b/aa8065230b80bb75f03d0afacc25f58982da9629d77d2cd343f212a67cd667c1/GENAISSANCE%20logo%20%282%29_1733771251.png';
+  var ICON={
+    search:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10.5 17.5c1.57 0 3.02-.53 4.18-1.4l4.11 4.11 1.41-1.41-4.11-4.11a7 7 0 1 0-12.6-4.18 7 7 0 0 0 7.01 6.99Zm0-12a5 5 0 1 1 0 10 5 5 0 0 1 0-10Z"/></svg>',
+    account:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M14 7a2 2 0 0 0-2-2 2 2 0 0 0-2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2ZM8 7a4 4 0 1 1 8 0 4 4 0 0 1-8 0Zm10 14h2a8.01 8.01 0 0 0-16 0h2a6 6 0 0 1 12 0Z" clip-rule="evenodd"/></svg>',
+    cart:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M7 14a1 1 0 0 0-1 1 1 1 0 0 0 1 1h13v2H7a2.98 2.98 0 0 1-1.33-5.67L4 4H2V2h6v2h12l-2 10H7Zm9.36-2 1.2-6H6.44l1.2 6h8.72ZM7.5 22a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm9 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" clip-rule="evenodd"/></svg>'
+  };
   var SERVICES=[
     ['Genetic testing','Tests génétiques','/genetic-testing'],
     ['OHIP genetics referrals','Références en génétique (OHIP)','/ohip-genetics'],
@@ -62,13 +67,19 @@
     var header=document.createElement('header');
     header.className='gn-header sb-banner';
     header.innerHTML=
-      '<div class="gn-bar">'+
+      '<div class="gn-shell">'+
         '<button type="button" class="gn-burger" aria-expanded="false" aria-controls="gn-nav">'+
           '<span class="gn-bars" aria-hidden="true"><span></span><span></span><span></span></span>'+
           '<span class="gn-vh">'+t('Menu','Menu')+'</span></button>'+
         '<a class="gn-logo" href="'+ORIGIN+'/"><img src="'+LOGO+'" alt="Genaissance" width="1000" height="250"></a>'+
-        '<div class="gn-lang"></div>'+
-      '</div>'+
+        '<div class="gn-utilities">'+
+          '<div class="gn-icons">'+
+            '<a class="gn-icon" href="'+ORIGIN+'/" aria-label="Search">'+ICON.search+'</a>'+
+            '<a class="gn-icon" href="'+ORIGIN+'/" aria-label="Customer account">'+ICON.account+'</a>'+
+            '<a class="gn-icon" href="'+ORIGIN+'/s/cart" aria-label="Cart icon">'+ICON.cart+'</a>'+
+          '</div>'+
+          '<div class="gn-lang"></div>'+
+        '</div>'+
       '<nav id="gn-nav" class="gn-nav" aria-label="Main">'+
         topLink(ORIGIN+'/','Home','Accueil')+
         topLink(ORIGIN+'/about','About','\u00c0 propos')+
@@ -84,7 +95,7 @@
         topLink(ORIGIN+'/faqs','FAQ','FAQ')+
         topLink(ORIGIN+'/partners','Partners','Partenaires')+
         '<a class="gn-book" href="'+ORIGIN+'/s/appointments">'+t('Book','R\u00e9server')+'</a>'+
-      '</nav>';
+      '</nav></div>';
     document.body.insertBefore(header,document.body.firstChild);
     var toggle=document.querySelector('.lang-toggle');
     var slot=header.querySelector('.gn-lang');
@@ -125,6 +136,22 @@
       header.classList.remove('is-nav-open');
       burger.setAttribute('aria-expanded','false');
     });
+    var desktop=window.matchMedia('(min-width: 840px)');
+    function syncStuck(){
+      if(!desktop.matches){header.classList.remove('is-stuck');return;}
+      var y=window.scrollY||document.documentElement.scrollTop||0;
+      var stuck=header.classList.contains('is-stuck');
+      if(!stuck&&y>48)header.classList.add('is-stuck');
+      if(stuck&&y<8)header.classList.remove('is-stuck');
+    }
+    window.addEventListener('scroll',syncStuck,{passive:true});
+    if(desktop.addEventListener)desktop.addEventListener('change',function(){
+      header.classList.remove('is-nav-open');
+      burger.setAttribute('aria-expanded','false');
+      closeMenus(header);
+      syncStuck();
+    });
+    syncStuck();
     if(!document.querySelector('.gn-sitefoot')){
       var foot=document.createElement('footer');
       foot.className='gn-sitefoot';
