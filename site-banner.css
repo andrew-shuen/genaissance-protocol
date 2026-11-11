@@ -44,32 +44,64 @@ a:hover{color:#0090c9}
 
 /* ---- clinic header ---- */
 .gn-header{
-  position:sticky;top:0;z-index:40;
+  position:sticky;top:0;z-index:400;
+  margin:0;padding:0;
   background:#fff;color:#4a6172;
   border-bottom:1px solid #e2ebf1;
   font-family:Inter,Arial,sans-serif;
   box-shadow:0 1px 0 rgba(13,34,48,.04);
   overflow:visible;
 }
-.gn-header::before{content:none;display:none}
-.gn-bar{
-  position:relative;display:flex;align-items:center;justify-content:space-between;
-  min-height:80px;padding:10px 22px;gap:12px;box-sizing:border-box;
+.gn-header::before,.gn-header::after{content:none;display:none}
+.gn-shell{
+  width:min(1040px,calc(100% - 40px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  grid-template-areas:"burger logo utilities" "nav nav nav";
+  align-items:center;
+  column-gap:12px;
+  row-gap:16px;
+  padding:24px 0 8px;
+  box-sizing:border-box;
 }
-.gn-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);line-height:0}
-.gn-logo img{display:block;height:48px;width:auto}
-.gn-lang{position:relative;z-index:1;margin-left:auto;display:flex;align-items:center;gap:6px}
+.gn-header.is-stuck .gn-shell{
+  grid-template-columns:1fr auto;
+  grid-template-areas:"nav utilities";
+  row-gap:0;
+  padding:16px 0;
+}
+.gn-header.is-stuck .gn-logo{display:none}
+.gn-logo{grid-area:logo;justify-self:center;position:static;transform:none;display:flex;align-items:center;line-height:0}
+.gn-logo img{
+  display:block;
+  width:309px !important;
+  min-width:309px !important;
+  height:auto !important;
+  max-width:none !important;
+  max-height:none !important;
+}
+.gn-utilities{grid-area:utilities;justify-self:end;display:flex;align-items:center;gap:11px}
+.gn-icons{display:flex;align-items:center;gap:11px}
+.gn-icon{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:24px;height:26px;color:#0d2230;text-decoration:none;border:0;
+}
+.gn-icon svg{display:block;width:24px;height:24px}
+.gn-icon:hover{color:#00bbff}
+.gn-lang{position:relative;z-index:1;margin-left:4px;display:flex;align-items:center;gap:6px}
 .gn-burger{
-  display:none;position:relative;z-index:1;
-  width:42px;height:42px;padding:0;border:1px solid #e2ebf1;border-radius:8px;
-  background:#fff;cursor:pointer;align-items:center;justify-content:center;
+  display:none;grid-area:burger;justify-self:start;position:relative;z-index:1;
+  width:24px;height:26px;padding:0;border:0;border-radius:0;
+  background:transparent;color:#0d2230;cursor:pointer;align-items:center;justify-content:center;
 }
 .gn-bars{display:flex;flex-direction:column;gap:4px}
 .gn-bars span{display:block;width:18px;height:2px;background:#0d2230;border-radius:1px}
 .gn-vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .gn-nav{
+  grid-area:nav;
   display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
-  gap:2px 16px;padding:0 22px 14px;box-sizing:border-box;
+  gap:2px 22px;padding:0;box-sizing:border-box;
 }
 .gn-nav .gn-top,.gn-subtoggle,.gn-pro{
   font-family:Inter,Arial,sans-serif;font-size:15px;font-weight:400;line-height:1.2;
@@ -182,22 +214,99 @@ body>footer:not(.gn-sitefoot) a{color:#00658f}
 .gn-sitefoot a:hover{color:#00bbff}
 .gn-sitefoot .gn-top{padding:0}
 
-@media (max-width:900px){
+@media (max-width:839px){
   .gn-burger{display:inline-flex}
-  .gn-bar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;padding:10px 14px}
-  .gn-logo{position:static;transform:none;justify-self:center;min-width:0}
-  .gn-logo img{height:auto;max-height:40px;max-width:100%}
+  .gn-shell{
+    grid-template-columns:auto minmax(0,1fr) auto;
+    grid-template-areas:"burger logo utilities";
+    row-gap:0;
+    padding:16px 0;
+  }
+  .gn-header.is-stuck .gn-shell{
+    grid-template-areas:"burger logo utilities";
+    grid-template-columns:auto minmax(0,1fr) auto;
+    padding:16px 0;
+  }
+  .gn-header.is-stuck .gn-logo{display:flex}
   .gn-lang{margin-left:0}
-  .gn-nav{display:none;flex-direction:column;align-items:stretch;gap:0;padding:6px 16px 18px;border-top:1px solid #e2ebf1}
+  .gn-nav{
+    display:none;position:absolute;top:100%;left:0;right:0;z-index:420;
+    flex-direction:column;align-items:stretch;gap:0;
+    max-height:calc(100vh - 72px);overflow:auto;
+    margin:0;padding:8px 16px 18px;
+    background:#fff;border-bottom:1px solid #e2ebf1;
+    box-shadow:0 16px 40px rgba(4,33,46,.12);
+  }
   .gn-header.is-nav-open .gn-nav{display:flex}
   .gn-drop{display:flex;flex-wrap:wrap}
   .gn-drop>.gn-top,.gn-pro{flex:1;text-align:left}
-  .gn-menu{position:static;min-width:0;max-height:none;box-shadow:none;border:0;padding:0 0 8px 12px;background:transparent}
+  .gn-menu{position:static;min-width:0;max-height:none;box-shadow:none;border:0;border-radius:0;padding:0 0 8px 12px;background:#f4fbff;width:100%}
   .gn-menu a{white-space:normal}
   .gn-drop:hover>.gn-menu{display:none}
   .gn-drop:focus-within>.gn-menu,.gn-drop.is-open>.gn-menu{display:block}
-  .gn-book{margin:10px 0 0}
+  .gn-book{margin:10px 0 0;align-self:flex-start}
   .gn-header .lang-toggle button,.gn-lang .sb-btn{padding:6px 8px;font-size:12px}
+  .gn-shell{
+    grid-template-areas:"burger logo icons" "lang lang lang";
+    grid-template-columns:1fr auto 1fr;
+    column-gap:8px;
+    row-gap:8px;
+  }
+  .gn-header.is-stuck .gn-shell{
+    grid-template-areas:"burger logo icons" "lang lang lang";
+    grid-template-columns:1fr auto 1fr;
+  }
+  .gn-utilities{display:contents}
+  .gn-icons{grid-area:icons;justify-self:end;gap:6px}
+  .gn-lang{grid-area:lang;justify-self:end;margin:0}
+}
+@media (max-width:480px){
+  .gn-logo img{
+    width:160px !important;
+    min-width:160px !important;
+    height:auto !important;
+    max-width:none !important;
+    max-height:none !important;
+  }
+  .gn-utilities{gap:6px}
+}
+
+/* Page column matches the header shell: 20px inset, 48px section padding. */
+body > header:not(.gn-header) .wrap,
+body > .toolbar,
+body > .usage,
+body > .clin-entry,
+footer:not(.gn-sitefoot) .foot-wrap,
+.sb-tools-inner,
+body > .wrap,
+body > .shell,
+body > .page,
+body > .container,
+body > main{
+  width:min(1040px,calc(100% - 40px)) !important;
+  max-width:none !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  box-sizing:border-box;
+}
+body > .wrap,
+body > main,
+body > .shell > .doc,
+body > .page > .doc,
+body > .container > main{
+  padding-top:48px !important;
+  padding-bottom:48px !important;
+  padding-left:0 !important;
+  padding-right:0 !important;
+}
+body > header:not(.gn-header) .wrap,
+body > .toolbar,
+body > .usage,
+body > .clin-entry,
+footer:not(.gn-sitefoot) .foot-wrap,
+.sb-tools-inner{
+  padding-left:0 !important;
+  padding-right:0 !important;
 }
 
 /* ---- card toolbar (print and page controls; language sits in the header) ---- */
@@ -255,9 +364,11 @@ body.pdf-preview .sb-tools,body.pdf-preview .gn-header,body.pdf-preview .gn-site
   .topbar,.toolbar,.langbar,.lang-toggle,.langtabs,.langtab,.lang-btn,.langbtn,
   button[onclick*="setLang"],button[onclick*="showLang"]{display:none!important}
   .gn-header{position:static;box-shadow:none;border-bottom:1px solid #999}
+  .gn-header{position:static}
+  .gn-header.is-stuck .gn-logo{display:flex}
   .gn-logo{position:static;transform:none}
-  .gn-logo img{height:28px}
-  .gn-bar{min-height:0;justify-content:flex-start}
+  .gn-logo img{width:auto !important;min-width:0 !important;height:28px !important;max-width:140px !important}
+  .gn-shell{width:auto;padding:0}
   body>header:not(.gn-header){background:#fff!important;color:#000!important;padding:12px 0 8px}
   body>header:not(.gn-header) h1,body>header:not(.gn-header) .sub,body>header:not(.gn-header) p{color:#000!important}
   .gn-sitefoot{background:#fff!important;color:#000!important}
@@ -270,5 +381,9 @@ body.pdf-preview .sb-tools,body.pdf-preview .gn-header,body.pdf-preview .gn-site
   .yt-card{border:1px solid #999;margin:6px 0;break-inside:avoid}
   .yt-url{display:block;font-size:10pt;color:#000;word-break:break-all}
   img{max-width:100%!important;height:auto!important}
+  body > .wrap,body > .shell,body > .page,body > .container,body > main,
+  body > header:not(.gn-header) .wrap,footer:not(.gn-sitefoot) .foot-wrap{
+    width:auto !important;max-width:none !important;
+  }
   a[href]{color:inherit}
 }
