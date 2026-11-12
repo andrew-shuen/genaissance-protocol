@@ -551,24 +551,15 @@
     },
     {
       "group": "cancer",
-      "file": "lynch.html",
-      "title": "Lynch syndrome",
-      "desc": {
-        "en": "Colorectal, endometrial and more",
-        "fr": "Côlon-rectum, endomètre et autres"
-      },
-      "subheadBefore": {
-        "en": "Lynch syndrome / mismatch repair (MMR)",
-        "fr": "Syndrome de Lynch / réparation des mésappariements (MMR)"
-      }
-    },
-    {
-      "group": "cancer",
       "file": "mlh1.html",
       "title": "MLH1",
       "desc": {
         "en": "Lynch syndrome mismatch repair",
         "fr": "Réparation des mésappariements (Lynch)"
+      },
+      "subheadBefore": {
+        "en": "Lynch syndrome / mismatch repair (MMR)",
+        "fr": "Syndrome de Lynch / réparation des mésappariements (MMR)"
       }
     },
     {
